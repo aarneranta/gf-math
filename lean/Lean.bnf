@@ -1,0 +1,19 @@
+comment "/-" "-/" ;
+comment "#" ;
+
+SImport.    Stm ::= "import" Name ;
+SUniverse.  Stm ::= "universe" [Ident] ;
+SNamespace. Stm ::= "namespace" Ident ;
+SSection.   Stm ::= "section" ;
+SEnd.       Stm ::= "end" ;
+SVariable.  Stm ::= "variable" [VarDecl] ;
+SDef.       Stm ::= "def" Ident ":" Exp ":=" Exp ;
+SNoncomputableDef. Stm ::= "noncomputable" "def" Ident ":" Exp ":=" Exp ;
+STheorem.   Stm ::= "theorem" Ident [VarDecl] ":" Exp ":=" Exp ;
+
+VDTyped.  VarDecl ::= "(" Ident ":" Exo ")" ;
+VDList.   VarDecl ::= "[" [Ident] "]" ;
+
+terminator Ident "" ;
+terminator VarDecl "" ;
+
