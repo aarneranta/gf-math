@@ -1,3 +1,5 @@
+LeanCode. Code ::= [Stm] ;
+
 comment "/-" "-/" ;
 comment "#" ;
 
@@ -5,15 +7,61 @@ SImport.    Stm ::= "import" Name ;
 SUniverse.  Stm ::= "universe" [Ident] ;
 SNamespace. Stm ::= "namespace" Ident ;
 SSection.   Stm ::= "section" ;
+SOpen.      Stm ::= "open" Name ;
 SEnd.       Stm ::= "end" ;
 SVariable.  Stm ::= "variable" [VarDecl] ;
-SDef.       Stm ::= "def" Ident ":" Exp ":=" Exp ;
+SDef.       Stm ::= "def" Ident [VarDecl] ":" Exp ":=" Exp ;
+SDefNotype. Stm ::= "def" Ident [VarDecl] ":=" Exp ;
+SDefCases.  Stm ::= "def" Ident [VarDecl] ":" Exp "|" [Case] ;
+
 SNoncomputableDef. Stm ::= "noncomputable" "def" Ident ":" Exp ":=" Exp ;
 STheorem.   Stm ::= "theorem" Ident [VarDecl] ":" Exp ":=" Exp ;
 
-VDTyped.  VarDecl ::= "(" Ident ":" Exo ")" ;
+terminator Stm "" ;
+
+CBranch. Case ::= Exp "=>" Exp ;
+
+separator Case "|" ;
+
+VDTyped.  VarDecl ::= "(" [Ident] ":" Exp ")" ;
 VDList.   VarDecl ::= "[" [Ident] "]" ;
+VDIdent.  VarDecl ::= Ident ;
 
 terminator Ident "" ;
 terminator VarDecl "" ;
+
+NExp.   Name ::= Exp10 ;
+
+EInt.   Exp11 ::= Integer ;
+EStr.   Exp11 ::= String ;
+EIdent. Exp11 ::= Ident ;
+EUnit.  Exp11 ::= "(" ")" ;
+EList.  Exp11 ::= "[" [Exp] "]" ;
+
+EBang.  Exp11 ::= "s!" String ; --- ?
+
+EQual.  Exp9 ::= Exp9 "." Exp10 ;
+
+EApp.   Exp8 ::= Exp8 Exp9 ;
+
+EExp.   Exp7 ::= Exp7 "^" Exp8 ;
+EMul.   Exp6 ::= Exp6 "*" Exp7 ;
+EAdd.   Exp5 ::= Exp5 "+" Exp6 ;
+ECons.  Exp5 ::= Exp5 "::" Exp6 ;
+EEq.    Exp4 ::= Exp5 "=" Exp5 ;
+EGt.    Exp4 ::= Exp5 ">" Exp5 ;
+ENeq.   Exp4 ::= Exp5 "≠" Exp5 ;
+EAnd.   Exp3 ::= Exp3 "∧" Exp4 ;
+EImpl.  Exp2 ::= Exp3 "→" Exp2 ;
+
+
+EUniv.  Exp1 ::= "∀" [Ident] ":" Exp "," Exp1 ;
+
+EMatch. Exp ::= "match" Exp "with" "|" [Case] ;
+
+EIfThenElse. Exp ::= "if" Exp1 "then" Exp1 "else" Exp ;
+
+coercions Exp 11 ;
+
+separator Exp "," ;
 
