@@ -53,6 +53,7 @@ ETuple. Exp11 ::= "(" [Exp] ")" ;
 EList.  Exp11 ::= "[" [Exp] "]" ;
 EUnit.  Exp11 ::= "(" ")" ;
 ENil.   Exp11 ::= "[" "]" ;
+ERange. Exp11 ::= "[" Exp ":" Exp "]" ;
 
 EBang.  Exp11 ::= "s!" String ; --- ?
 
@@ -81,8 +82,19 @@ EMatch. Exp ::= "match" Exp "with" "|" [Case] ;
 
 EIfThenElse. Exp ::= "if" Exp1 "then" Exp1 "else" Exp ;
 
+EDo. Exp ::= "do" [Command] ;
+
 coercions Exp 11 ;
 
 separator nonempty Exp "," ;
+
+
+CAss.  Command ::= Var [Var] ":=" Exp1 ;
+CLet.  Command ::= "let" Var [Var] ":=" Exp1 ;
+CFor.  Command ::= "for" Var "in" Exp1 "do" [Command] ;
+CExp.  Command ::= Exp1 ; ---- precedence?
+
+terminator Command ";" ; ---- newline
+
 
 token Greek 'α' ;
