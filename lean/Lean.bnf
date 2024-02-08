@@ -4,39 +4,55 @@ comment "/-" "-/" ;
 comment "#" ;
 
 SImport.    Stm ::= "import" Name ;
-SUniverse.  Stm ::= "universe" [Ident] ;
+SUniverse.  Stm ::= "universe" [Var] ;
 SNamespace. Stm ::= "namespace" Ident ;
 SSection.   Stm ::= "section" ;
 SOpen.      Stm ::= "open" Name ;
 SEnd.       Stm ::= "end" ;
+SEndName.   Stm ::= "end" Name ;
 SVariable.  Stm ::= "variable" [VarDecl] ;
-SDef.       Stm ::= "def" Ident [VarDecl] ":" Exp ":=" Exp ;
-SDefNotype. Stm ::= "def" Ident [VarDecl] ":=" Exp ;
-SDefCases.  Stm ::= "def" Ident [VarDecl] ":" Exp "|" [Case] ;
-
-SNoncomputableDef. Stm ::= "noncomputable" "def" Ident ":" Exp ":=" Exp ;
+SDef.       Stm ::= DefMode "def" Ident [VarDecl] ":" Exp ":=" Exp ;
+SDefNotype. Stm ::= DefMode "def" Ident [VarDecl] ":=" Exp ;
+SDefCases.  Stm ::= DefMode "def" Ident [VarDecl] ":" Exp "|" [Case] ;
+SInductive. Stm ::= "inductive" Ident "|" [Constr] Deriv ;
 STheorem.   Stm ::= "theorem" Ident [VarDecl] ":" Exp ":=" Exp ;
 
 terminator Stm "" ;
 
-CBranch. Case ::= Exp "=>" Exp ;
-
+CBranch. Case ::= [Exp] "=>" Exp ;
 separator Case "|" ;
 
-VDTyped.  VarDecl ::= "(" [Ident] ":" Exp ")" ;
-VDList.   VarDecl ::= "[" [Ident] "]" ;
+CConstr. Constr ::= [Exp] ":" Exp ;
+separator Constr "|" ;
+
+DNone.  Deriv ::= ;
+DDeriv. Deriv ::= "deriving" [Exp] ;
+
+DMNone. DefMode ::= ;
+DMnoncomputable. DefMode ::= "noncomputable" ;
+DMpartial. DefMode ::= "partial" ;
+
+VDTyped.  VarDecl ::= "(" [Var] ":" Exp ")" ;
+VDList.   VarDecl ::= "[" [Var] "]" ;
 VDIdent.  VarDecl ::= Ident ;
 
-terminator Ident "" ;
+terminator Var "" ;
 terminator VarDecl "" ;
+
+VIdent. Var ::= Ident ;
+VGreek. Var ::= Greek ;
+VWild.  Var ::= "_" ;
+VOpt.   Var ::= Ident "?" ;
 
 NExp.   Name ::= Exp10 ;
 
 EInt.   Exp11 ::= Integer ;
 EStr.   Exp11 ::= String ;
-EIdent. Exp11 ::= Ident ;
-EUnit.  Exp11 ::= "(" ")" ;
+EVar.   Exp11 ::= Var ;
+ETuple. Exp11 ::= "(" [Exp] ")" ;
 EList.  Exp11 ::= "[" [Exp] "]" ;
+EUnit.  Exp11 ::= "(" ")" ;
+ENil.   Exp11 ::= "[" "]" ;
 
 EBang.  Exp11 ::= "s!" String ; --- ?
 
@@ -46,16 +62,20 @@ EApp.   Exp8 ::= Exp8 Exp9 ;
 
 EExp.   Exp7 ::= Exp7 "^" Exp8 ;
 EMul.   Exp6 ::= Exp6 "*" Exp7 ;
+EDiv.   Exp6 ::= Exp6 "/" Exp7 ;
+ERem.   Exp6 ::= Exp6 "%" Exp7 ;
 EAdd.   Exp5 ::= Exp5 "+" Exp6 ;
 ECons.  Exp5 ::= Exp5 "::" Exp6 ;
 EEq.    Exp4 ::= Exp5 "=" Exp5 ;
 EGt.    Exp4 ::= Exp5 ">" Exp5 ;
 ENeq.   Exp4 ::= Exp5 "≠" Exp5 ;
 EAnd.   Exp3 ::= Exp3 "∧" Exp4 ;
+ECross. Exp3 ::= Exp3 "×" Exp4 ;
 EImpl.  Exp2 ::= Exp3 "→" Exp2 ;
 
+ELet.   Exp1 ::= "let" Ident ":=" Exp2 ; ---- layout divides Exp2 into two parts
 
-EUniv.  Exp1 ::= "∀" [Ident] ":" Exp "," Exp1 ;
+EUniv.  Exp1 ::= "∀" [Var] ":" Exp "," Exp1 ;
 
 EMatch. Exp ::= "match" Exp "with" "|" [Case] ;
 
@@ -63,5 +83,6 @@ EIfThenElse. Exp ::= "if" Exp1 "then" Exp1 "else" Exp ;
 
 coercions Exp 11 ;
 
-separator Exp "," ;
+separator nonempty Exp "," ;
 
+token Greek 'α' ;

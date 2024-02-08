@@ -45,3 +45,66 @@ open List
 def myRange := List.range 7
 
 end
+
+namespace hidden
+
+def reverseAux : List α → List α → List α
+  | [],   r => r
+  | a::l, r => reverseAux l (a::r)
+
+def reverse (as : List α) :List α :=
+  reverseAux as []
+
+protected def append (as bs : List α) : List α :=
+  reverseAux as.reverse bs
+
+end hidden
+
+partial def gcd m n :=
+  if n = 0 then m else gcd n (m % n)
+
+partial def bad (n : Nat) : Nat := bad (n + 1)
+
+def fib' : Nat → Nat
+  | 0 => 0
+  | 1 => 1
+  | n + 2 => fib' (n + 1) + fib' n
+
+def fibAux : Nat → Nat × Nat
+  | 0     => (0, 1)
+  | n + 1 => let p := fibAux n
+             (p.2, p.1 + p.2)
+
+def fib n := (fibAux n).1
+
+
+import Init
+
+inductive BinTree
+  | empty : BinTree
+  | node  : BinTree → BinTree → BinTree
+  deriving Repr, DecidableEq, Inhabited
+
+open BinTree
+
+def size : BinTree → Nat
+  | empty    => 0
+  | node a b => 1 + size a + size b
+
+def depth : BinTree → Nat
+  | empty    => 0
+  | node a b => 1 + Nat.max (depth a) (depth b)
+
+def example_tree := node (node empty empty) (node empty (node empty empty))
+
+def foo (b : BinTree) : Nat :=
+  match b with
+  | empty    => 0
+  | node _ _ => 1
+
+def bar (n? : Option Nat) : Nat :=
+  match n? with
+  | some n => n
+  | none   => 0
+
+
