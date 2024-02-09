@@ -59,12 +59,13 @@ EUnit.  Exp11 ::= "(" ")" ;
 ENil.   Exp11 ::= "[" "]" ;
 ERange. Exp11 ::= "[" Exp ":" Exp "]" ;
 
-EBang.  Exp11 ::= "s!" String ; --- ?
-
+EBang.   Exp11 ::= Name "!" String ; --- ?
+ESyntax. Exp11 ::= Name "!" "{" Exp "}" ;
 EQual.  Exp9 ::= Exp9 "." Exp10 ;
 
 EApp.   Exp8 ::= Exp8 Exp9 ;
 
+ENeg.   Exp7 ::= "¬" Exp7 ;
 EExp.   Exp7 ::= Exp7 "^" Exp8 ;
 EMul.   Exp6 ::= Exp6 "*" Exp7 ;
 EDiv.   Exp6 ::= Exp6 "/" Exp7 ;
@@ -75,6 +76,7 @@ EEq.    Exp4 ::= Exp5 "=" Exp5 ;
 EGt.    Exp4 ::= Exp5 ">" Exp5 ;
 ENeq.   Exp4 ::= Exp5 "≠" Exp5 ;
 EAnd.   Exp3 ::= Exp3 "∧" Exp4 ;
+EOr.    Exp3 ::= Exp3 "∨" Exp4 ; ---- prec?
 ECross. Exp3 ::= Exp3 "×" Exp4 ;
 EImpl.  Exp2 ::= Exp3 "→" Exp2 ;
 

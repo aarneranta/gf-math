@@ -116,3 +116,59 @@ def showSums : IO Unit := /- do
     IO.println s!"i: {i}, sum: {sum}" 
 
 
+namespace hidden
+
+inductive PropForm
+  | tr     : PropForm
+  | fls    : PropForm
+  | var    : String → PropForm
+  | conj   : PropForm → PropForm → PropForm
+  | disj   : PropForm → PropForm → PropForm
+  | impl   : PropForm → PropForm → PropForm
+  | neg    : PropForm → PropForm
+  | biImpl : PropForm → PropForm → PropForm
+  deriving Repr, DecidableEq
+
+end hidden
+
+open PropForm
+
+def propExample := prop!{p ∧ q → r ∧ p ∨ ¬ s1 → s2 }
+
+namespace PropForm
+
+def complexity : PropForm → Nat
+  | var _ => 0
+  | tr => 0
+  | fls => 0
+  | neg A => complexity A + 1
+  | conj A B => complexity A + complexity B + 1
+  | disj A B => complexity A + complexity B + 1
+  | impl A B => complexity A + complexity B + 1
+  | biImpl A B => complexity A + complexity B + 1
+
+def depth : PropForm → Nat
+  | var _ => 0
+  | tr => 0
+  | fls => 0
+  | neg A => depth A + 1
+  | conj A B => Nat.max (depth A) (depth B) + 1
+  | disj A B => Nat.max (depth A) (depth B) + 1
+  | impl A B => Nat.max (depth A) (depth B) + 1
+  | biImpl A B => Nat.max (depth A) (depth B) + 1
+
+def vars : PropForm → List String
+  | var s => [s]
+  | tr => []
+  | fls => []
+  | neg A => vars A
+  | conj A B => (vars A).union' (vars B)
+  | disj A B => (vars A).union' (vars B)
+  | impl A B => (vars A).union' (vars B)
+  | biImpl A B => (vars A).union' (vars B)
+
+#eval complexity propExample
+#eval depth propExample
+#eval vars propExample
+
+end PropForm
