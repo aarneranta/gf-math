@@ -1,3 +1,8 @@
+entrypoints Code, Stm, Exp ;
+
+layout toplevel ;
+layout "do" ;
+
 LeanCode. Code ::= [Stm] ;
 
 comment "/-" "-/" ;
@@ -5,19 +10,19 @@ comment "#" ;
 
 SImport.    Stm ::= "import" Name ;
 SUniverse.  Stm ::= "universe" [Var] ;
-SNamespace. Stm ::= "namespace" Ident ;
+SNamespace. Stm ::= "namespace" Id ;
 SSection.   Stm ::= "section" ;
 SOpen.      Stm ::= "open" Name ;
 SEnd.       Stm ::= "end" ;
 SEndName.   Stm ::= "end" Name ;
 SVariable.  Stm ::= "variable" [VarDecl] ;
-SDef.       Stm ::= DefMode "def" Ident [VarDecl] ":" Exp ":=" Exp ;
-SDefNotype. Stm ::= DefMode "def" Ident [VarDecl] ":=" Exp ;
-SDefCases.  Stm ::= DefMode "def" Ident [VarDecl] ":" Exp "|" [Case] ;
-SInductive. Stm ::= "inductive" Ident "|" [Constr] Deriv ;
-STheorem.   Stm ::= "theorem" Ident [VarDecl] ":" Exp ":=" Exp ;
+SDef.       Stm ::= DefMode "def" Id [VarDecl] ":" Exp ":=" Exp ;
+SDefNotype. Stm ::= DefMode "def" Id [VarDecl] ":=" Exp ;
+SDefCases.  Stm ::= DefMode "def" Id [VarDecl] ":" Exp "|" [Case] ;
+SInductive. Stm ::= "inductive" Id "|" [Constr] Deriv ;
+STheorem.   Stm ::= "theorem" Id [VarDecl] ":" Exp ":=" Exp ;
 
-terminator Stm "" ;
+terminator Stm ";" ;
 
 CBranch. Case ::= [Exp] "=>" Exp ;
 separator Case "|" ;
@@ -31,18 +36,17 @@ DDeriv. Deriv ::= "deriving" [Exp] ;
 DMNone. DefMode ::= ;
 DMnoncomputable. DefMode ::= "noncomputable" ;
 DMpartial. DefMode ::= "partial" ;
+DMprotected. DefMode ::= "protected" ;
 
 VDTyped.  VarDecl ::= "(" [Var] ":" Exp ")" ;
 VDList.   VarDecl ::= "[" [Var] "]" ;
-VDIdent.  VarDecl ::= Ident ;
+VDVar.    VarDecl ::= Var ;
 
 terminator Var "" ;
 terminator VarDecl "" ;
 
-VIdent. Var ::= Ident ;
-VGreek. Var ::= Greek ;
-VWild.  Var ::= "_" ;
-VOpt.   Var ::= Ident "?" ;
+VId. Var ::= Id ;
+VOpt.   Var ::= Id "?" ;
 
 NExp.   Name ::= Exp10 ;
 
@@ -74,7 +78,7 @@ EAnd.   Exp3 ::= Exp3 "∧" Exp4 ;
 ECross. Exp3 ::= Exp3 "×" Exp4 ;
 EImpl.  Exp2 ::= Exp3 "→" Exp2 ;
 
-ELet.   Exp1 ::= "let" Ident ":=" Exp2 ; ---- layout divides Exp2 into two parts
+ELet.   Exp1 ::= "let" Id ":=" Exp2 ; ---- layout divides Exp2 into two parts
 
 EUniv.  Exp1 ::= "∀" [Var] ":" Exp "," Exp1 ;
 
@@ -82,19 +86,18 @@ EMatch. Exp ::= "match" Exp "with" "|" [Case] ;
 
 EIfThenElse. Exp ::= "if" Exp1 "then" Exp1 "else" Exp ;
 
-EDo. Exp ::= "do" [Command] ;
+EDo. Exp ::= "do" "{" [Command] "}" ;
 
 coercions Exp 11 ;
 
 separator nonempty Exp "," ;
 
 
-CAss.  Command ::= Var [Var] ":=" Exp1 ;
-CLet.  Command ::= "let" Var [Var] ":=" Exp1 ;
+CAss.  Command ::= Var [Var] ":=" Exp1 ";" ;
+CLet.  Command ::= "let" Var [Var] ":=" Exp1 ";" ;
 CFor.  Command ::= "for" Var "in" Exp1 "do" [Command] ;
-CExp.  Command ::= Exp1 ; ---- precedence?
+CExp.  Command ::= Exp1 ";" ; ---- precedence?
 
-terminator Command ";" ; ---- newline
+terminator nonempty Command "" ; ---- newline
 
-
-token Greek 'α' ;
+token Id ((letter | ["_α"]) (letter | digit | '_' | '\'')*) ;
