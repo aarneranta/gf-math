@@ -16,11 +16,12 @@ SOpen.      Stm ::= "open" Name ;
 SEnd.       Stm ::= "end" ;
 SEndName.   Stm ::= "end" Name ;
 SVariable.  Stm ::= "variable" [VarDecl] ;
-SDef.       Stm ::= DefMode "def" Id [VarDecl] ":" Exp ":=" Exp ;
-SDefNotype. Stm ::= DefMode "def" Id [VarDecl] ":=" Exp ;
-SDefCases.  Stm ::= DefMode "def" Id [VarDecl] ":" Exp "|" [Case] ;
-SInductive. Stm ::= "inductive" Id "|" [Constr] Deriv ;
-STheorem.   Stm ::= "theorem" Id [VarDecl] ":" Exp ":=" Exp ;
+SDef.       Stm ::= DefMode "def" Name [VarDecl] ":" Exp ":=" Exp ;
+SDefNotype. Stm ::= DefMode "def" Name [VarDecl] ":=" Exp ;
+SDefCases.  Stm ::= DefMode "def" Name [VarDecl] ":" Exp "|" [Case] ;
+SInductive. Stm ::= "inductive" Name "|" [Constr] Deriv ;
+SInductiveEq. Stm ::= "inductive" Name ":=" "|" [Constr] Deriv ;
+STheorem.   Stm ::= "theorem" Name [VarDecl] ":" Exp ":=" Exp ;
 
 terminator Stm ";" ;
 
@@ -28,6 +29,7 @@ CBranch. Case ::= [Exp] "=>" Exp ;
 separator Case "|" ;
 
 CConstr. Constr ::= [Exp] ":" Exp ;
+CApp.    Constr ::= Id "(" [Var] ":" Exp ")" ":" Exp ;
 separator Constr "|" ;
 
 DNone.  Deriv ::= ;
@@ -48,39 +50,46 @@ terminator VarDecl "" ;
 VId. Var ::= Id ;
 VOpt.   Var ::= Id "?" ;
 
-NExp.   Name ::= Exp10 ;
+NExp.   Name ::= Exp15 ;
 
-EInt.   Exp11 ::= Integer ;
-EStr.   Exp11 ::= String ;
-EVar.   Exp11 ::= Var ;
-ETuple. Exp11 ::= "(" [Exp] ")" ;
-EList.  Exp11 ::= "[" [Exp] "]" ;
-EUnit.  Exp11 ::= "(" ")" ;
-ENil.   Exp11 ::= "[" "]" ;
-ERange. Exp11 ::= "[" Exp ":" Exp "]" ;
+EInt.   Exp16 ::= Integer ;
+EStr.   Exp16 ::= String ;
+EVar.   Exp16 ::= Var ;
+ETuple. Exp16 ::= "(" [Exp] ")" ;
+EList.  Exp16 ::= "[" [Exp] "]" ;
+EBrace. Exp16 ::= "{" [Exp] "}" ;
+EUnit.  Exp16 ::= "(" ")" ;
+ENil.   Exp16 ::= "[" "]" ;
+ERange. Exp16 ::= "[" Exp ":" Exp "]" ;
 
-EBang.   Exp11 ::= Name "!" String ; --- ?
-ESyntax. Exp11 ::= Name "!" "{" Exp "}" ;
-EQual.  Exp9 ::= Exp9 "." Exp10 ;
+EBang.   Exp15 ::= Exp16 "!" Exp16 ; --- ?
+EQual.   Exp15 ::= Exp15 "." Exp16 ;
 
-EApp.   Exp8 ::= Exp8 Exp9 ;
+---ESyntax. Exp14 ::= Id "!" "{" Exp "}" ;
 
-ENeg.   Exp7 ::= "¬" Exp7 ;
-EExp.   Exp7 ::= Exp7 "^" Exp8 ;
-EMul.   Exp6 ::= Exp6 "*" Exp7 ;
-EDiv.   Exp6 ::= Exp6 "/" Exp7 ;
-ERem.   Exp6 ::= Exp6 "%" Exp7 ;
-EAdd.   Exp5 ::= Exp5 "+" Exp6 ;
-ECons.  Exp5 ::= Exp5 "::" Exp6 ;
-EEq.    Exp4 ::= Exp5 "=" Exp5 ;
-EGt.    Exp4 ::= Exp5 ">" Exp5 ;
-ENeq.   Exp4 ::= Exp5 "≠" Exp5 ;
-EAnd.   Exp3 ::= Exp3 "∧" Exp4 ;
-EOr.    Exp3 ::= Exp3 "∨" Exp4 ; ---- prec?
-ECross. Exp3 ::= Exp3 "×" Exp4 ;
-EImpl.  Exp2 ::= Exp3 "→" Exp2 ;
+EApp.   Exp13 ::= Exp13 Exp14 ;
 
-ELet.   Exp1 ::= "let" Id ":=" Exp2 ; ---- layout divides Exp2 into two parts
+ENeg.   Exp12 ::= "¬" Exp12 ;
+ENot.   Exp12 ::= "!" Exp12 ;
+EExp.   Exp12 ::= Exp12 "^" Exp13 ;
+EMul.   Exp11 ::= Exp11 "*" Exp12 ;
+EDiv.   Exp11 ::= Exp11 "/" Exp12 ;
+ERem.   Exp11 ::= Exp11 "%" Exp12 ;
+EAdd.   Exp10 ::= Exp10 "+" Exp11 ;
+ECons.  Exp10 ::= Exp10 "::" Exp11 ;
+EEq.    Exp9 ::= Exp10 "=" Exp10 ;
+EGt.    Exp9 ::= Exp10 ">" Exp10 ;
+ENeq.   Exp9 ::= Exp10 "≠" Exp10 ;
+EConj.  Exp8 ::= Exp8 "∧" Exp9 ;
+EAnd.   Exp8 ::= Exp8 "&&" Exp9 ;
+ECross. Exp8 ::= Exp8 "×" Exp9 ;
+EDisj.  Exp7 ::= Exp7 "∨" Exp8 ;
+EOr.    Exp7 ::= Exp7 "||" Exp8 ;
+EImpl.  Exp4 ::= Exp5 "→" Exp4 ;
+
+EFun.   Exp2 ::= "fun" [Var] ":" Exp "=>" Exp3 ;
+
+ELet.   Exp1 ::= "let" Id [Var] ":=" Exp2 ; ---- layout divides Exp2 into two parts
 
 EUniv.  Exp1 ::= "∀" [Var] ":" Exp "," Exp1 ;
 
@@ -90,13 +99,12 @@ EIfThenElse. Exp ::= "if" Exp1 "then" Exp1 "else" Exp ;
 
 EDo. Exp ::= "do" "{" [Command] "}" ;
 
-coercions Exp 11 ;
+coercions Exp 16 ;
 
 separator nonempty Exp "," ;
 
 
 CAss.  Command ::= Var [Var] ":=" Exp1 ";" ;
-CLet.  Command ::= "let" Var [Var] ":=" Exp1 ";" ;
 CFor.  Command ::= "for" Var "in" Exp1 "do" [Command] ;
 CExp.  Command ::= Exp1 ";" ; ---- precedence?
 

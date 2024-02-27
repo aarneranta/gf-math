@@ -108,12 +108,13 @@ def bar (n? : Option Nat) : Nat :=
   | some n => n
   | none   => 0
 
-
-def showSums : IO Unit := /- do
-  let mut sum := 0 
+/-
+def showSums : IO Unit := do
+  let mut sum := 0  
   for i in [0:100] do
-    sum := sum + i -/
-    IO.println s!"i: {i}, sum: {sum}" 
+    sum := sum + i
+    IO.println s!"i: {i}, sum: {sum}"
+-/
 
 
 namespace hidden
@@ -133,7 +134,7 @@ end hidden
 
 open PropForm
 
-def propExample := prop!{p ∧ q → r ∧ p ∨ ¬ s1 → s2 }
+/- def propExample := prop!{p ∧ q → r ∧ p ∨ ¬ s1 → s2 } -/
 
 namespace PropForm
 
@@ -172,3 +173,112 @@ def vars : PropForm → List String
 #eval vars propExample
 
 end PropForm
+
+def PropForm.eval (v : PropAssignment) : PropForm → Bool
+  | var s => v.eval s
+  | tr => true
+  | fls => false
+  | neg A => !(eval v A)
+  | conj A B => (eval v A) && (eval v B)
+  | disj A B => (eval v A) || (eval v B)
+  | impl A B => !(eval v A) || (eval v B)
+  | biImpl A B => (!(eval v A) || (eval v B)) && (!(eval v B) || (eval v A))
+
+def allSublists : List α → List (List α)
+  | [] => [[]]
+  | (a :: as) =>
+      let recval := allSublists as
+/-      recval.map (a :: .) ++ recval -/
+
+def truthTable (A : PropForm) : List (List Bool × Bool) :=
+/-
+  let vars := A.vars
+  let assignments := (allSublists vars).map (fun l => PropAssignment.mk (l.map (., true)))
+-/
+  let evalLine := fun v : PropAssignment => (vars.map v.eval, A.eval v)
+  assignments.map evalLine
+
+
+inductive Lit
+  | tr  : Lit
+  | fls : Lit
+  | pos : String → Lit
+  | neg : String → Lit
+
+inductive NnfForm :=
+  | lit  (l : Lit)       : NnfForm
+  | conj (p q : NnfForm) : NnfForm
+  | disj (p q : NnfForm) : NnfForm
+
+def Lit.negate : Lit → Lit
+  | tr   => fls
+  | fls  => tr
+  | pos s => neg s
+  | neg s => pos s
+
+def NnfForm.neg : NnfForm → NnfForm
+  | lit l    => lit l.negate
+  | conj p q => disj (neg p) (neg q)
+  | disj p q => conj (neg p) (neg q)
+
+namespace PropForm
+
+def toNnfForm : PropForm → NnfForm
+  | tr         => NnfForm.lit Lit.tr
+  | fls        => NnfForm.lit Lit.fls
+  | var n      => NnfForm.lit (Lit.pos n)
+  | neg p      => p.toNnfForm.neg
+  | conj p q   => NnfForm.conj p.toNnfForm q.toNnfForm
+  | disj p q   => NnfForm.disj p.toNnfForm q.toNnfForm
+  | impl p q   => NnfForm.disj p.toNnfForm.neg q.toNnfForm
+  | biImpl p q => NnfForm.conj (NnfForm.disj p.toNnfForm.neg q.toNnfForm)
+                               (NnfForm.disj q.toNnfForm.neg p.toNnfForm)
+
+end PropForm
+
+def Clause := List Lit
+
+def CnfForm := List Clause
+
+/-
+def exLit0 := lit!{ p }
+def exLit1 := lit!{ -q }
+
+def exClause0 := clause!{ p }
+def exClause1 := clause!{ p -q r }
+def exClause2 := clause!{ r -s }
+
+
+def exCnf0 := cnf!{
+  p,
+  -p q -r,
+  -p q
+}
+
+def exCnf1 := cnf!{
+  p -q,
+  p q,
+  -p -r,
+  -p r
+}
+
+def exCnf2 := cnf!{
+  p q,
+  -p,
+  -q
+}
+
+def CnfForm.disj (cnf1 cnf2 : CnfForm) : CnfForm :=
+  (cnf1.map (fun cls => cnf2.map cls.union')).Union
+-/
+
+def NnfForm.toCnfForm : NnfForm → CnfForm
+  | NnfForm.lit (Lit.pos s) => [ [Lit.pos s] ]
+  | NnfForm.lit (Lit.neg s) => [ [Lit.neg s] ]
+  | NnfForm.lit Lit.tr      => []
+  | NnfForm.lit Lit.fls     => [ [] ]
+  | NnfForm.conj A B        => A.toCnfForm.conj B.toCnfForm
+  | NnfForm.disj A B        => A.toCnfForm.disj B.toCnfForm
+
+def PropForm.toCnfForm (A : PropForm) : CnfForm := A.toNnfForm.toCnfForm
+
