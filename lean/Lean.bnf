@@ -6,6 +6,7 @@ layout "do" ;
 LeanCode. Code ::= [Stm] ;
 
 comment "/-" "-/" ;
+comment "--" ;
 comment "#" ;
 
 SImport.    Stm ::= "import" Name ;
@@ -16,14 +17,19 @@ SOpen.      Stm ::= "open" Name ;
 SEnd.       Stm ::= "end" ;
 SEndName.   Stm ::= "end" Name ;
 SVariable.  Stm ::= "variable" [VarDecl] ;
-SDef.       Stm ::= DefMode "def" Name [VarDecl] ":" Exp ":=" Exp ;
-SDefNotype. Stm ::= DefMode "def" Name [VarDecl] ":=" Exp ;
-SDefCases.  Stm ::= DefMode "def" Name [VarDecl] ":" Exp "|" [Case] ;
+SDef.       Stm ::= DefMode "def" Def ;
 SInductive. Stm ::= "inductive" Name "|" [Constr] Deriv ;
 SInductiveEq. Stm ::= "inductive" Name ":=" "|" [Constr] Deriv ;
 STheorem.   Stm ::= "theorem" Name [VarDecl] ":" Exp ":=" Exp ;
+SWhere.     Stm ::= Stm "where" [Def] ;
 
 terminator Stm ";" ;
+
+DTyped.    Def ::= Name [VarDecl] ":" Exp ":=" Exp ;
+DNotype.   Def ::= Name [VarDecl] ":=" Exp ;
+DCases.    Def ::= Name [VarDecl] ":" Exp "|" [Case] ;
+
+terminator nonempty Def "" ;
 
 CBranch. Case ::= [Exp] "=>" Exp ;
 separator Case "|" ;
@@ -76,6 +82,7 @@ EMul.   Exp11 ::= Exp11 "*" Exp12 ;
 EDiv.   Exp11 ::= Exp11 "/" Exp12 ;
 ERem.   Exp11 ::= Exp11 "%" Exp12 ;
 EAdd.   Exp10 ::= Exp10 "+" Exp11 ;
+ESub.   Exp10 ::= Exp10 "-" Exp11 ;
 ECons.  Exp10 ::= Exp10 "::" Exp11 ;
 EEq.    Exp9 ::= Exp10 "=" Exp10 ;
 EGt.    Exp9 ::= Exp10 ">" Exp10 ;

@@ -282,3 +282,26 @@ def NnfForm.toCnfForm : NnfForm → CnfForm
 
 def PropForm.toCnfForm (A : PropForm) : CnfForm := A.toNnfForm.toCnfForm
 
+
+/- 6 -/
+
+def defLit (n : Nat) := Lit.pos s!"def_{n}"
+
+def mkDefs : NnfForm → Array NnfForm → Lit × Array NnfForm
+  | lit l, defs    => (l, defs)
+  | conj A B, defs =>
+/-      let ⟨fA, defs1⟩ := mkDefs A defs
+      let ⟨fB, defs2⟩ := mkDefs B defs1 -/
+      add_def conj (lit fA) (lit fB) defs2
+  | disj A B, defs =>
+/-      let ⟨fA, defs1⟩ := mkDefs A defs
+      let ⟨fB, defs2⟩ := mkDefs B defs1 -/
+      add_def disj (lit fA) (lit fB) defs2
+ where
+  add_def (op : NnfForm → NnfForm → NnfForm) (fA fB : NnfForm) (defs : Array NnfForm) :=
+---    match defs.findIdx? ((. == op fA fB)) with
+    match defs.findIdx? with
+    | some n => (defLit n, defs)
+    | none   => let newdefs := defs.push (op fA fB)
+                (defLit (newdefs.size - 1), newdefs)
+
