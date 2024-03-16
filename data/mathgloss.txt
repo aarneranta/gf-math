@@ -1,0 +1,687 @@
+# https://mathgloss.github.io/MathGloss/database
+# retrieved 2024-03-16
+
+Wikidata ID	Chicago	Lean 4 Undergrad	MuLiMa	nLab
+Q181296	abelian group	commutative group	commutative group	abelian group
+Q318598	abelianization			abelianization
+Q332504	absolute continuity			absolutely continuous measure
+Q20827138	absolute continuity of measure			
+Q120812	absolute value		absolute value	absolute value (mathematics)
+Q2858846	adjoint of a linear transformation	transpose of a linear map		
+Q4379157	adjoint representation of a lie algebra			
+Q1017106	adjoint representation of a lie group	adjoint endomorphism		adjoint representation
+Q225107	adjugate			
+Q382497	algebra homomorphism	affine function		
+Q246506	algebra of subsets			
+Q1000660	algebra over a field	algebra over a commutative ring	algebra	algebra (ring theory)
+Q1139334	almost everywhere			
+Q25377974	almost uniform convergence			
+Q438814	alternating group	alternating group		alternating group
+Q567083	annihilator of a submodule			
+Q177251	associative			associativity
+Q744960	associative algebra			
+Q4820423	augmentation ideal			augmentation ideal
+Q782566	automorphism			automorphism
+Q60790315	automorphism group			
+Q2976036	baire class			
+Q3459695	banach-mazur game			
+Q194397	banach space			banach space
+Q738422	barycentric coordinates			
+Q4078260	barycentric subdivision			
+Q810193	basis for abelian group			
+Q180907	bijective		bijective correspondence	one-to-one correspondence
+Q164307	binary operation			
+Q130901	binary relation			relation (mathematics)
+Q3058218	borel space			measurable space
+Q1080067	borel σ-algebra			borel subset
+Q875399	boundary			boundary (topology)
+Q78323465	boundary homomorphism		boundary	
+Q726212	bounded			bounded set
+Q829653	bounded variation			
+Q1047307	bundle		bundle	bundle (mathematics)
+Q3552958	c^r-form			smooth manifold
+Q273188	cantor set			
+Q719395	category		category	small category
+Q2518298	category of sets			set (category theory)
+Q217847	cauchy sequence	cauchy sequences		cauchy sequence
+Q3139849	cellular homology groups			cellular homology
+Q1195852	center of a group			center (group theory)
+Q190629	centralizer of a subset			normalizer
+Q511093	centroid			
+Q1143328	chain complex		chain complex	double complex
+Q11498021	character table			
+Q849705	characteristic polynomial	characteristic polynomial		characteristic polynomial
+Q747027	characteristic subgroup			
+Q3828144	chart			
+Q18205969	choquet game			
+Q105356493	circle group			
+Q2138760	class			
+Q986909	class function			class function
+Q320357	closed		closed set	
+Q4558786	closed edge path			loop (topology)
+Q644719	closed half-space			
+Q320346	closure		closure	
+Q47007889	cocomplete category		cocomplete category	
+Q1048949	cofibration		cofibration	cofibration
+Q165474	commutative			
+Q522216	commutator subgroup			derived series
+Q381892	compact			compactum
+Q1780743	compact linear transformation			compact operator
+Q78484790	compact symplectic group			
+Q1738274	compactly generated			
+Q4370335	complete category		complete category	finitely complete category
+Q848569	complete metric space			completion (topology)
+Q381040	complex conjugate			complex conjugation
+Q5156554	complex lie group			complex lie group
+Q445569	complexification of a vector space			complexification
+Q2525646	composition series of a group		composition series	jordan-hölder theorem
+Q1635267	cone			cone (topology)
+Q1353233	conjugacy classes	conjugacy classes		conjugate subgroup
+Q2051983	conjugate transpose			conjugate transpose matrix
+Q1491995	connected	path connectedness	connected scheme	locally path-connected space
+Q5161408	connected category			connected category
+Q91050456	connected component			
+Q230655	connected graph	connectedness (graph theory)		connected graph
+Q170058	continuous	continuous functions	continuous function	continuous space
+Q230689	contractible			locally contractible space
+Q1131116	contracting sequence of sets in a metric space			
+Q515173	contraction mapping			
+Q768656	convergence in measure			
+Q193657	convex set	convexity (mathematics)		convex space
+Q104752	coprime			coprime integers
+Q332648	covering space			universal covering space
+Q577705	critical point			critical point (mathematics)
+Q3754024	critical value			
+Q189061	cw complex			cw-pair
+Q212130	cycle			cyclic permutation
+Q245462	cyclic group	cyclic group	cyclic group	cyclic group
+Q2141963	deformation retraction			neighborhood retract
+Q1473607	degree of polynomial			degree of a polynomial
+Q673444	dense			dense subspace
+Q451323	derivation			
+Q109314515	descending central series			
+Q178546	determinant	determinant (mathematics)		determinant (mathematics)
+Q1058314	diffeomorphism	diffeomorphisms		diffeomorphism group
+Q636889	differentiable			total derivative
+Q1047080	differential k-form			differential form
+Q929302	dimension of vector space			finite-dimensional vector space
+Q13582243	direct sum of group representations		direct sum	
+Q1142861	direct sum of modules	complementary subspaces		direct sum of banach spaces
+Q383851	directional derivative	directional derivative		directional derivative
+Q1228851	discrete category			discrete category
+Q91267214	discrete topology			
+Q1782332	divisible group			divisible group
+Q1231309	division algebra			division algebra
+Q1226939	division in a ring			division (mathematics)
+Q650741	division ring			skewfield
+Q3427408	dual representation of a lie algebra			
+Q752487	dual space	dual space		duality (linear algebra)
+Q1415372	edge path			path (graph theory)
+Q3553768	eigenvalue		eigenvalue	
+Q3555174	eigenvector		eigenvector	
+Q1017231	elementary abelian p-group			
+Q609566	elementary matrix	elementary row operations		
+Q1333611	embedded m-dimensional manifold with boundary			
+Q980509	embedding		embedding	embedding (topology)
+Q1340800	endomorphism			endomorphism
+Q215084	entire			analytic function
+Q1347208	epimorphism			strong epimorphism
+Q1211071	equivalence class			quotient set
+Q130998	equivalence relation			identification (mathematics)
+Q256355	equivariant map			intertwiner
+Q1969054	essentially bounded			essential supremum
+Q867345	euclidean domain			euclidean ring
+Q181365	euclidean inner product			
+Q190026	euler’s totient function	euler’s totient function		
+Q852973	euler characteristic of a graph			euler number (topology)
+Q1326955	exact sequence			exact sequence
+Q32998717	exponent of a finite group			
+Q1322786	exterior			exterior (topology)
+Q13408581	exterior power of linear transformation			
+Q1640811	fiber		fibre	fiber (algebraic geometry)
+Q16897605	fiber translation functor			fiber functor
+Q493941	fibration		fibration	serre fibration
+Q190109	field		field	field theory (mathematics)
+Q5448799	filled julia set			
+Q1761084	finite length r-module			
+Q1340572	finitely generated r-module		finitely generated module	
+Q176244	frattini subgroup			
+Q431078	free group			free group
+Q1292333	free module		free module	free module
+Q579600	functional			functional (mathematics)
+Q864475	functor		functor	multifunctor
+Q662830	fundamental group			fundamental groupoid
+Q85174068	fundamental groupoid			
+Q4944906	gale-stewart game			
+Q15079592	game			
+Q724975	gaussian integers			
+Q17521172	general linear algebra			
+Q524607	general linear group	general linear group		stable general linear group
+Q25106477	generate an r-module			
+Q734209	generating set of a group			
+Q173582	gradient	gradient (calculus)		gradient (calculus)
+Q141488	graph	order (graph theory)		order (graph theory)
+Q182598	graph of a function			graph of a function
+Q131752	greatest common divisor	greatest common divisor		greatest common divisor
+Q83478	group	group (mathematics)	group	group (mathematics)
+Q288465	group action	orbit (group theory)		transitive action
+Q217608	group action invariants			fixpoint
+Q17019511	group algebra			group algebra
+Q1055807	group representation		group representation	representation theory (group theory)
+Q2602722	group ring		group ring	
+Q1196038	groupoid		groupoid	groupoid (category theory)
+Q189569	hamel basis			basis of a vector space
+Q599027	harmonic function			
+Q326908	hausdorff			hausdorff space
+Q77583424	hermitian inner product			
+Q620495	hessian matrix	hessian matrix		hessian (mathematics)
+Q190056	hilbert space	hilbert spaces		separable hilbert space
+Q3139500	holomorph of a group			holomorph (mathematics)
+Q202906	homeomorphism	homeomorphisms		
+Q12715503	homology class			
+Q1144780	homology group		homology	homology (mathematics)
+Q868169	homomorphism of lie groups	group morphism		
+Q746083	homotopy		homotopy	null homotopy
+Q14775269	homotopy category		homotopy category	homotopy category
+Q306560	homotopy cofiber		mapping cone	mapping cone (topology)
+Q1626409	homotopy equivalence of paths		homotopy equivalence	
+Q2243424	idempotent			idempotent (ring theory)
+Q5988368	identity component			identity component
+Q193794	identity matrix			identity matrix
+Q860623	image			preimage
+Q1464168	index of a subgroup			index of a subgroup
+Q182003	injective		injective function	injection (mathematics)
+Q1139583	inner automorphism of a group			inner automorphism
+Q23924662	inner product			
+Q214159	inner product space			inner product space
+Q976375	inner regular			
+Q628792	integral domain			integral domain
+Q862761	interior			interior point
+Q185148	interval			interval (mathematics)
+Q2706744	invariant subspace			
+Q338057	inverse element		inverse element	inverse (ring theory)
+Q191884	inverse function			inverse function
+Q17123743	inverse matrix			
+Q2989575	irreducible element of an integral domain			irreducible element
+Q13690522	irreducible representation	irreducible representation	irreducible representation	reducible representation
+Q1142889	isolated point			isolated point
+Q740207	isometry			
+Q189112	isomorphism of group representations			isomorphism
+Q17098238	isotypic component			
+Q1474543	jacobian determinant			
+Q506041	jacobian matrix	jacobian matrix		
+Q574844	kernel of group homomorphism			kernel (ring theory)
+Q192826	kronecker delta			kronecker delta
+Q203484	laplacian			laplace operator
+Q516776	lebesgue measurable function			measurable function
+Q827230	lebesgue measure	lebesgue measure		lebesgue measure
+Q25447455	lebesgue outer measure			
+Q185813	left identity element		identity element	identity element
+Q44649	left ring ideal			ideal (ring theory)
+Q664495	lie algebra		lie algebra	lie algebra
+Q3882299	lie algebra homomorphism			
+Q1136782	lie algebra representation			lie algebra representation
+Q1322614	limit of a d-shaped diagram	continuity (category theory)	limit	limit (category theory)
+Q858223	limit point	limit point		limit point
+Q16977077	linear lie algebra			
+Q207643	linear transformation	linear map	linear function	linear map
+Q111783780	linearly dependent			
+Q27670	linearly independent	linear independence		
+Q4265744	local homology groups			
+Q91052280	local maximum			
+Q91052291	local minimum			
+Q2147620	locally compact group			locally compact topological group
+Q643300	locally finite cover			
+Q2136937	locally finite measure			
+Q16671984	locally path-connected			
+Q1334417	lorentz group			lorentz group
+Q305936	lp space	lp space		p-norm
+Q1361393	lusin function			
+Q679903	magma			unital magma
+Q257	mandelbrot set			mandelbrot set
+Q203920	manifold		manifold	manifold with boundary
+Q1014869	mapping cylinder		mapping cylinder	mapping telescope
+Q44337	matrix		matrix	principal submatrix
+Q622679	matrix lie group			matrix lie group
+Q902017	matrix logarithm			
+Q1049914	matrix multiplication			
+Q223683	matrix transpose		transpose matrix	transpose matrix
+Q1203540	maximal ring ideal			maximal ideal
+Q16908484	maximal subgroup			maximal subgroup
+Q831672	maximal subtree			
+Q1747745	meager			meager set
+Q3054889	measurable		measurable set	
+Q3058212	measure space			measure space
+Q1201815	measure zero			
+Q180953	metric space			metric topology
+Q1341061	minor			principal minor
+Q215111	module homomorphism		homomorphism	
+Q18848	module over a lie algebra		module	submodule
+Q208237	monoid		monoid	submonoid
+Q1945067	monomorphism			regular monomorphism
+Q98929882	multilinear			
+Q17099189	multiplicative character			
+Q4504468	n-chain		chain	cycle (algebraic topology)
+Q1442189	natural transformation		natural transformation	unnatural isomorphism
+Q2478475	neighborhood			neighborhood (topology)
+Q840023	nilpotent			nilpotent element
+Q1755242	nilpotent group			nilpotent group
+Q15148889	nilpotent lie algebra			nilpotent lie algebra
+Q2444982	noetherian module			noetherian module
+Q582271	noetherian ring			noetherian ring
+Q1897429	non-archimedean absolute value			
+Q97623888	nonmeager			
+Q956437	norm	norm (mathematics)		norm (mathematics)
+Q1069099	normal-form game			
+Q743179	normal subgroup	normal subgroup	normal group	normal subgroup
+Q1761121	normalizer of a group			
+Q1991405	nowhere dense			nowhere dense set
+Q2914509	nullity			kernel (linear algebra)
+Q213363	open		open set	
+Q41509136	open cover		open cover	
+Q331350	open simplex			simplex (mathematics)
+Q7098616	opposite category			opposite category
+Q17859776	orbit			
+Q18408315	order of a group			
+Q54555759	order of a group element			
+Q860609	ordinary generating function			generating function
+Q1137726	oriented edge			source (graph theory)
+Q215067	orthogonal	orthogonality		orthogonality
+Q52088805	orthogonal algebra			
+Q1780921	orthogonal complement	orthogonal complement		
+Q1783179	orthogonal group	orthogonal group		special orthogonal group
+Q333871	orthogonal matrix			orthogonal matrix
+Q1411166	orthonormal			
+Q170475	oscillation			
+Q258374	outer measure			
+Q26851733	outer regular			
+Q2748415	outward pointing			orientation (topology)
+Q11756524	p-adic integers			
+Q286972	p-group			p-primary group
+Q7134470	paradoxical set			
+Q186475	partial derivative	partial derivative	partial derivative	partial differentiation
+Q1082910	partition of an integer			
+Q191690	partition of unity	partition of unity		partition of unity
+Q1366002	path			path (topology)
+Q3487687	path-connected			
+Q7168101	perfect set			perfect space
+Q161519	permutation			permutation
+Q1455652	polynomial ring			
+Q1632419	pontryagin dual			pontrjagin dual
+Q1052034	positive definite			
+Q205170	power set			power set
+Q1393014	pre-measure			
+Q240651	prime element of an integral domain			prime element
+Q863912	prime ideal	prime ideals		prime ideal
+Q49008	prime number	prime numbers		prime number
+Q44382	principal ideal			principal ideal
+Q1143969	principal ideal domain	principal ideal domain		principal ideal domain
+Q1572094	product measure	product measure		
+Q519967	projection			projector (linear algebra)
+Q7249479	projectivization			
+Q978505	pullback along a diffeomorphism		pullback	pullback (differential geometry)
+Q1633079	pushout		pushout	pushout (category theory)
+Q803531	quadratic integers			
+Q173853	quaternion algebra			quaternion
+Q3966112	quotient by equivalence relation			
+Q1138961	quotient by normal subgroup	quotient group		quotient group
+Q2589508	quotient of lie algebra by ideal			
+Q1432554	quotient of modules			quotient module
+Q1139111	quotient of topological spaces	quotient space (topology)		quotient space (topology)
+Q619436	quotient ring			quotient ring
+Q1393796	quotient vector space	quotient space (linear algebra)		quotient space (linear algebra)
+Q1191319	radon-nikodym derivative			radon–nikodym derivative
+Q2126650	radon measure			radon measure
+Q656784	rank	rank of a matrix		rank (linear algebra)
+Q1260803	rank of a finitely generated abelian group			
+Q633815	real projective space			real projective plane
+Q936434	real symplectic group			symplectic lie algebra
+Q209	rectangle			
+Q3038340	rectifiable			
+Q7306331	reduced homology group			reduced homology
+Q55631370	refinement			refinement (category theory)
+Q621850	reflexive			reflexive relation
+Q1428110	regular			
+Q55643339	relative cycle			
+Q1959911	relative homology groups			relative homology
+Q697181	riemann integrable			riemann integration
+Q825857	riemann sphere			riemann sphere
+Q751969	right coset			coset
+Q161172	ring	ring (mathematics)	ring	ring object
+Q1194212	ring homomorphism			
+Q110571247	ring norm			
+Q2064647	ring of subsets			
+Q17102802	rng			rng (mathematics)
+Q557624	rule of product			
+Q2360148	rule of sum			
+Q1369621	schwartz space			schwartz space
+Q1363919	second-countable			second-countable space
+Q6500908	self-adjoint			self-adjoint operator
+Q7449310	semi-locally simply connected			
+Q291126	semidirect product			semidirect product
+Q207348	semigroup			semigroup (mathematics)
+Q2366896	semisimple lie algebra			semisimple lie group
+Q1485102	semisimple module		semisimple module	semisimple ring
+Q81376506	semisimple representation of a lie algebra			
+Q680081	separable metric space			separable space
+Q2996364	sequence convergence			
+Q1135427	sequentially compact			
+Q1064405	sign of permutation			signature of a permutation
+Q1764371	signed measure			
+Q913022	simple function			simple function
+Q571124	simple group			simple group
+Q78502771	simple lie algebra			
+Q956233	simple module		simple module	
+Q994399	simplicial complex		simplicial complex	simplicial complex
+Q7520902	simplicial homology group			simplicial homology
+Q912058	simply connected			simply connected space
+Q1095056	singular homology group			singular homology
+Q1824450	singular measure			
+Q2291918	skeleton of a category			skeleton (category theory)
+Q19619110	small category		small category	
+Q868473	smooth	smooth functions		smooth map
+Q78338964	smooth topological m-dimensional manifold with boundary			
+Q759832	solvable group			solvable group
+Q7558992	solvable lie algebra			
+Q209812	span			span (linear algebra)
+Q7574831	special linear algebra			special linear lie algebra
+Q2140900	special linear group	special linear group		special linear group
+Q3117934	special orthogonal group			
+Q684363	special unitary group	special unitary group		su(5)
+Q2601117	stirling numbers of the second kind			
+Q7625098	structure constants			
+Q629933	subalgebra			
+Q7631151	subgraph			
+Q466109	subgroup	subgroup (mathematics)		subgroup (mathematics)
+Q2498094	submodule			
+Q55648664	subrepresentation			subrepresentation
+Q660730	subspace topology			subspace topology
+Q1136376	support	support of a distribution		support of a function
+Q484298	surface		surface	surface (topology)
+Q229102	surjective		surjective function	surjection
+Q1307987	suspension			suspension (topology)
+Q78269866	sylow p-subgroup			
+Q621461	symmetric			symmetric relation
+Q3773126	symmetric derivative			
+Q1147242	symmetric difference			symmetric difference
+Q849512	symmetric group			symmetric group
+Q55643402	symmetric power of group representations			
+Q909601	tangent space	tangent space		
+Q48995828	tensor product of group representations			tensor product of representations
+Q1163016	tensor product of vector spaces		tensor product	tensor product of vector spaces
+Q10260753	topological field			
+Q7825035	topological game			
+Q1046291	topological group			topological group
+Q922339	topological ring			topological ring
+Q179899	topological space		topological space	topological space
+Q7827200	torsion free module			torsion-free module
+Q2293759	torsion subgroup			torsion subgroup
+Q1936288	total variation			
+Q1362228	totally bounded			totally bounded space
+Q1544261	totally disconnected			totally disconnected space
+Q321102	trace		trace	trace (linear algebra)
+Q64861	transitive			transitive relation
+Q2666112	transposition			
+Q272735	tree			tree (graph theory)
+Q7844662	trivial group representation			trivial representation
+Q741865	uniformly continuous	uniformly continuous functions		
+Q1052579	unique factorization domain			unique factorization domain
+Q118084	unit of a ring			unit (ring theory)
+Q929536	unital subring			subring
+Q1500617	unitary group	unitary group		unitary group
+Q727103	unitary matrix			unitary matrix
+Q2495534	unitary transformation			
+Q4475749	universal covering space			
+Q1673406	universal enveloping algebra			universal enveloping algebra
+Q125977	vector space	vector space	vector space	vector space
+Q728435	vector subspace	vector subspace		subspace (linear algebra)
+Q3229352	vitali covering			
+Q39297	volume of a rectifiable set		volume	volume (mathematics)
+Q20850777	weak convergence			
+Q7977932	weak hausdorff			
+Q1781358	wedge sum			wedge sum
+Q72535212	weight space			
+Q768074	weyl group			weyl group
+Q35059	width		width	
+Q828111	zero divisor			zero-divisor
+Q217357	σ-algebra	sigma-algebras		sigma-algebra
+Q14481419		0-1 law		
+Q318737			abelian category	abelian category
+Q515874			abscissa	
+Q332465		absolute convergence		absolute convergence
+Q91134251			absolutely convergent series	
+Q844451			acnode	
+Q32043			addition	
+Q4681343			additive category	additive category
+Q357858			adjoint	unit (category theory)
+Q91435997			affine scheme	
+Q382504		affine span		
+Q382698		affine subspace		affine space (algebraic geometry)
+Q1047547			algebraically closed field	algebraically closed field
+Q8366			algorithm	algorithm
+Q438842		alternating series	alternating series	
+Q485312			analytic set	
+Q114326		antiderivative		indefinite integral
+Q1477053		arzela-Ascoli theorem		
+Q788009		autonomous differential equation		
+Q809690		barycenter	barycenter	barycenter
+Q4866725		bases		
+Q837924		bilinear form		bilinear form
+Q866300		bisection method		
+Q468391		bolzano-Weierstrass theorem		
+Q4973304			boolean algebra	
+Q893496		borel-Cantelli lemma		
+Q9299950		brute force method		
+Q513028		bézout’s identity		
+Q18205845			cartesian category	cocartesian monoidal category
+Q173740			cartesian product	cartesian product
+Q622741		cauchy-Riemann conditions		cauchy-riemann equation
+Q190546		cauchy-Schwarz inequality		cauchy–schwarz inequality
+Q656772		cayley-Hamilton theorem		
+Q17004731		chain rule (probability)		chain rule (probability)
+Q810255		change of basis		
+Q11210		change of coordinates		coordinate system
+Q1934165		change of variable		
+Q822139		characteristic function (probability)		characteristic function (probability)
+Q836088		characteristic p		prime field
+Q193878		chinese remainder theorem		
+Q320369			clopen set	clopen set
+Q906907			coherent sheaf	vector bundle (algebraic geometry)
+Q858656			commutative ring	
+Q184871		complex exponential		euler’s formula
+Q11567			complex number	real part
+Q327069		conditional probability		
+Q5159291		conditioning (probability)		
+Q230646		connected components		
+Q1319773		consistency		internal logic
+Q5165409		continuity (mathematics)		
+Q5165476		continuity (set theory)		
+Q856103		contour integral		
+Q220680		contraction mapping theorem		banach fixed-point theorem
+Q578985		convergence in probability		
+Q1211057		convergence (mathematics)	convergent series	convergence (mathematics)
+Q210857		convolution (mathematics)		
+Q66707394			countable set	
+Q247204		counting measure		counting measure
+Q331481			cover	refinement (topology)
+Q178192		cross product		cross product
+Q161973			curve	curve (mathematics)
+Q670036		curve length		length (mathematics)
+Q1051983		cyclotomic polynomials		
+Q2895824			definable set	definable set
+Q29175			derivative	differentiation (calculus)
+Q1208191		diagonalization		
+Q783507		differentiable functions	differentiable function	differentiable map
+Q385599		dirac comb		
+Q2725924		direct product of groups		direct product (group theory)
+Q5282259		direct sum (topology)		disjoint union (topology)
+Q1217467		dirichlet theorem		
+Q865811		distribution (mathematics)	distribution	distribution (mathematics)
+Q564835		distribution (differential geometry)		distribution (differential geometry)
+Q200726		distribution (probability)		probability distribution
+Q1067156		dominated convergence theorem		
+Q2297777		dual basis		dual basis
+Q2742711		eccentricity (graph theory)		radius (graph theory)
+Q104486		eccentricity (mathematics)		
+Q190524		eigenvector		eigenvector
+Q1057416		eisenstein’s criterion		
+Q226183			empty set	empty subset
+Q230848			euclidean algorithm	
+Q13366104			even number	
+Q1297532		events		
+Q4391173		exponential (category theory)		power object
+Q582659		exponential law		
+Q1196652			exterior algebra	exterior algebra
+Q1385465		extreme point		
+Q623950		fast Fourier transform		
+Q1068118		fatou’s lemma		
+Q571154		fejer theorem		
+Q1201101		fields		
+Q603880		finite fields	finite field	finite field
+Q1057968			finite group	finite group
+Q272404			finite set	finite set
+Q2835968			finitely generated algebra	finitely generated algebra
+Q3568		focus (mathematics)		
+Q179467			fourier series	
+Q6520159		fourier transform		fourier transform
+Q5500180			free algebra	
+Q1149022		fubini’s theorem		fubini theorem
+Q192760		fundamental Theorem of Algebra		fundamental theorem of algebra
+Q730384			galois group	galois group
+Q1069090		gauss-Seidel		
+Q2658		gaussian elimination		gaussian elimination
+Q1306887		geometric series		geometric series
+Q1199743		gradient descent		
+Q510733		grönwall lemma		
+Q208826			height	
+Q765987		heine-Cantor theorem		
+Q1616174			heterogenous algebra	
+Q3527215		hilbert projection theorem		
+Q207476		holomorphic functions	holomorphic function	holomorphic function
+Q204034		hyperbolic trigonometric functions		hyperbolic tangent
+Q848375		implicit function theorem		implicit function theorem
+Q464118		improper integral		
+Q625303		independence of random variables		
+Q17130880		induced topology		
+Q205140			infinite set	infinite set
+Q2716519			injective module	injective module
+Q915985		inscribed angle theorem		
+Q80091		integration (calculus)		integrand
+Q273328		integration by parts		integration by parts
+Q245098		intermediate value theorem		intermediate value theorem
+Q3984053		inverse Fourier transform		fourier inversion theorem
+Q931001		inverse function theorem		inverse function theorem
+Q674533		inverse trigonometric functions		inverse trigonometric function
+Q242188		invertibility		inverse matrix
+Q2297037		isolated singularity		
+Q76564		jacobian (mathematics)		jacobian (mathematics)
+Q838495		jordan normal form		
+Q833089		lU decomposition		gauss decomposition
+Q1530791		l^2		square integrable function
+Q598870		lagrange multipliers		lagrange multiplier
+Q425432		laurent series	laurent series	laurent series
+Q9993851		lax-Milgram theorem		
+Q102761		least common multiple		least common multiple
+Q394747		leibniz formula		
+Q246639		limits		
+Q467699		line integral		line integral
+Q211981		linearisation theorem		
+Q652707		lipschitz functions		lipschitz map
+Q845060		local extrema		extremum
+Q11197		logarithms	logarithm	logarithm
+Q1882442			maclaurin series	
+Q11348			map	image (set theory)
+Q656198		maschke theorem		maschke’s theorem
+Q1191722		matrix exponential		
+Q6787889		matrix representation		
+Q1914255		maximum principle		
+Q189136		mean value theorem		mean value theorem
+Q379825			member	membership relation
+Q217616		meromorphic function		meromorphic function
+Q630649		metric structure		
+Q2242730		minimal polynomial (field theory)		
+Q1163608		minimal polynomial (linear algebra)		
+Q1941896			model category	simplicial model category
+Q1451745		moments		
+Q1153584		monotone convergence theorem		
+Q194404			monotone function	monotone function
+Q232207		monte-Carlo method		
+Q1948412			morphism	morphism (category theory)
+Q1952404		multilinear map		
+Q2228257		multiplicity (mathematics)		
+Q21199			natural number	natural number
+Q200227			negative number	
+Q1749812		newton’s identities		newton identities
+Q3475675			noetherian scheme	noetherian scheme
+Q10533491			non-empty set	
+Q7049224			noncommutative ring	noncommutative algebra
+Q7051829			normal scheme	normal variety
+Q726210		normed vector space		
+Q11563			number	number (mathematics)
+Q13366129			odd number	
+Q230664		orbit (mathematics)		orbit (mathematics)
+Q589491		order (group theory)		order of a group
+Q1820515		order (mathematics)		order (mathematics)
+Q1431456		order (ring theory)		order (ring theory)
+Q465274		ordinary differential equation		ordinary differential equation
+Q1477782		orientation of a vector space		orientation (mathematics)
+Q2365325		orthonormal bases		
+Q1443036		parseval theorem		parseval’s theorem
+Q431617		partial fraction decomposition		partial fraction decomposition
+Q1756942			partial function	partial function
+Q2997817			perfect field	perfect field
+Q184743		periodic function		periodic function
+Q2532943		phase portrait		
+Q1778098		pointwise convergence		pointwise convergence
+Q2101158		polar decomposition		polar decomposition
+Q192276		positive measure		measure theory
+Q3176558			positive number	
+Q206925		power series expansion	power series	power series
+Q207522		probability density function		probability density
+Q355020		probability measure		
+Q919107			product	
+Q3406712		product of rings		direct product (ring theory)
+Q942423			projective module	projective module
+Q11538			proof	proof (mathematics)
+Q736753		quadratic form		quadratic form
+Q61040808			quasi-coherent sheaf	
+Q1428097		radius of convergence		convergence radius
+Q1783502		rate of convergence		
+Q41237		rational functions		rational function
+Q1244890			rational number	rational number
+Q12916		real numbers	real number	real number
+Q714886		regular polygons		regular polygon
+Q830513		residue theorem		
+Q1156903		riemann sums		
+Q1187640		riemann-Lebesgue lemma		
+Q1357684		riesz representation theorem		riesz representation theorem
+Q193286		rolle’s theorem		
+Q1155772			scheme	scheme (algebraic geometry)
+Q1816952		schur’s lemma		schur’s lemma
+Q170198			series	series (mathematics)
+Q36161			set	set (mathematics)
+Q595298			sheaf	étale space
+Q298582		signature (mathematics)		signature (mathematics)
+Q7512811		signature (topology)		signature (topology)
+Q420904		singular value decomposition		
+Q1756677		stability (mathematics)		stability theory
+Q7595717		stability (probability)		stability (probability)
+Q1528401			stationary set	
+Q218005			sum	sum (mathematics)
+Q1752621		sylvester’s law of inertia		
+Q1052674			symmetric algebra	symmetric algebra
+Q930499		symmetric polynomials		
+Q131187		taylor series	taylor series	taylor series
+Q2296021			tensor algebra	tensor ring
+Q21998744			term algebra	
+Q214856			tiling	tesselation
+Q671944			transitive set	transitive set
+Q7840150			triangulated category	triangulated functor
+Q93344		trigonometric functions		trigonometric function
+Q36248		triple product		
+Q1128796			uncountable set	
+Q1411887		uniform convergence		uniform convergence
+Q16862633		uniform law		
+Q50701			variable	variable (mathematics)
+Q207952		weak law of large numbers		
+Q576728		winding number		winding number
