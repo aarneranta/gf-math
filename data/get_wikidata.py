@@ -68,7 +68,7 @@ def lexicon2gf(*langs):
         # print(fun)
         funs.append((qid, fun, lins))
         
-    with open('MathWikidata.gf', 'w') as file:
+    with open('out/MathWikidata.gf', 'w') as file:
         file.write('abstract MathWikidata = {\n')
         file.write('\n')
         file.write('cat QN ;\n')
@@ -78,7 +78,7 @@ def lexicon2gf(*langs):
 
     for lan in langs:
         lang = language_codes[lan]
-        with open('MathWikidata' + lang + '.gf', 'w') as file:
+        with open('out/MathWikidata' + lang + '.gf', 'w') as file:
             file.write('concrete MathWikidata' + lang + ' of MathWikidata = \n')
             file.write('open Syntax' + lang + ', Paradigms' + lan + ' in {\n')
             file.write('lincat QN = CN ;\n')
@@ -93,7 +93,7 @@ def lexicon2gf(*langs):
         
 
 
-lexicon2gf('en') ## , 'sv', 'fr')
+lexicon2gf('en', 'de') ## , 'sv', 'fr')
 
 
 
