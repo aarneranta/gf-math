@@ -80,13 +80,14 @@ def lexicon2gf(*langs):
         lang = language_codes[lan]
         with open('out/MathWikidata' + lang + '.gf', 'w') as file:
             file.write('concrete MathWikidata' + lang + ' of MathWikidata = \n')
-            file.write('open Syntax' + lang + ', Paradigms' + lan + ' in {\n')
+            file.write('open Syntax' + lang + ', Paradigms' + lang + ' in {\n')
             file.write('lincat QN = CN ;\n')
             file.write('oper mkQN = overload {\n')
-            for i in range(1, len(max([fun[2][lan] for fun in funs] , key=len))):
+            for i in range(len(max([fun[2][lan] for fun in funs] , key=len))):
                 file.write('  mkQN : (' + '_, '*i + '_ : Str) -> QN = mkCN ;\n')
-            file.write('  }\n')
-            for fun in funs:
+            file.write('  } ;\n')
+            lfuns = sorted(funs, key = lambda f: -len(f[2][lan]))
+            for fun in lfuns:
                 file.write(' '.join(['lin', fun[1], '=', 'mkQN'] + ['"' + w + '"' for w in fun[2][lan]] + [';\n']))
             file.write('}\n')
 
