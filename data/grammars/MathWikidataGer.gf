@@ -2,26 +2,26 @@ concrete MathWikidataGer of MathWikidata =
 open SyntaxGer, (S=SyntaxGer), ParadigmsGer in {
 lincat QN = CN ;
 oper mkQN = overload {
-  mkQN : (_ : Str) -> CN = \n -> mkCN (mkN n) ;
+  mkQN : (_ : Str) -> CN = \x -> mkCN (mkN x) ;
   
-  mkQN : (_, _ : Str) -> CN = \adj, n ->
-    let ag = getAdjGen adj in
-    mkCN (mkA ag.adj) (mkN n ag.g) ;  -- A N
+  mkQN : (_, _ : Str) -> CN = \x, y ->
+    let ag = getAdjGen x in
+    mkCN (mkA ag.adj) (mkN y ag.g) ;  -- A N
   
-  mkQN : (_, _, _ : Str) -> CN = \ada, adj, n ->
-    let ag = getAdjGen adj
+  mkQN : (_, _, _ : Str) -> CN = \x, y, z -> 
+    let ag = getAdjGen y
     in
     case ag.kind of {
       "adj" =>
-          let aa = getAdjGen ada
+          let aa = getAdjGen x
           in
           case aa. kind of {
-              "adj" => (mkCN (mkA aa.adj) (mkCN (mkA ag.adj) (mkN n ag.g))) ;  -- A A N
-              _ => (mkCN (mkAP (lin AdA {s = ada}) (mkA ag.adj)) (mkN n ag.g)) -- AdA A N
+              "adj" => (mkCN (mkA aa.adj) (mkCN (mkA ag.adj) (mkN z ag.g))) ;  -- A A N
+              _ => (mkCN (mkAP (lin AdA {s = x}) (mkA ag.adj)) (mkN z ag.g))   -- AdA A N
 	  } ;
-      "indefgen" => mkCN (mkN ada) (S.mkAdv ag.prep (mkNP a_Det (mkN n))) ;   -- N einer N
-      "defgen" => mkCN (mkN ada) (S.mkAdv ag.prep (mkNP the_Det (mkN n))) ;   -- N der N
-      _ => mkCN (mkN ada) (S.mkAdv ag.prep (mkNP (mkN n)))  -- N von N
+      "indefgen" => mkCN (mkN x) (S.mkAdv ag.prep (mkNP a_Det (mkN z))) ;   -- N einer N
+      "defgen" => mkCN (mkN x) (S.mkAdv ag.prep (mkNP the_Det (mkN z))) ;   -- N der N
+      _ => mkCN (mkN x) (S.mkAdv ag.prep (mkNP (mkN z)))                    -- N von N
       } ;
     
 
@@ -33,12 +33,12 @@ oper mkQN = overload {
 
 
 oper getAdjGen : Str -> {adj : Str ; g : Gender ; prep : Prep ; kind : Str} = \s -> case s of {
-  x + "er" => {adj = x ; g = masculine ; prep = von_Prep ; kind = "adj"} ;
-  x + "es" => {adj = x ; g = neuter ; prep = von_Prep ; kind = "adj"} ;
-  x + "e"  => {adj = x ; g = feminine ; prep = von_Prep ; kind = "adj"} ;
   "von" => {adj = s ; g = neuter ; prep = von_Prep ; kind = "prep"} ;
   "einer" | "eines" => {adj = s ; g = neuter ; prep = genPrep ; kind = "indefgen"} ;
   "der" | "des" => {adj = s ; g = neuter ; prep = genPrep ; kind = "defgen"} ;
+  x + "er" => {adj = x ; g = masculine ; prep = von_Prep ; kind = "adj"} ;
+  x + "es" => {adj = x ; g = neuter ; prep = von_Prep ; kind = "adj"} ;
+  x + "e"  => {adj = x ; g = feminine ; prep = von_Prep ; kind = "adj"} ;
   x => {adj = x ; g = neuter ; prep = mkPrep x dative ; kind = "prep"} ---- to be refined
   } ;
 
