@@ -7,7 +7,7 @@ oper mkQN = overload {
   
   mkQN : (_, _ : Str) -> CN = \x, y ->
     case y of {
-      adj + "a" => mkCN (mkA adj) (mkN x feminine) ;
+      adj + "a" => mkCN (mkA (adj + "o")) (mkN x feminine) ;
       adj => mkCN (mkA adj) (mkN x)
       } ;
     

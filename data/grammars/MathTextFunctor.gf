@@ -9,18 +9,45 @@ lincat
   Paragraph = Text ;
   Definition = S ;
   Sentence = Cl ;
+  Condition = {s : Agreement => Cl} ;
+  Kind = CN ;
   Object = NP ;
-  
+  Reference = {s : Agreement => NP} ;
+  Property = AP ;
+  [Property] = [AP] ;
+  Conjunction = Conj ;
+
+oper
+  Agreement : PType = {} ;
+  refPron : Agreement -> Pron = \_ -> it_Pron ;
+  kindAgr : CN -> Agreement = \_ -> <> ;
 
 lin
   ParDefinition d = mkText d ;
+  ParSentence d = mkText (mkS d) ;
 
   DefIsA a b = mkS (mkCl (mkNP a_Det a) b) ;
-  DefIsASuch a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl c)))) ;
-  DefIsAIf a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkAdv if_Subj (mkS c)))) ;
+  DefIsASuch a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (c.s ! kindAgr b))))) ;
+  DefIsAIf a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (Syntax.mkAdv if_Subj (mkS (c.s ! kindAgr a))))) ;
+
+  CondIsA r b = {s = \\a => mkCl (r.s ! a) b} ;
+  CondHasProp r b = {s = \\a => mkCl (r.s ! a) b} ;
+
+  RefIt = {s = \\a => mkNP (refPron a)} ;
+  RefIts k =  {s = \\a => mkNP (refPron a) k} ;
 
   SentIsA a b = mkCl a b ;
+  SentHasProp a b = mkCl a b ;
 
-  ObjIts a = mkNP it_Pron a ;
+  PropConj conj props = mkAP conj props ;
+
+  and_Conjunction = and_Conj ;
+  or_Conjunction = or_Conj ;
+
+  BaseProperty a b = mkListAP a b ;
+  ConsProperty as = mkListAP as ;
+
+-- using Wikidata
+  KindQN qn = qn ;
   
 }
