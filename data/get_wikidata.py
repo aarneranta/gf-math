@@ -75,7 +75,15 @@ def lexicon2gf(*langs):
         for fun in funs:
             file.write(' '.join(['fun', fun[1], ':', 'QN', ';\n']))
         file.write('}\n')
-
+        
+    with open('out/MathWikidataCore.gf', 'w') as file:
+            file.write('concrete MathWikidataCore of MathWikidata = {\n')
+            file.write('\n')
+            file.write('lincat QN = {s : Str} ;\n')
+            for fun in funs:
+                file.write(' '.join(['lin', fun[1], '=', '{s =', '"'+fun[1][:-3]+'"}', ';\n']))
+            file.write('}\n')
+        
     for lan in langs:
         lang = language_codes[lan]
         with open('out/MathWikidata' + lang + '.gf', 'w') as file:
@@ -83,6 +91,7 @@ def lexicon2gf(*langs):
             file.write('open Syntax' + lang + ', Paradigms' + lang + ' in {\n')
             file.write('lincat QN = CN ;\n')
             file.write('oper mkQN = overload {\n')
+            file.write('  mkQN : CN -> QN = \\cn -> cn ;\n')
             for i in range(len(max([fun[2][lan] for fun in funs] , key=len))):
                 file.write('  mkQN : (' + '_, '*i + '_ : Str) -> QN = mkCN ;\n')
             file.write('  } ;\n')
@@ -94,7 +103,7 @@ def lexicon2gf(*langs):
         
 
 
-lexicon2gf('en', 'de') ## , 'sv', 'fr')
+lexicon2gf('en', 'it', 'sv')
 
 
 
