@@ -3,6 +3,7 @@ open SyntaxEng, ParadigmsEng in {
 lincat QN = CN ;
 
 oper mkQN = overload {
+  mkQN : CN -> CN = \n -> n ;  -- for working around the heuristics
   mkQN : (_ : Str) -> CN = \n -> mkCN (mkN n) ;
   mkQN : (_, _ : Str) -> CN = \adj, n -> (mkCN (mkA adj) (mkN n)) ;
   mkQN : (_, _, _ : Str) -> CN = \ada, adj, n -> 

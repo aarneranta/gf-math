@@ -3,6 +3,8 @@ open SyntaxFin, ParadigmsFin, (G=GrammarFin) in {
 lincat QN = CN ;
 
 oper mkQN = overload {
+  mkQN : CN -> CN = \n -> n ;  -- for working around the heuristics
+
   mkQN : (_ : Str) -> CN = \x -> mkCN (mkN x) ;
   
   mkQN : (_, _ : Str) -> CN = \x, y ->

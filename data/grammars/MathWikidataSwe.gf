@@ -3,6 +3,8 @@ open SyntaxSwe, ParadigmsSwe in {
 lincat QN = CN ;
 
 oper mkQN = overload {
+  mkQN : CN -> CN = \n -> n ;  -- for working around the heuristics
+
   mkQN : (_ : Str) -> CN = \x -> mkCN (mkN x) ;
   
   mkQN : (_, _ : Str) -> CN = \x, y ->
@@ -155,8 +157,8 @@ lin meromorphic_function_Q217616_QN = mkQN "meromorf" "funktion" ;
 lin monotone_convergence_theorem_Q1153584_QN = mkQN "monotona" "konvergenssatsen" ;
 lin monotonic_function_Q194404_QN = mkQN "monoton" "funktion" ;
 lin Monte_Carlo_method_Q232207_QN = mkQN "Monte" "Carlo-metod" ;
-lin natural_number_Q21199_QN = mkQN "naturliga" "tal" ;
-lin negative_real_number_Q200227_QN = mkQN "negativa" "tal" ;
+lin natural_number_Q21199_QN = mkQN "naturligt" "tal" ; --- WD: naturliga tal
+lin negative_real_number_Q200227_QN = mkQN "negativt" "tal" ; --- WD: negativa tal
 lin noncommutative_ring_Q7049224_QN = mkQN "okommutativ" "ring" ;
 lin normed_vector_space_Q726210_QN = mkQN "normerat" "rum" ;
 lin odd_number_Q13366129_QN = mkQN "udda" "tal" ;

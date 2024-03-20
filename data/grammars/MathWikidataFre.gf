@@ -2,6 +2,8 @@ concrete MathWikidataFre of MathWikidata =
 open SyntaxFre, ParadigmsFre in {
 lincat QN = CN ;
 oper mkQN = overload {
+  mkQN : CN -> CN = \n -> n ;  -- for working around the heuristics
+
   mkQN : (_ : Str) -> CN = \x -> mkCN (mkN x) ;
   
   mkQN : (_, _ : Str) -> CN = \x, y ->
@@ -235,7 +237,7 @@ lin bounded_set_Q726212_QN = mkQN "partie" "bornée" ;
 lin differentiable_manifold_Q3552958_QN = mkQN "variété" "différentielle" ;
 lin cellular_homology_Q3139849_QN = mkQN "Homologie" "cellulaire" ;
 lin chain_complex_Q1143328_QN = mkQN "complexe" "différentiel" ;
-lin characteristic_polynomial_Q849705_QN = mkQN "polynôme" "caractéristique" ;
+lin characteristic_polynomial_Q849705_QN = mkQN (mkCN (mkA  "caractéristique") (mkN "polynôme" masculine)) ;
 lin characteristic_subgroup_Q747027_QN = mkQN "sous-groupe" "caractéristique" ;
 lin chart_Q3828144_QN = mkQN "carte" "locale" ;
 lin complex_unit_circle_Q105356493_QN = mkQN "cercle" "unité" ;
@@ -422,7 +424,7 @@ lin conditional_probability_Q327069_QN = mkQN "probabilité" "conditionnelle" ;
 lin Connected_component_Q230646_QN = mkQN "Composante" "connexe" ;
 lin convergent_series_Q1211057_QN = mkQN "série" "convergente" ;
 lin vector_product_Q178192_QN = mkQN "produit" "vectoriel" ;
-lin cyclotomic_polynomial_Q1051983_QN = mkQN "polynôme" "cyclotomique" ;
+lin cyclotomic_polynomial_Q1051983_QN = mkQN (mkCN  (mkA "cyclotomique") (mkN "polynôme" masculine)) ;
 lin definable_set_Q2895824_QN = mkQN "ensemble" "définissable" ;
 lin differentiable_function_Q783507_QN = mkQN "fonction" "différentiable" ;
 lin direct_product_of_groups_Q2725924_QN = mkQN "produit" "direct" ;
