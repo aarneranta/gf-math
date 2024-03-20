@@ -1,6 +1,7 @@
 concrete MathTextFin of MathText = MathWikidataFin **
   MathTextFunctor with
-    (Syntax = SyntaxFin) **
+    (Syntax = SyntaxFin),
+    (Extend = ExtendFin) **
   open ParadigmsFin in {
   
 -- lexical items not in Wikidata

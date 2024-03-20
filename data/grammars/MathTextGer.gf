@@ -3,7 +3,8 @@ concrete MathTextGer of MathText =
   
   MathTextFunctor - [Agreement, refPron, kindAgr]
   with
-    (Syntax = SyntaxGer) **
+    (Syntax = SyntaxGer),
+    (Extend = ExtendGer) **
     
   open ParadigmsGer, (R=ResGer) in {
 

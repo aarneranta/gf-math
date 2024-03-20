@@ -2,7 +2,8 @@ concrete MathTextSwe of MathText = MathWikidataSwe **
   MathTextFunctor - [Agreement, refPron, kindAgr]
   
   with
-    (Syntax = SyntaxSwe) **
+    (Syntax = SyntaxSwe),
+    (Extend = ExtendSwe) **
     
   open ParadigmsSwe, (R=CommonScand), (X=ExtraSwe) in {
 
@@ -11,7 +12,7 @@ concrete MathTextSwe of MathText = MathWikidataSwe **
 oper
   Agreement = R.Gender ;
   refPron : Agreement -> Pron = \a -> case a of {
-    R.Utr  => X.DetNP_utr the_Det ;
+    R.Utr  => X.it8utr_Pron ;
     R.Neutr => it_Pron 
     } ;
     

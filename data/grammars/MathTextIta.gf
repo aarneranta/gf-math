@@ -2,7 +2,8 @@ concrete MathTextIta of MathText = MathWikidataIta **
   MathTextFunctor - [Agreement, refPron, kindAgr]
   
   with
-    (Syntax = SyntaxIta) **
+    (Syntax = SyntaxIta),
+    (Extend = ExtendIta) **
     
   open ParadigmsIta, (R=CommonRomance) in {
 

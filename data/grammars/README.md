@@ -29,13 +29,13 @@ MathTextIta: una relazione binaria è una relazione di equivalenza se lei è rif
 MathTextSwe: en binär relation är en ekvivalensrelation om den är reflexiv , symmetrisk och transitiv .
 
 
-MathText> p -lang=Eng "an abelian group is a group such that its binary operation is commutative ." | l -bind -treebank
-MathText: ParDefinition (DefIsASuch (KindQN abelian_group_Q181296_QN) (KindQN mathematical_group_Q83478_QN) (CondHasProp (RefIts (KindQN binary_operation_Q164307_QN)) commutative_Property))
-MathTextEng: an abelian group is a group such that its binary operation is commutative .
-MathTextFin: Abelin ryhmä on ryhmä, siten että sen binäärioperaatio on kommutatiivinen .
-MathTextFre: un groupe abélien est un groupe tel que son opération binaire est commutative .
-MathTextGer: eine abelsche Gruppe ist eine Gruppe , derart, dass ihre zweistellige Verknüpfung kommutativ ist .
-MathTextIta: un gruppo abeliano è un gruppo tale che la sua operazione binaria è commutativa .
-MathTextSwe: en abelsk grupp är en grupp sådan att den binära operator är kommutativ .
+MathText> p "an abelian group is a group whose binary operation is commutative ." | l -bind -treebank
+MathText: ParDefinition (DefWhose (KindQN abelian_group_Q181296_QN) (KindQN mathematical_group_Q83478_QN) (KindQN binary_operation_Q164307_QN) commutative_Property)
+MathTextEng: an abelian group is a group whose binary operation is commutative .
+MathTextFin: Abelin ryhmä on ryhmä, jonka binäärioperaatio on kommutatiivinen .
+MathTextFre: un groupe abélien est un groupe dont l'opération binaire est commutative .
+MathTextGer: eine abelsche Gruppe ist eine Gruppe , deren zweistellige Verknüpfung kommutativ ist .
+MathTextIta: un gruppo abeliano è un gruppo di cui operazione binaria è commutativa .
+MathTextSwe: en abelsk grupp är en grupp vars binära operator är kommutativ .
 ```
 

@@ -1,7 +1,8 @@
 incomplete concrete MathTextFunctor of MathText = MathWikidata **
 
 open
-  Syntax
+  Syntax,
+  Extend
 
 in {
 
@@ -22,6 +23,8 @@ oper
   refPron : Agreement -> Pron = \_ -> it_Pron ;
   kindAgr : CN -> Agreement = \_ -> <> ;
 
+  genRP : CN -> RP = \cn -> GenRP singularNum cn ;
+
 lin
   ParDefinition d = mkText d ;
   ParSentence d = mkText (mkS d) ;
@@ -29,6 +32,7 @@ lin
   DefIsA a b = mkS (mkCl (mkNP a_Det a) b) ;
   DefIsASuch a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (c.s ! kindAgr b))))) ;
   DefIsAIf a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (Syntax.mkAdv if_Subj (mkS (c.s ! kindAgr a))))) ;
+  DefWhose a b c d = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (genRP c) (mkVP d))))) ;
 
   CondIsA r b = {s = \\a => mkCl (r.s ! a) b} ;
   CondHasProp r b = {s = \\a => mkCl (r.s ! a) b} ;

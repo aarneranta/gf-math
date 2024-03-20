@@ -2,7 +2,8 @@ concrete MathTextFre of MathText = MathWikidataFre **
   MathTextFunctor - [Agreement, refPron, kindAgr]
   
   with
-    (Syntax = SyntaxFre) **
+    (Syntax = SyntaxFre),
+    (Extend = ExtendFre) **
     
   open ParadigmsFre, (R=CommonRomance) in {
 
@@ -16,7 +17,6 @@ oper
     } ;
     
   kindAgr : CN -> Agreement = \cn -> cn.g ;  
-
 
 -- lexical items not in Wikidata
 lin

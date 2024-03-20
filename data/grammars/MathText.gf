@@ -21,6 +21,7 @@ fun
   DefIsA     : Kind -> Kind -> Definition ;
   DefIsASuch : Kind -> Kind -> Condition -> Definition ;
   DefIsAIf   : Kind -> Kind -> Condition -> Definition ;
+  DefWhose   : Kind -> Kind -> Kind -> Property -> Definition ;
 
   CondIsA : Reference -> Kind -> Condition ;
   CondHasProp : Reference -> Property -> Condition ;
