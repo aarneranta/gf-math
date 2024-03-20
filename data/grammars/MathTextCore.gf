@@ -33,8 +33,8 @@ lin
 
   DefIsA a b = {s = a.s ++ ":=" ++ b.s} ;
   DefIsASuch a b c = {s = a.s ++ ":=" ++ suchThat "x" b.s c.s "x"} ;
-  DefIsAIf a b c = {s = b.s ++ ":=" ++ suchThat "x" a.s c.s "x"} ;
-  DefWhose a b c d =  {s = b.s ++ ":=" ++ suchThat "x" a.s d.s (apply (proj b.s c.s) "x")} ;
+  DefIsAIf a b c = {s = a.s ++ ":=" ++ suchThat "x" b.s c.s "x"} ;
+  DefWhose a b c d =  {s = a.s ++ ":=" ++ suchThat "x" b.s d.s (apply (proj b.s c.s) "x")} ;
 
   CondIsA r b = {s = r.s ++ b.s} ;
   CondHasProp r b = {s = r.s ++ b.s} ;

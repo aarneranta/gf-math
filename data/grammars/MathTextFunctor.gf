@@ -31,7 +31,7 @@ lin
 
   DefIsA a b = mkS (mkCl (mkNP a_Det a) b) ;
   DefIsASuch a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (c.s ! kindAgr b))))) ;
-  DefIsAIf a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (Syntax.mkAdv if_Subj (mkS (c.s ! kindAgr a))))) ;
+  DefIsAIf a b c = mkS (mkCl (mkNP a_Det b) (mkCN a (Syntax.mkAdv if_Subj (mkS (c.s ! kindAgr b))))) ;
   DefWhose a b c d = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (genRP c) (mkVP d))))) ;
 
   CondIsA r b = {s = \\a => mkCl (r.s ! a) b} ;
