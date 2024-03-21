@@ -1,6 +1,6 @@
 --# -path=.:present
 
-concrete PropSwe of Prop = PropI - [PUniv]  with 
+concrete PropSwe of Prop = PropFunctor - [PUniv]  with 
   (Syntax = SyntaxSwe), 
   (Symbolic = SymbolicSwe), 
   (Symbol = SymbolSwe),

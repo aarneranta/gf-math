@@ -1,6 +1,6 @@
 --# -path=.:present
 
-concrete PropFin of Prop = PropI - [PUniv, PNeg]  with 
+concrete PropFin of Prop = PropFunctor - [PUniv, PNeg]  with 
   (Syntax = SyntaxFin), 
   (Symbolic = SymbolicFin), 
   (Sentence = SentenceFin)

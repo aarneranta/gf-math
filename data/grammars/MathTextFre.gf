@@ -1,4 +1,4 @@
---# -path=.:prop
+--# -path=.:present:prop:wikidata
 
 concrete MathTextFre of MathText = MathWikidataFre, PropFre **
   MathTextFunctor - [Agreement, refPron, kindAgr]

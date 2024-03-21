@@ -1,6 +1,6 @@
 --# -path=.:present
 
-concrete PropGer of Prop = PropI - [PUniv]  with 
+concrete PropGer of Prop = PropFunctor - [PUniv]  with 
   (Syntax = SyntaxGer), 
   (Symbolic = SymbolicGer), 
   (Symbol = SymbolGer),

@@ -1,4 +1,6 @@
-concrete MathTextFin of MathText = MathWikidataFin **
+--# -path=.:present:prop:wikidata
+
+concrete MathTextFin of MathText = MathWikidataFin, PropFin **
   MathTextFunctor with
     (Syntax = SyntaxFin),
     (Extend = ExtendFin) **

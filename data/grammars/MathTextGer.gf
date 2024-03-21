@@ -1,5 +1,6 @@
-concrete MathTextGer of MathText =
-  MathWikidataGer **
+--# -path=.:present:prop:wikidata
+
+concrete MathTextGer of MathText = MathWikidataGer, PropGer **
   
   MathTextFunctor - [Agreement, refPron, kindAgr]
   with

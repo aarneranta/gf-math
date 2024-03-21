@@ -1,4 +1,6 @@
-concrete MathTextIta of MathText = MathWikidataIta **
+--# -path=.:present:prop:wikidata
+
+concrete MathTextIta of MathText = MathWikidataIta, PropIta **
   MathTextFunctor - [Agreement, refPron, kindAgr]
   
   with

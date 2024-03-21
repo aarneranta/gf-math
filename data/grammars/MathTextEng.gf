@@ -1,4 +1,4 @@
---# -path=.:prop
+--# -path=.:present:prop:wikidata
 
 concrete MathTextEng of MathText = MathWikidataEng, PropEng **
   MathTextFunctor with

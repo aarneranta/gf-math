@@ -1,4 +1,6 @@
-concrete MathTextSwe of MathText = MathWikidataSwe **
+--# -path=.:present:prop:wikidata
+
+concrete MathTextSwe of MathText = MathWikidataSwe, PropSwe **
   MathTextFunctor - [Agreement, refPron, kindAgr]
   
   with
