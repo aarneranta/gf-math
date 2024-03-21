@@ -9,13 +9,8 @@ in {
 lincat
   Paragraph = Text ;
   Definition = S ;
---  Sentence = Cl ;
   Condition = {s : Agreement => Cl} ;
-  Object = NP ;
-  Reference = {s : Agreement => NP} ;
---  Property = AP ;
---  [Property] = [AP] ;
---  Conjunction = Conj ;
+
 
 oper
   Agreement : PType = {} ;
@@ -26,34 +21,19 @@ oper
 
 lin
   ParDefinition d = mkText d ;
---  ParSentence d = mkText (mkS d) ;
+  ParProp p = mkText p.s ;
 
   DefIsA a b = mkS (mkCl (mkNP a_Det a) b) ;
   DefIsASuch a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (c.s ! kindAgr b))))) ;
   DefIsAIf a b c = mkS (mkCl (mkNP a_Det b) (mkCN a (Syntax.mkAdv if_Subj (mkS (c.s ! kindAgr b))))) ;
-  DefWhose a b c d = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (genRP c) (mkVP d))))) ;
+  DefWhose a b f c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (genRP f.v) (mkVP c))))) ;
 
-  CondIsA r b = {s = \\a => mkCl (r.s ! a) b} ;
-  CondHasProp r b = {s = \\a => mkCl (r.s ! a) b} ;
+  CondIsA b = {s = \\a => mkCl (mkNP (refPron a)) b} ;
+  CondPred1 p = {s = \\a => mkCl (mkNP (refPron a)) p} ;
+  CondItsFun1 f p = {s = \\a => mkCl (mkNP (refPron a) f.v) p} ;
 
-  RefIt = {s = \\a => mkNP (refPron a)} ;
-  RefIts k =  {s = \\a => mkNP (refPron a) k} ;
-
---  SentIsA a b = mkCl a b ;
---  SentHasProp a b = mkCl a b ;
-
---  PropConj conj props = mkAP conj props ;
-
---  and_Conjunction = and_Conj ;
---  or_Conjunction = or_Conj ;
-
---  BaseProperty a b = mkListAP a b ;
---  ConsProperty as = mkListAP as ;
-
--- using Wikidata
+-- using Wikidata --- the categories should be decided there
   KindQN qn = qn ;
-
--- using Prop
-  ParProp p = mkText p.s ;
+  Fun1QN qn = mkFun1 (mkUtt qn).s qn possess_Prep ; --- leads to different function names in langs
 
 }

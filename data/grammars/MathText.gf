@@ -1,50 +1,31 @@
 --# -path=.:prop
 
-abstract MathText = MathWikidata, Prop ** {
+abstract MathText = Prop, MathWikidata ** {
 
 flags startcat = Paragraph ;
 
 cat
   Paragraph ;
   Definition ;
---  Sentence ;
   Condition ;
-  Object ;
-  Reference ;
---  Property ;
---  [Property] {2} ;
---  Conjunction ;
 
 fun
   ParDefinition : Definition -> Paragraph ;
---  ParSentence : Sentence -> Paragraph ;
+  ParProp : Prop -> Paragraph ;
 
-  DefIsA     : Kind -> Kind -> Definition ;
-  DefIsASuch : Kind -> Kind -> Condition -> Definition ;
-  DefIsAIf   : Kind -> Kind -> Condition -> Definition ;
-  DefWhose   : Kind -> Kind -> Kind -> Pred1 -> Definition ;
+  DefIsA     : Kind -> Kind -> Definition ;               -- an abelian grouo is a group
+  DefIsASuch : Kind -> Kind -> Condition -> Definition ;  -- an ab. grouo is a group such that...
+  DefIsAIf   : Kind -> Kind -> Condition -> Definition ;  -- a group is an ab. group if...
+  DefWhose   : Kind -> Kind -> Fun1 -> Pred1 -> Definition ; -- an ab. group is a group whose...
 
-  CondIsA : Reference -> Kind -> Condition ;
-  CondHasProp : Reference -> Pred1 -> Condition ;
+  CondIsA : Kind -> Condition ;
+  CondPred1 : Pred1 -> Condition ;
+  CondItsFun1 : Fun1 -> Pred1 -> Condition ;
   
---  SentIsA : Object -> Kind -> Sentence ;
---  SentHasProp : Object -> Pred1 -> Sentence ;
-
-  RefIt : Reference ;
-  RefIts : Kind -> Reference ;
-
----  ObjIts : Kind -> Object ;
-
---  PropConj : Conjunction -> [Property] -> Property ;
-
---  and_Conjunction : Conjunction ;
---  or_Conjunction : Conjunction ;
-
 -- using Wikidata
   KindQN : QN -> Kind ;
+  Fun1QN : QN -> Fun1 ;
 
--- using Prop
-  ParProp : Prop -> Paragraph ;
 
 -- lexical items not in Wikidata
 

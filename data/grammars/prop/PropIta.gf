@@ -38,20 +38,17 @@ lin
   Equal = P.mkA2 (P.mkA "uguale") P.dative ;
   Line = mkCN (P.mkN "linea") ;
   Point = mkCN (P.mkN "punto") ;
-  Centre = mkFun1 "centre" (P.mkN "centro" P.masculine) possess_Prep ;
-  Intersection = mkFun2 "intersection" (P.mkN "intersezione" P.feminine) possess_Prep ;
+  Centre = mkFun1 "centre" (mkCN (P.mkN "centro" P.masculine)) possess_Prep ;
+  Intersection = mkFun2 "intersection" (mkCN (P.mkN "intersezione" P.feminine)) possess_Prep ;
 
   Set k = mkCN set_N2 (mkNP a_Art plNum k) ; 
 
   Even = mkAP (P.mkA "pari") ;
   Odd = mkAP (P.mkA "dispari") ;
-  Square = mkFun1 "square" (P.mkN "quadrato") possess_Prep ;
-  Sum = mkFun2 "sum" (P.mkN "somma") possess_Prep ;
-  Product = mkFun2 "product" (P.mkN "prodotto") possess_Prep ;
+  Square = mkFun1 "square" (mkCN (P.mkN "quadrato")) possess_Prep ;
+  Sum = mkFun2 "sum" (mkCN (P.mkN "somma")) possess_Prep ;
+  Product = mkFun2 "product" (mkCN (P.mkN "prodotto")) possess_Prep ;
   Nat = mkCN  (P.mkA "naturale") (P.mkN "numero") ;
 
-oper
-  mkFun1, mkFun2 : Str -> N -> Prep -> {s : Symb ; v : N2} = \s,n,p -> 
-    {s = mkSymb ("\\" + s) ; v = P.mkN2 n p} ;
 
 }

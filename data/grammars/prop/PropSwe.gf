@@ -36,20 +36,16 @@ lin
   Equal = P.mkA2 (P.mkA "lika") with_Prep ;
   Line = mkCN (P.mkN "linje" "linjer") ;
   Point = mkCN (P.mkN "punkt" "punkter") ;
-  Centre = mkFun1 "centre" (P.mkN "mittpunkt" "mittpunkter") possess_Prep ;
-  Intersection = mkFun2 "intersection" (P.mkN "snitt" "snitt") possess_Prep ;
+  Centre = mkFun1 "centre" (mkCN (P.mkN "mittpunkt" "mittpunkter")) possess_Prep ;
+  Intersection = mkFun1 "intersection" (mkCN (P.mkN "snitt" "snitt")) possess_Prep ;
 
   Set k = mkCN set_N2 (mkNP a_Art plNum k) ; 
 
   Even = mkAP (P.mkA "jämn") ;
   Odd = mkAP (P.mkA "udda") ;
-  Square = mkFun1 "square" (P.mkN "kvadrat" "kvadrater") possess_Prep ;
-  Sum = mkFun2 "sum" (P.mkN "summa") possess_Prep ;
-  Product = mkFun2 "product" (P.mkN "produkt" "produkter") possess_Prep ;
+  Square = mkFun1 "square" (mkCN (P.mkN "kvadrat" "kvadrater")) possess_Prep ;
+  Sum = mkFun1 "sum" (mkCN (P.mkN "summa")) possess_Prep ;
+  Product = mkFun1 "product" (mkCN (P.mkN "produkt" "produkter")) possess_Prep ;
   Nat = mkCN (P.mkN "tal" "tal") ;
-
-oper
-  mkFun1, mkFun2 : Str -> N -> Prep -> {s : Symb ; v : N2} = \s,n,p -> 
-    {s = mkSymb ("\\" + s) ; v = P.mkN2 n p} ;
 
 }

@@ -41,20 +41,16 @@ lin
   Equal = mkA2 (mkA (mkN "sama")) (prePrep nominative "kuin") ;
   Line = mkCN (mkN "suora") ;
   Point = mkCN (mkN "piste") ;
-  Centre = mkFun1 "centre" (mkN "keskipiste") possess_Prep ;
-  Intersection = mkFun2 "intersection" (mkN "leikkaus") possess_Prep ;
+  Centre = mkFun1 "centre" (mkCN (mkN "keskipiste")) possess_Prep ;
+  Intersection = mkFun2 "intersection" (mkCN (mkN "leikkaus")) possess_Prep ;
 
   Set k = mkCN set_N2 (mkNP a_Art plNum k) ; 
 
   Even = mkAP (mkA "parillinen") ;
   Odd = mkAP (mkA "pariton") ;
-  Square = mkFun1 "square" (mkN "neliö" "neliöitä") possess_Prep ;
-  Sum = mkFun2 "sum" (mkN "summa") possess_Prep ;
-  Product = mkFun2 "product" (mkN "tulo") possess_Prep ;
+  Square = mkFun1 "square" (mkCN (mkN "neliö" "neliöitä")) possess_Prep ;
+  Sum = mkFun2 "sum" (mkCN (mkN "summa")) possess_Prep ;
+  Product = mkFun2 "product" (mkCN (mkN "tulo")) possess_Prep ;
   Nat = mkCN (mkN "luku") ;
-
-oper
-  mkFun1, mkFun2 : Str -> N -> Prep -> {s : Symb ; v : N2} = \s,n,p -> 
-    {s = mkSymb ("\\" + s) ; v = mkN2 n p} ;
 
 }

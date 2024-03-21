@@ -10,12 +10,12 @@ lincat
   Prop = {s : S ; c : Bool} ; -- c = True for connectives
   Atom = Cl ;
   Pred1 = AP ;
-  Pred2 = A2 ;
+  Pred2 = A2 ; ---- AP, Prep
   Var = Symb ;
   Conj = {s : Syntax.Conj ; c : S} ;  -- s = and ; c = all these hold
   Ind  = {s : NP ; isSymbolic : Bool} ;
-  Fun1 = {s : Symb ; v : N2} ;
-  Fun2 = {s : Symb ; v : N2} ;
+  Fun1 = {s : Symb ; v : CN ; c : Prep} ;
+  Fun2 = {s : Symb ; v : CN ; c : Prep} ; --- restricted to the f of x and y
 
 lin
   PAtom a = {s = mkS a ; c = False} ;
@@ -42,16 +42,16 @@ lin
 
   IFun1 f x = {
     s = case x.isSymbolic of {
-          True  => app1 f.s x.s | app f.v x.s ; -- preferred symbolic, allowed verbal
-          False => app f.v x.s
+          True  => app1 f.s x.s ; --- | app f.v x.s ; -- preferred symbolic, allowed verbal
+          False => mkNP the_Det (mkCN f.v (Syntax.mkAdv f.c x.s)) 
           } ;
-    isSymbolic = x.isSymbolic
+    isSymbolic = x.isSymbolic --- does not work if latter variant is used
     } ;
 
   IFun2 f x y = {
     s = case <x.isSymbolic,y.isSymbolic> of {
-          <True,True> => app2 f.s x.s y.s | app f.v x.s y.s ;
-          _ => app f.v x.s y.s
+          <True,True> => app2 f.s x.s y.s  ; --- | app f.v x.s y.s ;
+          _ => mkNP the_Det (mkCN f.v (Syntax.mkAdv f.c (mkNP and_Conj x.s y.s)))
           } ;
     isSymbolic = x.isSymbolic
     } ;
@@ -133,6 +133,12 @@ oper
     symbNP (f.s ++ "{" ++ (mkUtt x).s ++ "}" ++ "{" ++ (mkUtt y).s ++ "}") ; 
 
   symbNP : Str -> NP = \s -> (symb (mkSymb s)) ;
+
+  mkFun1 : Str -> CN -> Prep -> {s : Symb ; v : CN ; c : Prep} = \s, cn, c -> 
+    {s = mkSymb s ; v = cn ; c = c} ;
+    
+  mkFun2 : Str -> CN -> Prep -> {s : Symb ; v : CN ; c : Prep} = \s, cn, c -> 
+    {s = mkSymb s ; v = cn ; c = c} ;
 
 
 --- abuse of Conj category and its accidentally shared implementation

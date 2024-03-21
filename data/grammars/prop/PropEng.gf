@@ -4,7 +4,7 @@ concrete PropEng of Prop = PropFunctor - [PNeg, PNegAtom] with
   (Syntax = SyntaxEng), 
   (Symbolic = SymbolicEng),
   (Sentence = SentenceEng)
-   ** open (P = ParadigmsEng), ExtraEng, Prelude in {
+   ** open (P = ParadigmsEng), ParadigmsEng, ExtraEng, Prelude in {
 
 -- exceptions
 
@@ -41,21 +41,16 @@ lin
   Equal = P.mkA2 (P.mkA "equal") to_Prep ;
   Line = mkCN (P.mkN "line") ;
   Point = mkCN (P.mkN "point") ;
-  Centre = mkFun1 "centre" ;
-  Intersection = mkFun2 "intersection" ;
+  Centre = mkFun1 "centre" (mkCN (mkN "centre")) possess_Prep ;
+  Intersection = mkFun2 "intersection" (mkCN (mkN "intersection")) possess_Prep ;
 
   Set k = mkCN set_N2 (mkNP a_Art plNum k) ; 
 
   Even = mkAP (P.mkA "even") ;
   Odd = mkAP (P.mkA "odd") ;
-  Square = mkFun1 "square" ;
-  Sum = mkFun2 "sum" ;
-  Product = mkFun2 "product" ;
+  Square = mkFun1 "square" (mkCN (mkN "square")) possess_Prep ;
+  Sum = mkFun2 "sum" (mkCN (mkN "sum")) possess_Prep ;
+  Product = mkFun2 "product" (mkCN (mkN "product")) possess_Prep ;
   Nat = mkCN (P.mkN "number") ;
-
-
-oper
-  mkFun1, mkFun2 : Str -> {s : Symb ; v : N2} = \s -> 
-    {s = mkSymb  ("\\" + s) ; v = P.mkN2 (P.mkN s)} ;
 
 }
