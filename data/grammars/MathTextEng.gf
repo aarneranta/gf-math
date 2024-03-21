@@ -1,4 +1,6 @@
-concrete MathTextEng of MathText = MathWikidataEng **
+--# -path=.:prop
+
+concrete MathTextEng of MathText = MathWikidataEng, PropEng **
   MathTextFunctor with
     (Syntax = SyntaxEng),
     (Extend = ExtendEng)

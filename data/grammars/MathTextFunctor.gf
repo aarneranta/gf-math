@@ -1,4 +1,4 @@
-incomplete concrete MathTextFunctor of MathText = MathWikidata **
+incomplete concrete MathTextFunctor of MathText = MathWikidata, Prop **
 
 open
   Syntax,
@@ -9,14 +9,13 @@ in {
 lincat
   Paragraph = Text ;
   Definition = S ;
-  Sentence = Cl ;
+--  Sentence = Cl ;
   Condition = {s : Agreement => Cl} ;
-  Kind = CN ;
   Object = NP ;
   Reference = {s : Agreement => NP} ;
-  Property = AP ;
-  [Property] = [AP] ;
-  Conjunction = Conj ;
+--  Property = AP ;
+--  [Property] = [AP] ;
+--  Conjunction = Conj ;
 
 oper
   Agreement : PType = {} ;
@@ -27,7 +26,7 @@ oper
 
 lin
   ParDefinition d = mkText d ;
-  ParSentence d = mkText (mkS d) ;
+--  ParSentence d = mkText (mkS d) ;
 
   DefIsA a b = mkS (mkCl (mkNP a_Det a) b) ;
   DefIsASuch a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (c.s ! kindAgr b))))) ;
@@ -40,18 +39,21 @@ lin
   RefIt = {s = \\a => mkNP (refPron a)} ;
   RefIts k =  {s = \\a => mkNP (refPron a) k} ;
 
-  SentIsA a b = mkCl a b ;
-  SentHasProp a b = mkCl a b ;
+--  SentIsA a b = mkCl a b ;
+--  SentHasProp a b = mkCl a b ;
 
-  PropConj conj props = mkAP conj props ;
+--  PropConj conj props = mkAP conj props ;
 
-  and_Conjunction = and_Conj ;
-  or_Conjunction = or_Conj ;
+--  and_Conjunction = and_Conj ;
+--  or_Conjunction = or_Conj ;
 
-  BaseProperty a b = mkListAP a b ;
-  ConsProperty as = mkListAP as ;
+--  BaseProperty a b = mkListAP a b ;
+--  ConsProperty as = mkListAP as ;
 
 -- using Wikidata
   KindQN qn = qn ;
-  
+
+-- using Prop
+  ParProp p = mkText p.s ;
+
 }
