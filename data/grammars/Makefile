@@ -1,5 +1,5 @@
 all: pgf
 
 pgf:
-	gf -make MathTextCore.gf MathText???.gf
+	gf -make MathText???.gf
 
