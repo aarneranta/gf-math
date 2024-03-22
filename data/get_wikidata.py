@@ -37,6 +37,7 @@ def wikidata2lexicon():
             
 # convert 2-letter codes to 3-letter ones
 language_codes = {
+    'ar': 'Ara',
     'de': 'Ger',
     'en': 'Eng',
     'fi': 'Fin',
@@ -103,7 +104,7 @@ def lexicon2gf(*langs):
         
 
 
-lexicon2gf('en', 'it', 'sv')
+lexicon2gf('en', 'ar', 'sv')
 
 
 
