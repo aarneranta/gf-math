@@ -30,7 +30,7 @@ lin
 
   CondIsA b = b ;
   CondPred1 b = b ! True;
-  CondItsFun1 f b = "(" ++ b ! True ++ "º" ++ top f ++ ")" ;
+  CondItsFun1 f b = "(" ++ b ! True ++ "∘" ++ top f ++ ")" ;
 
 -- using Wikidata
   KindQN qn = qn.s ;

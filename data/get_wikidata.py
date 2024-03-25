@@ -42,7 +42,9 @@ language_codes = {
     'en': 'Eng',
     'fi': 'Fin',
     'fr': 'Fre',
+    'hr': 'Hrv',
     'it': 'Ita',
+    'pt': 'Por',
     'sv': 'Swe'
   }
 
@@ -104,7 +106,7 @@ def lexicon2gf(*langs):
         
 
 
-lexicon2gf('en', 'ar', 'sv')
+lexicon2gf('en', 'pt', 'hr')
 
 
 

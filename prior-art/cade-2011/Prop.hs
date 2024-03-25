@@ -1,10 +1,10 @@
-{-# OPTIONS_GHC -fglasgow-exts #-}
-{-# LANGUAGE GADTs #-}
+{-# LANGUAGE GADTs, FlexibleInstances, KindSignatures, RankNTypes, TypeSynonymInstances #-}
 module Prop where
 
 import Control.Monad.Identity
 import Data.Monoid
 import PGF hiding (Tree)
+
 ----------------------------------------------------
 -- automatic translation from GF to Haskell
 ----------------------------------------------------
