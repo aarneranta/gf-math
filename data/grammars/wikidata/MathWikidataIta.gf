@@ -20,7 +20,7 @@ oper mkQN = overload {
       "su"  => mkCN (mkN x) (SyntaxIta.mkAdv su_Prep (mkNP (mkN z))) ; 
       "in"  => mkCN (mkN x) (SyntaxIta.mkAdv in_Prep (mkNP (mkN z))) ; 
       "dei" => mkCN (mkN x) (SyntaxIta.mkAdv genitive (mkNP aPl_Det (mkN z masculine))) ;
-      adj + "a" => mkCN (mkA z) (mkCN (mkA adj) (mkN x feminine)) ; 
+      adj + "a" => mkCN (mkA z) (mkCN (mkA (adj + "o")) (mkN x feminine)) ; 
       adj => mkCN (mkA z) (mkCN (mkA y) (mkN x))
       } ;
 
