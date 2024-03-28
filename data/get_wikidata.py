@@ -34,7 +34,25 @@ def wikidata2lexicon():
 #            print(labdict)
 ##            lexicon[labels[0]] = {lab: labels[1][lab]['value'] for lab in labels[1]}
             print(json.dumps(labdict, ensure_ascii=False))
-            
+
+
+# to get statistics about the languages covered
+def wikidata_stats():
+    langs = {}
+    with open('qid-lexicon.jsonl') as file:
+        for line in file:
+            dict = json.loads(line)
+            labels = list(dict.values())[0]
+            for lang in labels:
+                langs[lang] = langs.get(lang, 0) + 1
+        print(langs)
+        print({lang: n for lang, n in langs.items() if n>99})
+        print(len(langs))
+
+
+# wikidata_stats()
+
+
 # convert 2-letter codes to 3-letter ones
 language_codes = {
     'ar': 'Ara',
