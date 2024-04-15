@@ -1,13 +1,19 @@
 entrypoints Code, Stm, Exp ;
 
-layout toplevel ;
-layout "do" ;
+---layout toplevel ;
+---layout "do" ;
 
-LeanCode. Code ::= [Stm] ;
+LeanCode. Code ::= [Cmd] ;
 
 comment "/-" "-/" ;
 comment "--" ;
-comment "#" ;
+
+CEval.  Cmd ::= "#eval" Exp ;
+CCheck. Cmd ::= "#check" Exp ;
+
+CStm. Cmd ::= Stm ;
+
+terminator Cmd "" ;
 
 SImport.    Stm ::= "import" Name ;
 SUniverse.  Stm ::= "universe" [Var] ;
@@ -18,6 +24,7 @@ SEnd.       Stm ::= "end" ;
 SEndName.   Stm ::= "end" Name ;
 SVariable.  Stm ::= "variable" [VarDecl] ;
 SDef.       Stm ::= DefMode "def" Def ;
+SAbbrev.    Stm ::= DefMode "abbrev" Def ; --- is it so general?
 SInductive. Stm ::= "inductive" Name "|" [Constr] Deriv ;
 SInductiveEq. Stm ::= "inductive" Name ":=" "|" [Constr] Deriv ;
 STheorem.   Stm ::= "theorem" Name [VarDecl] ":" Exp ":=" Exp ;
@@ -58,6 +65,7 @@ VOpt.   Var ::= Id "?" ;
 
 NExp.   Name ::= Exp15 ;
 
+ETyped. Exp16 ::= "(" Exp ":" Exp ")" ;
 EInt.   Exp16 ::= Integer ;
 EStr.   Exp16 ::= String ;
 EVar.   Exp16 ::= Var ;
@@ -85,6 +93,7 @@ EAdd.   Exp10 ::= Exp10 "+" Exp11 ;
 ESub.   Exp10 ::= Exp10 "-" Exp11 ;
 ECons.  Exp10 ::= Exp10 "::" Exp11 ;
 EEq.    Exp9 ::= Exp10 "=" Exp10 ;
+ELt.    Exp9 ::= Exp10 "<" Exp10 ;
 EGt.    Exp9 ::= Exp10 ">" Exp10 ;
 ENeq.   Exp9 ::= Exp10 "≠" Exp10 ;
 EConj.  Exp8 ::= Exp8 "∧" Exp9 ;
