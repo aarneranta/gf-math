@@ -45,7 +45,7 @@ open List
 
 def myRange := List.range 7
 
-end
+end List
 
 namespace hidden
 
@@ -81,10 +81,10 @@ def fib n := (fibAux n).1
 
 import Init
 
-inductive BinTree
+inductive BinTree where --- where added
   | empty : BinTree
   | node  : BinTree → BinTree → BinTree
-  deriving Repr, DecidableEq, Inhabited
+ deriving Repr, DecidableEq, Inhabited --- deriving moved left
 
 open BinTree
 
@@ -119,7 +119,7 @@ def showSums : IO Unit := do
 
 namespace hidden
 
-inductive PropForm
+inductive PropForm where --- where added
   | tr     : PropForm
   | fls    : PropForm
   | var    : String → PropForm
@@ -128,7 +128,7 @@ inductive PropForm
   | impl   : PropForm → PropForm → PropForm
   | neg    : PropForm → PropForm
   | biImpl : PropForm → PropForm → PropForm
-  deriving Repr, DecidableEq
+ deriving Repr, DecidableEq --- deriving moved left
 
 end hidden
 
@@ -199,13 +199,13 @@ def truthTable (A : PropForm) : List (List Bool × Bool) :=
   assignments.map evalLine
 
 
-inductive Lit
+inductive Lit where --- where added
   | tr  : Lit
   | fls : Lit
   | pos : String → Lit
   | neg : String → Lit
 
-inductive NnfForm :=
+inductive NnfForm where --- where replaces :=
   | lit  (l : Lit)       : NnfForm
   | conj (p q : NnfForm) : NnfForm
   | disj (p q : NnfForm) : NnfForm
@@ -267,10 +267,9 @@ def exCnf2 := cnf!{
   -p,
   -q
 }
-
+-/
 def CnfForm.disj (cnf1 cnf2 : CnfForm) : CnfForm :=
   (cnf1.map (fun cls => cnf2.map cls.union')).Union
--/
 
 def NnfForm.toCnfForm : NnfForm → CnfForm
   | NnfForm.lit (Lit.pos s) => [ [Lit.pos s] ]
@@ -297,11 +296,13 @@ def mkDefs : NnfForm → Array NnfForm → Lit × Array NnfForm
 /-      let ⟨fA, defs1⟩ := mkDefs A defs
       let ⟨fB, defs2⟩ := mkDefs B defs1 -/
       add_def disj (lit fA) (lit fB) defs2
+/-
  where
   add_def (op : NnfForm → NnfForm → NnfForm) (fA fB : NnfForm) (defs : Array NnfForm) :=
----    match defs.findIdx? ((. == op fA fB)) with
+   match defs.findIdx? ((. == op fA fB)) with
     match defs.findIdx? with
     | some n => (defLit n, defs)
     | none   => let newdefs := defs.push (op fA fB)
                 (defLit (newdefs.size - 1), newdefs)
+-/
 
