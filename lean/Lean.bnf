@@ -1,7 +1,7 @@
 entrypoints Code, Stm, Exp ;
 
----layout toplevel ;
----layout "do" ;
+layout toplevel ;
+layout "do", "where" ;
 
 LeanCode. Code ::= [Cmd] ;
 
@@ -13,7 +13,7 @@ CCheck. Cmd ::= "#check" Exp ;
 
 CStm. Cmd ::= Stm ;
 
-terminator Cmd "" ;
+terminator Cmd ";" ;
 
 SImport.    Stm ::= "import" Name ;
 SUniverse.  Stm ::= "universe" [Var] ;
@@ -25,12 +25,13 @@ SEndName.   Stm ::= "end" Name ;
 SVariable.  Stm ::= "variable" [VarDecl] ;
 SDef.       Stm ::= DefMode "def" Def ;
 SAbbrev.    Stm ::= DefMode "abbrev" Def ; --- is it so general?
-SInductive. Stm ::= "inductive" Name "|" [Constr] Deriv ;
-SInductiveEq. Stm ::= "inductive" Name ":=" "|" [Constr] Deriv ;
+SInductive. Stm ::= "inductive" Name "where" "{" [Constr] "}" Deriv ;
+---SInductiveEq. Stm ::= "inductive" Name ":=" "|" [Constr] Deriv ;
 STheorem.   Stm ::= "theorem" Name [VarDecl] ":" Exp ":=" Exp ;
-SWhere.     Stm ::= Stm "where" [Def] ;
+---zSWhere.     Stm ::= Stm "where" [Def] ;
+SStruct.    Stm ::= "structure" Id "where" "{" [Typing] "}" Deriv ;
 
-terminator Stm ";" ;
+--- terminator Stm ";" ;
 
 DTyped.    Def ::= Name [VarDecl] ":" Exp ":=" Exp ;
 DNotype.   Def ::= Name [VarDecl] ":=" Exp ;
@@ -41,9 +42,10 @@ terminator nonempty Def "" ;
 CBranch. Case ::= [Exp] "=>" Exp ;
 separator Case "|" ;
 
-CConstr. Constr ::= [Exp] ":" Exp ;
-CApp.    Constr ::= Id "(" [Var] ":" Exp ")" ":" Exp ;
-separator Constr "|" ;
+CConstr. Constr ::= "|" [Exp] ":" Exp ;
+CApp.    Constr ::= "|" Id "(" [Var] ":" Exp ")" ":" Exp ;
+separator Constr ";" ;
+---separator Constr "|" ;
 
 DNone.  Deriv ::= ;
 DDeriv. Deriv ::= "deriving" [Exp] ;
@@ -60,18 +62,26 @@ VDVar.    VarDecl ::= Var ;
 terminator Var "" ;
 terminator VarDecl "" ;
 
-VId. Var ::= Id ;
-VOpt.   Var ::= Id "?" ;
+VId.  Var ::= Id ;
+VOpt. Var ::= Id "?" ;
+
+TConstr. Typing ::= Id "::" ; --- should be the first field in struct
+TTyping. Typing ::= Id ":" Exp ;
+
+separator Typing ";" ;
 
 NExp.   Name ::= Exp15 ;
 
 ETyped. Exp16 ::= "(" Exp ":" Exp ")" ;
 EInt.   Exp16 ::= Integer ;
+EDouble. Exp16 ::= Double ;
 EStr.   Exp16 ::= String ;
 EVar.   Exp16 ::= Var ;
 ETuple. Exp16 ::= "(" [Exp] ")" ;
 EList.  Exp16 ::= "[" [Exp] "]" ;
 EBrace. Exp16 ::= "{" [Exp] "}" ;
+EStruct. Exp16 ::= "{" [Field] Annot "}" ;
+EUpdate. Exp16 ::= "{" Exp "with" [Field] Annot "}" ;
 EUnit.  Exp16 ::= "(" ")" ;
 ENil.   Exp16 ::= "[" "]" ;
 ERange. Exp16 ::= "[" Exp ":" Exp "]" ;
@@ -85,6 +95,7 @@ EApp.   Exp13 ::= Exp13 Exp14 ;
 
 ENeg.   Exp12 ::= "¬" Exp12 ;
 ENot.   Exp12 ::= "!" Exp12 ;
+EMinus. Exp12 ::= "-" Exp13 ;
 EExp.   Exp12 ::= Exp12 "^" Exp13 ;
 EMul.   Exp11 ::= Exp11 "*" Exp12 ;
 EDiv.   Exp11 ::= Exp11 "/" Exp12 ;
@@ -119,6 +130,11 @@ coercions Exp 16 ;
 
 separator nonempty Exp "," ;
 
+FAss. Field ::= Id ":=" Exp ;
+separator Field "," ;
+
+ANone. Annot ::= ;
+AType. Annot ::= ":" Exp ;
 
 CAss.  Command ::= Var [Var] ":=" Exp1 ";" ;
 CFor.  Command ::= "for" Var "in" Exp1 "do" [Command] ;
