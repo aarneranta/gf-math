@@ -1,7 +1,7 @@
 entrypoints Code, Stm, Exp ;
 
 layout toplevel ;
-layout "do", "where" ;
+layout "do", "where", "by" ;
 
 LeanCode. Code ::= [Cmd] ;
 
@@ -11,11 +11,14 @@ comment "--" ;
 CEval.  Cmd ::= "#eval" Exp ;
 CCheck. Cmd ::= "#check" Exp ;
 
-COpenIn.  Stm ::= "open" Name "in" Cmd ;
-COpen.    Stm ::= "open" Name ;
+COpenIn.  Stm ::= "open" Name Opens "in" Cmd ;
+COpen.    Stm ::= "open" Name Opens ;
 CStm. Cmd ::= Stm ;
 
 terminator Cmd ";" ;
+
+NoOpens. Opens ::= ;
+IdOpens. Opens ::= "(" [Exp] ")" ;
 
 SImport.    Stm ::= "import" Name ;
 SUniverse.  Stm ::= "universe" [Var] ;
@@ -32,6 +35,9 @@ SInductiveEq. Stm ::= "inductive" Name ":=" [Constr] Deriv ;
 STheorem.   Stm ::= "theorem" Name [VarDecl] ":" Exp ":=" Exp ;
 ---SWhere.     Stm ::= Stm "where" [Def] ;
 SStruct.    Stm ::= "structure" Id [VarDecl] Annot "where" "{" [Typing] "}" Deriv ;
+SClass.     Stm ::= "class" Id [VarDecl] "where" "{" [Typing] "}" ;
+SInstance.  Stm ::= "instance" ":" Id Id "where" "{" [Instdef] "}" ;
+
 
 --- terminator Stm ";" ;
 
@@ -72,6 +78,9 @@ TConstr. Typing ::= Id "::" ; --- should be the first field in struct
 TTyping. Typing ::= Id ":" Exp ;
 
 separator Typing ";" ;
+
+IDef. Instdef ::= Id ":=" Exp ;
+separator Instdef ";" ;
 
 NExp.   Name ::= Exp15 ;
 
@@ -132,11 +141,13 @@ EOpen.  Exp1 ::= "open" Id "in" Exp2 ;
 
 EUniv.  Exp1 ::= "∀" [Var] ":" Exp "," Exp1 ;
 
-EMatch. Exp ::= "match" [Exp] "with" "|" [Case] ;
+EMatch. Exp1 ::= "match" [Exp] "with" "|" [Case] ;
 
 EIfThenElse. Exp ::= "if" Exp1 "then" Exp1 "else" Exp ;
 
 EIfLetThenElse. Exp ::= "if" "let" Exp Annot Locdef "then" Exp1 "else" Exp ;
+
+EByTactic. Exp ::= "by" "{" [Tactic] "}" ;
 
 EDo. Exp ::= "do" "{" [Command] "}" ;
 
@@ -152,8 +163,11 @@ separator Field "," ;
 LExp.   Locdef ::= ":=" Exp2 ;
 LMatch. Locdef ::= "|" [Case] ;
 
-FExp.   Fundef ::= "=>" Exp2 ;
+FExp.   Fundef ::= "=>" Exp1 ;
 FMatch. Fundef ::= "|" [Case] ;
+
+TExp. Tactic ::= Exp1 ;
+separator Tactic ";" ;
 
 ANone. Annot ::= ;
 AType. Annot ::= ":" Exp ;

@@ -382,4 +382,73 @@ def Inline.sstring? (inline : Inline) : Option String :=
 
 #eval s!"three fives is {NewNamespace.triple 5}"
 
-  
+
+
+----------------
+---- 3 ---------
+----------------
+
+def woodlandCritters : List String :=
+  ["hedgehog", "deer", "snail"]
+
+def hedgehog := woodlandCritters[0] --- whitespace makes this a function application 
+def deer := woodlandCritters[1]
+def snail := woodlandCritters[2]
+
+def onePlusOneIsTwo : 1 + 1 = 2 := rfl
+def OnePlusOneIsTwo : Prop := 1 + 1 = 2
+
+theorem oonePlusOneIsTwo : OnePlusOneIsTwo := rfl
+
+theorem ooonePlusOneIsTwo : 1 + 1 = 2 := by
+  simp
+
+theorem addAndAppend : 1 + 1 = 2 ∧ "Str".append "ing" = "String" := by simp
+--- text: Of course, simp is also powerful enough to find this proof:
+--- lean: error: unsolved goals ⊢ String.append "Str" "ing" = "String"
+
+theorem andImpliesOr : A ∧ B → A ∨ B :=
+  fun andEvidence => 
+    match andEvidence with
+    | And.intro a b => Or.inl a
+
+
+theorem onePlusOneAndLessThan : 1 + 1 = 2 ∨ 3 < 5 := by simp
+theorem notTwoEqualFive : ¬(1 + 1 = 5) := by simp
+theorem trueIsTrue : True := True.intro
+theorem trueOrFalse : True ∨ False := by simp
+theorem falseImpliesTrue : False → True := by simp
+
+def third (xs : List α) (ok : xs.length > 2) : α := xs[2]
+#eval third woodlandCritters (by simp)
+
+
+----------------------
+---- 4 ---------------
+----------------------
+
+inductive Pos : Type where
+  | one : Pos
+  | succ : Pos → Pos
+
+def seven : Pos :=
+  Pos.succ (Pos.succ (Pos.succ (Pos.succ (Pos.succ (Pos.succ Pos.one)))))
+
+class Plus (α : Type) where
+  plus : α → α → α
+
+instance : Plus Nat where
+  plus := Nat.add
+
+open Plus (plus)
+
+#eval plus 5 3
+
+def Pos.plus : Pos → Pos → Pos
+  | Pos.one, k => Pos.succ k
+  | Pos.succ n, k => Pos.succ (n.plus k)
+
+instance : Plus Pos where
+  plus := Pos.plus
+
+def fourteen : Pos := plus seven seven
