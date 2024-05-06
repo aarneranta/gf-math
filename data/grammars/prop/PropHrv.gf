@@ -25,8 +25,9 @@ oper
   singular = ParadigmsHrv.singular ; ---
 
 -- test lexicon
-{-
+
 lin
+{-
   Vertical = mkAP (mkA "vertikal") ;
   Horizontal = mkAP (mkA "horizontal") ;
   Parallel = mkA2 (mkA "parallel") to_Prep ;
@@ -37,9 +38,10 @@ lin
   Intersection = mkFun2 "intersection" (mkCN (mkN "Schnitt" "Schnitte" masculine)) possess_Prep ;
 
   Set k = mkCN set_N2 (mkNP a_Art plNum k) ; 
-
-  Even = mkAP (mkA "gerade") ;
-  Odd = mkAP (mkA "ungerade") ;
+-}
+  Even = mkAP (mkA "paran") ;
+  Odd = mkAP (mkA "neparan") ;
+{- 
   Square = mkFun1 "square" (mkCN (mkN "Quadrat" "Quadrate" neuter)) possess_Prep ;
   Sum = mkFun2 "sum" (mkCN (mkN "Summe")) possess_Prep ;
   Product = mkFun2 "product" (mkCN (mkN "Produkt" "Produkte" neuter)) possess_Prep ;
