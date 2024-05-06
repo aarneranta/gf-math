@@ -7,8 +7,8 @@ concrete NotionsREng of Notions = LexiconREng ** open SyntaxEng, ParadigmsEng, S
         
         leftAttribute = AP ;
         rightAttribute = {ap : AP ; rs : RS ; isAP : Bool} ;
-        isPredicate = AP ;
-        doesPredicate = VP ;
+        isPredicate =  {ap : AP ; pol : Pol} ;
+        doesPredicate = {vp : VP ; pol : Pol} ;
         statement = S ;
         primSimpleAdjective = AP ;
         primClassNoun = CN ;
@@ -25,8 +25,16 @@ concrete NotionsREng of Notions = LexiconREng ** open SyntaxEng, ParadigmsEng, S
 
         prSimpAdjToLAttrib ap = ap ;
 
-        isPrToRAttr ap = {ap = ap ; rs = mkRS (mkRCl which_RP ap) ; isAP = True} ;
-        doesPrToRAttr vp = {ap = variants {} ; rs = mkRS (mkRCl which_RP vp) ; isAP = False} ; 
+        isPrToRAttr pred =
+	  let ap = case pred.pol.p of {
+             R.CPos => pred.ap ;
+	     R.CNeg _ => mkAP (mkAdA "not") pred.ap
+          }
+	  in {
+	  ap = ap ;
+	  rs = mkRS (mkRCl which_RP ap) ; isAP = True
+	  } ;
+        doesPrToRAttr pred = {ap = variants {} ; rs = mkRS pred.pol (mkRCl which_RP pred.vp) ; isAP = False} ; 
         stmToRAttr s = {ap = variants {} ; rs = lin RS {s = \\_ => "such that" ++ s.s ; c = R.npNom} ; isAP = False} ; ---- 
 
 

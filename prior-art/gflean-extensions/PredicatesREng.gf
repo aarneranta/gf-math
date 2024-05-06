@@ -1,11 +1,11 @@
 --# -path=.:simplifiedForThel:present
 
-concrete PredicatesREng of Predicates = TermsREng ** open Prelude, Formal, Utils, SyntaxEng, ParadigmsEng, SymbolicEng, (G=GrammarEng) in {
+concrete PredicatesREng of Predicates = TermsREng ** open Prelude, Formal, Utils, SyntaxEng, ParadigmsEng, SymbolicEng, (G=GrammarEng), (E=ExtendEng) in {
    lincat
         polarity = Pol ;
 
         --hasPredicate = SS ;
-        is_aPredicate = VP ;
+        is_aPredicate = {vp : VP ; pol : Pol} ;
 
         --possessedNoun = SS ;
 
@@ -23,18 +23,18 @@ lin
         
 lin 
         pos = positivePol ;
-        neg = negativePol ;
+        neg = E.UncontractedNeg ;
 
         --prVerbToDPred = cc3 (ss "does") ;
         --prVerbMToDPred = cc3 (ss "do") ;
         --hasPredToDPred = cc2 (ss ("has" | "have")) ;
-        isPredToDPred p = mkVP p ;
+        isPredToDPred p = p ** {vp = mkVP p.ap} ;
         isAPredToDPred p = p ;
 
-        primAdjToIsPred pol ap = ap ;
+        primAdjToIsPred pol ap = {ap = ap ; pol = pol} ;
 
-        clNounToIs_aPred pol cn = mkVP cn ; ---- polarity
-        deftrmToIs_aPred pol np = mkVP np ;
+        clNounToIs_aPred pol cn = {vp = mkVP cn ; pol = pol} ;
+        deftrmToIs_aPred pol np = {vp = mkVP np ; pol = pol} ;
 
         --possNTohasPred = cc2 (ss ("a" | "an")) ;
         --possNnotTohasPred = cc2 (ss "no") ;
