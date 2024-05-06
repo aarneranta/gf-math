@@ -1,36 +1,44 @@
-concrete NotionsEng of Notions = LexiconEng ** open Prelude, Formal in {
+--# -path=.:simplifiedForThel:present
+
+concrete NotionsREng of Notions = LexiconREng ** open SyntaxEng, ParadigmsEng, SymbolicEng, (R=ResEng), Prelude, Formal in {
     lincat
-        notion = SS ;
-        names = SS ;
+        notion = CN ;
+        names = NP ;
         
-        leftAttribute = SS ;
-        rightAttribute = SS ;
-        isPredicate = SS ;
-        doesPredicate = SS ;
-        statement = TermPrec ;
-        primSimpleAdjective = SS ;
-        primClassNoun = SS ;
+        leftAttribute = AP ;
+        rightAttribute = {ap : AP ; rs : RS ; isAP : Bool} ;
+        isPredicate = AP ;
+        doesPredicate = VP ;
+        statement = S ;
+        primSimpleAdjective = AP ;
+        primClassNoun = CN ;
 
     lin
 
-        rA0ToPSAdj rAdj = rAdj!E ;
-        rN0ToPcNoun rN0 nam = cc2 (rN0!E) nam ;
+        rA0ToPSAdj rAdj = rAdj.ap ;
+        rN0ToPcNoun rN0 nam = mkCN rN0.cn nam ;
         
     lin
-        listVarToName = id SS ;
-        knownName n = parenss (prefixSS "x" n) | ss "" ;
+        listVarToName x = symb x ;
+        knownName n = mkSymb ("x" ++ n.s) ; ---- | ss "" ;
         
 
-        prSimpAdjToLAttrib = id SS ;
+        prSimpAdjToLAttrib ap = ap ;
 
-        isPrToRAttr = id SS ;
-        doesPrToRAttr = cc2 (ss "that");
-        stmToRAttr = cc2 (ss "such that");
+        isPrToRAttr ap = {ap = ap ; rs = mkRS (mkRCl which_RP ap) ; isAP = True} ;
+        doesPrToRAttr vp = {ap = variants {} ; rs = mkRS (mkRCl which_RP vp) ; isAP = False} ; 
+        stmToRAttr s = {ap = variants {} ; rs = lin RS {s = \\_ => "such that" ++ s.s ; c = R.npNom} ; isAP = False} ; ---- 
 
 
-        prClNounToNotion = id SS ;
-        prClNounRAttrToNotion = cc2 ;
-        prLAttrClNounToNotion = cc2 ;
-        prLAttrClNounRAttrToNotion = cc3 ;
+        prClNounToNotion cn = cn ;
+        prClNounRAttrToNotion cn attr = case attr.isAP of {
+	  True => mkCN attr.ap cn ;
+	  False => mkCN cn attr.rs
+          } ;
+        prLAttrClNounToNotion ap cn = mkCN ap cn ;
+        prLAttrClNounRAttrToNotion ap cn attr = case attr.isAP of {
+	  True => mkCN attr.ap (mkCN ap cn) ;
+	  False => mkCN (mkCN ap cn) attr.rs
+          } ;
 
 }

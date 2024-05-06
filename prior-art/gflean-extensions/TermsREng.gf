@@ -1,26 +1,27 @@
-concrete TermsEng of Terms = NotionsEng ** open Prelude, Formal in {
+--# -path=.:simplifiedForThel:present
+
+concrete TermsREng of Terms = NotionsREng ** open Prelude, Formal, Utils, SyntaxEng, ParadigmsEng, SymbolicEng in {
     lincat
-        term = TermPrec ;
-        quantifiedNotion = TermPrec ;
-        definiteTerm = TermPrec ;
+        term = NP ;
+        quantifiedNotion = NP ;
+        definiteTerm = NP ;
         
-        primDefiniteNoun = TermPrec ;
+        primDefiniteNoun = NP ;
 
     lin 
-        rN2ToPDNoun r t1 t2 = {s =  usePrec r.p t1 ++ r.s ++ usePrec (nextPrec r.p) t2 ; p = r.p} ;
+----        rN2ToPDNoun r t1 t2 = {s =  usePrec r.p t1 ++ r.s ++ usePrec (nextPrec r.p) t2 ; p = r.p} ;
 
-    lin
-        qNotionToTerm = id TermPrec ;
+        qNotionToTerm np = np ;
 
-        allNotion n = mkPrec 4 ("every" ++ n.s) ;
-        someNotion n = mkPrec 4 ("some" ++ n.s) ;
-        noNotion n = mkPrec 4 ("no" ++ n.s) ;
+        allNotion n = mkNP every_Det n ;
+        someNotion n = mkNP someSg_Det n ;
+        noNotion n = mkNP no_Quant n ;
 
-        prDefNounToDefTerm = id TermPrec ;
+        prDefNounToDefTerm np = np ;
         
-        varToDefTerm v = mkPrec 4 v.s ;
-        intToDefTerm i = mkPrec 4 i.s ;
+        varToDefTerm v = symb v ;
+        intToDefTerm i = symb i ;
 
-        defTermToTerm = id TermPrec ;
+        defTermToTerm np = np ;
         
 }

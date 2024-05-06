@@ -1,3 +1,5 @@
+--# -path=.:simplifiedForThel:present
+
 concrete LexiconREng of Lexicon = open Prelude, Formal, Utils, SyntaxEng, ParadigmsEng, SymbolicEng in {
     lincat
 

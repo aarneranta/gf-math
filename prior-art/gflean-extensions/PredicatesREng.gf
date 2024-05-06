@@ -1,13 +1,15 @@
-concrete PredicatesEng of Predicates = TermsEng ** open Prelude in {
+--# -path=.:simplifiedForThel:present
+
+concrete PredicatesREng of Predicates = TermsREng ** open Prelude, Formal, Utils, SyntaxEng, ParadigmsEng, SymbolicEng, (G=GrammarEng) in {
    lincat
-        polarity = SS ;
+        polarity = Pol ;
 
         --hasPredicate = SS ;
-        is_aPredicate = SS ;
+        is_aPredicate = VP ;
 
         --possessedNoun = SS ;
 
-        primAdjective = SS ;
+        primAdjective = AP ;
         --primAdjectiveM = SS ;
         --primVerb = SS ;
         --primVerbM = SS ;
@@ -15,24 +17,24 @@ concrete PredicatesEng of Predicates = TermsEng ** open Prelude in {
 
 lin
         
-        rA0ToPAdj rA0 = rA0!E  ;
-        rA1ToPAdj r t = {s = (r!E).s1 ++ t.s ++ (r!E).s2} ;
+        rA0ToPAdj rA0 = rA0.ap  ;
+        rA1ToPAdj r t = G.AdvAP r.ap (SyntaxEng.mkAdv r.p t) ;
         --rA2ToPAdj r t1 t2 = {s = (r!E).s1 ++ t1.s ++ (r!E).s2 ++ t2.s ++ (r!E).s3} ;
         
 lin 
-        pos = ss "" ;
-        neg = ss "not" ;
+        pos = positivePol ;
+        neg = negativePol ;
 
         --prVerbToDPred = cc3 (ss "does") ;
         --prVerbMToDPred = cc3 (ss "do") ;
         --hasPredToDPred = cc2 (ss ("has" | "have")) ;
-        isPredToDPred = cc2 (ss ("is" | "are" )) ;
-        isAPredToDPred = cc2 (ss ( "is" | "are")) ;
+        isPredToDPred p = mkVP p ;
+        isAPredToDPred p = p ;
 
-        primAdjToIsPred = cc2 ;
+        primAdjToIsPred pol ap = ap ;
 
-        clNounToIs_aPred pol = cc3 pol (ss ("a" | "an" | "")) ;
-        deftrmToIs_aPred = cc2 ;
+        clNounToIs_aPred pol cn = mkVP cn ; ---- polarity
+        deftrmToIs_aPred pol np = mkVP np ;
 
         --possNTohasPred = cc2 (ss ("a" | "an")) ;
         --possNnotTohasPred = cc2 (ss "no") ;
