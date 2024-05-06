@@ -6,13 +6,15 @@ concrete TextsREng of Texts = StatementsREng ** open Prelude, Formal, Utils, Syn
         assumption = Text ;
         text = Text ;
 
-        Lassumption = Text ;
+        Lassumption = {t : Text ; isEmpty : Bool} ;
 
     lin
-        Bassumption = emptyText ;
-        Cassumption as ls = mkText (strText "assume") (mkText as ls) ; ---
+        Bassumption = {t = emptyText ; isEmpty = True} ;
+        Cassumption as ls = {t = mkText (strText "assume") (mkText as ls.t) ; isEmpty = False} ;
 
-        assToExm las st  = mkText (mkText (strText "ex .") las) (mkText (strText "then") (mkText st)) ;
+        assToExm las st =
+	  mkText (mkText (strText "ex .") las.t)
+	         (mkText (strText (if_then_Str las.isEmpty "" "then")) (mkText st)) ;
 
         stmToAssumption s = mkText s ;
 
