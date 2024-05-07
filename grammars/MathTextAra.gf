@@ -1,10 +1,11 @@
---# -path=.:present:prop:wikidata
+--# -path=.:present:prop:term:wikidata
 
-concrete MathTextAra of MathText = MathWikidataAra, PropAra **
+concrete MathTextAra of MathText = MathWikidataAra, PropAra, TermLatex **
   MathTextFunctor - [Fun1QN]  
   with
     (Syntax = SyntaxAra),
-    (Extend = ExtendAra)
+    (Extend = ExtendAra),
+    (Symbolic = SymbolicAra)
     **
   open ParadigmsAra in {
 

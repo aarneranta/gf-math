@@ -1,11 +1,13 @@
---# -path=.:present:prop:wikidata
+--# -path=.:present:prop:term:wikidata
 
-concrete MathTextGer of MathText = MathWikidataGer, PropGer **
+concrete MathTextGer of MathText = MathWikidataGer, PropGer, TermLatex **
   
   MathTextFunctor - [Agreement, refPron, kindAgr]
   with
     (Syntax = SyntaxGer),
-    (Extend = ExtendGer) **
+    (Extend = ExtendGer),
+    (Symbolic = SymbolicGer)
+    **
     
   open ParadigmsGer, (R=ResGer) in {
 

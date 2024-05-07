@@ -1,6 +1,10 @@
 --# -path=.:prop
 
-abstract MathText = Prop, MathWikidata ** {
+abstract MathText =
+  Prop - [VSymb],
+  Term,
+  MathWikidata
+  ** {
 
 flags startcat = Paragraph ;
 
@@ -25,6 +29,10 @@ fun
 -- using Wikidata
   KindQN : QN -> Kind ;
   Fun1QN : QN -> Fun1 ;
+
+-- using Term
+  PEquation : Equation -> Prop ;
+  ITerm : Term -> Ind ;
 
 
 -- lexical items not in Wikidata

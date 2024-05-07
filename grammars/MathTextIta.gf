@@ -1,11 +1,12 @@
---# -path=.:present:prop:wikidata
+--# -path=.:present:prop:term:wikidata
 
-concrete MathTextIta of MathText = MathWikidataIta, PropIta **
+concrete MathTextIta of MathText = MathWikidataIta, PropIta, TermLatex **
   MathTextFunctor - [Agreement, refPron, kindAgr]
   
   with
     (Syntax = SyntaxIta),
-    (Extend = ExtendIta) **
+    (Extend = ExtendIta),
+    (Symbolic = SymbolicIta) **
     
   open ParadigmsIta, (R=CommonRomance) in {
 

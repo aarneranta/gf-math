@@ -4,13 +4,17 @@ abstract Term = {
 
 cat
   Equation ;
+  Eqsign ;
   Term ;
   [Term] {1} ;
   Variable ;
   Function ;
 
 fun
-  EEq, ENeq, ELt, EGt, ELe, EGe, ESim : Term -> Term -> Equation ;
+  EChain : Eqsign -> Term -> Equation -> Equation ;
+  EBinary : Eqsign -> Term -> Term -> Equation ;
+
+  EEq, ENeq, ELt, EGt, ELe, EGe, ESim : Eqsign ;
 
   TPlus, TMinus, TTimes, TDiv, TExp : Term -> Term -> Term ;
   TNeg : Term -> Term ;

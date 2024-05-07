@@ -1,9 +1,10 @@
---# -path=.:present:prop:wikidata
+--# -path=.:present:prop:term:wikidata
 
-concrete MathTextEng of MathText = MathWikidataEng, PropEng **
+concrete MathTextEng of MathText = MathWikidataEng, PropEng, TermLatex **
   MathTextFunctor with
     (Syntax = SyntaxEng),
-    (Extend = ExtendEng)
+    (Extend = ExtendEng),
+    (Symbolic = SymbolicEng)
     **
   open ParadigmsEng in {
 

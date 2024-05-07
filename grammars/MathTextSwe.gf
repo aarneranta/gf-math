@@ -1,11 +1,13 @@
---# -path=.:present:prop:wikidata
+--# -path=.:present:prop:term:wikidata
 
-concrete MathTextSwe of MathText = MathWikidataSwe, PropSwe **
+concrete MathTextSwe of MathText = MathWikidataSwe, PropSwe, TermLatex **
   MathTextFunctor - [Agreement, refPron, kindAgr]
   
   with
     (Syntax = SyntaxSwe),
-    (Extend = ExtendSwe) **
+    (Extend = ExtendSwe),
+    (Symbolic = SymbolicSwe)
+    **
     
   open ParadigmsSwe, (R=CommonScand), (X=ExtraSwe) in {
 

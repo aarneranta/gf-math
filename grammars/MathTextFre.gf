@@ -1,11 +1,13 @@
---# -path=.:present:prop:wikidata
+--# -path=.:present:prop:term:wikidata
 
-concrete MathTextFre of MathText = MathWikidataFre, PropFre **
+concrete MathTextFre of MathText = MathWikidataFre, PropFre, TermLatex **
   MathTextFunctor - [Agreement, refPron, kindAgr]
   
   with
     (Syntax = SyntaxFre),
-    (Extend = ExtendFre) **
+    (Extend = ExtendFre),
+    (Symbolic = SymbolicFre)
+    **
     
   open ParadigmsFre, (R=CommonRomance) in {
 

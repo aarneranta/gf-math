@@ -43,7 +43,7 @@ lincat
     = Str ;
 
 lin
-  AKind k x = table {b => top x ++ ":" ++ k} ;  ---- fix negation of \in
+  AKind k x = table {True => top x ++ "∈" ++ k ; False => top x ++ "∉" ++ k} ;
 
   PConjs c ps = constant (c ++ "[" ++ ps ++ "]") ;
   PUnivs vs k = prefix 4 (parenth ("∀" ++ vs ++ ":" ++ k)) ;

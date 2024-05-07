@@ -1,6 +1,6 @@
 --# -path=.:present:prop:term:wikidata
 
-concrete MathTextCore of MathText = PropCore, MathWikidataCore, TermAscii **
+concrete MathTextLean of MathText = PropLean, MathWikidataCore, TermAscii **
 
 open
   Prelude, Formal
@@ -15,9 +15,9 @@ lincat
 
 oper
   suchThat : (x, a, b : Str) -> Str = \x, a, b ->
-    "(Σ" ++ x ++ ":" ++ a ++ ")" ++ b ;
+    "{" ++ x ++ ":" ++ a ++ "//" ++ b ++ "}" ;
 
-  apply : Str -> Str -> Str = \f, a -> f ++ "(" ++ a ++ ")" ;
+  apply : Str -> Str -> Str = \f, a -> "(" ++ f ++ a ++ ")" ;
 
 lin
   ParDefinition d = "def" ++ d ;

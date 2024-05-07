@@ -1,6 +1,6 @@
---# -path=.:present:prop:wikidata
+--# -path=.:present:prop:term:wikidata
 
-concrete MathTextHrv of MathText = MathWikidataHrv, PropHrv **
+concrete MathTextHrv of MathText = MathWikidataHrv, PropHrv, TermLatex **
   
   MathTextFunctor - [
     DefIsASuch,  -- missing
@@ -8,7 +8,9 @@ concrete MathTextHrv of MathText = MathWikidataHrv, PropHrv **
     ]
   with
     (Syntax = SyntaxHrv),
-    (Extend = ExtendHrv) **
+    (Extend = ExtendHrv),
+    (Symbolic = SymbolicHrv)
+    **
     
   open ParadigmsHrv, (R=ResHrv) in {
 

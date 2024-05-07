@@ -1,8 +1,11 @@
-incomplete concrete MathTextFunctor of MathText = MathWikidata, Prop **
+incomplete concrete MathTextFunctor of MathText = MathWikidata, Prop, TermLatex **
 
 open
   Syntax,
-  Extend
+  Extend,
+  Symbolic,
+  Formal,
+  Prelude
 
 in {
 
@@ -35,5 +38,14 @@ lin
 -- using Wikidata --- the categories should be decided there
   KindQN qn = qn ;
   Fun1QN qn = mkFun1 (mkUtt qn).s qn possess_Prep ; --- leads to different function names in langs
+
+-- using Term
+  PEquation e = {s = symb (mkSymb (mathEnv e.s)) ; c = False} ;
+  ITerm t = {s = symb (mkSymb (mathEnv (top t))) ; isSymbolic = True} ;
+
+oper
+  mathEnv : Str -> Str = \s ->
+    "$" ++ s ++ "$" ;
+    -- change to s if you don't want dollars
 
 }

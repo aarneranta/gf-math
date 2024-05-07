@@ -1,11 +1,13 @@
---# -path=.:present:prop:wikidata
+--# -path=.:present:prop:term:wikidata
 
-concrete MathTextPor of MathText = MathWikidataPor, PropPor **
+concrete MathTextPor of MathText = MathWikidataPor, PropPor, TermLatex **
   MathTextFunctor - [Agreement, refPron, kindAgr]
   
   with
     (Syntax = SyntaxPor),
-    (Extend = ExtendPor) **
+    (Extend = ExtendPor),
+    (Symbolic = SymbolicPor)
+    **
     
   open ParadigmsPor, (R=CommonRomance) in {
 

@@ -2,19 +2,23 @@ concrete TermAscii of Term = open Formal, Prelude in {
 
 lincat
   Equation = {s : Str} ;
+  Eqsign = Str ;
   Term = TermPrecNum ;
   [Term] = {s : Str} ;
   Variable = Str ;
   Function = Str ;
 
 lin
-  EEq = equation "=" ; 
-  ENeq = equation "≠" ; 
-  ELt = equation "<" ; 
-  EGt = equation ">" ; 
-  ELe = equation "≤" ; 
-  EGe = equation "≥" ; 
-  ESim = equation "~" ;
+  EChain op x eq = {s = top x ++ op ++ eq.s} ;
+  EBinary op x y = {s = top x ++ op ++ top y} ;
+
+  EEq = "=" ; 
+  ENeq = "≠" ; 
+  ELt = "<" ; 
+  EGt = ">" ; 
+  ELe = "≤" ; 
+  EGe = "≥" ; 
+  ESim = "~" ;
 
   TPlus = tinfixl 1 "+" ;
   TMinus = tinfixl 1 "-" ;
@@ -50,9 +54,6 @@ lin
 
 oper
   TermPrecNum = TermPrec ** {isNumber : Bool} ;
-
-  equation : Str -> TermPrecNum -> TermPrecNum -> {s : Str} = \op, x, y ->
-    {s = top x ++ op ++ top y} ;
 
   tinfixl : Prec -> Str -> (_,_ : TermPrecNum) -> TermPrecNum = \p, op, x, y ->
     infixl p op x y ** {isNumber = False} ;

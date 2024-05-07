@@ -1,9 +1,11 @@
---# -path=.:present:prop:wikidata
+--# -path=.:present:prop:term:wikidata
 
-concrete MathTextFin of MathText = MathWikidataFin, PropFin **
+concrete MathTextFin of MathText = MathWikidataFin, PropFin, TermLatex **
   MathTextFunctor with
     (Syntax = SyntaxFin),
-    (Extend = ExtendFin) **
+    (Extend = ExtendFin),
+    (Symbolic = SymbolicFin)
+    **
   open ParadigmsFin in {
   
 -- lexical items not in Wikidata
