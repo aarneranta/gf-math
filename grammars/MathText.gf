@@ -1,7 +1,7 @@
 --# -path=.:prop
 
 abstract MathText =
-  Prop - [VSymb],
+  Prop - [VSymb, IUniv, IExist],
   Term,
   MathWikidata
   ** {
@@ -20,10 +20,10 @@ fun
   ParDefinition : [Hypothesis] -> Definition -> Paragraph ;
   ParStatement  : [Hypothesis] -> Prop -> Paragraph ;
 
-  DefIsA     : Kind -> Kind -> Definition ;               -- an abelian grouo is a group
-  DefIsASuch : Kind -> Kind -> Condition -> Definition ;  -- an ab. grouo is a group such that...
-  DefIsAIf   : Kind -> Kind -> Condition -> Definition ;  -- a group is an ab. group if...
-  DefWhose   : Kind -> Kind -> Fun1 -> Pred1 -> Definition ; -- an ab. group is a group whose...
+  DefIsA     : QN -> Kind -> Definition ;               -- an abelian grouo is a group
+  DefIsASuch : QN -> Kind -> Condition -> Definition ;  -- an ab. grouo is a group such that...
+  DefIsAIf   : QN -> Kind -> Condition -> Definition ;  -- a group is an ab. group if...
+  DefWhose   : QN -> Kind -> Fun1 -> Pred1 -> Definition ; -- an ab. group is a group whose...
 
   CondIsA : Kind -> Condition ;
   CondPred1 : Pred1 -> Condition ;

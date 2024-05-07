@@ -60,8 +60,8 @@ fun
 
   AKind  : Kind  -> Ind -> Atom ;
 
-  IUniv  : Kind -> Ind ;
-  IExist : Kind -> Ind ;
+----  IUniv  : Kind -> Ind ;
+----  IExist : Kind -> Ind ;
 
   ConjInd : Conj -> [Ind] -> Ind ;
 

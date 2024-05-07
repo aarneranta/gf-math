@@ -1,4 +1,4 @@
-incomplete concrete MathTextFunctor of MathText = MathWikidata, Prop, TermLatex **
+incomplete concrete MathTextFunctor of MathText = MathWikidata, Prop - [IExist, IUniv], TermLatex **
 
 open
   Syntax,
@@ -15,7 +15,7 @@ lincat
   Definition = S ;
   Condition = {s : Agreement => Cl} ;
   Hypothesis = Text ;
-  [Hypothesis] = Text ;
+  [Hypothesis] = {s : Text ; isInhabited : Bool} ;
   [Variable] = NP ;
 
 oper
@@ -27,9 +27,14 @@ oper
 
   thenDef_Adv : Adv = then_Adv ;
 
+  thenDef : Bool -> S -> S = \isInhabited, s -> case isInhabited of {
+    True => mkS thenDef_Adv s ;
+    False => s
+    } ;
+
 lin
-  ParDefinition hs d = mkText hs (mkText d) ;
-  ParStatement hs p = mkText hs (mkText (mkS thenDef_Adv p.s)) ;
+  ParDefinition hs d = mkText hs.s (mkText (thenDef hs.isInhabited d)) ;
+  ParStatement hs p = mkText hs.s (mkText (thenDef hs.isInhabited p.s)) ;
 
   DefIsA a b = mkS (mkCl (mkNP a_Det a) b) ;
   DefIsASuch a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (c.s ! kindAgr b))))) ;
@@ -42,8 +47,8 @@ lin
 
   HypTyping xs k = mkText (ImpP3 xs (mkVP k)) ;
   
-  BaseHypothesis = emptyText ;
-  ConsHypothesis h hs = mkText h hs ; 
+  BaseHypothesis = {s = emptyText ; isInhabited = False} ;
+  ConsHypothesis h hs = {s = mkText h hs.s ; isInhabited = True} ; 
 
   BaseVariable x = symb (mkSymb (mathEnv x)) ;
   ConsVariable x xs = mkNP and_Conj (symb (mkSymb (mathEnv x))) xs ;
