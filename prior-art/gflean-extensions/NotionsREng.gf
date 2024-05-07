@@ -20,7 +20,7 @@ concrete NotionsREng of Notions = LexiconREng ** open SyntaxEng, ParadigmsEng, S
         
     lin
         listVarToName x = symb x ;
-        knownName n = mkSymb ("x" ++ n.s) ; ---- | ss "" ;
+        knownName n = mkSymb ("(" ++ "x" ++ n.s ++ ")") | mkSymb "" ; ---
         
 
         prSimpAdjToLAttrib ap = ap ;
@@ -34,8 +34,8 @@ concrete NotionsREng of Notions = LexiconREng ** open SyntaxEng, ParadigmsEng, S
 	  ap = ap ;
 	  rs = mkRS (mkRCl which_RP ap) ; isAP = True
 	  } ;
-        doesPrToRAttr pred = {ap = variants {} ; rs = mkRS pred.pol (mkRCl which_RP pred.vp) ; isAP = False} ; 
-        stmToRAttr s = {ap = variants {} ; rs = lin RS {s = \\_ => "such that" ++ s.s ; c = R.npNom} ; isAP = False} ; ---- 
+        doesPrToRAttr pred = {ap = dummy_AP ; rs = mkRS pred.pol (mkRCl which_RP pred.vp) ; isAP = False} ;
+	stmToRAttr s = {ap = dummy_AP ; rs = lin RS {s = \\_ => "such that" ++ s.s ; c = R.npNom} ; isAP = False} ; ---- 
 
 
         prClNounToNotion cn = cn ;
@@ -48,5 +48,8 @@ concrete NotionsREng of Notions = LexiconREng ** open SyntaxEng, ParadigmsEng, S
 	  True => mkCN attr.ap (mkCN ap cn) ;
 	  False => mkCN (mkCN ap cn) attr.rs
           } ;
+
+oper
+  dummy_AP = mkAP (mkA "dummy") ; --- never used on top level
 
 }

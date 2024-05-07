@@ -9,7 +9,7 @@ concrete TermsREng of Terms = NotionsREng ** open Prelude, Formal, Utils, Syntax
         primDefiniteNoun = NP ;
 
     lin 
-        rN2ToPDNoun r t1 t2 = symb ((mkUtt t1).s ++ r.s ++ (mkUtt t2).s) ;
+        rN2ToPDNoun r t1 t2 = symb ((mkUtt t1).s ++ r.s ++ (mkUtt t2).s) ; ---- creates ambiguity
 
         qNotionToTerm np = np ;
 
