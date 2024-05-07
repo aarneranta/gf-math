@@ -6,6 +6,7 @@ concrete MathTextGer of MathText = MathWikidataGer, PropGer, TermLatex **
   with
     (Syntax = SyntaxGer),
     (Extend = ExtendGer),
+    (Grammar = GrammarGer),
     (Symbolic = SymbolicGer)
     **
     

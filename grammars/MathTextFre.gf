@@ -6,6 +6,7 @@ concrete MathTextFre of MathText = MathWikidataFre, PropFre, TermLatex **
   with
     (Syntax = SyntaxFre),
     (Extend = ExtendFre),
+    (Grammar = GrammarFre),
     (Symbolic = SymbolicFre)
     **
     

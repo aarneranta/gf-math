@@ -9,9 +9,12 @@ in {
 
 lincat
   Paragraph, 
-  Definition,
-  Condition
+  Condition,
+  Hypothesis,
+  [Hypothesis],
+  [Variable]
     = Str ;
+  Definition = {dfum, dfens : Str} ;
 
 oper
   suchThat : (x, a, b : Str) -> Str = \x, a, b ->
@@ -20,17 +23,25 @@ oper
   apply : Str -> Str -> Str = \f, a -> "(" ++ f ++ a ++ ")" ;
 
 lin
-  ParDefinition d = "def" ++ d ;
-  ParProp d = "theorem" ++ top d ;
+  ParDefinition hs d = "def" ++ d.dfum ++ hs ++ ":=" ++ d.dfens ;
+  ParStatement hs d = "example" ++ hs ++ ":" ++ top d ++ ":=" ++ "sorry" ;
 
-  DefIsA a b = a ++ ":=" ++ b ;
-  DefIsASuch a b c = a ++ ":=" ++ suchThat "x" b (apply c "x") ;
-  DefIsAIf a b c = a ++ ":=" ++ suchThat "x" b (apply c "x") ;
-  DefWhose a b f c = a ++ ":=" ++ suchThat "x" b (apply (c ! True) (appLatex (top f) "x")) ;
+  DefIsA a b = {dfum = a ; dfens = b} ;
+  DefIsASuch a b c = {dfum = a ; dfens = suchThat "x" b (apply c "x")} ;
+  DefIsAIf a b c = {dfum = a ; dfens = suchThat "x" b (apply c "x")} ;
+  DefWhose a b f c = {dfum = a ; dfens = suchThat "x" b (apply (c ! True) (appLatex (top f) "x"))} ;
 
   CondIsA b = b ;
   CondPred1 b = b ! True;
   CondItsFun1 f b = "(" ++ b ! True ++ "∘" ++ top f ++ ")" ;
+
+  HypTyping xs k = parenth (xs ++ ":" ++ k) ;
+  
+  BaseHypothesis = "" ;
+  ConsHypothesis h hs = h ++ hs ; 
+
+  BaseVariable x = x ;
+  ConsVariable x xs = x ++ "," ++ xs ;
 
 -- using Wikidata
   KindQN qn = qn.s ;

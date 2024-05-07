@@ -3,6 +3,7 @@ incomplete concrete MathTextFunctor of MathText = MathWikidata, Prop, TermLatex 
 open
   Syntax,
   Extend,
+  Grammar,
   Symbolic,
   Formal,
   Prelude
@@ -13,7 +14,9 @@ lincat
   Paragraph = Text ;
   Definition = S ;
   Condition = {s : Agreement => Cl} ;
-
+  Hypothesis = Text ;
+  [Hypothesis] = Text ;
+  [Variable] = NP ;
 
 oper
   Agreement : PType = {} ;
@@ -22,9 +25,11 @@ oper
 
   genRP : CN -> RP = \cn -> GenRP singularNum cn ;
 
+  thenDef_Adv : Adv = then_Adv ;
+
 lin
-  ParDefinition d = mkText d ;
-  ParProp p = mkText p.s ;
+  ParDefinition hs d = mkText hs (mkText d) ;
+  ParStatement hs p = mkText hs (mkText (mkS thenDef_Adv p.s)) ;
 
   DefIsA a b = mkS (mkCl (mkNP a_Det a) b) ;
   DefIsASuch a b c = mkS (mkCl (mkNP a_Det a) (mkCN b (mkRS (mkRCl (c.s ! kindAgr b))))) ;
@@ -34,6 +39,14 @@ lin
   CondIsA b = {s = \\a => mkCl (mkNP (refPron a)) b} ;
   CondPred1 p = {s = \\a => mkCl (mkNP (refPron a)) p} ;
   CondItsFun1 f p = {s = \\a => mkCl (mkNP (refPron a) f.v) p} ;
+
+  HypTyping xs k = mkText (ImpP3 xs (mkVP k)) ;
+  
+  BaseHypothesis = emptyText ;
+  ConsHypothesis h hs = mkText h hs ; 
+
+  BaseVariable x = symb (mkSymb (mathEnv x)) ;
+  ConsVariable x xs = mkNP and_Conj (symb (mkSymb (mathEnv x))) xs ;
 
 -- using Wikidata --- the categories should be decided there
   KindQN qn = qn ;

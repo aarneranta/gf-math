@@ -1,12 +1,17 @@
 --# -path=.:present:prop:term:wikidata
 
 concrete MathTextFin of MathText = MathWikidataFin, PropFin, TermLatex **
-  MathTextFunctor with
+  MathTextFunctor - [thenDef_Adv] with
     (Syntax = SyntaxFin),
     (Extend = ExtendFin),
+    (Grammar = GrammarFin),
     (Symbolic = SymbolicFin)
     **
   open ParadigmsFin in {
+
+-- functor exceptions
+oper
+  thenDef_Adv = ParadigmsFin.mkAdv "silloin" ;
   
 -- lexical items not in Wikidata
 lin

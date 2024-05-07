@@ -1,11 +1,12 @@
 --# -path=.:present:prop:term:wikidata
 
 concrete MathTextSwe of MathText = MathWikidataSwe, PropSwe, TermLatex **
-  MathTextFunctor - [Agreement, refPron, kindAgr]
+  MathTextFunctor - [Agreement, refPron, kindAgr, thenDef_Adv]
   
   with
     (Syntax = SyntaxSwe),
     (Extend = ExtendSwe),
+    (Grammar = GrammarSwe),
     (Symbolic = SymbolicSwe)
     **
     
@@ -22,6 +23,7 @@ oper
     
   kindAgr : CN -> Agreement = \cn -> cn.g ;  
 
+  thenDef_Adv = ParadigmsSwe.mkAdv "då" ;
 
 -- lexical items not in Wikidata
 lin

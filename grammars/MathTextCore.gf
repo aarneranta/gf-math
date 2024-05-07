@@ -10,7 +10,10 @@ in {
 lincat
   Paragraph, 
   Definition,
-  Condition
+  Condition,
+  Hypothesis,
+  [Hypothesis],
+  [Variable]
     = Str ;
 
 oper
@@ -20,8 +23,8 @@ oper
   apply : Str -> Str -> Str = \f, a -> f ++ "(" ++ a ++ ")" ;
 
 lin
-  ParDefinition d = "def" ++ d ;
-  ParProp d = "theorem" ++ top d ;
+  ParDefinition hs d = hs ++ "|-" ++ d ;
+  ParStatement hs d = hs ++ "|-" ++ top d ;
 
   DefIsA a b = a ++ ":=" ++ b ;
   DefIsASuch a b c = a ++ ":=" ++ suchThat "x" b (apply c "x") ;
@@ -31,6 +34,14 @@ lin
   CondIsA b = b ;
   CondPred1 b = b ! True;
   CondItsFun1 f b = "(" ++ b ! True ++ "∘" ++ top f ++ ")" ;
+
+  HypTyping xs k = parenth (xs ++ ":" ++ k) ;
+  
+  BaseHypothesis = "" ;
+  ConsHypothesis h hs = h ++ hs ; 
+
+  BaseVariable x = x ;
+  ConsVariable x xs = x ++ "," ++ xs ;
 
 -- using Wikidata
   KindQN qn = qn.s ;

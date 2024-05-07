@@ -4,6 +4,7 @@ concrete MathTextEng of MathText = MathWikidataEng, PropEng, TermLatex **
   MathTextFunctor with
     (Syntax = SyntaxEng),
     (Extend = ExtendEng),
+    (Grammar = GrammarEng),
     (Symbolic = SymbolicEng)
     **
   open ParadigmsEng in {

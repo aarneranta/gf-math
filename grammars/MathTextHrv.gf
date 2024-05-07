@@ -3,12 +3,13 @@
 concrete MathTextHrv of MathText = MathWikidataHrv, PropHrv, TermLatex **
   
   MathTextFunctor - [
-    DefIsASuch,  -- missing
+    DefIsASuch, HypTyping, PEquation, -- missing
     Agreement, refPron, kindAgr
     ]
   with
     (Syntax = SyntaxHrv),
     (Extend = ExtendHrv),
+    (Grammar = GrammarHrv),
     (Symbolic = SymbolicHrv)
     **
     

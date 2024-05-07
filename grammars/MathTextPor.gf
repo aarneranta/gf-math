@@ -6,6 +6,7 @@ concrete MathTextPor of MathText = MathWikidataPor, PropPor, TermLatex **
   with
     (Syntax = SyntaxPor),
     (Extend = ExtendPor),
+    (Grammar = GrammarPor),
     (Symbolic = SymbolicPor)
     **
     

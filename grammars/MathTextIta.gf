@@ -6,6 +6,7 @@ concrete MathTextIta of MathText = MathWikidataIta, PropIta, TermLatex **
   with
     (Syntax = SyntaxIta),
     (Extend = ExtendIta),
+    (Grammar = GrammarIta),
     (Symbolic = SymbolicIta) **
     
   open ParadigmsIta, (R=CommonRomance) in {

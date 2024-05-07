@@ -12,10 +12,13 @@ cat
   Paragraph ;
   Definition ;
   Condition ;
+  Hypothesis ;
+  [Hypothesis] ;
+  [Variable] {1} ;
 
 fun
-  ParDefinition : Definition -> Paragraph ;
-  ParProp : Prop -> Paragraph ;
+  ParDefinition : [Hypothesis] -> Definition -> Paragraph ;
+  ParStatement  : [Hypothesis] -> Prop -> Paragraph ;
 
   DefIsA     : Kind -> Kind -> Definition ;               -- an abelian grouo is a group
   DefIsASuch : Kind -> Kind -> Condition -> Definition ;  -- an ab. grouo is a group such that...
@@ -25,6 +28,8 @@ fun
   CondIsA : Kind -> Condition ;
   CondPred1 : Pred1 -> Condition ;
   CondItsFun1 : Fun1 -> Pred1 -> Condition ;
+
+  HypTyping : [Variable] -> Kind -> Hypothesis ;
   
 -- using Wikidata
   KindQN : QN -> Kind ;
