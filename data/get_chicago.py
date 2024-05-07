@@ -4,7 +4,7 @@ import re
 
 chicago_path = '../../MathGloss/chicago/'
 
-chicago_files = [f for f in listdir(chicago_path) if isfile(join(chicago_path, f))]
+chicago_files = [f for f in listdir(chicago_path) if isfile(join(chicago_path, f)) and f[-3:]=='.md']
 
 contents = {}
 

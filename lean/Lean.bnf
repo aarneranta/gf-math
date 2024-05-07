@@ -178,4 +178,4 @@ CExp.  Command ::= Exp1 ";" ; ---- precedence?
 
 terminator nonempty Command "" ; ---- newline
 
-token Id ((letter | ["_αβ"]) (letter | digit | '_' | '\'' | '?')*) ;
+token Id ((letter | ["_αβℕ"]) (letter | digit | '_' | '\'' | '?')*) ;
