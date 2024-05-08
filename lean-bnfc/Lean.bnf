@@ -33,6 +33,7 @@ SInductive. Stm ::= "inductive" Name [VarDecl] Annot "where" "{" [Constr] "}" De
 SInductiveEq. Stm ::= "inductive" Name ":=" [Constr] Deriv ;
 ---SInductiveBare. Stm ::= "inductive" Name [Constr] Deriv ;
 STheorem.   Stm ::= "theorem" Name [VarDecl] ":" Exp ":=" Exp ;
+SExample.   Stm ::= "example" [VarDecl] ":" Exp ":=" Exp ;
 ---SWhere.     Stm ::= Stm "where" [Def] ;
 SStruct.    Stm ::= "structure" Id [VarDecl] Annot "where" "{" [Typing] "}" Deriv ;
 SClass.     Stm ::= "class" Id [VarDecl] "where" "{" [Typing] "}" ;
@@ -120,6 +121,8 @@ ECons.  Exp10 ::= Exp10 "::" Exp11 ;
 EEq.    Exp9 ::= Exp10 "=" Exp10 ;
 ELt.    Exp9 ::= Exp10 "<" Exp10 ;
 EGt.    Exp9 ::= Exp10 ">" Exp10 ;
+ELe.    Exp9 ::= Exp10 "≤" Exp10 ;
+EGe.    Exp9 ::= Exp10 "≥" Exp10 ;
 ENeq.   Exp9 ::= Exp10 "≠" Exp10 ;
 EConj.  Exp8 ::= Exp8 "∧" Exp9 ;
 EAnd.   Exp8 ::= Exp8 "&&" Exp9 ;
@@ -139,7 +142,11 @@ ELetrec. Exp1 ::= "let" "rec" Exp Annot Locdef ;
 
 EOpen.  Exp1 ::= "open" Id "in" Exp2 ;
 
-EUniv.  Exp1 ::= "∀" [Var] ":" Exp "," Exp1 ;
+EUniv.      Exp1 ::= "∀" [VarDecl] "," Exp1 ;
+EUnivVars.  Exp1 ::= "∀" [Var] ":" Exp1 "," Exp1 ;
+
+EExist.      Exp1 ::= "∃" [VarDecl] "," Exp1 ;
+EExistVars.  Exp1 ::= "∃" [Var] ":" Exp1 "," Exp1 ;
 
 EMatch. Exp1 ::= "match" [Exp] "with" "|" [Case] ;
 
@@ -178,4 +185,4 @@ CExp.  Command ::= Exp1 ";" ; ---- precedence?
 
 terminator nonempty Command "" ; ---- newline
 
-token Id ((letter | ["_αβℕ"]) (letter | digit | '_' | '\'' | '?')*) ;
+token Id ((letter | ["_αβℕℚℝℤ"]) (letter | digit | '_' | '\'' | '?')*) ;

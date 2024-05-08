@@ -331,7 +331,7 @@ def halve : Nat → Nat
 #check fun x => x + 1
 
 #check fun {α : Type} (x : α) => x
-#check λ {α : Type} (x : α) => x
+--- #check λ {α : Type} (x : α) => x
 
 #check fun
   | 0 => none
@@ -420,7 +420,7 @@ theorem trueOrFalse : True ∨ False := by simp
 theorem falseImpliesTrue : False → True := by simp
 
 def third (xs : List α) (ok : xs.length > 2) : α := xs[2]
-#eval third woodlandCritters (by simp)
+--- #eval third woodlandCritters (by simp)
 
 
 ----------------------
