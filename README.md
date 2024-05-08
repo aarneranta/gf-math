@@ -10,7 +10,7 @@ identifiers and labels.
 The list of concepts and Wikidata links are from
 [MathGloss](https://mathgloss.github.io/MathGloss/database).
 
-The syntax is adapted from
+The syntax in [grammars](./grammars) is adapted from
 [this old GF code](https://github.com/GrammaticalFramework/gf-contrib/tree/master/cade-2011)
 and follows the ideas of the paper
 "Translating between language and logic: what is easy and what is
@@ -18,10 +18,15 @@ difficult" by A Ranta in CADE-2011
 [Springer page](https://link.springer.com/chapter/10.1007/978-3-642-22438-6_3)
 [free preprint](http://www.cse.chalmers.se/~aarne/articles/cade2011.pdf)
 
+The work is also related to [GFLeanTransfer](https://github.com/pkshashank/GFLeanTransfer), whose
+English grammar is re-implemented by using the RGL [here](./gflean-extensions). To compile this version,
+clone the GFLeanTransfor repository and create a symlink to its subdirectory resources/simplifiedForThel/ in
+gflean-extensions.
+
 ToDo (among other things):
 - parsing and translating the Chicago definitions in MathGloss
 - connection to Lean (initiated by a grammar evolving in
-[./lean](./lean))
+[./lean-bnfc](./lean-bnfc))
 - adding languages
 - improving the current ones (at the moment bootstrapped
   semi-automatically from Wikidata labels and GF Resource Grammar
