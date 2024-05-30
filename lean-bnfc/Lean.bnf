@@ -185,4 +185,9 @@ CExp.  Command ::= Exp1 ";" ; ---- precedence?
 
 terminator nonempty Command "" ; ---- newline
 
-token Id ((letter | ["_αβℕℚℝℤ"]) (letter | digit | '_' | '\'' | '?')*) ;
+token Id ((letter | ["_ℕℚℝℤΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρςστυφχψω"]) (letter | digit | '_' | '\'' | '?')*) ;
+
+-- Greek letters
+-- $g = [\x0391-\x03a9\x03b1..\x03c9]
+-- ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡ΢ΣΤΥΦΧΨΩ
+-- αβγδεζηθικλμνξοπρςστυφχψω
