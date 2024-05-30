@@ -28,7 +28,7 @@ concrete LexiconREng of Lexicon = open Prelude, Formal, Utils, SyntaxEng, Paradi
         RATIONAL = {cn = mkCN (mkA "rational") (mkN "number") ; s =  mkSymb "ℚ"} ;
  
         LESS_THAN = {ap = mkAP (mkA "less") ; p = mkPrep "than" ; s = "<"} ;
-        LESS_TE = {ap = mkAP or_Conj (mkAP (mkA "less than")) (mkAP (mkA "equal")) ; p = to_Prep ; s =  "≥"} ; ---
+        LESS_TE = {ap = mkAP or_Conj (mkAP (mkA "less than")) (mkAP (mkA "equal")) ; p = to_Prep ; s =  "≤"} ; ---
         GREATER_THAN =  {ap = mkAP (mkA "greater") ; p = mkPrep "than" ; s = ">"} ;
         GREATER_TE = {ap = mkAP or_Conj (mkAP (mkA "greater than")) (mkAP (mkA "equal")) ; p = to_Prep ; s = "≥"} ; ---
         NOT_EQUAL = {ap = mkAP (mkAdA "not") (mkA "equal") ; p = to_Prep ; s = "≠"} ; ---
