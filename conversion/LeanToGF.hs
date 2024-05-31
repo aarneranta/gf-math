@@ -60,8 +60,10 @@ leanExp2gfProp exp = case exp of
 
 leanExp2gfInd :: AbsLean.Exp -> MathText.GInd
 leanExp2gfInd exp = case exp of
-    EInt i -> GIInt (GInt (fromInteger i))
-    EVar (VId (Id x)) -> GIVar (GVString (GString x))
+    EInt i ->
+        GIInt (GInt (fromInteger i))
+    EVar (VId (Id x)) ->
+        GIVar (GVString (GString x))
     _ -> error $ "sorry, not yet " ++ show exp
 
 
