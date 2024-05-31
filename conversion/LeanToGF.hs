@@ -20,19 +20,22 @@ main = do
 
 lean2text :: [String] -> PGF -> String -> String
 lean2text args pgf s =
-  case args of
-----      "Code":_ ->
-----          processCode pgf (pCode (resolveLayout True (myLexer s)))
-      _ ->
-          processExp pgf (pExp (myLexer s))
+  let inp = case args of
+        "Exp":_ -> "#check " ++ s ++ ";"
+        _ -> s
+  in processCode pgf (pCode (resolveLayout True (myLexer s)))
 
 
-processExp pgf etree =
+processCode pgf etree =
     case etree of
-        Ok tree -> unlines [
-            show tree,
-	    linearizations pgf (lean2pgf tree)
-	    ]
+        Ok code ->
+            unlines $
+                map (\expr -> 
+                    unlines [
+                        show code,
+	                linearizations pgf expr
+	                ])
+                    (lean2pgf code)
         Bad err -> err
 
 
@@ -43,15 +46,20 @@ linearizations pgf expr =
     ]
 
 
-lean2pgf :: AbsLean.Exp -> PGF.Expr
-lean2pgf =
-    (gf :: GProp -> Expr) . optimizeGF . leanExp2gfProp
-----    "Code" -> (gf :: GParagraph -> Expr) . optimizeGF . leanCode2gfParagraph
+lean2pgf :: AbsLean.Code -> [PGF.Expr]
+lean2pgf = map (gf . optimizeGF) . leanCode2gfParagraphs
 
 
-leanCode2gfParagraph :: AbsLean.Code -> MathText.GParagraph
-leanCode2gfParagraph code = case code of
+leanCode2gfParagraphs :: AbsLean.Code -> [MathText.GParagraph]
+leanCode2gfParagraphs code = case code of
+    LeanCode cs -> map leanCmd2gfParagraph cs
     _ -> error $ "sorry, not yet " ++ show code
+
+
+leanCmd2gfParagraph :: AbsLean.Cmd -> MathText.GParagraph
+leanCmd2gfParagraph cmd = case cmd of
+    CCheck e -> GParStatement (GListHypothesis []) (leanExp2gfProp e)
+    _ -> error $ "sorry, not yet " ++ show cmd
 
 
 leanExp2gfProp :: AbsLean.Exp -> MathText.GProp
@@ -64,8 +72,19 @@ leanExp2gfProp exp = case exp of
         GPConj GCOr (leanExp2gfProp p) (leanExp2gfProp q)
     EIf p q ->
         GPImpl (leanExp2gfProp p) (leanExp2gfProp q)
+----    EUnivVars vs typ body ->
+----        GPUnivs (leanListVar2gfListVar vs) (leanExp2gfKind typ) (leanExp2gfProp body)
     EApp (EVar (VId (Id s))) (AExp e) ->
         GPAtom (GAPred1 (LexPred1 s) (leanExp2gfInd e))
+    _ -> error $ "sorry, not yet " ++ show exp
+
+
+leanExp2gfKind :: AbsLean.Exp -> MathText.GKind
+leanExp2gfKind exp = case exp of
+    EVar (VId (Id "Nat")) ->
+        LexKind "Nat" ----
+    EVar (VId (Id s)) ->
+        GKindQN (LexQN s) ----
     _ -> error $ "sorry, not yet " ++ show exp
 
 
@@ -88,6 +107,3 @@ optimizeGF tree = case tree of
         GPAtom (GAPred1 (GConjPred1 conj (GListPred1 [p, q])) x)
     _ -> MathText.composOp optimizeGF tree
     
-
--- Lean: EApp (EVar (VId (Id "Even"))) (AExp (EInt 42))
--- GF:   PAtom (APred1 Even (IInt 42))
