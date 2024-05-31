@@ -6,6 +6,7 @@ import ParLean (pCode, pExp, myLexer)
 import LayoutLean (resolveLayout)
 import MathText
 import PGF
+import ErrM
 
 
 nlGrammar = "../grammars/MathText.pgf"
@@ -22,11 +23,11 @@ lean2text pgf s =
 --      tokens = resolveLayout True $ myLexer s
       etree = pExp tokens -- pCode
   in case etree of
-      Right tree -> unlines [
+      Ok tree -> unlines [
           show tree,
 	  linearizations pgf tree
 	  ]
-      Left err -> err
+      Bad err -> err
 
 
 linearizations :: PGF -> Exp -> String
@@ -44,21 +45,34 @@ lean2pgf = (gf :: GProp -> Expr) . optimizeGF . leanExp2gfProp
 
 leanExp2gfProp :: AbsLean.Exp -> MathText.GProp
 leanExp2gfProp exp = case exp of
-    ENot e -> GPNeg (leanExp2gfProp e)
-    EAnd p q -> GPConj GCAnd (leanExp2gfProp p) (leanExp2gfProp q)
-    EApp (EVar (VId (Id s))) (AExp e) -> GPAtom (GAPred1 (LexPred1 s) (leanExp2gfInd e))
+    ENot e ->
+        GPNeg (leanExp2gfProp e)
+    EAnd p q ->
+        GPConj GCAnd (leanExp2gfProp p) (leanExp2gfProp q)
+    EOr p q ->
+        GPConj GCOr (leanExp2gfProp p) (leanExp2gfProp q)
+    EIf p q ->
+        GPImpl (leanExp2gfProp p) (leanExp2gfProp q)
+    EApp (EVar (VId (Id s))) (AExp e) ->
+        GPAtom (GAPred1 (LexPred1 s) (leanExp2gfInd e))
     _ -> error $ "sorry, not yet " ++ show exp
 
 
 leanExp2gfInd :: AbsLean.Exp -> MathText.GInd
 leanExp2gfInd exp = case exp of
     EInt i -> GIInt (GInt (fromInteger i))
+    EVar (VId (Id x)) -> GIVar (GVString (GString x))
     _ -> error $ "sorry, not yet " ++ show exp
 
 
 optimizeGF :: MathText.Tree a -> MathText.Tree a
 optimizeGF tree = case tree of
-    GPNeg (GPAtom a) -> GPNegAtom a
+    GPNeg (GPAtom a) ->
+        GPNegAtom a
+    GPConj conj (GPAtom (GAPred1 p x)) (GPAtom (GAPred1 q y)) | p == q ->
+        GPAtom (GAPred1 p (GConjInd conj (GListInd [x, y])))  
+    GPConj conj (GPAtom (GAPred1 p x)) (GPAtom (GAPred1 q y)) | x == y ->
+        GPAtom (GAPred1 (GConjPred1 conj (GListPred1 [p, q])) x)
     _ -> MathText.composOp optimizeGF tree
     
 

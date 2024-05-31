@@ -131,6 +131,7 @@ ESum.   Exp8 ::= Exp9 "⊕" Exp8 ;  --- right associative?
 EDisj.  Exp7 ::= Exp7 "∨" Exp8 ;
 EOr.    Exp7 ::= Exp7 "||" Exp8 ;
 EImpl.  Exp4 ::= Exp5 "→" Exp4 ;
+EIf.    Exp4 ::= Exp5 "->" Exp4 ;
 
 EFun.   Exp2 ::= Fun [VarDecl] Annot Fundef ; --- overgenerating?
 
