@@ -6,41 +6,52 @@ import ParLean (pCode, pExp, myLexer)
 import LayoutLean (resolveLayout)
 import MathText
 import PGF
-import ErrM
+import ErrM --- in some bnfc
+import System.Environment (getArgs)
 
 
 nlGrammar = "../grammars/MathText.pgf"
 
 main = do
+    xx <- getArgs
     gr <- readPGF nlGrammar
-    interact (lean2text gr)
+    interact (lean2text xx gr)
 
 
-lean2text :: PGF -> String -> String
-lean2text pgf s =
-  let
-      tokens = myLexer s
---      tokens = resolveLayout True $ myLexer s
-      etree = pExp tokens -- pCode
-  in case etree of
-      Ok tree -> unlines [
-          show tree,
-	  linearizations pgf tree
-	  ]
-      Bad err -> err
+lean2text :: [String] -> PGF -> String -> String
+lean2text args pgf s =
+  case args of
+----      "Code":_ ->
+----          processCode pgf (pCode (resolveLayout True (myLexer s)))
+      _ ->
+          processExp pgf (pExp (myLexer s))
 
 
-linearizations :: PGF -> Exp -> String
-linearizations pgf exp =
+processExp pgf etree =
+    case etree of
+        Ok tree -> unlines [
+            show tree,
+	    linearizations pgf (lean2pgf tree)
+	    ]
+        Bad err -> err
+
+
+linearizations :: PGF -> PGF.Expr -> String
+linearizations pgf expr =
     unlines [
-        linearize pgf cnc tree | cnc <- languages pgf
+        linearize pgf cnc expr | cnc <- languages pgf
     ]
-  where
-    tree = lean2pgf exp
 
 
 lean2pgf :: AbsLean.Exp -> PGF.Expr
-lean2pgf = (gf :: GProp -> Expr) . optimizeGF . leanExp2gfProp
+lean2pgf =
+    (gf :: GProp -> Expr) . optimizeGF . leanExp2gfProp
+----    "Code" -> (gf :: GParagraph -> Expr) . optimizeGF . leanCode2gfParagraph
+
+
+leanCode2gfParagraph :: AbsLean.Code -> MathText.GParagraph
+leanCode2gfParagraph code = case code of
+    _ -> error $ "sorry, not yet " ++ show code
 
 
 leanExp2gfProp :: AbsLean.Exp -> MathText.GProp
