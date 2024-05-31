@@ -23,7 +23,7 @@ lean2text args pgf s =
   let inp = case args of
         "Exp":_ -> "#check " ++ s ++ ";"
         _ -> s
-  in processCode pgf (pCode (resolveLayout True (myLexer s)))
+  in processCode pgf (pCode (resolveLayout True (myLexer inp)))
 
 
 processCode pgf etree =
@@ -33,6 +33,7 @@ processCode pgf etree =
                 map (\expr -> 
                     unlines [
                         show code,
+			showExpr [] expr,
 	                linearizations pgf expr
 	                ])
                     (lean2pgf code)
@@ -72,10 +73,12 @@ leanExp2gfProp exp = case exp of
         GPConj GCOr (leanExp2gfProp p) (leanExp2gfProp q)
     EIf p q ->
         GPImpl (leanExp2gfProp p) (leanExp2gfProp q)
-----    EUnivVars vs typ body ->
-----        GPUnivs (leanListVar2gfListVar vs) (leanExp2gfKind typ) (leanExp2gfProp body)
+    EUnivVars vs typ body ->
+        GPUnivs (GListVar (map leanVar2gfVar vs)) (leanExp2gfKind typ) (leanExp2gfProp body)
+    EExistVars vs typ body ->
+        GPExists (GListVar (map leanVar2gfVar vs)) (leanExp2gfKind typ) (leanExp2gfProp body)
     EApp (EVar (VId (Id s))) (AExp e) ->
-        GPAtom (GAPred1 (LexPred1 s) (leanExp2gfInd e))
+        GPAtom (GAPred1 (LexPred1 (leanId2gfLex s)) (leanExp2gfInd e))
     _ -> error $ "sorry, not yet " ++ show exp
 
 
@@ -92,9 +95,25 @@ leanExp2gfInd :: AbsLean.Exp -> MathText.GInd
 leanExp2gfInd exp = case exp of
     EInt i ->
         GIInt (GInt (fromInteger i))
-    EVar (VId (Id x)) ->
-        GIVar (GVString (GString x))
+    EVar v ->
+        GIVar (leanVar2gfVar v)
     _ -> error $ "sorry, not yet " ++ show exp
+
+
+leanVar2gfVar :: AbsLean.Var -> MathText.GVar
+leanVar2gfVar var = case var of
+    VId (Id s) ->
+        GVString (GString s)
+
+
+leanVarDecl2gfHypothesis :: AbsLean.VarDecl -> MathText.GHypothesis
+leanVarDecl2gfHypothesis vardecl = case vardecl of
+    VDTyped vars exp ->
+        GHypTyping (GListVar (map leanVar2gfVar vars)) (leanExp2gfKind exp)
+
+
+leanId2gfLex :: String -> String
+leanId2gfLex s = s ----
 
 
 optimizeGF :: MathText.Tree a -> MathText.Tree a

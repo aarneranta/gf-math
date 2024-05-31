@@ -16,7 +16,6 @@ lincat
   Condition = {s : Agreement => Cl} ;
   Hypothesis = Text ;
   [Hypothesis] = {s : Text ; isInhabited : Bool} ;
-  [Variable] = NP ;
 
 oper
   Agreement : PType = {} ;
@@ -49,9 +48,6 @@ lin
   
   BaseHypothesis = {s = emptyText ; isInhabited = False} ;
   ConsHypothesis h hs = {s = mkText h hs.s ; isInhabited = True} ; 
-
-  BaseVariable x = symb (mkSymb (mathEnv x)) ;
-  ConsVariable x xs = mkNP and_Conj (symb (mkSymb (mathEnv x))) xs ;
 
 -- using Wikidata --- the categories should be decided there
   KindQN qn = qn ;

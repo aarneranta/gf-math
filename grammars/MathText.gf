@@ -14,7 +14,6 @@ cat
   Condition ;
   Hypothesis ;
   [Hypothesis] ;
-  [Variable] {1} ;
 
 fun
   ParDefinition : [Hypothesis] -> Definition -> Paragraph ;
@@ -29,7 +28,7 @@ fun
   CondPred1 : Pred1 -> Condition ;
   CondItsFun1 : Fun1 -> Pred1 -> Condition ;
 
-  HypTyping : [Variable] -> Kind -> Hypothesis ;
+  HypTyping : [Var] -> Kind -> Hypothesis ;
   
 -- using Wikidata
   KindQN : QN -> Kind ;
