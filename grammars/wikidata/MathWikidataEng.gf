@@ -6,8 +6,11 @@ oper mkQN = overload {
   mkQN : CN -> CN = \n -> n ;  -- for working around the heuristics
   mkQN : (_ : Str) -> CN = \n -> mkCN (mkN n) ;
   mkQN : (_, _ : Str) -> CN = \adj, n -> (mkCN (mkA adj) (mkN n)) ;
-  mkQN : (_, _, _ : Str) -> CN = \ada, adj, n -> 
-    (mkCN (mkAP (lin AdA {s = ada}) (mkA adj)) (mkN n)) ;
+  mkQN : (_, _, _ : Str) -> CN = \ada, adj, n ->
+    case adj of {
+      "of" => mkCN (mkN ada) (SyntaxEng.mkAdv possess_Prep (mkNP (mkN n))) ;
+      _ => (mkCN (mkAP (lin AdA {s = ada}) (mkA adj)) (mkN n))
+      } ;
 ---  mkQN : (_, _, _, _ : Str) -> QN = mkCN ;
 ---  mkQN : (_, _, _, _, _ : Str) -> QN = mkCN ;
 ---  mkQN : (_, _, _, _, _, _ : Str) -> QN = mkCN ;
@@ -545,7 +548,7 @@ lin abelianization_Q318598_QN = mkQN "abelianization" ;
 lin annihilator_Q567083_QN = mkQN "annihilator" ;
 lin associativity_Q177251_QN = mkQN "associativity" ;
 lin automorphism_Q782566_QN = mkQN "automorphism" ;
-lin basis_Q810193_QN = mkQN "basis" ;
+lin basis_Q810193_QN = mkQN (mkCN (mkN "basis" "bases")) ;
 lin bijection_Q180907_QN = mkQN "bijection" ;
 lin boundary_Q875399_QN = mkQN "boundary" ;
 lin boundary_Q78323465_QN = mkQN "boundary" ;
@@ -583,7 +586,7 @@ lin functor_Q864475_QN = mkQN "functor" ;
 lin gradient_Q173582_QN = mkQN "gradient" ;
 lin graph_Q141488_QN = mkQN "graph" ;
 lin groupoid_Q1196038_QN = mkQN "groupoid" ;
-lin basis_Q189569_QN = mkQN "basis" ;
+lin basis_Q189569_QN = mkQN (mkCN (mkN "basis" "bases")) ;
 lin homeomorphism_Q202906_QN = mkQN "homeomorphism" ;
 lin homologous_Q12715503_QN = mkQN "homologous" ;
 lin Homology_Q1144780_QN = mkQN "Homology" ;
