@@ -6,6 +6,18 @@ import urllib.request
 import json
 
 
+# to create the qs.tmp file with one Q item per line
+def get_wiki_items():
+    with open('wikidata/query.json') as file:
+        its = json.load(file)
+        length = len('http://www.wikidata.org/entity/')
+        js = [it['item'][length:] for it in its]
+    for j in js:
+        print(j)
+
+# get_wiki_items()  ## >qs.tmp
+
+
 # to start, direct this into qs.jsonl; not to be repeated
 def get_wikidata_jsonl():
     with open('qs.tmp') as file:
@@ -18,6 +30,8 @@ def get_wikidata_jsonl():
                 print(json.dumps(data))
         except:
             pass
+
+# get_wikidata_jsonl()  # >qs.jsonl
 
 
 # then use the generated file to collect labels, direct to qid-lexicon.jsonl
@@ -34,6 +48,8 @@ def wikidata2lexicon():
 #            print(labdict)
 ##            lexicon[labels[0]] = {lab: labels[1][lab]['value'] for lab in labels[1]}
             print(json.dumps(labdict, ensure_ascii=False))
+
+# wikidata2lexicon()  # >qid-lexicon.jsonl
 
 
 # to get statistics about the languages covered
@@ -63,6 +79,7 @@ language_codes = {
     'hr': 'Hrv',
     'it': 'Ita',
     'pt': 'Por',
+    'sl': 'Slv',
     'sv': 'Swe'
   }
 
@@ -124,7 +141,7 @@ def lexicon2gf(*langs):
         
 
 
-lexicon2gf('en', 'pt', 'hr')
+# lexicon2gf('en', 'sl')
 
 
 
