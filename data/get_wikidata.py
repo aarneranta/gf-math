@@ -69,6 +69,45 @@ def wikidata_stats():
 # wikidata_stats()
 
 
+# to get all labels of a given list of language codes, and qid if included in the list
+def show_all_labels(langs):
+    with open('qid-lexicon.jsonl') as file:
+        for line in file:
+            dict = json.loads(line)
+            qid = list(dict.keys())[0]  # there is only one, the QId
+            labels = dict[qid]
+            fields = [qid] if 'qid' in langs else []
+            fields.extend([labels.get(lang, 'NONE') for lang in langs if lang != 'qid'])
+            print('\t'.join(fields))
+
+show_all_labels(['qid', 'en', 'de'])
+
+
+# build a dict from a jsonl file with dicts
+def jsonl_dicts_to_dict(filename):
+    dict = {}
+    with open(filename) as file:
+        for line in file:
+            entry = json.loads(line)
+            key = list(entry.keys())[0]
+            dict[key] = entry[key]
+    return dict
+
+
+# merge two lexica by adding lex1 to lex2
+def merge_lexica(lex1, lex2):
+    dict1 = jsonl_dicts_to_dict(lex1)
+    dict2 = jsonl_dicts_to_dict(lex2)
+    for k in dict2:
+        if k not in dict1:
+            dict1[k] = dict2[k]
+    for k in dict1:
+        dict = {k: dict1[k]}
+        print(json.dumps(dict, ensure_ascii=False))
+
+# merge_lexica('qid-lexicon.jsonl', 'qid-lexicon-1.jsonl')
+
+
 # convert 2-letter codes to 3-letter ones
 language_codes = {
     'ar': 'Ara',
