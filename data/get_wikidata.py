@@ -4,6 +4,7 @@
 
 import urllib.request
 import json
+import sys
 
 
 # to create the qs.tmp file with one Q item per line
@@ -80,7 +81,7 @@ def show_all_labels(langs):
             fields.extend([labels.get(lang, 'NONE') for lang in langs if lang != 'qid'])
             print('\t'.join(fields))
 
-show_all_labels(['qid', 'en', 'de'])
+# show_all_labels(['qid', 'en', 'de'])
 
 
 # build a dict from a jsonl file with dicts
@@ -177,11 +178,16 @@ def lexicon2gf(*langs):
                 file.write(' '.join(['lin', fun[1], '=', 'mkQN'] + ['"' + w + '"' for w in fun[2][lan]] + [';\n']))
             file.write('}\n')
 
-        
 
-
+## if __name__ == '__main__':
+    
+# get_wiki_items()  # >qs.tmp
+# get_wikidata_jsonl()  # >qs.jsonl
+# wikidata2lexicon()  # >qid-lexicon.jsonl
+# wikidata_stats()
+# show_all_labels(['qid', 'en', 'de'])
+# merge_lexica('qid-lexicon.jsonl', 'qid-lexicon-1.jsonl')
 # lexicon2gf('en', 'sl')
-
 
 
 
