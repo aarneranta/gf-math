@@ -1,0 +1,14 @@
+Build UD treebank:
+
+cat ~/informath/gf-math/data/qenu.tmp | ./deptreepy.py txt2conllu >qen.conllu
+
+Notice: qenu.tmp nees empty lines between text lines.
+
+From udpipe1_params.yaml:
+
+model: english-ewt-ud-2.12-230717
+# other params to come, see https://lindat.mff.cuni.cz/services/udpipe/api-reference.php
+
+see https://lindat.mff.cuni.cz/services/udpipe/api/models
+
+For German, select german-hdt-ud-2.12-230717

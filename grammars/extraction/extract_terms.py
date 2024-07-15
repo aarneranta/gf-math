@@ -1,10 +1,18 @@
 import pgf
 import sys
 
-# assumes gf -make <cncname>.gf
+sys.path.append('deptreepy')
 
-# langname = 'Eng'
-langname = 'Ger'
+import trees 
+
+
+if sys.argv[1:]:
+    langname = sys.argv[1]
+else:
+    print('usage: extract_terms.py <lang> < <lines_with_terms>')
+    print('assumes gf -make Extract<lang>.gf')
+    print('also assumes symlink to deptreepy')
+    exit()
 
 pgfname = 'Extract' + langname + 'Abs.pgf'
 cncname = 'Extract' + langname
