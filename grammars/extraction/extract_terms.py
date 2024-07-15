@@ -46,8 +46,8 @@ def main():
             unknowns = unknowns | set(result)
             
 
-    print('#', 'SUCCESS', success, 'FAILURE', failure)
-#    for u in unknowns: print(u)
+#    print('#', 'SUCCESS', success, 'FAILURE', failure)
+    for u in unknowns: print(u)
 
 main()
 

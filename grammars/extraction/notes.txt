@@ -12,3 +12,19 @@ model: english-ewt-ud-2.12-230717
 see https://lindat.mff.cuni.cz/services/udpipe/api/models
 
 For German, select german-hdt-ud-2.12-230717
+
+Get words and lemmas from CoNLLU
+
+cat qde.conllu | cut -f2,3,4,6 | grep -v '# ' | sort -u >qde-words.tsv
+
+Unknown words extraction:
+
+cat ../../data/qde.tmp |  python3 extract_terms.py Ger >wde.tmp
+
+with the last line uncommented in the .py file
+This gives us 1716 unknown words
+
+GF file extraction:
+
+   python3 words_from_ud.py
+
