@@ -26,11 +26,11 @@ lin
   UseN n = mkCN n ;
   AdjCN ap cn = mkCN ap cn ;
   CompoundN x y = E.CompoundN x y ; 
-  IntCompoundCN i x = prefixCN (i.s ++ "-") x ;
+  IntCompoundCN i x = prefixCN (i.s ++ hyphen) x ;
   NameCompoundCN n x = prefixCN (mkUtt (mkNP n)).s x ;
   NounIntCN cn i = mkCN cn (symb i) ;
   NounPrepCN cn adv = mkCN cn adv ;
----  NounGenCN cn np = mkCN cn (mkAdv P.genPrep np) ;
+  NounGenCN cn np = prefixCN (mkUtt (mkNP (E.GenNP np))).s cn ;
 
   DefCN cn = mkNP the_Det cn ;
   DefPluralCN cn = mkNP thePl_Det cn ;
@@ -46,7 +46,7 @@ lin
 oper
   prefixCN : Str -> CN -> CN = \s, cn ->
     cn ** {s = \\n, c => s ++ cn.s ! n ! c} ;
-    
-  --- (s ++ Predef.BIND ++ "-" ++ Predef.BIND) ;
+
+  hyphen : Str = Predef.BIND ++ "-" ++ Predef.BIND ;
 
 }
