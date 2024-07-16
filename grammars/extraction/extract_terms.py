@@ -38,7 +38,11 @@ def mk_gf_fun(s):
         return s
     else:
         return "'" + s + "'"
- 
+
+    
+def fix_hyphen(s):
+    return s.replace(' - ', '-')
+
 
 def main():
     gr = pgf.readPGF(pgfname)
@@ -49,7 +53,7 @@ def main():
         s = s.strip()
         r, result = extract_term(cnc, s)
         if r:
-            print(s, result)
+            print(fix_hyphen(s), '\t', result, sep='')
             success += 1
         else:
             print(s, 'UNKNOWN', result) 

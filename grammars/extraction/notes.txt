@@ -50,3 +50,19 @@ Residual words guessed as proper names obtained by
 
 and pasted to MathWordsGer
 
+Merging the results into a table with QId, Eng, Ger, Cat, Englin, Gerlin:
+
+  python3 merge_terms.py
+
+So many were lost in both, Eng, and Ger, respectively:
+  
+  python3 merge_terms.py | cut -f4 | grep LOST | wc
+     808     808    4040
+  python3 merge_terms.py | cut -f5 | grep LOST | wc
+    1335    1335    6675
+  python3 merge_terms.py | cut -f6 | grep LOST | wc
+    2900    2900   14500
+
+The cat is unified to the smallest common cat of the two languages, however, wrapped to CN if it is N.
+
+
