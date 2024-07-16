@@ -11,7 +11,8 @@ model: english-ewt-ud-2.12-230717
 
 see https://lindat.mff.cuni.cz/services/udpipe/api/models
 
-For German, select german-hdt-ud-2.12-230717
+For German, select first german-hdt-ud-2.12-230717,
+then german-gsd-ud-2.12-230717, which turns out to be better.
 
 Get words and lemmas from CoNLLU
 
@@ -26,5 +27,20 @@ This gives us 1716 unknown words
 
 GF file extraction:
 
-   python3 words_from_ud.py
+   python3 words_from_ud.py >dew2.tmp
+
+
+   python3 words_from_ud.py | grep "fun " | sort -u >MathWordsGerAbs.gf
+   python3 words_from_ud.py | grep "lin " | sort -u >MathWordsGer.gf 
+
+Then add appropriate headers to these files. Obtain 909 words.
+Test in GF an fix a few things until it compiles.
+
+Add MathWordsGer to the inheritance of ExtractGer and compile.
+
+Now, try term extraction again:
+
+cat ../../data/qde.tmp | python3 extract_terms.py Ger
+
+
 

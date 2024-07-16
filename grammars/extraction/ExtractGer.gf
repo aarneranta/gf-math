@@ -4,6 +4,7 @@
 
 concrete ExtractGer of ExtractGerAbs =
   MorphoDictGer,
+  MathWordsGer,
   StructuralGer
 
 ** open

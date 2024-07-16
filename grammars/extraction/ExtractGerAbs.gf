@@ -1,5 +1,6 @@
 abstract ExtractGerAbs =
   MorphoDictGerAbs,
+  MathWordsGerAbs,
   Structural
 
 ** {
