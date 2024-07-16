@@ -43,4 +43,10 @@ Now, try term extraction again:
 cat ../../data/qde.tmp | python3 extract_terms.py Ger
 
 
+Residual words guessed as proper names obtained by
+
+  cat ../../data/qde.tmp | python3 extract_terms.py Ger unknownsPN | grep "fun " | sort -u >funs.tmp
+  cat ../../data/qde.tmp | python3 extract_terms.py Ger unknownsPN | grep "lin " | sort -u >lins.tmp
+
+and pasted to MathWordsGer
 
