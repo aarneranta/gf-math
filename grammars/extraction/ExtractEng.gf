@@ -4,12 +4,15 @@
 
 concrete ExtractEng of ExtractEngAbs =
   MorphoDictEng,
-  CatEng  [NP, CN, AP, AdA]
+  MathWordsEng
 --  StructuralEng
 
 ** open
   SyntaxEng,
-  (E=ExtendEng)
+  SymbolicEng,
+  (E=ExtendEng),
+  (P=ParadigmsEng),
+  (R=ResEng)
   in {
 
 lincat
@@ -23,6 +26,11 @@ lin
   UseN n = mkCN n ;
   AdjCN ap cn = mkCN ap cn ;
   CompoundN x y = E.CompoundN x y ; 
+  IntCompoundCN i x = prefixCN (i.s ++ "-") x ;
+  NameCompoundCN n x = prefixCN (mkUtt (mkNP n)).s x ;
+  NounIntCN cn i = mkCN cn (symb i) ;
+  NounPrepCN cn adv = mkCN cn adv ;
+---  NounGenCN cn np = mkCN cn (mkAdv P.genPrep np) ;
 
   DefCN cn = mkNP the_Det cn ;
   DefPluralCN cn = mkNP thePl_Det cn ;
@@ -34,5 +42,11 @@ lin
   AdAP ad ap = mkAP ad ap ;
 
   PrepNP prep np = mkAdv prep np ;
+
+oper
+  prefixCN : Str -> CN -> CN = \s, cn ->
+    cn ** {s = \\n, c => s ++ cn.s ! n ! c} ;
+    
+  --- (s ++ Predef.BIND ++ "-" ++ Predef.BIND) ;
 
 }
