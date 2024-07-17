@@ -1,3 +1,4 @@
+from gf_utils import *
 import pgf
 import sys
 
@@ -33,13 +34,6 @@ def extract_term(cnc, s):
         return False, unknowns
 
 
-def mk_gf_fun(s):
-    if all(c.isdigit() or c.isalpha() or c in "_'" for c in s):
-        return s
-    else:
-        return "'" + s + "'"
-
-    
 def fix_hyphen(s):
     return s.replace(' - ', '-')
 
@@ -58,8 +52,7 @@ def main():
         else:
             print(s, 'UNKNOWN', result) 
             failure += 1
-            unknowns = unknowns | set(result)
-            
+            unknowns = unknowns | set(result)            
 
     print('#', 'SUCCESS', success, 'FAILURE', failure)
 
@@ -70,9 +63,11 @@ def main():
     if mode == 'unknownsPN':
         for u in unknowns:
             if u[0].isupper():
-                fun = mk_gf_fun(u + '_PN')
-                print('fun', fun, ':', 'PN', ';')
-                print('lin', fun, '=', 'mkPN', '"'+u+'"', ';')
+                fun = mk_fun(u + '_PN')
+                print(mk_fun_rule(fun, 'PN'))
+                print(mk_lin_rule(fun, mk_lin('mkPN', [u], []))) 
 
-main()
+
+if __name__ == '__main__':
+    main()
 

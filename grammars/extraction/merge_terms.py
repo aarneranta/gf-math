@@ -1,4 +1,7 @@
 import pgf
+from gf_utils import *
+import json
+import sys
 
 QID_FILE = '../../data/en_de.tsv'
 EN_FILE = 'en_gf.tsv'
@@ -22,6 +25,11 @@ endict = get_dict(EN_FILE)
 engrammar = pgf.readPGF(EN_PGF_FILE)
 degrammar = pgf.readPGF(DE_PGF_FILE)
 
+LOST = 'LOST'
+
+def is_lost(s):
+    return s == LOST
+
 
 def val_type(grammar, tree):
     return grammar.inferExpr(tree)[1]
@@ -32,9 +40,9 @@ def unify_trees(en, de):
     fde, deargs = de.unpack()
     if fen == fde and len(enargs) == len(deargs) == 1:
         return unify_trees(enargs[0], deargs[0])
-    elif fen == 'LOST':
-        if fde == 'LOST':
-            return en, de, pgf.readExpr('LOST')
+    elif is_lost(fen):
+        if is_lost(fde):
+            return en, de, pgf.readExpr(LOST)
         else:
             return en, de, val_type(degrammar, de)
     else:
@@ -52,28 +60,53 @@ def peel_tree(grammar, tree, ty):
 
     
 def adjust_tree(en, de, ty):
-    if str(ty) == 'LOST':
+    if is_lost(str(ty)):
         return en, de, ty
     elif str(ty) == 'N':
         ty = pgf.readExpr('CN')
         en = pgf.Expr('UseN', [en])
         de = pgf.Expr('UseN', [de])
-    elif str(en) == 'LOST':
+    elif is_lost(str(en)):
         de, ty = peel_tree(degrammar, de, ty)
-    elif str(de) == 'LOST':
+    elif is_lost(str(de)):
         en, ty = peel_tree(engrammar, en, ty)
     return en, de, ty
 
     
 with open(QID_FILE) as file:
+    mdict = {}
+    wss = []
     for line in file:
         ws = [w.strip() for w in line.split('\t')]
-        en = pgf.readExpr(endict.get(ws[1], 'LOST').strip())
-        de = pgf.readExpr(dedict.get(ws[2], 'LOST').strip())
+        en = pgf.readExpr(endict.get(ws[1], LOST).strip())
+        de = pgf.readExpr(dedict.get(ws[2], LOST).strip())
         en, de, ty = unify_trees(en, de)
         en, de, ty = adjust_tree(en, de, ty)
         ws.append(str(ty))
         ws.append(str(en))
         ws.append(str(de))
-        print('\t'.join(ws))
+        wss.append(ws)
+        mdict[ws[0]] = {
+            'cat': ws[3],
+            'fun': mk_fun('_'.join(ws[1].split() + [ws[0], ws[3]])),
+            'status': not is_lost(ws[3]),
+            'Eng': {'str': ws[1], 'lin': ws[4], 'status': not is_lost(ws[4])},
+            'Ger': {'str': ws[2], 'lin': ws[5], 'status': not is_lost(ws[4])},
+        }
+
+        
+if sys.argv[1:]:
+    mode = sys.argv[1]
+    if mode == 'json':
+        print(json.dumps(mdict, ensure_ascii=False))
+    elif mode == 'gf':
+        print_gf_files('MathTerms', mdict)
+        
+
+else:
+    [print('\t'.join(ws)) for ws in wss]
+
+
+        
+
 
