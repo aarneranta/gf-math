@@ -65,4 +65,11 @@ So many were lost in both, Eng, and Ger, respectively:
 
 The cat is unified to the smallest common cat of the two languages, however, wrapped to CN if it is N.
 
+An optional argument gives different behavious: print actual GF files, and dump a json dict:
+
+  python3 merge_terms.py gf
+  python3 merge_terms.py json
+
+
+
 
