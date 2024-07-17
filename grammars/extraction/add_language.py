@@ -5,6 +5,10 @@ import sys
 import json
 from extract_terms import extract_term
 
+# make a symlink to deptreepy
+sys.path.append('deptreepy')
+import trees
+
 # give 2-letter and 3-letter language codes as command line arguments
 if sys.argv[2:]:
     LAN = sys.argv[1]
@@ -29,7 +33,7 @@ with open(WIKIDATA_FILE) as file:
 ## for qid in qdict: print('\t'.join([qid, qdict[qid]]))
 
 
-#### step 2: parse the data with ExtractLANG
+#### step 2: parse the data with ExtractLANG to find unknown words
 
 # you have to create ExtractLANG and compile it to a pgf file
 #   gf -make ExtractLang.gf
@@ -41,9 +45,29 @@ CNC_NAME = 'Extract' + LANG
 grammar = pgf.readPGF(PGF_FILE)
 concrete = grammar.languages[CNC_NAME]
 
+
+# parse just to find the unknown words
+unknowns = []
+tohandle = []
 for s in qdict.values():
+
     val = extract_term(concrete, s)
-    print(s, val[0], str(val[1]))
+    if val[0] == False and s[0].isupper():  # try again if capitalized
+        s1 = s[0].upper() + s[1:]
+        val = extract_term(concrete, s1)
+    if val[0] == False:
+        unknowns.extend(val[1])
+        tohandle.append(s)
+
+unknown_words = set(unknowns)
+terms_toparse = set(tohandle)
+
+# save unknown words LAN_tohandle.tmp
+with open(LAN + '_tohandle.tmp', 'w') as file:
+    for s in terms_toparse:
+        file.write(s + '\n')
+
+
 
 
 

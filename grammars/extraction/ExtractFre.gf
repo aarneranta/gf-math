@@ -12,7 +12,8 @@ concrete ExtractFre of ExtractFreAbs =
   SymbolicFre,
   (E=ExtendFre),
   (P=ParadigmsFre),
-  (R=ResFre)
+  (R=ResFre),
+  (M=MakeStructuralFre)
   in {
 
 lincat
@@ -36,7 +37,7 @@ lin
   DefPluralCN cn = mkNP thePl_Det cn ;
   IndefCN cn = mkNP a_Det cn ;
   IndefPluralCN cn = mkNP aPl_Det cn ;
-  BareCN cn = mkNP cn ;
+  BareCN cn = mkNP (M.mkDet "") cn ;
 
   PositA a = mkAP a ;
   AdAP ad ap = mkAP ad ap ;
