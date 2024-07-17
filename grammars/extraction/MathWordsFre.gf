@@ -1,0 +1,2 @@
+concrete MathWordsFre of MathWordsFreAbs =
+{}
