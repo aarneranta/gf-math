@@ -44,6 +44,10 @@ lin
   PrepNP prep np = mkAdv prep np ;
 
 oper
+  -- not used for parsing, but as replacements of Int-functions when used as lin terms, as a work-around to GF type checking
+  nounStrCN : CN -> Str -> CN = \cn, s -> mkCN cn (symb s) ;
+  strCompoundCN : Str -> CN -> CN = \s, cn -> prefixCN (s ++ hyphen) cn ;
+
   prefixCN : Str -> CN -> CN = \s, cn ->
     cn ** {s = \\n, c => s ++ cn.s ! n ! c} ;
 

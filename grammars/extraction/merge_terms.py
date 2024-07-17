@@ -72,6 +72,23 @@ def adjust_tree(en, de, ty):
         en, ty = peel_tree(engrammar, en, ty)
     return en, de, ty
 
+
+def fix_integers(tree):
+    "workaround for GF: integer arguments are changed to strings"
+    fun, args = tree.unpack()
+    if fun == 'NounIntCN':
+        return pgf.Expr('nounStrCN', [
+            fix_integers(args[0]),
+            pgf.readExpr(quote(str(args[1])))])
+    elif fun == 'IntCompoundCN':
+        return pgf.Expr('strCompoundCN', [
+            pgf.readExpr(quote(str(args[0]))),
+            fix_integers(args[1])])
+    elif args:
+        return pgf.Expr(fun, [fix_integers(arg) for arg in args if not str(arg).isdigit()])
+    else:
+        return tree
+    
     
 with open(QID_FILE) as file:
     mdict = {}
@@ -83,15 +100,15 @@ with open(QID_FILE) as file:
         en, de, ty = unify_trees(en, de)
         en, de, ty = adjust_tree(en, de, ty)
         ws.append(str(ty))
-        ws.append(str(en))
-        ws.append(str(de))
+        ws.append(str(fix_integers(en)))
+        ws.append(str(fix_integers(de)))
         wss.append(ws)
         mdict[ws[0]] = {
             'cat': ws[3],
             'fun': mk_fun('_'.join(ws[1].split() + [ws[0], ws[3]])),
             'status': not is_lost(ws[3]),
             'Eng': {'str': ws[1], 'lin': ws[4], 'status': not is_lost(ws[4])},
-            'Ger': {'str': ws[2], 'lin': ws[5], 'status': not is_lost(ws[4])},
+            'Ger': {'str': ws[2], 'lin': ws[5], 'status': not is_lost(ws[5])},
         }
 
         

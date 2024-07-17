@@ -47,6 +47,9 @@ lin
   PrepNP prep np = mkAdv prep np ;
 
 oper
+  nounStrCN : CN -> Str -> CN = \cn, s -> mkCN cn (symb s) ;
+  strCompoundCN : Str -> CN -> CN = \s, cn -> mkCN (hyphenPrefixA s) cn ;
+
   hyphenPrefixA : Str -> A = \s ->
 --    P.invarA (s ++ Predef.BIND ++ "-" ++ Predef.BIND) ;
     P.invarA (s ++ "-") ; -- needs insertion of spaces 
