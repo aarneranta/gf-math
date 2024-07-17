@@ -8,7 +8,11 @@ def mk_fun(s):
 def quote(s):
     return '"' + s + '"'
 
-    
+
+def app(fun, args):
+    return ' '.join([fun, quote(args[0])] + args[1:])
+
+
 def mk_lin(oper, words, params):
     return ' '.join([oper] + [quote(w) for w in words] + params) 
 
