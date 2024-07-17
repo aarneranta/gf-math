@@ -117,8 +117,13 @@ if sys.argv[1:]:
     if mode == 'json':
         print(json.dumps(mdict, ensure_ascii=False))
     elif mode == 'gf':
-        print_gf_files('MathTerms', mdict)
-        
+        print_gf_files(
+            'MathTerms',
+            '--# -path=.:morphodict:../extraction',
+            ['Cat'],
+            ['Extract'],
+            [('Term', 'Utt')],
+            mdict)
 
 else:
     [print('\t'.join(ws)) for ws in wss]

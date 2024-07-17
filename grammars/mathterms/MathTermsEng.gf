@@ -1,3 +1,4 @@
+--# -path=.:morphodict:../extraction
 concrete MathTermsEng of MathTerms = CatEng ** open ExtractEng in {
 lincat Term = Utt ;
 lin primary_decomposition_Q172298_CN = AdjCN (PositA primary_A) (UseN decomposition_N) ;

@@ -1,3 +1,4 @@
+--# -path=.:morphodict:../extraction
 concrete MathTermsGer of MathTerms = CatGer ** open ExtractGer in {
 lincat Term = Utt ;
 lin primary_decomposition_Q172298_CN = UseN (CompoundN (CompoundN p_N (CompoundN r_N i_N)) (CompoundN maer_N Zerlegung_N)) ;

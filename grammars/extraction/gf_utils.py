@@ -13,6 +13,10 @@ def mk_lin(oper, words, params):
     return ' '.join([oper] + [quote(w) for w in words] + params) 
 
 
+def mk_cat_rule(cat):
+    return ' '.join(['cat', cat, ';\n'])
+
+
 def mk_fun_rule(fun, cat):
     return ' '.join(['fun', fun, ':', cat, ';\n'])
 
@@ -21,12 +25,21 @@ def mk_lin_rule(fun, lin):
     return ' '.join(['lin', fun, '=', lin, ';\n'])
 
 
-def print_gf_files(absname, mdict):
+def mk_lincat_rule(cat, lin):
+    return ' '.join(['lincat', cat, '=', lin, ';\n'])
+
+
+def print_gf_files(absname, path, extends, opens, newcats, mdict):
     "dict format: qid: {'cat', 'fun', 'status', *lang: {'str', 'lin', 'status'}}"
     
     with open(absname + '.gf', 'w') as absfile:
-        absfile.write(' '.join(['abstract', absname, '=', 'Cat', '**', '{\n']))
-        absfile.write('cat Term ;\n')  ## TODO generalize
+        absfile.write(path + '\n')
+        absfile.write(' '.join(['abstract', absname, '='] +
+                               [', '.join(extends)] +
+                               (['**'] if extends else []) +
+                               ['{\n']))
+        for cat in newcats:
+            absfile.write(mk_cat_rule(cat[0]))
         for qid in mdict:
             if mdict[qid]['status']:
                 absfile.write(mk_fun_rule(mdict[qid]['fun'], mdict[qid]['cat']))
@@ -40,12 +53,18 @@ def print_gf_files(absname, mdict):
     for lang in langs:
         cncname = absname + lang
         with open(cncname + '.gf', 'w') as cncfile:
+            cncfile.write(path + '\n')
             cncfile.write(
-                ' '.join(['concrete', cncname, 'of', absname, '=',
-                          'Cat' + lang, '**', 'open',
-                          'Extract' + lang,  ## TODO generalize
-                          'in', '{\n']))
-            cncfile.write('lincat Term = Utt ;\n')  ## TODO generalize
+                ' '.join(['concrete', cncname, 'of', absname, '='] +
+                         [', '.join([e + lang for e in extends])] +
+                         (['**'] if extends else []) +
+                         (['open'] if opens else []) +
+                         [', '.join([o + lang for o in opens])] +
+                         (['in'] if opens else []) +
+                         ['{\n'])
+                )
+            for cat, lincat in newcats:
+                cncfile.write(mk_lincat_rule(cat, lincat))
             for qid in mdict:
                 if mdict[qid][lang]['status']:
                     cncfile.write(
