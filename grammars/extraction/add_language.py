@@ -5,6 +5,7 @@ import sys
 import json
 from extract_terms import extract_term
 from words_from_ud import words_main
+from gf_utils import print_gf_files
 
 # make a symlink to deptreepy
 sys.path.append('deptreepy')
@@ -28,6 +29,8 @@ UNPARSED_TERMS_FILE = 'unparsed_terms' + LANG + '.tmp'
 UNKNOWN_WORDS_FILE = 'unknown_words' + LANG + '.tmp'
 CONLLU_PARSED_FILE = 'terms_' + LANG + '.conllu'
 MORPHO_FILE = 'morphofuns_' + LANG + '.tmp'
+MATH_WORDS_ABS = 'MathWords' + LANG + 'Abs'
+MATH_WORDS_CNC_PREFIX = 'MathWords'
 
 
 #### step 1: extract wikidata for that language into qdict ####
@@ -99,9 +102,44 @@ if '2' in PHASES:
 ### Step 4: extract a lexicon of unknown words from the UD parse result
 
 ## external now: generate MORPHO_FILE_LANG by pg -funs from MorphoDictLANG
+## also: refine the extraction rules in words_from_ud.gf_lin()
 
 if '4' in PHASES:
-    words_main(CONLLU_PARSED_FILE, MORPHO_FILE, UNKNOWN_WORDS_FILE, LANG)
+    absrules, cncrules = words_main(
+        CONLLU_PARSED_FILE, MORPHO_FILE, UNKNOWN_WORDS_FILE, LANG)
+    mdict = {}
+    for i in range(len(absrules)):
+        mdict[i] = {
+            'cat': absrules[i][1],
+            'fun': absrules[i][0],
+            'status': True,
+            LANG: {'str': '', 'lin': cncrules[i][1], 'status': True}
+            }
+
+    print_gf_files(
+        MATH_WORDS_ABS, '', ['Cat'],
+        ['Paradigms'], [], mdict,
+        cncprefix=MATH_WORDS_CNC_PREFIX
+        )
+
+### Step 5: parse the terms again with the extended lexicon
+
+## do: gf -make ExtractLANG.gf
+
+if '5' in PHASES:
+    
+  for s in qdict.values():
+
+    val = extract_term(concrete, s)
+    if val[0] == False and s[0].isupper():  # try again if capitalized
+        s1 = s[0].upper() + s[1:]
+        val = extract_term(concrete, s1)
+        
+    print(val[0], str(val[1]))
+
+
+
+    
 
 
 

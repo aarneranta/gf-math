@@ -32,12 +32,12 @@ def gf_lin(word, udanalysis, lang=LANG):
     lemma, pos, feats = udanalysis
     fdict = param_dict(feats)
 
-    ugender = fdict.get('Gender', 'Neut')
+    ugender = fdict.get('Gender', 'Masc')   ## Neut for Ger could be better
     genders = {'Masc': 'masculine', 'Fem': 'feminine', 'Neut': 'neuter'}
-    gender = genders.get(ugender, 'neuter')
+    gender = genders.get(ugender, 'masculine')  ## neuter for Ger could be better
     number = fdict.get('Number', 'Sing')
 
-    if lang == 'Ger':
+    if lang in ['Fre', 'Ger']:
       match pos:
         case 'NOUN':
             if number == 'Plur':
@@ -46,16 +46,25 @@ def gf_lin(word, udanalysis, lang=LANG):
                 return lemma, app('mkN', [lemma, gender]), 'N'
         case 'PROPN':
             return lemma, app('mkPN', [lemma, gender]), 'PN'
-        case 'ADJ':
+        case 'ADJ' if lang == 'Ger':
             if len(lemma) > 6 and lemma[-2:] in {'er', 'es'}:
                 lemma = lemma[:-2]
             return lemma, app('mkA', [lemma]), 'A'
+        case 'ADJ':
+            return lemma, app('mkA', [lemma]), 'A'        
         case 'ADV':
             return lemma, app('mkAdv', [lemma]), 'Adv'
-        case 'VERB':
+        case 'VERB' if lang == 'Ger' and lemma[-1] == 'n':
             return lemma, app('mkV', [lemma]), 'V'
+        case 'VERB' if lang == 'Fre' and lemma[-2] in ['er', 'ir', 're']:
+            return lemma, app('mkV', [lemma]), 'V'
+        case _ if lemma[0].isupper():
+            return lemma, app('mkPN', [lemma, gender]), 'PN'
         case _:
             return ' '.join(['UNK', lemma, pos]), ''
+
+    # add your language here to get better quality!
+
     else:
       match pos:
         case 'NOUN':
@@ -71,23 +80,30 @@ def gf_lin(word, udanalysis, lang=LANG):
             return lemma, app('mkAdv', [lemma]), 'Adv'
         case 'VERB':
             return lemma, app('mkV', [lemma]), 'V'
+        case _ if lemma[0].isupper():
+            return 
         case _:
             return ' '.join(['UNK', lemma, pos]), ''
 
 
 def analyse_unknowns(wdict, moset, unkfile, lang=LANG):
+    absrules = []
+    cncrules = []
+    foundfuns = set()
     with open(unkfile) as file:
-        for line in file:
-            word = line.strip()
+        for word in [line.strip() for line in file]:
             if word in wdict:
                 analysis = gf_lin(word, wdict[word], lang)
                 if analysis[-1]:
                     cat = analysis[-1]
                     fun = mk_fun(analysis[0] + '_' + cat)
-                    lin = analysis[1]
-                    if fun not in moset:
-                        print(mk_fun_rule(fun, cat))
-                        print(mk_lin_rule(fun, lin))
+                    if fun not in foundfuns:
+                        foundfuns.add(fun)
+                        lin = analysis[1]
+                        if fun not in moset:
+                            absrules.append((fun, cat))
+                            cncrules.append((fun, lin))
+    return absrules, cncrules
 
 
 def build_moset(file):
@@ -98,11 +114,14 @@ def build_moset(file):
 def words_main(udfile, morphofile, unkfile, lang=LANG):
     wdict = build_wdict(udfile)
     moset = build_moset(morphofile)
-    analyse_unknowns(wdict, moset, unkfile, lang)
+    return analyse_unknowns(wdict, moset, unkfile, lang)
 
 
 if __name__ == '__main__':
-    words_main(UDFILE, MORPHOFILE, UNKFILE)
+    ars, crs = words_main(UDFILE, MORPHOFILE, UNKFILE)
+    for i in range(len(ars)):
+        print(ars[i])
+        print(crs[1])
 
 
 

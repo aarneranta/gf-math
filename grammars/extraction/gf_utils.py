@@ -33,7 +33,7 @@ def mk_lincat_rule(cat, lin):
     return ' '.join(['lincat', cat, '=', lin, ';\n'])
 
 
-def print_gf_files(absname, path, extends, opens, newcats, mdict):
+def print_gf_files(absname, path, extends, opens, newcats, mdict, cncprefix=None):
     "dict format: qid: {'cat', 'fun', 'status', *lang: {'str', 'lin', 'status'}}"
     
     with open(absname + '.gf', 'w') as absfile:
@@ -55,7 +55,7 @@ def print_gf_files(absname, path, extends, opens, newcats, mdict):
         break  # get lang names from the first item
 
     for lang in langs:
-        cncname = absname + lang
+        cncname = (cncprefix if cncprefix else absname) + lang
         with open(cncname + '.gf', 'w') as cncfile:
             cncfile.write(path + '\n')
             cncfile.write(
@@ -73,6 +73,8 @@ def print_gf_files(absname, path, extends, opens, newcats, mdict):
                 if mdict[qid][lang]['status']:
                     cncfile.write(
                         mk_lin_rule(mdict[qid]['fun'], mdict[qid][lang]['lin']))
+                else:
+                    print('-- BAD STATUS', qid)
             cncfile.write('}\n')
             print('wrote file', cncname + '.gf')
 
