@@ -4,7 +4,7 @@
 
 concrete ExtractFre of ExtractFreAbs =
   MorphoDictFre,
-  MathWordsFre,   -- initially empty
+  MathWordsFre, -- built by add_language.py
   StructuralFre
 
 ** open

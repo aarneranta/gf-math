@@ -31,19 +31,16 @@ else:
 
 WIKIDATA_FILE = '../../data/qid-lexicon.jsonl'
 NO_WIKILABEL = 'NOWIKILABEL'
-PGF_FILE = 'Extract' + LANG + 'Abs.pgf'
-CNC_NAME = 'Extract' + LANG
+EXTRACT_PGF_FILE = 'Extract' + LANG + 'Abs.pgf'
+EXTRACT_CNC_NAME = 'Extract' + LANG
 QLIST_FILE = 'qlist_' + LANG + '.json'
+NEW_QLIST_FILE = 'new_qlist_' + LANG + '.json'
 QDICT_FILE = 'qdict_' + LANG + '.json'
 CORPUS_FILE = 'corpus.tmp'
 CONLLU_PARSED_FILE = 'terms_' + LANG + '.conllu'
 UD_LEXICON_FILE = 'lexicon_' + LANG + '.json'
 MORPHODICT_CNC =  'MorphoDict' + LANG
 MORPHODICT_FILE = MORPHODICT_CNC + 'Abs.pgf'
-
-UNPARSED_TERMS_FILE = 'unparsed_terms' + LANG + '.tmp'
-UNKNOWN_WORDS_FILE = 'unknown_words' + LANG + '.tmp'
-MORPHO_FILE = 'morphofuns_' + LANG + '.tmp'
 MATH_WORDS_ABS = 'MathWords' + LANG + 'Abs'
 MATH_WORDS_CNC_PREFIX = 'MathWords'
 
@@ -65,7 +62,7 @@ def extract_wikidata(lang=LAN, wikifile=WIKIDATA_FILE, qlistfile=QLIST_FILE):
     return qlist
         
 if '1' in STEPS:
-    print('\nStep 1\n')
+    print('\nStep 1: Extracting Wikidata labels\n')
     print('reading', WIKIDATA_FILE)
     qlist = extract_wikidata()
     print('wrote file', QDICT_FILE)
@@ -95,7 +92,8 @@ def parse_with_udpipe(qlis=qlist, lang=LANG):
     os.system(cmd)
         
 if '2' in STEPS:
-    print('\nStep 2\n')
+    print('\nStep 2: Parsing data with UDPipe\n')
+    print('this will take some time...')
     parse_with_udpipe()
     print("wrote file", CONLLU_PARSED_FILE)
 
@@ -163,9 +161,9 @@ def fix_case(sqitems):
     if len(fixed):
         print('statistics case fixed:', len(fixed))
         new_qlist = [[qid, ' '.join(s)] for (qid, (s,_)) in sqitems]
-        with open(QLIST_FILE, 'w') as outfile:
+        with open(NEW_QLIST_FILE, 'w') as outfile:
             json.dump(new_qlist, outfile, ensure_ascii=False)
-        print('wrote corrected file', QLIST_FILE)
+    print('wrote corrected file', NEW_QLIST_FILE)
 
     # for use in lexicon extraction
     return sqitems
@@ -188,7 +186,10 @@ def build_raw_gf_dict(sqitems):
         for w in dict:
             info = tuple(dict[w][f] for f in ['LEMMA', 'POS', 'FEATS'])
             lin = gf_lin(w, info, LANG)
-            lemma = lin[0]
+            if lin:
+                lemma = lin[0]
+            else:
+                lemma = w
             if not lemma.startswith('UNK'):
                 rdict[lemma] = rdict.get(lemma, []) + [lin]
     rdict = {lemma: majority_element(rdict[lemma]) for lemma in rdict}
@@ -196,7 +197,7 @@ def build_raw_gf_dict(sqitems):
 
 
 if '3' in STEPS:
-    print('\nStep 3\n')
+    print('\nStep 3: Analysing data with UD results\n')
     print('reading', CONLLU_PARSED_FILE, 'to collect information')
     sqitems = get_conllu_dict()
     print('fixing cases if needed')
@@ -212,7 +213,7 @@ if '3' in STEPS:
 
 if '4' in STEPS:
     if '3' not in STEPS:
-        with open(QLIST_FILE) as file:
+        with open(NEW_QLIST_FILE) as file:
             qlist = json.load(file)
         with open(UD_LEXICON_FILE) as file:
             rdict = json.load(file)
@@ -228,10 +229,11 @@ def new_word_rules(moset, udlex=rdict):
     cncrules = []
     for k in udlex:
         info = udlex[k]
-        fun = mk_fun(info[0] + '_' + info[2])
-        if fun not in moset:
-            absrules.append((fun, info[2]))
-            cncrules.append((fun, info[1]))
+        if info:
+            fun = mk_fun(info[0] + '_' + info[2])
+            if fun not in moset:
+                absrules.append((fun, info[2]))
+                cncrules.append((fun, info[1]))
     return absrules, cncrules
 
 
@@ -248,7 +250,7 @@ def build_morphodict(absrules, cncrules):
 
 
 if '4' in STEPS:
-    print('\nStep 4\n')
+    print('\nStep 4: Building lexicon extension\n')
     
     print('reading', MORPHODICT_FILE)
     moset = read_morpho_funs()
@@ -267,18 +269,62 @@ if '4' in STEPS:
 
 #### Step 5: parse the terms with the extended lexicon ####
 
-## do: gf -make ExtractLANG.gf
+if '5' in STEPS:
+    if '3' not in STEPS:
+        with open(NEW_QLIST_FILE) as file:
+            qlist = json.load(file)
+        with open(UD_LEXICON_FILE) as file:
+            rdict = json.load(file)
+
+            
+def parse_terms_gf(qlis=qlist, pgf_file=EXTRACT_PGF_FILE):
+    grammar = pgf.readPGF(pgf_file)
+    concrete = grammar.languages[EXTRACT_CNC_NAME]
+
+    qdict = {}
+    for qs in qlis:
+        q = qs[0]
+        s = qs[1]
+
+        if s == NO_WIKILABEL:
+            val = [False, 'variants {}']
+        else:
+            val = extract_term(concrete, s)
+        qdict[q] = {'str': s, 'lin': str(val[1]), 'status': val[0]}
+    return qdict
+
 
 if '5' in STEPS:
+    print('\nStep 5: Parsing with GF\n')
     
-  for s in qdict.values():
+    print('make sure you have', EXTRACT_CNC_NAME+'.gf')
+    print('building a new', EXTRACT_PGF_FILE)
+    cmd = 'gf -make -s Extract' + LANG + '.gf'
+    print(cmd)
+    os.system(cmd)
 
-    val = extract_term(concrete, s)
-    if val[0] == False and s[0].isupper():  # try again if capitalized
-        s1 = s[0].upper() + s[1:]
-        val = extract_term(concrete, s1)
-        
-    print(val[0], str(val[1]))
+    print('parsing terms with', EXTRACT_PGF_FILE)
+    print('this will take some time...')
+
+    qdict = parse_terms_gf()
+    
+    missing = len([0 for v in qdict.values() if v['str'] == NO_WIKILABEL])
+    failed = len([0 for v in qdict.values() if not v['status']])
+    succeeded = len([0 for v in qdict.values() if v['status']])
+
+    print('statistics missing labels:', missing)
+    print('statistics successful GF parses:', succeeded)
+    print('statistics failed GF parses:', failed-missing)
+
+    with open(QDICT_FILE, 'w') as outfile:
+        json.dump(qdict, outfile, ensure_ascii=False)
+    print('wrote file', QDICT_FILE)
+    
+
+    
+
+
+    
 
 
 

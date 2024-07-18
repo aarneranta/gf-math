@@ -1396,7 +1396,7 @@ fun complément_N : N ;
 fun orthonormalité_N : N ;
 fun orientabilité_N : N ;
 fun défini_A : A ;
-fun __PN : PN ;
+fun '__PN' : PN ;
 fun 'semi-direct_N' : N ;
 fun lisse_A : A ;
 fun 'sous-représentation_N' : N ;

@@ -1,5 +1,7 @@
 def mk_fun(s):
-    if all(ord(c)<256 and (c.isdigit() or c.isalpha() or c in "_'") for c in s):
+    if (s[0].isalpha() and
+        all(ord(c)<256 and (c.isdigit() or c.isalpha() or c in "_'")
+            for c in s)):
         return s
     else:
         return "'" + s + "'"
