@@ -36,8 +36,9 @@ def gf_lin(word, udanalysis, lang=LANG):
     genders = {'Masc': 'masculine', 'Fem': 'feminine', 'Neut': 'neuter'}
     gender = genders.get(ugender, 'masculine')  ## neuter for Ger could be better
     number = fdict.get('Number', 'Sing')
+    casus = fdict.get('Case', 'Nom')
 
-    if lang in ['Fre', 'Ger']:
+    if lang in ['Fre', 'Ger', 'Ita']:
       match pos:
         case 'NOUN':
             if number == 'Plur':
@@ -62,6 +63,27 @@ def gf_lin(word, udanalysis, lang=LANG):
             return lemma, app('mkPN', [lemma, gender]), 'PN'
         case _:
             return ' '.join(['UNK', lemma, pos]), ''
+
+    elif lang == 'Fin':
+      match pos:
+        case 'NOUN':
+            if number == 'Sing' and casus == 'Gen':
+                return lemma, app('mkN', [lemma, quote(word)]), 'N'
+            else:
+                return lemma, app('mkN', [lemma]), 'N'
+        case 'PROPN':
+            return lemma, app('mkPN', [lemma]), 'PN'
+        case 'ADJ':
+            return lemma, app('mkA', [lemma]), 'A'
+        case 'ADV':
+            return lemma, app('mkAdv', [lemma]), 'Adv'
+##        case 'VERB' if lemma[-1] in ['a', 'ä']:
+##            return lemma, app('mkV', [lemma]), 'V'
+        case _ if lemma[0].isupper():
+            return 
+        case _:
+            return ' '.join(['UNK', lemma, pos]), ''
+
 
     # add your language here to get better quality!
 

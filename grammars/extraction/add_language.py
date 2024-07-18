@@ -47,6 +47,51 @@ MATH_WORDS_CNC_PREFIX = 'MathWords'
 
 print('Processing language', LAN, '=', LANG, '\n')
 
+#### Step 0: preparations ####
+
+DEFAULT_FROM_LANG = 'Eng'
+
+def clone_extract_gf(fromlang=DEFAULT_FROM_LANG, tolang=LANG):
+    target_abs = 'Extract'+tolang+'Abs.gf'
+    target_cnc = 'Extract'+tolang+'.gf'
+    
+    if os.path.isfile(target_cnc):
+        print('refused to overwrite', target_cnc)
+        return
+    
+    source_abs = 'Extract'+fromlang+'Abs.gf'
+    source_cnc = 'Extract'+fromlang+'.gf'
+
+    with open(source_abs) as source:
+        txt = source.read().replace(fromlang, tolang)
+    with open(target_abs, 'w') as target:
+        target.write(txt)
+    print('wrote file', target_abs)
+        
+    with open(source_cnc) as source:
+        txt = source.read().replace(fromlang, tolang)
+    with open(target_cnc, 'w') as target:
+        target.write(txt)
+    print('wrote file', target_cnc)
+    print('you may want to take a look and edit these two files')
+    
+
+if '0' in STEPS:
+    print('\nStep 1: Extracting Wikidata labels\n')
+
+    print('cloning extract grammar from', DEFAULT_FROM_LANG)
+    clone_extract_gf()
+
+    cmd = 'gf -make -s morphodict/' + MORPHODICT_CNC + '.gf'
+    print('executing:', cmd)
+    os.system(cmd)
+    
+    if STEPS == ['0']:
+        exit()
+
+        
+
+
 #### Step 1: extract wikidata for that language into qlist ####
 
 # at this point, not a dict, so to maintain an order
@@ -65,7 +110,7 @@ if '1' in STEPS:
     print('\nStep 1: Extracting Wikidata labels\n')
     print('reading', WIKIDATA_FILE)
     qlist = extract_wikidata()
-    print('wrote file', QDICT_FILE)
+    print('wrote file', QLIST_FILE)
     print('statistics terms:', len(qlist))
     print('statistics no label:',
           len([v for v in qlist if v[1] == NO_WIKILABEL]))
