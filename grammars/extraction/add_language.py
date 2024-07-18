@@ -12,7 +12,7 @@ import os  ## for calling deptreepy
 import json
 from extract_terms import extract_term
 from words_from_ud import words_main, gf_lin
-from gf_utils import print_gf_files
+from gf_utils import print_gf_files, mk_fun
 
 # first make a symlink to deptreepy
 sys.path.append('deptreepy')
@@ -189,7 +189,7 @@ def build_raw_gf_dict(sqitems):
             info = tuple(dict[w][f] for f in ['LEMMA', 'POS', 'FEATS'])
             lin = gf_lin(w, info, LANG)
             lemma = lin[0]
-            if lemma != 'UNK':
+            if not lemma.startswith('UNK'):
                 rdict[lemma] = rdict.get(lemma, []) + [lin]
     rdict = {lemma: majority_element(rdict[lemma]) for lemma in rdict}
     return rdict
@@ -215,7 +215,7 @@ if '4' in STEPS:
         with open(QLIST_FILE) as file:
             qlist = json.load(file)
         with open(UD_LEXICON_FILE) as file:
-            ud_lexicon = json.load(file)
+            rdict = json.load(file)
 
             
 def read_morpho_funs(pgf_file=MORPHODICT_FILE):
@@ -223,17 +223,19 @@ def read_morpho_funs(pgf_file=MORPHODICT_FILE):
     return set(grammar.functions)
 
 
-if '4' in STEPS:
-    print('\nStep 4\n')
-    moset = read_morpho_funs()
-    print(moset)
+def new_word_rules(moset, udlex=rdict):
+    absrules = []
+    cncrules = []
+    for k in udlex:
+        info = udlex[k]
+        fun = mk_fun(info[0] + '_' + info[2])
+        if fun not in moset:
+            absrules.append((fun, info[2]))
+            cncrules.append((fun, info[1]))
+    return absrules, cncrules
 
 
-
-            
-if False:
-    absrules, cncrules = words_main(
-        CONLLU_PARSED_FILE, MORPHO_FILE, UNKNOWN_WORDS_FILE, LANG)
+def build_morphodict(absrules, cncrules):
     mdict = {}
     for i in range(len(absrules)):
         mdict[i] = {
@@ -242,12 +244,34 @@ if False:
             'status': True,
             LANG: {'str': '', 'lin': cncrules[i][1], 'status': True}
             }
+    return mdict
 
+
+if '4' in STEPS:
+    print('\nStep 4\n')
+    
+    print('reading', MORPHODICT_FILE)
+    moset = read_morpho_funs()
+    print('statistics given morphofuns:', len(moset))
+    
+    absrules, cncrules = new_word_rules(moset)
+    print('statistics new extracted morphofuns:', len(absrules))
+
+    mdict = build_morphodict(absrules, cncrules)
     print_gf_files(
         MATH_WORDS_ABS, '', ['Cat'],
         ['Paradigms'], [], mdict,
         cncprefix=MATH_WORDS_CNC_PREFIX
         )
+    
+
+
+
+            
+if False:
+    absrules, cncrules = words_main(
+        CONLLU_PARSED_FILE, MORPHO_FILE, UNKNOWN_WORDS_FILE, LANG)
+
 
 
 
