@@ -1,11 +1,17 @@
 # add a language to an existing multilingual grammar
 
+# prerequisites:
+#   ln -s <deptreepy-dir>
+#   ln -s <morphodict-dir>
+#   gf -make morphodict/MorphoDict<LANG>.gf
+# make sure that your language is in deptreepy/udpipe2_models.py
+
 import pgf
 import sys
 import os  ## for calling deptreepy
 import json
 from extract_terms import extract_term
-from words_from_ud import words_main
+from words_from_ud import words_main, gf_lin
 from gf_utils import print_gf_files
 
 # first make a symlink to deptreepy
@@ -31,6 +37,9 @@ QLIST_FILE = 'qlist_' + LANG + '.json'
 QDICT_FILE = 'qdict_' + LANG + '.json'
 CORPUS_FILE = 'corpus.tmp'
 CONLLU_PARSED_FILE = 'terms_' + LANG + '.conllu'
+UD_LEXICON_FILE = 'lexicon_' + LANG + '.json'
+MORPHODICT_CNC =  'MorphoDict' + LANG
+MORPHODICT_FILE = MORPHODICT_CNC + 'Abs.pgf'
 
 UNPARSED_TERMS_FILE = 'unparsed_terms' + LANG + '.tmp'
 UNKNOWN_WORDS_FILE = 'unknown_words' + LANG + '.tmp'
@@ -126,6 +135,7 @@ def get_conllu_dict(qlis=qlist, conllu=CONLLU_PARSED_FILE):
     return sqitems
 
 
+# this mainly to fix wrongly capitalized words in Wikidata labels
 def fix_case(sqitems):
     fixed = []
     for i in range(len(sqitems)):
@@ -148,26 +158,102 @@ def fix_case(sqitems):
                 fixed.append(w)
             ns.append(nw)
         sqitems[i] = (it[0], (ns, dict))
+
+    # replace the old qlist file if needed
     if len(fixed):
         print('statistics case fixed:', len(fixed))
-        
+        new_qlist = [[qid, ' '.join(s)] for (qid, (s,_)) in sqitems]
+        with open(QLIST_FILE, 'w') as outfile:
+            json.dump(new_qlist, outfile, ensure_ascii=False)
+        print('wrote corrected file', QLIST_FILE)
+
+    # for use in lexicon extraction
+    return sqitems
+
+
+def majority_element(xs):
+    if len(xs) == 1:
+        return xs[0]
+    else:
+        freqs = {}
+        for x in xs:
+            freqs[x] = freqs.get(x, 0) + 1
+        return max([x for x in freqs], key=lambda x: freqs[x])
     
+        
+def build_raw_gf_dict(sqitems):
+    rdict = {}
+    for it in sqitems:
+        dict = it[1][1]
+        for w in dict:
+            info = tuple(dict[w][f] for f in ['LEMMA', 'POS', 'FEATS'])
+            lin = gf_lin(w, info, LANG)
+            lemma = lin[0]
+            if lemma != 'UNK':
+                rdict[lemma] = rdict.get(lemma, []) + [lin]
+    rdict = {lemma: majority_element(rdict[lemma]) for lemma in rdict}
+    return rdict
 
-
-# def clean_up_corpus(qdic=qdict, conllu=CONLLU_PARSED_FILE):
 
 if '3' in STEPS:
     print('\nStep 3\n')
     print('reading', CONLLU_PARSED_FILE, 'to collect information')
     sqitems = get_conllu_dict()
-    fix_case(sqitems)
+    print('fixing cases if needed')
+    sqitems = fix_case(sqitems)
+    rdict = build_raw_gf_dict(sqitems)
+    print('statistics words from UD:', len(rdict))
+    with open(UD_LEXICON_FILE, 'w') as outfile: 
+        json.dump(rdict, outfile, ensure_ascii=False)
+    print('wrote file', UD_LEXICON_FILE)
+
+
+### step 4: build an extension of MorphoDictLANG with UD_LEXICON_FILE ###
+
+if '4' in STEPS:
+    if '3' not in STEPS:
+        with open(QLIST_FILE) as file:
+            qlist = json.load(file)
+        with open(UD_LEXICON_FILE) as file:
+            ud_lexicon = json.load(file)
+
+            
+def read_morpho_funs(pgf_file=MORPHODICT_FILE):
+    grammar = pgf.readPGF(pgf_file)
+    return set(grammar.functions)
+
+
+if '4' in STEPS:
+    print('\nStep 4\n')
+    moset = read_morpho_funs()
+    print(moset)
+
+
+
+            
+if False:
+    absrules, cncrules = words_main(
+        CONLLU_PARSED_FILE, MORPHO_FILE, UNKNOWN_WORDS_FILE, LANG)
+    mdict = {}
+    for i in range(len(absrules)):
+        mdict[i] = {
+            'cat': absrules[i][1],
+            'fun': absrules[i][0],
+            'status': True,
+            LANG: {'str': '', 'lin': cncrules[i][1], 'status': True}
+            }
+
+    print_gf_files(
+        MATH_WORDS_ABS, '', ['Cat'],
+        ['Paradigms'], [], mdict,
+        cncprefix=MATH_WORDS_CNC_PREFIX
+        )
+
+
+
 
     
-
-
-
-
-        
+            
 #### step 2: parse the data with ExtractLANG to find unknown words
 
 # you have to create ExtractLANG and compile it to a pgf file
@@ -182,7 +268,7 @@ if '1' not in STEPS:
         qdict = json.load(file)
 
 
-if '2' in STEPS:
+if '2' in STEPS and False:
 # parse just to find the unknown words
   unknowns = []
   tohandle = []
@@ -226,7 +312,7 @@ if '2' in STEPS:
 ## external now: generate MORPHO_FILE_LANG by pg -funs from MorphoDictLANG
 ## also: refine the extraction rules in words_from_ud.gf_lin()
 
-if '4' in STEPS:
+if '4' in STEPS and False:
     absrules, cncrules = words_main(
         CONLLU_PARSED_FILE, MORPHO_FILE, UNKNOWN_WORDS_FILE, LANG)
     mdict = {}
