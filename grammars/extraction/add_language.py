@@ -263,98 +263,9 @@ if '4' in STEPS:
         ['Paradigms'], [], mdict,
         cncprefix=MATH_WORDS_CNC_PREFIX
         )
-    
 
 
-
-            
-if False:
-    absrules, cncrules = words_main(
-        CONLLU_PARSED_FILE, MORPHO_FILE, UNKNOWN_WORDS_FILE, LANG)
-
-
-
-
-
-    
-            
-#### step 2: parse the data with ExtractLANG to find unknown words
-
-# you have to create ExtractLANG and compile it to a pgf file
-#   gf -make ExtractLang.gf
-# this may assume the existence of MorphoDictLang in GF RGL
-
-grammar = pgf.readPGF(PGF_FILE)
-concrete = grammar.languages[CNC_NAME]
-
-if '1' not in STEPS:
-    with open(QDICT_FILE) as file:
-        qdict = json.load(file)
-
-
-if '2' in STEPS and False:
-# parse just to find the unknown words
-  unknowns = []
-  tohandle = []
-  for s in qdict.values():
-
-    val = extract_term(concrete, s)
-    if val[0] == False and s[0].isupper():  # try again if capitalized
-        s1 = s[0].upper() + s[1:]
-        val = extract_term(concrete, s1)
-    if val[0] == False:
-        unknowns.extend(val[1])
-        tohandle.append(s)
-
-  unknown_words = set(unknowns)
-  terms_toparse = set(tohandle)
-
-# save unparsed terms and unknown words in files
-  with open(UNKNOWN_WORDS_FILE, 'w') as file:
-      for w in unknown_words:
-          file.write(w + '\n')
-
-  with open(UNPARSED_TERMS_FILE, 'w') as file:
-    for s in terms_toparse:
-        file.write(s + '\n\n')  # UDPipe need spaces between sentences
-
-
-### Step 3: parse the unknown terms with UDPipe and extract a lexicon
-
-##  this is at the moment done in the deptreepy directory by
-
-# cat <currentdir>/unparsed_termsFre.tmp | ./deptreepy.py txt2conllu >terms_Fre.conllu
-# mv terms_Fre.conllu <currentdir>
-
-# this assumes that you have set the model in deptreepy/udpipe2_params.yaml
-# to something suitable for your language; see
-# https://lindat.mff.cuni.cz/services/udpipe/api/models
-
-
-### Step 4: extract a lexicon of unknown words from the UD parse result
-
-## external now: generate MORPHO_FILE_LANG by pg -funs from MorphoDictLANG
-## also: refine the extraction rules in words_from_ud.gf_lin()
-
-if '4' in STEPS and False:
-    absrules, cncrules = words_main(
-        CONLLU_PARSED_FILE, MORPHO_FILE, UNKNOWN_WORDS_FILE, LANG)
-    mdict = {}
-    for i in range(len(absrules)):
-        mdict[i] = {
-            'cat': absrules[i][1],
-            'fun': absrules[i][0],
-            'status': True,
-            LANG: {'str': '', 'lin': cncrules[i][1], 'status': True}
-            }
-
-    print_gf_files(
-        MATH_WORDS_ABS, '', ['Cat'],
-        ['Paradigms'], [], mdict,
-        cncprefix=MATH_WORDS_CNC_PREFIX
-        )
-
-### Step 5: parse the terms again with the extended lexicon
+#### Step 5: parse the terms with the extended lexicon ####
 
 ## do: gf -make ExtractLANG.gf
 
