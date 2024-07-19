@@ -20,12 +20,13 @@ import trees
 import operations
 
 # give 2-letter and 3-letter language codes as command line arguments
-if sys.argv[3:]:
-    LAN = sys.argv[1]
-    LANG = sys.argv[2]
-    STEPS = sys.argv[3:]
+if sys.argv[4:] and sys.argv[1].startswith('-'):
+    MODE = sys.argv[1]
+    LAN = sys.argv[2]
+    LANG = sys.argv[3]
+    STEPS = sys.argv[4:]
 else:
-    print('usage: add_language <fr> <Fre> <phase>+')
+    print('usage: add_language (-first|-added) <fr> <Fre> <NUM>+')
     exit()
 
 
@@ -397,8 +398,8 @@ def mk_mdict(qdict, grammar, lang=LANG, defaultcat='Term'):
     return mdict
  
 
-if '6' in STEPS:
-    print('\nStep 6: Generating GF modules\n')
+if '6' in STEPS and MODE=='-first':
+    print('\nStep 6: Generating initial GF modules\n')
 
     if '5' not in STEPS:
         with open(QDICT_FILE) as file:
@@ -423,32 +424,28 @@ if '6' in STEPS:
     
 #### Step 7: add a new concrete syntax ####
         
-def add_new_language(qdict_syn, qdict, grammar):
+def add_new_language(qdict_syn, qdict, grammar, lang, defaultcat='Term'):
     for qid in qdict_syn:
         syninfo = qdict_syn[qid]
         cncinfo = qdict[qid] 
         status = cncinfo['status']
         
-        lin = pgf.readExpr(info['lin']) if status else empty_variants()
-        cat = val_type(grammar, lin) if status else defaultcat
+        lin = pgf.readExpr(cncinfo['lin']) if status else empty_variants()
+        sought_cat = syninfo['cat']
+        oldcat = val_type(grammar, lin) if status else defaultcat
         if status:
-            lin, cat = peel_tree(grammar, lin, cat)
+            lin, cat = peel_tree(grammar, lin, oldcat)
             lin = fix_integers_in_Extract(lin)
-        fun = mk_fun_from_strs([info['str'], qid, str(cat)])
-        mdict[qid] = {
-            'cat': str(cat),
-            'fun': fun,
-            'status': status,
-            LANG : {
-                'str': info['str'],
+            status = (str(cat) == sought_cat)
+        qdict_syn[qid][lang] = {
+                'str': cncinfo['str'] + ('' if status else (' ' + str(lin))),
                 'lin': str(lin),
                 'status': status
                 }
-            }
-
+    return qdict_syn
     
 
-if '7' in STEPS:
+if '7' in STEPS and MODE=='-added':
     with open(QDICT_SYNOPSIS_FILE) as file:
         qdict_syn = json.load(file)
     print('loaded', QDICT_SYNOPSIS_FILE)
@@ -459,16 +456,23 @@ if '7' in STEPS:
         print('loaded existing', QDICT_FILE)
         grammar = pgf.readPGF(EXTRACT_PGF_FILE)
 
+    qdict = add_new_language(qdict_syn, qdict, grammar, LANG)
+        
+    with open(QDICT_SYNOPSIS_FILE, 'w') as file:
+        json.dump(qdict, file, ensure_ascii=False, indent=2)
+
+    print('wrote file, updated for', LANG, QDICT_SYNOPSIS_FILE)
+
+    print_gf_files(
+        'MathTerms',
+        '--# -path=.:morphodict:../extraction',
+        ['Cat'],
+        ['Extract'],
+        [('Term', 'Utt')],
+        qdict,
+        abstract=False,
+        onelang=LANG
+        )
     
-
-
-    
-
-
-
-    
-
-
-
 
 

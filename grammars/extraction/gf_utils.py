@@ -47,10 +47,14 @@ def mk_lincat_rule(cat, lin):
     return ' '.join(['lincat', cat, '=', lin, ';\n'])
 
     
-def print_gf_files(absname, path, extends, opens, newcats, mdict, cncprefix=None):
-    "dict format: qid: {'cat', 'fun', 'status', *lang: {'str', 'lin', 'status'}}"
-    
-    with open(absname + '.gf', 'w') as absfile:
+def print_gf_files(
+        absname, path, extends, opens, newcats, mdict,
+        cncprefix=None, abstract=True, onelang=None):
+    """dict format: qid: {'cat', 'fun', 'lang', 'status',
+    *lang: {'str', 'lin', 'status'}}"""
+
+    if abstract:
+      with open(absname + '.gf', 'w') as absfile:
         absfile.write(path + '\n')
         absfile.write(' '.join(['abstract', absname, '='] +
                                [', '.join(extends)] +
@@ -60,14 +64,15 @@ def print_gf_files(absname, path, extends, opens, newcats, mdict, cncprefix=None
             absfile.write(mk_cat_rule(cat[0]))
         for qid in mdict:
             ## if mdict[qid]['status']:
-                absfile.write(mk_fun_rule(mdict[qid]['fun'], mdict[qid]['cat']))
+            absfile.write(mk_fun_rule(mdict[qid]['fun'], mdict[qid]['cat']))
         absfile.write('}\n')
         print('wrote file', absname + '.gf')
         
     for qid in mdict:
-        langs = list(mdict[qid].keys())[3:]
+        langs = list(mdict[qid].keys())[4:]
         break  # get lang names from the first item
 
+    langs = langs if not onelang else [onelang]
     for lang in langs:
         cncname = (cncprefix if cncprefix else absname) + lang
         with open(cncname + '.gf', 'w') as cncfile:
@@ -86,8 +91,6 @@ def print_gf_files(absname, path, extends, opens, newcats, mdict, cncprefix=None
                 
             for qid in mdict:
                 fun = mdict[qid]['fun']
-                print('mdict[qid]', mdict[qid])
-                print('mdict[qid][lang]', mdict[qid][lang])
                 if mdict[qid][lang]['status']:
                     rule = mk_lin_rule(fun, mdict[qid][lang]['lin'])
                 else:
@@ -112,7 +115,7 @@ def val_type(grammar, tree):
 
 
 def peel_tree(grammar, tree, ty, sought_cat='CN'):
-    "peel out unary applications but stop at a given cat such as CN"
+    "peel out unary applications but stop at a sought cat such as CN"
     if str(ty) == sought_cat:
         return tree, ty
     else:
