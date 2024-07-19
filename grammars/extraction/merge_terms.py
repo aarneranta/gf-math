@@ -24,41 +24,8 @@ endict = get_dict(EN_FILE)
 
 engrammar = pgf.readPGF(EN_PGF_FILE)
 degrammar = pgf.readPGF(DE_PGF_FILE)
-
-LOST = 'LOST'
-
-def is_lost(s):
-    return s == LOST
-
-
-def val_type(grammar, tree):
-    return grammar.inferExpr(tree)[1]
-
-
-def unify_trees(en, de):
-    fen, enargs = en.unpack()
-    fde, deargs = de.unpack()
-    if fen == fde and len(enargs) == len(deargs) == 1:
-        return unify_trees(enargs[0], deargs[0])
-    elif is_lost(fen):
-        if is_lost(fde):
-            return en, de, pgf.readExpr(LOST)
-        else:
-            return en, de, val_type(degrammar, de)
-    else:
-        return en, de, val_type(engrammar, en)
-
-def peel_tree(grammar, tree, ty):
-    if str(ty) == 'CN':
-        return tree, ty
-    else:
-        fun, args = tree.unpack()
-        if len(args) == 1:
-            return peel_tree(grammar, args[0], val_type(grammar, args[0]))
-        else:
-            return tree, ty
-
-    
+ 
+   
 def adjust_tree(en, de, ty):
     if is_lost(str(ty)):
         return en, de, ty

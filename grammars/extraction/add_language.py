@@ -12,7 +12,7 @@ import os  ## for calling deptreepy
 import json
 from extract_terms import extract_term
 from words_from_ud import words_main, gf_lin
-from gf_utils import print_gf_files, mk_fun
+from gf_utils import *
 
 # first make a symlink to deptreepy
 sys.path.append('deptreepy')
@@ -43,6 +43,7 @@ MORPHODICT_CNC =  'MorphoDict' + LANG
 MORPHODICT_FILE = MORPHODICT_CNC + 'Abs.pgf'
 MATH_WORDS_ABS = 'MathWords' + LANG + 'Abs'
 MATH_WORDS_CNC_PREFIX = 'MathWords'
+MATH_TERMS = 'MathTerms'
 
 
 print('Processing language', LAN, '=', LANG, '\n')
@@ -124,7 +125,7 @@ if '2' in STEPS:
             qlist = json.load(file)
 
 
-def parse_with_udpipe(qlis=qlist, lang=LANG):
+def parse_with_udpipe(qlis, lang=LANG):
 
     with open(CORPUS_FILE, 'w') as outfile:
         for it in qlis:
@@ -139,7 +140,7 @@ def parse_with_udpipe(qlis=qlist, lang=LANG):
 if '2' in STEPS:
     print('\nStep 2: Parsing data with UDPipe\n')
     print('this will take some time...')
-    parse_with_udpipe()
+    parse_with_udpipe(qlist)
     print("wrote file", CONLLU_PARSED_FILE)
 
     
@@ -156,7 +157,7 @@ def conllu2wordinfo(stanza):
     return {w.FORM: w.as_dict() for w in wordlines if w.ID.isdigit()}
 
         
-def get_conllu_dict(qlis=qlist, conllu=CONLLU_PARSED_FILE):
+def get_conllu_dict(qlis, conllu=CONLLU_PARSED_FILE):
     with open(conllu) as file:
         intxt = file.read()
         stanzas = [span for span in intxt.split("\n\n") if span.strip()]
@@ -244,7 +245,7 @@ def build_raw_gf_dict(sqitems):
 if '3' in STEPS:
     print('\nStep 3: Analysing data with UD results\n')
     print('reading', CONLLU_PARSED_FILE, 'to collect information')
-    sqitems = get_conllu_dict()
+    sqitems = get_conllu_dict(qlist)
     print('fixing cases if needed')
     sqitems = fix_case(sqitems)
     rdict = build_raw_gf_dict(sqitems)
@@ -269,7 +270,7 @@ def read_morpho_funs(pgf_file=MORPHODICT_FILE):
     return set(grammar.functions)
 
 
-def new_word_rules(moset, udlex=rdict):
+def new_word_rules(moset, udlex):
     absrules = []
     cncrules = []
     for k in udlex:
@@ -301,7 +302,7 @@ if '4' in STEPS:
     moset = read_morpho_funs()
     print('statistics given morphofuns:', len(moset))
     
-    absrules, cncrules = new_word_rules(moset)
+    absrules, cncrules = new_word_rules(moset, rdict)
     print('statistics new extracted morphofuns:', len(absrules))
 
     mdict = build_morphodict(absrules, cncrules)
@@ -322,8 +323,8 @@ if '5' in STEPS:
             rdict = json.load(file)
 
             
-def parse_terms_gf(qlis=qlist, pgf_file=EXTRACT_PGF_FILE):
-    grammar = pgf.readPGF(pgf_file)
+def parse_terms_gf(grammar, qlis):
+    
     concrete = grammar.languages[EXTRACT_CNC_NAME]
 
     qdict = {}
@@ -350,8 +351,10 @@ if '5' in STEPS:
 
     print('parsing terms with', EXTRACT_PGF_FILE)
     print('this will take some time...')
-
-    qdict = parse_terms_gf()
+    
+    grammar = pgf.readPGF(EXTRACT_PGF_FILE)
+    
+    qdict = parse_terms_gf(grammar, qlist)
     
     missing = len([0 for v in qdict.values() if v['str'] == NO_WIKILABEL])
     failed = len([0 for v in qdict.values() if not v['status']])
@@ -362,9 +365,56 @@ if '5' in STEPS:
     print('statistics failed GF parses:', failed-missing)
 
     with open(QDICT_FILE, 'w') as outfile:
-        json.dump(qdict, outfile, ensure_ascii=False)
+        json.dump(qdict, outfile, ensure_ascii=False, indent=2)
     print('wrote file', QDICT_FILE)
-    
+
+
+#### Step 6: generate GF modules ####
+
+if '6' in STEPS:
+    if '5' not in STEPS:
+        with open(QDICT_FILE) as file:
+            qdict = json.load(file)
+        grammar = pgf.readPGF(EXTRACT_PGF_FILE)
+
+
+def mk_mdict(qdict, grammar, lang=LANG, defaultcat='Term'):
+    mdict = {}
+    for qid in qdict:
+        info = qdict[qid]
+        status = info['status']
+        lin = pgf.readExpr(info['lin']) if status else empty_variants()
+        cat = val_type(grammar, lin) if status else defaultcat
+        if status:
+            lin, cat = peel_tree(grammar, lin, cat)
+            lin = fix_integers_in_Extract(lin)
+        fun = mk_fun_from_strs([info['str'], qid, str(cat)])
+        mdict[qid] = {
+            'cat': str(cat),
+            'fun': fun,
+            'status': status,
+            LANG : {
+                'str': info['str'],
+                'lin': str(lin),
+                'status': status
+                }
+            }
+    return mdict
+ 
+
+if '6' in STEPS:
+    print('\nStep 6: Generating GF modules\n')
+
+    mdict = mk_mdict(qdict, grammar)
+
+    print_gf_files(
+        'MathTerms',
+        '--# -path=.:morphodict:../extraction',
+        ['Cat'],
+        ['Extract'],
+        [('Term', 'Utt')],
+        mdict
+        )
 
     
 
