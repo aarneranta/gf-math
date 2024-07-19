@@ -370,20 +370,65 @@ if '5' in STEPS:
     print('wrote file', QDICT_FILE)
 
 
-#### Step 6: generate GF modules ####
-
-if '6' in STEPS:
-    if '5' not in STEPS:
-        with open(QDICT_FILE) as file:
-            qdict = json.load(file)
-        grammar = pgf.readPGF(EXTRACT_PGF_FILE)
-
+#### Step 6: generate GF modules for abstract and the first concrete ####
 
 def mk_mdict(qdict, grammar, lang=LANG, defaultcat='Term'):
     mdict = {}
     for qid in qdict:
         info = qdict[qid]
         status = info['status']
+        lin = pgf.readExpr(info['lin']) if status else empty_variants()
+        cat = val_type(grammar, lin) if status else defaultcat
+        if status:
+            lin, cat = peel_tree(grammar, lin, cat)
+            lin = fix_integers_in_Extract(lin)
+        fun = mk_fun_from_strs([info['str'], qid, str(cat)])
+        mdict[qid] = {
+            'cat': str(cat),
+            'fun': fun,
+            'lang': LANG,  # the abstract syntax id lang
+            'status': status,
+            LANG : {
+                'str': info['str'],
+                'lin': str(lin),
+                'status': status
+                }
+            }
+    return mdict
+ 
+
+if '6' in STEPS:
+    print('\nStep 6: Generating GF modules\n')
+
+    if '5' not in STEPS:
+        with open(QDICT_FILE) as file:
+            qdict = json.load(file)
+        grammar = pgf.readPGF(EXTRACT_PGF_FILE)
+
+    mdict = mk_mdict(qdict, grammar)
+    
+    with open(QDICT_SYNOPSIS_FILE, 'w') as file:
+        json.dump(mdict, file, ensure_ascii=False, indent=2)
+    print('wrote file', QDICT_SYNOPSIS_FILE)
+
+    print_gf_files(
+        'MathTerms',
+        '--# -path=.:morphodict:../extraction',
+        ['Cat'],
+        ['Extract'],
+        [('Term', 'Utt')],
+        mdict
+        )
+
+    
+#### Step 7: add a new concrete syntax ####
+        
+def add_new_language(qdict_syn, qdict, grammar):
+    for qid in qdict_syn:
+        syninfo = qdict_syn[qid]
+        cncinfo = qdict[qid] 
+        status = cncinfo['status']
+        
         lin = pgf.readExpr(info['lin']) if status else empty_variants()
         cat = val_type(grammar, lin) if status else defaultcat
         if status:
@@ -400,26 +445,19 @@ def mk_mdict(qdict, grammar, lang=LANG, defaultcat='Term'):
                 'status': status
                 }
             }
-    return mdict
- 
 
-if '6' in STEPS:
-    print('\nStep 6: Generating GF modules\n')
-
-    mdict = mk_mdict(qdict, grammar)
     
-    with open(QDICT_SYNOPSIS_FILE, 'w') as file:
-        json.dump(mdict, file, ensure_ascii=False, indent=2)
-    print('wrote file', QDICT_SYNOPSIS_FILE)
 
-    print_gf_files(
-        'MathTerms',
-        '--# -path=.:morphodict:../extraction',
-        ['Cat'],
-        ['Extract'],
-        [('Term', 'Utt')],
-        mdict
-        )
+if '7' in STEPS:
+    with open(QDICT_SYNOPSIS_FILE) as file:
+        qdict_syn = json.load(file)
+    print('loaded', QDICT_SYNOPSIS_FILE)
+    
+    if '5' not in STEPS:
+        with open(QDICT_FILE) as file:
+            qdict = json.load(file)
+        print('loaded existing', QDICT_FILE)
+        grammar = pgf.readPGF(EXTRACT_PGF_FILE)
 
     
 

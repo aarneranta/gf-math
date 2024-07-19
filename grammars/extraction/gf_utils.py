@@ -86,6 +86,8 @@ def print_gf_files(absname, path, extends, opens, newcats, mdict, cncprefix=None
                 
             for qid in mdict:
                 fun = mdict[qid]['fun']
+                print('mdict[qid]', mdict[qid])
+                print('mdict[qid][lang]', mdict[qid][lang])
                 if mdict[qid][lang]['status']:
                     rule = mk_lin_rule(fun, mdict[qid][lang]['lin'])
                 else:
