@@ -71,6 +71,7 @@ DEFAULT_FROM_LANG = 'Eng'
 
 def clone_extract_gf(fromlang=DEFAULT_FROM_LANG, tolang=LANG):
     target_abs = 'Extract'+tolang+'Abs.gf'
+    target_ins = 'ExtractSyntax'+tolang+'.gf'
     target_cnc = 'Extract'+tolang+'.gf'
     
     if os.path.isfile(target_cnc):
@@ -78,6 +79,7 @@ def clone_extract_gf(fromlang=DEFAULT_FROM_LANG, tolang=LANG):
         return
     
     source_abs = 'Extract'+fromlang+'Abs.gf'
+    source_ins = 'ExtractSyntax'+fromlang+'.gf'
     source_cnc = 'Extract'+fromlang+'.gf'
 
     with open(source_abs) as source:
@@ -91,11 +93,17 @@ def clone_extract_gf(fromlang=DEFAULT_FROM_LANG, tolang=LANG):
     with open(target_cnc, 'w') as target:
         target.write(txt)
     print('wrote file', target_cnc)
-    print('you may want to take a look and edit these two files')
     
+    with open(source_ins) as source:
+        txt = source.read().replace(fromlang, tolang)
+    with open(target_ins, 'w') as target:
+        target.write(txt)
+    print('wrote file', target_ins)
+    
+    print('you may want to take a look and edit these two files')
 
 if '0' in STEPS:
-    print('\nStep 1: Extracting Wikidata labels\n')
+    print('\nStep 0: Cloning ExtractGrammar and compiling MorphoDict\n')
 
     print('cloning extract grammar from', DEFAULT_FROM_LANG)
     clone_extract_gf()
@@ -322,9 +330,14 @@ if '4' in STEPS:
 
     mdict = build_morphodict(absrules, cncrules)
     print_gf_files(
-        MATH_WORDS_ABS, '', ['Cat'],
-        ['Paradigms'], [], mdict,
-        cncprefix=MATH_WORDS_CNC_PREFIX
+        MATH_WORDS_ABS,
+        '',
+        ['Cat'],
+        ['Paradigms'],
+        [],
+        mdict,
+        cncprefix=MATH_WORDS_CNC_PREFIX,
+        onelang=LANG
         )
 
 
