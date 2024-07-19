@@ -46,10 +46,21 @@ def mk_lin_rule(fun, lin, comment=None):
 def mk_lincat_rule(cat, lin):
     return ' '.join(['lincat', cat, '=', lin, ';\n'])
 
+
+def extract_term(cnc, s):
+    try:
+        p = cnc.parse(s)
+        _, t = p.__next__()
+        return True, t
+    except:
+        unknowns = [w for w in s.split() if cnc.lookupMorpho(w) == []]
+        return False, unknowns
+
     
 def print_gf_files(
         absname, path, extends, opens, newcats, mdict,
-        cncprefix=None, abstract=True, onelang=None):
+        cncprefix=None, abstract=True, onelang=None
+        ):
     """dict format: qid: {'cat', 'fun', 'lang', 'status',
     *lang: {'str', 'lin', 'status'}}"""
 

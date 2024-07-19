@@ -1,4 +1,6 @@
-# add a language to an existing multilingual grammar
+#!/usr/bin/env python3
+
+# start a multilingual lexicon or add a language to an existing one
 
 # prerequisites:
 #   ln -s <deptreepy-dir>
@@ -10,7 +12,6 @@ import pgf
 import sys
 import os  ## for calling deptreepy
 import json
-from extract_terms import extract_term
 from words_from_ud import words_main, gf_lin
 from gf_utils import *
 
@@ -19,6 +20,18 @@ sys.path.append('deptreepy')
 import trees
 import operations
 
+help_message = """  usage: build_lexicon.py (-first|-added) <fr> <Fre> <STEPNUM>+\n
+  Step 0: preparations  
+  Step 1: extract wikidata for that language into qlist  
+  Step 2: parse with UDPipe  
+  Step 3: use the UDPipe parse to clean up corpus and add to lexicon  
+  Step 5: parse the terms with the extended lexicon  
+  Step 6: generate GF modules for abstract and the first concrete  
+  Step 7: add a new concrete syntax\n
+  To start the build:    -first en Eng 1 2 3 4 5 6
+  To add a new language: -added de Ger 1 2 3 4 5 7
+  """
+
 # give 2-letter and 3-letter language codes as command line arguments
 if sys.argv[4:] and sys.argv[1].startswith('-'):
     MODE = sys.argv[1]
@@ -26,20 +39,22 @@ if sys.argv[4:] and sys.argv[1].startswith('-'):
     LANG = sys.argv[3]
     STEPS = sys.argv[4:]
 else:
-    print('usage: add_language (-first|-added) <fr> <Fre> <NUM>+')
+    print(help_message)
     exit()
 
+
+# json and tmp files are stored in out, GF files in the current dir
 
 WIKIDATA_FILE = '../../data/qid-lexicon.jsonl'
 NO_WIKILABEL = 'NOWIKILABEL'
 EXTRACT_PGF_FILE = 'Extract' + LANG + 'Abs.pgf'
 EXTRACT_CNC_NAME = 'Extract' + LANG
-QLIST_FILE = 'qlist_' + LANG + '.json'
-NEW_QLIST_FILE = 'new_qlist_' + LANG + '.json'
-QDICT_FILE = 'qdict_' + LANG + '.json'
-CORPUS_FILE = 'corpus.tmp'
-CONLLU_PARSED_FILE = 'terms_' + LANG + '.conllu'
-UD_LEXICON_FILE = 'lexicon_' + LANG + '.json'
+QLIST_FILE = 'out/qlist_' + LANG + '.json'
+NEW_QLIST_FILE = 'out/new_qlist_' + LANG + '.json'
+QDICT_FILE = 'out/qdict_' + LANG + '.json'
+CORPUS_FILE = 'out/corpus.tmp'
+CONLLU_PARSED_FILE = 'out/terms_' + LANG + '.conllu'
+UD_LEXICON_FILE = 'out/lexicon_' + LANG + '.json'
 MORPHODICT_CNC =  'MorphoDict' + LANG
 MORPHODICT_FILE = MORPHODICT_CNC + 'Abs.pgf'
 MATH_WORDS_ABS = 'MathWords' + LANG + 'Abs'
@@ -91,8 +106,6 @@ if '0' in STEPS:
     
     if STEPS == ['0']:
         exit()
-
-        
 
 
 #### Step 1: extract wikidata for that language into qlist ####
@@ -338,6 +351,7 @@ def parse_terms_gf(grammar, qlis):
             val = [False, 'variants {}']
         else:
             val = extract_term(concrete, s)
+            
         qdict[q] = {'str': s, 'lin': str(val[1]), 'status': val[0]}
     return qdict
 
@@ -347,7 +361,7 @@ if '5' in STEPS:
     
     print('make sure you have', EXTRACT_CNC_NAME+'.gf')
     print('building a new', EXTRACT_PGF_FILE)
-    cmd = 'gf -make -s Extract' + LANG + '.gf'
+    cmd = 'gf -make -s -probs=Extract.probs Extract' + LANG + '.gf'
     print(cmd)
     os.system(cmd)
 

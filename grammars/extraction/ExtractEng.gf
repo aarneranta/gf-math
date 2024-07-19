@@ -51,6 +51,10 @@ oper
   nounStrCN : CN -> Str -> CN = \cn, s -> mkCN cn (symb s) ;
   strCompoundCN : Str -> CN -> CN = \s, cn -> prefixCN (s ++ hyphen) cn ;
 
+  -- a back-up oper for unanalysed terms
+  rawTerm : Str -> Term = \s ->
+    lin Term (lin Utt {s = s}) ; ---
+
   prefixCN : Str -> CN -> CN = \s, cn ->
     cn ** {s = \\n, c => s ++ cn.s ! n ! c} ;
 
