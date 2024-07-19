@@ -44,6 +44,7 @@ MORPHODICT_FILE = MORPHODICT_CNC + 'Abs.pgf'
 MATH_WORDS_ABS = 'MathWords' + LANG + 'Abs'
 MATH_WORDS_CNC_PREFIX = 'MathWords'
 MATH_TERMS = 'MathTerms'
+QDICT_SYNOPSIS_FILE = 'math_terms_synopsis.json'
 
 
 print('Processing language', LAN, '=', LANG, '\n')
@@ -406,6 +407,10 @@ if '6' in STEPS:
     print('\nStep 6: Generating GF modules\n')
 
     mdict = mk_mdict(qdict, grammar)
+    
+    with open(QDICT_SYNOPSIS_FILE, 'w') as file:
+        json.dump(mdict, file, ensure_ascii=False, indent=2)
+    print('wrote file', QDICT_SYNOPSIS_FILE)
 
     print_gf_files(
         'MathTerms',
