@@ -8,7 +8,7 @@ def mk_fun(s):
             for c in s)):  # test if legal GF identifier
         return s
     else:
-        return "'" + s + "'"  # if not, single quotes make it legal
+        return "'" + s.replace("'", "\\'") + "'"  # if not, single quotes make it legal
 
 
 def mk_fun_from_strs(ss):
@@ -59,7 +59,7 @@ def print_gf_files(absname, path, extends, opens, newcats, mdict, cncprefix=None
         for cat in newcats:
             absfile.write(mk_cat_rule(cat[0]))
         for qid in mdict:
-            if mdict[qid]['status']:
+            ## if mdict[qid]['status']:
                 absfile.write(mk_fun_rule(mdict[qid]['fun'], mdict[qid]['cat']))
         absfile.write('}\n')
         print('wrote file', absname + '.gf')

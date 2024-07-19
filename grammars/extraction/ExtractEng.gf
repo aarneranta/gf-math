@@ -12,7 +12,8 @@ concrete ExtractEng of ExtractEngAbs =
   SymbolicEng,
   (E=ExtendEng),
   (P=ParadigmsEng),
-  (R=ResEng)
+  (R=ResEng),
+  Prelude
   in {
 
 lincat
@@ -40,6 +41,8 @@ lin
 
   PositA a = mkAP a ;
   AdAP ad ap = mkAP ad ap ;
+  AAdAP a ap = mkAP (lin AdA (mkAdv a)) ap ;
+  PastPartAP v = mkAP (lin A {s = table (R.AForm) {_ => v.s ! R.VPPart} ; isPre = True ; isMost = True}) ;
 
   PrepNP prep np = mkAdv prep np ;
 

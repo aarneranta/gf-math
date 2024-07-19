@@ -40,6 +40,7 @@ lin
 
   PositA a = mkAP a ;
   AdAP ad ap = mkAP ad ap ;
+  AAdAP a ap = mkAP (lin AdA (mkAdv a)) ap ;
 
   PrepNP prep np = mkAdv prep np ;
 

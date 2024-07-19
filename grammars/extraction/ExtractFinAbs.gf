@@ -32,6 +32,7 @@ fun
 
   PositA : A -> AP ;
   AdAP : AdA -> AP -> AP ;
+  AAdAP : A -> AP -> AP ;
 
   PrepNP : Prep -> NP -> Adv ;
 
