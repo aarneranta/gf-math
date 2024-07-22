@@ -1,6 +1,6 @@
 -- based on http://nevidal.org/download/forthel.pdf
 
-abstract Forthel = {
+abstract Forthel = ForthelTerms ** {
 
 cat
   Definition ; -- separate from Statement, to avoid ambiguities
@@ -25,13 +25,20 @@ cat
 
   PredicateHead ;
 
-  Operator ; -- symbolic
-  Relation ;
+---  Operator ; -- symbolic
+---  Relation ;
   SymbTerm ;
   Name ;
   [Name] {1} ; 
 
 fun
+-- importing from ForthelTerms
+
+  FormulaSymbTerm : Formula -> SymbTerm ;
+  ExpressionSymbTerm : Exp -> SymbTerm ;
+  VariableName : Variable -> Name ;
+
+
 -- 1.3.2
   PrimClassNotion : PrimClass -> Notion ;
   PrimClassNamesNotion : PrimClass -> [Name] -> Notion ;
@@ -41,7 +48,7 @@ fun
   function_PrimClass : Term -> Term -> PrimClass ;
 
   NameSymbTerm : Name -> SymbTerm ;
-  StringName : String -> Name ;
+----  StringName : String -> Name ; ---- replaced by VariableName
 
   AdjNotion : Notion -> Adjective -> Notion ; -- both left and right
   RelNotion : Notion -> Predicates -> Notion ; -- some of right

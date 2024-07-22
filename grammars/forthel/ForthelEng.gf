@@ -1,6 +1,6 @@
 -- based on http://nevidal.org/download/forthel.pdf
 
-concrete ForthelEng of Forthel =
+concrete ForthelEng of Forthel = ForthelTermsAscii **
 
 open
   SyntaxEng,
@@ -37,13 +37,20 @@ lincat
 
   PredicateHead = S ;
   
-  Operator = Symb ; -- symbolic
-  Relation = Symb ;
+---  Operator = Symb ; -- symbolic
+---  Relation = Symb ;
   SymbTerm = Symb ;
   Name = Symb ;
   [Name] = {s : Str ; isPlur : Bool} ;
 
 lin
+-- importing from ForthelTerms
+
+  FormulaSymbTerm formula = mkSymb formula.s ;
+  ExpressionSymbTerm exp = mkSymb exp.s ;
+  VariableName v = mkSymb v ;
+
+
 -- 1.3.2
   PrimClassNotion pc = {
     cn = mkCN pc.cn pc.adv ;
@@ -72,7 +79,7 @@ lin
 
   NameSymbTerm n = n ;
 
-  StringName s = mkSymb s.s ;
+----  StringName s = mkSymb s.s ; ---- replaced by VariableName
   
   BaseName x = {s = x.s ; isPlur = False} ;
   ConsName x xs = {s = x.s ++ "," ++ xs.s ; isPlur = True} ;
