@@ -3,6 +3,10 @@
 abstract Forthel = ForthelTerms ** {
 
 cat
+  Toplevel ;
+  Section ;
+  Header ;
+  Sentence ;
   Assumption ;
   Synonym ;
   Definition ; -- separate from Statement, to avoid ambiguities
@@ -139,8 +143,18 @@ fun
 
 
 -- 1.5.1
-  NamesAssumption : [Name] -> ClassNoun -> Assumption ; --- cannot find rule, only examples
+  NamesAssumption : [Name] -> ClassNoun -> Assumption ; --- cannot find a rule, only examples
+  LetNamesAssumption : [Name] -> ClassNoun -> Assumption ; --- cannot find a rule, only examples
+  StatementAssumption : Statement -> Assumption ;
 
+  SectionToplevel : Header -> Section -> Toplevel ;
 
+  EmptySection : Section ;
+  AssumptionSection : Assumption -> Section -> Section ;
+  StatementSection : Statement -> Section -> Section ;
+  ThenStatementSection : Statement -> Section -> Section ;
+  DefinitionSection : Definition -> Section -> Section ;
+
+  ex_Header : Header ;  --- GFLean specific ?
 
 }

@@ -3,7 +3,7 @@
 concrete ForthelGer of Forthel =
 
   ForthelTermsAscii **
-  ForthelFunctor with
+  ForthelFunctor - [pluralNP] with
     (Syntax=SyntaxGer),
     (Symbolic=SymbolicGer),
     (Extend=ExtendGer),
@@ -12,6 +12,7 @@ concrete ForthelGer of Forthel =
 
 ** open
 
+  ParadigmsGer,
   (P=ParadigmsGer),
   (M=MakeStructuralGer),
   (R=ResGer),
@@ -23,18 +24,23 @@ in {
 oper
 -- functor exceptions
 
-
+  pluralNP : NP -> NP = \np -> np ** {a = R.AgPl R.P3} ;
 
 -- words etc
 
   denote_V2 : V2 =
-    P.mkV2 (P.mkV "bedeuten") ;
+    mkV2 (mkV "bedeuten") ;
 
   any_Quant = a_Quant ; ---- TODO
   each_Det = every_Det ; ---- TODO
   such_that_Subj = M.mkSubj "so dass" ;
 
-  iff_Conj = M.mkConj [] "wenn und nur wenn" P.singular ;
+  iff_Conj = M.mkConj [] "wenn und nur wenn" singular ;
 
-  equal_A2 : A2 = P.mkA2 (P.mkA "gleich") with_Prep ;
+  equal_A2 : A2 = mkA2 (mkA "gleich") with_Prep ;
+
+  assume_VS : VS = mkVS (prefixV "an" I.nehmen_V) ;
+
+  then_Adv : Adv = P.mkAdv "then" ;
+  
 }

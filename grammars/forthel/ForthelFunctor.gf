@@ -13,6 +13,10 @@ open
 in {
 
 lincat
+  Toplevel = Text ;
+  Section = Text ;
+  Header = Text ;
+  Sentence = Text ;
   Assumption = Text ;
   Synonym = Text ;
   Definition = S ;
@@ -76,7 +80,7 @@ lin
   RelClassNoun noun predicates =
     noun ** {cn = mkCN noun.cn (Extend.RelVPS which_RP predicates)} ; --- place of rel?
   StatClassNoun noun statement =
-    noun ** {adv = concatAdv noun.adv (mkAdv such_that_Subj statement)} ;
+    noun ** {adv = concatAdv noun.adv (Syntax.mkAdv such_that_Subj statement)} ;
 
 -- 1.3.3
   EveryTerm notion = mkNP every_Det notion.cn ;  --- overgenerates "every set A, B"
@@ -149,7 +153,7 @@ lin
 
 ---- symbolic statements TODO
 
-  ForStatement qns s = mkS (mkAdv for_Prep qns) s ;
+  ForStatement qns s = Grammar.ExtAdvS (Syntax.mkAdv for_Prep qns) s ;
 
 --- simplicied from spec, which uses many levels
 --- to resolve ambiguities: that can be misleading to an innocent
@@ -185,9 +189,31 @@ lin
   
 
 -- 1.5.1
---  NamesAssumption names class =
---    letAssumption names (mkVP primclass) ;
+  NamesAssumption names classnoun =
+    mkText 
+      (mkUtt (mkImp (Extend.ComplBareVS assume_VS
+         (mkS (mkCl (namesNP names) (mkCN classnoun.cn classnoun.adv))))))
+      fullStopPunct ;
+      
+  LetNamesAssumption names classnoun =
+    mkText 
+      (mkUtt (ImpP3 (namesNP names) (mkVP (mkCN classnoun.cn classnoun.adv))))
+      fullStopPunct ;
 
+  StatementAssumption stat =
+    mkText 
+      (mkUtt (mkImp (Extend.ComplBareVS assume_VS stat))) fullStopPunct ;
+
+
+  SectionToplevel header section = mkText header section ;
+
+  EmptySection = emptyText ;
+  AssumptionSection assumption section = mkText assumption section ;
+  StatementSection statement section = mkText (mkUtt statement) section ;
+  ThenStatementSection statement section = mkText (mkUtt (mkS then_Adv statement)) section ;
+  DefinitionSection definition section = mkText (mkUtt definition) section ;
+
+  ex_Header = lin Text {s = "ex ."} ; --- GFLean specific ?
 
 
 --------------------------
@@ -200,9 +226,11 @@ oper
   negPol = negativePol ;
 
   namesNP : [Name] -> NP = \xs -> case xs.isPlur of {
-    True => symb xs.s ** {n = R.Pl} ;
+    True => pluralNP (symb xs.s) ;
     False => symb xs.s
     } ;
+
+  pluralNP : NP -> NP = \np -> np ;  --- to be overridden for languages
 
   letSynonym : NP -> NP -> Text = \dum, dens ->
     mkText (Grammar.ImpP3 dum (mkVP denote_V2 dens)) ;

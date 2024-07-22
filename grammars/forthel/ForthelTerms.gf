@@ -33,5 +33,6 @@ fun
   x_Variable, y_Variable, z_Variable, u_Variable : Variable ; 
   a_Variable, b_Variable, c_Variable, d_Variable : Variable ;
   f_Variable, g_Variable : Variable ;
+  k_Variable, m_Variable, n_Variable, p_Variable : Variable ;
 
 }

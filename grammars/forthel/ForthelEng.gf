@@ -3,7 +3,7 @@
 concrete ForthelEng of Forthel =
 
   ForthelTermsAscii **
-  ForthelFunctor - [negPol] with
+  ForthelFunctor - [negPol, pluralNP] with
     (Syntax=SyntaxEng),
     (Symbolic=SymbolicEng),
     (Extend=ExtendEng),
@@ -11,7 +11,7 @@ concrete ForthelEng of Forthel =
     (Markup=MarkupEng)
 
 ** open
-
+  ParadigmsEng,
   (P=ParadigmsEng),
   (M=MakeStructuralEng),
   (R=ResEng),
@@ -25,16 +25,22 @@ oper
 
   negPol = Extend.UncontractedNeg ;
 
+  pluralNP : NP -> NP = \np -> np ** {a = R.agrP3 R.Pl} ;
+
 -- words etc
 
   denote_V2 : V2 =
-    P.mkV2 "denote" | P.mkV2 I.stand_V for_Prep ; --- allow variants ?
+    mkV2 "denote" | mkV2 I.stand_V for_Prep ; --- allow variants ?
 
   any_Quant = P.mkQuant "any" "any" ;
   each_Det = M.mkDet "each" ;
-  such_that_Subj = P.mkSubj "such that" ;
+  such_that_Subj = mkSubj "such that" ;
 
-  iff_Conj = P.mkConj "iff" ;
+  iff_Conj = mkConj "iff" ;
 
-  equal_A2 : A2 = P.mkA2 (P.mkA "equal") to_Prep ;
+  equal_A2 : A2 = mkA2 (mkA "equal") to_Prep ;
+
+  assume_VS : VS = mkVS (mkV "assume") ;
+
+  then_Adv : Adv = P.mkAdv "then" ;
 }

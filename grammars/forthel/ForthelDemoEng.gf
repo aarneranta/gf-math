@@ -2,12 +2,14 @@ concrete ForthelDemoEng of ForthelDemo = ForthelEng **
 
 open
   SyntaxEng,
+  (S=SyntaxEng),
   SymbolicEng,
   (Extend=ExtendEng),
   (Grammar=GrammarEng),
   (Markup=MarkupEng),
   Prelude,
 
+  ParadigmsEng,
   (P=ParadigmsEng),
   (M=MakeStructuralEng),
   (R=ResEng),
@@ -24,16 +26,16 @@ lin
 
   element_PrimClass term = {
     cn = mkCN element_N ;
-    adv = mkAdv possess_Prep term
+    adv = S.mkAdv possess_Prep term
     } ;
 
   function_PrimClass fromterm toterm = {
     cn = mkCN function_N ;
-    adv = concatAdv (mkAdv from_Prep fromterm) (mkAdv to_Prep fromterm)
+    adv = concatAdv (S.mkAdv from_Prep fromterm) (S.mkAdv to_Prep fromterm)
     } ;
 
   zero_DefiniteNoun = mkCN zero_N ;
-  order_DefiniteNoun x = mkCN (mkCN order_N) (mkAdv possess_Prep x) ;
+  order_DefiniteNoun x = mkCN (mkCN order_N) (S.mkAdv possess_Prep x) ;
 
   converge_Verb = mkVP converge_V ;
   divide_Verb t = mkVP divide_V2 t ;
@@ -50,25 +52,43 @@ lin
   contrary_Constant = mkNP the_Det contrary_N ;
   contradiction_Constant = mkNP a_Det contradiction_N ; --- a/an in spec
 
+-- from GFLean
+
+  rational_Adjective = mkAP (mkA "rational") ;
+  odd_Adjective = mkAP (mkA "odd") ;
+  integer_PrimClass = mkPrimClass (mkN "integer") ;
+  number_PrimClass = mkPrimClass (mkN "number") ;
+  real_Adjective = mkAP (mkA "real") ;
+  even_Adjective = mkAP (mkA "even") ;
+  positive_Adjective = mkAP (mkA "positive") ;
+  nonnegative_Adjective = mkAP (mkA "nonnegative") ;
+  negative_Adjective = mkAP (mkA "negative") ;
+
 oper
-  
-  set_N : N = P.mkN "set" ;
-  element_N : N = P.mkN "element" ;
-  function_N : N = P.mkN "function" ;
-  zero_N = P.mkN "zero" ;
-  order_N = P.mkN "order" ;
+  mkPrimClass = overload {
+    mkPrimClass : N -> PrimClass
+      = \n -> lin PrimClass {cn = mkCN n ; adv = emptyAdv}
+    } ;
 
-  converge_V : V = P.mkV "converge" ;
-  divide_V2 : V2 = P.mkV2 "divide" ;
-  belong_V2 : V2 = P.mkV2 (P.mkV "belong") to_Prep ;
-  join_V3 : V3 = P.mkV3 (P.mkV "join") P.noPrep with_Prep ;
+  set_N : N = mkN "set" ;
+  element_N : N = mkN "element" ;
+  function_N : N = mkN "function" ;
+  zero_N = mkN "zero" ;
+  order_N = mkN "order" ;
 
-  prime_A : A = P.mkA "prime" ;
-  dividing_A2 : A2 = P.mkA2 (P.mkA "dividing") P.noPrep ;
-  less_A2 : A2 = P.mkA2 (P.mkA "less") (P.mkPrep "than") ; ---
-  great_A : A = P.mkA "great" ;
-  
-  thesis_N = P.mkN "thesis" ;
-  contrary_N = P.mkN "contrary" ;
-  contradiction_N = P.mkN "contradiction" ;
+  converge_V : V = mkV "converge" ;
+  divide_V2 : V2 = mkV2 "divide" ;
+  belong_V2 : V2 = mkV2 (mkV "belong") to_Prep ;
+  join_V3 : V3 = mkV3 (mkV "join") noPrep with_Prep ;
+
+  prime_A : A = mkA "prime" ;
+  dividing_A2 : A2 = mkA2 (mkA "dividing") noPrep ;
+  less_A2 : A2 = mkA2 (mkA "less") (mkPrep "than") ; ---
+  great_A : A = mkA "great" ;
+ 
+  thesis_N = mkN "thesis" ;
+  contrary_N = mkN "contrary" ;
+  contradiction_N = mkN "contradiction" ;
+
+
 }

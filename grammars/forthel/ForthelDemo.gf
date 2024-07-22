@@ -26,4 +26,15 @@ fun
   contrary_Constant : Constant ;
   contradiction_Constant : Constant ;
 
-}
+-- from GFLean
+
+  rational_Adjective : Adjective ;
+  odd_Adjective : Adjective ;
+  integer_PrimClass : PrimClass ;
+  number_PrimClass : PrimClass ;
+  real_Adjective : Adjective ;
+  even_Adjective : Adjective ;
+  positive_Adjective : Adjective ;
+  nonnegative_Adjective : Adjective ;
+  negative_Adjective : Adjective ;
+} 

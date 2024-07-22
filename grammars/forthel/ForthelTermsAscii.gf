@@ -53,6 +53,10 @@ lin
   d_Variable = "d" ;
   f_Variable = "f" ;
   g_Variable = "g" ;
+  k_Variable = "k" ;
+  n_Variable = "n" ;
+  m_Variable = "m" ;
+  p_Variable = "p" ;
 
 
 oper
