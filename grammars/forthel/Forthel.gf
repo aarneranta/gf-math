@@ -46,10 +46,6 @@ fun
   ClassNounNotion : ClassNoun -> Notion ;
   ClassNounNamesNotion : ClassNoun -> [Name] -> Notion ;
 
-  set_PrimClass : PrimClass ; -- set (A, B, C)
-  element_PrimClass : Term -> PrimClass ;
-  function_PrimClass : Term -> Term -> PrimClass ;
-
 ---  NameSymbTerm : Name -> SymbTerm ;
 ----  StringName : String -> Name ; ---- replaced by VariableName
 
@@ -78,9 +74,6 @@ fun
   DefiniteSgNounTerm : DefiniteNoun -> PlainTerm ;
   DefinitePlNounTerm : DefiniteNoun -> PlainTerm ;
 
-  zero_DefiniteNoun : DefiniteNoun ;
-  order_DefiniteNoun : PlainTerm -> DefiniteNoun ;
-
 -- 1.3.4
 -- reading nonterminals doesPredicate etc as funs, not cats
 
@@ -90,16 +83,6 @@ fun
   HasPredicate : Notion -> Predicate ; --- hence we may overgenerate
   HasNoPredicate : Notion -> Predicate ;
 
-  converge_Verb : Verb ;
-  divide_Verb : Term -> Verb ;   --- V2
-  belong_Verb : Term -> Verb ;
-  join_Verb : Term -> Term -> Verb ; --- V3
-
-  prime_Adjective : Adjective ;
-  dividing_Adjective : Term -> Adjective ; -- A2
-  equal_Adjective : Term -> Adjective ;
-  less_Adjective : Term -> Adjective ;
-  greater_Adjective : Term -> Adjective ;
 
 -- 1.3.5
 --- intervening categories as functions again
@@ -121,10 +104,6 @@ fun
 
   OneNotions : Notion -> Notions ;
   AddNotions : Notion -> Notions -> Notions ;
-
-  thesis_Constant : Constant ;
-  contrary_Constant : Constant ;
-  contradition_Constant : Constant ;
 
 ---- symbolic statements TODO
 
