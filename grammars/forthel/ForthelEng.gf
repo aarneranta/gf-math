@@ -3,7 +3,7 @@
 concrete ForthelEng of Forthel =
 
   ForthelTermsAscii **
-  ForthelFunctor with
+  ForthelFunctor - [negPol] with
     (Syntax=SyntaxEng),
     (Symbolic=SymbolicEng),
     (Extend=ExtendEng),
@@ -21,11 +21,14 @@ concrete ForthelEng of Forthel =
 in {
 
 oper
-  denote_V2 : V2 = P.mkV2 "denote" | P.mkV2 I.stand_V for_Prep ; --- allow variants ?
+-- functor exceptions
 
-  s2np : S -> NP = \s -> symb (mkSymb (mkUtt s).s) ; --- hack; Forthel is not quite grammatical here
+  negPol = Extend.UncontractedNeg ;
 
-  parenthS : S -> S = \s -> Markup.MarkupS (lin Mark {begin = "(" ; end = ")"}) s ;
+-- words etc
+
+  denote_V2 : V2 =
+    P.mkV2 "denote" | P.mkV2 I.stand_V for_Prep ; --- allow variants ?
 
   any_Quant = P.mkQuant "any" "any" ;
   each_Det = M.mkDet "each" ;

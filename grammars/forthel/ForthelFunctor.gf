@@ -8,13 +8,8 @@ open
   Extend,
   Grammar,
   Markup,
-  Prelude,
+  Prelude
 
-  (P=ParadigmsEng),
-  (M=MakeStructuralEng),
-  (R=ResEng),
-  (I=IrregEng)
-  
 in {
 
 lincat
@@ -202,9 +197,7 @@ oper
   emptyAdv : Adv = lin Adv {s = ""} ;
   concatAdv : Adv -> Adv -> Adv = \a, b -> lin Adv {s = a.s ++ b.s} ;
 
-
--- to be functorized
-  negPol = Extend.UncontractedNeg ; --- should be negativePol in functor, but isn't 
+  negPol = negativePol ;
 
   namesNP : [Name] -> NP = \xs -> case xs.isPlur of {
     True => symb xs.s ** {n = R.Pl} ;
@@ -213,5 +206,9 @@ oper
 
   letSynonym : NP -> NP -> Text = \dum, dens ->
     mkText (Grammar.ImpP3 dum (mkVP denote_V2 dens)) ;
+
+  s2np : S -> NP = \s -> symb (mkSymb (mkUtt s).s) ; --- hack; Forthel is not quite grammatical here
+
+  parenthS : S -> S = \s -> Markup.MarkupS (lin Mark {begin = "(" ; end = ")"}) s ;
 
 }
