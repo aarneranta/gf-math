@@ -37,4 +37,7 @@ fun
   positive_Adjective : Adjective ;
   nonnegative_Adjective : Adjective ;
   negative_Adjective : Adjective ;
+  less_or_equal_Adjective : Term -> Adjective ;
+  greater_or_equal_Adjective : Term -> Adjective ;
+
 } 

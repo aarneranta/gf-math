@@ -63,6 +63,15 @@ lin
   positive_Adjective = mkAP (mkA "positive") ;
   nonnegative_Adjective = mkAP (mkA "nonnegative") ;
   negative_Adjective = mkAP (mkA "negative") ;
+  less_or_equal_Adjective t =
+    Grammar.AdvAP
+      (mkAP or_Conj (mkAP (mkA "less than")) (mkAP (mkA "equal"))) --- hack
+      (S.mkAdv to_Prep t) ;
+  greater_or_equal_Adjective t =
+    Grammar.AdvAP
+      (mkAP or_Conj (mkAP (mkA "less than")) (mkAP (mkA "equal"))) --- hack
+      (S.mkAdv to_Prep t) ;
+
 
 oper
   mkPrimClass = overload {

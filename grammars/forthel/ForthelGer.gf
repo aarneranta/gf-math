@@ -41,6 +41,6 @@ oper
 
   assume_VS : VS = mkVS (prefixV "an" I.nehmen_V) ;
 
-  then_Adv : Adv = P.mkAdv "then" ;
+  then_Adv : Adv = P.mkAdv "dann" ;
   
 }

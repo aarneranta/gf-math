@@ -45,15 +45,41 @@ lin
   prime_Adjective = mkAP prime_A ;
   dividing_Adjective t = mkAP dividing_A2 t ;
   equal_Adjective t = mkAP equal_A2 t ;
-  less_Adjective t = mkAP less_A2 t ; --- a comparative
+  less_Adjective t = mkAP klein_A t ; --- a comparative
   greater_Adjective t = mkAP great_A t ; 
 
   thesis_Constant = mkNP the_Det thesis_N ;
   contrary_Constant = mkNP the_Det contrary_N ;
   contradiction_Constant = mkNP a_Det contradiction_N ; --- a/an in spec
 
+-- from GFLean
+
+  rational_Adjective = mkAP (mkA "rational") ;
+  odd_Adjective = mkAP (mkA "ungerade") ;
+  integer_PrimClass = mkPrimClass (mkN "Zahl" feminine) ; ----
+  number_PrimClass = mkPrimClass (mkN "Zahl" feminine) ;
+  real_Adjective = mkAP (mkA "real") ;
+  even_Adjective = mkAP (mkA "gerade") ;
+  positive_Adjective = mkAP (mkA "positiv") ;
+  nonnegative_Adjective = mkAP (mkA "nicht-negativ") ;
+  negative_Adjective = mkAP (mkA "negativ") ;
+  less_or_equal_Adjective t =
+      mkAP or_Conj
+        (mkAP (comparAP klein_A) (P.mkAdv "als"))
+	((mkAP equal_A2 t) ** {isPre = False}) ;
+        
+  greater_or_equal_Adjective t =
+      mkAP or_Conj
+        (mkAP (comparAP great_A) (P.mkAdv "als"))
+	((mkAP equal_A2 t) ** {isPre = False}) ;
+
 oper
-  
+  mkPrimClass = overload {
+    mkPrimClass : N -> PrimClass
+      = \n -> lin PrimClass {cn = mkCN n ; adv = emptyAdv}
+    } ;
+
+
   set_N : N = mkN "Menge" ;
   element_N : N = mkN "Element" neuter ;
   function_N : N = mkN "Funktion" ;
@@ -67,8 +93,9 @@ oper
 
   prime_A : A = mkA "unteilbar" ;
   dividing_A2 : A2 = mkA2 (mkA "teilend") accPrep ; ----
-  less_A2 : A2 = mkA2 (mkA "kleiner") (mkPrep "als" nominative) ; ---
-  great_A : A = mkA "gross" ; 
+  less_A2 : A2 = mkA2 klein_A (mkPrep "als" nominative) ; ---
+  great_A : A = mkA "gross" "grösser" "grösste" ;
+  klein_A = mkA "klein" ;
   
   thesis_N = mkN "Thesis" ;
   contrary_N = mkN "Gegenteil" ;
