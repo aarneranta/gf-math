@@ -9,20 +9,22 @@ open
   Prelude,
 
   (P=ParadigmsEng),
-  (M=MakeStructuralEng)
+  (M=MakeStructuralEng),
+  (R=ResEng)
   
 in {
 
 lincat
+  Definition = S ;
   Statement = S ;
   Predicate = VP ;
   Term = NP ;
   Notion = {cn : CN ; isPlur : Bool} ;
 
-  PrimaryStatement = S ; -- can use MkVPS
   Terms = NP ;
   Predicates = Extend.VPS ;
   Notions = NP ;
+  PrimClass = {cn : CN ; adv : Adv} ; -- element (x) , of X
 
   ClassNoun = CN ;
   DefiniteNoun = CN ;
@@ -31,43 +33,56 @@ lincat
   PlainTerm = NP ;
   Adjective = AP ;  --- these two are one cat in 1.3.1 but separated in 1.3.4
   Verb = VP ;
+  Constant = NP ;
+
+  PredicateHead = S ;
   
   Operator = Symb ; -- symbolic
   Relation = Symb ;
   SymbTerm = Symb ;
   Name = Symb ;
-  [Name] = {s : Str ; elemNum : ElemNum} ;
+  [Name] = {s : Str ; isPlur : Bool} ;
 
 lin
 -- 1.3.2
-  set_Notion xs = {
-    cn = mkCN (mkCN set_N) (<symb (mkSymb xs.s) : NP>) ;
-    isPlur = elemNumNum xs.elemNum
+  PrimClassNotion pc = {
+    cn = mkCN pc.cn pc.adv ;
+    isPlur = False
+    } ;
+    
+  PrimClassNamesNotion pc xs = {
+    cn = mkCN (mkCN pc.cn (<symb (mkSymb xs.s) : NP>)) pc.adv ;
+    isPlur = xs.isPlur
+    } ;
+    
+  set_PrimClass = {
+    cn = mkCN set_N ;
+    adv = emptyAdv
     } ;
 
-  element_Notion xs term = {
-    cn = mkCN (mkCN (mkCN element_N) (<symb (mkSymb xs.s) : NP>))
-              (SyntaxEng.mkAdv possess_Prep term) ;
-    isPlur = elemNumNum xs.elemNum
+  element_PrimClass term = {
+    cn = mkCN element_N ;
+    adv = mkAdv possess_Prep term
     } ;
 
-  function_Notion xs fromterm toterm = {
-    cn = mkCN (mkCN (mkCN (mkCN function_N) (<symb (mkSymb xs.s) : NP>))
-              (mkAdv from_Prep fromterm))
-              (mkAdv to_Prep fromterm) ;
-    isPlur = elemNumNum xs.elemNum
+  function_PrimClass fromterm toterm = {
+    cn = mkCN function_N ;
+    adv = concatAdv (mkAdv from_Prep fromterm) (mkAdv to_Prep fromterm)
     } ;
 
   NameSymbTerm n = n ;
 
   StringName s = mkSymb s.s ;
   
-  BaseName = {s = "" ; elemNum = NZero} ;
-  ConsName x xs = case xs.elemNum of {
-    NZero => {s = x.s ; elemNum = NOne} ;
-    NOne => {s = x.s ++ "," ++ xs.s ; elemNum = NMany} ;
-    NMany => {s = x.s ++ "," ++ xs.s ; elemNum = NMany}
-    } ;
+  BaseName x = {s = x.s ; isPlur = False} ;
+  ConsName x xs = {s = x.s ++ "," ++ xs.s ; isPlur = True} ;
+
+  AdjNotion notion adjective =
+    notion ** {cn = mkCN adjective notion.cn} ;
+  RelNotion notion predicates =
+    notion ** {cn = mkCN notion.cn (Extend.RelVPS which_RP predicates)} ;
+  StatNotion notion statement =
+    notion ** {cn = mkCN notion.cn (mkAdv such_that_Subj statement)} ;
 
 -- 1.3.3
   EveryTerm notion = mkNP every_Det notion.cn ;  --- overgenerates "every set A, B"
@@ -121,9 +136,12 @@ lin
   dividing_Adjective t = mkAP dividing_A2 t ;
   equal_Adjective t = mkAP equal_A2 t ;
   less_Adjective t = mkAP less_A2 t ; --- a comparative
+  greater_Adjective t = mkAP great_A t ; 
 
 -- 1.3.5
   SimpleStatement terms predicates = Extend.PredVPS terms predicates ;
+  WeHaveSymbStatement sym = mkS (mkCl we_NP have_V2 <symb sym : NP>) ;
+  WeHaveConstStatement const = mkS (mkCl we_NP have_V2 const) ;
   
   ThereIsStatement notions = mkS (Extend.ExistsNP notions) ;
   ThereIsNoStatement notion = mkS (Extend.ExistsNP (mkNP no_Quant notion.cn)) ;
@@ -149,9 +167,13 @@ lin
   AddNotions notion notions =
     mkNP and_Conj (mkNP a_Det notion.cn) notions ; --- commas in spec
 
+  thesis_Constant = mkNP the_Det thesis_N ;
+  contrary_Constant = mkNP the_Det contrary_N ;
+  contradition_Constant = mkNP a_Det contradiction_N ; --- a/an in spec
+
+
 ---- symbolic statements TODO
 
-  PrimaryStatementStatement s = s ;
   ForStatement qns s = mkS (mkAdv for_Prep qns) s ;
 
 --- simplicied from spec, which uses many levels
@@ -163,21 +185,40 @@ lin
   IfStatement s t = mkS if_then_Conj s t ;
   IffStatement s t = mkS iff_Conj s t ;
 
+-- 1.3.6
 
-param
-  ElemNum = NZero | NOne | NMany ;
+  NotionDefinition definiendum definiens =
+    mkS (mkCl (mkNP a_Det definiendum.cn) definiens.cn) ;
+  FunctionDefinition definiendum definiens =
+    mkS (mkCl (mkNP the_Det definiendum) definiens) ;
+  FunctionIsEqualDefinition definiendum definiens =
+    mkS (mkCl (mkNP the_Det definiendum) (mkAP equal_A2 definiens)) ;
+  PredicateDefinition predhead statement =
+    mkS iff_Conj predhead statement ;
 
+  AdjectivePredicateHead adjective names =
+    mkS (mkCl (namesNP names) adjective) ;
+  VerbPredicateHead verb names =
+    mkS (mkCl (namesNP names) verb) ;
+
+
+
+
+--------------------------
 
 oper
-  elemNumNum : ElemNum -> Bool = \n ->
-    case n of {
-      NMany => True ;
-      _ => False
-      } ;
+--- these work for many languages but can be overridden
+  emptyAdv : Adv = lin Adv {s = ""} ;
+  concatAdv : Adv -> Adv -> Adv = \a, b -> lin Adv {s = a.s ++ b.s} ;
 
 
 -- to be functorized
   negPol = Extend.UncontractedNeg ; --- should be negativePol in functor, but isn't 
+
+  namesNP : [Name] -> NP = \xs -> case xs.isPlur of {
+    True => symb xs.s ** {n = R.Pl} ;
+    False => symb xs.s
+    } ;
 
   set_N : N = P.mkN "set" ;
   element_N : N = P.mkN "element" ;
@@ -186,6 +227,7 @@ oper
   order_N = P.mkN "order" ;
   any_Quant = P.mkQuant "any" "any" ;
   each_Det = M.mkDet "each" ;
+  such_that_Subj = P.mkSubj "such that" ;
 
   iff_Conj = P.mkConj "iff" ;
 
@@ -198,5 +240,10 @@ oper
   dividing_A2 : A2 = P.mkA2 (P.mkA "dividing") P.noPrep ;
   equal_A2 : A2 = P.mkA2 (P.mkA "equal") to_Prep ;
   less_A2 : A2 = P.mkA2 (P.mkA "less") (P.mkPrep "than") ; ---
+  great_A : A = P.mkA "great" ;
+  
+  thesis_N = P.mkN "thesis" ;
+  contrary_N = P.mkN "contrary" ;
+  contradiction_N = P.mkN "contradiction" ;
 
 }

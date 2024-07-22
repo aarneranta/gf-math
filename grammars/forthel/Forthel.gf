@@ -3,16 +3,17 @@
 abstract Forthel = {
 
 cat
+  Definition ; -- separate from Statement, to avoid ambiguities
   Statement ;
   Predicate ;
   Term ;
   Notion ;
 
-  PrimaryStatement ;
   Terms ; -- subject of primary statement
   Predicates ;
   Notions ; -- complement of there exist(s)
-  
+  PrimClass ;
+
   ClassNoun ;
   DefiniteNoun ;
   QuantifiedNotion ;
@@ -20,22 +21,31 @@ cat
   PlainTerm ;  -- no quantifiers
   Adjective ;  --- these two are one cat in 1.3.1
   Verb ;
+  Constant ; -- constant statement
+
+  PredicateHead ;
+
   Operator ; -- symbolic
   Relation ;
-
   SymbTerm ;
   Name ;
-  [Name] ; 
+  [Name] {1} ; 
 
 fun
 -- 1.3.2
-  set_Notion : [Name] -> Notion ; -- set (A, B, C)
-  element_Notion : [Name] -> Term -> Notion ;
-  function_Notion : [Name] -> Term -> Term -> Notion ;
+  PrimClassNotion : PrimClass -> Notion ;
+  PrimClassNamesNotion : PrimClass -> [Name] -> Notion ;
+
+  set_PrimClass : PrimClass ; -- set (A, B, C)
+  element_PrimClass : Term -> PrimClass ;
+  function_PrimClass : Term -> Term -> PrimClass ;
 
   NameSymbTerm : Name -> SymbTerm ;
   StringName : String -> Name ;
 
+  AdjNotion : Notion -> Adjective -> Notion ; -- both left and right
+  RelNotion : Notion -> Predicates -> Notion ; -- some of right
+  StatNotion : Notion -> Statement -> Notion ;
 
 -- 1.3.3
   EveryTerm : Notion -> QuantifiedNotion ;  --- can only take Sg
@@ -79,14 +89,17 @@ fun
   dividing_Adjective : Term -> Adjective ; -- A2
   equal_Adjective : Term -> Adjective ;
   less_Adjective : Term -> Adjective ;
+  greater_Adjective : Term -> Adjective ;
 
 -- 1.3.5
 --- intervening categories as functions again
 
-  SimpleStatement : Terms -> Predicates -> PrimaryStatement ;
+  SimpleStatement : Terms -> Predicates -> Statement ;
 
-  ThereIsStatement : Notions -> PrimaryStatement ;
-  ThereIsNoStatement : Notion -> PrimaryStatement ;
+  ThereIsStatement : Notions -> Statement ;
+  ThereIsNoStatement : Notion -> Statement ;
+  WeHaveSymbStatement : SymbTerm -> Statement ;
+  WeHaveConstStatement : Constant -> Statement ;
 
   PosOnePredicates : Predicate -> Predicates ;
   NegOnePredicates : Predicate -> Predicates ;
@@ -99,9 +112,12 @@ fun
   OneNotions : Notion -> Notions ;
   AddNotions : Notion -> Notions -> Notions ;
 
+  thesis_Constant : Constant ;
+  contrary_Constant : Constant ;
+  contradition_Constant : Constant ;
+
 ---- symbolic statements TODO
 
-  PrimaryStatementStatement : PrimaryStatement -> Statement ;
   ForStatement : QuantifiedNotions -> Statement -> Statement ;
 
 --- simplicied from spec, which uses many levels
@@ -112,6 +128,16 @@ fun
   OrStatement : Statement -> Statement -> Statement ;
   IfStatement : Statement -> Statement -> Statement ;
   IffStatement : Statement -> Statement -> Statement ;
+
+-- 1.3.6
+
+  NotionDefinition :  Notion -> Notion -> Definition ;
+  FunctionDefinition : DefiniteNoun -> PlainTerm -> Definition ;
+  FunctionIsEqualDefinition : DefiniteNoun -> PlainTerm -> Definition ;
+  PredicateDefinition : PredicateHead ->  Statement -> Definition ;
+
+  AdjectivePredicateHead : Adjective -> [Name] -> PredicateHead ;
+  VerbPredicateHead : Verb -> [Name] -> PredicateHead ;
 
 
 }
