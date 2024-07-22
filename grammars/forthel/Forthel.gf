@@ -3,6 +3,7 @@
 abstract Forthel = ForthelTerms ** {
 
 cat
+  Assumption ;
   Synonym ;
   Definition ; -- separate from Statement, to avoid ambiguities
   Statement ;
@@ -41,8 +42,9 @@ fun
 
 
 -- 1.3.2
-  PrimClassNotion : PrimClass -> Notion ;
-  PrimClassNamesNotion : PrimClass -> [Name] -> Notion ;
+  PrimClassNoun : PrimClass -> ClassNoun ;
+  ClassNounNotion : ClassNoun -> Notion ;
+  ClassNounNamesNotion : ClassNoun -> [Name] -> Notion ;
 
   set_PrimClass : PrimClass ; -- set (A, B, C)
   element_PrimClass : Term -> PrimClass ;
@@ -51,9 +53,9 @@ fun
 ---  NameSymbTerm : Name -> SymbTerm ;
 ----  StringName : String -> Name ; ---- replaced by VariableName
 
-  AdjNotion : Notion -> Adjective -> Notion ; -- both left and right
-  RelNotion : Notion -> Predicates -> Notion ; -- some of right
-  StatNotion : Notion -> Statement -> Notion ;
+  AdjClassNoun : ClassNoun -> Adjective -> ClassNoun ; -- both left and right
+  RelClassNoun : ClassNoun -> Predicates -> ClassNoun ; -- some of right
+  StatClassNoun : ClassNoun -> Statement -> ClassNoun ;
 
 -- 1.3.3
   EveryTerm : Notion -> QuantifiedNotion ;  --- can only take Sg
@@ -152,9 +154,14 @@ fun
 --- to defined symbols as preprocessor macros relate to subroutines
 --- in a programming language."
 
-  NotionSynonym : Notion -> Notion -> Synonym ;  --- in spec: notionPattern classNoun
+  NotionSynonym : Notion -> PrimClass -> Synonym ;  --- in spec: notionPattern classNoun
   FunctionSynonym : SymbTerm -> PlainTerm -> Synonym ; -- in spec: functionPattern
   PredicateSynonym : PredicateHead -> Statement -> Synonym ;
-  
+
+
+-- 1.5.1
+  NamesAssumption : [Name] -> ClassNoun -> Assumption ; --- cannot find rule, only examples
+
+
 
 }

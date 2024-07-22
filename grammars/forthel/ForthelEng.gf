@@ -18,6 +18,7 @@ open
 in {
 
 lincat
+  Assumption = Text ;
   Synonym = Text ;
   Definition = S ;
   Statement = S ;
@@ -30,7 +31,7 @@ lincat
   Notions = NP ;
   PrimClass = {cn : CN ; adv : Adv} ; -- element (x) , of X
 
-  ClassNoun = CN ;
+  ClassNoun = {cn : CN ; adv : Adv} ;
   DefiniteNoun = CN ;
   QuantifiedNotion = NP ;
   QuantifiedNotions = NP ;
@@ -56,12 +57,14 @@ lin
 
 
 -- 1.3.2
-  PrimClassNotion pc = {
+  PrimClassNoun pc = pc ;
+  
+  ClassNounNotion pc = {
     cn = mkCN pc.cn pc.adv ;
     isPlur = False
     } ;
     
-  PrimClassNamesNotion pc xs = {
+  ClassNounNamesNotion pc xs = {
     cn = mkCN (mkCN pc.cn (<symb (mkSymb xs.s) : NP>)) pc.adv ;
     isPlur = xs.isPlur
     } ;
@@ -88,12 +91,12 @@ lin
   BaseName x = {s = x.s ; isPlur = False} ;
   ConsName x xs = {s = x.s ++ "," ++ xs.s ; isPlur = True} ;
 
-  AdjNotion notion adjective =
-    notion ** {cn = mkCN adjective notion.cn} ;
-  RelNotion notion predicates =
-    notion ** {cn = mkCN notion.cn (Extend.RelVPS which_RP predicates)} ;
-  StatNotion notion statement =
-    notion ** {cn = mkCN notion.cn (mkAdv such_that_Subj statement)} ;
+  AdjClassNoun noun adjective =
+    noun ** {cn = mkCN adjective noun.cn} ;
+  RelClassNoun noun predicates =
+    noun ** {cn = mkCN noun.cn (Extend.RelVPS which_RP predicates)} ; --- place of rel?
+  StatClassNoun noun statement =
+    noun ** {adv = concatAdv noun.adv (mkAdv such_that_Subj statement)} ;
 
 -- 1.3.3
   EveryTerm notion = mkNP every_Det notion.cn ;  --- overgenerates "every set A, B"
@@ -219,6 +222,10 @@ lin
   PredicateSynonym head target = 
     letSynonym (s2np head) (s2np (parenthS target)) ;
   
+
+-- 1.5.1
+--  NamesAssumption names class =
+--    letAssumption names (mkVP primclass) ;
 
 
 
