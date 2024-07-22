@@ -6,15 +6,19 @@ open
   SyntaxEng,
   SymbolicEng,
   (Extend=ExtendEng),
+  (Grammar=GrammarEng),
+  (Markup=MarkupEng),
   Prelude,
 
   (P=ParadigmsEng),
   (M=MakeStructuralEng),
-  (R=ResEng)
+  (R=ResEng),
+  (I=IrregEng)
   
 in {
 
 lincat
+  Synonym = Text ;
   Definition = S ;
   Statement = S ;
   Predicate = VP ;
@@ -77,7 +81,7 @@ lin
     adv = concatAdv (mkAdv from_Prep fromterm) (mkAdv to_Prep fromterm)
     } ;
 
-  NameSymbTerm n = n ;
+---  NameSymbTerm n = n ;
 
 ----  StringName s = mkSymb s.s ; ---- replaced by VariableName
   
@@ -208,6 +212,13 @@ lin
   VerbPredicateHead verb names =
     mkS (mkCl (namesNP names) verb) ;
 
+  NotionSynonym head target =
+    letSynonym (mkNP a_Det head.cn) (mkNP a_Det target.cn) ;
+  FunctionSynonym head target =
+    letSynonym (symb head) target ;
+  PredicateSynonym head target = 
+    letSynonym (s2np head) (s2np (parenthS target)) ;
+  
 
 
 
@@ -226,6 +237,17 @@ oper
     True => symb xs.s ** {n = R.Pl} ;
     False => symb xs.s
     } ;
+
+  letSynonym : NP -> NP -> Text = \dum, dens ->
+    mkText (Grammar.ImpP3 dum (mkVP denote_V2 dens)) ;
+
+  denote_V2 : V2 = P.mkV2 "denote" | P.mkV2 I.stand_V for_Prep ; --- allow variants ?
+
+  s2np : S -> NP = \s -> symb (mkSymb (mkUtt s).s) ; --- hack; Forthel is not quite grammatical here
+
+  parenthS : S -> S = \s -> Markup.MarkupS (lin Mark {begin = "(" ; end = ")"}) s ;
+
+  
 
   set_N : N = P.mkN "set" ;
   element_N : N = P.mkN "element" ;

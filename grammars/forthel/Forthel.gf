@@ -3,6 +3,7 @@
 abstract Forthel = ForthelTerms ** {
 
 cat
+  Synonym ;
   Definition ; -- separate from Statement, to avoid ambiguities
   Statement ;
   Predicate ;
@@ -47,7 +48,7 @@ fun
   element_PrimClass : Term -> PrimClass ;
   function_PrimClass : Term -> Term -> PrimClass ;
 
-  NameSymbTerm : Name -> SymbTerm ;
+---  NameSymbTerm : Name -> SymbTerm ;
 ----  StringName : String -> Name ; ---- replaced by VariableName
 
   AdjNotion : Notion -> Adjective -> Notion ; -- both left and right
@@ -146,5 +147,14 @@ fun
   AdjectivePredicateHead : Adjective -> [Name] -> PredicateHead ;
   VerbPredicateHead : Verb -> [Name] -> PredicateHead ;
 
+--- spec p. 15: "Note that synonym declarations are not statements but instructions to the
+--- parser, just like token groups (see Section 1.3.1). Roughly, synonyms relate
+--- to defined symbols as preprocessor macros relate to subroutines
+--- in a programming language."
+
+  NotionSynonym : Notion -> Notion -> Synonym ;  --- in spec: notionPattern classNoun
+  FunctionSynonym : SymbTerm -> PlainTerm -> Synonym ; -- in spec: functionPattern
+  PredicateSynonym : PredicateHead -> Statement -> Synonym ;
+  
 
 }
