@@ -7,7 +7,7 @@ open
   Symbolic,
   Extend,
   Grammar,
-  Markup,
+---  Markup,
   Prelude
 
 in {
@@ -52,7 +52,7 @@ lin
 
   FormulaSymbTerm formula = mkSymb formula.s ;
   ExpressionSymbTerm exp = mkSymb exp.s ;
-  VariableName v = mkSymb v ;
+  VarName v = mkSymb v ;
 
 
 -- 1.3.2
@@ -185,8 +185,8 @@ lin
     letSynonym (mkNP a_Det head.cn) (mkNP a_Det target.cn) ;
   FunctionSynonym head target =
     letSynonym (symb head) target ;
-  PredicateSynonym head target = 
-    letSynonym (s2np head) (s2np (parenthS target)) ;
+---  PredicateSynonym head target = 
+---    letSynonym (s2np head) (s2np (parenthS target)) ;
   
 
 -- 1.5.1
@@ -240,6 +240,6 @@ oper
 
   s2np : S -> NP = \s -> symb (mkSymb (mkUtt s).s) ; --- hack; Forthel is not quite grammatical here
 
-  parenthS : S -> S = \s -> Markup.MarkupS (lin Mark {begin = "(" ; end = ")"}) s ;
+---  parenthS : S -> S = \s -> Markup.MarkupS (lin Mark {begin = "(" ; end = ")"}) s ;
 
 }

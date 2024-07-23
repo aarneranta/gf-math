@@ -3,7 +3,7 @@
 concrete ForthelGer of Forthel =
 
   ForthelTermsAscii **
-  ForthelFunctor - [pluralNP] with
+  ForthelFunctor - [pluralNP, NamesAssumption, StatementAssumption] with
     (Syntax=SyntaxGer),
     (Symbolic=SymbolicGer),
     (Extend=ExtendGer),
@@ -21,9 +21,18 @@ concrete ForthelGer of Forthel =
   
 in {
 
-oper
 -- functor exceptions
+lin
+  NamesAssumption names classnoun =
+    mkText 
+      (mkS (mkCl we_NP assume_VS
+         (mkS (mkCl (namesNP names) (mkCN classnoun.cn classnoun.adv))))) ;
 
+  StatementAssumption stat =
+    mkText 
+      (mkS (mkCl we_NP assume_VS stat)) ;
+
+oper
   pluralNP : NP -> NP = \np -> np ** {a = R.AgPl R.P3} ;
 
 -- words etc
