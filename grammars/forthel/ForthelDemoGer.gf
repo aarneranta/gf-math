@@ -100,4 +100,25 @@ oper
   thesis_N = mkN "Thesis" ;
   contrary_N = mkN "Gegenteil" ;
   contradiction_N = mkN "Widerspruch" ;
+
+  over_Prep = mkPrep "über" dative ;
+
+-- Kohlhase
+
+lin
+  general_linear_group_Notion ord set = {
+    cn = mkCN
+           (mkCN 
+             (mkCN
+	       (mkCN general_A (mkCN linear_A group_N.cn))
+	       <symb (mkSymb ("G_" ++ ord.sym.s ++ set.sym.s)) : NP>)
+             (possessAdv (mkNP (mkCN (mkCN order_N) ord.np))))
+          (S.mkAdv over_Prep set.np) ;
+   isPlur = False
+    } ;
+
+  general_A = mkAP (mkA "allgemein") ;
+  linear_A = mkAP (mkA "linear") ;
+  group_N = {cn = mkCN (mkN "Gruppe") ; adv = emptyAdv} ;
+
 }

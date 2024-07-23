@@ -159,4 +159,14 @@ fun
 
   ex_Header : Header ;  --- GFLean specific ?
 
+
+-- for Michael Kohlhase's example
+
+cat
+  TermSymb ;
+  
+fun  
+  MkTermSymb : Term -> SymbTerm -> TermSymb ;
+
+
 }

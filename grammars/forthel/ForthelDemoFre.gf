@@ -98,4 +98,25 @@ oper
   thesis_N = mkN "thèse" ;
   contrary_N = mkN "contraire" masculine ;
   contradiction_N = mkN "contradiction" ;
+
+  over_Prep = on_Prep ;
+
+-- Kohlhase
+
+lin
+  general_linear_group_Notion ord set = {
+    cn = mkCN
+           (mkCN 
+             (mkCN
+	       (mkCN general_A (mkCN linear_A group_N.cn))
+	       <symb (mkSymb ("G_" ++ ord.sym.s ++ set.sym.s)) : NP>)
+             (possessAdv (mkNP (mkCN (mkCN order_N) ord.np))))
+          (S.mkAdv over_Prep set.np) ;
+   isPlur = False
+    } ;
+
+  general_A = mkAP (mkA "général") ;
+  linear_A = mkAP (mkA "linéaire") ;
+  group_N = {cn = mkCN (mkN "Groupe" masculine) ; adv = emptyAdv} ;
+
 }

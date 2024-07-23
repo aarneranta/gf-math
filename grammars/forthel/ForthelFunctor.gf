@@ -219,6 +219,17 @@ lin
   ex_Header = lin Text {s = "ex ."} ; --- GFLean specific ?
 
 
+-- Kohlhase
+
+lincat
+  TermSymb = {np : NP ; sym : Symb} ;
+
+lin
+  MkTermSymb np sym = {np = np ; sym = sym} ;
+
+oper
+  possessAdv : NP -> Adv = \np -> mkAdv possess_Prep np ;
+
 --------------------------
 
 oper

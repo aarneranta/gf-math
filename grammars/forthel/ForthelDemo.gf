@@ -40,4 +40,14 @@ fun
   less_or_equal_Adjective : Term -> Adjective ;
   greater_or_equal_Adjective : Term -> Adjective ;
 
+-- from Michael Kohlhase, "the general linear group G_n R of order N over R
+  
+  general_linear_group_Notion : TermSymb -> TermSymb -> Notion ;
+
+  general_A : Adjective ;
+  linear_A : Adjective ;
+  group_N : PrimClass ;
+--  order_N : PrimClass ;
+
+
 } 

@@ -3,7 +3,7 @@
 concrete ForthelGer of Forthel =
 
   ForthelTermsAscii **
-  ForthelFunctor - [pluralNP, NamesAssumption, StatementAssumption] with
+  ForthelFunctor - [pluralNP, NamesAssumption, StatementAssumption, possessAdv] with
     (Syntax=SyntaxGer),
     (Symbolic=SymbolicGer),
     (Extend=ExtendGer),
@@ -34,6 +34,8 @@ lin
 
 oper
   pluralNP : NP -> NP = \np -> np ** {a = R.AgPl R.P3} ;
+
+  possessAdv : NP -> Adv = \np -> mkAdv genPrep np ;
 
 -- words etc
 
