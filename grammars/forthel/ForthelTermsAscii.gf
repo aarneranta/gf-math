@@ -6,11 +6,13 @@ lincat
   Eqsign = Str ;
   Exp = TermPrecNum ;
   [Exp] = {s : Str} ;
-  Variable = Str ;
+  Var = Str ;
+  Const = Str ;
   Function = Str ;
 
 lin
   FEquation eq = constant eq.s ;
+  FElem es e = constant (es.s ++ "∈" ++ top e) ;
 
   EChain op x eq = {s = top x ++ op ++ eq.s} ;
   EBinary op x y = {s = top x ++ op ++ top y} ;
@@ -22,6 +24,7 @@ lin
   ELe = "≤" ; 
   EGe = "≥" ; 
   ESim = "~" ;
+  EElem = "∈" ;
 
   TPlus = tinfixl 1 "+" ;
   TMinus = tinfixl 1 "-" ;
@@ -34,29 +37,35 @@ lin
   TNeg x = prefix 3 "-" x ** {isNumber = x.isNumber} ;
   TApp f xs = constant (f ++ parenth xs.s) ** {isNumber = False} ;
 
-  TVariable x =  constant x ** {isNumber = False} ;
+  TVar x =  constant x ** {isNumber = False} ;
+  TConst c =  constant c ** {isNumber = False} ;
   TNumber n = constant n.s ** {isNumber = True} ;
 
   BaseExp x = {s = top x} ;
   ConsExp x xs = {s = top x ++ "," ++ xs.s} ;
 
-  FVariable v = v ;
+  N_Const = "N" ;
+  Z_Const = "Z" ;
+  Q_Const = "Q" ;
+  R_Const = "R" ;
+
+  FVar v = v ;
   FDerivative f = f ++ "'" ;
 
-  x_Variable = "x" ;
-  y_Variable = "y" ;
-  z_Variable = "z" ;
-  u_Variable = "u" ;
-  a_Variable = "a" ;
-  b_Variable = "b" ;
-  c_Variable = "c" ;
-  d_Variable = "d" ;
-  f_Variable = "f" ;
-  g_Variable = "g" ;
-  k_Variable = "k" ;
-  n_Variable = "n" ;
-  m_Variable = "m" ;
-  p_Variable = "p" ;
+  x_Var = "x" ;
+  y_Var = "y" ;
+  z_Var = "z" ;
+  u_Var = "u" ;
+  a_Var = "a" ;
+  b_Var = "b" ;
+  c_Var = "c" ;
+  d_Var = "d" ;
+  f_Var = "f" ;
+  g_Var = "g" ;
+  k_Var = "k" ;
+  n_Var = "n" ;
+  m_Var = "m" ;
+  p_Var = "p" ;
 
 
 oper

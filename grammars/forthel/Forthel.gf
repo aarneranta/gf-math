@@ -42,7 +42,7 @@ fun
 
   FormulaSymbTerm : Formula -> SymbTerm ;
   ExpressionSymbTerm : Exp -> SymbTerm ;
-  VariableName : Variable -> Name ;
+  VarName : Var -> Name ;
 
 
 -- 1.3.2
@@ -97,6 +97,7 @@ fun
   ThereIsNoStatement : Notion -> Statement ;
   WeHaveSymbStatement : SymbTerm -> Statement ;
   WeHaveConstStatement : Constant -> Statement ;
+  FormulaStatement : Formula -> Statement ; --- own shortcut
 
   PosOnePredicates : Predicate -> Predicates ;
   NegOnePredicates : Predicate -> Predicates ;
@@ -146,6 +147,7 @@ fun
   NamesAssumption : [Name] -> ClassNoun -> Assumption ; --- cannot find a rule, only examples
   LetNamesAssumption : [Name] -> ClassNoun -> Assumption ; --- cannot find a rule, only examples
   StatementAssumption : Statement -> Assumption ;
+  FormulaAssumption : Formula -> Assumption ;  --- own shortcut
 
   SectionToplevel : Header -> Section -> Toplevel ;
 

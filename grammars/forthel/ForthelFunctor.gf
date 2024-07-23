@@ -126,6 +126,7 @@ lin
   SimpleStatement terms predicates = Extend.PredVPS terms predicates ;
   WeHaveSymbStatement sym = mkS (mkCl we_NP have_V2 <symb sym : NP>) ;
   WeHaveConstStatement const = mkS (mkCl we_NP have_V2 const) ;
+  FormulaStatement formula = <symb (mkSymb formula.s) : S> ;
   
   ThereIsStatement notions = mkS (Extend.ExistsNP notions) ;
   ThereIsNoStatement notion = mkS (Extend.ExistsNP (mkNP no_Quant notion.cn)) ;
@@ -161,7 +162,7 @@ lin
 
   AndStatement s t = mkS and_Conj s t ;
   OrStatement s t = mkS or_Conj s t ;
-  IfStatement s t = mkS if_then_Conj s t ;
+  IfStatement s t = Grammar.ExtAdvS (mkAdv if_Subj s) (mkS then_Adv t) ;
   IffStatement s t = mkS iff_Conj s t ;
 
 -- 1.3.6
@@ -204,6 +205,8 @@ lin
     mkText 
       (mkUtt (mkImp (Extend.ComplBareVS assume_VS stat))) fullStopPunct ;
 
+  FormulaAssumption formula =
+    lin Text {s = let_Str ++ formula.s ++ "."} ;
 
   SectionToplevel header section = mkText header section ;
 

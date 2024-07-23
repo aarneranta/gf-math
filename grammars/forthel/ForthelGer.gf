@@ -42,5 +42,7 @@ oper
   assume_VS : VS = mkVS (prefixV "an" I.nehmen_V) ;
 
   then_Adv : Adv = P.mkAdv "dann" ;
+
+  let_Str : Str = "sei" ; --- seien ?
   
 }

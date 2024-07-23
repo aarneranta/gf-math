@@ -43,4 +43,6 @@ oper
   assume_VS : VS = mkVS (mkV "assume") ;
 
   then_Adv : Adv = P.mkAdv "then" ;
+
+  let_Str : Str = "let" ;
 }

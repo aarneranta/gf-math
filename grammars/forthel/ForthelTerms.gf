@@ -8,11 +8,13 @@ cat
   Eqsign ;
   Exp ;
   [Exp] {1} ;
-  Variable ;
+  Var ;
+  Const ;
   Function ;
 
 fun
   FEquation : Equation -> Formula ;
+  FElem : [Exp] -> Exp -> Formula ;
 
   EChain : Eqsign -> Exp -> Equation -> Equation ;
   EBinary : Eqsign -> Exp -> Exp -> Equation ;
@@ -23,16 +25,18 @@ fun
   TNeg : Exp -> Exp ;
   TApp : Function -> [Exp] -> Exp ;
 
-  TVariable : Variable -> Exp ;
+  TVar : Var -> Exp ;
+  TConst : Const -> Exp ;
   TNumber : Float -> Exp ;
 
-  FVariable : Variable -> Function ;
+  FVar : Var -> Function ;
   FDerivative : Function -> Function ;
 
+  N_Const, Z_Const, Q_Const, R_Const : Const ;
 
-  x_Variable, y_Variable, z_Variable, u_Variable : Variable ; 
-  a_Variable, b_Variable, c_Variable, d_Variable : Variable ;
-  f_Variable, g_Variable : Variable ;
-  k_Variable, m_Variable, n_Variable, p_Variable : Variable ;
+  x_Var, y_Var, z_Var, u_Var : Var ; 
+  a_Var, b_Var, c_Var, d_Var : Var ;
+  f_Var, g_Var : Var ;
+  k_Var, m_Var, n_Var, p_Var : Var ;
 
 }
