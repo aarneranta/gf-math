@@ -47,7 +47,7 @@ fun
   general_A : Adjective ;
   linear_A : Adjective ;
   group_N : PrimClass ;
---  order_N : PrimClass ;
+  order_PrimClass : PrimClass ;
 
 
 } 

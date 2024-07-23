@@ -110,7 +110,7 @@ lin
              (mkCN
 	       (mkCN general_A (mkCN linear_A group_N.cn))
 	       <symb (mkSymb ("G_" ++ ord.sym.s ++ set.sym.s)) : NP>)
-             (possessAdv (mkNP (mkCN (mkCN order_N) ord.np))))
+             (possessAdv ord.np))
           (S.mkAdv over_Prep set.np) ;
    isPlur = False
     } ;
@@ -118,5 +118,6 @@ lin
   general_A = mkAP (mkA "général") ;
   linear_A = mkAP (mkA "linéaire") ;
   group_N = {cn = mkCN (mkN "Groupe" masculine) ; adv = emptyAdv} ;
+  order_PrimClass = mkPrimClass (mkN "ordre" masculine) ;
 
 }

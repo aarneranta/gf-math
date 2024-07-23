@@ -24,7 +24,6 @@ lin
   ELe = "≤" ; 
   EGe = "≥" ; 
   ESim = "~" ;
-  EElem = "∈" ;
 
   TPlus = tinfixl 1 "+" ;
   TMinus = tinfixl 1 "-" ;

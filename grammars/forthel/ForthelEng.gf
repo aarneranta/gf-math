@@ -36,7 +36,7 @@ oper
   each_Det = M.mkDet "each" ;
   such_that_Subj = mkSubj "such that" ;
 
-  iff_Conj = mkConj "iff" ;
+  iff_Conj = mkConj "iff" | mkConj "if and only if" ;
 
   equal_A2 : A2 = mkA2 (mkA "equal") to_Prep ;
 
