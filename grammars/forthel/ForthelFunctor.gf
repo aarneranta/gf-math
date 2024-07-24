@@ -203,7 +203,7 @@ lin
     lin Phr {s = let_Str ++ mathEnvStr (formula.s)} ;
 
   OneAssumptions assumption = mkText assumption fullStopPunct ;
-  AddAssumptions assumption assumptions = mkText (mkText assumption) (mkText (lin Text {s = "and"}) assumptions) ;
+  AddAssumptions assumption assumptions = mkText (lin Text {s = assumption.s}) (mkText (lin Text {s = "and"}) assumptions) ;
 
   SectionToplevel header section = mkText header section ;
 

@@ -10,6 +10,9 @@ lin
   LFElem es e = constant (es.s ++ "\\in" ++ top e) ;
 
   LTPower a b = tinfixl 3 "^" a (b ** {s = curlyStr b.s}) ;
+  
+  LTPositive c = tinfixl 3 "^" c (tconstant (curlyStr "+")) ;
+  LTNegative c = tinfixl 3 "^" c (tconstant (curlyStr "-")) ;
 
   LTFrac a b = tconstant (macroApp "frac" (top a) (top b)) ;
   

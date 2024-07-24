@@ -10,7 +10,7 @@ let $ n \in \textbf { N } $ . if $ | n - 1 | + | n + 1 | \leq 1 $ , then $ | n ^
 
 let $ r \in \textbf { Q } ^ { + } $ . if $ \frac { r ^ { 2 } + 1 } { r } \leq 1 $ , then $ \frac { r ^ { 2 } + 2 } { r } \leq 2 $ .
 
-let $ x \in \textbf { R } $ . if $ x ^ { 3 } - 5 x - 1 \geq 0 $ , then $ ( x - 1 ) ( x - 3 ) \geq - 2 . $
+let $ x \in \textbf { R } $ . if $ x ^ { 3 } - 5 x - 1 \geq 0 $ , then $ ( x - 1 ) ( x - 3 ) \geq - 2 $ .
 
 let $ n \in \textbf { N } $ . if $ n + \frac { 1 } { n } < 2 $ , then $ n ^ 2 + \frac { 1 } { n ^ { 2 } } < 4 $ .
 

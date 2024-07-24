@@ -12,6 +12,8 @@ abstract LatexTerms =
       LTFrac : Exp -> Exp -> Exp ;
       LTAbsolute : Exp -> Exp ;
       LTComprehension : Exp -> Exp -> Formula -> Exp ;
+      LTPositive : Exp -> Exp ; -- R^+
+      LTNegative : Exp -> Exp ;
 
       LTextbfExp : Exp -> Exp ;
 }
