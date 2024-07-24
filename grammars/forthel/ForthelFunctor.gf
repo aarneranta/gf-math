@@ -16,33 +16,31 @@ lincat
   Toplevel = Text ;
   Section = Text ;
   Header = Text ;
-  Sentence = Text ;
   Assumption = Text ;
   Synonym = Text ;
   Definition = S ;
+  PredicateHead = S ;
+  
   Statement = S ;
+  Constant = NP ;
+
+  Predicates = Extend.VPS ;
   Predicate = VP ;
-  Term = NP ;
-  Notion = {cn : CN ; isPlur : Bool} ;
+  Adjective = AP ;  --- these two are one cat in 1.3.1 but separated in 1.3.4
+  Verb = VP ;
 
   Terms = NP ;
-  Predicates = Extend.VPS ;
-  Notions = NP ;
-  PrimClass = {cn : CN ; adv : Adv} ; -- element (x) , of X
-
-  ClassNoun = {cn : CN ; adv : Adv} ;
-  DefiniteNoun = CN ;
+  Term = NP ;
   QuantifiedNotion = NP ;
   QuantifiedNotions = NP ;
   PlainTerm = NP ;
-  Adjective = AP ;  --- these two are one cat in 1.3.1 but separated in 1.3.4
-  Verb = VP ;
-  Constant = NP ;
+  Notions = NP ;
 
-  PredicateHead = S ;
-  
----  Operator = Symb ; -- symbolic
----  Relation = Symb ;
+  Notion = {cn : CN ; isPlur : Bool} ;
+  ClassNoun = {cn : CN ; adv : Adv} ;
+  PrimClass = {cn : CN ; adv : Adv} ; -- element (x) , of X
+  DefiniteNoun = CN ;
+
   SymbTerm = Symb ;
   Name = Symb ;
   [Name] = {s : Str ; isPlur : Bool} ;

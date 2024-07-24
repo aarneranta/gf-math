@@ -3,39 +3,37 @@
 abstract Forthel = ForthelTerms ** {
 
 cat
-  Toplevel ;
-  Section ;
-  Header ;
-  Sentence ;
-  Assumption ;
-  Synonym ;
-  Definition ; -- separate from Statement, to avoid ambiguities
-  Statement ;
-  Predicate ;
-  Term ;
-  Notion ;
+  Toplevel ;   -- Text, one or more sections with headers
+  Section ;    -- Text, one or more assumptions, definition, statements
+  Header ;     -- Text, header of Section
+  Assumption ; -- Text, declaration of variables or assumption of a statement
+  Synonym ;    -- Text, syntax definition of new Notion, Function
+  Definition ; -- S,    meaning definition of DefiniteNoun, Notion, PredicateHead
+  PredicateHead ; -- S, predicate applied to a list of variables
+  
+  Statement ;  -- S,    logical proposition, either verbal or symbolic
+  Constant ;   -- NP,   constant statement such as "contradiction"
 
-  Terms ; -- subject of primary statement
-  Predicates ;
-  Notions ; -- complement of there exist(s)
-  PrimClass ;
+  Predicates ; -- VPS,  positive or negated Predicate, or an and-conjunction of them
+  Predicate ;  -- VP,   one-place predicate, with verb, adjective, or noun (is a)
+  Adjective ;  -- AP,   atomic adjectival phrase
+  Verb ;       -- VP,   atomic verb phrase
 
-  ClassNoun ;
-  DefiniteNoun ;
-  QuantifiedNotion ;
-  QuantifiedNotions ;
-  PlainTerm ;  -- no quantifiers
-  Adjective ;  --- these two are one cat in 1.3.1
-  Verb ;
-  Constant ; -- constant statement
+  Terms ;      -- NP,   either one Term or an and-conjunction
+  Term ;       -- NP,   noun phrase, either quantified or definite or symbolic
+  QuantifiedNotion ;  -- NP,  quantified Notion
+  QuantifiedNotions ; -- NP,  one or many quantified Notions
+  PlainTerm ;  -- NP,   no quantifiers
+  Notions ;    -- NP,   Notion with indefinite article, one or many with and 
 
-  PredicateHead ;
+  Notion ;       -- (CN, Num),  ClassNoun possibly with a list of names
+  ClassNoun ;    -- (CN, Adv),  type expression, possibly "of" stg (e.g. element of A)
+  PrimClass ;    -- (CN, Adv),  basic type expression
+  DefiniteNoun ; -- CN,         individual-valued function name, e.g. order
 
----  Operator ; -- symbolic
----  Relation ;
-  SymbTerm ;
-  Name ;
-  [Name] {1} ; 
+  SymbTerm ;     -- Symb,  either Exp or Formula
+  Name ;         -- Symb,  variable
+  [Name] {1} ;   -- (Str, Num)  list of variables
 
 fun
 -- importing from ForthelTerms

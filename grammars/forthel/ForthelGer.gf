@@ -3,7 +3,8 @@
 concrete ForthelGer of Forthel =
 
   ForthelTermsAscii **
-  ForthelFunctor - [pluralNP, NamesAssumption, StatementAssumption, possessAdv] with
+  ForthelFunctor - [pluralNP, NamesAssumption,
+  StatementAssumption, possessAdv, ApposTermSymb] with
     (Syntax=SyntaxGer),
     (Symbolic=SymbolicGer),
     (Extend=ExtendGer),
@@ -31,6 +32,11 @@ lin
   StatementAssumption stat =
     mkText 
       (mkS (mkCl we_NP assume_VS stat)) ;
+
+  ApposTermSymb primc name = {
+    np = mkNP the_Det (mkCN (mkCN primc.cn (symb name)) primc.adv) ;
+    sym = name
+    } ;
 
 oper
   pluralNP : NP -> NP = \np -> np ** {a = R.AgPl R.P3} ;
