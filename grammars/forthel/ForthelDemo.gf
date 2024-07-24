@@ -2,6 +2,8 @@ abstract ForthelDemo = Forthel ** {
 
 -- demo lexicon for Forthel
 
+flags startcat = Toplevel ;
+
 fun
 
   set_PrimClass : PrimClass ; -- set (A, B, C)

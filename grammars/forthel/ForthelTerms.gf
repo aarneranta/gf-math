@@ -38,5 +38,8 @@ fun
   a_Var, b_Var, c_Var, d_Var : Var ;
   f_Var, g_Var : Var ;
   k_Var, m_Var, n_Var, p_Var : Var ;
+  q_Var, r_Var : Var ;
+  A_Var, B_Var, C_Var, K_Var : Var ;
+  L_Var, M_Var, S_Var, T_Var : Var ;
 
 }

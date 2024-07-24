@@ -17,7 +17,8 @@ lincat
   Toplevel = Text ;
   Section = Text ;
   Header = Text ;
-  Assumption = Text ;
+  Assumption = Phr ;
+  Assumptions = Text ;
   Synonym = Text ;
   Definition = S ;
   
@@ -122,6 +123,7 @@ lin
   WeHaveSymbStatement sym = mkS (mkCl we_NP have_V2 <symb sym : NP>) ;
   WeHaveConstStatement const = mkS (mkCl we_NP have_V2 const) ;
   FormulaStatement formula = <symb (mkSymb formula.s) : S> ;
+  LatexFormulaStatement formula = <symb (mkSymb (mathEnvStr formula.s)) : S> ;
   
   ThereIsStatement notions = mkS (Extend.ExistsNP notions) ;
   ThereIsNoStatement notion = mkS (Extend.ExistsNP (mkNP no_Quant notion.cn)) ;
@@ -182,33 +184,37 @@ lin
 
 -- 1.5.1
   NamesAssumption names classnoun =
-    mkText 
+    mkPhr
       (mkUtt (mkImp (Extend.ComplBareVS assume_VS
-         (mkS (mkCl (namesNP names) (mkCN classnoun.cn classnoun.adv))))))
-      fullStopPunct ;
+         (mkS (mkCl (namesNP names) (mkCN classnoun.cn classnoun.adv)))))) ;
       
   LetNamesAssumption names classnoun =
-    mkText 
-      (mkUtt (ImpP3 (namesNP names) (mkVP (mkCN classnoun.cn classnoun.adv))))
-      fullStopPunct ;
+    mkPhr
+      (mkUtt (ImpP3 (namesNP names) (mkVP (mkCN classnoun.cn classnoun.adv)))) ;
 
   StatementAssumption stat =
-    mkText 
-      (mkUtt (mkImp (Extend.ComplBareVS assume_VS stat))) fullStopPunct ;
+    mkPhr
+      (mkUtt (mkImp (Extend.ComplBareVS assume_VS stat))) ;
 
   FormulaAssumption formula =
-    lin Text {s = let_Str ++ formula.s ++ "."} ;
+    lin Phr {s = let_Str ++ formula.s} ;
+    
+  LatexFormulaAssumption formula =
+    lin Phr {s = let_Str ++ mathEnvStr (formula.s)} ;
+
+  OneAssumptions assumption = mkText assumption fullStopPunct ;
+  AddAssumptions assumption assumptions = mkText (mkText assumption) (mkText (lin Text {s = "and"}) assumptions) ;
 
   SectionToplevel header section = mkText header section ;
 
   EmptySection = emptyText ;
-  AssumptionSection assumption section = mkText assumption section ;
+  AssumptionsSection assumptions section = mkText assumptions section ;
   StatementSection statement section = mkText (mkUtt statement) section ;
   ThenStatementSection statement section = mkText (mkUtt (mkS then_Adv statement)) section ;
   DefinitionSection definition section = mkText (mkUtt definition) section ;
 
   ex_Header = lin Text {s = "ex ."} ; --- GFLean specific ?
-
+  noHeader = emptyText ;
 
 -- Kohlhase
 

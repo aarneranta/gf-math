@@ -65,12 +65,24 @@ lin
   n_Var = "n" ;
   m_Var = "m" ;
   p_Var = "p" ;
+  q_Var = "q" ;
+  r_Var = "r" ;
 
+  A_Var = "A" ;
+  B_Var = "B" ;
+  C_Var = "C" ;
+  K_Var = "K" ;
+  L_Var = "L" ;
+  M_Var = "M" ;
+  S_Var = "S" ;
+  T_Var = "T" ;
 
 oper
   TermPrecNum = TermPrec ** {isNumber : Bool} ;
 
   tinfixl : Prec -> Str -> (_,_ : TermPrecNum) -> TermPrecNum = \p, op, x, y ->
     infixl p op x y ** {isNumber = False} ;
+  tconstant : Str -> TermPrecNum = \s ->
+    constant s ** {isNumber = False} ;
 
 }

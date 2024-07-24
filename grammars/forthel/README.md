@@ -15,3 +15,21 @@ semantics: for each tuple
 ```
 there is just one category.
 
+## Parsing a LaTex file
+
+It seems -lexmixed works well enough:
+
+  rf -file=latexbook.txt -lines | ps -lexmixed -lines | p -cat=Toplevel
+
+To get more information, direct it into a file
+
+  rf -file=latexbook.txt -lines | ps -lexmixed -lines | wf -file=lexed.txt
+
+Build a PGF
+
+  gf -make ForthelDemoEng.gf
+
+Run the test script
+
+  python3 test_file.py <lexed.txt
+

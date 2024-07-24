@@ -4,16 +4,33 @@ concrete LatexTermsTex of LatexTerms =
 
 lin
   LENeq = "\\neq" ; 
-  LELe = "\\le" ; 
-  LEGe = "\\ge" ; 
+  LELe = "\\leq" ; 
+  LEGe = "\\geq" ; 
   LESim = "\\sim" ;
   LFElem es e = constant (es.s ++ "\\in" ++ top e) ;
 
-  LTExp a b = tinfixl 3 "^" a (b ** {s = curlyStr b.s}) ;
+  LTPower a b = tinfixl 3 "^" a (b ** {s = curlyStr b.s}) ;
+
+  LTFrac a b = tconstant (macroApp "frac" (top a) (top b)) ;
+  
+  LTAbsolute a = tconstant ("|" ++ (top a) ++ "|") ;
+  
+  LTComprehension a b f =
+    tconstant ("\\{" ++ top a ++ "\\in" ++ top b ++
+                ":" ++ top f ++ "\\}") ;
+
+  LTextbfExp e = e ** {s = macroApp "textbf" (top e)} ;
 
 oper
   -- to be usable at runtime, therefore ++
   mathEnvStr : Str -> Str = \s -> "$" ++ s ++ "$" ;
   curlyStr : Str -> Str = \s -> "{" ++ s ++ "}" ;
+
+  macroApp = overload {
+    macroApp : (f : Str) -> Str = \f -> "\\" + f ;
+    macroApp : (f, x : Str) -> Str = \f, x -> "\\" + f ++ "{" ++ x ++ "}" ;
+    macroApp : (f, x, y : Str) -> Str = \f, x, y ->
+      "\\" + f ++ "{" ++ x ++ "} {" ++ y ++ "}" ;
+   } ;
 
 }

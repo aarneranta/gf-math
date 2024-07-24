@@ -2,11 +2,14 @@
 
 abstract Forthel = ForthelTerms, LatexTerms ** {
 
+flags startcat = Toplevel ;
+
 cat
   Toplevel ;   -- Text, one or more sections with headers
   Section ;    -- Text, one or more assumptions, definition, statements
   Header ;     -- Text, header of Section
   Assumption ; -- Text, declaration of variables or assumption of a statement
+  Assumptions ;-- Text, assumptions joined with and
   Synonym ;    -- Text, syntax definition of new Notion, Function
   Definition ; -- S,    meaning definition of DefiniteNoun, Notion, PredicateHead
   
@@ -91,7 +94,8 @@ fun
   ThereIsNoStatement : Notion -> Statement ;
   WeHaveSymbStatement : SymbTerm -> Statement ;
   WeHaveConstStatement : Constant -> Statement ;
-  FormulaStatement : Formula -> Statement ; --- own shortcut
+  FormulaStatement : Formula -> Statement ; 
+  LatexFormulaStatement : Formula -> Statement ;
 
   PosOnePredicates : Predicate -> Predicates ;
   NegOnePredicates : Predicate -> Predicates ;
@@ -136,21 +140,25 @@ fun
 
 
 -- 1.5.1
-  NamesAssumption : [Name] -> ClassNoun -> Assumption ; --- cannot find a rule, only examples
-  LetNamesAssumption : [Name] -> ClassNoun -> Assumption ; --- cannot find a rule, only examples
+  NamesAssumption : [Name] -> ClassNoun -> Assumption ;
+  LetNamesAssumption : [Name] -> ClassNoun -> Assumption ;
   StatementAssumption : Statement -> Assumption ;
-  FormulaAssumption : Formula -> Assumption ;  --- own shortcut
+  FormulaAssumption : Formula -> Assumption ;
+  LatexFormulaAssumption : Formula -> Assumption ; 
 
   SectionToplevel : Header -> Section -> Toplevel ;
 
+  OneAssumptions : Assumption -> Assumptions ;
+  AddAssumptions : Assumption -> Assumptions -> Assumptions ;
+  
   EmptySection : Section ;
-  AssumptionSection : Assumption -> Section -> Section ;
+  AssumptionsSection : Assumptions -> Section -> Section ;
   StatementSection : Statement -> Section -> Section ;
   ThenStatementSection : Statement -> Section -> Section ;
   DefinitionSection : Definition -> Section -> Section ;
 
   ex_Header : Header ;  --- GFLean specific ?
-
+  noHeader : Header ;
 
 -- for Michael Kohlhase's example
 

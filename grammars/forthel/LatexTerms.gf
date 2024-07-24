@@ -5,10 +5,13 @@ abstract LatexTerms =
   ForthelTerms - [ENeq, ELe, EGe, ESim, FElem, TExp] ** {
   
     fun
-      LFElem : Exp -> Exp -> Formula ;
-
+      LFElem : [Exp] -> Exp -> Formula ;
       LENeq, LELe, LEGe, LESim : Eqsign ;
 
-      LTExp : Exp -> Exp -> Exp ;
+      LTPower : Exp -> Exp -> Exp ;
+      LTFrac : Exp -> Exp -> Exp ;
+      LTAbsolute : Exp -> Exp ;
+      LTComprehension : Exp -> Exp -> Formula -> Exp ;
 
+      LTextbfExp : Exp -> Exp ;
 }
