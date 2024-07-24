@@ -226,6 +226,10 @@ lincat
 
 lin
   MkTermSymb np sym = {np = np ; sym = sym} ;
+  ApposTermSymb primc name = {
+    np = mkNP (mkCN (mkCN primc.cn (symb name)) primc.adv) ;
+    sym = name
+    } ;
 
 oper
   possessAdv : NP -> Adv = \np -> mkAdv possess_Prep np ;

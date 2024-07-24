@@ -167,6 +167,7 @@ cat
   
 fun  
   MkTermSymb : Term -> SymbTerm -> TermSymb ;
+  ApposTermSymb : PrimClass -> Name -> TermSymb ;
 
 
 }
