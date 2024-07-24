@@ -20,7 +20,7 @@ for s in sys.stdin:
             successes += 1
         except pgf.ParseError as pe:
             print('-- FAILURE', sent, s)
-            print(pe)
+            print('-- FAIL CAUSE', pe)
             fails += 1
         sent += 1
 

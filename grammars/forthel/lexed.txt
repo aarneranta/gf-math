@@ -127,7 +127,7 @@ if $ n $ is an odd integer , then $ 3 n - 5 $ is an even integer .
 
 let $ n $ be an integer . if $ 3 n - 5 $ is an odd integer , then $ n $ is an even integer .
 
-if $ x $ and $ y $ are integrs if the same parity , then $ x - y $ is even .
+if $ x $ and $ y $ are integers if the same parity , then $ x - y $ is even .
 
 if $ m $ is an even integer and $ n $ is an odd integer , then $ 3 m + 5 n $ is odd .
 

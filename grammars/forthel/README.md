@@ -33,3 +33,7 @@ Run the test script
 
   python3 test_file.py <lexed.txt
 
+Even better:
+
+  python3 test_file.py <lexed.txt | grep FAIL
+
