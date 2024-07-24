@@ -1,6 +1,7 @@
 -- based on http://nevidal.org/download/forthel.pdf
 
-incomplete concrete ForthelFunctor of Forthel = ForthelTerms **
+incomplete concrete ForthelFunctor of Forthel =
+  ForthelTerms, LatexTerms **
 
 open
   Syntax,
@@ -47,6 +48,10 @@ lin
   FormulaSymbTerm formula = mkSymb formula.s ;
   ExpSymbTerm exp = mkSymb exp.s ;
   VarName v = mkSymb v ;
+  
+  LatexFormulaSymbTerm formula = mkSymb (mathEnvStr formula.s) ;
+  LatexExpSymbTerm exp = mkSymb (mathEnvStr exp.s) ;
+  LatexVarName v = mkSymb (mathEnvStr v) ;
 
 
 -- 1.3.2

@@ -1,6 +1,6 @@
 -- simplified and extended from http://nevidal.org/download/forthel.pdf
 
-abstract Forthel = ForthelTerms ** {
+abstract Forthel = ForthelTerms, LatexTerms ** {
 
 cat
   Toplevel ;   -- Text, one or more sections with headers
@@ -37,6 +37,10 @@ fun
   FormulaSymbTerm : Formula -> SymbTerm ;
   ExpSymbTerm : Exp -> SymbTerm ; 
   VarName : Var -> Name ;
+
+  LatexFormulaSymbTerm : Formula -> SymbTerm ;
+  LatexExpSymbTerm : Exp -> SymbTerm ; 
+  LatexVarName : Var -> Name ;
 
 
 -- 1.3.2

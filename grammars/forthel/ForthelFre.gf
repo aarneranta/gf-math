@@ -2,7 +2,8 @@
 
 concrete ForthelFre of Forthel =
 
-  ForthelTermsAscii **
+  ForthelTermsAscii,
+  LatexTermsTex **
   ForthelFunctor - [
     pluralNP, PredicateSynonym, NamesAssumption, StatementAssumption
     ] with

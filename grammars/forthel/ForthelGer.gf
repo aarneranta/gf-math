@@ -2,7 +2,9 @@
 
 concrete ForthelGer of Forthel =
 
-  ForthelTermsAscii **
+  ForthelTermsAscii,
+  LatexTermsTex **
+
   ForthelFunctor - [pluralNP, NamesAssumption,
   StatementAssumption, possessAdv, ApposTermSymb] with
     (Syntax=SyntaxGer),

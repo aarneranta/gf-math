@@ -2,7 +2,8 @@
 
 concrete ForthelEng of Forthel =
 
-  ForthelTermsAscii **
+  ForthelTermsAscii,
+  LatexTermsTex **
   ForthelFunctor - [negPol, pluralNP] with
     (Syntax=SyntaxEng),
     (Symbolic=SymbolicEng),
