@@ -9,6 +9,7 @@ cat
   Assumption ; -- Text, declaration of variables or assumption of a statement
   Synonym ;    -- Text, syntax definition of new Notion, Function
   Definition ; -- S,    meaning definition of DefiniteNoun, Notion, PredicateHead
+--<  PredicateHead ; -- S, predicate applied to a list of variables
   
   Statement ;  -- S,    logical proposition, either verbal or symbolic
   Constant ;   -- NP,   constant statement such as "contradiction"
@@ -20,6 +21,9 @@ cat
 
   Terms ;      -- NP,   either one Term or an and-conjunction
   Term ;       -- NP,   noun phrase, either quantified or definite or symbolic
+--<  QuantifiedNotion ;  -- NP,  quantified Notion
+--<  QuantifiedNotions ; -- NP,  one or many quantified Notions
+--<  PlainTerm ;  -- NP,   no quantifiers
   Notions ;    -- NP,   Notion with indefinite article, one or many with and 
 
   Notion ;       -- (CN, Num),  ClassNoun possibly with a list of names
@@ -60,8 +64,12 @@ fun
   SomeTerm  : Notion -> Term ;    --><
   NoTerm    : Notion -> Term ;    --><
 
+--<  OneQuantifiedNotions : QuantifiedNotion -> QuantifiedNotions ;
+--<  AddQuantifiedNotions : QuantifiedNotion -> QuantifiedNotions -> QuantifiedNotions ;
   
+--<  QuantifiedTerm : QuantifiedNotions -> Term ;
 
+--<  PlainTermTerm : PlainTerm -> Term ; -- no quantifiers
   
   SymbolicTerm : SymbTerm -> Term ; --><
 
@@ -120,6 +128,8 @@ fun
   FunctionIsEqualDefinition : DefiniteNoun -> Term -> Definition ;
   PredicateDefinition : Predicate -> [Name] ->  Statement -> Definition ;  --><
 
+--<  AdjectivePredicateHead : Adjective -> [Name] -> PredicateHead ;
+--<  VerbPredicateHead : Verb -> [Name] -> PredicateHead ;
 
 --- spec p. 15: "Note that synonym declarations are not statements but instructions to the
 --- parser, just like token groups (see Section 1.3.1). Roughly, synonyms relate

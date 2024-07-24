@@ -9,7 +9,7 @@ fun
   function_PrimClass : Term -> Term -> PrimClass ;
 
   zero_DefiniteNoun : DefiniteNoun ;
-  order_DefiniteNoun : PlainTerm -> DefiniteNoun ;
+  order_DefiniteNoun : Term -> DefiniteNoun ; --><
 
   converge_Verb : Verb ;
   divide_Verb : Term -> Verb ;   --- V2

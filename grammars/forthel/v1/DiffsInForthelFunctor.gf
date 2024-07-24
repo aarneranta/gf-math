@@ -19,6 +19,7 @@ lincat
   Assumption = Text ;
   Synonym = Text ;
   Definition = S ;
+--<  PredicateHead = S ;
   
   Statement = S ;
   Constant = NP ;
@@ -30,6 +31,9 @@ lincat
 
   Terms = NP ;
   Term = NP ;
+--<  QuantifiedNotion = NP ;
+--<  QuantifiedNotions = NP ;
+--<  PlainTerm = NP ;
   Notions = NP ;
 
   Notion = {cn : CN ; isPlur : Bool} ;
@@ -98,8 +102,12 @@ lin
     False => mkNP no_Quant notion.cn
     } ;
 
+--<  OneQuantifiedNotions qn = qn ;
+--<  AddQuantifiedNotions qn qns = mkNP and_Conj qn qns ;
 
+--<  QuantifiedTerm qn = qn ;
 
+--<  PlainTermTerm t = t ;
 
   SymbolicTerm t = symb t ;
 
@@ -166,6 +174,10 @@ lin
   PredicateDefinition pred names statement =
     mkS iff_Conj (mkS (mkCl (namesNP names) pred)) statement ;  --><
 
+--<  AdjectivePredicateHead adjective names =
+--<    mkS (mkCl (namesNP names) adjective) ;
+--<  VerbPredicateHead verb names =
+--<    mkS (mkCl (namesNP names) verb) ;
 
   NotionSynonym head target =
     letSynonym (mkNP a_Det head.cn) (mkNP a_Det target.cn) ;
