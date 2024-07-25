@@ -80,12 +80,5 @@ oper
   postAdvS : S -> Adv -> S = \s, adv -> s ** {s = \\o => s.s ! o ++ adv.s} ;
 
   iff_Subj : Subj = M.mkSubj "wenn und genau dann wenn" ;
-
-  mkPrimClass = overload {
-    mkPrimClass : N -> PrimClass
-      = \n -> lin PrimClass {cn = mkCN n ; adv = emptyAdv} ;
-    mkPrimClass : CN -> PrimClass
-      = \n -> lin PrimClass {cn = n ; adv = emptyAdv}
-    } ;
   
 }

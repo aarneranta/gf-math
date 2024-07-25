@@ -254,4 +254,12 @@ oper
 
 ---  parenthS : S -> S = \s -> Markup.MarkupS (lin Mark {begin = "(" ; end = ")"}) s ;
 
+  mkPrimClass = overload {
+    mkPrimClass : N -> PrimClass
+      = \n -> lin PrimClass {cn = mkCN n ; adv = emptyAdv} ;
+    mkPrimClass : CN -> PrimClass
+      = \n -> lin PrimClass {cn = n ; adv = emptyAdv}
+    } ;
+
+
 }
