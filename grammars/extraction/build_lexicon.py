@@ -20,7 +20,7 @@ sys.path.append('deptreepy')
 import trees
 import operations
 
-help_message = """  usage: build_lexicon.py (-first|-add) <fr> <Fre> <STEPNUM>+\n
+help_message = """  usage: build_lexicon.py (-first|-add)  <fr> <Fre> (-from=<Eng>)? <STEPNUM>+\n
   Step 0: preparations  
   Step 1: extract wikidata for that language into qlist  
   Step 2: parse with UDPipe  
@@ -68,9 +68,14 @@ print('Processing language', LAN, '=', LANG, '\n')
 
 #### Step 0: preparations ####
 
-DEFAULT_FROM_LANG = 'Eng'
+FROM_LANG = 'Eng'
 
-def clone_extract_gf(fromlang=DEFAULT_FROM_LANG, tolang=LANG):
+fromlangs = [arg[6:] for arg in sys.argv if arg.startswith('-from=')]
+if fromlangs:
+    FROM_LANG=fromlangs[0]
+
+
+def clone_extract_gf(fromlang, tolang):
     target_abs = 'Extract'+tolang+'Abs.gf'
     target_ins = 'ExtractSyntax'+tolang+'.gf'
     target_cnc = 'Extract'+tolang+'.gf'
@@ -106,8 +111,8 @@ def clone_extract_gf(fromlang=DEFAULT_FROM_LANG, tolang=LANG):
 if '0' in STEPS:
     print('\nStep 0: Cloning ExtractGrammar and compiling MorphoDict\n')
 
-    print('cloning extract grammar from', DEFAULT_FROM_LANG)
-    clone_extract_gf()
+    print('cloning extract grammar from', FROM_LANG)
+    clone_extract_gf(FROM_LANG, LANG)
 
     cmd = 'gf -make -s morphodict/' + MORPHODICT_CNC + '.gf'
     print('executing:', cmd)
