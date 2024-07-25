@@ -61,7 +61,7 @@ MORPHODICT_FILE = MORPHODICT_CNC + 'Abs.pgf'
 MATH_WORDS_ABS = 'MathWords' + LANG + 'Abs'
 MATH_WORDS_CNC_PREFIX = 'MathWords'
 MATH_TERMS = 'MathTerms'
-QDICT_SYNOPSIS_FILE = 'math_terms_synopsis.json'
+QDICT_SYNOPSIS_FILE = 'out/math_terms_synopsis.json'
 
 
 print('Processing language', LAN, '=', LANG, '\n')
