@@ -5,8 +5,13 @@ concrete ForthelGer of Forthel =
   ForthelTermsAscii,
   LatexTermsTex **
 
-  ForthelFunctor - [pluralNP, NamesAssumption,
-  StatementAssumption, possessAdv, ApposTermSymb] with
+  ForthelFunctor - [
+    pluralNP, AllTerm,
+    IffStatement, NamesAssumption,
+    StatementAssumption, PredicateDefinition,
+    possessAdv, ApposTermSymb
+    ]
+   with
     (Syntax=SyntaxGer),
     (Symbolic=SymbolicGer),
     (Extend=ExtendGer),
@@ -16,6 +21,7 @@ concrete ForthelGer of Forthel =
 ** open
 
   ParadigmsGer,
+  (S=SyntaxGer),
   (P=ParadigmsGer),
   (M=MakeStructuralGer),
   (R=ResGer),
@@ -26,13 +32,20 @@ in {
 
 -- functor exceptions
 lin
+  IffStatement s t = postAdvS s (S.mkAdv iff_Subj t) ;
+
+  AllTerm notion = mkNP alle_Det notion.cn ;
+
   NamesAssumption names classnoun =
-    mkText 
+    mkPhr 
       (mkS (mkCl we_NP assume_VS
          (mkS (mkCl (namesNP names) (mkCN classnoun.cn classnoun.adv))))) ;
 
+  PredicateDefinition pred names statement =
+    postAdvS (mkS (mkCl (namesNP names) pred)) (S.mkAdv iff_Subj statement) ;
+
   StatementAssumption stat =
-    mkText 
+    mkPhr 
       (mkS (mkCl we_NP assume_VS stat)) ;
 
   ApposTermSymb primc name = {
@@ -47,21 +60,32 @@ oper
 
 -- words etc
 
-  denote_V2 : V2 =
-    mkV2 (mkV "bedeuten") ;
 
-  any_Quant = a_Quant ; ---- TODO
-  each_Det = every_Det ; ---- TODO
-  such_that_Subj = M.mkSubj "so dass" ;
+  denote_V2 : V2 = mkV2 (mkV "bedeuten") ;
 
-  iff_Conj = M.mkConj [] "wenn und nur wenn" singular ;
+  any_Quant = M.mmkQuant a_Quant (mkA "beliebig") ;
+  each_Det = every_Det ; --- = jeder
+  alle_Det = M.mkWeakDet "all" plural ;
 
-  equal_A2 : A2 = mkA2 (mkA "gleich") with_Prep ;
+  such_that_Subj = M.mkSubj "derart dass" ;
+
+  equal_A2 : A2 = mkA2 (mkA "gleich") datPrep ;
 
   assume_VS : VS = mkVS (prefixV "an" I.nehmen_V) ;
 
   then_Adv : Adv = P.mkAdv "dann" ;
 
   let_Str : Str = "sei" ; --- seien ?
+
+  postAdvS : S -> Adv -> S = \s, adv -> s ** {s = \\o => s.s ! o ++ adv.s} ;
+
+  iff_Subj : Subj = M.mkSubj "wenn und genau dann wenn" ;
+
+  mkPrimClass = overload {
+    mkPrimClass : N -> PrimClass
+      = \n -> lin PrimClass {cn = mkCN n ; adv = emptyAdv} ;
+    mkPrimClass : CN -> PrimClass
+      = \n -> lin PrimClass {cn = n ; adv = emptyAdv}
+    } ;
   
 }

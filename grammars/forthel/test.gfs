@@ -1,5 +1,8 @@
 import ForthelDemoEng.gf ForthelDemoGer.gf ForthelDemoFre.gf
 rf -file=preprocessed.txt -lines | p -cat=Toplevel -lang=Eng | l -treebank
-rf -file=gflean-exx.txt -lines | p -cat=Toplevel -lang=Eng | l -treebank
+rf -file=lexed.txt -lines | p -cat=Toplevel -lang=Eng | l -treebank -unlexmixed
+
+
+
 
 

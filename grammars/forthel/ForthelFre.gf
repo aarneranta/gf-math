@@ -5,7 +5,8 @@ concrete ForthelFre of Forthel =
   ForthelTermsAscii,
   LatexTermsTex **
   ForthelFunctor - [
-    pluralNP, PredicateSynonym, NamesAssumption, StatementAssumption
+    pluralNP, AllTerm,
+    PredicateSynonym, NamesAssumption, StatementAssumption
     ] with
     (Syntax=SyntaxFre),
     (Symbolic=SymbolicFre),
@@ -26,15 +27,16 @@ in {
 
 -- functor exceptions
 lin
+  AllTerm notion = mkNP all_Predet (mkNP thePl_Det notion.cn) ;
+
   NamesAssumption names classnoun =
-    mkText 
+    mkPhr 
       (lets_Utt (mkVP assume_VS
-         (mkS (mkCl (namesNP names) (mkCN classnoun.cn classnoun.adv)))))
-      fullStopPunct ;
+         (mkS (mkCl (namesNP names) (mkCN classnoun.cn classnoun.adv))))) ;
       
   StatementAssumption stat =
-    mkText 
-      (lets_Utt (mkVP assume_VS stat)) fullStopPunct ;
+    mkPhr 
+      (lets_Utt (mkVP assume_VS stat)) ;
 oper
   pluralNP : NP -> NP = \np -> np ** {n=plural} ;
 
@@ -43,13 +45,15 @@ oper
   denote_V2 : V2 =
     mkV2 (mkV "signifier") ;
 
-  any_Quant = a_Quant ; ---- TODO
-  each_Det = every_Det ; ---- TODO
-  such_that_Subj = M.mkSubj "tel que" ;
+  any_Quant : Quant =
+     let niq = "n'importe quel" in
+     M.mkQuant niq (niq + "le") (niq + "s") (niq + "les") ;
+  each_Det = every_Det ; 
+  such_that_Subj = M.mkSubj "tel que" ; --- tel/tels/telle/telles
 
   iff_Conj = M.mkConj [] "si et seulement si" singular ;
 
-  equal_A2 : A2 = mkA2 (mkA "égal") with_Prep ;
+  equal_A2 : A2 = mkA2 (mkA "égal") dative ;
 
   assume_VS : VS = mkVS (mkV "supposer") ;
 

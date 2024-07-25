@@ -46,7 +46,7 @@ lin
   dividing_Adjective t = mkAP dividing_A2 t ;
   equal_Adjective t = mkAP equal_A2 t ;
   less_Adjective t = mkAP klein_A t ; --- a comparative
-  greater_Adjective t = mkAP great_A t ; 
+  greater_Adjective t = mkAP gross_A t ; 
 
   thesis_Constant = mkNP the_Det thesis_N ;
   contrary_Constant = mkNP the_Det contrary_N ;
@@ -56,8 +56,8 @@ lin
 
   rational_Adjective = mkAP (mkA "rational") ;
   odd_Adjective = mkAP (mkA "ungerade") ;
-  integer_PrimClass = mkPrimClass (mkN "Zahl" feminine) ; ----
-  number_PrimClass = mkPrimClass (mkN "Zahl" feminine) ;
+  integer_PrimClass = mkPrimClass (mkCN ganz_A zahl_N) ;
+  number_PrimClass = mkPrimClass (mkCN ganz_A zahl_N) ;
   real_Adjective = mkAP (mkA "real") ;
   even_Adjective = mkAP (mkA "gerade") ;
   positive_Adjective = mkAP (mkA "positiv") ;
@@ -70,21 +70,18 @@ lin
         
   greater_or_equal_Adjective t =
       mkAP or_Conj
-        (mkAP (comparAP great_A) (P.mkAdv "als"))
+        (mkAP (comparAP gross_A) (P.mkAdv "als"))
 	((mkAP equal_A2 t) ** {isPre = False}) ;
 
 oper
-  mkPrimClass = overload {
-    mkPrimClass : N -> PrimClass
-      = \n -> lin PrimClass {cn = mkCN n ; adv = emptyAdv}
-    } ;
-
 
   set_N : N = mkN "Menge" ;
   element_N : N = mkN "Element" neuter ;
   function_N : N = mkN "Funktion" ;
-  zero_N = mkN "Null" ;
+  zero_N = mkN "Null" feminine ;
   order_N = mkN "Ordnung" ;
+  zahl_N = mkN "Zahl" feminine ;
+  ganz_A = mkA "ganz" ;
 
   converge_V : V = mkV "konvergieren" ;
   divide_V2 : V2 = mkV2 (mkV "teilen") ;
@@ -94,12 +91,12 @@ oper
   prime_A : A = mkA "unteilbar" ;
   dividing_A2 : A2 = mkA2 (mkA "teilend") accPrep ; ----
   less_A2 : A2 = mkA2 klein_A (mkPrep "als" nominative) ; ---
-  great_A : A = mkA "gross" "grösser" "grösste" ;
+  gross_A : A = mkA "gross" "grösser" "grösste" ;
   klein_A = mkA "klein" ;
   
-  thesis_N = mkN "Thesis" ;
-  contrary_N = mkN "Gegenteil" ;
-  contradiction_N = mkN "Widerspruch" ;
+  thesis_N = mkN "These" ;
+  contrary_N = mkN "Gegenteil" neuter ;
+  contradiction_N = mkN "Widerspruch" masculine ;
 
   over_Prep = mkPrep "über" dative ;
 
