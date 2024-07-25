@@ -74,11 +74,6 @@ lin
 
 
 oper
-  mkPrimClass = overload {
-    mkPrimClass : N -> PrimClass
-      = \n -> lin PrimClass {cn = mkCN n ; adv = emptyAdv}
-    } ;
-
   set_N : N = mkN "set" ;
   element_N : N = mkN "element" ;
   function_N : N = mkN "function" ;
