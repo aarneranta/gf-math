@@ -4,5 +4,5 @@ abstract ExtractGerAbs =
   MathWordsGerAbs
   ** {
   
-  flags startcat = Term ;
+  flags startcat = MT ;
 }

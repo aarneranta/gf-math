@@ -8,12 +8,12 @@ incomplete concrete ExtractSyntaxFunctor of ExtractSyntax = Structural
 in {
 
 lincat
-  Term = Utt ;
+  MT = Utt ;
 
 lin
-  NPTerm np = mkUtt np ;
-  APTerm ap = mkUtt ap ;
-  AdvTerm adv = mkUtt adv ;
+  NPMT np = mkUtt np ;
+  APMT ap = mkUtt ap ;
+  AdvMT adv = mkUtt adv ;
 
   UseN n = mkCN n ;
   AdjCN ap cn = mkCN ap cn ;
@@ -44,8 +44,8 @@ oper
   strCompoundCN : Str -> CN -> CN = \s, cn -> prefixCN (s ++ hyphen) cn ;
 
   -- a back-up oper for unanalysed terms
-  rawTerm : Str -> Term = \s ->
-    lin Term (lin Utt {s = s}) ; ---
+  rawMT : Str -> MT = \s ->
+    lin MT (lin Utt {s = s}) ; ---
 
   hyphen : Str = Predef.BIND ++ "-" ++ Predef.BIND ;
 

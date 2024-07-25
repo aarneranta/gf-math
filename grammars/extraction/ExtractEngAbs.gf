@@ -4,5 +4,5 @@ abstract ExtractEngAbs =
   MathWordsEngAbs 
   ** {
   
-  flags startcat = Term ;
+  flags startcat = MT ;
 }

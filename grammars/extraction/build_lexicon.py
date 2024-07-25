@@ -20,16 +20,17 @@ sys.path.append('deptreepy')
 import trees
 import operations
 
-help_message = """  usage: build_lexicon.py (-first|-added) <fr> <Fre> <STEPNUM>+\n
+help_message = """  usage: build_lexicon.py (-first|-add) <fr> <Fre> <STEPNUM>+\n
   Step 0: preparations  
   Step 1: extract wikidata for that language into qlist  
   Step 2: parse with UDPipe  
   Step 3: use the UDPipe parse to clean up corpus and add to lexicon  
   Step 5: parse the terms with the extended lexicon  
-  Step 6: generate GF modules for abstract and the first concrete  
-  Step 7: add a new concrete syntax\n
-  To start the build:    -first en Eng 1 2 3 4 5 6
-  To add a new language: -added de Ger 1 2 3 4 5 7
+  Step 6: (if -first) generate GF modules for abstract and the first concrete  
+  Step 7: (if -add) add a new concrete syntax
+  Step 8: test your grammar in GF\n
+  To start the build:    -first en Eng 1 2 3 4 5 6 8
+  To add a new language: -add de Ger 1 2 3 4 5 7 8
   """
 
 # give 2-letter and 3-letter language codes as command line arguments
@@ -127,7 +128,7 @@ def extract_wikidata(lang=LAN, wikifile=WIKIDATA_FILE, qlistfile=QLIST_FILE):
         qid = list(entry.keys())[0]  # there is only one
         qlist.append([qid, entry[qid].get(lang, NO_WIKILABEL).strip()])
     with open(qlistfile, 'w') as outfile:
-        json.dump(qlist, outfile, ensure_ascii=False)
+        json.dump(qlist, outfile, ensure_ascii=False, indent=2)
     return qlist
         
 if '1' in STEPS:
@@ -231,7 +232,7 @@ def fix_case(sqitems):
         print('statistics case fixed:', len(fixed))
         new_qlist = [[qid, ' '.join(s)] for (qid, (s,_)) in sqitems]
         with open(NEW_QLIST_FILE, 'w') as outfile:
-            json.dump(new_qlist, outfile, ensure_ascii=False)
+            json.dump(new_qlist, outfile, ensure_ascii=False, indent=2)
     print('wrote corrected file', NEW_QLIST_FILE)
 
     # for use in lexicon extraction
@@ -274,7 +275,7 @@ if '3' in STEPS:
     rdict = build_raw_gf_dict(sqitems)
     print('statistics words from UD:', len(rdict))
     with open(UD_LEXICON_FILE, 'w') as outfile: 
-        json.dump(rdict, outfile, ensure_ascii=False)
+        json.dump(rdict, outfile, ensure_ascii=False, indent=2)
     print('wrote file', UD_LEXICON_FILE)
 
 
@@ -400,7 +401,7 @@ if '5' in STEPS:
 
 #### Step 6: generate GF modules for abstract and the first concrete ####
 
-def mk_mdict(qdict, grammar, lang=LANG, defaultcat='Term'):
+def mk_mdict(qdict, grammar, lang=LANG, defaultcat='MT'):
     mdict = {}
     for qid in qdict:
         info = qdict[qid]
@@ -440,18 +441,18 @@ if '6' in STEPS and MODE=='-first':
     print('wrote file', QDICT_SYNOPSIS_FILE)
 
     print_gf_files(
-        'MathTerms',
+        MATH_TERMS,
         '--# -path=.:morphodict:../extraction',
         ['Cat'],
         ['Extract'],
-        [('Term', 'Utt')],
+        [('MT', 'Utt')],
         mdict
         )
 
     
 #### Step 7: add a new concrete syntax ####
         
-def add_new_language(qdict_syn, qdict, grammar, lang, defaultcat='Term'):
+def add_new_language(qdict_syn, qdict, grammar, lang, defaultcat='MT'):
     for qid in qdict_syn:
         syninfo = qdict_syn[qid]
         cncinfo = qdict[qid] 
@@ -472,7 +473,7 @@ def add_new_language(qdict_syn, qdict, grammar, lang, defaultcat='Term'):
     return qdict_syn
     
 
-if '7' in STEPS and MODE=='-added':
+if '7' in STEPS and MODE=='-add':
     with open(QDICT_SYNOPSIS_FILE) as file:
         qdict_syn = json.load(file)
     print('loaded', QDICT_SYNOPSIS_FILE)
@@ -491,15 +492,27 @@ if '7' in STEPS and MODE=='-added':
     print('wrote file, updated for', LANG, QDICT_SYNOPSIS_FILE)
 
     print_gf_files(
-        'MathTerms',
+        MATH_TERMS,
         '--# -path=.:morphodict:../extraction',
         ['Cat'],
         ['Extract'],
-        [('Term', 'Utt')],
+        [('MT', 'Utt')],
         qdict,
         abstract=False,
         onelang=LANG
         )
+    if '8' not in STEPS:
+        "Now consider running Step 8 to test the grammar!"
+
     
+#### Step 8: run a simple test ###
+
+if '8' in STEPS:
+    cmd = ('echo "gr -cat=CN -number=11 | l -table -treebank -bind" | gf -run -s ' +
+           MATH_TERMS + LANG + '.gf')
+    print('executing:', cmd)
+    os.system(cmd)
+    print('If the test is successful, consider copying',
+          MATH_TERMS + LANG + '.gf', 'to ../mathterms') 
 
 

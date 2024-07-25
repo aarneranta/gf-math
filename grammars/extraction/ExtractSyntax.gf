@@ -1,14 +1,14 @@
 abstract ExtractSyntax = Structural ** {
 
-flags startcat = Term ;
+flags startcat = MT ;
 
 cat
-  Term ;
+  MT ;
 
 fun
-  NPTerm : NP -> Term ;
-  APTerm : AP -> Term ;
-  AdvTerm : Adv -> Term ;
+  NPMT : NP -> MT ;
+  APMT : AP -> MT ;
+  AdvMT : Adv -> MT ;
 
   UseN : N -> CN ;
   AdjCN : AP -> CN -> CN ;
