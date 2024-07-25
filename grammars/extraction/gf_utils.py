@@ -59,7 +59,7 @@ def extract_term(cnc, s):
     
 def print_gf_files(
         absname, path, extends, opens, newcats, mdict,
-        cncprefix=None, abstract=True, onelang=None
+        cncprefix=None, abstract=True, onlylangs=None
         ):
     """dict format: qid: {'cat', 'fun', 'lang', 'status',
     *lang: {'str', 'lin', 'status'}}"""
@@ -83,7 +83,7 @@ def print_gf_files(
         langs = list(mdict[qid].keys())[4:]
         break  # get lang names from the first item
 
-    langs = langs if not onelang else [onelang]
+    langs = langs if not onlylangs else onlylangs
     for lang in langs:
         cncname = (cncprefix if cncprefix else absname) + lang
         with open(cncname + '.gf', 'w') as cncfile:
@@ -102,12 +102,13 @@ def print_gf_files(
                 
             for qid in mdict:
                 fun = mdict[qid]['fun']
-                if mdict[qid][lang]['status']:
-                    rule = mk_lin_rule(fun, mdict[qid][lang]['lin'])
-                else:
-                    rule = mk_lin_rule(fun, empty_variants(),
+                if lang in mdict[qid]:
+                    if mdict[qid][lang]['status']:
+                        rule = mk_lin_rule(fun, mdict[qid][lang]['lin'])
+                    else:
+                        rule = mk_lin_rule(fun, empty_variants(),
                                        comment=mdict[qid][lang]['str'])     
-                cncfile.write(rule)
+                    cncfile.write(rule)
                 
             cncfile.write('}\n')
             print('wrote file', cncname + '.gf')

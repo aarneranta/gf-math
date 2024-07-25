@@ -343,7 +343,7 @@ if '4' in STEPS:
         [],
         mdict,
         cncprefix=MATH_WORDS_CNC_PREFIX,
-        onelang=LANG
+        onlylangs=[LANG]
         )
 
 
@@ -504,7 +504,7 @@ if '7' in STEPS and MODE=='-add':
         [('MT', 'Utt')],
         qdict,
         abstract=False,
-        onelang=LANG
+        onlylangs=[LANG]
         )
     if '8' not in STEPS:
         "Now consider running Step 8 to test the grammar!"

@@ -1,7 +1,8 @@
 abstract WikiMath =
   Forthel,
-  MathTerms ** {
-
+  MathTerms,
+  DerivedMathTerms
+  ** {
 fun
   WikiPrimClass : CN -> PrimClass ;
   WikiAdjective : AP -> Adjective ;

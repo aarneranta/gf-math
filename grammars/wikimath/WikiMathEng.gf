@@ -2,7 +2,8 @@
 
 concrete WikiMathEng of WikiMath =
   ForthelEng,
-  MathTermsEng ** {
+  MathTermsEng,
+  DerivedMathTermsEng ** {
 
 lin
   WikiPrimClass cn = mkPrimClass cn ;

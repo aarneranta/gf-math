@@ -1,14 +1,20 @@
+#!/usr/bin/env python3
+
 import sys
 import json
 import pgf
 from gf_utils import *
 
+if sys.argv[1:]:
+    LANGUAGES = sys.argv[1:]
+
+ABSLANG = LANGUAGES[0]  # the language used for abstract fun name
+    
 SYNOPSIS_FILE = 'out/math_terms_synopsis.json'
 
 SEARCHFUN = 'AdjCN'
 SEARCHCATS = ['AP', 'CN']
-LANGUAGES = {'Eng', 'Fin', 'Fre', 'Ger', 'Ita', 'Por', 'Swe'}
-ABSLANG = 'Eng'  # the language used for abstract fun name
+TARGET_ABSNAME = 'DerivedMathTerms'
 
 
 def from_SearchFun(tree):
@@ -16,7 +22,6 @@ def from_SearchFun(tree):
     fun, args = tree.unpack()
     if fun == SEARCHFUN:
         return [str(arg) for arg in args]
-    
 
     
 def collect_trees(synopsis):
@@ -32,17 +37,18 @@ def collect_trees(synopsis):
                         cat = SEARCHCATS[i]
                         dict[qid][cat] = dict[qid].get(cat, {})
                         dict[qid][cat][key] = result[i]
-        if qid in dict and ABSLANG in synopsis[qid]:
-            dict[qid]['str'] = synopsis[qid][ABSLANG]['str']
-#        if qid in dict: print (qid, dict[qid])
+                        if qid in dict and ABSLANG in synopsis[qid]:
+                            dict[qid][cat]['str'] = synopsis[qid][ABSLANG]['str']
     return dict
 
 
 def build_rules(qid, entry):
-    mentry = {}
-    absstring = entry['str']
+    mentries = []
     for cat in entry:
-        fun = mk_fun_from_strs([absstring, 'D'+qid, cat])
+        mentry = {}
+#        print(1, entry[cat])
+        absstring = entry[cat]['str']
+        fun = mk_fun_from_strs([absstring, qid, 'der', cat])
         mentry['cat'] = cat
         mentry['fun'] = fun
         mentry['status'] = 'derived'
@@ -53,17 +59,32 @@ def build_rules(qid, entry):
                 mentry[lang]['lin'] = entry[cat][lang]
                 mentry[lang]['str'] = 'NA'
                 mentry[lang]['status'] = 'derived'
-    return (qid, mentry)
+#        print(2, qid, mentry)
+        mentries.append(mentry)
+    return (qid, mentries)
 
 
 with open(SYNOPSIS_FILE) as file:
     synopsis = json.load(file)
     collection = collect_trees(synopsis)
+    mdict = {}
     for qid, entry in collection.items():
-        rules = build_rules(qid, entry)
-        print(rules)
-        
+        _, mentries = build_rules(qid, entry)
+        for mentry in mentries:
+#            print(3, qid, mentry)
+            if 'fun' in mentry:
+#                print(4, mentry)
+                mdict[qid+'_'+mentry['cat']] = mentry
 
-
-
+    print_gf_files(
+        TARGET_ABSNAME,
+        '--# -path=.:morphodict:../extraction',
+        ['Cat'],
+        ['Extract'],
+        [],
+         mdict,
+        onlylangs=LANGUAGES
+        )
+    print('You may want to copy these files to ../mathterms')
     
+

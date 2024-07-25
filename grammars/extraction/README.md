@@ -1,5 +1,7 @@
 # Building a lexicon from Wikidata labels
 
+## Building the basic lexicon with just the Wikidata labels
+
 Do
 ```
   ./build_lexicon.py (-first|-added) <fr> <Fre> <STEPNUM>+
@@ -26,3 +28,14 @@ To add a new language (when one language and an abstract syntax are in place):
 For more information, take a look at `build_lexicon.py`.
 
 
+## Building a derived lexicon
+
+This is an experimental method to extract parts of Wikidata labels.
+The current implementation extracts APs and CNs from adjectivally modified nouns.
+You can run it with
+```
+  ./derived_lexicon.py <lang>+
+```
+3-letter language codes are used.
+The procedure requires that you have the basic lexicon for the mentioned languages.
+The first language (typically Eng) is used in the abstract syntax function names.
