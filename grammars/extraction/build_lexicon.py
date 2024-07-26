@@ -29,8 +29,8 @@ help_message = """  usage: build_lexicon.py (-first|-add)  <fr> <Fre> (-from=<En
   Step 6: (if -first) generate GF modules for abstract and the first concrete  
   Step 7: (if -add) add a new concrete syntax
   Step 8: test your grammar in GF\n
-  To start the build:    -first en Eng 1 2 3 4 5 6 8
-  To add a new language: -add de Ger 1 2 3 4 5 7 8
+  To start the build:    -first en Eng 0 1 2 3 4 5 6 8
+  To add a new language: -add de Ger (-from=Eng)? 0 1 2 3 4 5 7 8
   """
 
 # give 2-letter and 3-letter language codes as command line arguments

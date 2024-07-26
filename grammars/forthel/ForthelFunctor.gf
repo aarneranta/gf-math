@@ -46,6 +46,8 @@ lincat
 lin
 -- importing from ForthelTerms
 
+  IndexedTerm n = mkSymb (macroApp "INDEXEDTERM" (n.s)) ;
+
   FormulaSymbTerm formula = mkSymb formula.s ;
   ExpSymbTerm exp = mkSymb exp.s ;
   VarName v = mkSymb v ;

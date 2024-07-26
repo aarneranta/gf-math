@@ -37,6 +37,8 @@ cat
 fun
 -- importing from ForthelTerms
 
+  IndexedTerm : Int -> SymbTerm ; -- \INDEXEDTERM{ 8 }  to use in preprocessing
+  
   FormulaSymbTerm : Formula -> SymbTerm ;
   ExpSymbTerm : Exp -> SymbTerm ; 
   VarName : Var -> Name ;
