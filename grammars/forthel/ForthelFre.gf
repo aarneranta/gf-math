@@ -5,7 +5,7 @@ concrete ForthelFre of Forthel =
   ForthelTermsAscii,
   LatexTermsTex **
   ForthelFunctor - [
-    pluralNP, AllTerm,
+    pluralNP, AllTerm, ThereIsNoStatement,
     PredicateSynonym, NamesAssumption, StatementAssumption
     ] with
     (Syntax=SyntaxFre),
@@ -21,6 +21,7 @@ concrete ForthelFre of Forthel =
   (M=MakeStructuralFre),
   (R=ResFre),
   (I=IrregFre),
+  (X=ExtraFre),
   Prelude
   
 in {
@@ -28,6 +29,8 @@ in {
 -- functor exceptions
 lin
   AllTerm notion = mkNP all_Predet (mkNP thePl_Det notion.cn) ;
+
+  ThereIsNoStatement notion = mkS X.PNegNe (Extend.ExistsNP (mkNP no_Quant notion.cn)) ;
 
   NamesAssumption names classnoun =
     mkPhr 
