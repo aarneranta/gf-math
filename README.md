@@ -7,6 +7,23 @@ Most concepts are linked to
 [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)
 identifiers and labels.
 
+The main ideas are explained in [this YouTube talk](https://www.youtube.com/watch?v=UG6RUFS5esk) at the Hausdorff Institute in Bonn, 8 July 2024.
+
+## Files
+
+[conversion](./conversion): beginning of a conversion from Lean to grammars/v1
+
+[data](./data): saved data from Wikidata and elswhere, with scripts for analysing it
+
+[grammars](./grammars): GF grammars and code for analysing, generating, and embedding them
+
+[lean-bnfc](./lean-bnfc): a BNF grammar for a part of Lean
+
+## Version 1
+
+This is a first "full-scale" version but implemented as a quick prototype.
+Its code is in [grammars/v1](./grammars/v1)
+
 The list of concepts and Wikidata links are from
 [MathGloss](https://mathgloss.github.io/MathGloss/database).
 
@@ -38,7 +55,7 @@ Notice that natural language swaps the places of the definiendum
 and definiens, but the type-theoretical translation is the same
 (modulo the use of function composition).
 ```
-$ cd data/grammars
+$ cd grammars/v1
 $ make
 
 $ gf MathText.pgf
