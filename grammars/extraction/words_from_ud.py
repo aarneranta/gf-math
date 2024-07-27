@@ -38,7 +38,7 @@ def gf_lin(word, udanalysis, lang=LANG):
     number = fdict.get('Number', 'Sing')
     casus = fdict.get('Case', 'Nom')
 
-    if lang in ['Fre', 'Ger', 'Ita']:
+    if lang in ['Fre', 'Ger', 'Ita', 'Por', 'Swe']:
       match pos:
         case 'NOUN':
             if number == 'Plur':
