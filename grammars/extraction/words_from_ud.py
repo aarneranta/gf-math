@@ -65,11 +65,12 @@ def gf_lin(word, udanalysis, lang=LANG):
             return ' '.join(['UNK', lemma, pos]), ''
 
     elif lang == 'Fin':
-      lemma = lemma.replace('"', '')  ## TODO: use compound boundaries
+      lemma = lemma.replace('#', '')  ## TODO: use compound boundaries
       word = word.replace('"', '')
+      lemma = lemma.replace('"', '')
 
       match pos:
-        case 'NOUN':            
+        case 'NOUN':          
             if number == 'Sing' and casus == 'Gen':
                 return lemma, app('mkN', [lemma, quote(word)]), 'N'
             else:

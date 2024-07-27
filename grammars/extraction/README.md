@@ -10,7 +10,8 @@ with a sequence of some of the following steps:
 -  Step 0: preparations  
 -  Step 1: extract wikidata for that language into qlist  
 -  Step 2: parse with UDPipe  
--  Step 3: use the UDPipe parse to clean up corpus and add to lexicon  
+-  Step 3: use the UDPipe parse to clean up corpus and add to lexicon
+-  Step 4: build a lexicon extension
 -  Step 5: parse the terms with the extended lexicon  
 -  Step 6: (if -first) generate GF modules for abstract and the first concrete  
 -  Step 7: (if -added) add a new concrete syntax
