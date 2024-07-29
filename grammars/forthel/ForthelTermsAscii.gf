@@ -25,6 +25,8 @@ lin
   EGe = "≥" ; 
   ESim = "~" ;
 
+  TParenth t = constant (parenth (top t)) ** {isNumber = False} ;
+
   TPlus = tinfixl 1 "+" ;
   TMinus = tinfixl 1 "-" ;
   TTimes x y = case <x.isNumber, y.isNumber> of {
@@ -38,6 +40,7 @@ lin
 
   TVar x =  constant x ** {isNumber = False} ;
   TConst c =  constant c ** {isNumber = False} ;
+---  TFloat n = constant n.s ** {isNumber = True} ;
   TNumber n = constant n.s ** {isNumber = True} ;
 
   BaseExp x = {s = top x} ;

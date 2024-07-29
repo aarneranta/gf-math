@@ -1,6 +1,6 @@
 abstract ExtractFreAbs =
   ExtractSyntax,
-  MorphoDictFreAbs,
+  MorphoDictFreAbs - [in_Prep],
   MathWordsFreAbs 
   ** {
   

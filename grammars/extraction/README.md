@@ -14,7 +14,7 @@ with a sequence of some of the following steps:
 -  Step 4: build a lexicon extension
 -  Step 5: parse the terms with the extended lexicon  
 -  Step 6: (if -first) generate GF modules for abstract and the first concrete  
--  Step 7: (if -added) add a new concrete syntax
+-  Step 7: (if -add) add a new concrete syntax
 -  Step 8: test your grammar in GF\n
 
 

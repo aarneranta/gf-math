@@ -21,13 +21,16 @@ fun
 
   EEq, ENeq, ELt, EGt, ELe, EGe, ESim : Eqsign ;
 
+  TParenth : Exp -> Exp ; -- extra parentheses
+
   TPlus, TMinus, TTimes, TDiv, TExp : Exp -> Exp -> Exp ;
   TNeg : Exp -> Exp ;
   TApp : Function -> [Exp] -> Exp ;
 
   TVar : Var -> Exp ;
   TConst : Const -> Exp ;
-  TNumber : Float -> Exp ;
+---  TFloat : Float -> Exp ;
+  TNumber : Int -> Exp ;
 
   FVar : Var -> Function ;
   FDerivative : Function -> Function ;
@@ -43,3 +46,7 @@ fun
   L_Var, M_Var, S_Var, T_Var : Var ;
 
 }
+
+-- rf -file=lexed.txt -lines | p -lang=Eng | l -lang=Ger -bind -unlexmixed | ? sort -u
+
+-- cat out/terms_Fre.conllu | deptreepy/deptreepy.py visualize_conllu >out/terms_Fre.html
