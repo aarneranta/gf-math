@@ -47,6 +47,7 @@ lin
 -- importing from ForthelTerms
 
   IndexedTerm n = mkSymb (macroApp "INDEXEDTERM" (n.s)) ;
+  LatexIndexedTerm n = mkSymb (mathEnvStr (macroApp "INDEXEDTERM" (n.s))) ;
 
   FormulaSymbTerm formula = mkSymb formula.s ;
   ExpSymbTerm exp = mkSymb exp.s ;
