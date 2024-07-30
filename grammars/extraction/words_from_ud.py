@@ -35,6 +35,10 @@ def gf_lin(word, udanalysis, lang=LANG):
     ugender = fdict.get('Gender', 'Masc')   ## Neut for Ger could be better
     genders = {'Masc': 'masculine', 'Fem': 'feminine', 'Neut': 'neuter'}
     gender = genders.get(ugender, 'masculine')  ## neuter for Ger could be better
+    if lang=='Swe':
+        ugender = fdict.get('Gender', 'Com')
+        genders = {'Com': 'utrum', 'Neut': 'neutrum'}
+        gender = genders.get(ugender, 'utrum')
     number = fdict.get('Number', 'Sing')
     casus = fdict.get('Case', 'Nom')
 
@@ -42,7 +46,10 @@ def gf_lin(word, udanalysis, lang=LANG):
       match pos:
         case 'NOUN':
             if number == 'Plur':
-                return lemma, app('mkN', [lemma, quote(word), gender]), 'N'
+                if lang=='Swe':
+                    return lemma, app('mkN', [lemma, quote(word)]), 'N'  ## TODO use gender
+                else:
+                    return lemma, app('mkN', [lemma, quote(word), gender]), 'N'
             else:
                 return lemma, app('mkN', [lemma, gender]), 'N'
         case 'PROPN':

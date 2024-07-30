@@ -7,7 +7,8 @@ concrete ForthelSpa of Forthel =
   ForthelFunctor - [
     pluralNP, AllTerm, ThereIsNoStatement,
     PredicateSynonym, NamesAssumption, StatementAssumption,
-    LetNamesAssumption, LetSynonym, letSynonym
+    LetNamesAssumption,
+    letSynonym
     ] with
     (Syntax=SyntaxSpa),
     (Symbolic=SymbolicSpa),
@@ -41,6 +42,12 @@ lin
   StatementAssumption stat =
     mkPhr 
       (lets_Utt (mkVP assume_VS stat)) ;
+
+  LetNamesAssumption names classnoun =
+    mkPhr
+      (lets_Utt (mkVP assume_VS
+        (mkS (mkCl (namesNP names) (mkVP (mkCN classnoun.cn classnoun.adv)))))) ;
+
 
 oper
   letSynonym : NP -> NP -> Text = \dum, dens ->
