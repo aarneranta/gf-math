@@ -50,7 +50,7 @@ oper
 
   any_Quant : Quant = a_Quant ; ----
   each_Det = every_Det ; 
-  such_that_Subj = M.mkSubj "tal que" ; --- tel/tels/telle/telles
+  such_that_Subj = M.mkSubjSubj "tal que" ; --- tel/tels/telle/telles
 
   iff_Conj = M.mkConj [] "se e só se" singular ;
 

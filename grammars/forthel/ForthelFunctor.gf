@@ -81,7 +81,7 @@ lin
   AdjClassNoun noun adjective =
     noun ** {cn = mkCN adjective noun.cn} ;
   RelClassNoun noun predicates =
-    noun ** {cn = mkCN noun.cn (Extend.RelVPS which_RP predicates)} ; --- place of rel?
+    noun ** {cn = Extend.SubjunctRelCN noun.cn (Extend.RelVPS which_RP predicates)} ; --- place of rel?
   StatClassNoun noun statement =
     noun ** {adv = concatAdv noun.adv (Syntax.mkAdv such_that_Subj statement)} ;
 

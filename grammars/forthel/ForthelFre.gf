@@ -52,7 +52,7 @@ oper
      let niq = "n'importe quel" in
      M.mkQuant niq (niq + "le") (niq + "s") (niq + "les") ;
   each_Det = every_Det ; 
-  such_that_Subj = M.mkSubj "tel que" ; --- tel/tels/telle/telles
+  such_that_Subj = M.mkSubjSubj "tel que" ; --- tel/tels/telle/telles
 
   iff_Conj = M.mkConj [] "si et seulement si" singular ;
 

@@ -19,7 +19,7 @@ lin
   AdjCN ap cn = mkCN ap cn ;
   CompoundN x y = Extend.CompoundN x y ; 
   IntCompoundCN i x = prefixCN (i.s ++ hyphen) x ;
-  NameCompoundCN n x = prefixCN (mkUtt (mkNP n)).s x ;
+  NameCompoundCN n x = prefixCN ((mkUtt (mkNP n)).s ++ hyphen) x ;
   NounIntCN cn i = mkCN cn (symb i) ;
   NounPrepCN cn adv = mkCN cn adv ;
   NounGenCN cn np = prefixCN (mkUtt (mkNP (Extend.GenNP np))).s cn ;
