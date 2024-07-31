@@ -127,7 +127,7 @@ lin
   WeHaveConstStatement const = mkS (mkCl we_NP have_V2 const) ;
   FormulaStatement formula = <symb (mkSymb formula.s) : S> ;
   LatexFormulaStatement formula = <symb (mkSymb (mathEnvStr formula.s)) : S> ;
-  
+
   ThereIsStatement notions = mkS (Extend.ExistsNP notions) ;
   ThereIsNoStatement notion = mkS (Extend.ExistsNP (mkNP no_Quant notion.cn)) ;
 

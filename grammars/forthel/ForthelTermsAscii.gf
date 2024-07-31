@@ -35,7 +35,7 @@ lin
      } ;
   TDiv = tinfixl 2 "/" ;
   TExp = tinfixl 3 "^" ;
-  TNeg x = prefix 3 "-" x ** {isNumber = x.isNumber} ;
+  TNeg x = prefix 2 "-" x ** {isNumber = x.isNumber} ;
   TApp f xs = constant (f ++ parenth xs.s) ** {isNumber = False} ;
 
   TVar x =  constant x ** {isNumber = False} ;
@@ -70,6 +70,8 @@ lin
   p_Var = "p" ;
   q_Var = "q" ;
   r_Var = "r" ;
+  s_Var = "s" ;
+  t_Var = "t" ;
 
   A_Var = "A" ;
   B_Var = "B" ;
