@@ -8,6 +8,11 @@ Most concepts are linked to
 identifiers and labels.
 
 The main ideas are explained in [this YouTube talk](https://www.youtube.com/watch?v=UG6RUFS5esk) at the Hausdorff Institute in Bonn, 8 July 2024.
+The slides of that talk are available [here]()
+
+A more detailed introduction to a concrete task is [here](https://docs.google.com/presentation/d/10Z9zz020SnyrIM8gSUVURDCUe-j4gzTGkefTNRcZx1g/edit?usp=sharing);
+a video is coming soon (Hausdorff Institute, 30 July 2024).
+
 
 ## Files
 
@@ -19,9 +24,10 @@ The main ideas are explained in [this YouTube talk](https://www.youtube.com/watc
 
 [lean-bnfc](./lean-bnfc): a BNF grammar for a part of Lean
 
+
 ## Version 1
 
-This is a first "full-scale" version but implemented as a quick prototype.
+This was the first "full-scale" version but implemented as a quick prototype.
 Its code is in [grammars/v1](./grammars/v1)
 
 The list of concepts and Wikidata links are from
