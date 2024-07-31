@@ -61,7 +61,7 @@ at least the following manually:
 - the `pgf` library for GF runtime in Python, installed by `pip install pgf`; this presupposes
   the [C runtime of GF](https://github.com/GrammaticalFramework/gf-core/tree/master/src/runtime/c),
   which is a part of `gf-core`, but may also follow with `pip install pgf` for your architecture
-- [GF Resource Grammar Library]](https://github.com/GrammaticalFramework/gf-rgl);
+- [GF Resource Grammar Library](https://github.com/GrammaticalFramework/gf-rgl);
   pull the latest version, because it has some updates used in this project, and do
   `make install` in its root directory. Also create a symlink to `gf-rgl/src/morphodict`
 - [deptreepy](https://github.com/aarneranta/deptreepy), a Python library for analysing
