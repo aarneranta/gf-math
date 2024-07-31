@@ -32,7 +32,7 @@ Piping and redirecting this with
 ```
 gives us a file that we can unlex in GF:
 ```
-  > rf -file=ex.tmp -lines | ps -unlexmixed -lines | wf -file=uex.tmp
+  > rf -file=ex.tmp -lines | ps -unlextext -lines | wf -file=uex.tmp
 ```
 Gluing the resulting lines into [./ex100.tex](./ex100.tex) and running pdflatex
 on this finally gives us [./ex100.pdf](./ex100.pdf).
