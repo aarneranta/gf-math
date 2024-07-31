@@ -49,19 +49,22 @@ for s in sys.stdin:
     if s.strip():
         try:
             p = source.parse(s)
-            print('-- SUCCESS', sent, apply_index(termindex, s))
+            print(apply_index(termindex, s))
+            print()
             for _, t in p:
                 print('-- TREE', t)
                 if targets:
                     for (lang, cnc) in targets:
-                        print('-- TRANS', lang, apply_index(termindex, cnc.linearize(t)))
+                        print(apply_index(termindex, cnc.linearize(t)))
+                        print()
                     break  ## to get just one parse
             successes += 1
         except pgf.ParseError as pe:
-            print('-- FAILURE', sent, s)
-            print('-- FAIL CAUSE', pe)
+            print('-- NOTREE', sent, s)
+            print('-- NOTREE CAUSE', pe)
             fails += 1
         sent += 1
+        print()
 
 print('success', successes, 'failure', fails)
 

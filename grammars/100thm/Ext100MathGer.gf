@@ -5,6 +5,7 @@ concrete Ext100MathGer of Ext100Math =
     greatest_common_divisor_Q131752_CN, ---- variants {}
     finite_abelian_group_Q3117606_der_AP,
     additive_map_Q22963169_der_CN,
+    differentiable_map_Q77989741_der_CN,
     infinite_group_Q374268_der_AP,
     collection_Q18029547_CN,
     prime_power_Q1667469_der_AP
@@ -67,6 +68,7 @@ lin ---- not in MathTermsGer
   greatest_common_divisor_Q131752_CN = mkCN (P.mkA "größt") (mkCN (P.mkA "gemeinsam") (P.mkN "Teiler")) ;
   finite_abelian_group_Q3117606_der_AP = mkAP (P.mkA "endlich") ;
   additive_map_Q22963169_der_CN = mkCN (P.mkN "Abbildung") ;
+  differentiable_map_Q77989741_der_CN = mkCN (P.mkN "Abbildung") ;
   infinite_group_Q374268_der_AP = mkAP (P.mkA "unendlich") ;
   collection_Q18029547_CN = mkCN (P.mkN "Sammlung") ;
   prime_power_Q1667469_der_AP = mkAP (P.mkA "unteilbar") ;

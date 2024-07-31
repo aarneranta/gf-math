@@ -13,6 +13,11 @@ The slides of that talk are available [here](https://docs.google.com/presentatio
 A more detailed introduction to a concrete task is [here](https://docs.google.com/presentation/d/10Z9zz020SnyrIM8gSUVURDCUe-j4gzTGkefTNRcZx1g/edit?usp=sharing);
 a video is coming soon (Hausdorff Institute, 30 July 2024).
 
+## An example from the 100 theorems
+
+[ex100.pdf](./data/100_theorems/ex100.pdf).
+For an explanation, see README in the same directory.
+
 
 ## Files
 
