@@ -1,4 +1,4 @@
-# gf-math
+# gf-math: Informalization of Formal Mathematics
 
 Mathematical terms, definitions, and propositions in as many languages
 as possible with a translation to and from type-theory.
@@ -8,7 +8,7 @@ Most concepts are linked to
 identifiers and labels.
 
 The main ideas are explained in [this YouTube talk](https://www.youtube.com/watch?v=UG6RUFS5esk) at the Hausdorff Institute in Bonn, 8 July 2024.
-The slides of that talk are available [here]()
+The slides of that talk are available [here](https://docs.google.com/presentation/d/1Nvmjn8D_7_tI_n6bM_HIoVlOXsPiOjWdtnhjWcqnkoo/edit?usp=sharing)
 
 A more detailed introduction to a concrete task is [here](https://docs.google.com/presentation/d/10Z9zz020SnyrIM8gSUVURDCUe-j4gzTGkefTNRcZx1g/edit?usp=sharing);
 a video is coming soon (Hausdorff Institute, 30 July 2024).
