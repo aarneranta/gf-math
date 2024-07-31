@@ -1,0 +1,20 @@
+$\INDEXEDTERM{1}$  for no positive rational number  $\INDEXEDTERM{2}$ .
+
+The collection of prime natural numbers is infinite.
+
+Let  $\INDEXEDTERM{3}$  be sets. $\INDEXEDTERM{4}$  and  $\INDEXEDTERM{5}$  are equinumerous iff there exists a injective map from  $\INDEXEDTERM{6}$  to  $\INDEXEDTERM{7}$  and there exists an injective map from  $\INDEXEDTERM{8}$  to  $\INDEXEDTERM{9}$ .
+
+For all finite sets  $\INDEXEDTERM{10}$  and all natural numbers  $\INDEXEDTERM{11}$  if  $\INDEXEDTERM{12}$  then  $\INDEXEDTERM{13}$  is finite and  $\INDEXEDTERM{14}$ .
+
+Let  $\INDEXEDTERM{15}$  be real numbers such that  $\INDEXEDTERM{16}$ . Then there exists a real number  $\INDEXEDTERM{17}$  such that  $\INDEXEDTERM{18}$ .
+
+Let  $\INDEXEDTERM{19}$  be a set. Then there is no surjection from  $\INDEXEDTERM{20}$  onto the powerset of  $\INDEXEDTERM{21}$ .
+
+$\INDEXEDTERM{22}$  for all natural numbers  $\INDEXEDTERM{23}$ .
+
+$\INDEXEDTERM{24}$ .
+
+Let  $\INDEXEDTERM{25}$  be natural numbers such that  $\INDEXEDTERM{26}$ . Then the greatest common divisor of  $\INDEXEDTERM{27}$  and  $\INDEXEDTERM{28}$  is the greatest common divisor of  $\INDEXEDTERM{29}$  and  $\INDEXEDTERM{30}$ .
+
+Assume  $\INDEXEDTERM{31}$  and  $\INDEXEDTERM{32}$  and for all  $\INDEXEDTERM{33}$   $\INDEXEDTERM{34}$ . Then  $\INDEXEDTERM{35}$ .
+

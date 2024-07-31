@@ -2,22 +2,21 @@ import pgf
 import json
 import sys
 
-# usage: stdin | python3 test_tile.py pgf? source? target? index?
-
-PGF_FILE = 'ForthelDemo.pgf'
-CNC_NAME = 'ForthelDemoEng'
+usage = "stdin | python3 test_tile.py pgf source index?"
 
 if sys.argv[2:]:
     PGF_FILE = sys.argv[1]
     CNC_NAME = sys.argv[2]
-
+else:
+    print(usage)
 
 grammar = pgf.readPGF(PGF_FILE)
-cnc = grammar.languages[CNC_NAME]
+source = grammar.languages[CNC_NAME]
 
-target = grammar.languages[sys.argv[3]] if sys.argv[3:] else None
+targets = [(lang, cnc) for
+             (lang, cnc) in grammar.languages.items() if lang != CNC_NAME]
 
-indexfile = sys.argv[4] if sys.argv[4:] else None
+indexfile = sys.argv[3] if sys.argv[3:] else None
 
 if indexfile:
     with open(indexfile) as file:
@@ -49,12 +48,13 @@ successes = 0
 for s in sys.stdin:
     if s.strip():
         try:
-            p = cnc.parse(s)
+            p = source.parse(s)
             print('-- SUCCESS', sent, apply_index(termindex, s))
             for _, t in p:
                 print('-- TREE', t)
-                if target:
-                    print('-- TRANS', apply_index(termindex, target.linearize(t)))
+                if targets:
+                    for (lang, cnc) in targets:
+                        print('-- TRANS', lang, apply_index(termindex, cnc.linearize(t)))
                     break  ## to get just one parse
             successes += 1
         except pgf.ParseError as pe:
