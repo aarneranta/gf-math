@@ -1,4 +1,5 @@
 import sys
+import json
 
 forthel_segments = []
 segment = []
@@ -7,7 +8,12 @@ in_forthel = False
 
 for line in sys.stdin:
     line = line.strip()
-    if line == '\\begin{forthel}':
+    if line.startswith('%'):
+        pass
+    elif line:
+        forthel_segments.append(line)
+        
+    elif line == '\\begin{forthel}':
         in_forthel = True
     elif line == '\\end{forthel}':
         in_forthel = False
@@ -37,6 +43,7 @@ for segment in forthel_segments:
     asegment = []
     segment = segment.strip()
     math_in = 0 if segment and segment[0] == '$' else 1
+    print(math_in)
     parts = [s for part in segment.split('$$')
                for s in part.split('$')]
     for i in range(len(parts)):
@@ -48,16 +55,15 @@ for segment in forthel_segments:
             asegment.append(parts[i])
     asegment = ' '.join(asegment)
     asegment = asegment.split('.')
-    asegment = [s + '.' for s in asegment]
+    asegment = [s + '.' for s in asegment if s]
     analysed_segments.extend(asegment)
 
 
 for a in analysed_segments:
     print(a)
 
-for k in math_dict:
-    pass
-#    print(k, math_dict[k])
+with open('TERMINDEX.json', 'w') as file:
+    json.dump(math_dict, file, ensure_ascii=False, indent=2)
     
 
 
