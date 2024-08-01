@@ -20,7 +20,7 @@ For an explanation, see README in the same directory.
 
 The following picture is a snapshot.
 
-![theorem](ex4.png)
+![theorem](./ex4.png)
 
 
 ## Files
