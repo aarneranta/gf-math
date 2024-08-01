@@ -6,7 +6,7 @@ concrete ForthelSwe of Forthel =
   LatexTermsTex **
 
   ForthelFunctor - [
-    pluralNP, AllTerm,
+    pluralNP, 
     IffStatement, NamesAssumption,
     StatementAssumption, PredicateDefinition,
     ApposTermSymb
