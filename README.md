@@ -18,6 +18,10 @@ a video is coming soon (Hausdorff Institute, 30 July 2024).
 [ex100.pdf](./data/100_theorems/ex100.pdf).
 For an explanation, see README in the same directory.
 
+The following picture is a snapshot.
+
+![theorem](ex4.png)
+
 
 ## Files
 

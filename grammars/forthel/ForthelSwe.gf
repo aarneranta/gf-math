@@ -9,7 +9,8 @@ concrete ForthelSwe of Forthel =
     pluralNP, 
     IffStatement, NamesAssumption,
     StatementAssumption, PredicateDefinition,
-    ApposTermSymb
+    ApposTermSymb,
+    therefore_Adv
     ]
    with
     (Syntax=SyntaxSwe),
@@ -54,6 +55,7 @@ lin
 oper
   pluralNP : NP -> NP = \np -> np ** {a = {g = np.a.g ; p = np.a.p ; n = plural}} ;
 
+  therefore_Adv : Adv = P.mkAdv "då" ;
 
 -- words etc
 
@@ -75,6 +77,6 @@ oper
 
   postAdvS : S -> Adv -> S = \s, adv -> s ** {s = \\o => s.s ! o ++ adv.s} ;
 
-  iff_Subj : Subj = M.mkSubj "wenn und genau dann wenn" ;
+  iff_Subj : Subj = M.mkSubj "om och endast om" ;
   
 }

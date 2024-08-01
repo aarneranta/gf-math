@@ -213,7 +213,7 @@ lin
   EmptySection = emptyText ;
   AssumptionsSection assumptions section = mkText assumptions section ;
   StatementSection statement section = mkText (mkUtt statement) section ;
-  ThenStatementSection statement section = mkText (mkUtt (mkS then_Adv statement)) section ;
+  ThenStatementSection statement section = mkText (mkUtt (mkS therefore_Adv statement)) section ;
   DefinitionSection definition section = mkText (mkUtt definition) section ;
 
   ex_Header = lin Text {s = "ex ."} ; --- GFLean specific ?
@@ -264,5 +264,6 @@ oper
       = \n -> lin PrimClass {cn = n ; adv = emptyAdv}
     } ;
 
+  therefore_Adv : Adv = then_Adv ;
 
 }

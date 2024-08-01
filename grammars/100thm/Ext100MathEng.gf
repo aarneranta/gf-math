@@ -1,7 +1,11 @@
 --# -path=../wikimath:../extraction:../forthel:../mathterms:../extraction/morphodict
 
 concrete Ext100MathEng of Ext100Math =
-  WikiMathEng
+  WikiMathEng - [
+    locally_finite_collection_Q643300_der_CN,
+    infinite_graph_Q20819993_der_AP,
+    infinite_dihedral_group_Q6029845_der_AP
+  ]
   **
   open
     SyntaxEng,

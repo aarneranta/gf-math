@@ -70,7 +70,7 @@ lin ---- not in MathTermsGer
   additive_map_Q22963169_der_CN = mkCN (P.mkN "Abbildung") ;
   differentiable_map_Q77989741_der_CN = mkCN (P.mkN "Abbildung") ;
   infinite_group_Q374268_der_AP = mkAP (P.mkA "unendlich") ;
-  collection_Q18029547_CN = mkCN (P.mkN "Sammlung") ;
+  collection_Q18029547_CN = mkCN (P.mkN "Gesamtheit") ;
   prime_power_Q1667469_der_AP = mkAP (P.mkA "unteilbar") ;
 
 

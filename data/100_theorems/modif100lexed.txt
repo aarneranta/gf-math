@@ -1,6 +1,6 @@
 $ \INDEXEDTERM { 1 } $ for no positive rational number $ \INDEXEDTERM { 2 } $ .
 
-the collection of prime natural numbers is infinite .
+the collection of prime numbers is infinite .
 
 let x , y  be sets . $ \INDEXEDTERM { 4 } $ and $ \INDEXEDTERM { 5 } $ are equinumerous iff there exists a injective map from $ \INDEXEDTERM { 6 } $ to $ \INDEXEDTERM { 7 } $ and there exists an injective map from $ \INDEXEDTERM { 8 } $ to $ \INDEXEDTERM { 9 } $ .
 

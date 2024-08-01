@@ -4,7 +4,7 @@ concrete ForthelFin of Forthel =
 
   ForthelTermsAscii,
   LatexTermsTex **
-  ForthelFunctor - [pluralNP, AnyTerm, ThereIsNoStatement] with
+  ForthelFunctor - [pluralNP, AnyTerm, ThereIsNoStatement, therefore_Adv] with
     (Syntax=SyntaxFin),
     (Symbolic=SymbolicFin),
     (Extend=ExtendFin),
@@ -36,6 +36,8 @@ lin
   ThereIsNoStatement notion =
     mkS negativePol (Extend.ExistsNP (mkNP no_Quant notion.cn)) ;
 
+oper
+  therefore_Adv = P.mkAdv "silloin" ;
 
 -- words etc
 
