@@ -41,7 +41,7 @@ lin
     mkPhr 
       (lets_Utt (mkVP assume_VS stat)) ;
 oper
-  pluralNP : NP -> NP = \np -> np ** {n=plural} ;
+  pluralNP : NP -> NP = \np -> np ** {a = {g = np.a.g ; n = plural ; p = np.a.p}} ;
 
 -- words etc
 

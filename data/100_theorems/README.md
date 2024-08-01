@@ -34,6 +34,9 @@ gives us a file that we can unlex in GF:
 ```
   > rf -file=ex.tmp -lines | ps -unlextext -lines | wf -file=uex.tmp
 ```
+Before doing so, you can use this file to look for unknown words that have to be fixed in
+`Ext100MathXXX.gf` for your language `XXX`.
+
 Gluing the resulting lines into [./ex100.tex](./ex100.tex) and running pdflatex
 on this finally gives us [./ex100.pdf](./ex100.pdf).
 The packages and macros in the .tex fila are from the original Naproche document.

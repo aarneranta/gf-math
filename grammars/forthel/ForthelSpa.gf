@@ -54,7 +54,7 @@ oper
     mkText (mkS (mkCl dum (mkVP denote_V2 dens))) ;
 
 oper
-  pluralNP : NP -> NP = \np -> np ** {n=plural} ;
+  pluralNP : NP -> NP = \np -> np ** {a = {g = np.a.g ; n = plural ; p = np.a.p}} ;
 
 -- words etc
 

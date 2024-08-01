@@ -6,7 +6,7 @@ let x , y  be sets . $ \INDEXEDTERM { 4 } $ and $ \INDEXEDTERM { 5 } $ are equin
 
 for all finite sets $ \INDEXEDTERM { 10 } $ and all natural numbers $ \INDEXEDTERM { 11 } $ , if $ \INDEXEDTERM { 12 } $ , then $ \INDEXEDTERM { 13 } $ is finite and $ \INDEXEDTERM { 14 } $ .
 
-let $ s , t $ be real numbers such that $ \INDEXEDTERM { 16 } $ . then there exists a real number $ z $ such that $ \INDEXEDTERM { 18 } $ .
+let $ s , t $ be real numbers such that $ \INDEXEDTERM { 16 } $ . then there exists a real number $ r $ such that $ \INDEXEDTERM { 18 } $ .
 
 let $ M $ be a set . then there exists no surjection from $ \INDEXEDTERM { 20 } $ onto the powerset of $ \INDEXEDTERM { 21 } $ .
 
