@@ -23,21 +23,21 @@ The test presupposes a compilation of the `100thm` grammars:
 ```
 After that, we run a script in the current directory:
 ```
-  cat modif100lexed.txt | python3 ../../grammars/forthel/test_file.py \
-  ../../grammars/100thm/Ext100Math.pgf Ext100MathEng TERMINDEX.json
+  cat modif100lexed.txt | python3 translatex.py -latex \
+  ../../grammars/100thm/Ext100Math.pgf Ext100MathEng TERMINDEX.json >body.tex
 ```
-Piping and redirecting this with
+We append this file to a preamble:
 ```
-  | grep -v TREE > ex.tmp
-```
-gives us a file that we can unlex in GF:
-```
-  > rf -file=ex.tmp -lines | ps -unlextext -lines | wf -file=uex.tmp
+  cat preamble.tex body.tex >ex100.tex
 ```
 Before doing so, you can use this file to look for unknown words that have to be fixed in
 `Ext100MathXXX.gf` for your language `XXX`.
 
-Gluing the resulting lines into [./ex100.tex](./ex100.tex) and running pdflatex
+Running pdflatex
 on this finally gives us [./ex100.pdf](./ex100.pdf).
-The packages and macros in the .tex fila are from the original Naproche document.
+The packages and macros in `preamble.tex` are from the original Naproche document.
+
+You can also run `translatex.py -json` with the same input and arguments to get information
+about the trees and other details.
+
 
