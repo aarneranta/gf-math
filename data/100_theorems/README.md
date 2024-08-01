@@ -41,3 +41,15 @@ You can also run `translatex.py -json` with the same input and arguments to get 
 about the trees and other details.
 
 
+## Preparing the text
+
+You first have to extract the ForTheL parts and then lex into space-separated tokens.
+The lexing can be done in the GF shell as follows:
+```
+  > rf -file=FILE -lines | ps -unlextext -lines | wf -file=LEXEDFILE
+```
+After this, you can replace terms with INDEXEDTErm tokens and create a term index by running the
+[index_latex_terms](../index_latex_terms.py) script on LEXEDFILE.
+
+
+
