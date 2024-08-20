@@ -31,7 +31,7 @@ lin
 
   function_PrimClass fromterm toterm = {
     cn = mkCN function_N ;
-    adv = concatAdv (S.mkAdv from_Prep fromterm) (S.mkAdv to_Prep fromterm)
+    adv = concatAdv (S.mkAdv from_Prep fromterm) (S.mkAdv to_Prep toterm)
     } ;
 
   zero_DefiniteNoun = mkCN zero_N ;
