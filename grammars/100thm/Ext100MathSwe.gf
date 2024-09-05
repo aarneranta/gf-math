@@ -72,7 +72,7 @@ oper
   onto_Prep : Prep = on_Prep ; --- ?
 
 lin ---- not in MathTermsSwe
-  greatest_common_divisor_Q131752_CN = mkCN (P.mkA "größt") (mkCN (P.mkA "gemeinsam") (P.mkN "Teiler")) ;
+  greatest_common_divisor_Q131752_CN = mkCN (P.mkA "störst") (mkCN (P.mkA "gemensam" "gemensamt" "gemensamma" "gemensammare" "gemensammast") (P.mkN "delare" "delare")) ;
   finite_abelian_group_Q3117606_der_AP = mkAP (P.mkA "ändlig") ;
   additive_map_Q22963169_der_CN = mkCN (P.mkN "avbildning") ;
   differentiable_map_Q77989741_der_CN = mkCN (P.mkN "avbildning") ;
