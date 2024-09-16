@@ -10,7 +10,8 @@ concrete ForthelSwe of Forthel =
     IffStatement, NamesAssumption,
     StatementAssumption, PredicateDefinition,
     ApposTermSymb,
-    therefore_Adv
+    therefore_Adv,
+    postAdvS
     ]
    with
     (Syntax=SyntaxSwe),
@@ -54,6 +55,7 @@ lin
 
 oper
   pluralNP : NP -> NP = \np -> np ** {a = {g = np.a.g ; p = np.a.p ; n = plural}} ;
+  postAdvS : S -> Adv -> S = \s, adv -> s ** {s = \\o => s.s ! o ++ adv.s} ;
 
   therefore_Adv : Adv = P.mkAdv "då" ;
 

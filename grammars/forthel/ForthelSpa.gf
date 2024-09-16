@@ -8,7 +8,8 @@ concrete ForthelSpa of Forthel =
     pluralNP, AllTerm, ThereIsNoStatement,
     PredicateSynonym, NamesAssumption, StatementAssumption,
     LetNamesAssumption,
-    letSynonym
+    letSynonym,
+    postAdvS
     ] with
     (Syntax=SyntaxSpa),
     (Symbolic=SymbolicSpa),
@@ -55,6 +56,8 @@ oper
 
 oper
   pluralNP : NP -> NP = \np -> np ** {a = {g = np.a.g ; n = plural ; p = np.a.p}} ;
+
+  postAdvS : S -> Adv -> S = \s, adv -> s ** {s = \\m => s.s ! m ++ adv.s} ;
 
 -- words etc
 

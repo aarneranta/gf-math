@@ -6,7 +6,8 @@ concrete ForthelIta of Forthel =
   LatexTermsTex **
   ForthelFunctor - [
     pluralNP, AllTerm, ThereIsNoStatement,
-    PredicateSynonym, NamesAssumption, StatementAssumption
+    PredicateSynonym, NamesAssumption, StatementAssumption,
+    postAdvS
     ] with
     (Syntax=SyntaxIta),
     (Symbolic=SymbolicIta),
@@ -42,7 +43,8 @@ lin
       (lets_Utt (mkVP assume_VS stat)) ;
 oper
   pluralNP : NP -> NP = \np -> np ** {a = {g = np.a.g ; n = plural ; p = np.a.p}} ;
-
+  postAdvS : S -> Adv -> S = \s, adv -> s ** {s = \\m => s.s ! m ++ adv.s} ;
+  
 -- words etc
 
   denote_V2 : V2 =
@@ -63,3 +65,4 @@ oper
   let_Str : Str = "seja" ; --- pl ?
   
 }
+

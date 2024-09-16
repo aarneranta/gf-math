@@ -155,6 +155,7 @@ lin
 ---- symbolic statements TODO
 
   ForStatement qns s = Grammar.ExtAdvS (Syntax.mkAdv for_Prep qns) s ;
+  PostForStatement qns s = postAdvS s (Syntax.mkAdv for_Prep qns) ;
 
 --- simplicied from spec, which uses many levels
 --- to resolve ambiguities: that can be misleading to an innocent
@@ -240,6 +241,8 @@ oper
 --- these work for many languages but can be overridden
   emptyAdv : Adv = lin Adv {s = ""} ;
   concatAdv : Adv -> Adv -> Adv = \a, b -> lin Adv {s = a.s ++ b.s} ;
+
+  postAdvS : S -> Adv -> S = \s, adv -> lin S {s = s.s ++ adv.s} ;
 
   negPol = negativePol ;
 

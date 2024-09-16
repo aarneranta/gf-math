@@ -18,7 +18,7 @@ an integer $ n $ is defined to be \textbf{even} if $ n = 2 k $ for some integer 
 
 we define an integer $ n $ to be \textbf{odd} if $ n = 2 k + 1 $ for some integer $ k $ .
 
-if $ a , b $ and $ c $ are odd integers such that $ a + b + c = 0 $ , then $ abc < 0 $ .
+if $ a , b $ and $ c $ are odd integers such that $ a + b + c = 0 $ , then $ a b c < 0 $ .
 
 if $ x , y $ and $ z $ are three real numbers such that $ x ^ { 2 } + y ^ { 2 } + z ^ { 2 } < xy + xz + yz $ , then $ x + y + z > 0 $ .
 
@@ -36,7 +36,7 @@ if $ x $ is an odd integer , then $ 9 x + 5 $ is even .
 
 if $ x $ is an even integer , then $ 5 x - 3 $ is an odd integer .
 
-if $ a $ and $ c $ are odd integers , then $ ab + ac $ is even for every integer $ b $ .
+if $ a $ and $ c $ are odd integers , then $ a b + a c $ is even for every integer $ b $ .
 
 let $ n \in \textbf { Z } $ . if $ 1 - n ^ { 2 } > 0 $ , then $ 3 n - 2 $ is an even integer .
 

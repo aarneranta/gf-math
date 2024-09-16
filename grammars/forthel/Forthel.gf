@@ -113,7 +113,8 @@ fun
 
 ---- symbolic statements TODO
 
-  ForStatement : Terms -> Statement -> Statement ; --><
+  ForStatement : Terms -> Statement -> Statement ; -->< terms before
+  PostForStatement : Terms -> Statement -> Statement ; -- terms after
 
 --- simplicied from spec, which uses many levels
 --- to resolve ambiguities: that can be misleading to an innocent

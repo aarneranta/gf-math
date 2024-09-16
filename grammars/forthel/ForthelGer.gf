@@ -9,7 +9,9 @@ concrete ForthelGer of Forthel =
     pluralNP, AllTerm,
     IffStatement, NamesAssumption,
     StatementAssumption, PredicateDefinition,
-    possessAdv, ApposTermSymb
+    possessAdv, ApposTermSymb,
+    postAdvS
+
     ]
    with
     (Syntax=SyntaxGer),
@@ -54,6 +56,9 @@ lin
     } ;
 
 oper
+  postAdvS : S -> Adv -> S = \s, adv -> lin S {s = \\o => s.s ! o ++ adv.s} ; --- also Sub ?
+
+
   pluralNP : NP -> NP = \np -> np ** {a = R.AgPl R.P3} ;
 
   possessAdv : NP -> Adv = \np -> mkAdv genPrep np ;
@@ -76,8 +81,6 @@ oper
   then_Adv : Adv = P.mkAdv "dann" ;
 
   let_Str : Str = "sei" ; --- seien ?
-
-  postAdvS : S -> Adv -> S = \s, adv -> s ** {s = \\o => s.s ! o ++ adv.s} ;
 
   iff_Subj : Subj = M.mkSubj "wenn und genau dann wenn" ;
   
