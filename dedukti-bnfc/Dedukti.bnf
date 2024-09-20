@@ -1,0 +1,14 @@
+MJmts. Module ::= [Jmt] ;
+
+comment "{;" ";}" ;
+
+JDef. Jmt ::= "def" Ident MTyp MExp "." ;
+
+MTNone. MTyp ::= ;
+MTExp.  MTyp ::= ":" Exp ;
+
+MENone. MExp ::= ;
+MEExp.  MExp ::= ":=" Exp ;
+
+JThm. Jmt ::= "thm" Ident MTyp MExp "." ;
+
