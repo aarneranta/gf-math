@@ -7,15 +7,15 @@ terminator Jmt "" ;
 comment "(;" ";)" ;
 comment "#" ; ----
 
-JTyping.  Jmt ::= Ident ":" Exp "." ;
-JDef.     Jmt ::= "def" Ident MTyp MExp "." ;
-JThm.     Jmt ::= "thm" Ident MTyp MExp "." ;
+JTyping.  Jmt ::= QIdent ":" Exp "." ;
+JDef.     Jmt ::= "def" QIdent MTyp MExp "." ;
+JThm.     Jmt ::= "thm" QIdent MTyp MExp "." ;
 JRewr.    Jmt ::= [Rewr] "." ;
 
-RRule.  Rewr ::= "[" [Ident] "]" Patt "-->" Exp ;
+RRule.  Rewr ::= "[" [QIdent] "]" Patt "-->" Exp ;
 separator nonempty Rewr "" ;
 
-separator Ident "," ;
+separator QIdent "," ;
 
 MTNone. MTyp ::= ;
 MTExp.  MTyp ::= ":" Exp ;
@@ -23,8 +23,8 @@ MTExp.  MTyp ::= ":" Exp ;
 MENone. MExp ::= ;
 MEExp.  MExp ::= ":=" Exp ;
 
-EIdent.  Exp9 ::= Ident ;
----- EQual.   Exp8 ::= Exp8 "." Ident ; 
+EIdent.  Exp9 ::= QIdent ;
+---- EQual.   Exp8 ::= Exp8 "." QIdent ; 
 EApp.    Exp5 ::= Exp5 Exp6 ;
 EAbs.    Exp2 ::= Bind "=>" Exp2 ;
 EFun.    Exp1 ::= Hypo "->" Exp1 ;
@@ -34,7 +34,7 @@ coercions Exp 9 ;
 BVar.   Bind ::= Var ;
 VTyped. Bind ::= Var ":" Exp3 ;
 
-VIdent.  Var ::= Ident ;
+VIdent.  Var ::= QIdent ;
 VWild.   Var ::= "_" ;
 
 HExp.    Hypo ::= Exp3 ;
@@ -45,3 +45,5 @@ PApp.   Patt1 ::= Patt1 Patt2 ;
 PBind.  Patt  ::= Bind "=>" Patt1 ;
 
 coercions Patt 3 ;
+
+token QIdent (letter (letter | digit | '_')* ('.' (letter | digit | '_')+)*) ;
