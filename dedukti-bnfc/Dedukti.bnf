@@ -1,8 +1,21 @@
+entrypoints Module ;
+
 MJmts. Module ::= [Jmt] ;
 
-comment "{;" ";}" ;
+terminator Jmt "" ;
 
-JDef. Jmt ::= "def" Ident MTyp MExp "." ;
+comment "(;" ";)" ;
+comment "#" ; ----
+
+JTyping.  Jmt ::= Ident ":" Exp "." ;
+JDef.     Jmt ::= "def" Ident MTyp MExp "." ;
+JThm.     Jmt ::= "thm" Ident MTyp MExp "." ;
+JRewr.    Jmt ::= [Rewr] "." ;
+
+RRule.  Rewr ::= "[" [Ident] "]" Patt "-->" Exp ;
+separator nonempty Rewr "" ;
+
+separator Ident "," ;
 
 MTNone. MTyp ::= ;
 MTExp.  MTyp ::= ":" Exp ;
@@ -10,5 +23,25 @@ MTExp.  MTyp ::= ":" Exp ;
 MENone. MExp ::= ;
 MEExp.  MExp ::= ":=" Exp ;
 
-JThm. Jmt ::= "thm" Ident MTyp MExp "." ;
+EIdent.  Exp9 ::= Ident ;
+---- EQual.   Exp8 ::= Exp8 "." Ident ; 
+EApp.    Exp5 ::= Exp5 Exp6 ;
+EAbs.    Exp2 ::= Bind "=>" Exp2 ;
+EFun.    Exp1 ::= Hypo "->" Exp1 ;
 
+coercions Exp 9 ;
+
+BVar.   Bind ::= Var ;
+VTyped. Bind ::= Var ":" Exp3 ;
+
+VIdent.  Var ::= Ident ;
+VWild.   Var ::= "_" ;
+
+HExp.    Hypo ::= Exp3 ;
+HVarExp. Hypo ::= Var ":" Exp3 ;
+
+PVar.   Patt3 ::= Var ;
+PApp.   Patt1 ::= Patt1 Patt2 ;
+PBind.  Patt  ::= Bind "=>" Patt1 ;
+
+coercions Patt 3 ;
