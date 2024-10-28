@@ -20,7 +20,7 @@ fun
   NounGenCN : CN -> NP -> CN ;        -- bishop's graph
 
   DefCN : CN -> NP ;                  -- (multiple of) the median
-  DefPluralCN : CN -> NP ;            -- 
+  DefPluralCN : CN -> NP ;            -- (law of) large numbers
   IndefCN : CN -> NP ;                -- (parity of) a permutation
   IndefPluralCN : CN -> NP ;          -- (field of) sets
   BareCN : CN -> NP ;                 -- bijection
