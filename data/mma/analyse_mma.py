@@ -17,7 +17,7 @@ def get_data(filename):
 for ex in get_data(LEAN_TEST):
 #    print('#ENG', ex['input'])
 #    print('#LEAN', ex['output'])
-    print(ex['output'])
+    print(ex['output'], 'sorry')
 
 
 
