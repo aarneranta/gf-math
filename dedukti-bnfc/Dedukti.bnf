@@ -39,6 +39,7 @@ VWild.   Var ::= "_" ;
 
 HExp.    Hypo ::= Exp3 ;
 HVarExp. Hypo ::= Var ":" Exp3 ;
+HParVarExp. Hypo ::= "(" Var ":" Exp ")" ;
 
 PVar.   Patt3 ::= Var ;
 PBracket. Patt3 ::= "{" Patt "}" ;
