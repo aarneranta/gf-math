@@ -34,7 +34,7 @@ runLine :: (Print a, Show a) => Verbosity -> ParseFun a -> (Int, String) -> IO (
 runLine v p (n, s) =
   case p ts of
     Left err -> do
-      putStrLn (show n ++ ": " ++ err)
+      putStrLn (show n ++ ": " ++ err ++ "# " ++ s)
     Right tree -> do
       showTree v tree
   where
