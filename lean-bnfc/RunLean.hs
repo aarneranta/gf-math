@@ -5,17 +5,6 @@
 module Main where
 
 import Prelude
-  ( ($), (.)
-  , Bool(..)
-  , Either(..)
-  , Int, (>)
-  , String, (++), concat, unlines
-  , Show, show
-  , IO, (>>), (>>=), mapM_, putStrLn
-  , FilePath
-  , lines
-  , getContents, readFile
-  )
 import System.Environment ( getArgs )
 import System.Exit        ( exitFailure )
 import Control.Monad      ( when )
@@ -37,18 +26,16 @@ putStrV v s = when (v > 1) $ putStrLn s
 runFile :: (Print a, Show a) => Verbosity -> ParseFun a -> FilePath -> IO ()
 runFile v p f = putStrLn f >> readFile f >>= run v p
 
-run v p = mapM_ (runLine v p) . lines
+run v p = mapM_ (runLine v p) . filter (isTheorem . snd) . zip [1..] . lines
+  where
+    isTheorem s = let ws = words s in head ws == "theorem" && last ws == "sorry" 
 
-runLine :: (Print a, Show a) => Verbosity -> ParseFun a -> String -> IO ()
-runLine v p s =
+runLine :: (Print a, Show a) => Verbosity -> ParseFun a -> (Int, String) -> IO ()
+runLine v p (n, s) =
   case p ts of
     Left err -> do
-      putStrLn "\nParse              Failed...\n"
-      putStrV v "Tokens:"
-      mapM_ (putStrV v . showPosToken . mkPosToken) ts
-      putStrLn err
+      putStrLn (show n ++ ": " ++ err)
     Right tree -> do
-      putStrLn "\nParse Successful!"
       showTree v tree
   where
   ts = resolveLayout True $ myLexer s
