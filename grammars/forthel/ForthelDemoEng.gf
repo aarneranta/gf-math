@@ -69,7 +69,7 @@ lin
       (S.mkAdv to_Prep t) ;
   greater_or_equal_Adjective t =
     Grammar.AdvAP
-      (mkAP or_Conj (mkAP (mkA "less than")) (mkAP (mkA "equal"))) --- hack
+      (mkAP or_Conj (mkAP (mkA "greater than")) (mkAP (mkA "equal"))) --- hack
       (S.mkAdv to_Prep t) ;
 
 
