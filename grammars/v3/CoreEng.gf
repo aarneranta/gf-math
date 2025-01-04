@@ -14,6 +14,7 @@ in {
 lincat
   Jmt = Text ;
   Exp = NP ;
+  [Exp] = {np : NP ; isPl : Bool} ;
   Prop = S ;
   [Prop] = [S] ;
   Kind = {cn : CN ; adv : Adv} ;
@@ -47,8 +48,9 @@ lin
   PropHypo prop = mkUtt (mkImp (mkVP assume_VS prop)) ;
   VarsHypo idents kind = G.ImpP3 idents.np (mkVP (useKind kind)) ;
 
---  AppExp : Exp -> [Exp] -> Exp ;
---  AbsExp : [Ident] -> Exp -> Exp ;
+  AppExp exp exps = mkNP exp (S.mkAdv applied_to_Prep exps.np) ;
+  AbsExp idents exp =
+    mkNP the_Det (mkCN function_N (mkRS (mkRCl which_RP map_V3 idents.np exp))) ; 
   NumExp n = latexNP (mkSymb n.s) ;
   FormalExp f = latexNP f ;
   TypedExp exp kind = mkNP the_Det (mkCN (mkCN kind.cn exp) kind.adv) ;
@@ -75,6 +77,7 @@ lin
   GtProp x y = mkS (mkCl x greater_A2 y) ;
 
   FormalKind formal = {cn = mkCN element_N ; adv = S.mkAdv possess_Prep (latexNP formal)} ;
+  SuchThatKind ident kind prop = {cn = mkCN kind.cn ident ; adv = ccAdv kind.adv (S.mkAdv such_that_Subj prop)} ;
 
   StrFormal s = mkSymb s.s ;
   StrIdent s = mkSymb s.s ;
@@ -83,6 +86,11 @@ lin
     {np = latexNP ident ; isPl = False} ;
   ConsIdent ident idents =
     {np = mkNP and_Conj (latexNP ident) idents.np ; isPl = True} ;
+
+  BaseExp exp =
+    {np = exp ; isPl = False} ;
+  ConsExp exp exps =
+    {np = mkNP and_Conj exp exps.np ; isPl = True} ;
 
   BaseHypo = emptyText ;
   ConsHypo hypo hypos = mkText hypo hypos ;
@@ -117,6 +125,8 @@ oper
 
   by_Prep : Prep = by8means_Prep ;
 
+  ccAdv : Adv -> Adv -> Adv = \x, y -> lin Adv {s = x.s ++ y.s} ;
+
 -- non-functor
 
   define_V2 : V2 = mkV2 (mkV "define") ;
@@ -126,6 +136,9 @@ oper
   contradiction_N : N = mkN "contradiction" ;
   then_Adv : Adv = ParadigmsEng.mkAdv "then" ;
   such_that_Subj : Subj = mkSubj "such that" ;
+  applied_to_Prep : Prep = mkPrep "applied to" ;
+  function_N : N = mkN "function" ;
+  map_V3 = mkV3 (mkV "map") noPrep to_Prep ;
 
   equal_A2 : A2 = mkA2 (mkA "equal") to_Prep ;
   less_A2 : A2 = mkA2 (mkA "less") than_Prep ;

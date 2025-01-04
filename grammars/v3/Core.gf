@@ -5,6 +5,7 @@ flags startcat = Jmt ;
 cat
   Jmt ;
   Exp ;
+  [Exp] {1} ;
   Prop ;
   [Prop] {2} ;
   Kind ;
@@ -27,7 +28,7 @@ fun
   PropHypo : Prop -> Hypo ;
   VarsHypo : [Ident] -> Kind -> Hypo ;
 
-  AppExp : Exp -> Exp -> Exp ;
+  AppExp : Exp -> [Exp] -> Exp ;
   AbsExp : [Ident] -> Exp -> Exp ;
   NumExp : Float -> Exp ;
   FormalExp : Formal -> Exp ;
@@ -44,7 +45,7 @@ fun
   FormalProp : Formal -> Prop ;
 
   FormalKind : Formal -> Kind ;
-  SuchThatKind : Kind -> Prop -> Prop ;
+  SuchThatKind : Ident -> Kind -> Prop -> Kind ;
 
   EqProp : Exp -> Exp -> Prop ;
   LtProp : Exp -> Exp -> Prop ;
