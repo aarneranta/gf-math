@@ -16,7 +16,7 @@ lincat
   Exp = NP ;
   Prop = S ;
   [Prop] = [S] ;
-  Kind = CN ;
+  Kind = {cn : CN ; adv : Adv} ;
   Hypo = Utt ;
   [Hypo] = Text ;
   Ident = Symb ;
@@ -39,23 +39,24 @@ lin
   DefKindJmt hypos kind df =
     labelText definition_Label
       (mkText hypos (mkText
-        (mkS (mkCl (mkNP a_Det kind) (mkNP a_Det df))))) ;
+        (mkS (mkCl (mkNP a_Det (useKind kind)) (mkNP a_Det (useKind df)))))) ;
   DefExpJmt hypos exp df =
     labelText definition_Label
       (mkText hypos (mkText (mkS (mkCl exp df)))) ;
 
   PropHypo prop = mkUtt (mkImp (mkVP assume_VS prop)) ;
-  VarsHypo idents kind = G.ImpP3 idents.np (mkVP kind) ;
+  VarsHypo idents kind = G.ImpP3 idents.np (mkVP (useKind kind)) ;
 
 --  AppExp : Exp -> [Exp] -> Exp ;
 --  AbsExp : [Ident] -> Exp -> Exp ;
   NumExp n = latexNP (mkSymb n.s) ;
   FormalExp f = latexNP f ;
-  TypedExp exp kind = mkNP the_Det (mkCN kind exp) ;
+  TypedExp exp kind = mkNP the_Det (mkCN (mkCN kind.cn exp) kind.adv) ;
 
   AndProp props = mkS and_Conj props ;
   OrProp props = mkS and_Conj props ;
   IfProp A B = G.ExtAdvS (S.mkAdv if_Subj A) (mkS then_Adv B) ;
+  IffProp A B = G.SSubjS A iff_Subj B ;
   NotProp prop =
     mkS E.UncontractedNeg (mkCl 
           (mkVP (mkNP the_Quant (mkCN case_N (S.mkAdv that_Subj prop))))) ;
@@ -63,7 +64,7 @@ lin
     G.ExtAdvS
       (S.mkAdv for_Prep
          (mkNP all_Predet
-	    (mkNP aPl_Det (mkCN kind idents.np)))) prop ;
+	    (mkNP aPl_Det (mkCN (mkCN kind.cn idents.np) kind.adv)))) prop ;
   ExistProp idents kind prop =
     G.SSubjS (mkS (E.ExistsNP (notionNP idents kind))) such_that_Subj prop ;
   FormalProp f = latexS f ;
@@ -73,8 +74,7 @@ lin
   LtProp x y = mkS (mkCl x less_A2 y) ;
   GtProp x y = mkS (mkCl x greater_A2 y) ;
 
-
-  FormalKind formal = G.PossNP (mkCN element_N) (latexNP formal) ;
+  FormalKind formal = {cn = mkCN element_N ; adv = S.mkAdv possess_Prep (latexNP formal)} ;
 
   StrFormal s = mkSymb s.s ;
   StrIdent s = mkSymb s.s ;
@@ -90,7 +90,6 @@ lin
   BaseProp a b = mkListS a b ;
   ConsProp a bs = mkListS a bs ;
 
-  NoProof = emptyText ;
   AppProof proofs exp prop =
     mkText proofs
       (mkText (G.ExtAdvS (S.mkAdv by_Prep exp) prop)) ;
@@ -102,11 +101,14 @@ oper
   labelText : Str -> Text -> Text = \label, text ->
     lin Text {s = label ++ text.s} ;
 
-  notionNP : {np : NP ; isPl : Bool} -> CN -> NP = \idents, kind ->
-    case idents.isPl of {
-      True => mkNP aPl_Det (mkCN kind idents.np) ;
-      False => mkNP a_Det (mkCN kind idents.np)
-      } ;
+  notionNP : {np : NP ; isPl : Bool} -> {cn : CN ; adv : Adv} -> NP = \idents, kind ->
+    let det = case idents.isPl of {
+      True => aPl_Det ; 
+      False => a_Det
+      }
+    in mkNP det (mkCN (mkCN kind.cn idents.np) kind.adv) ;
+
+  useKind : {cn : CN ; adv : Adv} -> CN = \kind -> mkCN kind.cn kind.adv ;
 
   latexNP : Symb -> NP = \x ->
     symb (mkSymb ("$" ++ x.s ++ "$")) ;
@@ -129,6 +131,7 @@ oper
   less_A2 : A2 = mkA2 (mkA "less") than_Prep ;
   greater_A2 : A2 = mkA2 (mkA "greater") than_Prep ;
   than_Prep : Prep = mkPrep "than" ;
+  iff_Subj : Subj = mkSubj "if and only if" ;
 
   definition_Label : Str = "Definition ." ;
   theorem_Label : Str = "Theorem ." ;

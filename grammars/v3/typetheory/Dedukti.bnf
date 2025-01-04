@@ -32,7 +32,7 @@ EFun.    Exp1 ::= Hypo "->" Exp1 ;
 coercions Exp 9 ;
 
 BVar.   Bind ::= Var ;
-VTyped. Bind ::= Var ":" Exp3 ;
+BTyped. Bind ::= Var ":" Exp3 ;
 
 VIdent.  Var ::= QIdent ;
 VWild.   Var ::= "_" ;
