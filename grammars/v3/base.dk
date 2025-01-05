@@ -1,0 +1,94 @@
+Set : Type.
+def Prop : Type := Set.
+
+Elem : Set -> Type.
+def Proof : Prop -> Type := Elem.
+
+False : Prop.
+
+Disj : Prop -> Prop -> Prop.
+DisjIl : (A : Prop) -> (B : Prop) -> Proof A -> Proof (Disj A B).
+DisjIr : (A : Prop) -> (B : Prop) -> Proof B -> Proof (Disj A B).
+def DisjE : (A : Prop) -> (B : Prop) -> (C : Prop) ->
+  Proof (Disj A B) -> (Proof A -> Proof C) -> (Proof B -> Proof C) -> Proof C.
+[a, d] DisjE _ _ _ (DisjIl _ _ a) d _ --> d a.
+[a, e] DisjE _ _ _ (DisjIr _ _ a) _ e --> e a.
+
+Pi : (A : Set) -> (Elem A -> Prop) -> Prop.
+Sigma : (A : Set) -> (Elem A -> Prop) -> Prop.
+
+def Conj : Prop -> Prop -> Prop := A:Prop => B:Prop => Sigma A (_ => B).
+def Impl : Prop -> Prop -> Prop := A:Prop => B:Prop => Pi A (_ => B).
+
+def Neg : Prop -> Prop := A:Prop => Impl A False.
+def Equiv : Prop -> Prop -> Prop := A:Prop => B:Prop => Conj (Impl A B) (Impl B A).
+
+Eq : (A : Set) -> Elem A -> Elem A -> Prop.
+EqI : (A : Set) -> a : Elem A -> Proof (Eq A a a).
+
+Nat : Set.
+Zero : Elem Nat.
+Succ : Elem Nat -> Elem Nat.
+
+Even : Elem Nat -> Prop.
+Odd : Elem Nat -> Prop.
+
+OddSucc : (n : Elem Nat) -> Proof (Even n) -> Proof (Odd (Succ n)).
+EvenZero : Proof (Even Zero).
+EvenSucc : (n : Elem Nat) -> Proof (Odd n) -> Proof (Even (Succ n)).
+
+def EvenNat : Set := Sigma Nat (n => Even n).
+
+def evenOrOdd : (n : Elem Nat) -> Proof (Disj (Even n) (Odd n)).
+[] evenOrOdd Zero --> DisjIl (Even Zero) (Odd Zero) EvenZero.
+[n] evenOrOdd (Succ n) -->
+  DisjE (Even n) (Odd n) (Disj (Even (Succ n)) (Odd (Succ n)))
+    (evenOrOdd n)
+    (e => DisjIr (Even (Succ n)) (Odd (Succ n)) (OddSucc n e))
+    (o => DisjIl (Even (Succ n)) (Odd (Succ n)) (EvenSucc n o)).
+
+def plus : Elem Nat -> Elem Nat -> Elem Nat.
+[ n ] plus n Zero --> n
+[ m, n ] plus m (Succ n) --> Succ (plus m n).
+
+def times : Elem Nat -> Elem Nat -> Elem Nat.
+[ n ] times n Zero --> Zero
+[ m, n ] times m (Succ n) --> plus (times m n) m.
+
+def one : Elem Nat := Succ Zero.
+def two : Elem Nat := Succ one.
+
+Less : Elem Nat -> Elem Nat -> Prop.
+LessZero : (n : Elem Nat) -> Proof (Less Zero (Succ n)).
+LessSucc : (m : Elem Nat) -> (n : Elem Nat) -> Proof (Less m n) -> Proof (Less (Succ m) (Succ n)).
+
+def Divisible : Elem Nat -> Elem Nat -> Prop :=
+  n => k => Sigma Nat (m => Eq Nat n (times m k)).
+
+def Prime : Elem Nat -> Prop :=
+  n => Neg (Sigma Nat (k => Conj (Less k n) (Conj (Less one k) (Divisible n k)))).
+
+
+def twice : Elem Nat -> Elem Nat := n => plus n n.
+
+#INFER twice two.
+#EVAL twice two.
+#EVAL times two (times two two).
+
+
+
+
+thm less0_2 : Proof (Less Zero two) := LessZero one.
+
+def lessSucc : (n : Elem Nat) -> Proof (Less n (Succ n)).
+[] lessSucc Zero --> LessZero Zero.
+[n] lessSucc (Succ n) --> LessSucc n (Succ n) (lessSucc n).
+
+def lessPlus : (m : Elem Nat) -> (n : Elem Nat) -> Proof (Less m (plus m (Succ n))).
+[n] lessPlus n Zero --> lessSucc (plus n Zero).
+
+def lessTwice : (n : Elem Nat) -> Proof (Less (Succ n) (twice (Succ n))).
+[ ] lessTwice Zero --> LessSucc Zero one (LessZero Zero).
+
+
+

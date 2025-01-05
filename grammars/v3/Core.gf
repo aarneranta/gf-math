@@ -14,6 +14,7 @@ cat
   Ident ;
   [Ident] {1} ;
   Formal ;
+  Constant ;
   Proof ;
   [Proof] {0} ;
 

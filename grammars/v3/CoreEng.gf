@@ -23,6 +23,7 @@ lincat
   Ident = Symb ;
   [Ident] = {np : NP ; isPl : Bool} ;
   Formal = Symb ;
+  Constant = Symb ;
   Proof = Text ;
   [Proof] = Text ;
 
