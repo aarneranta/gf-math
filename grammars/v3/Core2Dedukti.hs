@@ -29,18 +29,18 @@ propSigma kind pred = EApp (EApp (EIdent (QIdent "Sigma")) kind) pred
 expTyped x t = EApp (EApp (EIdent (QIdent "typed")) x) t
 
 
-jmt2dedukti :: String -> GJmt -> Jmt
-jmt2dedukti name jment = case jment of
-  GThmJmt (GListHypo hypos) prop ->
+jmt2dedukti :: GJmt -> Jmt
+jmt2dedukti jment = case jment of
+  GAxiomJmt constant (GListHypo hypos) prop ->
+    JStatic
+      (constant2dedukti constant)
+      (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos))
+  GThmJmt constant (GListHypo hypos) prop proof ->
     JThm
-      (QIdent name)
-      (MTExp (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos)))
-      MENone
-  GThmProofJmt (GListHypo hypos) prop proof ->
-    JThm
-      (QIdent name)
+      (constant2dedukti constant)
       (MTExp (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos)))
       (MEExp (proof2dedukti proof))
+{-
   GDefPropJmt (GListHypo hypos) prop df ->
     JThm
       (QIdent name)
@@ -51,10 +51,11 @@ jmt2dedukti name jment = case jment of
       (QIdent name)
       (MTExp (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos)))
       (MEExp (kind2dedukti df))
-  GDefExpJmt (GListHypo hypos) exp df ->
-    JThm
-      (QIdent name)
-      (MTExp (foldr EFun (exp2dedukti exp) (concatMap hypo2dedukti hypos)))
+-}
+  GDefExpJmt constant (GListHypo hypos) kind df ->
+    JDef
+      (constant2dedukti constant)
+      (MTExp (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos)))
       (MEExp (exp2dedukti df))
 
 prop2dedukti :: GProp -> Exp
@@ -112,6 +113,10 @@ proof2dedukti proof = case proof of
     expTyped
       (foldl1 EApp (exp2dedukti exp : map proof2dedukti proofs))
       (prop2dedukti prop)
+
+constant2dedukti :: GConstant -> QIdent
+constant2dedukti constant = case constant of
+  GStrConstant (GString s) -> QIdent s
 
 ident2dedukti :: GIdent -> QIdent
 ident2dedukti ident = case ident of

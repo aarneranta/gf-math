@@ -18,8 +18,8 @@ lincat
   Prop = S ;
   [Prop] = [S] ;
   Kind = {cn : CN ; adv : Adv} ;
-  Hypo = Utt ;
-  [Hypo] = Text ;
+  Hypo = {utt : Utt ; vars : NP ; hasVar : Bool} ;
+  [Hypo] = {text : Text ; vars : NP ; hasVar : Bool} ;
   Ident = Symb ;
   [Ident] = {np : NP ; isPl : Bool} ;
   Formal = Symb ;
@@ -28,26 +28,27 @@ lincat
   [Proof] = Text ;
 
 lin
-  ThmJmt hypos prop =
-    labelText theorem_Label
-      (mkText hypos (mkText prop)) ;
-  ThmProofJmt hypos prop proof =
-    labelText theorem_Label
-      (mkText hypos (mkText (mkText prop)
+  AxiomJmt constant hypos prop =
+    labelText (axiom_Label ++ named constant)
+      (mkText hypos.text (mkText prop)) ;
+  ThmJmt constant hypos prop proof =
+    labelText (theorem_Label ++ named constant)
+      (mkText hypos.text (mkText (mkText prop)
         (labelText proof_Label proof))) ;
   DefPropJmt hypos prop df =
     labelText definition_Label
-      (mkText hypos (mkText (G.SSubjS prop if_Subj df))) ;
+      (mkText hypos.text (mkText (G.SSubjS prop if_Subj df))) ;
   DefKindJmt hypos kind df =
     labelText definition_Label
-      (mkText hypos (mkText
+      (mkText hypos.text (mkText
         (mkS (mkCl (mkNP a_Det (useKind kind)) (mkNP a_Det (useKind df)))))) ;
-  DefExpJmt hypos exp df =
-    labelText definition_Label
-      (mkText hypos (mkText (mkS (mkCl exp df)))) ;
+  DefExpJmt constant hypos kind exp =
+    labelText (definition_Label ++ named constant)
+      (mkText hypos.text (mkText (mkS (
+        mkCl (appConstant constant hypos) (definedCN (useKind kind) exp))))) ;
 
-  PropHypo prop = mkUtt (mkImp (mkVP assume_VS prop)) ;
-  VarsHypo idents kind = G.ImpP3 idents.np (mkVP (useKind kind)) ;
+  PropHypo prop = {utt = mkUtt (mkImp (mkVP assume_VS prop)) ; vars = it_NP ; hasVar = False} ;
+  VarsHypo idents kind = {utt = G.ImpP3 idents.np (mkVP (useKind kind)) ; vars = idents.np ; hasVar = True} ;
 
   AppExp exp exps = mkNP exp (S.mkAdv applied_to_Prep exps.np) ;
   AbsExp idents exp =
@@ -57,7 +58,7 @@ lin
   TypedExp exp kind = mkNP the_Det (mkCN (mkCN kind.cn exp) kind.adv) ;
 
   AndProp props = mkS and_Conj props ;
-  OrProp props = mkS and_Conj props ;
+  OrProp props = mkS or_Conj props ;
   IfProp A B = G.ExtAdvS (S.mkAdv if_Subj A) (mkS then_Adv B) ;
   IffProp A B = G.SSubjS A iff_Subj B ;
   NotProp prop =
@@ -74,14 +75,13 @@ lin
   FalseProp = mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N)) ;
 
   EqProp x y = mkS (mkCl x equal_A2 y) ;
-  LtProp x y = mkS (mkCl x less_A2 y) ;
-  GtProp x y = mkS (mkCl x greater_A2 y) ;
 
   FormalKind formal = {cn = mkCN element_N ; adv = S.mkAdv possess_Prep (latexNP formal)} ;
   SuchThatKind ident kind prop = {cn = mkCN kind.cn ident ; adv = ccAdv kind.adv (S.mkAdv such_that_Subj prop)} ;
 
-  StrFormal s = mkSymb s.s ;
+  StrConstant s = mkSymb s.s ;
   StrIdent s = mkSymb s.s ;
+  StrFormal s = mkSymb s.s ;
 
   BaseIdent ident =
     {np = latexNP ident ; isPl = False} ;
@@ -93,9 +93,19 @@ lin
   ConsExp exp exps =
     {np = mkNP and_Conj exp exps.np ; isPl = True} ;
 
-  BaseHypo = emptyText ;
-  ConsHypo hypo hypos = mkText hypo hypos ;
-
+  BaseHypo = {text = emptyText ; vars = it_NP ; hasVar = False} ;
+  ConsHypo hypo hypos = {
+    text = mkText hypo.utt hypos.text ;
+    vars = case <hypo.hasVar, hypos.hasVar> of {
+      <True, True> => mkNP and_Conj hypo.vars hypos.vars ;
+      <True, _> => hypo.vars ;
+      _ => hypos.vars -- can be it_NP
+      } ;
+    hasVar = case hypo.hasVar of {
+      False => hypos.hasVar ;
+      _ => True
+      }
+    } ;
   BaseProp a b = mkListS a b ;
   ConsProp a bs = mkListS a bs ;
 
@@ -108,7 +118,7 @@ lin
 
 oper
   labelText : Str -> Text -> Text = \label, text ->
-    lin Text {s = label ++ text.s} ;
+    lin Text {s = label ++ "." ++ text.s} ;
 
   notionNP : {np : NP ; isPl : Bool} -> {cn : CN ; adv : Adv} -> NP = \idents, kind ->
     let det = case idents.isPl of {
@@ -117,12 +127,23 @@ oper
       }
     in mkNP det (mkCN (mkCN kind.cn idents.np) kind.adv) ;
 
+  appConstant : Symb -> {text : Text ; vars : NP ; hasVar : Bool} -> NP = \sym, hypos ->
+    case hypos.hasVar of {
+      True => mkNP (symb (mkSymb (named sym))) (S.mkAdv possess_Prep hypos.vars) ;
+      False => symb (mkSymb (named sym))
+      } ;
+
+  definedCN : CN -> NP -> CN = \cn, np ->
+    mkCN cn (S.mkAdv defined_as_Prep np) ;
+
   useKind : {cn : CN ; adv : Adv} -> CN = \kind -> mkCN kind.cn kind.adv ;
 
   latexNP : Symb -> NP = \x ->
     symb (mkSymb ("$" ++ x.s ++ "$")) ;
   latexS : Symb -> S = \x ->
     symb (mkSymb ("$" ++ x.s ++ "$")) ;
+
+  named : Symb -> Str = \c -> "*" ++ c.s ++ "*" ;
 
   by_Prep : Prep = by8means_Prep ;
 
@@ -138,6 +159,7 @@ oper
   then_Adv : Adv = ParadigmsEng.mkAdv "then" ;
   such_that_Subj : Subj = mkSubj "such that" ;
   applied_to_Prep : Prep = mkPrep "applied to" ;
+  defined_as_Prep : Prep = mkPrep "defined_as" ;
   function_N : N = mkN "function" ;
   map_V3 = mkV3 (mkV "map") noPrep to_Prep ;
 
@@ -147,8 +169,9 @@ oper
   than_Prep : Prep = mkPrep "than" ;
   iff_Subj : Subj = mkSubj "if and only if" ;
 
-  definition_Label : Str = "Definition ." ;
-  theorem_Label : Str = "Theorem ." ;
-  proof_Label : Str = "Proof ." ;
+  definition_Label : Str = "Definition" ;
+  theorem_Label : Str = "Theorem" ;
+  proof_Label : Str = "Proof" ;
+  axiom_Label : Str = "Axiom" ;
 
 }

@@ -19,12 +19,12 @@ cat
   [Proof] {0} ;
 
 fun
-  ThmProofJmt : [Hypo] -> Prop -> Proof -> Jmt ;
-  ThmJmt : [Hypo] -> Prop -> Jmt ;
+  ThmJmt : Constant -> [Hypo] -> Prop -> Proof -> Jmt ;
+  AxiomJmt : Constant -> [Hypo] -> Prop -> Jmt ;
   
   DefPropJmt : [Hypo] -> Prop -> Prop -> Jmt ;
   DefKindJmt : [Hypo] -> Kind -> Kind -> Jmt ;
-  DefExpJmt  : [Hypo] -> Exp -> Exp -> Jmt ;
+  DefExpJmt  : Constant -> [Hypo] -> Kind -> Exp -> Jmt ;
 
   PropHypo : Prop -> Hypo ;
   VarsHypo : [Ident] -> Kind -> Hypo ;
@@ -49,9 +49,8 @@ fun
   SuchThatKind : Ident -> Kind -> Prop -> Kind ;
 
   EqProp : Exp -> Exp -> Prop ;
-  LtProp : Exp -> Exp -> Prop ;
-  GtProp : Exp -> Exp -> Prop ;
 
+  StrConstant : String -> Constant ;
   StrIdent : String -> Ident ;
   StrFormal : String -> Formal ;
 
