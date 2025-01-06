@@ -1,4 +1,4 @@
-entrypoints Module ;
+entrypoints Module, Jmt, Exp ;
 
 MJmts. Module ::= [Jmt] ;
 
