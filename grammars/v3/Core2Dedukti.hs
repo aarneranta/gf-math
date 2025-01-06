@@ -6,24 +6,27 @@ module Core2Dedukti where
 import Dedukti.AbsDedukti
 import Core
 
+import Data.Char
+
 
 type CTree a = Core.Tree a
 type DTree a = Dedukti.AbsDedukti.Tree a
 
--- logical constants in Dedukti are taken from the library
--- https://github.com/Deducteam/Dedukti/blob/master/libraries/theories/fol.dk
-propFalse = EIdent (QIdent "false")
-propAnd x y = EApp (EApp (EIdent (QIdent "and")) x) y
-propOr x y = EApp (EApp (EIdent (QIdent "or")) x) y
-propImp x y = EApp (EApp (EIdent (QIdent "imp")) x) y
-propEquiv x y = EApp (EApp (EIdent (QIdent "equiv")) x) y
-propNot x = EApp (EIdent (QIdent "not")) x
-propEquals x y = EApp (EApp (EIdent (QIdent "equals")) x) y
+-- logical constants in base.dk
+propFalse = EIdent (QIdent "False")
+propAnd x y = EApp (EApp (EIdent (QIdent "Conj")) x) y
+propOr x y = EApp (EApp (EIdent (QIdent "Disj")) x) y
+propImp x y = EApp (EApp (EIdent (QIdent "Impl")) x) y
+propEquiv x y = EApp (EApp (EIdent (QIdent "Equiv")) x) y
+propNot x = EApp (EIdent (QIdent "Neg")) x
+propEquals x y = EApp (EApp (EIdent (QIdent "Eq")) x) y
 
--- these are sorted variants of qualtifiers
 propPi kind pred = EApp (EApp (EIdent (QIdent "Pi")) kind) pred
 propSigma kind pred = EApp (EApp (EIdent (QIdent "Sigma")) kind) pred
 
+-- built-in types
+typeProp = EIdent (QIdent "Prop")
+typeType = EIdent (QIdent "Type")
 
 --- needed for typing conclusions of proofs
 expTyped x t = EApp (EApp (EIdent (QIdent "typed")) x) t
@@ -31,32 +34,42 @@ expTyped x t = EApp (EApp (EIdent (QIdent "typed")) x) t
 
 jmt2dedukti :: GJmt -> Jmt
 jmt2dedukti jment = case jment of
-  GAxiomJmt constant (GListHypo hypos) prop ->
+  GAxiomJmt exp (GListHypo hypos) prop ->
     JStatic
-      (constant2dedukti constant)
+      (exp2deduktiIdent exp)
       (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos))
-  GThmJmt constant (GListHypo hypos) prop proof ->
-    JThm
-      (constant2dedukti constant)
+  GThmJmt exp (GListHypo hypos) prop proof ->
+    JDef
+      (exp2deduktiIdent exp)
       (MTExp (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos)))
       (MEExp (proof2dedukti proof))
-{-
   GDefPropJmt (GListHypo hypos) prop df ->
-    JThm
-      (QIdent name)
-      (MTExp (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos)))
+    JDef
+      (prop2deduktiIdent prop)
+      (MTExp (foldr EFun typeProp (concatMap hypo2dedukti hypos)))
       (MEExp (prop2dedukti df))
   GDefKindJmt (GListHypo hypos) kind df ->
-    JThm
-      (QIdent name)
-      (MTExp (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos)))
-      (MEExp (kind2dedukti df))
--}
-  GDefExpJmt constant (GListHypo hypos) kind df ->
     JDef
-      (constant2dedukti constant)
+      (kind2deduktiIdent kind)
+      (MTExp (foldr EFun typeType (concatMap hypo2dedukti hypos)))
+      (MEExp (kind2dedukti df))
+  GDefExpJmt (GListHypo hypos) exp kind df ->
+    JDef
+      (exp2deduktiIdent exp)
       (MTExp (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos)))
       (MEExp (exp2dedukti df))
+  GAxiomPropJmt (GListHypo hypos) prop ->
+    JStatic
+      (prop2deduktiIdent prop)
+      (foldr EFun typeProp (concatMap hypo2dedukti hypos))
+  GAxiomKindJmt (GListHypo hypos) kind ->
+    JStatic
+      (kind2deduktiIdent kind)
+      (foldr EFun typeType (concatMap hypo2dedukti hypos))
+  GAxiomExpJmt (GListHypo hypos) exp kind ->
+    JStatic
+      (exp2deduktiIdent exp)
+      (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos))
 
 prop2dedukti :: GProp -> Exp
 prop2dedukti prop = case prop of
@@ -65,6 +78,8 @@ prop2dedukti prop = case prop of
   GAndProp (GListProp props) -> foldl1 propAnd (map prop2dedukti props)
   GOrProp (GListProp props) -> foldl1 propOr (map prop2dedukti props)
   GIfProp a b -> propImp (prop2dedukti a) (prop2dedukti b)
+  GNotProp a -> propNot (prop2dedukti a)
+  GIffProp a b -> propEquiv (prop2dedukti a) (prop2dedukti b)
   GAllProp (GListIdent idents) kind prop ->
     foldr
       (\x y ->
@@ -114,10 +129,6 @@ proof2dedukti proof = case proof of
       (foldl1 EApp (exp2dedukti exp : map proof2dedukti proofs))
       (prop2dedukti prop)
 
-constant2dedukti :: GConstant -> QIdent
-constant2dedukti constant = case constant of
-  GStrConstant (GString s) -> QIdent s
-
 ident2dedukti :: GIdent -> QIdent
 ident2dedukti ident = case ident of
   GStrIdent (GString s) -> QIdent s
@@ -126,6 +137,20 @@ formal2dedukti :: GFormal -> Exp
 formal2dedukti formal = case formal of
   GStrFormal (GString s) -> EIdent (QIdent s)
 
+exp2deduktiIdent :: GExp -> QIdent
+exp2deduktiIdent exp = case exp of
+  GFormalExp (GStrFormal (GString s)) -> QIdent s
+  _ -> QIdent (takeWhile isAlpha (show (gf exp))) ---- TODO
+
+kind2deduktiIdent :: GKind -> QIdent
+kind2deduktiIdent kind = case kind of
+  GFormalKind (GStrFormal (GString s)) -> QIdent s
+  _ -> QIdent (takeWhile isAlpha (show (gf kind))) ---- TODO
+
+prop2deduktiIdent :: GProp -> QIdent
+prop2deduktiIdent prop = case prop of
+  GFormalProp (GStrFormal (GString s)) -> QIdent s
+  _ -> QIdent (takeWhile isAlpha (show (gf prop))) ---- TODO
 
 
 

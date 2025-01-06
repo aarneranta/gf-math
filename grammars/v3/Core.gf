@@ -14,24 +14,26 @@ cat
   Ident ;
   [Ident] {1} ;
   Formal ;
-  Constant ;
   Proof ;
   [Proof] {0} ;
 
 fun
-  ThmJmt : Constant -> [Hypo] -> Prop -> Proof -> Jmt ;
-  AxiomJmt : Constant -> [Hypo] -> Prop -> Jmt ;
+  ThmJmt : Exp -> [Hypo] -> Prop -> Proof -> Jmt ;
+  AxiomJmt : Exp -> [Hypo] -> Prop -> Jmt ;
   
   DefPropJmt : [Hypo] -> Prop -> Prop -> Jmt ;
   DefKindJmt : [Hypo] -> Kind -> Kind -> Jmt ;
-  DefExpJmt  : Constant -> [Hypo] -> Kind -> Exp -> Jmt ;
+  DefExpJmt  : [Hypo] -> Exp -> Kind -> Exp -> Jmt ;
+  
+  AxiomPropJmt : [Hypo] -> Prop -> Jmt ;
+  AxiomKindJmt : [Hypo] -> Kind -> Jmt ;
+  AxiomExpJmt  : [Hypo] -> Exp -> Kind -> Jmt ;
 
   PropHypo : Prop -> Hypo ;
   VarsHypo : [Ident] -> Kind -> Hypo ;
 
   AppExp : Exp -> [Exp] -> Exp ;
   AbsExp : [Ident] -> Exp -> Exp ;
-  NumExp : Float -> Exp ;
   FormalExp : Formal -> Exp ;
   TypedExp : Exp -> Kind -> Exp ;
 
@@ -50,7 +52,6 @@ fun
 
   EqProp : Exp -> Exp -> Prop ;
 
-  StrConstant : String -> Constant ;
   StrIdent : String -> Ident ;
   StrFormal : String -> Formal ;
 
