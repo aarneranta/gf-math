@@ -29,6 +29,8 @@ fun
   AxiomKindJmt : [Hypo] -> Kind -> Jmt ;
   AxiomExpJmt  : [Hypo] -> Exp -> Kind -> Jmt ;
 
+  RewriteJmt : Exp -> Exp -> Jmt ;
+
   PropHypo : Prop -> Hypo ;
   VarsHypo : [Ident] -> Kind -> Hypo ;
 
@@ -46,9 +48,11 @@ fun
   AllProp : [Ident] -> Kind -> Prop -> Prop ;
   ExistProp : [Ident] -> Kind -> Prop -> Prop ;
   FormalProp : Formal -> Prop ;
+  AppProp : Formal -> [Exp] -> Prop ;
 
   FormalKind : Formal -> Kind ;
   SuchThatKind : Ident -> Kind -> Prop -> Kind ;
+  AppKind : Formal -> [Exp] -> Kind ;
 
   EqProp : Exp -> Exp -> Prop ;
 

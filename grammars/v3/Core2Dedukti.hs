@@ -48,6 +48,8 @@ jmt2dedukti jment = case jment of
     JStatic
       (exp2deduktiIdent exp)
       (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos))
+  GRewriteJmt patt exp -> case exp2deduktiPatt patt of 
+    (idents, patt) -> JRewr [RRule idents patt (exp2dedukti exp)]
 
 prop2dedukti :: GProp -> Exp
 prop2dedukti prop = case prop of
@@ -71,6 +73,8 @@ prop2dedukti prop = case prop of
       (prop2dedukti prop)
       idents
   GEqProp a b -> propEquals (exp2dedukti a) (exp2dedukti b)
+  GAppProp formal (GListExp exps) ->
+    foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
 
 hypo2dedukti :: GHypo -> [Hypo]
 hypo2dedukti hypo = case hypo of
@@ -87,6 +91,8 @@ kind2dedukti kind = case kind of
       (kind2dedukti kind)
       (EAbs (BVar (VIdent (ident2dedukti ident)))
             (prop2dedukti prop))
+  GAppKind formal (GListExp exps) ->
+    foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
 
 exp2dedukti :: GExp -> Exp
 exp2dedukti exp = case exp of
@@ -129,7 +135,14 @@ prop2deduktiIdent prop = case prop of
   GFormalProp (GStrFormal (GString s)) -> QIdent s
   _ -> QIdent (takeWhile isAlpha (show (gf prop))) ---- TODO
 
-
+exp2deduktiPatt :: GExp -> ([QIdent], Patt)
+exp2deduktiPatt exp = ([], getPatt (exp2dedukti exp)) ---- TODO
+  where
+    getPatt :: Exp -> Patt
+    getPatt dexp = case dexp of
+      EApp fun arg -> PApp (getPatt fun) (getPatt arg)
+      EIdent ident -> PVar (VIdent ident)
+      ---- TODO
 
 
 

@@ -7,7 +7,8 @@ concrete CoreEng of Core =
     (E=ExtendEng),
     SymbolicEng,
     Prelude,
-    ParadigmsEng
+    ParadigmsEng,
+    (I=IrregEng)
 
 in {
 
@@ -54,6 +55,8 @@ lin
   AxiomExpJmt hypos exp kind =
     labelText basic_concept_Label
       (mkText hypos.text (mkText (mkS (mkCl exp (useKind kind))))) ;
+  RewriteJmt patt exp =
+    mkText (mkS (mkCl patt exp)) ;
 
   PropHypo prop = mkUtt (mkImp (mkVP assume_VS prop)) ; 
   VarsHypo idents kind = G.ImpP3 idents.np (mkVP (useKind kind)) ; 
@@ -80,13 +83,21 @@ lin
     G.SSubjS (mkS (E.ExistsNP (notionNP idents kind))) such_that_Subj prop ;
   FormalProp f = latexS f ;
   FalseProp = mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N)) ;
+  AppProp f exps = mkS (mkCl (latexNP f) hold_V2 exps.np) ;
 
   EqProp x y = mkS (mkCl x equal_A2 y) ;
 
-  FormalKind formal = {cn = mkCN element_N ; adv = S.mkAdv possess_Prep (latexNP formal)} ;
+  FormalKind formal = {
+    cn = mkCN element_N ;
+    adv = S.mkAdv possess_Prep (latexNP formal)
+    } ;
   SuchThatKind ident kind prop = {
     cn = mkCN kind.cn <symb ident : NP> ;
     adv = ccAdv kind.adv (S.mkAdv such_that_Subj prop)
+    } ;
+  AppKind formal exps = {
+    cn = mkCN element_N ;
+    adv = S.mkAdv possess_Prep (mkNP (latexNP formal) (S.mkAdv possess_Prep exps.np))
     } ;
 
   StrIdent s = mkSymb s.s ;
@@ -154,7 +165,8 @@ oper
   function_N : N = mkN "function" ;
   basic_type_CN : CN = mkCN (mkA "basic") (mkN "basic") ;
   map_V3 = mkV3 (mkV "map") noPrep to_Prep ;
-  say_VS = mkVS (mkV "say" "said" "said") ;
+  say_VS = mkVS I.say_V ;
+  hold_V2 = mkV2 I.hold_V for_Prep ;
 
   equal_A2 : A2 = mkA2 (mkA "equal") to_Prep ;
   less_A2 : A2 = mkA2 (mkA "less") than_Prep ;

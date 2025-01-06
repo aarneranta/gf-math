@@ -4,6 +4,7 @@
 module Dedukti2Core where
 
 import Dedukti.AbsDedukti
+import Dedukti.PrintDedukti
 import Core
 import CommonConcepts
 
@@ -13,12 +14,16 @@ jmt2core :: Jmt -> GJmt
 jmt2core jmt = case jmt of
   JStatic ident typ -> case splitType typ of
     (hypos, kind) -> 
-      GAxiomExpJmt (GListHypo (map hypo2core hypos)) (ident2coreExp ident) (exp2coreKind kind)
+      GAxiomExpJmt
+        (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
+        (exp2coreKind kind)
   JDef ident (MTExp typ) (MEExp exp) -> case splitType typ of
     (hypos, kind) -> 
       GDefExpJmt
         (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
         (exp2coreKind kind) (exp2coreExp exp)
+----  JRewr rules ->
+  _ -> error ("not yet: " ++ printTree jmt)
 {-
   GAxiomJmt exp (GListHypo hypos) prop ->
     JStatic
@@ -66,11 +71,19 @@ hypo2core hypo = case hypo of
 exp2coreKind :: Exp -> GKind
 exp2coreKind exp = case exp of
   EIdent ident -> GFormalKind (ident2coreFormal ident)
+  EApp _ _ -> case splitApp exp of
+    (fun, args) -> case fun of
+      EIdent ident ->
+        GAppKind (ident2coreFormal ident) (GListExp (map exp2coreExp args))
 
 exp2coreProp :: Exp -> GProp
 exp2coreProp exp = case exp of
   EIdent ident -> GFormalProp (ident2coreFormal ident)
   _ | exp == propFalse -> GFalseProp
+  EApp _ _ -> case splitApp exp of
+    (fun, args) -> case fun of
+      EIdent ident ->
+        GAppProp (ident2coreFormal ident) (GListExp (map exp2coreExp args))
 {-
   GAndProp (GListProp props) -> foldl1 propAnd (map prop2core props)
   GOrProp (GListProp props) -> foldl1 propOr (map prop2core props)
