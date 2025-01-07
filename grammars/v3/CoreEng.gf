@@ -32,10 +32,10 @@ lincat
   [Rule] = Text ;
 
 lin
-  AxiomJmt exp hypos prop =
+  AxiomJmt hypos exp prop =
     labelText (axiom_Label ++ (mkUtt exp).s)
       (mkText hypos.text (mkText prop)) ;
-  ThmJmt exp hypos prop proof =
+  ThmJmt hypos exp prop proof =
     labelText (theorem_Label ++ (mkUtt exp).s)
       (mkText hypos.text (mkText (mkText prop)
         (labelText proof_Label proof))) ;
@@ -115,9 +115,12 @@ lin
   StrIdent s = mkSymb s.s ;
   StrFormal s = mkSymb s.s ;
   
-  AppProof proofs exp prop =
+  AppProof proofs exp =
     mkText proofs
-      (mkText (G.ExtAdvS (S.mkAdv by_Prep exp) prop)) ;
+      (mkText (mkUtt (S.mkAdv by_Prep exp))) ;
+      
+  AbsProof hypos proof =
+    mkText hypos.text proof ;
 
   BaseIdent ident =
     {np = latexNP ident ; isPl = False} ;

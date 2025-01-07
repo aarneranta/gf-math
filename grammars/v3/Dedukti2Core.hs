@@ -27,6 +27,16 @@ jmt2core jmt = case jmt of
       GAxiomExpJmt
         (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
         (exp2coreKind kind)
+  JThm ident (MTExp typ) (MEExp exp) -> case splitType typ of
+    (hypos, prop) -> 
+      GThmJmt
+        (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
+        (exp2coreProp prop) (exp2coreProof exp)
+  JThm ident (MTExp typ) MENone -> case splitType typ of
+    (hypos, prop) -> 
+      GAxiomJmt
+        (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
+        (exp2coreProp prop)
   JRules rules -> GRewriteJmt (GListRule (map rule2core rules))
   
   _ -> error ("not yet: " ++ printTree jmt)
@@ -143,14 +153,14 @@ exp2coreExp exp = case exp of
   EAbs _ _ -> case splitAbs exp of
     (binds, body) -> GAbsExp (GListIdent (map bind2coreIdent binds)) (exp2coreExp body)
 
-{-
-proof2core :: GProof -> Exp
-proof2core proof = case proof of
-  GAppProof (GListProof proofs) exp prop ->
-    expTyped
-      (foldl1 EApp (exp2core exp : map proof2core proofs))
-      (prop2core prop)
--}
+exp2coreProof :: Exp -> GProof
+exp2coreProof exp = case exp of
+  EIdent ident -> GAppProof (GListProof []) (GFormalExp (ident2coreFormal ident))
+  EApp _ _ -> case splitApp exp of
+    (fun, args) ->
+      GAppProof (GListProof (map exp2coreProof args)) (exp2coreExp fun)
+  EAbs _ _ -> case splitAbs exp of
+    (binds, body) -> GAbsProof (GListHypo (map (hypo2core . bind2hypo) binds)) (exp2coreProof body)
 
 patt2coreExp :: Patt -> GExp
 patt2coreExp patt = case patt of
@@ -217,3 +227,8 @@ wildIdent = GStrIdent (GString "_") ---- to be eliminated?
 wildFormal :: GFormal
 wildFormal = GStrFormal (GString "_") ---- to be eliminated?
 
+bind2hypo :: Bind -> Hypo
+bind2hypo bind = case bind of
+  BTyped VWild exp -> HExp exp
+  BTyped var exp -> HVarExp var exp
+  _ -> error ("cannot infer type of binding")

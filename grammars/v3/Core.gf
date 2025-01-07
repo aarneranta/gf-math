@@ -22,8 +22,8 @@ cat
   [Rule] {1} ;
 
 fun
-  ThmJmt : Exp -> [Hypo] -> Prop -> Proof -> Jmt ;
-  AxiomJmt : Exp -> [Hypo] -> Prop -> Jmt ;
+  ThmJmt : [Hypo] -> Exp -> Prop -> Proof -> Jmt ;
+  AxiomJmt : [Hypo] -> Exp -> Prop -> Jmt ;
   
   DefPropJmt : [Hypo] -> Prop -> Prop -> Jmt ;
   DefKindJmt : [Hypo] -> Kind -> Kind -> Jmt ;
@@ -69,6 +69,7 @@ fun
   StrIdent : String -> Ident ;
   StrFormal : String -> Formal ;
 
-  AppProof : [Proof] -> Exp -> Prop -> Proof ;
+  AppProof : [Proof] -> Exp -> Proof ;
+  AbsProof : [Hypo] -> Proof -> Proof ;
 
 }

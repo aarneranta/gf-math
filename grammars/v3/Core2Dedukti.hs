@@ -12,11 +12,11 @@ import Data.Char
 
 jmt2dedukti :: GJmt -> Jmt
 jmt2dedukti jment = case jment of
-  GAxiomJmt exp (GListHypo hypos) prop ->
+  GAxiomJmt (GListHypo hypos) exp prop ->
     JStatic
       (exp2deduktiIdent exp)
       (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos))
-  GThmJmt exp (GListHypo hypos) prop proof ->
+  GThmJmt (GListHypo hypos) exp prop proof ->
     JDef
       (exp2deduktiIdent exp)
       (MTExp (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos)))
@@ -102,10 +102,8 @@ exp2dedukti exp = case exp of
 
 proof2dedukti :: GProof -> Exp
 proof2dedukti proof = case proof of
-  GAppProof (GListProof proofs) exp prop ->
-    expTyped
-      (foldl1 EApp (exp2dedukti exp : map proof2dedukti proofs))
-      (prop2dedukti prop)
+  GAppProof (GListProof proofs) exp ->
+    foldl1 EApp (exp2dedukti exp : map proof2dedukti proofs)
 
 ident2dedukti :: GIdent -> QIdent
 ident2dedukti ident = case ident of

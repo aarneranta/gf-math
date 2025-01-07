@@ -8,6 +8,7 @@ import Dedukti2Core
 import Dedukti.PrintDedukti
 import Dedukti.ParDedukti
 import Dedukti.AbsDedukti
+import Dedukti.ErrM
 import Core
 import Lexing
 
@@ -49,22 +50,26 @@ loop gr randoms n = do
         putStrLn $ linearize gr english t
         let d = jmt2dedukti (fg t)
         putStrLn $ printTree d
-      '!':cs -> do
+      '!':cs -> processDeduktiJmt gr cs
+      _ -> putStrLn "no parse"
+  loop gr randoms (n+1)
+
+processDeduktiJmt :: PGF -> String -> IO ()
+processDeduktiJmt gr cs = do
         case pJmt (myLexer cs) of
-          Left e -> putStrLn ("error: " ++ e)
-          Right t -> do
+          Bad e -> putStrLn ("error: " ++ e)
+          Ok t -> do
             putStrLn $ show t
             let gft = gf $ jmt2core t
             putStrLn $ showExpr [] gft
             putStrLn $ linearize gr english gft
-      _ -> putStrLn "no parse"
-  loop gr randoms (n+1)
 
 
+processDeduktiModule :: PGF -> String -> IO ()
 processDeduktiModule gr s = do
   case pModule (myLexer s) of
-    Left e -> putStrLn ("error: " ++ e)
-    Right (MJmts jmts) -> flip mapM_ jmts $ \t -> do
+    Bad e -> putStrLn ("error: " ++ e)
+    Ok (MJmts jmts) -> flip mapM_ jmts $ \t -> do
       putStrLn $ show t
       let gft = gf $ jmt2core t
       putStrLn $ showExpr [] gft
