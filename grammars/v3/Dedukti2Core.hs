@@ -22,7 +22,13 @@ jmt2core jmt = case jmt of
       GDefExpJmt
         (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
         (exp2coreKind kind) (exp2coreExp exp)
-----  JRewr rules ->
+  JDef ident (MTExp typ) MENone -> case splitType typ of
+    (hypos, kind) -> 
+      GAxiomExpJmt
+        (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
+        (exp2coreKind kind)
+  JRewr rewrs -> GRewriteJmt (GListRule (map rewr2core rewrs))
+  
   _ -> error ("not yet: " ++ printTree jmt)
 {-
   GAxiomJmt exp (GListHypo hypos) prop ->
@@ -68,6 +74,23 @@ hypo2core hypo = case hypo of
   HExp prop -> 
     GPropHypo (exp2coreProp prop)
 
+hypo2coreArgKind :: Hypo -> GArgKind
+hypo2coreArgKind hypo = case hypo of
+  HVarExp var kind -> 
+    GIdentsArgKind (exp2coreKind kind) (GListIdent [var2core var]) 
+  HParVarExp var kind -> 
+    GIdentsArgKind (exp2coreKind kind) (GListIdent [var2core var])
+  HExp kind -> 
+    GKindArgKind (exp2coreKind kind)
+
+rewr2core :: Rewr -> GRule
+rewr2core rewr = case rewr of
+  RRule [] patt exp ->
+    GNoVarRewriteRule (patt2coreExp patt) (exp2coreExp exp)
+  RRule idents patt exp ->
+    GRewriteRule
+      (GListIdent (map ident2core idents)) (patt2coreExp patt) (exp2coreExp exp)
+
 exp2coreKind :: Exp -> GKind
 exp2coreKind exp = case exp of
   EIdent ident -> GFormalKind (ident2coreFormal ident)
@@ -75,6 +98,10 @@ exp2coreKind exp = case exp of
     (fun, args) -> case fun of
       EIdent ident ->
         GAppKind (ident2coreFormal ident) (GListExp (map exp2coreExp args))
+  EFun _ _ -> 
+    case splitType exp of
+      (hypos, valexp) ->
+        GFunKind (GListArgKind (map hypo2coreArgKind hypos)) (exp2coreKind valexp)
 
 exp2coreProp :: Exp -> GProp
 exp2coreProp exp = case exp of
@@ -84,6 +111,9 @@ exp2coreProp exp = case exp of
     (fun, args) -> case fun of
       EIdent ident ->
         GAppProp (ident2coreFormal ident) (GListExp (map exp2coreExp args))
+  EFun _ _ -> case splitType exp of
+    (hypos, exp) ->
+      GAllProp (GListArgKind (map hypo2coreArgKind hypos)) (exp2coreProp exp)
 {-
   GAndProp (GListProp props) -> foldl1 propAnd (map prop2core props)
   GOrProp (GListProp props) -> foldl1 propOr (map prop2core props)
@@ -121,6 +151,15 @@ proof2core proof = case proof of
       (foldl1 EApp (exp2core exp : map proof2core proofs))
       (prop2core prop)
 -}
+
+patt2coreExp :: Patt -> GExp
+patt2coreExp patt = case patt of
+  PVar (VIdent ident) -> GFormalExp  (ident2coreFormal ident)
+  PVar _ -> GFormalExp wildFormal
+  PApp _ _ -> case splitPatt patt of
+    (fun, args) -> case fun of
+      PVar (VIdent ident) ->
+        GAppExp (GFormalExp (ident2coreFormal ident)) (GListExp (map patt2coreExp args))
 
 ident2core :: QIdent -> GIdent
 ident2core ident = case ident of
@@ -164,4 +203,17 @@ splitAbs exp = case exp of
     ([], _) -> ([bind], body)        
     (binds, rest) -> (bind:binds, rest)
   _ -> ([], exp)
+
+splitPatt :: Patt -> (Patt, [Patt])
+splitPatt patt = case patt of
+  PApp fun arg -> case splitPatt fun of
+    (_, [])   -> (fun, [arg])
+    (f, args) -> (f, args ++ [arg])
+  _ -> (patt, [])
+
+wildIdent :: GIdent
+wildIdent = GStrIdent (GString "_") ---- to be eliminated?
+
+wildFormal :: GFormal
+wildFormal = GStrFormal (GString "_") ---- to be eliminated?
 

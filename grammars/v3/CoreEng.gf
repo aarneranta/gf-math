@@ -19,6 +19,8 @@ lincat
   Prop = S ;
   [Prop] = [S] ;
   Kind = {cn : CN ; adv : Adv} ;
+  ArgKind = {cn : CN ; adv : Adv} ;
+  [ArgKind] = NP ;
   Hypo = Utt ;
   [Hypo] = {text : Text ; isEmpty : Bool} ;
   Ident = Symb ;
@@ -26,6 +28,8 @@ lincat
   Formal = Symb ;
   Proof = Text ;
   [Proof] = Text ;
+  Rule = Utt ;
+  [Rule] = Text ;
 
 lin
   AxiomJmt exp hypos prop =
@@ -55,8 +59,12 @@ lin
   AxiomExpJmt hypos exp kind =
     labelText basic_concept_Label
       (mkText hypos.text (mkText (mkS (mkCl exp (useKind kind))))) ;
-  RewriteJmt patt exp =
-    mkText (mkS (mkCl patt exp)) ;
+
+  RewriteJmt rules = labelText by_cases_Label rules ;
+  RewriteRule idents patt exp =
+    mkUtt (G.ExtAdvS (S.mkAdv for_Prep idents.np) (mkS (mkCl patt exp))) ;
+  NoVarRewriteRule patt exp =
+    mkUtt (mkS (mkCl patt exp)) ;
 
   PropHypo prop = mkUtt (mkImp (mkVP assume_VS prop)) ; 
   VarsHypo idents kind = G.ImpP3 idents.np (mkVP (useKind kind)) ; 
@@ -74,11 +82,8 @@ lin
   NotProp prop =
     mkS E.UncontractedNeg (mkCl 
           (mkVP (mkNP the_Quant (mkCN case_N (S.mkAdv that_Subj prop))))) ;
-  AllProp idents kind prop =
-    G.ExtAdvS
-      (S.mkAdv for_Prep
-         (mkNP all_Predet
-	    (mkNP aPl_Det (mkCN (mkCN kind.cn idents.np) kind.adv)))) prop ;
+  AllProp argkinds prop =
+    G.ExtAdvS (S.mkAdv for_Prep (mkNP all_Predet argkinds)) prop ;
   ExistProp idents kind prop =
     G.SSubjS (mkS (E.ExistsNP (notionNP idents kind))) such_that_Subj prop ;
   FormalProp f = latexS f ;
@@ -99,9 +104,20 @@ lin
     cn = mkCN element_N ;
     adv = S.mkAdv possess_Prep (mkNP (latexNP formal) (S.mkAdv possess_Prep exps.np))
     } ;
+  FunKind argkinds kind = {
+    cn = mkCN function_N ;
+    adv = ccAdv (S.mkAdv from_Prep argkinds) (S.mkAdv to_Prep (mkNP aPl_Det (useKind kind)))
+    } ;
+
+  KindArgKind kind = kind ;
+  IdentsArgKind kind idents = {cn = mkCN kind.cn idents.np ; adv = kind.adv} ;
 
   StrIdent s = mkSymb s.s ;
   StrFormal s = mkSymb s.s ;
+  
+  AppProof proofs exp prop =
+    mkText proofs
+      (mkText (G.ExtAdvS (S.mkAdv by_Prep exp) prop)) ;
 
   BaseIdent ident =
     {np = latexNP ident ; isPl = False} ;
@@ -113,18 +129,22 @@ lin
   ConsExp exp exps =
     {np = mkNP and_Conj exp exps.np ; isPl = True} ;
 
+  BaseArgKind kind =
+    mkNP aPl_Det (useKind kind) ;
+  ConsArgKind kind kinds =
+    mkNP and_Conj (mkNP aPl_Det (useKind kind)) kinds ;
+
   BaseHypo = {text = emptyText ; isEmpty = True} ;
   ConsHypo hypo hypos = {text = mkText hypo hypos.text ; isEmpty = False} ;
   
   BaseProp a b = mkListS a b ;
   ConsProp a bs = mkListS a bs ;
 
-  AppProof proofs exp prop =
-    mkText proofs
-      (mkText (G.ExtAdvS (S.mkAdv by_Prep exp) prop)) ;
-
   BaseProof = emptyText ;
   ConsProof proof proofs = mkText proof proofs ;
+
+  BaseRule rule = labelText item_Label (mkText rule) ;
+  ConsRule rule rules = mkText (labelText "\\item" (mkText rule)) rules ;
 
 oper
   labelText : Str -> Text -> Text = \label, text ->
@@ -150,6 +170,8 @@ oper
   by_Prep : Prep = by8means_Prep ;
 
   ccAdv : Adv -> Adv -> Adv = \x, y -> lin Adv {s = x.s ++ y.s} ;
+
+  item_Label : Str = "\\item" ;
 
 -- non-functor
 
@@ -179,5 +201,6 @@ oper
   proof_Label : Str = "Proof" ;
   axiom_Label : Str = "Axiom" ;
   basic_concept_Label : Str = "Basic Concept" ;
+  by_cases_Label : Str = "By cases:" ;
 
 }

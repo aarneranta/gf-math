@@ -9,6 +9,8 @@ cat
   Prop ;
   [Prop] {2} ;
   Kind ;
+  ArgKind ;
+  [ArgKind] {1} ;
   Hypo ;
   [Hypo] ;
   Ident ;
@@ -16,6 +18,8 @@ cat
   Formal ;
   Proof ;
   [Proof] {0} ;
+  Rule ;
+  [Rule] {1} ;
 
 fun
   ThmJmt : Exp -> [Hypo] -> Prop -> Proof -> Jmt ;
@@ -29,7 +33,9 @@ fun
   AxiomKindJmt : [Hypo] -> Kind -> Jmt ;
   AxiomExpJmt  : [Hypo] -> Exp -> Kind -> Jmt ;
 
-  RewriteJmt : Exp -> Exp -> Jmt ;
+  RewriteJmt : [Rule] -> Jmt ;
+  RewriteRule : [Ident] -> Exp -> Exp -> Rule ; ---- generalize to [] and x:A
+  NoVarRewriteRule : Exp -> Exp -> Rule ;
 
   PropHypo : Prop -> Hypo ;
   VarsHypo : [Ident] -> Kind -> Hypo ;
@@ -45,14 +51,18 @@ fun
   IffProp : Prop -> Prop -> Prop ;
   NotProp : Prop -> Prop ;
   FalseProp : Prop ;
-  AllProp : [Ident] -> Kind -> Prop -> Prop ;
-  ExistProp : [Ident] -> Kind -> Prop -> Prop ;
+  AllProp : [ArgKind] -> Prop -> Prop ;
+  ExistProp : [Ident] -> Kind -> Prop -> Prop ; ---- TODO: as AllProp
   FormalProp : Formal -> Prop ;
   AppProp : Formal -> [Exp] -> Prop ;
 
   FormalKind : Formal -> Kind ;
   SuchThatKind : Ident -> Kind -> Prop -> Kind ;
   AppKind : Formal -> [Exp] -> Kind ;
+  FunKind : [ArgKind] -> Kind -> Kind ;
+
+  KindArgKind : Kind -> ArgKind ;
+  IdentsArgKind : Kind -> [Ident] -> ArgKind ;
 
   EqProp : Exp -> Exp -> Prop ;
 

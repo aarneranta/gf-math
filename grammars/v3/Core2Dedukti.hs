@@ -48,8 +48,8 @@ jmt2dedukti jment = case jment of
     JStatic
       (exp2deduktiIdent exp)
       (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos))
-  GRewriteJmt patt exp -> case exp2deduktiPatt patt of 
-    (idents, patt) -> JRewr [RRule idents patt (exp2dedukti exp)]
+---  GRewriteJmt patt exp -> case exp2deduktiPatt patt of 
+---    (idents, patt) -> JRewr [RRule idents patt (exp2dedukti exp)]
 
 prop2dedukti :: GProp -> Exp
 prop2dedukti prop = case prop of
@@ -60,12 +60,7 @@ prop2dedukti prop = case prop of
   GIfProp a b -> propImp (prop2dedukti a) (prop2dedukti b)
   GNotProp a -> propNot (prop2dedukti a)
   GIffProp a b -> propEquiv (prop2dedukti a) (prop2dedukti b)
-  GAllProp (GListIdent idents) kind prop ->
-    foldr
-      (\x y ->
-        propPi (kind2dedukti kind) (EAbs (BVar (VIdent (ident2dedukti x))) y))
-      (prop2dedukti prop)
-      idents
+----  GAllProp argkinds prop ->
   GExistProp (GListIdent idents) kind prop ->
     foldr
       (\x y ->
@@ -135,6 +130,7 @@ prop2deduktiIdent prop = case prop of
   GFormalProp (GStrFormal (GString s)) -> QIdent s
   _ -> QIdent (takeWhile isAlpha (show (gf prop))) ---- TODO
 
+{-
 exp2deduktiPatt :: GExp -> ([QIdent], Patt)
 exp2deduktiPatt exp = ([], getPatt (exp2dedukti exp)) ---- TODO
   where
@@ -143,7 +139,7 @@ exp2deduktiPatt exp = ([], getPatt (exp2dedukti exp)) ---- TODO
       EApp fun arg -> PApp (getPatt fun) (getPatt arg)
       EIdent ident -> PVar (VIdent ident)
       ---- TODO
-
+-}
 
 
 
