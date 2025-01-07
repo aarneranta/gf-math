@@ -27,7 +27,7 @@ jmt2core jmt = case jmt of
       GAxiomExpJmt
         (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
         (exp2coreKind kind)
-  JRewr rewrs -> GRewriteJmt (GListRule (map rewr2core rewrs))
+  JRules rules -> GRewriteJmt (GListRule (map rule2core rules))
   
   _ -> error ("not yet: " ++ printTree jmt)
 {-
@@ -83,8 +83,8 @@ hypo2coreArgKind hypo = case hypo of
   HExp kind -> 
     GKindArgKind (exp2coreKind kind)
 
-rewr2core :: Rewr -> GRule
-rewr2core rewr = case rewr of
+rule2core :: Rule -> GRule
+rule2core rule = case rule of
   RRule [] patt exp ->
     GNoVarRewriteRule (patt2coreExp patt) (exp2coreExp exp)
   RRule idents patt exp ->

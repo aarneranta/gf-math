@@ -97,7 +97,7 @@ lin
     adv = S.mkAdv possess_Prep (latexNP formal)
     } ;
   SuchThatKind ident kind prop = {
-    cn = mkCN kind.cn <symb ident : NP> ;
+    cn = mkCN kind.cn (latexNP ident) ;
     adv = ccAdv kind.adv (S.mkAdv such_that_Subj prop)
     } ;
   AppKind formal exps = {

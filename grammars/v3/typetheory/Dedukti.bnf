@@ -11,10 +11,10 @@ JStatic.  Jmt ::= QIdent ":" Exp "." ;
 JDef.     Jmt ::= "def" QIdent MTyp MExp "." ;
 JInj.     Jmt ::= "inj" QIdent MTyp MExp "." ;
 JThm.     Jmt ::= "thm" QIdent MTyp MExp "." ;
-JRewr.    Jmt ::= [Rewr] "." ;
+JRules.   Jmt ::= [Rule] "." ;
 
-RRule.  Rewr ::= "[" [QIdent] "]" Patt "-->" Exp ;
-separator nonempty Rewr "" ;
+RRule.  Rule ::= "[" [QIdent] "]" Patt "-->" Exp ;
+separator nonempty Rule "" ;
 
 separator QIdent "," ;
 
