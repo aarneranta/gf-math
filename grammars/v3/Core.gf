@@ -80,5 +80,6 @@ fun
   NameExp : Name -> Exp ;
   FunExp : Fun -> Exp -> Exp ;
   Fun2Exp : Fun -> Exp -> Exp -> Exp ;
+  LabelExp : Label -> Exp ;
 
 }

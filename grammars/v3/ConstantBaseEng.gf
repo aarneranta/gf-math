@@ -13,6 +13,7 @@ lincat
   Rel = Relation ;
   Name = NP ;
   Fun = Function ;
+  Label = NP ;
 
 oper
   Relation : Type = {ap : AP ; prep : Prep} ;
@@ -46,6 +47,11 @@ oper
     
   mkName = overload {
     mkName : Str -> NP
+      = \s -> mkNP (mkPN s)
+    } ;
+
+  mkLabel = overload {
+    mkLabel : Str -> NP
       = \s -> mkNP (mkPN s)
     } ;
 

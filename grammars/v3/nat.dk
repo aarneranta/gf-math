@@ -37,3 +37,4 @@ thm gcdLt : (x : Nat) -> (y : Nat) -> Lt x y -> Lt (gcd x y) y := circular.
 
 thm evenOdd : (x : Nat) -> Disj (Even x) (Odd x) := circular.
 thm primeOdd : (x : Nat) -> Impl (Prime x) (Disj (Odd x) (Gt x (Succ (Succ Zero)))) := circular.
+

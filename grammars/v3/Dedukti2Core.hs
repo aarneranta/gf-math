@@ -13,11 +13,23 @@ import Data.Char
 jmt2core :: Jmt -> GJmt
 jmt2core jmt = case jmt of
   JStatic ident typ -> case splitType typ of
+    (hypos, kind) | cat ident == "Label" -> 
+      GAxiomJmt
+        (GListHypo (map hypo2core hypos)) (ident2coreLabelExp ident)
+        (exp2coreProp kind)
     (hypos, kind) -> 
       GAxiomExpJmt
         (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
         (exp2coreKind kind)
   JDef ident (MTExp typ) (MEExp exp) -> case splitType typ of
+    (hypos, kind)  | cat ident == "Label" -> 
+      GThmJmt
+        (GListHypo (map hypo2core hypos)) (ident2coreLabelExp ident)
+        (exp2coreProp kind) (exp2coreProof exp)
+    (hypos, kind)  | cat ident == "Noun" -> 
+      GDefKindJmt
+        (GListHypo (map hypo2core hypos)) (ident2coreKindExp ident)
+        (exp2coreKind exp)
     (hypos, kind) -> 
       GDefExpJmt
         (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
@@ -32,13 +44,13 @@ jmt2core jmt = case jmt of
       GThmJmt
         (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
         (exp2coreProp prop) (exp2coreProof exp)
-  JThm ident (MTExp typ) MENone -> case splitType typ of
-    (hypos, prop) -> 
-      GAxiomJmt
-        (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
-        (exp2coreProp prop)
+  JThm ident (MTExp typ) MENone ->
+    jmt2core (JStatic ident typ)
   JRules rules -> GRewriteJmt (GListRule (map rule2core rules))  
   _ -> error ("not yet: " ++ printTree jmt)
+ where
+   cat :: QIdent -> String
+   cat ident@(QIdent c) = maybe "Label" id (lookupConstant c) 
 
 hypo2core :: Hypo -> GHypo
 hypo2core hypo = case hypo of
@@ -163,6 +175,18 @@ ident2coreFormal ident = case ident of
 ident2coreExp :: QIdent -> GExp
 ident2coreExp ident = case ident of
   QIdent s -> GFormalExp (GStrFormal (GString s))
+
+ident2coreLabelExp :: QIdent -> GExp
+ident2coreLabelExp ident = case ident of
+  QIdent s -> case lookupConstant s of
+    Just "Label" -> GLabelExp (LexLabel (dk s))
+    _ -> ident2coreExp ident
+
+ident2coreKindExp :: QIdent -> GKind
+ident2coreKindExp ident = case ident of
+  QIdent s -> case lookupConstant s of
+    Just "Noun" -> GNounKind (LexNoun (dk s))
+    _ -> GFormalKind (ident2coreFormal ident)
 
 bind2coreIdent :: Bind -> GIdent
 bind2coreIdent bind = case bind of

@@ -25,6 +25,7 @@ lin
   Dk_sum = mkFun "sum" ;
   Dk_prod = mkFun "product" ;
   Dk_gcd = mkFun "greatest" "common" "divisor" ;
-
+  Dk_eqZero = mkLabel "equality of zero" ;
+  Dk_eqSucc = mkLabel "equality of successors" ;
 
 }

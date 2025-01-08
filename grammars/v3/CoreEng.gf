@@ -157,6 +157,7 @@ lin
   NameExp name = name ;
   FunExp f exp = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep exp)) ;
   Fun2Exp f x y = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep (mkNP and_Conj x y))) ;
+  LabelExp label = label ;
 
 oper
   labelText : Str -> Text -> Text = \label, text ->

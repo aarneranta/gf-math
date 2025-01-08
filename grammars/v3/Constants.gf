@@ -17,5 +17,7 @@ fun Dk_Succ : Fun ;
 fun Dk_sum : Fun ;
 fun Dk_prod : Fun ;
 fun Dk_gcd : Fun ;
+fun Dk_eqZero : Label ;
+fun Dk_eqSucc : Label ;
 
 }
