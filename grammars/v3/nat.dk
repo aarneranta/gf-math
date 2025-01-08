@@ -1,0 +1,11 @@
+Nat : Type.
+Zero : Nat.
+Succ : (x : Nat) -> Nat.
+sum : (x : Nat) -> (y : Nat) -> Nat.
+gcd : (x : Nat) -> (y : Nat) -> Nat.
+Eq : (x : Nat) -> (y : Nat) -> Type.
+Lt : (x : Nat) -> (y : Nat) -> Type.
+Gt : (x : Nat) -> (y : Nat) -> Type.
+thm eqSumZero : (x : Nat) -> Eq (sum x Zero) x := trivial.
+thm eqSumSucc : (x : Nat) -> (y : Nat) -> Eq (sum x (Succ y)) (Succ (sum x y)) := trivial.
+thm gcdLt : (x : Nat) -> (y : Nat) -> Lt x y -> Lt (gcd x y) y := trivial.

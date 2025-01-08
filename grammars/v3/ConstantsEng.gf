@@ -10,13 +10,21 @@ in {
 -- replace by a dynamically generated file
 
 lin
-  DkNat = mkNoun "natural" "number" ;
-  DkSet = mkNoun "set" ;
-  DkEven = mkAdj "even" ;
-  DkOdd = mkAdj "odd" ;
-  DkPrime = mkAdj "prime" ;
-  DkZero = latexName "0" ;
-  DkDiv = mkRel "divisible" "by" ;
+  Dk_Type = mkNoun "type" ;
+  Dk_Nat = mkNoun "natural" "number" ;
+  Dk_Set = mkNoun "set" ;
+  Dk_Even = mkAdj "even" ;
+  Dk_Odd = mkAdj "odd" ;
+  Dk_Prime = mkAdj "prime" ;
+  Dk_Zero = latexName "0" ;
+  Dk_Div = mkRel "divisible" "by" ;
+  Dk_Eq = mkRel "equal" "to" ;
+  Dk_Lt = mkRel "less" "than" ;
+  Dk_Gt = mkRel "greater" "than" ;
+  Dk_Succ = mkFun "successor" ;
+  Dk_sum = mkFun "sum" ;
+  Dk_prod = mkFun "product" ;
+  Dk_gcd = mkFun "greatest" "common" "divisor" ;
 
 
 }

@@ -64,8 +64,6 @@ fun
   KindArgKind : Kind -> ArgKind ;
   IdentsArgKind : Kind -> [Ident] -> ArgKind ;
 
-  EqProp : Exp -> Exp -> Prop ;
-
   StrIdent : String -> Ident ;
   StrFormal : String -> Formal ;
 
@@ -80,5 +78,7 @@ fun
   NotRelProp : Rel -> Exp -> Exp -> Prop ;
   NounKind : Noun -> Kind ;
   NameExp : Name -> Exp ;
+  FunExp : Fun -> Exp -> Exp ;
+  Fun2Exp : Fun -> Exp -> Exp -> Exp ;
 
 }

@@ -70,7 +70,7 @@ processDeduktiModule gr s = do
   case pModule (myLexer s) of
     Bad e -> putStrLn ("error: " ++ e)
     Ok (MJmts jmts) -> flip mapM_ jmts $ \t -> do
-      putStrLn $ show t
+      putStrLn $ ("# " ++ show t)
       let gft = gf $ jmt2core t
-      putStrLn $ showExpr [] gft
+      putStrLn $ ("# " ++ showExpr [] gft)
       putStrLn $ linearize gr english gft

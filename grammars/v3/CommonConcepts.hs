@@ -3,6 +3,7 @@
 
 module CommonConcepts where
 
+import Constants (constants)
 import Dedukti.AbsDedukti
 import Core
 import qualified Data.Map as M
@@ -15,7 +16,6 @@ identDisj = QIdent "Disj"
 identImpl = QIdent "Impl"
 identNeg = QIdent "Neg"
 identEquiv = QIdent "Equiv"
-identEq = QIdent "Eq"
 
 -- logical constants in base.dk
 propFalse = EIdent (QIdent "False")
@@ -24,7 +24,6 @@ propOr x y = EApp (EApp (EIdent identDisj) x) y
 propImp x y = EApp (EApp (EIdent identImpl) x) y
 propEquiv x y = EApp (EApp (EIdent identEquiv) x) y
 propNeg x = EApp (EIdent identNeg) x
-propEq x y = EApp (EApp (EIdent identEq) x) y
 
 propPi kind pred = EApp (EApp (EIdent (QIdent "Pi")) kind) pred
 propSigma kind pred = EApp (EApp (EIdent (QIdent "Sigma")) kind) pred
@@ -40,27 +39,19 @@ expTyped x t = EApp (EApp (EIdent (QIdent "typed")) x) t
 -- constants in lexicon
 ---- TODO: now hardcoded, should be dynamically generated and loaded
 
-constants :: M.Map String String
-constants = M.fromList [
-  ("Nat", "Noun"),
-  ("Set", "Noun"),
-  ("Even", "Adj"),
-  ("Odd", "Adj"),
-  ("Prime", "Adj"),
-  ("Zero", "Name"),
-  ("Div",  "Rel")
-  ]
+constantMap :: M.Map String String
+constantMap = M.fromList constants
 
 lookupConstant :: String -> Maybe String
-lookupConstant c = M.lookup c constants
+lookupConstant c = M.lookup c constantMap
 
--- Dedukti ident X becomes GF ident DkX
+-- Dedukti ident X becomes GF ident Dk_X
 dk :: String -> String
-dk s = "Dk" ++ s
+dk s = "Dk_" ++ s
 
 undk :: String -> String
 undk s = case s of
-  'D':'k':c -> c
+  'D':'k':'_':c -> c
   _ -> s
 
 

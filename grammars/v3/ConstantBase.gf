@@ -5,5 +5,6 @@ cat
   Adj ;
   Rel ;
   Name ;
+  Fun ;
 
 }

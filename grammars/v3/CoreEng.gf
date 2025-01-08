@@ -90,8 +90,6 @@ lin
   FalseProp = simpleProp (mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N))) ;
   AppProp f exps = simpleProp (mkS (mkCl (latexNP f) hold_V2 exps.np)) ;
 
-  EqProp x y = simpleProp (mkS (mkCl x equal_A2 y)) ;
-
   FormalKind formal = {
     cn = mkCN element_N ;
     adv = S.mkAdv possess_Prep (latexNP formal)
@@ -157,6 +155,8 @@ lin
   NotRelProp rel x y = simpleProp (mkS negPol (mkCl x (mkVP (mkVP rel.ap) (S.mkAdv rel.prep y)))) ;
   NounKind noun = {cn = noun ; adv = lin Adv {s = []}} ;
   NameExp name = name ;
+  FunExp f exp = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep exp)) ;
+  Fun2Exp f x y = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep (mkNP and_Conj x y))) ;
 
 oper
   labelText : Str -> Text -> Text = \label, text ->

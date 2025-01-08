@@ -10,15 +10,28 @@ in {
 lincat
   Noun = CN ;
   Adj = AP ;
-  Rel = {ap : AP ; prep : Prep} ;
+  Rel = Relation ;
   Name = NP ;
+  Fun = Function ;
 
 oper
+  Relation : Type = {ap : AP ; prep : Prep} ;
+  Function : Type = {cn : CN ; prep : Prep} ;
+
   mkNoun = overload {
     mkNoun : Str -> CN
       = \s -> mkCN (mkN s) ;
     mkNoun : Str -> Str -> CN
       = \a, n -> mkCN (mkA a) (mkN n) ;
+    } ;
+    
+  mkFun = overload {
+    mkFun : Str -> Function
+      = \s -> {cn = mkCN (mkN s) ; prep = possess_Prep} ;
+    mkFun : (a, n : Str) -> Function
+      = \a, n -> {cn = mkCN (mkA a) (mkN n) ; prep = possess_Prep} ;
+    mkFun2 : (a, b, n : Str) -> Function
+      = \a, b, n -> {cn = mkCN (mkA a) (mkCN (mkA b) (mkN n)) ; prep = possess_Prep} ;
     } ;
     
   mkAdj = overload {

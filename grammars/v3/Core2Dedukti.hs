@@ -67,7 +67,6 @@ prop2dedukti prop = case prop of
 ----        propSigma (kind2dedukti kind) (EAbs (BVar (VIdent (ident2dedukti x))) y))
 ----      (prop2dedukti prop)
 ----      idents
-  GEqProp a b -> propEq (exp2dedukti a) (exp2dedukti b)
   GAppProp formal (GListExp exps) ->
     foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
   ---- still assuming GF fun is Dedukti ident

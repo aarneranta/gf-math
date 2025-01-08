@@ -94,8 +94,6 @@ exp2coreProp exp = case exp of
         [a, b] -> GIfProp (exp2coreProp a) (exp2coreProp b) 
       EIdent conn | conn == identEquiv -> case args of
         [a, b] -> GIffProp (exp2coreProp a) (exp2coreProp b) 
-      EIdent conn | conn == identEq -> case args of
-        [a, b] -> GEqProp (exp2coreExp a) (exp2coreExp b) 
       EIdent conn | conn == identNeg -> case args of
         [a] -> GNotProp (exp2coreProp a)
       EIdent ident@(QIdent pred) -> case (lookupConstant pred, args) of
@@ -127,7 +125,12 @@ exp2coreExp exp = case exp of
     Just "Name" -> GNameExp (LexName (dk s))
     _ -> GFormalExp (ident2coreFormal ident)
   EApp _ _ -> case splitApp exp of
-    (fun, args) -> GAppExp (exp2coreExp fun) (GListExp (map exp2coreExp args))
+    (fun, args) -> case fun of
+      EIdent ident@(QIdent f) -> case (lookupConstant f, args) of
+        (Just "Fun", [a]) -> GFunExp (LexFun (dk f)) (exp2coreExp a)     
+        (Just "Fun", [a, b]) -> GFun2Exp (LexFun (dk f)) (exp2coreExp a) (exp2coreExp b)
+        _ -> GAppExp (exp2coreExp fun) (GListExp (map exp2coreExp args))
+      _ -> GAppExp (exp2coreExp fun) (GListExp (map exp2coreExp args))
   EAbs _ _ -> case splitAbs exp of
     (binds, body) -> GAbsExp (GListIdent (map bind2coreIdent binds)) (exp2coreExp body)
 
