@@ -47,7 +47,8 @@ constants = M.fromList [
   ("Even", "Adj"),
   ("Odd", "Adj"),
   ("Prime", "Adj"),
-  ("Zero", "Name")
+  ("Zero", "Name"),
+  ("Div",  "Rel")
   ]
 
 lookupConstant :: String -> Maybe String

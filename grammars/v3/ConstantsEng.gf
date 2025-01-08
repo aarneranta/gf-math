@@ -8,17 +8,10 @@ open
 in {
 
 lincat
-  Exp = NP ;
-  Kind = {cn : CN ; adv : Adv} ;
-  Prop = S ;
   Noun = CN ;
   Adj = AP ;
+  Rel = {ap : AP ; prep : Prep} ;
   Name = NP ;
-
-lin
-  AdjProp adj exp = mkS (mkCl exp adj) ;
-  NounKind noun = {cn = noun ; adv = lin Adv {s = []}} ;
-  NameExp name = name ;
 
 oper
   mkNoun = overload {
@@ -31,6 +24,11 @@ oper
   mkAdj = overload {
     mkAdj : Str -> AP
       = \s -> mkAP (mkA s) ;
+    } ;
+    
+  mkRel = overload {
+    mkRel : Str -> Str -> {ap : AP ; prep : Prep}
+      = \s, p -> {ap = mkAP (mkA s) ; prep = mkPrep p}
     } ;
     
   mkName = overload {
@@ -51,7 +49,8 @@ lin
   DkEven = mkAdj "even" ;
   DkOdd = mkAdj "odd" ;
   DkPrime = mkAdj "prime" ;
-  DkZero = mkName "0" ;
+  DkZero = latexName "0" ;
+  DkDiv = mkRel "divisible" "by" ;
 
 
 }

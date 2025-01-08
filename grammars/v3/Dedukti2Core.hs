@@ -100,6 +100,7 @@ exp2coreProp exp = case exp of
         [a] -> GNotProp (exp2coreProp a)
       EIdent ident@(QIdent pred) -> case (lookupConstant pred, args) of
         (Just "Adj", [a]) -> GAdjProp (LexAdj (dk pred)) (exp2coreExp a)     
+        (Just "Rel", [a, b]) -> GRelProp (LexRel (dk pred)) (exp2coreExp a) (exp2coreExp b)
         _  ->
           GAppProp (ident2coreFormal ident) (GListExp (map exp2coreExp args))
   EFun _ _ -> case splitType exp of

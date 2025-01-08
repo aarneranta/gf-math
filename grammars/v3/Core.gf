@@ -4,8 +4,11 @@ flags startcat = Jmt ;
 
 cat
   Jmt ;
+  Exp ;
   [Exp] {1} ;
+  Prop ;
   [Prop] {2} ;
+  Kind ;
   ArgKind ;
   [ArgKind] {1} ;
   Hypo ;
@@ -68,5 +71,14 @@ fun
 
   AppProof : [Proof] -> Exp -> Proof ;
   AbsProof : [Hypo] -> Proof -> Proof ;
+
+-- using Constants
+
+  AdjProp : Adj -> Exp -> Prop ;
+  NotAdjProp : Adj -> Exp -> Prop ;
+  RelProp : Rel -> Exp -> Exp -> Prop ;
+  NotRelProp : Rel -> Exp -> Exp -> Prop ;
+  NounKind : Noun -> Kind ;
+  NameExp : Name -> Exp ;
 
 }

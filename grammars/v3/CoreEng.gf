@@ -13,6 +13,9 @@ concrete CoreEng of Core = ConstantsEng **
 in {
 
 lincat
+  Exp = NP ;
+  Kind = {cn : CN ; adv : Adv} ;
+  Prop = Proposition ;
   Jmt = Text ;
   [Exp] = {np : NP ; isPl : Bool} ;
   [Prop] = [S] ;
@@ -31,14 +34,14 @@ lincat
 lin
   AxiomJmt hypos exp prop =
     labelText (axiom_Label ++ (mkUtt exp).s)
-      (mkText hypos.text (mkText prop)) ;
+      (mkText hypos.text (mkText (topProp prop))) ;
   ThmJmt hypos exp prop proof =
     labelText (theorem_Label ++ (mkUtt exp).s)
-      (mkText hypos.text (mkText (mkText prop)
+      (mkText hypos.text (mkText (mkText (topProp prop))
         (labelText proof_Label proof))) ;
   DefPropJmt hypos prop df =
     labelText definition_Label
-      (mkText hypos.text (mkText (G.SSubjS prop if_Subj df))) ;
+      (mkText hypos.text (mkText (G.SSubjS (partProp prop) if_Subj (partProp df)))) ;
   DefKindJmt hypos kind df =
     labelText definition_Label
       (mkText hypos.text (mkText
@@ -48,7 +51,7 @@ lin
       (mkText hypos.text (mkText (mkS (mkCl exp (definedCN (useKind kind) df))))) ;
   AxiomPropJmt hypos prop =
     labelText basic_concept_Label
-      (mkText hypos.text (mkText (mkS (mkCl we_NP can_VV (mkVP say_VS prop))))) ;
+      (mkText hypos.text (mkText (mkS (mkCl we_NP can_VV (mkVP say_VS (topProp prop)))))) ;
   AxiomKindJmt hypos kind =
     labelText basic_concept_Label
       (mkText hypos.text (mkText
@@ -63,7 +66,7 @@ lin
   NoVarRewriteRule patt exp =
     mkUtt (mkS (mkCl patt exp)) ;
 
-  PropHypo prop = mkUtt (mkImp (mkVP assume_VS prop)) ; 
+  PropHypo prop = mkUtt (mkImp (mkVP assume_VS (topProp prop))) ; 
   VarsHypo idents kind = G.ImpP3 idents.np (mkVP (useKind kind)) ; 
 
   AppExp exp exps = mkNP exp (S.mkAdv applied_to_Prep exps.np) ;
@@ -72,22 +75,22 @@ lin
   FormalExp f = latexNP f ;
   TypedExp exp kind = mkNP the_Det (mkCN (mkCN kind.cn exp) kind.adv) ;
 
-  AndProp props = mkS and_Conj props ;
-  OrProp props = mkS or_Conj props ;
-  IfProp A B = G.ExtAdvS (S.mkAdv if_Subj A) (mkS then_Adv B) ;
-  IffProp A B = G.SSubjS A iff_Subj B ;
+  AndProp props = complexProp (mkS and_Conj props) ;
+  OrProp props = complexProp (mkS or_Conj props) ;
+  IfProp A B = complexProp (G.ExtAdvS (S.mkAdv if_Subj (partProp A)) (mkS then_Adv (partProp B))) ;
+  IffProp A B = complexProp (G.SSubjS (partProp A) iff_Subj (partProp B)) ;
   NotProp prop =
-    mkS E.UncontractedNeg (mkCl 
-          (mkVP (mkNP the_Quant (mkCN case_N (S.mkAdv that_Subj prop))))) ;
+    simpleProp (mkS negPol (mkCl 
+          (mkVP (mkNP the_Quant (mkCN case_N (S.mkAdv that_Subj (partProp prop))))))) ;
   AllProp argkinds prop =
-    G.ExtAdvS (S.mkAdv for_Prep (mkNP all_Predet argkinds)) prop ;
+    simpleProp (G.ExtAdvS (S.mkAdv for_Prep (mkNP all_Predet argkinds)) (partProp prop)) ;
   ExistProp argkinds prop =
-    G.SSubjS (mkS (E.ExistsNP argkinds)) such_that_Subj prop ; ---- TODO: sg/pl correctly
-  FormalProp f = latexS f ;
-  FalseProp = mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N)) ;
-  AppProp f exps = mkS (mkCl (latexNP f) hold_V2 exps.np) ;
+    simpleProp (G.SSubjS (mkS (E.ExistsNP argkinds)) such_that_Subj (partProp prop)) ; ---- TODO: sg/pl correctly
+  FormalProp f = simpleProp (latexS f) ;
+  FalseProp = simpleProp (mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N))) ;
+  AppProp f exps = simpleProp (mkS (mkCl (latexNP f) hold_V2 exps.np)) ;
 
-  EqProp x y = mkS (mkCl x equal_A2 y) ;
+  EqProp x y = simpleProp (mkS (mkCl x equal_A2 y)) ;
 
   FormalKind formal = {
     cn = mkCN element_N ;
@@ -95,7 +98,7 @@ lin
     } ;
   SuchThatKind ident kind prop = {
     cn = mkCN kind.cn (latexNP ident) ;
-    adv = ccAdv kind.adv (S.mkAdv such_that_Subj prop)
+    adv = ccAdv kind.adv (S.mkAdv such_that_Subj (partProp prop))
     } ;
   AppKind formal exps = {
     cn = mkCN element_N ;
@@ -137,8 +140,8 @@ lin
   BaseHypo = {text = emptyText ; isEmpty = True} ;
   ConsHypo hypo hypos = {text = mkText hypo hypos.text ; isEmpty = False} ;
   
-  BaseProp a b = mkListS a b ;
-  ConsProp a bs = mkListS a bs ;
+  BaseProp a b = mkListS (partProp a) (partProp b) ;
+  ConsProp a bs = mkListS (partProp a) bs ;
 
   BaseProof = emptyText ;
   ConsProof proof proofs = mkText proof proofs ;
@@ -146,9 +149,29 @@ lin
   BaseRule rule = labelText item_Label (mkText rule) ;
   ConsRule rule rules = mkText (labelText "\\item" (mkText rule)) rules ;
 
+-- using Constants
+
+  AdjProp adj exp = simpleProp (mkS (mkCl exp adj)) ;
+  NotAdjProp adj exp = simpleProp (mkS negPol (mkCl exp adj)) ;
+  RelProp rel x y = simpleProp (mkS (mkCl x (mkVP (mkVP rel.ap) (S.mkAdv rel.prep y)))) ;
+  NotRelProp rel x y = simpleProp (mkS negPol (mkCl x (mkVP (mkVP rel.ap) (S.mkAdv rel.prep y)))) ;
+  NounKind noun = {cn = noun ; adv = lin Adv {s = []}} ;
+  NameExp name = name ;
+
 oper
   labelText : Str -> Text -> Text = \label, text ->
     lin Text {s = label ++ "." ++ text.s} ;
+
+  Proposition : Type = {s : S ; isComplex : Bool} ;
+
+  simpleProp : S -> Proposition = \s -> {s = s ; isComplex = False} ;
+  complexProp : S -> Proposition = \s -> {s = s ; isComplex = True} ;
+
+  topProp : Proposition -> S = \prop -> prop.s ;
+  partProp : Proposition -> S = \prop -> case prop.isComplex of {
+    True => parenthS prop.s ;
+    False => prop.s
+    } ;
 
   notionNP : {np : NP ; isPl : Bool} -> {cn : CN ; adv : Adv} -> NP = \idents, kind ->
     let det = case idents.isPl of {
@@ -167,6 +190,8 @@ oper
   latexS : Symb -> S = \x ->
     symb (mkSymb ("$" ++ x.s ++ "$")) ;
 
+  parenthS : S -> S = \s -> M.MarkupS (lin Mark {begin = "(" ; end = ")"}) s ;
+
   by_Prep : Prep = by8means_Prep ;
 
   ccAdv : Adv -> Adv -> Adv = \x, y -> lin Adv {s = x.s ++ y.s} ;
@@ -174,6 +199,7 @@ oper
   item_Label : Str = "\\item" ;
 
 -- non-functor
+  negPol : Pol = E.UncontractedNeg ;
 
   define_V2 : V2 = mkV2 (mkV "define") ;
   assume_VS : VS = mkVS (mkV "assume") ;

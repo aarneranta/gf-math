@@ -1,17 +1,10 @@
 abstract Constants = {
 
 cat
-  Exp ;
-  Kind ;
-  Prop ;
   Noun ;
   Adj ;
+  Rel ;
   Name ;
-
-fun
-  AdjProp : Adj -> Exp -> Prop ;
-  NounKind : Noun -> Kind ;
-  NameExp : Name -> Exp ;
 
 -- lexicon
 ---- TODO: dynamically generated file
@@ -23,5 +16,6 @@ fun
   DkOdd : Adj ;
   DkPrime : Adj ;
   DkZero : Name ;
+  DkDiv : Rel ;
 
 }
