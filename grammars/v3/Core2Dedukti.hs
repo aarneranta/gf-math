@@ -72,7 +72,7 @@ prop2dedukti prop = case prop of
     foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
   ---- still assuming GF fun is Dedukti ident
   GAdjProp (LexAdj adj) exp ->
-    EApp (EIdent (QIdent adj)) (exp2dedukti exp) 
+    EApp (EIdent (QIdent (undk adj))) (exp2dedukti exp) 
 
 hypo2dedukti :: GHypo -> [Hypo]
 hypo2dedukti hypo = case hypo of
@@ -93,7 +93,7 @@ kind2dedukti kind = case kind of
     foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
   ---- still assuming GF fun is Dedukti ident
   GNounKind (LexNoun noun) ->
-    EIdent (QIdent noun)
+    EIdent (QIdent (undk noun))
 
 exp2dedukti :: GExp -> Exp
 exp2dedukti exp = case exp of
@@ -107,7 +107,7 @@ exp2dedukti exp = case exp of
       idents
   ---- still assuming GF fun is Dedukti ident
   GNameExp (LexName name) ->
-    EIdent (QIdent name)
+    EIdent (QIdent (undk name))
 
 proof2dedukti :: GProof -> Exp
 proof2dedukti proof = case proof of

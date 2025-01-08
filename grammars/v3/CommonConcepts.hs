@@ -50,6 +50,17 @@ constants = M.fromList [
   ("Zero", "Name")
   ]
 
+lookupConstant :: String -> Maybe String
 lookupConstant c = M.lookup c constants
+
+-- Dedukti ident X becomes GF ident DkX
+dk :: String -> String
+dk s = "Dk" ++ s
+
+undk :: String -> String
+undk s = case s of
+  'D':'k':c -> c
+  _ -> s
+
 
 

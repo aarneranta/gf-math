@@ -17,11 +17,11 @@ fun
 ---- TODO: dynamically generated file
 
 fun
-  Nat : Noun ;
-  Set : Noun ;
-  Even : Adj ;
-  Odd : Adj ;
-  Prime : Adj ;
-  Zero : Name ;
+  DkNat : Noun ;
+  DkSet : Noun ;
+  DkEven : Adj ;
+  DkOdd : Adj ;
+  DkPrime : Adj ;
+  DkZero : Name ;
 
 }

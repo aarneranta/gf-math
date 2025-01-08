@@ -69,7 +69,7 @@ rule2core rule = case rule of
 exp2coreKind :: Exp -> GKind
 exp2coreKind exp = case exp of
   EIdent ident@(QIdent s) -> case lookupConstant s of  ---- TODO: more high level
-    Just "Noun" -> GNounKind (LexNoun s)
+    Just "Noun" -> GNounKind (LexNoun (dk s))
     _ -> GFormalKind (ident2coreFormal ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
@@ -99,7 +99,7 @@ exp2coreProp exp = case exp of
       EIdent conn | conn == identNeg -> case args of
         [a] -> GNotProp (exp2coreProp a)
       EIdent ident@(QIdent pred) -> case (lookupConstant pred, args) of
-        (Just "Adj", [a]) -> GAdjProp (LexAdj pred) (exp2coreExp a)     
+        (Just "Adj", [a]) -> GAdjProp (LexAdj (dk pred)) (exp2coreExp a)     
         _  ->
           GAppProp (ident2coreFormal ident) (GListExp (map exp2coreExp args))
   EFun _ _ -> case splitType exp of
@@ -123,7 +123,7 @@ exp2coreProp exp = case exp of
 exp2coreExp :: Exp -> GExp
 exp2coreExp exp = case exp of
   EIdent ident@(QIdent s) -> case lookupConstant s of  ---- TODO: more high level
-    Just "Name" -> GNameExp (LexName s)
+    Just "Name" -> GNameExp (LexName (dk s))
     _ -> GFormalExp (ident2coreFormal ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> GAppExp (exp2coreExp fun) (GListExp (map exp2coreExp args))

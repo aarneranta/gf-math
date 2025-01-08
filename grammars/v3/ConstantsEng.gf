@@ -46,12 +46,12 @@ oper
 ---- TODO: dynamically generated file
 
 lin
-  Nat = mkNoun "natural" "number" ;
-  Set = mkNoun "set" ;
-  Even = mkAdj "even" ;
-  Odd = mkAdj "odd" ;
-  Prime = mkAdj "prime" ;
-  Zero = mkName "0" ;
+  DkNat = mkNoun "natural" "number" ;
+  DkSet = mkNoun "set" ;
+  DkEven = mkAdj "even" ;
+  DkOdd = mkAdj "odd" ;
+  DkPrime = mkAdj "prime" ;
+  DkZero = mkName "0" ;
 
 
 }
