@@ -1,14 +1,11 @@
-abstract Core = {
+abstract Core = Constants ** {
 
 flags startcat = Jmt ;
 
 cat
   Jmt ;
-  Exp ;
   [Exp] {1} ;
-  Prop ;
   [Prop] {2} ;
-  Kind ;
   ArgKind ;
   [ArgKind] {1} ;
   Hypo ;
@@ -52,7 +49,7 @@ fun
   NotProp : Prop -> Prop ;
   FalseProp : Prop ;
   AllProp : [ArgKind] -> Prop -> Prop ;
-  ExistProp : [Ident] -> Kind -> Prop -> Prop ; ---- TODO: as AllProp
+  ExistProp : [ArgKind] -> Prop -> Prop ; 
   FormalProp : Formal -> Prop ;
   AppProp : Formal -> [Exp] -> Prop ;
 

@@ -61,15 +61,18 @@ prop2dedukti prop = case prop of
   GNotProp a -> propNeg (prop2dedukti a)
   GIffProp a b -> propEquiv (prop2dedukti a) (prop2dedukti b)
 ----  GAllProp argkinds prop ->
-  GExistProp (GListIdent idents) kind prop ->
-    foldr
-      (\x y ->
-        propSigma (kind2dedukti kind) (EAbs (BVar (VIdent (ident2dedukti x))) y))
-      (prop2dedukti prop)
-      idents
+----  GExistProp (GListIdent idents) kind prop ->
+----    foldr
+----      (\x y ->
+----        propSigma (kind2dedukti kind) (EAbs (BVar (VIdent (ident2dedukti x))) y))
+----      (prop2dedukti prop)
+----      idents
   GEqProp a b -> propEq (exp2dedukti a) (exp2dedukti b)
   GAppProp formal (GListExp exps) ->
     foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
+  ---- still assuming GF fun is Dedukti ident
+  GAdjProp (LexAdj adj) exp ->
+    EApp (EIdent (QIdent adj)) (exp2dedukti exp) 
 
 hypo2dedukti :: GHypo -> [Hypo]
 hypo2dedukti hypo = case hypo of
@@ -88,6 +91,9 @@ kind2dedukti kind = case kind of
             (prop2dedukti prop))
   GAppKind formal (GListExp exps) ->
     foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
+  ---- still assuming GF fun is Dedukti ident
+  GNounKind (LexNoun noun) ->
+    EIdent (QIdent noun)
 
 exp2dedukti :: GExp -> Exp
 exp2dedukti exp = case exp of
@@ -99,6 +105,9 @@ exp2dedukti exp = case exp of
       (\x y -> EAbs (BVar (VIdent (ident2dedukti x))) y)
       (exp2dedukti exp)
       idents
+  ---- still assuming GF fun is Dedukti ident
+  GNameExp (LexName name) ->
+    EIdent (QIdent name)
 
 proof2dedukti :: GProof -> Exp
 proof2dedukti proof = case proof of

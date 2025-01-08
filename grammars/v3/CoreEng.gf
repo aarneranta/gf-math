@@ -1,4 +1,4 @@
-concrete CoreEng of Core =
+concrete CoreEng of Core = ConstantsEng ** 
   open
     SyntaxEng,
     (S=SyntaxEng),
@@ -14,11 +14,8 @@ in {
 
 lincat
   Jmt = Text ;
-  Exp = NP ;
   [Exp] = {np : NP ; isPl : Bool} ;
-  Prop = S ;
   [Prop] = [S] ;
-  Kind = {cn : CN ; adv : Adv} ;
   ArgKind = {cn : CN ; adv : Adv} ;
   [ArgKind] = NP ;
   Hypo = Utt ;
@@ -84,8 +81,8 @@ lin
           (mkVP (mkNP the_Quant (mkCN case_N (S.mkAdv that_Subj prop))))) ;
   AllProp argkinds prop =
     G.ExtAdvS (S.mkAdv for_Prep (mkNP all_Predet argkinds)) prop ;
-  ExistProp idents kind prop =
-    G.SSubjS (mkS (E.ExistsNP (notionNP idents kind))) such_that_Subj prop ;
+  ExistProp argkinds prop =
+    G.SSubjS (mkS (E.ExistsNP argkinds)) such_that_Subj prop ; ---- TODO: sg/pl correctly
   FormalProp f = latexS f ;
   FalseProp = mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N)) ;
   AppProp f exps = mkS (mkCl (latexNP f) hold_V2 exps.np) ;
