@@ -1,16 +1,33 @@
 Conj : Type -> Type -> Type.
 Disj : Type -> Type -> Type.
 Impl : Type -> Type -> Type.
-Nat : Type.
+Neg : Type.
 Zero : Nat.
 Succ : (x : Nat) -> Nat.
-sum : (x : Nat) -> (y : Nat) -> Nat.
+
+def sum : (x : Nat) -> (y : Nat) -> Nat.
+[x] sum x Zero --> x
+[x, y] sum x (Succ y) --> Succ (sum x y).
+
+def prod : (x : Nat) -> (y : Nat) -> Nat.
+[x] prod x Zero --> Zero
+[x, y] prod x (Succ y) --> sum x (prod x y).
+
 gcd : (x : Nat) -> (y : Nat) -> Nat.
+
 Eq : (x : Nat) -> (y : Nat) -> Type.
+eqZero : Eq Zero Zero.
+eqSucc : (x : Nat) -> (y : Nat) -> Eq x y -> Eq (Succ x) (Succ y).
+
 Lt : (x : Nat) -> (y : Nat) -> Type.
-Gt : (x : Nat) -> (y : Nat) -> Type.
+ltZero : (x : Nat) -> Lt Zero (Succ x).
+ltSucc : (x : Nat) -> (y : Nat) -> Lt x y -> Lt (Succ x) (Succ y).
+
+def Gt : (x : Nat) -> (y : Nat) -> Type := x => y => Neg (Disj (Lt y x) (Eq y x)).
+
 Even : (x : Nat) -> Type.
 Odd : (x : Nat) -> Type.
+
 Prime : (x : Nat) -> Type.
 
 
