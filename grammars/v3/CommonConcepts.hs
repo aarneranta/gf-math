@@ -9,14 +9,21 @@ import Core
 type CTree a = Core.Tree a
 type DTree a = Dedukti.AbsDedukti.Tree a
 
+identConj = QIdent "Conj"
+identDisj = QIdent "Disj"
+identImpl = QIdent "Impl"
+identNeg = QIdent "Neg"
+identEquiv = QIdent "Equiv"
+identEq = QIdent "Eq"
+
 -- logical constants in base.dk
 propFalse = EIdent (QIdent "False")
-propAnd x y = EApp (EApp (EIdent (QIdent "Conj")) x) y
-propOr x y = EApp (EApp (EIdent (QIdent "Disj")) x) y
-propImp x y = EApp (EApp (EIdent (QIdent "Impl")) x) y
-propEquiv x y = EApp (EApp (EIdent (QIdent "Equiv")) x) y
-propNot x = EApp (EIdent (QIdent "Neg")) x
-propEquals x y = EApp (EApp (EIdent (QIdent "Eq")) x) y
+propAnd x y = EApp (EApp (EIdent identConj) x) y
+propOr x y = EApp (EApp (EIdent identDisj) x) y
+propImp x y = EApp (EApp (EIdent identImpl) x) y
+propEquiv x y = EApp (EApp (EIdent identEquiv) x) y
+propNeg x = EApp (EIdent identNeg) x
+propEq x y = EApp (EApp (EIdent identEq) x) y
 
 propPi kind pred = EApp (EApp (EIdent (QIdent "Pi")) kind) pred
 propSigma kind pred = EApp (EApp (EIdent (QIdent "Sigma")) kind) pred

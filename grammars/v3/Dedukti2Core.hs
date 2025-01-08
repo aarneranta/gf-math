@@ -37,43 +37,8 @@ jmt2core jmt = case jmt of
       GAxiomJmt
         (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
         (exp2coreProp prop)
-  JRules rules -> GRewriteJmt (GListRule (map rule2core rules))
-  
+  JRules rules -> GRewriteJmt (GListRule (map rule2core rules))  
   _ -> error ("not yet: " ++ printTree jmt)
-{-
-  GAxiomJmt exp (GListHypo hypos) prop ->
-    JStatic
-      (exp2coreIdent exp)
-      (foldr EFun (prop2core prop) (concatMap hypo2core hypos))
-  GThmJmt exp (GListHypo hypos) prop proof ->
-    JDef
-      (exp2coreIdent exp)
-      (MTExp (foldr EFun (prop2core prop) (concatMap hypo2core hypos)))
-      (MEExp (proof2core proof))
-  GDefPropJmt (GListHypo hypos) prop df ->
-    JDef
-      (prop2coreIdent prop)
-      (MTExp (foldr EFun typeProp (concatMap hypo2core hypos)))
-      (MEExp (prop2core df))
-  GDefKindJmt (GListHypo hypos) kind df ->
-    JDef
-      (kind2coreIdent kind)
-      (MTExp (foldr EFun typeType (concatMap hypo2core hypos)))
-      (MEExp (kind2core df))
-  GDefExpJmt (GListHypo hypos) exp kind df ->
-    JDef
-      (exp2coreIdent exp)
-      (MTExp (foldr EFun (kind2core kind) (concatMap hypo2core hypos)))
-      (MEExp (exp2core df))
-  GAxiomPropJmt (GListHypo hypos) prop ->
-    JStatic
-      (prop2coreIdent prop)
-      (foldr EFun typeProp (concatMap hypo2core hypos))
-  GAxiomKindJmt (GListHypo hypos) kind ->
-    JStatic
-      (kind2coreIdent kind)
-      (foldr EFun typeType (concatMap hypo2core hypos))
--}
 
 hypo2core :: Hypo -> GHypo
 hypo2core hypo = case hypo of
@@ -119,17 +84,24 @@ exp2coreProp exp = case exp of
   _ | exp == propFalse -> GFalseProp
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
+      EIdent conn | conn == identConj -> case splitIdent conn exp of
+        exps -> GAndProp (GListProp (map exp2coreProp exps))
+      EIdent conn | conn == identDisj -> case splitIdent conn exp of
+        exps -> GOrProp (GListProp (map exp2coreProp exps))
+      EIdent conn | conn == identImpl -> case args of
+        [a, b] -> GIfProp (exp2coreProp a) (exp2coreProp b) 
+      EIdent conn | conn == identEquiv -> case args of
+        [a, b] -> GIffProp (exp2coreProp a) (exp2coreProp b) 
+      EIdent conn | conn == identEq -> case args of
+        [a, b] -> GEqProp (exp2coreExp a) (exp2coreExp b) 
+      EIdent conn | conn == identNeg -> case args of
+        [a] -> GNotProp (exp2coreProp a)
       EIdent ident ->
         GAppProp (ident2coreFormal ident) (GListExp (map exp2coreExp args))
   EFun _ _ -> case splitType exp of
     (hypos, exp) ->
       GAllProp (GListArgKind (map hypo2coreArgKind hypos)) (exp2coreProp exp)
 {-
-  GAndProp (GListProp props) -> foldl1 propAnd (map prop2core props)
-  GOrProp (GListProp props) -> foldl1 propOr (map prop2core props)
-  GIfProp a b -> propImp (prop2core a) (prop2core b)
-  GNotProp a -> propNot (prop2core a)
-  GIffProp a b -> propEquiv (prop2core a) (prop2core b)
   GAllProp (GListIdent idents) kind prop ->
     foldr
       (\x y ->
@@ -142,7 +114,6 @@ exp2coreProp exp = case exp of
         propSigma (kind2core kind) (EAbs (BVar (VIdent (ident2core x))) y))
       (prop2core prop)
       idents
-  GEqProp a b -> propEquals (exp2core a) (exp2core b)
 -}
 
 exp2coreExp :: Exp -> GExp
@@ -220,6 +191,13 @@ splitPatt patt = case patt of
     (_, [])   -> (fun, [arg])
     (f, args) -> (f, args ++ [arg])
   _ -> (patt, [])
+
+splitIdent :: QIdent -> Exp -> [Exp]
+splitIdent conn exp = case splitApp exp of
+  (EIdent fun, [a, b]) | fun == conn -> case splitIdent conn a of
+    [] -> [a, b]
+    cs -> cs ++ [b]
+  _ -> []
 
 wildIdent :: GIdent
 wildIdent = GStrIdent (GString "_") ---- to be eliminated?

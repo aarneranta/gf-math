@@ -58,7 +58,7 @@ prop2dedukti prop = case prop of
   GAndProp (GListProp props) -> foldl1 propAnd (map prop2dedukti props)
   GOrProp (GListProp props) -> foldl1 propOr (map prop2dedukti props)
   GIfProp a b -> propImp (prop2dedukti a) (prop2dedukti b)
-  GNotProp a -> propNot (prop2dedukti a)
+  GNotProp a -> propNeg (prop2dedukti a)
   GIffProp a b -> propEquiv (prop2dedukti a) (prop2dedukti b)
 ----  GAllProp argkinds prop ->
   GExistProp (GListIdent idents) kind prop ->
@@ -67,7 +67,7 @@ prop2dedukti prop = case prop of
         propSigma (kind2dedukti kind) (EAbs (BVar (VIdent (ident2dedukti x))) y))
       (prop2dedukti prop)
       idents
-  GEqProp a b -> propEquals (exp2dedukti a) (exp2dedukti b)
+  GEqProp a b -> propEq (exp2dedukti a) (exp2dedukti b)
   GAppProp formal (GListExp exps) ->
     foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
 
