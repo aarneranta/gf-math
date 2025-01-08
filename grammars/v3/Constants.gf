@@ -1,13 +1,6 @@
-abstract Constants = {
+abstract Constants = ConstantBase ** {
 
-cat
-  Noun ;
-  Adj ;
-  Rel ;
-  Name ;
-
--- lexicon
----- TODO: dynamically generated file
+-- replace by a dynamically generated file
 
 fun
   DkNat : Noun ;
