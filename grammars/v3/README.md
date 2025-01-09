@@ -2,7 +2,7 @@
 
 (c) Aarne Ranta 2025
 
-## Informath, Core, and Dedukti
+## Informath, Core, Dedukti, and ForTheL
 
 This directory contains
 - Core, an English CNL for mathematics
@@ -28,7 +28,14 @@ In the current set-up, the translations go between Core and Dedukti, ignoring th
 
 ![Informath](./informath-dedukti-core.png)
 
-This directory covers the "formal" and "informal" boxes and "informalization" and "formalization" operations. ForTheL+ refers to the GF implementation of ForTheL that adds some extensions and is open for new ones to cover more of mathematical language.
+This directory covers the "formal" and "informal" boxes and "informalization" and "formalization" operations. ForTheL+ refers to the GF implementation of ForTheL that adds some extensions and is open for new ones to cover more of mathematical language.It differs from the original ForTheL in a few ways:
+
+- **Grammaticality**: ForTheL+ follows the agreement rules of English (and other languages) instead of allowing free variation of e.g. singular and plural forms; this makes it better usable as the target of informalization.
+- **Ambiguity**: ForTheL prevents syntactic ambiguities by means of devices such as brackets. ForTheL+ tries to capture all syntactic ambiguities that exist in natural language, and delegates it to the logical framework to resolve them by semantic clues. This is in line with the findings in [*The language of Mathematics*](https://link.springer.com/book/10.1007/978-3-642-37012-0) by Mohan Ganesalingam.
+- **LaTeX**: The original ForTheL is plain text, whereas ForTheL+ (like some other later versions of ForTheL) allows the full use of LaTeX similar to usual mathematical documents; this is one of the
+- **Extensions**: ForTheL+ is open for extensions with new forms of expression when encountered in mathematical text. Because of the design of Informath, every extension should be equipped with a new semantic rule that converts it to Core.
+- **Omissions**: ForTheL+ is not guaranteed to cover all of the original ForTheL. In particular, constructs that differ from grammatical English are usually omitted.
+- **Multilinguality**: ForTheL+ has several concrete syntaxes sharing a common abstract syntax. 
 
 ## The design of Core
 
@@ -63,3 +70,35 @@ The following programming languages have been used so far in Informath:
 - **Haskell**: used for writing conversions between formal and informal, via embedded GF grammars in the GADT format (Generalized Algebraic Datatypes) supporting almost compositional functions.
 - **BNFC**: [BNF Converter](https://bnfc.digitalgrammars.com/), used for implementing Dedukti. The implementation includes a parser, a printer, and an abstract syntax in Haskell, all generated from [this BNF grammar](./typetheory/Dedukti.bnf).
 - **Python**: used for generating GF lexica from term dictionaries, in particular [Wikidata](https://www.wikidata.org/). The lexica are currently available as a part of ForTheL+, but the English version will have a connection to Core as well. 
+
+## Usage
+
+It is too early to document the usage of this software, because its user interface has not yet stabilized.
+The emerging interface is in the file `Informath.hs`. Its two main modes are interactive shell and conversion of Dedukti files to Core:
+```
+  $ runghc Informath.hs <file.dk>?
+```
+The shell has following functionalities:
+```
+  > <core_jmt>  # convert Core to Dedukti
+  > !<dedumti_jmt>  # convert Dedukti to Core
+  > gr  # generate random Core jment and convert to Dedukti
+```
+In order for this to work, you need to compile the Dedukti and the Core grammars:
+```
+  $ make Core.pgf
+  $ make Dedukti
+  $ ln -s typetheory/Dedukti
+```
+An example of readily available test case is
+```
+  $ runghc Informath.hs nat.dk
+```
+If you pipe this to `grep -v "#"`, you can see the bare Core output.
+
+## ToDo
+
+- complete the two conversions (Dedukti2Core.hs already close to complete, but can make better use of the Exp/Kind/Prop distinction)
+- make the lexicon part (files Constants*) dynamically generatable; now you need to edit all these files if you want to change the lexicon and recompile Core.pgf
+- link Core with ForTheL+ 
+- for the purpose of autoformalization: find or build conversions from Dedukti to the back-end proof systems; they are deemed to be partial, and we plan to start with just definitions and theorem statements, postponing the proofs
