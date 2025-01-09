@@ -9,7 +9,7 @@ This directory contains
 - a grammar, parser, and generator for the proof system [Dedukti](https://deducteam.github.io/)
 - a translator from Core to Dedukti and vice-versa
 
-Dedukti is a minimalistic logical framework aimed as an interlingual between different proof systems such as Agda, Coq, Isabelle, and Lean.
+[Dedukti](https://deducteam.github.io/) is a minimalistic logical framework aimed as an interlingual between different proof systems such as Agda, Coq, Isabelle, and Lean.
 The purpose is to help share formalizations between these systems.
 Dedukti comes with an efficient proof checker and evaluator.
 Translations from many other proof system to Dedukti have been built, and this work is ongoing.
@@ -24,11 +24,11 @@ Due to its simplicity and expressivity, together with an existing implementation
 
 In the same way, the Core language defined in this directory is meant to be the "core abstract syntax" of Informath.
 
-In the current set-up, the translations go between Core and Dedukti, ignoring the extensions shown in the above picture. This may indeed be the best way to go. On the type theory side, translations have already been established between other frameworks and Dedukti, and there is no need to extend the interlingual type theory for the purpose of these translations. On the natural language side, the option we will investigate is to keep Core as "extensions" as two separate languages, where the extensions are provided by the [ForTheL-based grammar](../forthel/) in "version 2" of this project. This gives us an updated picture of Informath:
+In the current set-up, the translations go between Core and Dedukti, ignoring the extensions shown in the above picture. This may indeed be the best way to go. On the type theory side, translations have already been established between other frameworks and Dedukti, and there is no need to extend the interlingual type theory for the purpose of these translations. On the natural language side, the option we will investigate is to keep Core as "extensions" as two separate languages, where the extensions are provided by the [ForTheL](http://nevidal.org/download/forthel.pdf)-based [grammar](../forthel/) in "version 2" of this project. This gives us an updated picture of Informath:
 
 ![Informath](./informath-dedukti-core.png)
 
-This directory covers the "formal" and "informal" boxes and "informalization" and "formalization" operations.
+This directory covers the "formal" and "informal" boxes and "informalization" and "formalization" operations. ForTheL+ refers to the GF implementation of ForTheL that adds some extensions and is open for new ones to cover more of mathematical language.
 
 ## The design of Core
 
@@ -46,6 +46,20 @@ The following propertes are, however, *not* expected:
 - **Type correctness**: Core text can be semantically invalid, leading to syntactically correct Dedukti code that is rejected by Dedukti's type checker.
 - **Fluency**: Core text can be repetitive and even hard to read; making it better is delegated to ForTheL+ via the NLG component.
 - **Compositionality**: The translation between Dedukti and Core is not compositional in the strict sense of GF, as the two languages have different abstract syntaxes. For example, Core supports the aggregation of conjuncts and function argument lists, without which it would be even less readable; and the basic type system is richer than in Dedukti, for instance distinguishing between expressions that represent kinds, objects, and propositions.
+- **Natural language input**: while the grammar of Core is reversible, it is tedious to write Core. It is intended to be produced indirectly: by conversion from Dedukti on one hand and ForTheL+ on the other.
+- **Multilinguality**: Core has been implemented by GF RGL and is therefore ready for concrete syntax in other languages than English. But since the purpose of Core is not to be the end point, we deem it sufficient to build CoreEng and cover other languages via ForTheL+.
 
+The rationale of this design is modularity and an optimal use of existing resources:
 
+- Type checking is delegated to Dedukti.
+- Conversions to different frameworks are also delegated to Dedukti.
+- Variation of natural language input and output is delegated to ForTheL+.
+- Support for different natural languages is also delegated to ForTheL+ (and, ultimately, to GF RGL).
 
+## Implementation
+
+The following programming languages have been used so far in Informath:
+- **GF**: [Grammatical Framework](https://www.grammaticalframework.org/) used for implementing Core and ForTheL+, maximally using its Resource Grammar Library (RGL).
+- **Haskell**: used for writing conversions between formal and informal, via embedded GF grammars in the GADT format (Generalized Algebraic Datatypes) supporting almost compositional functions.
+- **BNFC**: [BNF Converter](https://bnfc.digitalgrammars.com/), used for implementing Dedukti. The implementation includes a parser, a printer, and an abstract syntax in Haskell, all generated from [this BNF grammar](./typetheory/Dedukti.bnf).
+- **Python**: used for generating GF lexica from term dictionaries, in particular [Wikidata](https://www.wikidata.org/). The lexica are currently available as a part of ForTheL+, but the English version will have a connection to Core as well. 
