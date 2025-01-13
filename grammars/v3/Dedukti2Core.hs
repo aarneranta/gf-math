@@ -39,6 +39,8 @@ jmt2core jmt = case jmt of
       GAxiomExpJmt
         (GListHypo (map hypo2core hypos)) (ident2coreExp ident)
         (exp2coreKind kind)
+  JInj ident mtyp mexp ->
+    jmt2core (JDef ident mtyp mexp) ---- round trip does not work
   JThm ident (MTExp typ) (MEExp exp) -> case splitType typ of
     (hypos, prop) -> 
       GThmJmt

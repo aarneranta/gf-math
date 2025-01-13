@@ -48,8 +48,14 @@ jmt2dedukti jment = case jment of
     JStatic
       (exp2deduktiIdent exp)
       (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos))
----  GRewriteJmt patt exp -> case exp2deduktiPatt patt of 
----    (idents, patt) -> JRewr [RRule idents patt (exp2dedukti exp)]
+  GRewriteJmt (GListRule rules) -> JRules (map rule2dedukti rules)
+
+rule2dedukti :: GRule -> Rule
+rule2dedukti rule = case rule of
+----  GRewriteRule (GListIdent idents) patt exp ->
+----    RRule (idents) (exp2deduktiPatt patt) (exp2dedukti exp)
+  GNoVarRewriteRule patt exp ->
+    rule2dedukti (GRewriteRule (GListIdent []) patt exp)
 
 prop2dedukti :: GProp -> Exp
 prop2dedukti prop = case prop of
