@@ -1,14 +1,12 @@
 all: Core.pgf Dedukti
 
-.PHONY: all Core.pgf
+.PHONY: all Core.pgf Dedukti
 
 Core.pgf:
 	gf --make -output-format=haskell -haskell=lexical --haskell=gadt -lexical=Name,Noun,Adj,Rel,Fun,Label CoreEng.gf
 
 Dedukti:
-	cd typetheory
-	bnfc -m -p Dedukti --haskell-gadt Dedukti.bnf
-	cd ..
+	cd typetheory ; bnfc -m -p Dedukti --haskell-gadt Dedukti.bnf ; make
 
 
 

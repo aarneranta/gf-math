@@ -68,6 +68,7 @@ lin
 
   PropHypo prop = mkUtt (mkImp (mkVP assume_VS (topProp prop))) ; 
   VarsHypo idents kind = G.ImpP3 idents.np (mkVP (useKind kind)) ; 
+  BareVarsHypo idents = G.ImpP3 idents.np (mkVP arbitrary_A) ;
 
   AppExp exp exps = mkNP exp (S.mkAdv applied_to_Prep exps.np) ;
   AbsExp idents exp =
@@ -216,6 +217,7 @@ oper
   map_V3 = mkV3 (mkV "map") noPrep to_Prep ;
   say_VS = mkVS I.say_V ;
   hold_V2 = mkV2 I.hold_V for_Prep ;
+  arbitrary_A = mkA "arbitrary" ;
 
   equal_A2 : A2 = mkA2 (mkA "equal") to_Prep ;
   less_A2 : A2 = mkA2 (mkA "less") than_Prep ;

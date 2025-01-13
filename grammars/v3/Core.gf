@@ -39,6 +39,7 @@ fun
 
   PropHypo : Prop -> Hypo ;
   VarsHypo : [Ident] -> Kind -> Hypo ;
+  BareVarsHypo : [Ident] -> Hypo ;  -- needed in proofs: let x be arbitrary
 
   AppExp : Exp -> [Exp] -> Exp ;
   AbsExp : [Ident] -> Exp -> Exp ;

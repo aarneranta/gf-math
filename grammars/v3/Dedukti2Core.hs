@@ -50,7 +50,7 @@ jmt2core jmt = case jmt of
   _ -> error ("not yet: " ++ printTree jmt)
  where
    cat :: QIdent -> String
-   cat ident@(QIdent c) = maybe "Label" id (lookupConstant c) 
+   cat ident@(QIdent c) = maybe "Name" id (lookupConstant c) 
 
 hypo2core :: Hypo -> GHypo
 hypo2core hypo = case hypo of
@@ -153,7 +153,7 @@ exp2coreProof exp = case exp of
     (fun, args) ->
       GAppProof (GListProof (map exp2coreProof args)) (exp2coreExp fun)
   EAbs _ _ -> case splitAbs exp of
-    (binds, body) -> GAbsProof (GListHypo (map (hypo2core . bind2hypo) binds)) (exp2coreProof body)
+    (binds, body) -> GAbsProof (GListHypo (map bind2coreHypo binds)) (exp2coreProof body)
 
 patt2coreExp :: Patt -> GExp
 patt2coreExp patt = case patt of
@@ -239,8 +239,12 @@ wildIdent = GStrIdent (GString "_") ---- to be eliminated?
 wildFormal :: GFormal
 wildFormal = GStrFormal (GString "_") ---- to be eliminated?
 
-bind2hypo :: Bind -> Hypo
-bind2hypo bind = case bind of
-  BTyped VWild exp -> HExp exp
-  BTyped var exp -> HVarExp var exp
-  _ -> error ("cannot infer type of binding")
+-- needed in proofs by abstraction
+bind2coreHypo :: Bind -> GHypo
+bind2coreHypo bind = case bind of
+  BTyped VWild exp ->
+    GPropHypo (exp2coreProp exp)  
+  BTyped var exp ->
+    GVarsHypo (GListIdent [var2core var]) (exp2coreKind exp)  
+  BVar var ->  
+    GBareVarsHypo (GListIdent [var2core var])

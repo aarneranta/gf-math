@@ -30,6 +30,8 @@ Nat : Set.
 Zero : Elem Nat.
 Succ : Elem Nat -> Elem Nat.
 
+def 0 : Nat := Zero.
+
 Even : Elem Nat -> Prop.
 Odd : Elem Nat -> Prop.
 
