@@ -39,34 +39,37 @@ loop gr randoms n = do
   ss <- getLine
   case ss of
     '?':s -> processCoreJmt gr s
-    "gr" -> do
-      let t = randoms !! n
-      putStrLn $ showExpr [] t
-      putStrLn $ linearize gr english t
-      let d = jmt2dedukti (fg t)
-      putStrLn $ printTree d
-    _ -> processDeduktiJmt gr ss
+    "gr"  -> processCoreJmtTree gr (randoms !! n)
+    '=':s -> roundtripDeduktiJmt gr s   
   loop gr randoms (n+1)
-
-processDeduktiJmt :: PGF -> String -> IO ()
-processDeduktiJmt gr cs = do
-        case pJmt (myLexer cs) of
-          Bad e -> putStrLn ("error: " ++ e)
-          Ok t -> do
-            putStrLn $ show t
-            let gft = gf $ jmt2core t
-            putStrLn $ showExpr [] gft
-            putStrLn $ linearize gr english gft
 
 processDeduktiModule :: PGF -> String -> IO ()
 processDeduktiModule gr s = do
   case pModule (myLexer s) of
     Bad e -> putStrLn ("error: " ++ e)
-    Ok (MJmts jmts) -> flip mapM_ jmts $ \t -> do
-      putStrLn $ ("# " ++ show t)
-      let gft = gf $ jmt2core t
-      putStrLn $ ("# " ++ showExpr [] gft)
-      putStrLn $ linearize gr english gft
+    Ok (MJmts jmts) -> flip mapM_ jmts $ processDeduktiJmtTree gr
+
+processDeduktiJmt :: PGF -> String -> IO ()
+processDeduktiJmt gr cs = case pJmt (myLexer cs) of
+  Bad e -> putStrLn ("error: " ++ e)
+  Ok t -> processDeduktiJmtTree gr t
+
+roundtripDeduktiJmt :: PGF -> String -> IO ()
+roundtripDeduktiJmt gr cs = case pJmt (myLexer cs) of
+  Bad e -> putStrLn ("error: " ++ e)
+  Ok t -> do
+    putStrLn $ "#Dedukti: " ++ show t
+    let gft = gf $ jmt2core t
+    putStrLn $ "#Core: " ++ showExpr [] gft
+    let lin = linearize gr english gft
+    processCoreJmt gr lin
+
+processDeduktiJmtTree :: PGF -> Jmt -> IO ()
+processDeduktiJmtTree gr t = do 
+  putStrLn $ "#Dedukti: " ++ show t
+  let gft = gf $ jmt2core t
+  putStrLn $ "#Core: " ++ showExpr [] gft
+  putStrLn $ linearize gr english gft
 
 processCoreJmt :: PGF -> String -> IO ()
 processCoreJmt gr s = do
@@ -75,9 +78,12 @@ processCoreJmt gr s = do
   case ts of
     [] -> putStrLn ("NO PARSE: " ++ ls)
     _:tt -> do
-      if (length tt > 0) then (putStrLn "AMBIGUOUS") else return ()
-      flip mapM_ ts $ \t -> do
-        putStrLn $ showExpr [] t
-        let d = jmt2dedukti (fg t)
-        putStrLn $ printTree d
+      if (length tt > 0) then (putStrLn "#AMBIGUOUS") else return ()
+      flip mapM_ ts $ processCoreJmtTree gr
 
+processCoreJmtTree :: PGF -> Expr -> IO ()
+processCoreJmtTree gr t = do
+  putStrLn $ "#Core: " ++ showExpr [] t
+  putStrLn $ linearize gr english t
+  let d = jmt2dedukti (fg t)
+  putStrLn $ printTree d
