@@ -95,8 +95,8 @@ The emerging interface is in the file `Informath.hs`. Its two main modes are int
 ```
 The shell has following functionalities:
 ```
-  > <core_jmt>  # convert Core to Dedukti
-  > !<dedumti_jmt>  # convert Dedukti to Core
+  > ?<core_jmt>  # convert Core to Dedukti
+  > <dedumti_jmt>  # convert Dedukti to Core
   > gr  # generate random Core jment and convert to Dedukti
 ```
 In order for this to work, you need to compile the Dedukti and the Core grammars:

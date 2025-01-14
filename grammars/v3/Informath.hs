@@ -36,22 +36,16 @@ main = do
 loop :: PGF -> [Expr] -> Int -> IO ()
 loop gr randoms n = do
   putStr "> "
-  s <- getLine
-  let ts = parse gr english jmt (lextex s)
-  case ts of
-    t:tt -> do
+  ss <- getLine
+  case ss of
+    '?':s -> processCoreJmt gr s
+    "gr" -> do
+      let t = randoms !! n
       putStrLn $ showExpr [] t
+      putStrLn $ linearize gr english t
       let d = jmt2dedukti (fg t)
       putStrLn $ printTree d
-    _ -> case s of
-      "gr" -> do
-        let t = randoms !! n
-        putStrLn $ showExpr [] t
-        putStrLn $ linearize gr english t
-        let d = jmt2dedukti (fg t)
-        putStrLn $ printTree d
-      '!':cs -> processDeduktiJmt gr cs
-      _ -> putStrLn "no parse"
+    _ -> processDeduktiJmt gr ss
   loop gr randoms (n+1)
 
 processDeduktiJmt :: PGF -> String -> IO ()
@@ -64,7 +58,6 @@ processDeduktiJmt gr cs = do
             putStrLn $ showExpr [] gft
             putStrLn $ linearize gr english gft
 
-
 processDeduktiModule :: PGF -> String -> IO ()
 processDeduktiModule gr s = do
   case pModule (myLexer s) of
@@ -74,3 +67,17 @@ processDeduktiModule gr s = do
       let gft = gf $ jmt2core t
       putStrLn $ ("# " ++ showExpr [] gft)
       putStrLn $ linearize gr english gft
+
+processCoreJmt :: PGF -> String -> IO ()
+processCoreJmt gr s = do
+  let ls = lextex s
+  let ts = parse gr english jmt ls
+  case ts of
+    [] -> putStrLn ("NO PARSE: " ++ ls)
+    _:tt -> do
+      if (length tt > 0) then (putStrLn "AMBIGUOUS") else return ()
+      flip mapM_ ts $ \t -> do
+        putStrLn $ showExpr [] t
+        let d = jmt2dedukti (fg t)
+        putStrLn $ printTree d
+

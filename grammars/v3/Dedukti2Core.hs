@@ -50,9 +50,9 @@ jmt2core jmt = case jmt of
     jmt2core (JStatic ident typ)
   JRules rules -> GRewriteJmt (GListRule (map rule2core rules))  
   _ -> error ("not yet: " ++ printTree jmt)
- where
-   cat :: QIdent -> String
-   cat ident@(QIdent c) = maybe "Name" id (lookupConstant c) 
+
+cat :: QIdent -> String
+cat ident@(QIdent c) = maybe "Label" id (lookupConstant c) 
 
 hypo2core :: Hypo -> GHypo
 hypo2core hypo = case hypo of
@@ -108,6 +108,16 @@ exp2coreProp exp = case exp of
         [a, b] -> GIfProp (exp2coreProp a) (exp2coreProp b) 
       EIdent conn | conn == identEquiv -> case args of
         [a, b] -> GIffProp (exp2coreProp a) (exp2coreProp b) 
+      EIdent conn | conn == identSigma -> case args of
+        [kind, EAbs bind prop] ->
+          GExistProp
+            (GListArgKind [hypo2coreArgKind (HVarExp (bind2var bind) kind)])
+            (exp2coreProp prop)
+      EIdent conn | conn == identPi -> case args of
+        [kind, EAbs bind prop] ->
+          GAllProp
+            (GListArgKind [hypo2coreArgKind (HVarExp (bind2var bind) kind)])
+            (exp2coreProp prop)
       EIdent conn | conn == identNeg -> case args of
         [a] -> GNotProp (exp2coreProp a)
       EIdent ident@(QIdent pred) -> case (lookupConstant pred, args) of
@@ -118,20 +128,6 @@ exp2coreProp exp = case exp of
   EFun _ _ -> case splitType exp of
     (hypos, exp) ->
       GAllProp (GListArgKind (map hypo2coreArgKind hypos)) (exp2coreProp exp)
-{-
-  GAllProp (GListIdent idents) kind prop ->
-    foldr
-      (\x y ->
-        propPi (kind2core kind) (EAbs (BVar (VIdent (ident2core x))) y))
-      (prop2core prop)
-      idents
-  GExistProp (GListIdent idents) kind prop ->
-    foldr
-      (\x y ->
-        propSigma (kind2core kind) (EAbs (BVar (VIdent (ident2core x))) y))
-      (prop2core prop)
-      idents
--}
 
 exp2coreExp :: Exp -> GExp
 exp2coreExp exp = case exp of
@@ -141,8 +137,7 @@ exp2coreExp exp = case exp of
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent ident@(QIdent f) -> case (lookupConstant f, args) of
-        (Just "Fun", [a]) -> GFunExp (LexFun (dk f)) (exp2coreExp a)     
-        (Just "Fun", [a, b]) -> GFun2Exp (LexFun (dk f)) (exp2coreExp a) (exp2coreExp b)
+        (Just "Fun", exps) -> GFunListExp (LexFun (dk f)) (GListExp (map exp2coreExp exps))     
         _ -> GAppExp (exp2coreExp fun) (GListExp (map exp2coreExp args))
       _ -> GAppExp (exp2coreExp fun) (GListExp (map exp2coreExp args))
   EAbs _ _ -> case splitAbs exp of
@@ -250,3 +245,10 @@ bind2coreHypo bind = case bind of
     GVarsHypo (GListIdent [var2core var]) (exp2coreKind exp)  
   BVar var ->  
     GBareVarsHypo (GListIdent [var2core var])
+
+-- used in quantified propositions
+bind2var :: Bind -> Var
+bind2var bind = case bind of
+  BVar v -> v
+  BTyped v _ -> v
+

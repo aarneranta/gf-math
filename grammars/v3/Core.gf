@@ -79,8 +79,7 @@ fun
   NotRelProp : Rel -> Exp -> Exp -> Prop ;
   NounKind : Noun -> Kind ;
   NameExp : Name -> Exp ;
-  FunExp : Fun -> Exp -> Exp ;
-  Fun2Exp : Fun -> Exp -> Exp -> Exp ;
+  FunListExp : Fun -> [Exp] -> Exp ;
   LabelExp : Label -> Exp ;
 
 }

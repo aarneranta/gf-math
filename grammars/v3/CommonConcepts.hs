@@ -16,6 +16,8 @@ identDisj = QIdent "Disj"
 identImpl = QIdent "Impl"
 identNeg = QIdent "Neg"
 identEquiv = QIdent "Equiv"
+identSigma = QIdent "Sigma"
+identPi = QIdent "Pi"
 
 -- logical constants in base.dk
 propFalse = EIdent (QIdent "False")
@@ -25,8 +27,8 @@ propImp x y = EApp (EApp (EIdent identImpl) x) y
 propEquiv x y = EApp (EApp (EIdent identEquiv) x) y
 propNeg x = EApp (EIdent identNeg) x
 
-propPi kind pred = EApp (EApp (EIdent (QIdent "Pi")) kind) pred
-propSigma kind pred = EApp (EApp (EIdent (QIdent "Sigma")) kind) pred
+propPi kind pred = EApp (EApp (EIdent identPi) kind) pred
+propSigma kind pred = EApp (EApp (EIdent identSigma) kind) pred
 
 -- built-in types
 typeProp = EIdent (QIdent "Prop")
@@ -53,6 +55,4 @@ undk :: String -> String
 undk s = case s of
   'D':'k':'_':c -> c
   _ -> s
-
-
 

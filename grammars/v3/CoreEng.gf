@@ -156,8 +156,7 @@ lin
   NotRelProp rel x y = simpleProp (mkS negPol (mkCl x (mkVP (mkVP rel.ap) (S.mkAdv rel.prep y)))) ;
   NounKind noun = {cn = noun ; adv = lin Adv {s = []}} ;
   NameExp name = name ;
-  FunExp f exp = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep exp)) ;
-  Fun2Exp f x y = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep (mkNP and_Conj x y))) ;
+  FunListExp f exps = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep exps.np)) ;
   LabelExp label = label ;
 
 oper
@@ -213,7 +212,7 @@ oper
   applied_to_Prep : Prep = mkPrep "applied to" ;
   defined_as_Prep : Prep = mkPrep "defined as" ;
   function_N : N = mkN "function" ;
-  basic_type_CN : CN = mkCN (mkA "basic") (mkN "basic") ;
+  basic_type_CN : CN = mkCN (mkA "basic") (mkN "type") ;
   map_V3 = mkV3 (mkV "map") noPrep to_Prep ;
   say_VS = mkVS I.say_V ;
   hold_V2 = mkV2 I.hold_V for_Prep ;
