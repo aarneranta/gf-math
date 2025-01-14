@@ -1,0 +1,52 @@
+-- a grammar for a minimal fragment of Agda
+
+-- layout toplevel ;
+-- layout "where" ;
+
+entrypoints Module, Jmt, Exp ;
+
+MJmts. Module ::= [Jmt] ;
+
+terminator Jmt "" ;
+
+comment "{-" "-}" ;
+comment "--" ;
+
+JTyp.  Jmt ::= Typing ;
+JDef.  Jmt ::= Patt "=" Exp ;
+JData. Jmt ::= "data" AIdent [Hypo] ":" Exp "where" [Typing] ; --- not connected to constructor defs
+JPost. Jmt ::= "postulate" AIdent [Hypo] ":" Exp  ;
+
+TTyp. Typing ::= AIdent [Hypo] ":" Exp ;
+
+terminator Typing "" ;
+
+EIdent.  Exp9 ::= AIdent ;
+EApp.    Exp5 ::= Exp5 Exp6 ;
+EAbs.    Exp2 ::= "\\" Bind "->" Exp2 ;
+EFun.    Exp1 ::= Hypo "->" Exp1 ;
+
+coercions Exp 9 ;
+
+BVar.   Bind ::= [Var] ;
+BTyped. Bind ::= [Var] ":" Exp3 ;
+
+VIdent.  Var ::= AIdent ;
+VWild.   Var ::= "_" ;
+
+separator nonempty Var "" ;
+
+HExp.    Hypo ::= Exp3 ;
+HVarExp. Hypo ::=  "(" [Var] ":" Exp ")" ;
+HBracketVarExp. Hypo ::= "{" [Var] ":" Exp3 ")" ;
+
+separator Hypo "" ;
+
+PVar.   Patt3 ::= Var ;
+PBracket. Patt3 ::= "{" Patt "}" ;
+PApp.   Patt1 ::= Patt1 Patt2 ;
+
+coercions Patt 3 ;
+
+token AIdent (letter | digit | '_' | '!' | '?' | '\'' | '-')+
+
