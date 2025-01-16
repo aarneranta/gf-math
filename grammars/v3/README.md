@@ -112,9 +112,22 @@ An example of readily available test case is
 ```
 If you pipe this to `grep -v "#"`, you can see the bare Core output.
 
+## Creating lexical rules
+
+The lexicon part (files Constants*) is expected to give verbalizations to defined constants in .dk files. This part can be dynamically generated with commands
+```
+  $ runghc MkConstants <file>.dkgf
+  $ make Core.pgf
+```
+which for instance from [nat.dkgf](./nat.dkgf) generates three files:
+- [Constants.hs](./Constants.hs)
+- [Constants.gf](./Constants.gf)
+- [ConstantsEng.gf](./ConstantsEng.gf)
+
+and compiles Core.pgf with them. Some more information is given in the file [MkConstants.hs](./MkConstants.hs) and will also appear here when the process has stabilized.
+
 ## ToDo
 
-- complete the two conversions (Dedukti2Core.hs already close to complete, but can make better use of the Exp/Kind/Prop distinction)
-- make the lexicon part (files Constants*) dynamically generatable; now you need to edit all these files if you want to change the lexicon and recompile Core.pgf
+- complete the two conversions ( close to complete, but can make better use of the Exp/Kind/Prop distinction)
 - link Core with ForTheL+ 
 - for the purpose of autoformalization: find or build conversions from Dedukti to the back-end proof systems; they are deemed to be partial, and we plan to start with just definitions and theorem statements, postponing the proofs

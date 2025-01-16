@@ -1,0 +1,17 @@
+Type Noun type
+Nat Noun natural number
+Set Noun set
+Even Adj even
+Odd Adj odd
+Prime Adj prime
+Zero Name = latexName "0"
+Div Rel divisible by
+Eq Rel equal to
+Lt Rel less than
+Gt Rel greater than
+Succ Fun successor
+sum Fun sum
+prod Fun product
+gcd Fun greatest common divisor
+eqZerp Label = mkLabel "equality of zero"
+eqSucc Label = mkLabel "equality of successors"
