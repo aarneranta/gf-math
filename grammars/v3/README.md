@@ -126,8 +126,17 @@ which for instance from [nat.dkgf](./nat.dkgf) generates three files:
 
 and compiles Core.pgf with them. Some more information is given in the file [MkConstants.hs](./MkConstants.hs) and will also appear here when the process has stabilized.
 
+## Generating Agda
+
+There is now a simple generation of Agda from Dedukti. At the moment, it is only reliable for generating Agda "postulates". The usage is
+```
+  $ make Agda               # at the first time
+  $ ln -s typetheory/Agda
+  $ runghc Dedukti2Agda.hs <file>.dk | grep postulate
+```
+The result from [nat.dk](./nat.dk) typechecks in Agda.
+
 ## ToDo
 
 - complete the two conversions ( close to complete, but can make better use of the Exp/Kind/Prop distinction)
 - link Core with ForTheL+ 
-- for the purpose of autoformalization: find or build conversions from Dedukti to the back-end proof systems; they are deemed to be partial, and we plan to start with just definitions and theorem statements, postponing the proofs

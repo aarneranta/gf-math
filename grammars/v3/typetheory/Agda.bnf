@@ -1,25 +1,26 @@
 -- a grammar for a minimal fragment of Agda
+-- to be used for translations from Dedukti
+-- rules not needed for this purpose are commented out with --+
 
--- layout toplevel ;
--- layout "where" ;
+layout toplevel ;
+--+ layout "where" ;
 
 entrypoints Module, Jmt, Exp ;
-
-MJmts. Module ::= [Jmt] ;
-
-terminator Jmt "" ;
 
 comment "{-" "-}" ;
 comment "--" ;
 
-JTyp.  Jmt ::= Typing ;
-JDef.  Jmt ::= Patt "=" Exp ;
-JData. Jmt ::= "data" AIdent [Hypo] ":" Exp "where" [Typing] ; --- not connected to constructor defs
-JPost. Jmt ::= "postulate" AIdent [Hypo] ":" Exp  ;
+MJmts. Module ::= [Jmt] ;
 
-TTyp. Typing ::= AIdent [Hypo] ":" Exp ;
+JTyp.  Jmt ::= AIdent [Hypo] ":" Exp ";" ;
+JDef.  Jmt ::= Patt "=" Exp ";" ;
+--+ JData. Jmt ::= "data" AIdent [Hypo] ":" Exp "where" "{" [Typing] "}" ;
+JPost. Jmt ::= "postulate" AIdent ":" Exp ";" ;
 
-terminator Typing "" ;
+terminator Jmt "" ;
+
+--+ TTyp. Typing ::= AIdent [Hypo] ":" Exp ";" ;
+--+ terminator Typing "" ;
 
 EIdent.  Exp9 ::= AIdent ;
 EApp.    Exp5 ::= Exp5 Exp6 ;
@@ -38,12 +39,12 @@ separator nonempty Var "" ;
 
 HExp.    Hypo ::= Exp3 ;
 HVarExp. Hypo ::=  "(" [Var] ":" Exp ")" ;
-HBracketVarExp. Hypo ::= "{" [Var] ":" Exp3 ")" ;
+--+ HBracketVarExp. Hypo ::= "{" [Var] ":" Exp3 "}" ;
 
 separator Hypo "" ;
 
 PVar.   Patt3 ::= Var ;
-PBracket. Patt3 ::= "{" Patt "}" ;
+--+ PBracket. Patt3 ::= "{" Patt "}" ;
 PApp.   Patt1 ::= Patt1 Patt2 ;
 
 coercions Patt 3 ;

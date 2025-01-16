@@ -1,7 +1,7 @@
 Conj : Type -> Type -> Type.
 Disj : Type -> Type -> Type.
 Impl : Type -> Type -> Type.
-Neg : Type.
+Nat : Type.
 Zero : Nat.
 Succ : (x : Nat) -> Nat.
 
