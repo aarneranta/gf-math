@@ -95,7 +95,7 @@ This is the version combining ForTheL with Wikidata, mainly built during the Hau
 ## Version 3
 
 This is the current development version aimed to establish a general conversion to different logical frameworks via Dedukti.
-Its code is in [grammars/v3](./grammars/v3),
+Its code is in [v3](./v3),
 As of 6 January 2025, it is just the bare bones of an English-Dedukti bidirectional translation.
 But it aims to be extensible in a modular way by adding techniques such as those in Version 2.
 
