@@ -55,16 +55,6 @@ English grammar is re-implemented by using the RGL [here](./gflean-extensions). 
 clone the GFLeanTransfor repository and create a symlink to its subdirectory resources/simplifiedForThel/ in
 gflean-extensions.
 
-ToDo (among other things):
-- parsing and translating the Chicago definitions in MathGloss
-- connection to Lean (initiated by a grammar evolving in
-[./lean-bnfc](./lean-bnfc))
-- adding languages
-- improving the current ones (at the moment bootstrapped
-  semi-automatically from Wikidata labels and GF Resource Grammar
-  Library)
-  
-
 Example: two definitions of the abelian group.
 Notice that natural language swaps the places of the definiendum
 and definiens, but the type-theoretical translation is the same

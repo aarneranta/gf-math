@@ -11,7 +11,7 @@ contains 10 of the 100
 
 ## A first test with GF
 
-The grammars in [100thm](../../grammars/100thm/) extend the big WikiMath grammar with constructs
+The grammars in [100thm](../../old/v2/100thm/) extend the big WikiMath grammar with constructs
 and words that are either
 - not found in Forthel.gf
 - not found in a particular language
@@ -24,7 +24,7 @@ The test presupposes a compilation of the `100thm` grammars:
 After that, we run a script in the current directory:
 ```
   cat modif100lexed.txt | python3 translatex.py -latex \
-  ../../grammars/100thm/Ext100Math.pgf Ext100MathEng TERMINDEX.json >body.tex
+  ../../old/v2/100thm/Ext100Math.pgf Ext100MathEng TERMINDEX.json >body.tex
 ```
 We append this file to a preamble:
 ```

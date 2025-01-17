@@ -1,23 +1,25 @@
 # Building a lexicon from Wikidata labels
 
+**Further development of the code in this directory has been moved to [gf-wikidata-tools](https://github.com/GrammaticalFramework/gf-wikidata-tools).**
+
 [Slides](https://docs.google.com/presentation/d/10Z9zz020SnyrIM8gSUVURDCUe-j4gzTGkefTNRcZx1g/edit?usp=sharing)
 
-YouTube video: coming soon
+[YouTube talk](https://www.youtube.com/watch?v=EQ-k_JQ7fDM) (Hausdorff Institute, 30 July 2024).
 
 ## Building the basic lexicon with just the Wikidata labels
 
 Do
-```
+```[this YouTube talk](https://www.youtube.com/watch?v=EQ-k_JQ7fDM) (Hausdorff Institute, 30 July 2024).
   ./build_lexicon.py (-first|-added) <fr> <Fre> <STEPNUM>+
-```
+```k
 with a sequence of some of the following steps:
--  Step 0: preparations  
+-  Step 0: preparations  [this YouTube talk](https://www.youtube.com/watch?v=EQ-k_JQ7fDM) (Hausdorff Institute, 30 July 2024).k
 -  Step 1: extract wikidata for that language into qlist  
--  Step 2: parse with UDPipe  
+-  Step 2: parse with UDPipe  [this YouTube talk](https://www.youtube.com/watch?v=EQ-k_JQ7fDM) (Hausdorff Institute, 30 July 2024).k
 -  Step 3: use the UDPipe parse to clean up corpus and add to lexicon
 -  Step 4: build a lexicon extension
 -  Step 5: parse the terms with the extended lexicon  
--  Step 6: (if -first) generate GF modules for abstract and the first concrete  
+-  Step 6: (if -first) g[this YouTube talk](https://www.youtube.com/watch?v=EQ-k_JQ7fDM) (Hausdorff Institute, 30 July 2024).kenerate GF modules for abstract and the first concrete  
 -  Step 7: (if -add) add a new concrete syntax
 -  Step 8: test your grammar in GF\n
 
