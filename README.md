@@ -1,5 +1,7 @@
 # gf-math: Informalization of Formal Mathematics
 
+Aarne Ranta 2024-25
+
 Mathematical terms, definitions, and propositions in as many languages
 as possible with a translation to and from type-theory.
 
@@ -11,33 +13,31 @@ The main ideas are explained in [this YouTube talk](https://www.youtube.com/watc
 The slides of that talk are available [here](https://docs.google.com/presentation/d/1Nvmjn8D_7_tI_n6bM_HIoVlOXsPiOjWdtnhjWcqnkoo/edit?usp=sharing)
 
 A more detailed introduction to a concrete task is [here](https://docs.google.com/presentation/d/10Z9zz020SnyrIM8gSUVURDCUe-j4gzTGkefTNRcZx1g/edit?usp=sharing);
-a video is coming soon (Hausdorff Institute, 30 July 2024).
+a video is available at [this YouTube talk](https://www.youtube.com/watch?v=EQ-k_JQ7fDM) (Hausdorff Institute, 30 July 2024).
 
 ## An example from the 100 theorems
 
-[ex100.pdf](./data/100_theorems/ex100.pdf).
-For an explanation, see README in the same directory.
-
-The following picture is a snapshot.
+The example in [ex100.pdf](./data/100_theorems/ex100.pdf)
+was produced with [v2](./old/v2/).
+For an explanation, see [this README](./data/100_theorems/README.md).
+The following picture is a snapshot:
 
 ![theorem](./ex4.png)
 
 
 ## Files
 
-[conversion](./conversion): beginning of a conversion from Lean to grammars/v1
+[v3](./v3): the current development project.
 
-[data](./data): saved data from Wikidata and elswhere, with scripts for analysing it
+[data](./data): saved data from Wikidata and elswhere, with scripts for analysing it; partly belonging to v1 and v2 and therefore obsolete. Further development has been moved to [gf-wikidata-tools](https://github.com/GrammaticalFramework/gf-wikidata-tools).
 
-[grammars](./grammars): GF grammars and code for analysing, generating, and embedding them
-
-[lean-bnfc](./lean-bnfc): a BNF grammar for a part of Lean
+[old](./old): versions v1 and v2; more descriptions below.
 
 
 ## Version 1
 
 This was the first "full-scale" version but implemented as a quick prototype.
-Its code is in [grammars/v1](./grammars/v1)
+Its code is in [old/v1](./old/v1)
 
 The list of concepts and Wikidata links are from
 [MathGloss](https://mathgloss.github.io/MathGloss/database).
@@ -70,7 +70,7 @@ Notice that natural language swaps the places of the definiendum
 and definiens, but the type-theoretical translation is the same
 (modulo the use of function composition).
 ```
-$ cd grammars/v1
+$ cd old/v1
 $ make
 
 $ gf MathText.pgf
@@ -97,6 +97,10 @@ MathTextIta: un gruppo è un gruppo abeliano se la sua operazione binaria è com
 MathTextPor: um grupo é um grupo abeliano se sua operação binária é comutativa .
 MathTextSwe: en grupp är en abelsk grupp om dess binära operator är kommutativ .
 ```
+
+## Version 2
+
+This is the version combining ForTheL with Wikidata, mainly built during the Hausdorff institute trimester in 2024. It is located in [old/v2](./old/v2/).
 
 ## Version 3
 
