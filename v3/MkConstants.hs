@@ -17,9 +17,9 @@ module MkConstants where
 --
 -- from which it generates lines in three files
 --
---   Constants.gf    :  fun Dk_<id> : <cat> ;
---   ConstantsEng.gf :  lin Dk_<id> = mk<cat> "word"* ;
---   Constants.hs    :  ("<id>", "<cat>"),
+--   Constants.gf         :  fun Dk_<id> : <cat> ;
+--   Core/ConstantsEng.gf :  lin Dk_<id> = mk<cat> "word"* ;
+--   Core/Constants.hs    :  ("<id>", "<cat>"),
 --
 -- In this format, the overloaded mk<cat> opers in ConstantBaseEng.gf are assumed.
 -- If more expressive power is needed, one can also write
@@ -42,8 +42,8 @@ import System.Environment (getArgs)
 mkConstants :: FilePath -> IO ()
 mkConstants file = do
   annots <- readFile file >>= return . map words . filter (not . null) . lines
-  writeAndReport "Constants.gf" $ mkConstantsGF annots
-  writeAndReport "ConstantsEng.gf" $ mkConstantsEngGF annots
+  writeAndReport "Core/Constants.gf" $ mkConstantsGF annots
+  writeAndReport "Core/ConstantsEng.gf" $ mkConstantsEngGF annots
   writeAndReport "Constants.hs" $ mkConstantsHS annots
 
 

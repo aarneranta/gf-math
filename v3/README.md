@@ -20,8 +20,11 @@ An insight that has guided GF from the beginning is that informalization is easi
 
 This directory contains
 - Core, an English CNL for mathematics
+- FortTheL+, an extension of Core
 - a grammar, parser, and generator for the proof system [Dedukti](https://deducteam.github.io/)
 - a translator from Core to Dedukti and vice-versa
+- partial grammars and generators to Agda and Lean (Lean forthcoming)
+- translations between Core and ForTheL+ (forthcoming)
 
 [Dedukti](https://deducteam.github.io/) is a minimalistic logical framework aimed as an interlingual between different proof systems such as Agda, Coq, Isabelle, and Lean.
 The purpose is to help share formalizations between these systems.
@@ -83,7 +86,7 @@ The rationale of this design is modularity and an optimal use of existing resour
 The following programming languages have been used so far in Informath:
 - **GF**: [Grammatical Framework](https://www.grammaticalframework.org/) used for implementing Core and ForTheL+, maximally using its Resource Grammar Library (RGL).
 - **Haskell**: used for writing conversions between formal and informal, via embedded GF grammars in the GADT format (Generalized Algebraic Datatypes) supporting almost compositional functions.
-- **BNFC**: [BNF Converter](https://bnfc.digitalgrammars.com/), used for implementing Dedukti. The implementation includes a parser, a printer, and an abstract syntax in Haskell, all generated from [this BNF grammar](./typetheory/Dedukti.bnf).
+- **BNFC**: [BNF Converter](https://bnfc.digitalgrammars.com/), used for implementing Dedukti. The implementation includes a parser, a printer, and an abstract syntax in Haskell, all generated from [this BNF grammar](./typetheory/Dedukti.bnf). Also used for the fragments of Agda and Lean addressed in the project.
 - **Python**: used for generating GF lexica from term dictionaries, in particular [Wikidata](https://www.wikidata.org/). The lexica are currently available as a part of ForTheL+, but the English version will have a connection to Core as well. 
 
 ## Usage
@@ -105,6 +108,7 @@ In order for this to work, you need to compile the Dedukti and the Core grammars
   $ make Core.pgf
   $ make Dedukti
   $ ln -s typetheory/Dedukti
+  $ ln -s Core/Core.hs
 ```
 An example of readily available test case is
 ```
@@ -121,8 +125,8 @@ The lexicon part (files Constants*) is expected to give verbalizations to define
 ```
 which for instance from [nat.dkgf](./nat.dkgf) generates three files:
 - [Constants.hs](./Constants.hs)
-- [Constants.gf](./Constants.gf)
-- [ConstantsEng.gf](./ConstantsEng.gf)
+- [Constants.gf](./Core/Constants.gf)
+- [ConstantsEng.gf](./Core/ConstantsEng.gf)
 
 and compiles Core.pgf with them. Some more information is given in the file [MkConstants.hs](./MkConstants.hs) and will also appear here when the process has stabilized.
 
@@ -139,4 +143,6 @@ The result from [nat.dk](./nat.dk) typechecks in Agda.
 ## ToDo
 
 - complete the two conversions ( close to complete, but can make better use of the Exp/Kind/Prop distinction)
-- link Core with ForTheL+ 
+- link Core with ForTheL+ by translations back and forth
+- generate Lean code
+

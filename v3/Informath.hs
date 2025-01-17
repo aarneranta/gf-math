@@ -17,7 +17,7 @@ import PGF
 import System.Random
 import System.Environment (getArgs)
 
-corePGFFile = "Core.pgf"
+corePGFFile = "Core/Core.pgf"
 Just english = readLanguage "CoreEng"
 Just jmt = readType "Jmt"
 
