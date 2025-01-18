@@ -16,6 +16,11 @@ constants = [
   ("sum", "Fun"), 
   ("prod", "Fun"), 
   ("gcd", "Fun"), 
-  ("eqZerp", "Label"), 
-  ("eqSucc", "Label")
+  ("eqZero", "Label"), 
+  ("eqSucc", "Label"), 
+  ("eqSumZero", "Label"), 
+  ("eqSumSucc", "Label"), 
+  ("gcdLt", "Label"), 
+  ("evenOdd", "Label"), 
+  ("primeOdd", "Label")
   ]

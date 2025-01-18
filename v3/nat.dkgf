@@ -13,5 +13,10 @@ Succ Fun successor
 sum Fun sum
 prod Fun product
 gcd Fun greatest common divisor
-eqZerp Label = mkLabel "equality of zero"
+eqZero Label = mkLabel "equality of zero"
 eqSucc Label = mkLabel "equality of successors"
+eqSumZero Label = mkLabel "addition of zero"
+eqSumSucc Label = mkLabel "addition of successors"
+gcdLt Label = mkLabel "Theorem 12"
+evenOdd Label = mkLabel "Theorem 13"
+primeOdd Label = mkLabel "Theorem 14"

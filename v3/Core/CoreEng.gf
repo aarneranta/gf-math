@@ -55,7 +55,7 @@ lin
   AxiomKindJmt hypos kind =
     labelText basic_concept_Label
       (mkText hypos.text (mkText
-        (mkS (mkCl (mkNP a_Det (useKind kind)) (mkNP a_Det basic_type_CN))))) ;
+        (mkS (mkCl (mkNP aPl_Det (useKind kind)) (mkNP a_Det basic_type_CN))))) ;
   AxiomExpJmt hypos exp kind =
     labelText basic_concept_Label
       (mkText hypos.text (mkText (mkS (mkCl exp (useKind kind))))) ;

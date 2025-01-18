@@ -23,6 +23,11 @@ lin Dk_Succ = mkFun "successor" ;
 lin Dk_sum = mkFun "sum" ;
 lin Dk_prod = mkFun "product" ;
 lin Dk_gcd = mkFun "greatest" "common" "divisor" ;
-lin Dk_eqZerp = mkLabel "equality of zero" ;
+lin Dk_eqZero = mkLabel "equality of zero" ;
 lin Dk_eqSucc = mkLabel "equality of successors" ;
+lin Dk_eqSumZero = mkLabel "addition of zero" ;
+lin Dk_eqSumSucc = mkLabel "addition of successors" ;
+lin Dk_gcdLt = mkLabel "Theorem 12" ;
+lin Dk_evenOdd = mkLabel "Theorem 13" ;
+lin Dk_primeOdd = mkLabel "Theorem 14" ;
 }

@@ -17,6 +17,11 @@ fun Dk_Succ : Fun ;
 fun Dk_sum : Fun ;
 fun Dk_prod : Fun ;
 fun Dk_gcd : Fun ;
-fun Dk_eqZerp : Label ;
+fun Dk_eqZero : Label ;
 fun Dk_eqSucc : Label ;
+fun Dk_eqSumZero : Label ;
+fun Dk_eqSumSucc : Label ;
+fun Dk_gcdLt : Label ;
+fun Dk_evenOdd : Label ;
+fun Dk_primeOdd : Label ;
 }
