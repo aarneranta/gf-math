@@ -10,6 +10,8 @@ import Dedukti.ParDedukti
 import Dedukti.AbsDedukti
 import Dedukti.ErrM
 import Core
+----import qualified Forthel as F
+----import Core2Forthelplus (jmt2toplevel)
 import Lexing
 
 import PGF
@@ -21,38 +23,45 @@ corePGFFile = "Core/Core.pgf"
 Just english = readLanguage "CoreEng"
 Just jmt = readType "Jmt"
 
+forthelPGFFile = "forthelplus/Forthel.pgf"
+Just f_english = readLanguage "ForthelEng"
+
+
 main = do
   xx <- getArgs
   corepgf <- readPGF corePGFFile
+  let forthelpgf = corepgf
+----  forthelpgf <- readPGF forthelPGFFile
   case xx of
     filename:_ -> do
       s <- readFile filename
-      processDeduktiModule corepgf s
+      processDeduktiModule corepgf forthelpgf s
     _ -> do
       g <- getStdGen
       let randoms = generateRandomDepth g corepgf jmt (Just 4)
-      loop corepgf randoms 0
+      loop corepgf forthelpgf randoms 0
 
-loop :: PGF -> [Expr] -> Int -> IO ()
-loop gr randoms n = do
+loop :: PGF -> PGF -> [Expr] -> Int -> IO ()
+loop gr fgr randoms n = do
   putStr "> "
   ss <- getLine
   case ss of
     '?':s -> processCoreJmt gr s
     "gr"  -> processCoreJmtTree gr (randoms !! n)
-    '=':s -> roundtripDeduktiJmt gr s   
-  loop gr randoms (n+1)
+    '=':s -> roundtripDeduktiJmt gr s
+    _     -> processDeduktiJmt gr fgr ss
+  loop gr fgr randoms (n+1)
 
-processDeduktiModule :: PGF -> String -> IO ()
-processDeduktiModule gr s = do
+processDeduktiModule :: PGF -> PGF -> String -> IO ()
+processDeduktiModule gr fgr s = do
   case pModule (myLexer s) of
     Bad e -> putStrLn ("error: " ++ e)
-    Ok (MJmts jmts) -> flip mapM_ jmts $ processDeduktiJmtTree gr
+    Ok (MJmts jmts) -> flip mapM_ jmts $ processDeduktiJmtTree gr fgr
 
-processDeduktiJmt :: PGF -> String -> IO ()
-processDeduktiJmt gr cs = case pJmt (myLexer cs) of
+processDeduktiJmt :: PGF -> PGF -> String -> IO ()
+processDeduktiJmt gr fgr cs = case pJmt (myLexer cs) of
   Bad e -> putStrLn ("error: " ++ e)
-  Ok t -> processDeduktiJmtTree gr t
+  Ok t -> processDeduktiJmtTree gr fgr t
 
 roundtripDeduktiJmt :: PGF -> String -> IO ()
 roundtripDeduktiJmt gr cs = case pJmt (myLexer cs) of
@@ -64,12 +73,20 @@ roundtripDeduktiJmt gr cs = case pJmt (myLexer cs) of
     let lin = linearize gr english gft
     processCoreJmt gr lin
 
-processDeduktiJmtTree :: PGF -> Jmt -> IO ()
-processDeduktiJmtTree gr t = do 
+processDeduktiJmtTree :: PGF -> PGF -> Jmt -> IO ()
+processDeduktiJmtTree gr fgr t = do 
   putStrLn $ "#Dedukti: " ++ show t
-  let gft = gf $ jmt2core t
+  let ct = jmt2core t
+  let gft = gf ct
   putStrLn $ "#Core: " ++ showExpr [] gft
   putStrLn $ linearize gr english gft
+
+{- ---- this will work when Core2Forthelplus is complete
+  let ft = jmt2toplevel ct
+  let gfft = F.gf ft
+  putStrLn $ "#ForthelPlus: " ++ showExpr [] gfft
+  putStrLn $ linearize fgr f_english gfft
+-}
 
 processCoreJmt :: PGF -> String -> IO ()
 processCoreJmt gr s = do

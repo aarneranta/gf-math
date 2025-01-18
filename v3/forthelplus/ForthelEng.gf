@@ -1,7 +1,8 @@
--- based on http://nevidal.org/download/forthel.pdf
+--# -path=.:../Core
 
 concrete ForthelEng of Forthel =
-  LatexTermsTex **
+  LatexTermsTex,
+  ConstantsEng **
   ForthelFunctor - [negPol, pluralNP] with
     (Syntax=SyntaxEng),
     (Symbolic=SymbolicEng),

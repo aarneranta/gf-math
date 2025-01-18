@@ -10,14 +10,14 @@ in {
 lincat
   Noun = CN ;
   Adj = AP ;
-  Rel = Relation ;
+  Rel = RelationT ;
   Name = NP ;
-  Fun = Function ;
+  Fun = FunctionT ;
   Label = NP ;
 
 oper
-  Relation : Type = {ap : AP ; prep : Prep} ;
-  Function : Type = {cn : CN ; prep : Prep} ;
+  RelationT : Type = {ap : AP ; prep : Prep} ;
+  FunctionT : Type = {cn : CN ; prep : Prep} ;
 
   mkNoun = overload {
     mkNoun : Str -> CN
@@ -27,11 +27,11 @@ oper
     } ;
     
   mkFun = overload {
-    mkFun : Str -> Function
+    mkFun : Str -> FunctionT
       = \s -> {cn = mkCN (mkN s) ; prep = possess_Prep} ;
-    mkFun : (a, n : Str) -> Function
+    mkFun : (a, n : Str) -> FunctionT
       = \a, n -> {cn = mkCN (mkA a) (mkN n) ; prep = possess_Prep} ;
-    mkFun2 : (a, b, n : Str) -> Function
+    mkFun2 : (a, b, n : Str) -> FunctionT
       = \a, b, n -> {cn = mkCN (mkA a) (mkCN (mkA b) (mkN n)) ; prep = possess_Prep} ;
     } ;
     

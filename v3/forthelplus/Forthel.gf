@@ -1,6 +1,6 @@
 -- simplified and extended from http://nevidal.org/download/forthel.pdf
 
-abstract Forthel = LatexTerms ** {
+abstract Forthel = LatexTerms, Constants ** {
 
 flags startcat = Toplevel ;
 
@@ -31,30 +31,23 @@ cat
   DefiniteNoun ; -- CN,         individual-valued function name, e.g. order
 
   SymbTerm ;     -- Symb,  either Exp or Formula
-  Name ;         -- Symb,  variable
-  [Name] {1} ;   -- (Str, Num)  list of variables
+  VarName ;      -- Symb,  variable
+  [VarName] {1} ;-- (Str, Num)  list of variables
 
 fun
 -- importing from LatexTerms
 
   IndexedTerm : Int -> SymbTerm ; -- \INDEXEDTERM{ 8 }  to use in preprocessing
   
-  FormulaSymbTerm : Formula -> SymbTerm ;
-  ExpSymbTerm : Exp -> SymbTerm ; 
-  VarName : Var -> Name ;
-
   LatexFormulaSymbTerm : Formula -> SymbTerm ;
   LatexExpSymbTerm : Exp -> SymbTerm ; 
-  LatexVarName : Var -> Name ;
+  LatexVarName : Var -> VarName ;
 
 
 -- 1.3.2
   PrimClassNoun : PrimClass -> ClassNoun ;
   ClassNounNotion : ClassNoun -> Notion ;
-  ClassNounNamesNotion : ClassNoun -> [Name] -> Notion ;
-
----  NameSymbTerm : Name -> SymbTerm ;
-----  StringName : String -> Name ; ---- replaced by VariableName
+  ClassNounNamesNotion : ClassNoun -> [VarName] -> Notion ;
 
   AdjClassNoun : ClassNoun -> Adjective -> ClassNoun ; -- both left and right
   RelClassNoun : ClassNoun -> Predicates -> ClassNoun ; -- some of right
@@ -69,9 +62,6 @@ fun
   SomeTerm  : Notion -> Term ;    --><
   NoTerm    : Notion -> Term ;    --><
 
-  
-
-  
   SymbolicTerm : SymbTerm -> Term ; --><
 
   DefiniteSgNounTerm : DefiniteNoun -> Term ;  --><
@@ -96,7 +86,6 @@ fun
   ThereIsNoStatement : Notion -> Statement ;
   WeHaveSymbStatement : SymbTerm -> Statement ;
   WeHaveConstStatement : Constant -> Statement ;
-  FormulaStatement : Formula -> Statement ; 
   LatexFormulaStatement : Formula -> Statement ;
 
   PosOnePredicates : Predicate -> Predicates ;
@@ -129,7 +118,7 @@ fun
   NotionDefinition :  Notion -> Notion -> Definition ;
   FunctionDefinition : DefiniteNoun -> Term -> Definition ; --><
   FunctionIsEqualDefinition : DefiniteNoun -> Term -> Definition ;
-  PredicateDefinition : Predicate -> [Name] ->  Statement -> Definition ;  --><
+  PredicateDefinition : Predicate -> [VarName] ->  Statement -> Definition ;  --><
 
 
 --- spec p. 15: "Note that synonym declarations are not statements but instructions to the
@@ -139,14 +128,13 @@ fun
 
   NotionSynonym : Notion -> PrimClass -> Synonym ;  --- in spec: notionPattern classNoun
   FunctionSynonym : SymbTerm -> Term -> Synonym ; -- in spec: functionPattern --><
-  PredicateSynonym : Predicate -> [Name] -> Statement -> Synonym ;  -->
+  PredicateSynonym : Predicate -> [VarName] -> Statement -> Synonym ;  -->
 
 
 -- 1.5.1
-  NamesAssumption : [Name] -> ClassNoun -> Assumption ;
-  LetNamesAssumption : [Name] -> ClassNoun -> Assumption ;
+  NamesAssumption : [VarName] -> ClassNoun -> Assumption ;
+  LetNamesAssumption : [VarName] -> ClassNoun -> Assumption ;
   StatementAssumption : Statement -> Assumption ;
-  FormulaAssumption : Formula -> Assumption ;
   LatexFormulaAssumption : Formula -> Assumption ; 
 
   SectionToplevel : Header -> Section -> Toplevel ;
@@ -160,8 +148,13 @@ fun
   ThenStatementSection : Statement -> Section -> Section ;
   DefinitionSection : Definition -> Section -> Section ;
 
-  ex_Header : Header ;  --- GFLean specific ?
   noHeader : Header ;
+
+
+-- using Constants
+  AdjAdjective : Adj -> Adjective ;
+  NameTerm : Name -> Term ;
+  LabelHeader : Label -> Header ;
 
 -- for Michael Kohlhase's example
 
@@ -170,7 +163,7 @@ cat
   
 fun  
   MkTermSymb : Term -> SymbTerm -> TermSymb ;
-  ApposTermSymb : PrimClass -> Name -> TermSymb ;
+  ApposTermSymb : PrimClass -> VarName -> TermSymb ;
 
 
 }

@@ -1,7 +1,7 @@
 -- based on http://nevidal.org/download/forthel.pdf
 
 incomplete concrete ForthelFunctor of Forthel =
-  LatexTerms **
+  LatexTerms, Constants **
 
 open
   Syntax,
@@ -40,18 +40,14 @@ lincat
   DefiniteNoun = CN ;
 
   SymbTerm = Symb ;
-  Name = Symb ;
-  [Name] = {s : Str ; isPlur : Bool} ;
+  VarName = Symb ;
+  [VarName] = {s : Str ; isPlur : Bool} ;
 
 lin
 -- importing from ForthelTerms
 
   IndexedTerm n = mkSymb (mathEnvStr (macroApp "INDEXEDTERM" (n.s))) ;
 
-  FormulaSymbTerm formula = mkSymb formula.s ;
-  ExpSymbTerm exp = mkSymb exp.s ;
-  VarName v = mkSymb v ;
-  
   LatexFormulaSymbTerm formula = mkSymb (mathEnvStr formula.s) ;
   LatexExpSymbTerm exp = mkSymb (mathEnvStr exp.s) ;
   LatexVarName v = mkSymb (mathEnvStr v) ;
@@ -74,8 +70,8 @@ lin
 
 ----  StringName s = mkSymb s.s ; ---- replaced by VariableName
   
-  BaseName x = {s = x.s ; isPlur = False} ;
-  ConsName x xs = {s = x.s ++ "," ++ xs.s ; isPlur = True} ;
+  BaseVarName x = {s = x.s ; isPlur = False} ;
+  ConsVarName x xs = {s = x.s ++ "," ++ xs.s ; isPlur = True} ;
 
   AdjClassNoun noun adjective =
     noun ** {cn = mkCN adjective noun.cn} ;
@@ -106,11 +102,8 @@ lin
     False => mkNP no_Quant notion.cn
     } ;
 
-
-
-
   SymbolicTerm t = symb t ;
-
+  
   DefiniteSgNounTerm n = mkNP the_Det n ;
   DefinitePlNounTerm n = mkNP thePl_Det n ;
 
@@ -124,7 +117,6 @@ lin
   SimpleStatement terms predicates = Extend.PredVPS terms predicates ;
   WeHaveSymbStatement sym = mkS (mkCl we_NP have_V2 <symb sym : NP>) ;
   WeHaveConstStatement const = mkS (mkCl we_NP have_V2 const) ;
-  FormulaStatement formula = <symb (mkSymb formula.s) : S> ;
   LatexFormulaStatement formula = <symb (mkSymb (mathEnvStr formula.s)) : S> ;
 
   ThereIsStatement notions = mkS (Extend.ExistsNP notions) ;
@@ -199,9 +191,6 @@ lin
     mkPhr
       (mkUtt (mkImp (Extend.ComplBareVS assume_VS stat))) ;
 
-  FormulaAssumption formula =
-    lin Phr {s = let_Str ++ formula.s} ;
-    
   LatexFormulaAssumption formula =
     lin Phr {s = let_Str ++ mathEnvStr (formula.s)} ;
 
@@ -216,8 +205,14 @@ lin
   ThenStatementSection statement section = mkText (mkUtt (mkS therefore_Adv statement)) section ;
   DefinitionSection definition section = mkText (mkUtt definition) section ;
 
-  ex_Header = lin Text {s = "ex ."} ; --- GFLean specific ?
   noHeader = emptyText ;
+
+-- using Constants
+
+  AdjAdjective adj = adj ;
+  NameTerm name = name ;
+  LabelHeader label = mkText (mkUtt label) ;
+
 
 -- Kohlhase
 
@@ -245,7 +240,7 @@ oper
 
   negPol = negativePol ;
 
-  namesNP : [Name] -> NP = \xs -> case xs.isPlur of {
+  namesNP : [VarName] -> NP = \xs -> case xs.isPlur of {
     True => pluralNP (symb xs.s) ;
     False => symb xs.s
     } ;

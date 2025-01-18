@@ -30,7 +30,7 @@ fun
   TVar : Var -> Exp ;
   TConst : Const -> Exp ;
 ---  TFloat : Float -> Exp ;
-  TNumber : Int -> Exp ;
+  TNumber : Float -> Exp ;
 
   FVar : Var -> Function ;
   FDerivative : Function -> Function ;
