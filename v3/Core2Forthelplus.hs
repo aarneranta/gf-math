@@ -9,9 +9,9 @@ import qualified Forthel as F
 
 jmt2toplevel :: GJmt -> F.GToplevel
 jmt2toplevel jmt = case jmt of
-  GAxiomJmt (GListHypo []) (GLabelExp (LexLabel label)) prop ->
+  GAxiomJmt (GListHypo []) exp prop ->
       F.GSectionToplevel
-        (F.GLabelHeader (F.LexLabel label))
+        (exp2header exp)
         (F.GStatementSection (prop2statement prop) F.GEmptySection)
 {-
   GAxiomJmt (GListHypo hypos) exp prop ->
@@ -53,9 +53,9 @@ jmt2toplevel jmt = case jmt of
   GRewriteJmt (GListRule rules) -> JRules (map rule2dedukti rules)
 -}
 
-label2label :: GLabel -> F.GLabel
-label2label label = case label of
-  LexLabel s -> F.LexLabel s
+exp2header :: GExp -> F.GHeader
+exp2header exp = case exp of
+  _ -> F.GnoHeader ----
 
 {-
 rule2dedukti :: GRule -> Rule
@@ -68,7 +68,7 @@ rule2dedukti rule = case rule of
 
 prop2statement :: GProp -> F.GStatement
 prop2statement prop = case prop of
---  GFalseProp -> propFalse
+  GFalseProp -> F.GWeHaveConstStatement F.GcontradictionConstant
 --  GFormalProp formal -> formal2dedukti formal
   GAndProp (GListProp props) -> foldl1 F.GAndStatement (map prop2statement props)
   GOrProp (GListProp props) -> foldl1  F.GOrStatement (map prop2statement props)

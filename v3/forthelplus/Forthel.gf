@@ -150,6 +150,7 @@ fun
 
   noHeader : Header ;
 
+  contradictionConstant : Constant ;
 
 -- using Constants
   AdjAdjective : Adj -> Adjective ;

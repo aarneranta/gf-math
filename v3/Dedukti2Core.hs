@@ -124,8 +124,8 @@ exp2kind exp = case exp of
 
 exp2prop :: Exp -> GProp
 exp2prop exp = case exp of
-  EIdent ident -> GFormalProp (ident2coreFormal ident)
   _ | exp == propFalse -> GFalseProp
+  EIdent ident -> GFormalProp (ident2coreFormal ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent conn | conn == identConj -> case splitIdent conn exp of
@@ -147,7 +147,10 @@ exp2prop exp = case exp of
             (GListArgKind [hypo2coreArgKind (HVarExp (bind2var bind) kind)])
             (exp2prop prop)
       EIdent conn | conn == identNeg -> case args of
-        [a] -> GNotProp (exp2prop a)
+        [a] -> case exp2prop a of
+          GAdjProp adj x -> GNotAdjProp adj x
+	  GRelProp rel x y -> GNotRelProp rel x y
+          p -> GNotProp p
       EIdent ident@(QIdent pred) -> case (lookupConstant pred, args) of
         (Just "Adj", [a]) -> GAdjProp (LexAdj (dk pred)) (exp2exp a)     
         (Just "Rel", [a, b]) -> GRelProp (LexRel (dk pred)) (exp2exp a) (exp2exp b)

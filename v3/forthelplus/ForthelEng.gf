@@ -20,6 +20,9 @@ concrete ForthelEng of Forthel =
   
 in {
 
+lin
+  contradictionConstant = mkNP a_Det (mkN "contradiction") ;
+
 oper
 -- functor exceptions
 
