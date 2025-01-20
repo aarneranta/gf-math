@@ -9,9 +9,9 @@ import Dedukti.PrintDedukti
 import Dedukti.ParDedukti
 import Dedukti.AbsDedukti
 import Dedukti.ErrM
-import Core
-import qualified Forthel as F
-import Core2Forthelplus (jmt2toplevel)
+import ForthelPlus -- superset of Core
+import Core2ForthelPlus (nlg)
+import ForthelPlus2Core (semantics)
 import Lexing
 
 import PGF
@@ -20,20 +20,13 @@ import Data.List (partition)
 import System.Random
 import System.Environment (getArgs)
 
-corePGFFile = "Core/Core.pgf"
-Just english = readLanguage "CoreEng"
+forthelplusPGFFile = "forthelplus/ForthelPlus.pgf"
+Just english = readLanguage "ForthelPlusEng"
 Just jmt = readType "Jmt"
-
-forthelPGFFile = "forthelplus/Forthel.pgf"
-Just f_english = readLanguage "ForthelEng"
-
 
 data Env = Env {
  flags :: [String],
- cpgf :: PGF,
- fpgf :: PGF
---- rands :: [Expr],
---- itr :: Int
+ cpgf :: PGF
  }
 --- random generation disabled for the time being
 
@@ -42,33 +35,27 @@ ifFlag x env = elem x (flags env)
 main = do
   xx <- getArgs
   let (ff, yy) = partition ((== '-') . head) xx
-  corepgf <- readPGF corePGFFile
-  forthelpgf <-
-    if elem "-forthel" ff
-      then readPGF forthelPGFFile
-      else return corepgf
-  let env = Env{flags = ff, cpgf = corepgf, fpgf = forthelpgf} ---, rands = [], itr = 0}
+  corepgf <- readPGF forthelplusPGFFile
+  let env = Env{flags = ff, cpgf = corepgf} ---, rands = [], itr = 0}
   case yy of
     filename:_ -> do
       s <- readFile filename
       processDeduktiModule env s
     _ -> do
----      g <- getStdGen
-  ---    let rs = generateRandomDepth g corepgf jmt (Just 4)
-    ---  let env = env{rands = rs}
-      loop env
+      g <- getStdGen
+      let rs = generateRandomDepth g corepgf jmt (Just 4)
+      loop env rs 0 ---- storing rs in env causes an infinite loop
 
-loop :: Env -> IO ()
-loop env = do
+loop :: Env -> [Expr] -> Int -> IO ()
+loop env rs i = do
   putStr "> "
   ss <- getLine
   case ss of
     '?':s -> processCoreJmt env s
----    "gr"  -> processCoreJmtTree env (rands env !! itr env)
+    "gr"  -> processCoreJmtTree env (rs !! i)
     '=':s -> roundtripDeduktiJmt env s
     _     -> processDeduktiJmt env ss
----  let env = env{itr = itr env + 1}
-  loop env
+  loop env rs (i + 1)
 
 processDeduktiModule :: Env -> String -> IO ()
 processDeduktiModule env s = do
@@ -102,17 +89,16 @@ processDeduktiJmtTree env t = do
   let gft = gf ct
   putStrLn $ "#Core: " ++ showExpr [] gft
   putStrLn $ linearize gr english gft
-  if ifFlag "-forthel" env
-    then convertCoreToForthel env ct
-    else return ()
+  convertCoreToForthel env ct
 
 convertCoreToForthel :: Env -> GJmt -> IO ()
 convertCoreToForthel env ct = do
-  let fgr = fpgf env
-  let ft = jmt2toplevel ct
-  let gfft = F.gf ft
-  putStrLn $ "#ForthelPlus: " ++ showExpr [] gfft
-  putStrLn $ linearize fgr f_english gfft
+  let fgr = cpgf env
+  let fts = nlg ct
+  let gffts = map gf fts
+  flip mapM_ gffts $ \gfft -> do
+    putStrLn $ "#ForthelPlus: " ++ showExpr [] gfft
+    putStrLn $ linearize fgr english gfft
 
 processCoreJmt :: Env -> String -> IO ()
 processCoreJmt env s = do
@@ -134,3 +120,4 @@ processCoreJmtTree env t = do
   putStrLn $ linearize gr english t
   let d = jmt2dedukti (fg t)
   putStrLn $ printTree d
+

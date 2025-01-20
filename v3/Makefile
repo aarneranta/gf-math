@@ -1,12 +1,9 @@
-all: Core.pgf Dedukti
+all: ForthelPlus.pgf Dedukti
 
-.PHONY: all Core.pgf Forthel.pgf Dedukti Agda Lean
+.PHONY: all ForthelPlus.pgf Dedukti Agda Lean
 
-Core.pgf:
-	cd Core ; gf --make -output-format=haskell -haskell=lexical --haskell=gadt -lexical=Name,Noun,Adj,Rel,Fun,Label CoreEng.gf
-
-Forthel.pgf:
-	cd forthelplus ; gf --make -output-format=haskell -haskell=lexical --haskell=gadt -lexical=Name,Noun,Adj,Rel,Fun,Label ForthelEng.gf
+ForthelPlus.pgf:
+	cd forthelplus ; gf --make -output-format=haskell -haskell=lexical --haskell=gadt -lexical=Name,Noun,Adj,Rel,Fun,Label ForthelPlusEng.gf
 
 Dedukti:
 	cd typetheory ; bnfc -m -p Dedukti --haskell-gadt Dedukti.bnf ; make
