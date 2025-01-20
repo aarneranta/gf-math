@@ -23,6 +23,9 @@ lin
 ---  AndExp exps = mkNP and_Conj exps ;
 ---  OrExp exps = mkNP or_Conj exps ;
 
+  EveryKindExp kind = mkNP every_Det (mkCN kind.cn kind.adv) ;
+  AllArgKindExp kind = mkNP all_Predet (mkNP aPl_Det (mkCN kind.cn kind.adv)) ;
+
   BaseAdj a b = mkListAP a b ;
   ConsAdj a bs = mkListAP a bs ;
 

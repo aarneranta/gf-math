@@ -6,10 +6,11 @@ module Core2ForthelPlus where
 import ForthelPlus
 
 nlg :: Tree a -> [Tree a]
-nlg t = [
-  t,
-  aggregate (flatten t)
-  ]
+nlg t = [t, at, iat, viat]
+ where
+   at = aggregate (flatten t)
+   iat = insitu at
+   viat = varless iat
 
 aggregate :: Tree a -> Tree a
 aggregate t = case t of
@@ -61,4 +62,29 @@ getOrProps props = case props of
     qss <- getOrProps qs
     return (prop : qss)
   _ -> return []
-    
+
+---- a very simple special case of in situ so far
+insitu :: Tree a -> Tree a
+insitu t = case t of
+  GAllProp (GListArgKind [argkind]) (GAdjProp adj exp) -> case subst argkind exp of
+    True -> GAdjProp adj (GAllArgKindExp argkind)
+    _ -> t
+  _ -> composOp insitu t
+
+subst :: GArgKind -> GExp -> Bool
+subst argkind exp = case (argkind, exp) of
+  (GIdentsArgKind _ (GListIdent [GStrIdent x]), GFormalExp (GStrFormal y)) -> x == y
+  _ -> False
+
+varless :: Tree a -> Tree a
+varless t = case t of
+  GAllArgKindExp (GIdentsArgKind kind (GListIdent [_])) -> GEveryKindExp kind
+  _ -> composOp varless t
+
+{-
+> x : Pi Nat (n => Disj (Even n) (Odd n)).
+Axiom x . for all natural numbers $ n $ , ( $ n $ is even or $ n $ is odd ) .
+Axiom x . for all natural numbers $ n $ , $ n $ is even or odd .
+Axiom x . all natural numbers $ n $ are even or odd .
+Axiom x . every natural number is even or odd .
+-}

@@ -14,4 +14,7 @@ fun
 ---  AndExp : [Exp] -> Exp ;
 ---  OrExp : [Exp] -> Exp ;
 
+  EveryKindExp : Kind -> Exp ;
+  AllArgKindExp : ArgKind -> Exp ;
+
 }
