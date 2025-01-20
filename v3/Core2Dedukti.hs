@@ -53,14 +53,14 @@ jmt2dedukti jment = case jment of
 rule2dedukti :: GRule -> Rule
 rule2dedukti rule = case rule of
   GRewriteRule (GListIdent idents) patt exp ->
-    RRule (map ident2dedukti idents) (exp2deduktiPatt patt) (exp2dedukti exp)
+    RRule (map ident2ident idents) (exp2deduktiPatt patt) (exp2dedukti exp)
   GNoVarRewriteRule patt exp ->
     rule2dedukti (GRewriteRule (GListIdent []) patt exp)
 
 prop2dedukti :: GProp -> Exp
 prop2dedukti prop = case prop of
   GFalseProp -> propFalse
-  GFormalProp formal -> formal2dedukti formal
+  GIdentProp ident -> EIdent (ident2ident ident)
   GAndProp (GListProp props) -> foldl1 propAnd (map prop2dedukti props)
   GOrProp (GListProp props) -> foldl1 propOr (map prop2dedukti props)
   GIfProp a b -> propImp (prop2dedukti a) (prop2dedukti b)
@@ -80,8 +80,8 @@ prop2dedukti prop = case prop of
           (foldr (\x z -> EAbs (BVar x) z) y vars))
         (prop2dedukti prop)
         (map argkind2dedukti argkinds)
-  GAppProp formal (GListExp exps) ->
-    foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
+  GAppProp ident (GListExp exps) ->
+    foldl1 EApp ((EIdent (ident2ident ident)) : map exp2dedukti exps)
   GAdjProp (LexAdj adj) exp ->
     EApp (EIdent (QIdent (undk adj))) (exp2dedukti exp) 
   GRelProp (LexRel rel) a b ->
@@ -90,37 +90,37 @@ prop2dedukti prop = case prop of
 hypo2dedukti :: GHypo -> [Hypo]
 hypo2dedukti hypo = case hypo of
   GVarsHypo (GListIdent idents) kind ->
-    [HVarExp (VIdent (ident2dedukti ident)) (kind2dedukti kind) | ident <- idents]
+    [HVarExp (VIdent (ident2ident ident)) (kind2dedukti kind) | ident <- idents]
   GPropHypo prop ->
     [HExp (prop2dedukti prop)]
 
 argkind2dedukti :: GArgKind -> (Exp, [Var])
 argkind2dedukti argkind = case argkind of
   GIdentsArgKind kind (GListIdent idents) ->
-    (kind2dedukti kind, map ident2deduktiVar idents)
+    (kind2dedukti kind, map ident2var idents)
 
 kind2dedukti :: GKind -> Exp
 kind2dedukti kind = case kind of
-  GFormalKind formal -> formal2dedukti formal
+  GIdentKind ident -> EIdent (ident2ident ident)
   GSuchThatKind ident kind prop ->
     propSigma
       (kind2dedukti kind)
-      (EAbs (BVar (VIdent (ident2dedukti ident)))
+      (EAbs (BVar (VIdent (ident2ident ident)))
             (prop2dedukti prop))
-  GAppKind formal (GListExp exps) ->
-    foldl1 EApp (formal2dedukti formal : map exp2dedukti exps)
+  GAppKind ident (GListExp exps) ->
+    foldl1 EApp (EIdent (ident2ident ident) : map exp2dedukti exps)
   ---- still assuming GF fun is Dedukti ident
   GNounKind (LexNoun noun) ->
     EIdent (QIdent (undk noun))
 
 exp2dedukti :: GExp -> Exp
 exp2dedukti exp = case exp of
-  GFormalExp formal -> formal2dedukti formal
+  GIdentExp ident -> EIdent (ident2ident ident)
   GAppExp exp (GListExp exps) ->
     foldl1 EApp (map exp2dedukti (exp : exps))
   GAbsExp (GListIdent idents) exp ->
     foldr
-      (\x y -> EAbs (BVar (VIdent (ident2dedukti x))) y)
+      (\x y -> EAbs (BVar (VIdent (ident2ident x))) y)
       (exp2dedukti exp)
       idents
   ---- still assuming GF fun is Dedukti ident
@@ -129,13 +129,13 @@ exp2dedukti exp = case exp of
 
 exp2deduktiPatt :: GExp -> Patt
 exp2deduktiPatt exp = case exp of
-  GFormalExp formal -> PVar (formal2deduktiVar formal)
+  GIdentExp ident -> PVar (ident2var ident)
 {- ----
   GAppExp exp (GListExp exps) ->
     foldl1 EApp (map exp2dedukti (exp : exps))
   GAbsExp (GListIdent idents) exp ->
     foldr
-      (\x y -> EAbs (BVar (VIdent (ident2dedukti x))) y)
+      (\x y -> EAbs (BVar (VIdent (ident2ident x))) y)
       (exp2dedukti exp)
       idents
   GNameExp (LexName name) ->
@@ -147,26 +147,18 @@ proof2dedukti proof = case proof of
   GAppProof (GListProof proofs) exp ->
     foldl1 EApp (exp2dedukti exp : map proof2dedukti proofs)
 
-ident2dedukti :: GIdent -> QIdent
-ident2dedukti ident = case ident of
+ident2ident :: GIdent -> QIdent
+ident2ident ident = case ident of
   GStrIdent (GString s) -> QIdent s
 
-ident2deduktiVar :: GIdent -> Var
-ident2deduktiVar ident = case ident of
+ident2var :: GIdent -> Var
+ident2var ident = case ident of
   GStrIdent (GString "_") -> VWild
   GStrIdent (GString s) -> VIdent (QIdent s) 
 
-formal2dedukti :: GFormal -> Exp
-formal2dedukti formal = case formal of
-  GStrFormal (GString s) -> EIdent (QIdent s)
-
-formal2deduktiVar :: GFormal -> Var
-formal2deduktiVar formal = case formal of
-  GStrFormal (GString s) -> VIdent (QIdent s)
-
 exp2deduktiIdent :: GExp -> QIdent
 exp2deduktiIdent exp = case exp of
-  GFormalExp (GStrFormal (GString s)) -> QIdent s
+  GIdentExp (GStrIdent (GString s)) -> QIdent s
   _ -> QIdent (takeWhile isAlpha (show (gf exp))) ---- TODO
 
 label2ident :: GLabel -> QIdent
@@ -176,12 +168,12 @@ label2ident label = case label of
 
 kind2deduktiIdent :: GKind -> QIdent
 kind2deduktiIdent kind = case kind of
-  GFormalKind (GStrFormal (GString s)) -> QIdent s
+  GIdentKind (GStrIdent (GString s)) -> QIdent s
   _ -> QIdent (takeWhile isAlpha (show (gf kind))) ---- TODO
 
 prop2deduktiIdent :: GProp -> QIdent
 prop2deduktiIdent prop = case prop of
-  GFormalProp (GStrFormal (GString s)) -> QIdent s
+  GIdentProp (GStrIdent (GString s)) -> QIdent s
   _ -> QIdent (takeWhile isAlpha (show (gf prop))) ---- TODO
 
 

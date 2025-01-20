@@ -73,7 +73,7 @@ insitu t = case t of
 
 subst :: GArgKind -> GExp -> Bool
 subst argkind exp = case (argkind, exp) of
-  (GIdentsArgKind _ (GListIdent [GStrIdent x]), GFormalExp (GStrFormal y)) -> x == y
+  (GIdentsArgKind _ (GListIdent [GStrIdent x]), GIdentExp (GStrIdent y)) -> x == y
   _ -> False
 
 varless :: Tree a -> Tree a

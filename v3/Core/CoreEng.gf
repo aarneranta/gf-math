@@ -25,7 +25,6 @@ lincat
   [Hypo] = {text : Text ; isEmpty : Bool} ;
   Ident = Symb ;
   [Ident] = {np : NP ; isPl : Bool} ;
-  Formal = Symb ;
   Proof = Text ;
   [Proof] = Text ;
   Rule = Utt ;
@@ -73,7 +72,7 @@ lin
   AppExp exp exps = mkNP exp (S.mkAdv applied_to_Prep exps.np) ;
   AbsExp idents exp =
     mkNP the_Det (mkCN function_N (mkRS (mkRCl which_RP map_V3 idents.np exp))) ; 
-  FormalExp f = latexNP f ;
+  IdentExp f = latexNP f ;
   TypedExp exp kind = mkNP the_Det (mkCN (mkCN kind.cn exp) kind.adv) ;
 
   AndProp props = complexProp (mkS and_Conj props) ;
@@ -87,11 +86,11 @@ lin
     simpleProp (G.ExtAdvS (S.mkAdv for_Prep (mkNP all_Predet argkinds)) (partProp prop)) ;
   ExistProp argkinds prop =
     simpleProp (G.SSubjS (mkS (E.ExistsNP argkinds)) such_that_Subj (partProp prop)) ; ---- TODO: sg/pl correctly
-  FormalProp f = simpleProp (latexS f) ;
+  IdentProp f = simpleProp (latexS f) ;
   FalseProp = simpleProp (mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N))) ;
   AppProp f exps = simpleProp (mkS (mkCl (latexNP f) hold_V2 exps.np)) ;
 
-  FormalKind formal = {
+  IdentKind formal = {
     cn = mkCN element_N ;
     adv = S.mkAdv possess_Prep (latexNP formal)
     } ;
@@ -112,7 +111,6 @@ lin
   IdentsArgKind kind idents = {cn = mkCN kind.cn idents.np ; adv = kind.adv} ;
 
   StrIdent s = mkSymb s.s ;
-  StrFormal s = mkSymb s.s ;
   StrLabel s = symb (mkSymb s.s) ;
   
   AppProof proofs exp =

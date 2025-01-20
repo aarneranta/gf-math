@@ -15,7 +15,6 @@ cat
   [Hypo] ;
   Ident ;
   [Ident] {1} ;
-  Formal ;
   Proof ;
   [Proof] {0} ;
   Rule ;
@@ -43,7 +42,7 @@ fun
 
   AppExp : Exp -> [Exp] -> Exp ;
   AbsExp : [Ident] -> Exp -> Exp ;
-  FormalExp : Formal -> Exp ;
+  IdentExp : Ident -> Exp ;
   TypedExp : Exp -> Kind -> Exp ;
 
   AndProp : [Prop] -> Prop ;
@@ -54,19 +53,18 @@ fun
   FalseProp : Prop ;
   AllProp : [ArgKind] -> Prop -> Prop ;
   ExistProp : [ArgKind] -> Prop -> Prop ; 
-  FormalProp : Formal -> Prop ;
-  AppProp : Formal -> [Exp] -> Prop ;
+  IdentProp : Ident -> Prop ;
+  AppProp : Ident -> [Exp] -> Prop ;
 
-  FormalKind : Formal -> Kind ;
+  IdentKind : Ident -> Kind ;
   SuchThatKind : Ident -> Kind -> Prop -> Kind ;
-  AppKind : Formal -> [Exp] -> Kind ;
+  AppKind : Ident -> [Exp] -> Kind ;
   FunKind : [ArgKind] -> Kind -> Kind ;
 
   KindArgKind : Kind -> ArgKind ;
   IdentsArgKind : Kind -> [Ident] -> ArgKind ;
 
   StrIdent : String -> Ident ;
-  StrFormal : String -> Formal ;
   StrLabel : String -> Label ; -- to deal with Dedukti labels not in grammar
 
   AppProof : [Proof] -> Exp -> Proof ;

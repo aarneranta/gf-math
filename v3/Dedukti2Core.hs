@@ -25,7 +25,7 @@ jmt2core jmt = case jmt of
       ((hypos, kind), "Noun") -> 
           (maybe GAxiomKindJmt (\exp x y -> GDefKindJmt x y (exp2kind exp)) mexp)
             (GListHypo (map hypo2core hypos))
-	    (ident2coreKindExp ident)
+            (ident2coreKindExp ident)
       ((hypos, kind), "Name") ->
           (maybe GAxiomExpJmt (\exp x y z -> GDefExpJmt x y z (exp2exp exp)) mexp)
             (GListHypo (map hypo2core hypos)) (ident2exp ident)
@@ -34,13 +34,13 @@ jmt2core jmt = case jmt of
         let chypos = map hypo2core hypos
         in (maybe GAxiomExpJmt (\exp x y z -> GDefExpJmt x y z (exp2exp exp)) mexp)
              (GListHypo chypos)
-	     (funListExp ident (map identExp (concatMap hypoIdents chypos)))
+             (funListExp ident (map GIdentExp (concatMap hypoIdents chypos)))
              (exp2kind kind)
       ((hypos, kind), "Rel") ->
         let chypos = map hypo2core hypos
         in (maybe GAxiomPropJmt (\exp x y -> GDefPropJmt x y (exp2prop exp)) mexp)
              (GListHypo chypos)
-	     (funListProp ident (map identExp (concatMap hypoIdents chypos)))
+	     (funListProp ident (map GIdentExp (concatMap hypoIdents chypos)))
       ((hypos, kind), _) -> 
         GAxiomExpJmt
           (GListHypo (map hypo2core hypos)) (ident2exp ident)
@@ -62,7 +62,9 @@ funListExp ident exps = case ident of
   QIdent s -> case lookupConstant s of
     Just "Fun" ->
       GFunListExp (LexFun (dk s)) (GListExp exps)
-    _ -> GFormalExp (GStrFormal (GString s))
+    _ -> case exps of
+      [] -> GIdentExp (GStrIdent (GString s))
+      _:_ -> GAppExp (GIdentExp (GStrIdent (GString s))) (GListExp exps)
 
 funListProp :: QIdent -> [GExp] -> GProp
 funListProp ident exps = case ident of
@@ -71,16 +73,15 @@ funListProp ident exps = case ident of
       GAdjProp (LexAdj (dk s)) (exps !! 0)
     Just "Rel" | length exps == 2 ->
       GRelProp (LexRel (dk s)) (exps !! 0) (exps !! 1)
-    _ -> GFormalProp (GStrFormal (GString s))
-
-identExp :: GIdent -> GExp
-identExp (GStrIdent gs) = GFormalExp (GStrFormal gs)
+    _ -> case exps of
+      [] -> GIdentProp (GStrIdent (GString s))
+      _:_ -> GAppProp (GStrIdent (GString s)) (GListExp exps)
 
 hypoIdents :: GHypo -> [GIdent]
 hypoIdents hypo = case hypo of
   GVarsHypo (GListIdent idents) kind_ -> idents
   GBareVarsHypo (GListIdent idents) -> idents
-  GBareVarsHypo _ -> []
+  _ -> []
 
 hypo2core :: Hypo -> GHypo
 hypo2core hypo = case hypo of
@@ -112,11 +113,11 @@ exp2kind :: Exp -> GKind
 exp2kind exp = case exp of
   EIdent ident@(QIdent s) -> case lookupConstant s of  ---- TODO: more high level
     Just "Noun" -> GNounKind (LexNoun (dk s))
-    _ -> GFormalKind (ident2coreFormal ident)
+    _ -> GIdentKind (ident2core ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent ident ->
-        GAppKind (ident2coreFormal ident) (GListExp (map exp2exp args))
+        GAppKind (ident2core ident) (GListExp (map exp2exp args))
   EFun _ _ -> 
     case splitType exp of
       (hypos, valexp) ->
@@ -125,7 +126,7 @@ exp2kind exp = case exp of
 exp2prop :: Exp -> GProp
 exp2prop exp = case exp of
   _ | exp == propFalse -> GFalseProp
-  EIdent ident -> GFormalProp (ident2coreFormal ident)
+  EIdent ident -> GIdentProp (ident2core ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent conn | conn == identConj -> case splitIdent conn exp of
@@ -155,7 +156,7 @@ exp2prop exp = case exp of
         (Just "Adj", [a]) -> GAdjProp (LexAdj (dk pred)) (exp2exp a)     
         (Just "Rel", [a, b]) -> GRelProp (LexRel (dk pred)) (exp2exp a) (exp2exp b)
         _  ->
-          GAppProp (ident2coreFormal ident) (GListExp (map exp2exp args))
+          GAppProp (ident2core ident) (GListExp (map exp2exp args))
   EFun _ _ -> case splitType exp of
     (hypos, exp) ->
       GAllProp (GListArgKind (map hypo2coreArgKind hypos)) (exp2prop exp)
@@ -166,7 +167,7 @@ exp2exp :: Exp -> GExp
 exp2exp exp = case exp of
   EIdent ident@(QIdent s) -> case lookupConstant s of  ---- TODO: more high level
     Just "Name" -> GNameExp (LexName (dk s))
-    _ -> GFormalExp (ident2coreFormal ident)
+    _ -> GIdentExp (ident2core ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent ident@(QIdent f) -> case (lookupConstant f, args) of
@@ -178,7 +179,7 @@ exp2exp exp = case exp of
 
 exp2proof :: Exp -> GProof
 exp2proof exp = case exp of
-  EIdent ident -> GAppProof (GListProof []) (GFormalExp (ident2coreFormal ident))
+  EIdent ident -> GAppProof (GListProof []) (GIdentExp (ident2core ident))
   EApp _ _ -> case splitApp exp of
     (fun, args) ->
       GAppProof (GListProof (map exp2proof args)) (exp2exp fun)
@@ -188,7 +189,7 @@ exp2proof exp = case exp of
 patt2exp :: Patt -> GExp
 patt2exp patt = case patt of
   PVar (VIdent ident) -> ident2exp ident
-  PVar _ -> GFormalExp wildFormal
+  PVar _ -> GIdentExp wildIdent
   PApp _ _ -> case splitPatt patt of
     (fun, args) -> case fun of
       PVar (VIdent ident) ->
@@ -198,15 +199,11 @@ ident2core :: QIdent -> GIdent
 ident2core ident = case ident of
   QIdent s -> GStrIdent (GString s)
 
-ident2coreFormal :: QIdent -> GFormal
-ident2coreFormal ident = case ident of
-  QIdent s -> GStrFormal (GString s)
-
 ident2exp :: QIdent -> GExp
 ident2exp ident = case ident of
   QIdent s -> case lookupConstant s of
     Just "Name" -> GNameExp (LexName (dk s))
-    _ -> GFormalExp (GStrFormal (GString s))
+    _ -> GIdentExp (GStrIdent (GString s))
 
 ident2label :: QIdent -> GLabel
 ident2label ident = case ident of
@@ -218,7 +215,7 @@ ident2coreKindExp :: QIdent -> GKind
 ident2coreKindExp ident = case ident of
   QIdent s -> case lookupConstant s of
     Just "Noun" -> GNounKind (LexNoun (dk s))
-    _ -> GFormalKind (ident2coreFormal ident)
+    _ -> GIdentKind (ident2core ident)
 
 bind2coreIdent :: Bind -> GIdent
 bind2coreIdent bind = case bind of
@@ -267,9 +264,6 @@ splitIdent conn exp = case splitApp exp of
 
 wildIdent :: GIdent
 wildIdent = GStrIdent (GString "_") ---- to be eliminated?
-
-wildFormal :: GFormal
-wildFormal = GStrFormal (GString "_") ---- to be eliminated?
 
 -- needed in proofs by abstraction
 bind2coreHypo :: Bind -> GHypo
