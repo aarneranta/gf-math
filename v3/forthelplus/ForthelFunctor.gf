@@ -206,11 +206,15 @@ lin
   DefinitionSection definition section = mkText (mkUtt definition) section ;
 
   noHeader = emptyText ;
+  stringHeader s = lin Text {s = s.s} ;
 
 -- using Constants
 
   AdjAdjective adj = adj ;
   NameTerm name = name ;
+  FunAppTerm f terms = mkNP the_Det (mkCN f.cn (Syntax.mkAdv f.prep terms)) ;
+
+  NounClassNoun noun = {cn = noun ; adv = lin Adv {s = []}} ;
   LabelHeader label = mkText (mkUtt label) ;
 
 

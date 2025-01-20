@@ -22,8 +22,8 @@ cat
   [Rule] {1} ;
 
 fun
-  ThmJmt : [Hypo] -> Exp -> Prop -> Proof -> Jmt ;
-  AxiomJmt : [Hypo] -> Exp -> Prop -> Jmt ;
+  ThmJmt : [Hypo] -> Label -> Prop -> Proof -> Jmt ;
+  AxiomJmt : [Hypo] -> Label -> Prop -> Jmt ;
   
   DefPropJmt : [Hypo] -> Prop -> Prop -> Jmt ;
   DefKindJmt : [Hypo] -> Kind -> Kind -> Jmt ;
@@ -67,6 +67,7 @@ fun
 
   StrIdent : String -> Ident ;
   StrFormal : String -> Formal ;
+  StrLabel : String -> Label ; -- to deal with Dedukti labels not in grammar
 
   AppProof : [Proof] -> Exp -> Proof ;
   AbsProof : [Hypo] -> Proof -> Proof ;

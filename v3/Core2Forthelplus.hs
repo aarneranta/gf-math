@@ -9,20 +9,14 @@ import qualified Forthel as F
 
 jmt2toplevel :: GJmt -> F.GToplevel
 jmt2toplevel jmt = case jmt of
-  GAxiomJmt (GListHypo []) exp prop ->
+  GAxiomJmt hypos label prop ->
       F.GSectionToplevel
-        (exp2header exp)
-        (F.GStatementSection (prop2statement prop) F.GEmptySection)
+        (label2header label)
+          (hyposSection hypos
+            (F.GStatementSection (prop2statement prop) F.GEmptySection))
+  GThmJmt hypos label prop proof ->
+    jmt2toplevel (GAxiomJmt hypos label prop) ---- TODO: proof in ForTheL+
 {-
-  GAxiomJmt (GListHypo hypos) exp prop ->
-    F.GAssumptionsSection
-      (exp2termIdent exp)
-      (foldr EFun (prop2statement prop) (concatMap hypo2dedukti hypos))
-  GThmJmt (GListHypo hypos) exp prop proof ->
-    JDef
-      (exp2termIdent exp)
-      (MTExp (foldr EFun (prop2statement prop) (concatMap hypo2dedukti hypos)))
-      (MEExp (proof2dedukti proof))
   GDefPropJmt (GListHypo hypos) prop df ->
     JDef
       (prop2statementIdent prop)
@@ -53,9 +47,20 @@ jmt2toplevel jmt = case jmt of
   GRewriteJmt (GListRule rules) -> JRules (map rule2dedukti rules)
 -}
 
-exp2header :: GExp -> F.GHeader
-exp2header exp = case exp of
-  _ -> F.GnoHeader ----
+hyposSection :: GListHypo -> F.GSection -> F.GSection
+hyposSection hypos section = case hypos of
+  GListHypo [] -> section
+  GListHypo hs -> F.GAssumptionsSection (hypos2assumptions hs) section
+
+label2header :: GLabel -> F.GHeader
+label2header label = case label of
+  LexLabel s -> F.GLabelHeader (F.LexLabel s)
+  GStrLabel (GString s) -> F.GstringHeader (F.GString s)
+
+hypos2assumptions :: [GHypo] -> F.GAssumptions
+hypos2assumptions hypos = case hypos of
+  [hypo] -> F.GOneAssumptions (hypo2assumption hypo)
+  hypo:hs -> F.GAddAssumptions (hypo2assumption hypo) (hypos2assumptions hs)
 
 {-
 rule2dedukti :: GRule -> Rule
@@ -73,7 +78,7 @@ prop2statement prop = case prop of
   GAndProp (GListProp props) -> foldl1 F.GAndStatement (map prop2statement props)
   GOrProp (GListProp props) -> foldl1  F.GOrStatement (map prop2statement props)
   GIfProp a b -> F.GIfStatement (prop2statement a) (prop2statement b)
---  GNotProp a -> propNeg (prop2statement a)
+  GNotProp a -> F.GIfStatement (prop2statement a) (prop2statement GFalseProp) ----
   GIffProp a b -> F.GIffStatement (prop2statement a) (prop2statement b)
 {-
   GAllProp (GListArgKind argkinds) prop ->
@@ -96,17 +101,27 @@ prop2statement prop = case prop of
   GAdjProp (LexAdj adj) exp ->
     F.GSimpleStatement (F.GOneTerms (exp2term exp))
       (F.GPosOnePredicates (F.GIsPredicate (F.GAdjAdjective (F.LexAdj adj))))
+  GNotAdjProp (LexAdj adj) exp ->
+    F.GSimpleStatement (F.GOneTerms (exp2term exp))
+      (F.GNegOnePredicates (F.GIsPredicate (F.GAdjAdjective (F.LexAdj adj))))
 --  GRelProp (LexRel rel) a b ->
 --    foldl EApp (EIdent (QIdent (undk rel))) (map exp2term [a, b]) 
 
-{-
-hypo2dedukti :: GHypo -> [Hypo]
-hypo2dedukti hypo = case hypo of
-  GVarsHypo (GListIdent idents) kind ->
-    [HVarExp (VIdent (ident2dedukti ident)) (kind2dedukti kind) | ident <- idents]
+hypo2assumption :: GHypo -> F.GAssumption
+hypo2assumption hypo = case hypo of
+  GVarsHypo idents kind ->
+    F.GLetNamesAssumption (idents2varnames idents) (kind2classnoun kind)
   GPropHypo prop ->
-    [HExp (prop2statement prop)]
--}
+    F.GStatementAssumption (prop2statement prop)
+
+idents2varnames :: GListIdent -> F.GListVarName
+idents2varnames listident = case listident of
+  GListIdent idents -> F.GListVarName (map ident2varname idents)
+
+ident2varname :: GIdent -> F.GVarName
+ident2varname ident = case ident of
+  GStrIdent (GString s) -> F.GLatexVarName (F.GstringVar (F.GString s))
+
 
 {-
 argkind2dedukti :: GArgKind -> (Exp, [Var])
@@ -115,9 +130,9 @@ argkind2dedukti argkind = case argkind of
     (kind2dedukti kind, map ident2deduktiVar idents)
 -}
 
+kind2classnoun :: GKind -> F.GClassNoun
+kind2classnoun kind = case kind of
 {-
-kind2dedukti :: GKind -> Exp
-kind2dedukti kind = case kind of
   GFormalKind formal -> formal2dedukti formal
   GSuchThatKind ident kind prop ->
     propSigma
@@ -126,10 +141,8 @@ kind2dedukti kind = case kind of
             (prop2statement prop))
   GAppKind formal (GListExp exps) ->
     foldl1 EApp (formal2dedukti formal : map exp2term exps)
-  ---- still assuming GF fun is Dedukti ident
-  GNounKind (LexNoun noun) ->
-    EIdent (QIdent (undk noun))
 -}
+  GNounKind (LexNoun noun) -> F.GNounClassNoun (F.LexNoun noun)
 
 exp2term :: GExp -> F.GTerm
 exp2term exp = case exp of
@@ -145,6 +158,14 @@ exp2term exp = case exp of
 -}
   GNameExp (LexName name) ->
     F.GNameTerm (F.LexName name)
+  GFunListExp (LexFun fun) (GListExp exps) ->
+    F.GFunAppTerm (F.LexFun fun) (exps2terms exps)
+
+exps2terms :: [GExp] -> F.GTerms
+exps2terms exps = case exps of
+  [exp] -> F.GOneTerms (exp2term exp)
+  exp:es -> F.GAddTerms (exp2term exp) (exps2terms es)
+
 
 
 {- ----

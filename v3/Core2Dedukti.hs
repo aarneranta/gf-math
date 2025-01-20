@@ -12,13 +12,13 @@ import Data.Char
 
 jmt2dedukti :: GJmt -> Jmt
 jmt2dedukti jment = case jment of
-  GAxiomJmt (GListHypo hypos) exp prop ->
+  GAxiomJmt (GListHypo hypos) label prop ->
     JStatic
-      (exp2deduktiIdent exp)
+      (label2ident label)
       (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos))
-  GThmJmt (GListHypo hypos) exp prop proof ->
+  GThmJmt (GListHypo hypos) label prop proof ->
     JDef
-      (exp2deduktiIdent exp)
+      (label2ident label)
       (MTExp (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos)))
       (MEExp (proof2dedukti proof))
   GDefPropJmt (GListHypo hypos) prop df ->
@@ -168,6 +168,11 @@ exp2deduktiIdent :: GExp -> QIdent
 exp2deduktiIdent exp = case exp of
   GFormalExp (GStrFormal (GString s)) -> QIdent s
   _ -> QIdent (takeWhile isAlpha (show (gf exp))) ---- TODO
+
+label2ident :: GLabel -> QIdent
+label2ident label = case label of
+  LexLabel s -> QIdent (undk s)
+  GStrLabel (GString s) -> QIdent s
 
 kind2deduktiIdent :: GKind -> QIdent
 kind2deduktiIdent kind = case kind of

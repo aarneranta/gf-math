@@ -149,12 +149,16 @@ fun
   DefinitionSection : Definition -> Section -> Section ;
 
   noHeader : Header ;
+  stringHeader : String -> Header ;
 
   contradictionConstant : Constant ;
 
 -- using Constants
   AdjAdjective : Adj -> Adjective ;
   NameTerm : Name -> Term ;
+  FunAppTerm : Fun -> Terms -> Term ;
+  
+  NounClassNoun : Noun -> ClassNoun ;
   LabelHeader : Label -> Header ;
 
 -- for Michael Kohlhase's example

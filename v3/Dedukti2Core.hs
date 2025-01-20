@@ -20,7 +20,7 @@ jmt2core jmt = case jmt of
       ((hypos, kind), "Label") -> 
         (maybe GAxiomJmt (\exp x y z -> GThmJmt x y z (exp2proof exp)) mexp)
           (GListHypo (map hypo2core hypos))
-          (ident2labelExp ident)
+          (ident2label ident)
           (exp2prop kind)
       ((hypos, kind), "Noun") -> 
           (maybe GAxiomKindJmt (\exp x y -> GDefKindJmt x y (exp2kind exp)) mexp)
@@ -208,11 +208,11 @@ ident2exp ident = case ident of
     Just "Name" -> GNameExp (LexName (dk s))
     _ -> GFormalExp (GStrFormal (GString s))
 
-ident2labelExp :: QIdent -> GExp
-ident2labelExp ident = case ident of
+ident2label :: QIdent -> GLabel
+ident2label ident = case ident of
   QIdent s -> case lookupConstant s of
-    Just "Label" -> GLabelExp (LexLabel (dk s))
-    _ -> ident2exp ident
+    Just "Label" -> LexLabel (dk s)
+    _ -> GStrLabel (GString s)
 
 ident2coreKindExp :: QIdent -> GKind
 ident2coreKindExp ident = case ident of
