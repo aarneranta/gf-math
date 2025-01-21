@@ -3,7 +3,9 @@ concrete ConstantBaseEng of ConstantBase =
 open
   SyntaxEng,
   ParadigmsEng,
-  SymbolicEng
+  SymbolicEng,
+  Formal,
+  Prelude
 
 in {
 
@@ -14,10 +16,16 @@ lincat
   Name = NP ;
   Fun = FunctionT ;
   Label = NP ;
+  Const = ConstantT ;
+  Oper = OperatorT ;
+  Compar = ComparisonT ; 
 
 oper
   RelationT : Type = {ap : AP ; prep : Prep} ;
   FunctionT : Type = {cn : CN ; prep : Prep} ;
+  ConstantT : Type = {np : NP ; c : Str} ;
+  OperatorT : Type = {f : FunctionT ; op : Str ; p : Prec} ; -- infixl p c
+  ComparisonT : Type = {rel : RelationT ; op :  Str} ;
 
   mkNoun = overload {
     mkNoun : Str -> CN
@@ -53,6 +61,23 @@ oper
   mkLabel = overload {
     mkLabel : Str -> NP
       = \s -> mkNP (mkPN s)
+    } ;
+
+  mkConst = overload {
+    mkConst : Str -> Str -> ConstantT
+      = \w, c -> {np = mkName w ; c = c}
+    } ;
+    
+  mkOper = overload {
+    mkOper : Str -> Str -> OperatorT
+      = \w, c -> {f = mkFun w ; op = c ; p = 0} ; -- lowest Prec
+    mkOper : Str -> Str -> Prec -> OperatorT
+      = \w, c, p -> {f = mkFun w ; op = c ; p = p}
+    } ;
+
+  mkCompar = overload {
+    mkCompar : Str -> Str -> Str -> ComparisonT
+      = \s, p, op -> {rel = mkRel s p ; op = op} ;
     } ;
 
   latexName : Str -> NP

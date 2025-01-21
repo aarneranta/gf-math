@@ -8,7 +8,7 @@ lincat
   Term = TermPrecNum ;
   [Term] = {s : Str} ;
   Var = Str ;
-  Const = Str ;
+  Constant = Str ;
   Function = Str ;
 
 lin
@@ -41,17 +41,17 @@ lin
   TApp f xs = constant (f ++ parenth xs.s) ** {isNumber = False} ;
 
   TVar x =  constant x ** {isNumber = False} ;
-  TConst c =  constant c ** {isNumber = False} ;
+  TConstant c =  constant c ** {isNumber = False} ;
   TNumber n = constant n.s ** {isNumber = True} ;
 
   BaseTerm x = {s = top x} ;
   ConsTerm x xs = {s = top x ++ "," ++ xs.s} ;
 
-  N_Const = "N" ;
-  Z_Const = "Z" ;
-  Q_Const = "Q" ;
-  R_Const = "R" ;
-  C_Const = "C" ;
+  N_Constant = "N" ;
+  Z_Constant = "Z" ;
+  Q_Constant = "Q" ;
+  R_Constant = "R" ;
+  C_Constant = "C" ;
 
   stringVar s = s.s ;
 

@@ -6,7 +6,9 @@ open
   SyntaxEng,
   (Syntax = SyntaxEng),
   SymbolicEng,
-  ParadigmsEng
+  ParadigmsEng,
+  Formal,
+  Prelude
 in {
 
 lincat
@@ -16,6 +18,10 @@ lincat
 lin
   TermExp term = latexNP (mkSymb term.s) ;
   FormulaProp formula = simpleProp (latexS (mkSymb formula.s)) ;
+
+  ConstTerm const = constant const.c ** {isNumber = False} ;
+  ComparEquation compar x y = {s = top x ++ compar.op ++ top y} ;
+  AppOperTerm op x y = infixl op.p op.op x y ** {isNumber = False} ;
 
   AndAdj adjs = mkAP and_Conj adjs ;
   OrAdj adjs = mkAP or_Conj adjs ;

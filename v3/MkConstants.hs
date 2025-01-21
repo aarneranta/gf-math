@@ -68,7 +68,8 @@ mkConstantsEngGF annots = unlines $ [
   "open",
   "  SyntaxEng,",
   "  ParadigmsEng,",
-  "  SymbolicEng",
+  "  SymbolicEng,",
+  "  Formal"
   "",
   "in {"
   ] ++

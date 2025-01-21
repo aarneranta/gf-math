@@ -26,17 +26,17 @@ jmt2core jmt = case jmt of
           (maybe GAxiomKindJmt (\exp x y -> GDefKindJmt x y (exp2kind exp)) mexp)
             (GListHypo (map hypo2core hypos))
             (ident2coreKindExp ident)
-      ((hypos, kind), "Name") ->
+      ((hypos, kind), c) | elem c ["Name", "Const"] ->
           (maybe GAxiomExpJmt (\exp x y z -> GDefExpJmt x y z (exp2exp exp)) mexp)
             (GListHypo (map hypo2core hypos)) (ident2exp ident)
             (exp2kind kind)
-      ((hypos, kind), "Fun") ->
+      ((hypos, kind), c) | elem c ["Fun", "Oper"] ->
         let chypos = map hypo2core hypos
         in (maybe GAxiomExpJmt (\exp x y z -> GDefExpJmt x y z (exp2exp exp)) mexp)
              (GListHypo chypos)
              (funListExp ident (map GIdentExp (concatMap hypoIdents chypos)))
              (exp2kind kind)
-      ((hypos, kind), "Rel") ->
+      ((hypos, kind), c) | elem c ["Rel", "Compar"] ->
         let chypos = map hypo2core hypos
         in (maybe GAxiomPropJmt (\exp x y -> GDefPropJmt x y (exp2prop exp)) mexp)
              (GListHypo chypos)
@@ -62,6 +62,8 @@ funListExp ident exps = case ident of
   QIdent s -> case lookupConstant s of
     Just "Fun" ->
       GFunListExp (LexFun (dk s)) (GListExp exps)
+    Just "Oper" ->
+      GOperListExp (LexOper (dk s)) (GListExp exps)
     _ -> case exps of
       [] -> GIdentExp (GStrIdent (GString s))
       _:_ -> GAppExp (GIdentExp (GStrIdent (GString s))) (GListExp exps)
@@ -73,9 +75,11 @@ funListProp ident exps = case ident of
       GAdjProp (LexAdj (dk s)) (exps !! 0)
     Just "Rel" | length exps == 2 ->
       GRelProp (LexRel (dk s)) (exps !! 0) (exps !! 1)
+    Just "Compar" | length exps == 2 ->
+      GComparProp (LexCompar (dk s)) (exps !! 0) (exps !! 1)
     _ -> case exps of
-      [] -> GIdentProp (GStrIdent (GString s))
-      _:_ -> GAppProp (GStrIdent (GString s)) (GListExp exps)
+      --[] -> GIdentProp (GStrIdent (GString s))
+      --_:_ -> GAppProp (GStrIdent (GString s)) (GListExp exps)
 
 hypoIdents :: GHypo -> [GIdent]
 hypoIdents hypo = case hypo of
@@ -151,10 +155,12 @@ exp2prop exp = case exp of
         [a] -> case exp2prop a of
           GAdjProp adj x -> GNotAdjProp adj x
 	  GRelProp rel x y -> GNotRelProp rel x y
+	  GComparProp rel x y -> GNotComparProp rel x y
           p -> GNotProp p
       EIdent ident@(QIdent pred) -> case (lookupConstant pred, args) of
         (Just "Adj", [a]) -> GAdjProp (LexAdj (dk pred)) (exp2exp a)     
         (Just "Rel", [a, b]) -> GRelProp (LexRel (dk pred)) (exp2exp a) (exp2exp b)
+        (Just "Compar", [a, b]) -> GComparProp (LexCompar (dk pred)) (exp2exp a) (exp2exp b)
         _  ->
           GAppProp (ident2core ident) (GListExp (map exp2exp args))
   EFun _ _ -> case splitType exp of
@@ -167,11 +173,13 @@ exp2exp :: Exp -> GExp
 exp2exp exp = case exp of
   EIdent ident@(QIdent s) -> case lookupConstant s of  ---- TODO: more high level
     Just "Name" -> GNameExp (LexName (dk s))
+    Just "Const" -> GConstExp (LexConst (dk s))
     _ -> GIdentExp (ident2core ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent ident@(QIdent f) -> case (lookupConstant f, args) of
         (Just "Fun", exps) -> GFunListExp (LexFun (dk f)) (GListExp (map exp2exp exps))     
+        (Just "Oper", exps) -> GOperListExp (LexOper (dk f)) (GListExp (map exp2exp exps))     
         _ -> GAppExp (exp2exp fun) (GListExp (map exp2exp args))
       _ -> GAppExp (exp2exp fun) (GListExp (map exp2exp args))
   EAbs _ _ -> case splitAbs exp of
@@ -203,6 +211,7 @@ ident2exp :: QIdent -> GExp
 ident2exp ident = case ident of
   QIdent s -> case lookupConstant s of
     Just "Name" -> GNameExp (LexName (dk s))
+    Just "Const" -> GConstExp (LexConst (dk s))
     _ -> GIdentExp (GStrIdent (GString s))
 
 ident2label :: QIdent -> GLabel

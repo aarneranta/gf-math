@@ -9,7 +9,7 @@ cat
   Term ;
   [Term] {1} ;
   Var ;
-  Const ;
+  Constant ;
   Function ;
 
 fun
@@ -28,13 +28,13 @@ fun
   TApp : Function -> [Term] -> Term ;
 
   TVar : Var -> Term ;
-  TConst : Const -> Term ;
+  TConstant : Constant -> Term ;
   TNumber : Float -> Term ;
 
   FVar : Var -> Function ;
   FDerivative : Function -> Function ;
 
-  N_Const, Z_Const, Q_Const, R_Const, C_Const : Const ;
+  N_Constant, Z_Constant, Q_Constant, R_Constant, C_Constant : Constant ;
 
   stringVar : String -> Var ;
   

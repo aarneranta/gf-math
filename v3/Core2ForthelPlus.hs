@@ -6,11 +6,35 @@ module Core2ForthelPlus where
 import ForthelPlus
 
 nlg :: Tree a -> [Tree a]
-nlg t = [t, at, iat, viat]
+nlg t = [t, ft, aft, iaft, viaft]
  where
-   at = aggregate (flatten t)
-   iat = insitu at
-   viat = varless iat
+   ft = formalize t
+   aft = aggregate (flatten ft)
+   iaft = insitu aft
+   viaft = varless iaft
+
+formalize :: Tree a -> Tree a
+formalize t = case t of
+  GComparProp comp x y -> case (getTerm x, getTerm y) of
+    (Just tx, Just ty) -> GFormulaProp (GFEquation (GComparEquation comp tx ty))
+    _ -> GComparProp comp (formalize x) (formalize y)
+  GOperListExp oper xy@(GListExp [x, y]) -> case (getTerm x, getTerm y) of
+    (Just tx, Just ty) -> GTermExp (GAppOperTerm oper tx ty)
+    _ -> GOperListExp oper (formalize xy)
+  GConstExp const -> GTermExp (GConstTerm const)
+  GIdentExp (GStrIdent x) -> GTermExp (GTVar (GstringVar x)) ---- TODO: simpler ident
+  _ -> composOp formalize t
+
+getTerm :: GExp -> Maybe GTerm
+getTerm t = case t of
+  GConstExp const -> return (GConstTerm const)
+  GOperListExp oper (GListExp [x, y]) -> do
+    tx <- getTerm x
+    ty <- getTerm y
+    return (GAppOperTerm oper tx ty)
+  GIdentExp (GStrIdent x) -> return (GTVar (GstringVar x)) ---- TODO: simpler ident
+  _ -> Nothing
+
 
 aggregate :: Tree a -> Tree a
 aggregate t = case t of

@@ -80,5 +80,8 @@ fun
   NameExp : Name -> Exp ;
   FunListExp : Fun -> [Exp] -> Exp ;
   LabelExp : Label -> Exp ;
-
+  ConstExp : Const -> Exp ;
+  OperListExp : Oper -> [Exp] -> Exp ; -- binary operation applied collectively
+  ComparProp : Compar -> Exp -> Exp -> Prop ;
+  NotComparProp : Compar -> Exp -> Exp -> Prop ;
 }

@@ -8,6 +8,10 @@ fun
   TermExp : Term -> Exp ;
   FormulaProp : Formula -> Prop ;
 
+  ConstTerm : Const -> Term ;
+  ComparEquation : Compar -> Term -> Term -> Equation ;
+  AppOperTerm : Oper -> Term -> Term -> Term ;
+
   AndAdj : [Adj] -> Adj ;
   OrAdj : [Adj] -> Adj ;
   

@@ -5,7 +5,8 @@ concrete ConstantsEng of Constants = ConstantBaseEng **
 open
   SyntaxEng,
   ParadigmsEng,
-  SymbolicEng
+  SymbolicEng,
+  Formal
 
 in {
 lin Dk_Type = mkNoun "type" ;
@@ -14,14 +15,14 @@ lin Dk_Set = mkNoun "set" ;
 lin Dk_Even = mkAdj "even" ;
 lin Dk_Odd = mkAdj "odd" ;
 lin Dk_Prime = mkAdj "prime" ;
-lin Dk_Zero = latexName "0" ;
+lin Dk_Zero = mkConst "zero" "0" ;
 lin Dk_Div = mkRel "divisible" "by" ;
-lin Dk_Eq = mkRel "equal" "to" ;
-lin Dk_Lt = mkRel "less" "than" ;
-lin Dk_Gt = mkRel "greater" "than" ;
+lin Dk_Eq = mkCompar "equal" "to" "=" ;
+lin Dk_Lt = mkCompar "less" "than" "<" ;
+lin Dk_Gt = mkCompar "greater" "than" ">" ;
 lin Dk_Succ = mkFun "successor" ;
-lin Dk_sum = mkFun "sum" ;
-lin Dk_prod = mkFun "product" ;
+lin Dk_sum = mkOper "sum" "+" ;
+lin Dk_prod = mkOper "product" "\\times" <2 : Prec> ;
 lin Dk_gcd = mkFun "greatest" "common" "divisor" ;
 lin Dk_eqZero = mkLabel "equality of zero" ;
 lin Dk_eqSucc = mkLabel "equality of successors" ;

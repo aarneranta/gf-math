@@ -157,6 +157,10 @@ lin
   NameExp name = name ;
   FunListExp f exps = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep exps.np)) ;
   LabelExp label = label ;
+  ConstExp const = const.np ;
+  OperListExp op exps = mkNP the_Det (mkCN op.f.cn (S.mkAdv op.f.prep exps.np)) ;
+  ComparProp co x y = simpleProp (mkS (mkCl x (mkVP (mkVP co.rel.ap) (S.mkAdv co.rel.prep y)))) ;
+  NotComparProp co x y = simpleProp (mkS negPol (mkCl x (mkVP (mkVP co.rel.ap) (S.mkAdv co.rel.prep y)))) ;
 
 oper
   labelText : Str -> Text -> Text = \label, text ->

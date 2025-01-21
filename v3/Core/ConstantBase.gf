@@ -7,5 +7,8 @@ cat
   Name ;
   Fun ;
   Label ;
+  Const ;
+  Oper ;
+  Compar ;
 
 }
