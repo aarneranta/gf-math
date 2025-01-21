@@ -1,4 +1,4 @@
-concrete CoreEng of Core = ConstantsEng ** 
+concrete MathCoreEng of MathCore = ConstantsEng ** 
   open
     SyntaxEng,
     (S=SyntaxEng),

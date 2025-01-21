@@ -5,10 +5,10 @@ module CommonConcepts where
 
 import Constants (constants)
 import Dedukti.AbsDedukti
-import ForthelPlus
+import Informath
 import qualified Data.Map as M
 
-type CTree a = ForthelPlus.Tree a
+type CTree a = Informath.Tree a
 type DTree a = Dedukti.AbsDedukti.Tree a
 
 identConj = QIdent "Conj"

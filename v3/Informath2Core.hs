@@ -1,9 +1,9 @@
 {-# LANGUAGE GADTs, KindSignatures, DataKinds #-}
 {-# LANGUAGE LambdaCase #-}
 
-module ForthelPlus2Core where
+module Informath2Core where
 
-import ForthelPlus
+import Informath
 
 data SEnv = SEnv {varlist :: [String]}
 initSEnv = SEnv {varlist = []}

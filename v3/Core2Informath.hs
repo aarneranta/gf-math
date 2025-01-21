@@ -1,9 +1,9 @@
 {-# LANGUAGE GADTs, KindSignatures, DataKinds #-}
 {-# LANGUAGE LambdaCase #-}
 
-module Core2ForthelPlus where
+module Core2Informath where
 
-import ForthelPlus
+import Informath
 
 nlg :: Tree a -> [Tree a]
 nlg t = [t, ft, aft, iaft, viaft]

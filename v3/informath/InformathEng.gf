@@ -1,6 +1,6 @@
---# -path=.:../Core
+--# -path=.:../mathcore
 
-concrete ForthelPlusEng of ForthelPlus = CoreEng, TermsLatex **
+concrete InformathEng of Informath = MathCoreEng, TermsLatex **
 
 open
   SyntaxEng,

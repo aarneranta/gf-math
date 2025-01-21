@@ -1,4 +1,4 @@
-abstract Core = Constants ** {
+abstract MathCore = Constants ** {
 
 flags startcat = Jmt ;
 

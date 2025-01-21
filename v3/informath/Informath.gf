@@ -1,4 +1,4 @@
-abstract ForthelPlus = Core, Terms ** {
+abstract Informath = MathCore, Terms ** {
 
 cat
   [Adj] {2} ;

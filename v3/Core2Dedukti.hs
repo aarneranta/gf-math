@@ -4,7 +4,7 @@
 module Core2Dedukti where
 
 import Dedukti.AbsDedukti
-import ForthelPlus -- superset of Core
+import Informath -- superset of MathCore
 import CommonConcepts
 
 import Data.Char
