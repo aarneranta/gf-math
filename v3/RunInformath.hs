@@ -20,7 +20,7 @@ import Data.List (partition)
 import System.Random
 import System.Environment (getArgs)
 
-informathPGFFile = "informath/Informath.pgf"
+informathPGFFile = "grammars/Informath.pgf"
 Just english = readLanguage "InformathEng"
 Just jmt = readType "Jmt"
 

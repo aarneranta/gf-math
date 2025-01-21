@@ -1,1 +1,1 @@
-informath/Informath.hs
+grammars/Informath.hs

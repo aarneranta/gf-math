@@ -1,5 +1,3 @@
---# -path=.:../mathcore
-
 concrete InformathEng of Informath = MathCoreEng, TermsLatex **
 
 open
