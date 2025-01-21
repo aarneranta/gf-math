@@ -1,5 +1,8 @@
-concrete MathCoreEng of MathCore = ConstantsEng ** 
-  open
+concrete MathCoreEng of MathCore =
+  NotationsEng,
+  ConstantsEng
+
+ ** open
     SyntaxEng,
     (S=SyntaxEng),
     (G=GrammarEng),
@@ -154,6 +157,7 @@ lin
   RelProp rel x y = simpleProp (mkS (mkCl x (mkVP (mkVP rel.ap) (S.mkAdv rel.prep y)))) ;
   NotRelProp rel x y = simpleProp (mkS negPol (mkCl x (mkVP (mkVP rel.ap) (S.mkAdv rel.prep y)))) ;
   NounKind noun = {cn = noun ; adv = lin Adv {s = []}} ;
+  SetKind set = {cn = set.cn ; adv = lin Adv {s = []}} ;
   NameExp name = name ;
   FunListExp f exps = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep exps.np)) ;
   LabelExp label = label ;

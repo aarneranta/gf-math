@@ -22,7 +22,7 @@ jmt2core jmt = case jmt of
           (GListHypo (map hypo2core hypos))
           (ident2label ident)
           (exp2prop kind)
-      ((hypos, kind), "Noun") -> 
+      ((hypos, kind), c) | elem c ["Noun", "Set"] -> 
           (maybe GAxiomKindJmt (\exp x y -> GDefKindJmt x y (exp2kind exp)) mexp)
             (GListHypo (map hypo2core hypos))
             (ident2coreKindExp ident)
@@ -117,6 +117,7 @@ exp2kind :: Exp -> GKind
 exp2kind exp = case exp of
   EIdent ident@(QIdent s) -> case lookupConstant s of  ---- TODO: more high level
     Just "Noun" -> GNounKind (LexNoun (dk s))
+    Just "Set" -> GSetKind (LexSet (dk s))
     _ -> GIdentKind (ident2core ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
@@ -224,6 +225,7 @@ ident2coreKindExp :: QIdent -> GKind
 ident2coreKindExp ident = case ident of
   QIdent s -> case lookupConstant s of
     Just "Noun" -> GNounKind (LexNoun (dk s))
+    Just "Set" -> GSetKind (LexSet (dk s))
     _ -> GIdentKind (ident2core ident)
 
 bind2coreIdent :: Bind -> GIdent

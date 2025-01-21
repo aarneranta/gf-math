@@ -17,6 +17,7 @@ lin
   TermExp term = latexNP (mkSymb term.s) ;
   FormulaProp formula = simpleProp (latexS (mkSymb formula.s)) ;
 
+  SetTerm set = constant set.c ** {isNumber = False} ;
   ConstTerm const = constant const.c ** {isNumber = False} ;
   ComparEquation compar x y = {s = top x ++ compar.op ++ top y} ;
   AppOperTerm op x y = infixl op.p op.op x y ** {isNumber = False} ;
@@ -43,11 +44,11 @@ lin
   DefinedAdjJmt hypos exp adj prop =
     thenText hypos (mkText (
       mkS (mkCl exp (mkVP (mkVP (passiveVP define_V2)
-        (lin Adv (mkSC (mkVP adj)))) (Syntax.mkAdv if_Subj prop.s))))) ; 
+        <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s))))) ; 
   WeDefineAdjJmt hypos exp adj prop =
     thenText hypos (mkText (
       mkS (mkCl we_NP (mkVP (mkVP (mkVP define_V2 exp)
-        (lin Adv (mkSC (mkVP adj)))) (Syntax.mkAdv if_Subj prop.s))))) ; 
+        <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s))))) ; 
 
   AdjKind adj kind = kind ** {cn = mkCN adj kind.cn} ;
   KindProp exp kind = simpleProp (mkS (mkCl exp kind.cn)) ;

@@ -10,6 +10,7 @@ fun
   TermExp : Term -> Exp ;
   FormulaProp : Formula -> Prop ;
 
+  SetTerm : Set -> Term ;
   ConstTerm : Const -> Term ;
   ComparEquation : Compar -> Term -> Term -> Equation ;
   AppOperTerm : Oper -> Term -> Term -> Term ;

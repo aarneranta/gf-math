@@ -2,7 +2,7 @@ module Constants where
 
 constants = [
   ("Type", "Noun"), 
-  ("Nat", "Noun"), 
+  ("Nat", "Set"), 
   ("Set", "Noun"), 
   ("Even", "Adj"), 
   ("Odd", "Adj"), 

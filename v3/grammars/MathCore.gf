@@ -1,4 +1,7 @@
-abstract MathCore = Constants ** {
+abstract MathCore =
+  Notations,  -- basic notations, always available
+  Constants   -- Dedukti-specific notations, user-defined with MkConstants.hs
+  ** {
 
 flags startcat = Jmt ;
 
@@ -77,6 +80,7 @@ fun
   RelProp : Rel -> Exp -> Exp -> Prop ;
   NotRelProp : Rel -> Exp -> Exp -> Prop ;
   NounKind : Noun -> Kind ;
+  SetKind : Set -> Kind ;
   NameExp : Name -> Exp ;
   FunListExp : Fun -> [Exp] -> Exp ;
   LabelExp : Label -> Exp ;

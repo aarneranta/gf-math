@@ -11,6 +11,7 @@ in {
 
 lincat
   Noun = CN ;
+  Set = SetT ;
   Adj = AP ;
   Rel = RelationT ;
   Name = NP ;
@@ -26,12 +27,20 @@ oper
   ConstantT : Type = {np : NP ; c : Str} ;
   OperatorT : Type = {f : FunctionT ; op : Str ; p : Prec} ; -- infixl p c
   ComparisonT : Type = {rel : RelationT ; op :  Str} ;
+  SetT : Type = {cn : CN ; c : Str} ;
 
   mkNoun = overload {
     mkNoun : Str -> CN
       = \s -> mkCN (mkN s) ;
     mkNoun : Str -> Str -> CN
       = \a, n -> mkCN (mkA a) (mkN n) ;
+    } ;
+    
+  mkSet = overload {
+    mkSet : Str -> Str -> SetT
+      = \s, c -> {cn = mkCN (mkN s) ; c = c} ;
+    mkSet : Str -> Str -> Str -> SetT
+      = \a, n, c -> {cn = mkCN (mkA a) (mkN n) ; c = c} ;
     } ;
     
   mkFun = overload {

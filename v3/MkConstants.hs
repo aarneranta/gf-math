@@ -42,8 +42,8 @@ import System.Environment (getArgs)
 mkConstants :: FilePath -> IO ()
 mkConstants file = do
   annots <- readFile file >>= return . map words . filter (not . null) . lines
-  writeAndReport "Core/Constants.gf" $ mkConstantsGF annots
-  writeAndReport "Core/ConstantsEng.gf" $ mkConstantsEngGF annots
+  writeAndReport "grammars/Constants.gf" $ mkConstantsGF annots
+  writeAndReport "grammars/ConstantsEng.gf" $ mkConstantsEngGF annots
   writeAndReport "Constants.hs" $ mkConstantsHS annots
 
 
@@ -69,6 +69,7 @@ mkConstantsEngGF annots = unlines $ [
   "  SyntaxEng,",
   "  ParadigmsEng,",
   "  SymbolicEng,",
+  "  NotationsEng,",
   "  Formal"
   "",
   "in {"
