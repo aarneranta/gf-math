@@ -58,6 +58,10 @@ lin
   SomeArgKindExp kind = mkNP somePl_Det (mkCN kind.cn kind.adv) ;
   PostQuantProp prop exp =
     simpleProp (postAdvS prop.s (Syntax.mkAdv for_Prep exp)) ; --- no complexProp in Informath
+  IndefKindExp kind = mkNP a_Det (mkCN kind.cn kind.adv) ;
+  IndefIdentKindExp ident kind = mkNP a_Det (mkCN (mkCN kind.cn (latexNP ident)) kind.adv) ;
+  EveryIdentKindExp ident kind = mkNP every_Det (mkCN (mkCN kind.cn (latexNP ident)) kind.adv) ;
+
 
 oper
   postAdvS : S -> Adv -> S = \s, adv -> lin S {s = s.s ++ adv.s} ;

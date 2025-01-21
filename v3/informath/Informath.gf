@@ -36,5 +36,8 @@ fun
   SomeKindExp : Kind -> Exp ;
   SomeArgKindExp : ArgKind -> Exp ;
   PostQuantProp : Prop -> Exp -> Prop ;
+  IndefKindExp : Kind -> Exp ;
+  IndefIdentKindExp : Ident -> Kind -> Exp ;
+  EveryIdentKindExp : Ident -> Kind -> Exp ;
 
 }
