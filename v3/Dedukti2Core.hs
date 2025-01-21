@@ -5,7 +5,7 @@ module Dedukti2Core where
 
 import Dedukti.AbsDedukti
 import Dedukti.PrintDedukti
-import Informath -- superset of Core
+import Informath -- superset of MathCore
 import CommonConcepts
 
 import Data.Char

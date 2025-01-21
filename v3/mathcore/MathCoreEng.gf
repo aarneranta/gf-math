@@ -33,31 +33,31 @@ lincat
 lin
   AxiomJmt hypos label prop =
     labelText (axiom_Label ++ (mkUtt label).s)
-      (mkText hypos.text (mkText (topProp prop))) ;
+      (thenText hypos (mkText (topProp prop))) ;
   ThmJmt hypos label prop proof =
     labelText (theorem_Label ++ (mkUtt label).s)
-      (mkText hypos.text (mkText (mkText (topProp prop))
+      (thenText hypos (mkText (mkText (topProp prop))
         (labelText proof_Label proof))) ;
   DefPropJmt hypos prop df =
     labelText definition_Label
-      (mkText hypos.text (mkText (G.SSubjS (partProp prop) if_Subj (partProp df)))) ;
+      (thenText hypos (mkText (G.SSubjS (partProp prop) if_Subj (partProp df)))) ;
   DefKindJmt hypos kind df =
     labelText definition_Label
-      (mkText hypos.text (mkText
+      (thenText hypos (mkText
         (mkS (mkCl (mkNP a_Det (useKind kind)) (mkNP a_Det (useKind df)))))) ;
   DefExpJmt hypos exp kind df =
     labelText definition_Label
-      (mkText hypos.text (mkText (mkS (mkCl exp (definedCN (useKind kind) df))))) ;
+      (thenText hypos (mkText (mkS (mkCl exp (definedCN (useKind kind) df))))) ;
   AxiomPropJmt hypos prop =
     labelText basic_concept_Label
-      (mkText hypos.text (mkText (mkS (mkCl we_NP can_VV (mkVP say_VS (topProp prop)))))) ;
+      (thenText hypos (mkText (mkS (mkCl we_NP can_VV (mkVP say_VS (topProp prop)))))) ;
   AxiomKindJmt hypos kind =
     labelText basic_concept_Label
-      (mkText hypos.text (mkText
+      (thenText hypos (mkText
         (mkS (mkCl (mkNP aPl_Det (useKind kind)) (mkNP a_Det basic_type_CN))))) ;
   AxiomExpJmt hypos exp kind =
     labelText basic_concept_Label
-      (mkText hypos.text (mkText (mkS (mkCl exp (useKind kind))))) ;
+      (thenText hypos (mkText (mkS (mkCl exp (useKind kind))))) ;
 
   RewriteJmt rules = labelText by_cases_Label rules ;
   RewriteRule idents patt exp =
@@ -165,6 +165,13 @@ lin
 oper
   labelText : Str -> Text -> Text = \label, text ->
     lin Text {s = label ++ "." ++ text.s} ;
+
+  thenText : {text : Text ; isEmpty : Bool} -> Text -> Text = \hypos, text ->
+    case hypos.isEmpty of {
+      True => mkText hypos.text text ;
+      False => mkText hypos.text (lin Text {s = then_Adv.s ++ text.s})
+	     | mkText hypos.text text    ---- variants ??
+      } ;
 
   Proposition : Type = {s : S ; isComplex : Bool} ;
 

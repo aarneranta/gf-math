@@ -38,4 +38,29 @@ lin
 ---  BaseExp a b = mkListExp a b ;
 ---  ConsExp a bs = mkListExp a bs ;
 
+-- Pathak's
+
+  LetFormulaHypo formula = lin Utt {s = let_Str ++ "$" ++ top formula ++ "$"} ;
+  PropJmt hypos prop = mkText hypos.text (mkText (topProp prop)) ;
+  DefinedAdjJmt hypos exp adj prop =
+    thenText hypos (mkText (
+      mkS (mkCl exp (mkVP (mkVP (passiveVP define_V2)
+        (lin Adv (mkSC (mkVP adj)))) (Syntax.mkAdv if_Subj prop.s))))) ; 
+  WeDefineAdjJmt hypos exp adj prop =
+    thenText hypos (mkText (
+      mkS (mkCl we_NP (mkVP (mkVP (mkVP define_V2 exp)
+        (lin Adv (mkSC (mkVP adj)))) (Syntax.mkAdv if_Subj prop.s))))) ; 
+
+  AdjKind adj kind = kind ** {cn = mkCN adj kind.cn} ;
+  KindProp exp kind = simpleProp (mkS (mkCl exp kind.cn)) ;
+
+  SomeKindExp kind = mkNP someSg_Det (mkCN kind.cn kind.adv) ;
+  SomeArgKindExp kind = mkNP somePl_Det (mkCN kind.cn kind.adv) ;
+  PostQuantProp prop exp =
+    simpleProp (postAdvS prop.s (Syntax.mkAdv for_Prep exp)) ; --- no complexProp in Informath
+
+oper
+  postAdvS : S -> Adv -> S = \s, adv -> lin S {s = s.s ++ adv.s} ;
+
+  let_Str = "let" ;
 }

@@ -11,6 +11,7 @@ open
 in {
 lin Dk_Type = mkNoun "type" ;
 lin Dk_Nat = mkNoun "natural" "number" ;
+lin Dk_Int = mkNoun "integer" ;
 lin Dk_Set = mkNoun "set" ;
 lin Dk_Even = mkAdj "even" ;
 lin Dk_Odd = mkAdj "odd" ;

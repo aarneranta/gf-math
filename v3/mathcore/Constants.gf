@@ -4,6 +4,7 @@ abstract Constants = ConstantBase ** {
 
 fun Dk_Type : Noun ;
 fun Dk_Nat : Noun ;
+fun Dk_Int : Noun ;
 fun Dk_Set : Noun ;
 fun Dk_Even : Adj ;
 fun Dk_Odd : Adj ;
