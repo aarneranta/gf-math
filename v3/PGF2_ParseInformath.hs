@@ -1,27 +1,27 @@
 module ParseInformath where
 
-import PGF
+import PGF2
 import Data.Char(isAlpha)
 import qualified Data.Map
 
 main_pgf = "grammars/Informath.pgf"
-max_number = 1999 -- number of trees considered with checkVariables
+max_number = 999 -- number of trees considered with checkVariables
 
 -- quick stand-alone test: runghc ParseInformath.hs <test/gflean-data.txt
 
 -- this is the function to be exported to other modules
 
-parseJmt :: PGF -> Language -> Type -> String -> (Maybe [Expr], String)
-parseJmt gr eng cat s =
-  case fst (parse_ gr eng cat (Just 4) s) of  --- Just 4 is default in PGF.parse
-    ParseOk ps -> 
-         let trees = [t | t <- take max_number ps, checkVariables t]
+parseJmt :: Concr -> Type -> String -> (Maybe [Expr], String)
+parseJmt eng cat s =
+  case parse eng cat s of
+    ParseOk ps@((e, p): rest) -> 
+         let trees = [t | (t, _) <- take max_number ps, checkVariables t]
          in
 	 if not (null trees)
             then (Just trees, "# SUCCESS " ++ show (length trees))
             else (Just [], "# FAILURE VARCHECK")
-    ParseFailed pos -> 
-         (Nothing, "# FAILURE AT " ++ show pos)
+    ParseFailed pos tok -> 
+         (Nothing, "# FAILURE TOKEN " ++ show pos ++ " " ++ tok)
     ParseIncomplete -> 
          (Nothing, "# FAILURE INCOMPLETE")
 
@@ -29,33 +29,33 @@ parseJmt gr eng cat s =
 
 main = do
   gr <- readPGF main_pgf
-  let Just eng = readLanguage "InformathEng"
-  doParse gr eng (startCat gr) (0, 0)
+  let Just eng = Data.Map.lookup "InformathEng" (languages gr)
+  doParse eng (startCat gr) (0, 0)
 
-doParse gr eng cat (success, failure) = do
+doParse eng cat (success, failure) = do
   s <- getLine
   putStrLn s
   if not (null s)
     then do
-      let (mtree, msg) = parseJmt gr eng cat s
+      let (mtree, msg) = parseJmt eng cat s
       putStrLn msg
       case mtree of
         Just (tree:_) -> do
-	  putStrLn $ showExpr [] tree
+	  print tree
 	  putStrLn $ "# SUCCEED " ++ show (success + 1) ++ " FAIL " ++ show failure
-          doParse gr eng cat (success + 1, failure)
+          doParse eng cat (success + 1, failure)
 	_ -> do
 	  putStrLn $ "# SUCCEED " ++ show (success) ++ " FAIL " ++ show (failure + 1)
-          doParse gr eng cat (success, failure + 1)
+          doParse eng cat (success, failure + 1)
     else
-      doParse gr eng cat (success, failure)
+      doParse eng cat (success, failure)
 
 -- quick hack to get the effect of a callback: check that variables consist of one letter
 
 checkVariables :: Expr -> Bool
 checkVariables expr = case unApp expr of
-  Just (f, [x]) | showCId f == "stringVar" -> case showExpr [] x of
-    [_,c,_] | isAlpha c -> True
+  Just ("stringVar", [str]) -> case unStr str of
+    Just [x] | isAlpha x -> True
     _ -> False
   Just (_, args) -> all checkVariables args
   _ -> True
