@@ -78,8 +78,8 @@ funListProp ident exps = case ident of
     Just "Compar" | length exps == 2 ->
       GComparProp (LexCompar (dk s)) (exps !! 0) (exps !! 1)
     _ -> case exps of
-      --[] -> GIdentProp (GStrIdent (GString s))
-      --_:_ -> GAppProp (GStrIdent (GString s)) (GListExp exps)
+      [] -> GIdentProp (GStrIdent (GString s))
+      _:_ -> GAppProp (GStrIdent (GString s)) (GListExp exps)
 
 hypoIdents :: GHypo -> [GIdent]
 hypoIdents hypo = case hypo of
