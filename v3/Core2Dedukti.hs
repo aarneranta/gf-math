@@ -126,6 +126,7 @@ exp2dedukti exp = case exp of
   ---- still assuming GF fun is Dedukti ident
   GNameExp (LexName name) ->
     EIdent (QIdent (undk name))
+  GTermExp (GTVar (GstringVar (GString x))) -> EIdent (QIdent x)
 
 exp2deduktiPatt :: GExp -> Patt
 exp2deduktiPatt exp = case exp of

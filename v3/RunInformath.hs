@@ -12,6 +12,7 @@ import Dedukti.ErrM
 import Informath -- superset of Core
 import Core2Informath (nlg)
 import Informath2Core (semantics)
+import ParseInformath (parseJmt)
 import Lexing
 
 import PGF
@@ -104,20 +105,25 @@ processCoreJmt :: Env -> String -> IO ()
 processCoreJmt env s = do
   let gr = cpgf env
   let ls = lextex s
-  print ls
-  let ts = parse gr english jmt ls
-  print (length ts)
-  case ts of
-    [] -> putStrLn ("NO PARSE: " ++ ls)
-    _:tt -> do
-      if (length tt > 0) then (putStrLn "#AMBIGUOUS") else return ()
+  putStrLn ls
+  let (mts, msg) = parseJmt gr english jmt ls
+  putStrLn msg
+  case mts of
+    Just ts@(_:_) -> do
       flip mapM_ ts $ processCoreJmtTree env
+    _ -> putStrLn ("NO PARSE: " ++ ls)
 
 processCoreJmtTree :: Env -> Expr -> IO ()
 processCoreJmtTree env t = do
   let gr = cpgf env
   putStrLn $ "#Core: " ++ showExpr [] t
   putStrLn $ linearize gr english t
-  let d = jmt2dedukti (fg t)
+  let tr = fg t
+  let str = semantics tr
+  let st = gf str
+  putStrLn $ showExpr [] st
+  putStrLn $ linearize gr english st
+  let d = jmt2dedukti str
   putStrLn $ printTree d
+  convertCoreToForthel env str
 
