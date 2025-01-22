@@ -14,13 +14,13 @@ let $ x \in \textbf { R } $ . if $ x ^ { 3 } - 5 x - 1 \geq 0 $ , then $ ( x - 1
 
 let $ n \in \textbf { N } $ . if $ n + \frac { 1 } { n } < 2 $ , then $ n ^ 2 + \frac { 1 } { n ^ { 2 } } < 4 $ .
 
-an integer $ n $ is defined to be \textbf{even} if $ n = 2 k $ for some integer $ k $ .
+an integer $ n $ is defined to be \textbf { even } if $ n = 2 k $ for some integer $ k $ .
 
-we define an integer $ n $ to be \textbf{odd} if $ n = 2 k + 1 $ for some integer $ k $ .
+we define an integer $ n $ to be \textbf { odd } if $ n = 2 k + 1 $ for some integer $ k $ .
 
 if $ a , b $ and $ c $ are odd integers such that $ a + b + c = 0 $ , then $ a b c < 0 $ .
 
-if $ x , y $ and $ z $ are three real numbers such that $ x ^ { 2 } + y ^ { 2 } + z ^ { 2 } < xy + xz + yz $ , then $ x + y + z > 0 $ .
+if $ x , y $ and $ z $ are three real numbers such that $ x ^ { 2 } + y ^ { 2 } + z ^ { 2 } < x y + x z + y z $ , then $ x + y + z > 0 $ .
 
 if $ n $ is an odd integer , then $ 3 n + 7 $ is an even integer .
 
@@ -36,7 +36,7 @@ if $ x $ is an odd integer , then $ 9 x + 5 $ is even .
 
 if $ x $ is an even integer , then $ 5 x - 3 $ is an odd integer .
 
-if $ a $ and $ c $ are odd integers , then $ a b + a c $ is even for every integer $ b $ .
+if $ a $ and $ c $ are odd integers , then $ a b + b c $ is even for every integer $ b $ .
 
 let $ n \in \textbf { Z } $ . if $ 1 - n ^ { 2 } > 0 $ , then $ 3 n - 2 $ is an even integer .
 
@@ -80,24 +80,24 @@ let $ \{ A , B \} $ be a partition of the set of $ S = \{ 1 , 2 , \ldots , 7 \} 
 
 if $ n \in \textbf { Z } $ , then $ n ^ { 2 } + 3 n + 5 $ is an odd integer .
 
-two integers $ x $ and $ y $ are said to be \textbf{of the same parity} if $ x $ and $ y $ are both even or are both odd .
+two integers $ x $ and $ y $ are said to be \textbf { of the same parity } if $ x $ and $ y $ are both even or are both odd .
 
-the integers $ x $ and $ y $ are \textbf{of opposite parity} if one of $ x $ and $ y $ is even and the other is odd .
+the integers $ x $ and $ y $ are \textbf { of opposite parity } if one of $ x $ and $ y $ is even and the other is odd .
 
 let $ x , y \in \textbf { Z } $ .
 then $ x $ and $ y $ are of the same parity if and only if $ x + y $ is even .
 
 let $ a $ and $ b $ be integers . then $ ab $ is even if and only if $ a $ is even or $ b $ is even .
 
-let $ \mathcal { P } = \{ A , B , C \} $ be a partition of the set \textbf{Z} of integers , where $ $ a = \{ n : n = 2a \text{ where $ a $ is an odd integer} \} $ $ $ $ b = \{ n : n = 2b \text{ where $ b $ is an even integer} \} $ $ $ $ c = \{ n : n \text{ is an odd integer} \} . $ $ if $ x $ and $ y $ are integers belonging to distinct elements of $ \mathcal { P } $ , then $ x + y \in A \cup C $ .
+let $ \mathcal { P } = \{ A , B , C \} $ be a partition of the set \textbf{Z} of integers , where $ $ a = \{ n : n = 2a \text { where $ a $ is an odd integer } \} $ $ $ $ b = \{ n : n = 2 b \text { where $ b $ is an even integer } \} $ $ $ $ c = \{ n : n \text { is an odd integer } \} . $ $ if $ x $ and $ y $ are integers belonging to distinct elements of $ \mathcal { P } $ , then $ x + y \in A \cup C $ .
 
 if $ n \in \textbf { Z } $ , then $ n ^ { 2 } - 3 n + 9 $ is odd .
 
 if $ n \in \textbf { Z } $ , then $ n ^ { 3 } - n $ is even .
 
-let $ x , y \in \textbf { Z } $ . if $ xy $ is odd , then $ x $ and $ y $ are odd .
+let $ x , y \in \textbf { Z } $ . if $ x y $ is odd , then $ x $ and $ y $ are odd .
 
-let $ a , b \in \textbf { Z } $ . if $ ab $ is odd , then $ a ^ { 2 } + b ^ { 2 } $ is even .
+let $ a , b \in \textbf { Z } $ . if $ a b $ is odd , then $ a ^ { 2 } + b ^ { 2 } $ is even .
 
 let $ x , y \in \textbf { Z } $ . then $ x - y $ is even if and only if $ x $ and $ y $ are of the same parity .
 

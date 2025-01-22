@@ -4,6 +4,8 @@ import sys
 
 usage = "stdin | python3 test_tile.py pgf source index?"
 
+MAX_PARSES = 99
+
 if sys.argv[2:]:
     PGF_FILE = sys.argv[1]
     CNC_NAME = sys.argv[2]
@@ -40,7 +42,17 @@ def apply_index(termindex, s):
         else:
             toks.append(w)
     return ' '.join(toks)
-    
+
+
+def var_check(tree):
+    f, args = tree.unpack()
+    if f == 'stringVar':
+        x = args[0].unpack()
+        return len(x) == 1 and x.isalpha() and x not in "CRNZ"
+    if f in ['TNumber', 'StrIdent']:
+        return True
+    return all(var_check(arg) for arg in args)
+
 
 sent = 1
 fails = 0
@@ -51,14 +63,20 @@ for s in sys.stdin:
             p = source.parse(s)
             print(apply_index(termindex, s))
             print()
+            i = 0
+            succ = 0
             for _, t in p:
-                print('-- TREE', t)
-                if targets:
-                    for (lang, cnc) in targets:
-                        print(apply_index(termindex, cnc.linearize(t)))
-                        print()
-                break  ## to get just one parse
-            successes += 1
+                if var_check(t):
+                    succ = 1
+                    print('-- TREE', t)
+                    if targets:
+                        for (lang, cnc) in targets:
+                            print(apply_index(termindex, cnc.linearize(t)))
+                            print()
+                i += 1            
+                if i > MAX_PARSES:
+                    break
+            successes += succ
         except pgf.ParseError as pe:
             print('-- NOTREE', sent, s)
             print('-- NOTREE CAUSE', pe)
