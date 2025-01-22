@@ -15,9 +15,10 @@ nlg t = [t, ft, aft, iaft, viaft]
 
 formalize :: Tree a -> Tree a
 formalize t = case t of
-  GComparProp comp x y -> case (getTerm x, getTerm y) of
-    (Just tx, Just ty) -> GFormulaProp (GFEquation (GComparEquation comp tx ty))
-    _ -> GComparProp comp (formalize x) (formalize y)
+  GComparProp compar x y -> case (getTerm x, getTerm y) of
+    (Just tx, Just ty) ->
+      GFormulaProp (GFEquation (GEBinary (GComparEqsign compar) tx ty))
+    _ -> GComparProp compar (formalize x) (formalize y)
   GOperListExp oper xy@(GListExp [x, y]) -> case (getTerm x, getTerm y) of
     (Just tx, Just ty) -> GTermExp (GAppOperTerm oper tx ty)
     _ -> GOperListExp oper (formalize xy)

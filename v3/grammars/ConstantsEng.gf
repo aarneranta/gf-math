@@ -11,7 +11,7 @@ open
 
 in {
 lin Dk_Type = type_Noun ;
-lin Dk_Nat = nat_Set ;
+lin Dk_Nat = natural_Set ;
 lin Dk_Even = even_Adj ;
 lin Dk_Odd = odd_Adj ;
 lin Dk_Prime = prime_Adj ;

@@ -18,23 +18,12 @@ lin
   EChain op x eq = {s = top x ++ op ++ eq.s} ;
   EBinary op x y = {s = top x ++ op ++ top y} ;
 
-  EEq = "=" ; 
-  ELt = "<" ; 
-  EGt = ">" ; 
-  ENeq = "\\neq" ; 
-  ELe = "\\leq" ; 
-  EGe = "\\geq" ; 
-  ESim = "\\sim" ;
-
   TParenth t = constant (parenth (top t)) ** {isNumber = False} ;
 
-  TPlus = tinfixl 1 "+" ;
-  TMinus = tinfixl 1 "-" ;
   TTimes x y = case <x.isNumber, y.isNumber> of {
      <True, True> => infixl 2 "\\times" x y ** {isNumber = True} ;
      _ => tinfixl 2 "" x y
      } ;
-  TDiv = tinfixl 2 "\\div" ;
   TExp a b = tinfixl 3 "^" a (b ** {s = curlyStr b.s}) ;
 
   TNeg x = prefix 2 "-" x ** {isNumber = x.isNumber} ;

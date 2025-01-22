@@ -19,7 +19,7 @@ lin
 
   SetTerm set = constant set.c ** {isNumber = False} ;
   ConstTerm const = constant const.c ** {isNumber = False} ;
-  ComparEquation compar x y = {s = top x ++ compar.op ++ top y} ;
+  ComparEqsign compar = compar.op ;
   AppOperTerm op x y = infixl op.p op.op x y ** {isNumber = False} ;
 
   AndAdj adjs = mkAP and_Conj adjs ;

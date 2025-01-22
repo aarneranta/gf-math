@@ -12,7 +12,7 @@ fun
 
   SetTerm : Set -> Term ;
   ConstTerm : Const -> Term ;
-  ComparEquation : Compar -> Term -> Term -> Equation ;
+  ComparEqsign : Compar -> Eqsign ;
   AppOperTerm : Oper -> Term -> Term -> Term ;
 
   AndAdj : [Adj] -> Adj ;
