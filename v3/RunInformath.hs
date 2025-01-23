@@ -18,8 +18,9 @@ import Lexing
 import PGF
 
 import Data.List (partition)
-import System.Random
+----import System.Random
 import System.Environment (getArgs)
+import System.IO
 
 informathPGFFile = "grammars/Informath.pgf"
 Just english = readLanguage "InformathEng"
@@ -43,13 +44,14 @@ main = do
       s <- readFile filename
       processDeduktiModule env s
     _ -> do
-      g <- getStdGen
-      let rs = generateRandomDepth g corepgf jmt (Just 4)
+----      g <- getStdGen
+      let rs = [] ---- generateRandomDepth g corepgf jmt (Just 4)
       loop env rs 0 ---- storing rs in env causes an infinite loop
 
 loop :: Env -> [Expr] -> Int -> IO ()
 loop env rs i = do
   putStr "> "
+  hFlush stdout
   ss <- getLine
   case ss of
     '?':s -> processCoreJmt env s

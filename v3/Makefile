@@ -1,6 +1,6 @@
 all: ForthelPlus.pgf Dedukti
 
-.PHONY: all Informath.pgf Dedukti Agda Lean
+.PHONY: all Informath.pgf Dedukti Agda Lean RunInformath
 
 Informath.pgf:
 	cd grammars ; gf --make -output-format=haskell -haskell=lexical --haskell=gadt -lexical=Name,Noun,Adj,Rel,Fun,Label,Const,Oper,Compar,Set --probs=Informath.probs InformathEng.gf
@@ -14,3 +14,5 @@ Agda:
 Lean:
 	cd typetheory ; bnfc -m -p Lean --haskell-gadt Lean.bnf ; make
 
+RunInformath:
+	ghc -package gf RunInformath.hs
