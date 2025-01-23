@@ -5,7 +5,7 @@ import Data.Char(isAlpha)
 import qualified Data.Map
 
 main_pgf = "grammars/Informath.pgf"
-max_number = 1999 -- number of trees considered with checkVariables
+max_number = 9999 -- number of trees considered with checkVariables
 
 -- quick stand-alone test: runghc ParseInformath.hs <test/gflean-data.txt
 

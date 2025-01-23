@@ -17,7 +17,7 @@ import Lexing
 
 import PGF
 
-import Data.List (partition)
+import Data.List (partition, isSuffixOf)
 ----import System.Random
 import System.Environment (getArgs)
 import System.IO
@@ -40,9 +40,12 @@ main = do
   corepgf <- readPGF informathPGFFile
   let env = Env{flags = ff, cpgf = corepgf} ---, rands = [], itr = 0}
   case yy of
-    filename:_ -> do
+    filename:_ | isSuffixOf ".dk" filename -> do
       s <- readFile filename
       processDeduktiModule env s
+    filename:_  -> do
+      s <- readFile filename
+      mapM_ (processCoreJmt env) (filter (not . null) (lines s))
     _ -> do
 ----      g <- getStdGen
       let rs = [] ---- generateRandomDepth g corepgf jmt (Just 4)
@@ -114,6 +117,7 @@ processCoreJmt env s = do
     Just ts@(_:_) -> do
       flip mapM_ ts $ processCoreJmtTree env
     _ -> putStrLn ("NO PARSE: " ++ ls)
+
 
 processCoreJmtTree :: Env -> Expr -> IO ()
 processCoreJmtTree env t = do
