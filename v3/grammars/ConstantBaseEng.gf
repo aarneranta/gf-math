@@ -16,7 +16,7 @@ lincat
   Rel = RelationT ;
   Name = NP ;
   Fun = FunctionT ;
-  Label = NP ;
+  Label = LabelT ;
   Const = ConstantT ;
   Oper = OperatorT ;
   Compar = ComparisonT ; 
@@ -28,6 +28,7 @@ oper
   OperatorT : Type = {f : FunctionT ; op : Str ; p : Prec} ; -- infixl p c
   ComparisonT : Type = {rel : RelationT ; op :  Str} ;
   SetT : Type = {cn : CN ; c : Str} ;
+  LabelT = {np : NP ; isEmpty : Bool} ;
 
   mkNoun = overload {
     mkNoun : Str -> CN
@@ -68,8 +69,8 @@ oper
     } ;
 
   mkLabel = overload {
-    mkLabel : Str -> NP
-      = \s -> mkNP (mkPN s)
+    mkLabel : Str -> LabelT
+      = \s -> {np = mkNP (mkPN s) ; isEmpty = False}
     } ;
 
   mkConst = overload {

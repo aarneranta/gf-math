@@ -24,16 +24,16 @@ cat
   [Rule] {1} ;
 
 fun
-  ThmJmt : [Hypo] -> Label -> Prop -> Proof -> Jmt ;
-  AxiomJmt : [Hypo] -> Label -> Prop -> Jmt ;
+  ThmJmt : Label -> [Hypo] -> Prop -> Proof -> Jmt ;
+  AxiomJmt : Label -> [Hypo] -> Prop -> Jmt ;
   
-  DefPropJmt : [Hypo] -> Prop -> Prop -> Jmt ;
-  DefKindJmt : [Hypo] -> Kind -> Kind -> Jmt ;
-  DefExpJmt  : [Hypo] -> Exp -> Kind -> Exp -> Jmt ;
+  DefPropJmt : Label -> [Hypo] -> Prop -> Prop -> Jmt ;
+  DefKindJmt : Label -> [Hypo] -> Kind -> Kind -> Jmt ;
+  DefExpJmt  : Label -> [Hypo] -> Exp -> Kind -> Exp -> Jmt ;
   
-  AxiomPropJmt : [Hypo] -> Prop -> Jmt ;
-  AxiomKindJmt : [Hypo] -> Kind -> Jmt ;
-  AxiomExpJmt  : [Hypo] -> Exp -> Kind -> Jmt ;
+  AxiomPropJmt : Label -> [Hypo] -> Prop -> Jmt ;
+  AxiomKindJmt : Label -> [Hypo] -> Kind -> Jmt ;
+  AxiomExpJmt  : Label -> [Hypo] -> Exp -> Kind -> Jmt ;
 
   RewriteJmt : [Rule] -> Jmt ;
   RewriteRule : [Ident] -> Exp -> Exp -> Rule ; ---- generalize to [] and x:A
@@ -69,6 +69,10 @@ fun
 
   StrIdent : String -> Ident ;
   StrLabel : String -> Label ; -- to deal with Dedukti labels not in grammar
+  noLabel : Label ; -- to deal with unlabelled statements
+  axiomLabel : Label ;
+  theoremLabel : Label ;
+  definitionLabel : Label ;
 
   AppProof : [Proof] -> Exp -> Proof ;
   AbsProof : [Hypo] -> Proof -> Proof ;

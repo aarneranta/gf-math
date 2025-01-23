@@ -34,35 +34,35 @@ lincat
   [Rule] = Text ;
 
 lin
-  AxiomJmt hypos label prop =
-    labelText (axiom_Label ++ (mkUtt label).s)
+  AxiomJmt label hypos prop =
+    labelText (label)
       (thenText hypos (mkText (topProp prop))) ;
-  ThmJmt hypos label prop proof =
-    labelText (theorem_Label ++ (mkUtt label).s)
+  ThmJmt label hypos prop proof =
+    labelText (label)
       (thenText hypos (mkText (mkText (topProp prop))
-        (labelText proof_Label proof))) ;
-  DefPropJmt hypos prop df =
-    labelText definition_Label
+        (prefixText proof_Str proof))) ;
+  DefPropJmt label hypos prop df =
+    labelText (label)
       (thenText hypos (mkText (G.SSubjS (partProp prop) if_Subj (partProp df)))) ;
-  DefKindJmt hypos kind df =
-    labelText definition_Label
+  DefKindJmt label hypos kind df =
+    labelText (label)
       (thenText hypos (mkText
         (mkS (mkCl (mkNP a_Det (useKind kind)) (mkNP a_Det (useKind df)))))) ;
-  DefExpJmt hypos exp kind df =
-    labelText definition_Label
+  DefExpJmt label hypos exp kind df =
+    labelText (label)
       (thenText hypos (mkText (mkS (mkCl exp (definedCN (useKind kind) df))))) ;
-  AxiomPropJmt hypos prop =
-    labelText basic_concept_Label
+  AxiomPropJmt label hypos prop =
+    labelText (label)
       (thenText hypos (mkText (mkS (mkCl we_NP can_VV (mkVP say_VS (topProp prop)))))) ;
-  AxiomKindJmt hypos kind =
-    labelText basic_concept_Label
+  AxiomKindJmt label hypos kind =
+    labelText (label)
       (thenText hypos (mkText
         (mkS (mkCl (mkNP aPl_Det (useKind kind)) (mkNP a_Det basic_type_CN))))) ;
-  AxiomExpJmt hypos exp kind =
-    labelText basic_concept_Label
+  AxiomExpJmt label hypos exp kind =
+    labelText (label)
       (thenText hypos (mkText (mkS (mkCl exp (useKind kind))))) ;
 
-  RewriteJmt rules = labelText by_cases_Label rules ;
+  RewriteJmt rules = prefixText by_cases_Str rules ;
   RewriteRule idents patt exp =
     mkUtt (G.ExtAdvS (S.mkAdv for_Prep idents.np) (mkS (mkCl patt exp))) ;
   NoVarRewriteRule patt exp =
@@ -114,8 +114,13 @@ lin
   IdentsArgKind kind idents = {cn = mkCN kind.cn idents.np ; adv = kind.adv} ;
 
   StrIdent s = mkSymb s.s ;
-  StrLabel s = symb (mkSymb s.s) ;
-  
+  StrLabel s = {np = symb (mkSymb s.s) ; isEmpty = False} ;
+  noLabel = {np = symb (mkSymb "") ; isEmpty = True} ;
+
+  definitionLabel = mkLabel definition_Str ;
+  theoremLabel = mkLabel theorem_Str ;
+  axiomLabel = mkLabel axiom_Str ;
+
   AppProof proofs exp =
     mkText proofs
       (mkText (mkUtt (S.mkAdv by_Prep exp))) ;
@@ -147,8 +152,8 @@ lin
   BaseProof = emptyText ;
   ConsProof proof proofs = mkText proof proofs ;
 
-  BaseRule rule = labelText item_Label (mkText rule) ;
-  ConsRule rule rules = mkText (labelText "\\item" (mkText rule)) rules ;
+  BaseRule rule = prefixText item_Label (mkText rule) ;
+  ConsRule rule rules = mkText (prefixText "\\item" (mkText rule)) rules ;
 
 -- using Constants
 
@@ -160,15 +165,18 @@ lin
   SetKind set = {cn = set.cn ; adv = lin Adv {s = []}} ;
   NameExp name = name ;
   FunListExp f exps = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep exps.np)) ;
-  LabelExp label = label ;
+  LabelExp label = label.np ;
   ConstExp const = const.np ;
   OperListExp op exps = mkNP the_Det (mkCN op.f.cn (S.mkAdv op.f.prep exps.np)) ;
   ComparProp co x y = simpleProp (mkS (mkCl x (mkVP (mkVP co.rel.ap) (S.mkAdv co.rel.prep y)))) ;
   NotComparProp co x y = simpleProp (mkS negPol (mkCl x (mkVP (mkVP co.rel.ap) (S.mkAdv co.rel.prep y)))) ;
 
 oper
-  labelText : Str -> Text -> Text = \label, text ->
-    lin Text {s = label ++ "." ++ text.s} ;
+  prefixText : Str -> Text -> Text = \s, t -> lin Text {s = s ++ t.s} ;
+
+  labelText : LabelT -> Text -> Text = \label, text ->
+    let period = if_then_Str label.isEmpty "" "." in
+    lin Text {s = (mkUtt label.np).s ++ period ++ text.s} ;
 
   thenText : {text : Text ; isEmpty : Bool} -> Text -> Text = \hypos, text ->
     case hypos.isEmpty of {
@@ -238,11 +246,12 @@ oper
   than_Prep : Prep = mkPrep "than" ;
   iff_Subj : Subj = mkSubj "if and only if" ;
 
-  definition_Label : Str = "Definition" ;
-  theorem_Label : Str = "Theorem" ;
-  proof_Label : Str = "Proof" ;
-  axiom_Label : Str = "Axiom" ;
-  basic_concept_Label : Str = "Basic Concept" ;
-  by_cases_Label : Str = "By cases:" ;
+  basic_concept_Str = "basic concept" ;
+  by_cases_Str = "by cases:" ;
+  proof_Str = "proof" ;
+  axiom_Str = "axiom" ;
+  theorem_Str = "theorem" ;
+  definition_Str = "definition" ;
+
 
 }

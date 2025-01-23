@@ -27,9 +27,9 @@ fun
 -- for Pathak's examples
 
   LetFormulaHypo : Formula -> Hypo ;
-  PropJmt : [Hypo] -> Prop -> Jmt ;
-  DefinedAdjJmt : [Hypo] -> Exp -> Adj -> Prop -> Jmt ;
-  WeDefineAdjJmt : [Hypo] -> Exp -> Adj -> Prop -> Jmt ;
+
+  DefinedAdjJmt : Label -> [Hypo] -> Exp -> Adj -> Prop -> Jmt ;
+  WeDefineAdjJmt : Label -> [Hypo] -> Exp -> Adj -> Prop -> Jmt ;
 
   AdjKind : Adj -> Kind -> Kind ;
   KindProp : Exp -> Kind -> Prop ;

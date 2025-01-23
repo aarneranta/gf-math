@@ -12,39 +12,39 @@ import Data.Char
 
 jmt2dedukti :: GJmt -> Jmt
 jmt2dedukti jment = case jment of
-  GAxiomJmt (GListHypo hypos) label prop ->
+  GAxiomJmt label (GListHypo hypos) prop ->
     JStatic
       (label2ident label)
       (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos))
-  GThmJmt (GListHypo hypos) label prop proof ->
+  GThmJmt label (GListHypo hypos) prop proof ->
     JDef
       (label2ident label)
       (MTExp (foldr EFun (prop2dedukti prop) (concatMap hypo2dedukti hypos)))
       (MEExp (proof2dedukti proof))
-  GDefPropJmt (GListHypo hypos) prop df ->
+  GDefPropJmt label_ (GListHypo hypos) prop df ->
     JDef
       (prop2deduktiIdent prop)
       (MTExp (foldr EFun typeProp (concatMap hypo2dedukti hypos)))
       (MEExp (prop2dedukti df))
-  GDefKindJmt (GListHypo hypos) kind df ->
+  GDefKindJmt label_ (GListHypo hypos) kind df ->
     JDef
       (kind2deduktiIdent kind)
       (MTExp (foldr EFun typeType (concatMap hypo2dedukti hypos)))
       (MEExp (kind2dedukti df))
-  GDefExpJmt (GListHypo hypos) exp kind df ->
+  GDefExpJmt label_ (GListHypo hypos) exp kind df ->
     JDef
       (exp2deduktiIdent exp)
       (MTExp (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos)))
       (MEExp (exp2dedukti df))
-  GAxiomPropJmt (GListHypo hypos) prop ->
+  GAxiomPropJmt label_ (GListHypo hypos) prop ->
     JStatic
       (prop2deduktiIdent prop)
       (foldr EFun typeProp (concatMap hypo2dedukti hypos))
-  GAxiomKindJmt (GListHypo hypos) kind ->
+  GAxiomKindJmt label_ (GListHypo hypos) kind ->
     JStatic
       (kind2deduktiIdent kind)
       (foldr EFun typeType (concatMap hypo2dedukti hypos))
-  GAxiomExpJmt (GListHypo hypos) exp kind ->
+  GAxiomExpJmt label_ (GListHypo hypos) exp kind ->
     JStatic
       (exp2deduktiIdent exp)
       (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos))

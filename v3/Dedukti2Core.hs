@@ -19,30 +19,34 @@ jmt2core jmt = case jmt of
     in case (splitType typ, cat ident) of
       ((hypos, kind), "Label") -> 
         (maybe GAxiomJmt (\exp x y z -> GThmJmt x y z (exp2proof exp)) mexp)
-          (GListHypo (map hypo2core hypos))
           (ident2label ident)
+          (GListHypo (map hypo2core hypos))
           (exp2prop kind)
       ((hypos, kind), c) | elem c ["Noun", "Set"] -> 
-          (maybe GAxiomKindJmt (\exp x y -> GDefKindJmt x y (exp2kind exp)) mexp)
+          (maybe (GAxiomKindJmt axiomLabel)
+	         (\exp x y -> GDefKindJmt definitionLabel x y (exp2kind exp)) mexp)
             (GListHypo (map hypo2core hypos))
             (ident2coreKindExp ident)
       ((hypos, kind), c) | elem c ["Name", "Const"] ->
-          (maybe GAxiomExpJmt (\exp x y z -> GDefExpJmt x y z (exp2exp exp)) mexp)
+          (maybe (GAxiomExpJmt axiomLabel)
+	         (\exp x y z -> GDefExpJmt definitionLabel x y z (exp2exp exp)) mexp)
             (GListHypo (map hypo2core hypos)) (ident2exp ident)
             (exp2kind kind)
       ((hypos, kind), c) | elem c ["Fun", "Oper"] ->
         let chypos = map hypo2core hypos
-        in (maybe GAxiomExpJmt (\exp x y z -> GDefExpJmt x y z (exp2exp exp)) mexp)
+        in (maybe (GAxiomExpJmt axiomLabel)
+	          (\exp x y z -> GDefExpJmt definitionLabel x y z (exp2exp exp)) mexp)
              (GListHypo chypos)
              (funListExp ident (map GIdentExp (concatMap hypoIdents chypos)))
              (exp2kind kind)
       ((hypos, kind), c) | elem c ["Rel", "Compar"] ->
         let chypos = map hypo2core hypos
-        in (maybe GAxiomPropJmt (\exp x y -> GDefPropJmt x y (exp2prop exp)) mexp)
+        in (maybe (GAxiomPropJmt axiomLabel)
+	        (\exp x y -> GDefPropJmt definitionLabel x y (exp2prop exp)) mexp)
              (GListHypo chypos)
 	     (funListProp ident (map GIdentExp (concatMap hypoIdents chypos)))
       ((hypos, kind), _) -> 
-        GAxiomExpJmt
+        GAxiomExpJmt axiomLabel
           (GListHypo (map hypo2core hypos)) (ident2exp ident)
           (exp2kind kind)
   JStatic ident typ ->
@@ -55,7 +59,13 @@ jmt2core jmt = case jmt of
   _ -> error ("not yet: " ++ printTree jmt)
 
 cat :: QIdent -> String
-cat ident@(QIdent c) = maybe "Label" id (lookupConstant c) 
+cat ident@(QIdent c) = maybe "Label" id (lookupConstant c)
+
+definitionLabel :: GLabel
+definitionLabel = LexLabel "definitionLabel"
+
+axiomLabel :: GLabel
+axiomLabel = LexLabel "axiomLabel"
 
 funListExp :: QIdent -> [GExp] -> GExp
 funListExp ident exps = case ident of

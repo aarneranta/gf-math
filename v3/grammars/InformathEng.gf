@@ -40,15 +40,17 @@ lin
 -- Pathak's
 
   LetFormulaHypo formula = lin Utt {s = let_Str ++ "$" ++ top formula ++ "$"} ;
-  PropJmt hypos prop = mkText hypos.text (mkText (topProp prop)) ;
-  DefinedAdjJmt hypos exp adj prop =
-    thenText hypos (mkText (
-      mkS (mkCl exp (mkVP (mkVP (passiveVP define_V2)
-        <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s))))) ; 
-  WeDefineAdjJmt hypos exp adj prop =
-    thenText hypos (mkText (
-      mkS (mkCl we_NP (mkVP (mkVP (mkVP define_V2 exp)
-        <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s))))) ; 
+
+  DefinedAdjJmt label hypos exp adj prop =
+    labelText (label)
+      (thenText hypos (mkText (
+        mkS (mkCl exp (mkVP (mkVP (passiveVP define_V2)
+          <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s)))))) ; 
+  WeDefineAdjJmt label hypos exp adj prop =
+    labelText (label)
+      (thenText hypos (mkText (
+        mkS (mkCl we_NP (mkVP (mkVP (mkVP define_V2 exp)
+          <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s)))))) ; 
 
   AdjKind adj kind = kind ** {cn = mkCN adj kind.cn} ;
   KindProp exp kind = simpleProp (mkS (mkCl exp kind.cn)) ;
