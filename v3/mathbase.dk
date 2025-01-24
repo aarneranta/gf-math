@@ -1,0 +1,58 @@
+Set : Type.
+Prop : Type.
+Nat : Set.
+
+Elem : Set -> Type.
+Proof : Prop -> Type.
+
+
+false : Prop.
+and : Prop -> Prop -> Prop.
+or : Prop -> Prop -> Prop.
+if : Prop -> Prop -> Prop.
+not : Prop -> Prop.
+forall : (A : Set) -> (Elem A -> Prop) -> Prop.
+exists : (A : Set) -> (Elem A -> Prop) -> Prop.
+
+zero : Elem Nat.
+succ : Elem Nat -> Elem Nat.
+
+Even : Elem Nat -> Prop.
+def Odd : Elem Nat -> Prop := n => not (Even n).
+
+prop10 : Proof (Even zero).
+
+prop20 : (n : Elem Nat) -> Proof (Even n) -> Proof (Odd (succ n)).
+
+prop30 : (n : Elem Nat) -> Proof (Odd n) -> Proof (Even (succ n)).
+
+prop40 : Proof (forall Nat (n => or (Even n) (Odd n))).
+
+prop50 : Proof (forall Nat (n => not (and (Even n) (Odd n)))).
+
+EqNat : Elem Nat -> Elem Nat -> Prop.
+
+plus : Elem Nat -> Elem Nat -> Elem Nat.
+
+prop60 : Proof (forall Nat (n => EqNat (plus n zero) n)).
+
+times : Elem Nat -> Elem Nat -> Elem Nat.
+
+def one : Elem Nat := succ zero.
+def two : Elem Nat := succ one.
+def three : Elem Nat := succ two.
+def four : Elem Nat := succ three.
+def five : Elem Nat := succ four.
+
+prop70 : Proof (Odd one).
+prop80 : Proof (Even two).
+
+Lt : Elem Nat -> Elem Nat -> Prop.
+
+def Div : Elem Nat -> Elem Nat -> Prop := n => m => exists Nat (k => EqNat n (times k m)). 
+
+def Prime : Elem Nat -> Prop := n => not (exists Nat (m => and (Lt one m) (and (Lt m n) (Div n m)))).
+
+prop90 : (n : Elem Nat) -> Proof (if (and (Even n) (Prime n)) (EqNat n two)).
+
+
