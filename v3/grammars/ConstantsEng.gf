@@ -10,20 +10,8 @@ open
   Formal
 
 in {
-lin Dk_Type = type_Noun ;
-lin Dk_Nat = natural_Set ;
-lin Dk_Even = even_Adj ;
-lin Dk_Odd = odd_Adj ;
-lin Dk_Prime = prime_Adj ;
 lin Dk_Zero = mkConst "zero" "0" ;
-lin Dk_Div = divisible_Rel ;
-lin Dk_Eq = eq_Compar ;
-lin Dk_Lt = lt_Compar ;
-lin Dk_Gt = gt_Compar ;
 lin Dk_Succ = mkFun "successor" ;
-lin Dk_sum = sum_Oper ;
-lin Dk_prod = product_Oper ;
-lin Dk_gcd = gcd_Fun ;
 lin Dk_eqZero = mkLabel "equality of zero" ;
 lin Dk_eqSucc = mkLabel "equality of successors" ;
 lin Dk_eqSumZero = mkLabel "addition of zero" ;

@@ -85,7 +85,8 @@ prop2dedukti prop = case prop of
   GAdjProp (LexAdj adj) exp ->
     EApp (EIdent (QIdent (undk adj))) (exp2dedukti exp) 
   GRelProp (LexRel rel) a b ->
-    foldl EApp (EIdent (QIdent (undk rel))) (map exp2dedukti [a, b]) 
+    foldl EApp (EIdent (QIdent (undk rel))) (map exp2dedukti [a, b])
+  _ -> eUndefined ---- TODO complete Informath2Core
 
 hypo2dedukti :: GHypo -> [Hypo]
 hypo2dedukti hypo = case hypo of
@@ -112,6 +113,7 @@ kind2dedukti kind = case kind of
   ---- still assuming GF fun is Dedukti ident
   GNounKind (LexNoun noun) ->
     EIdent (QIdent (undk noun))
+  _ -> eUndefined ---- TODO
 
 exp2dedukti :: GExp -> Exp
 exp2dedukti exp = case exp of
@@ -127,6 +129,7 @@ exp2dedukti exp = case exp of
   GNameExp (LexName name) ->
     EIdent (QIdent (undk name))
   GTermExp (GTVar (GstringVar (GString x))) -> EIdent (QIdent x)
+  _ -> eUndefined ---- TODO
 
 exp2deduktiPatt :: GExp -> Patt
 exp2deduktiPatt exp = case exp of
@@ -177,6 +180,8 @@ prop2deduktiIdent prop = case prop of
   GIdentProp (GStrIdent (GString s)) -> QIdent s
   _ -> QIdent (takeWhile isAlpha (show (gf prop))) ---- TODO
 
+eUndefined :: Exp
+eUndefined = EIdent (QIdent "UNDEFINED")
 
 
 

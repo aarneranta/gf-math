@@ -41,10 +41,10 @@ expTyped x t = EApp (EApp (EIdent (QIdent "typed")) x) t
 -- constants in lexicon
 ---- TODO: now hardcoded, should be dynamically generated and loaded
 
-constantMap :: M.Map String String
-constantMap = M.fromList constants
+constantMap :: M.Map String (String, String)
+constantMap = M.fromList [(c, (cat, fun)) | (c, cat, fun) <- constants]
 
-lookupConstant :: String -> Maybe String
+lookupConstant :: String -> Maybe (String, String)
 lookupConstant c = M.lookup c constantMap
 
 -- Dedukti ident X becomes GF ident Dk_X

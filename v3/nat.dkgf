@@ -1,18 +1,18 @@
-Type Noun type
-Nat Noun natural number
-Set Noun set
-Even Adj even
-Odd Adj odd
-Prime Adj prime
-Zero Name = latexName "0"
-Div Rel divisible by
-Eq Rel equal to
-Lt Rel less than
-Gt Rel greater than
+Type Noun -> type_Noun
+Nat Set -> natural_Set
+Set Noun -> set_Noun
+Even Adj -> even_Adj
+Odd Adj -> odd_Adj
+Prime Adj -> prime_Adj
+Zero Const zero 0
+Div Rel -> divisible_Rel
+Eq Compar -> eq_Compar
+Lt Compar -> lt_Compar
+Gt Compar -> gt_Compar
 Succ Fun successor
-sum Fun sum
-prod Fun product
-gcd Fun greatest common divisor
+sum Oper -> sum_Oper
+prod Oper -> product_Oper
+gcd Fun -> gcd_Fun
 eqZero Label = mkLabel "equality of zero"
 eqSucc Label = mkLabel "equality of successors"
 eqSumZero Label = mkLabel "addition of zero"

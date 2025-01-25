@@ -42,8 +42,9 @@ import System.Environment (getArgs)
 mkConstants :: FilePath -> IO ()
 mkConstants file = do
   annots <- readFile file >>= return . map words . filter (not . null) . lines
-  writeAndReport "grammars/Constants.gf" $ mkConstantsGF annots
-  writeAndReport "grammars/ConstantsEng.gf" $ mkConstantsEngGF annots
+  let dkannots = [annot | annot@(_:_:mk:_) <- annots, mk /= "->"]
+  writeAndReport "grammars/Constants.gf" $ mkConstantsGF dkannots
+  writeAndReport "grammars/ConstantsEng.gf" $ mkConstantsEngGF dkannots
   writeAndReport "Constants.hs" $ mkConstantsHS annots
 
 
@@ -70,7 +71,7 @@ mkConstantsEngGF annots = unlines $ [
   "  ParadigmsEng,",
   "  SymbolicEng,",
   "  NotationsEng,",
-  "  Formal"
+  "  Formal",
   "",
   "in {"
   ] ++
@@ -91,8 +92,12 @@ mkConstantsHS annots = unlines $ [
   [concat (intersperse ", \n" (map mkConstant annots))] ++
   ["  ]"]
  where
-   mkConstant (fun:cat:_) =
-     concat(["  (", quote fun, ", ", quote cat, ")"])
+   mkConstant (fun:cat:mk:ws) =
+       concat(["  (", quote fun, ", ", quote cat, ", ", quote lin, ")"])
+     where
+       lin = case mk of
+         "->" -> unwords ws
+         _ -> dk fun
 
 
 writeAndReport :: FilePath -> String -> IO ()

@@ -14,6 +14,7 @@ import Core2Informath (nlg)
 import Informath2Core (semantics)
 import ParseInformath (parseJmt)
 import Lexing
+import MkConstants (mkConstants)
 
 import PGF
 
@@ -40,6 +41,8 @@ main = do
   corepgf <- readPGF informathPGFFile
   let env = Env{flags = ff, cpgf = corepgf} ---, rands = [], itr = 0}
   case yy of
+    filename:_ | isSuffixOf ".dkgf" filename -> do
+      mkConstants filename
     filename:_ | isSuffixOf ".dk" filename -> do
       s <- readFile filename
       processDeduktiModule env s

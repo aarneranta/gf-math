@@ -96,9 +96,9 @@ The following programming languages have been used so far in Informath:
 ## Usage
 
 It is too early to document the usage of this software, because its user interface has not yet stabilized.
-The emerging interface is in the file `Informath.hs`. Its two main modes are interactive shell and conversion of Dedukti files to MathCore and Informath:
+The emerging interface is in the file `Informath.hs`. Its two modes are interactive shell and conversion of files.
 ```
-  $ runghc RunInformath.hs <file.dk>?
+  $ ./RunInformath (<file.dk> | <file.dkgf> | <textfile>)?
 ```
 The shell has following functionalities:
 ```
@@ -107,32 +107,47 @@ The shell has following functionalities:
   > =<dedukti_jmt>  # roundtrup Dedukti to Informath to Dedukti
   > gr  # generate random Informath jmt and convert to Dedukti
 ```
+The file conversion mode depends on the file suffix:
+```
+<file.dk>: Dedukti file converted to natural language
+<file.dkgf>: add user-defined constants to the grammar
+<textfile>: parse text file and convert to Dedukti
+```
 In order for this to work, you need to compile the Dedukti and the Informath grammars:
 ```
   $ make Informath.pgf
   $ make Dedukti
   $ ln -s typetheory/Dedukti
   $ ln -s informath/Informath.hs
+  $ make RunInformath
 ```
 An example of readily available test case is
 ```
   $ runghc RunInformath.hs nat.dk
 ```
-If you pipe this to `grep -v "#"`, you can see the bare MathCore and Informath output.
+**Note**: with some versions of GHC libraries, `make Informath.pgf` results into a `Informath.hs` that gives an error about an undefined monad operation. This is fixed by adding the line `import Control.Monad` to the import list. 
 
-## Creating lexical rules
+## User-defined constants
 
-The lexicon part (files Constants*) is expected to give verbalizations to defined constants in .dk files. This part can be dynamically generated with commands
+The lexicon part (files Constants*) is expected to give verbalizations to defined constants in .dk files. This part can be dynamically generated with the commands
 ```
-  $ runghc MkConstants <file>.dkgf
+  $ ./RunInformath <file>.dkgf
   $ make Informath.pgf
+  $ make RunInformath
 ```
 which for instance from [nat.dkgf](./nat.dkgf) generates three files:
 - [Constants.hs](./Constants.hs)
 - [Constants.gf](./Core/Constants.gf)
 - [ConstantsEng.gf](./Core/ConstantsEng.gf)
 
-and compiles Informath.pgf with them. Some more information is given in the file [MkConstants.hs](./MkConstants.hs) and will also appear here when the process has stabilized.
+and compiles Informath.pgf with them. The format of .dkgf files is a list of lines of one of the following forms:
+```
+<ident> <cat> <word>+  # Dk_<ident> = mk<cat> "<word>"+ 
+<ident> <cat> = <gf-expr>  # Dk_<ident> = <gf-expr>
+<ident> <cat> -> <gf-ident> 
+```
+The first two forms generate new entries in the two Constants*.gf files, defining functions named `Dk_<ident>` of type `<cat>`and with concrete syntax as shown above. The third form uses a globally defined function from the fine [Notations.gf](./Notations.gf) and its English concrete syntax, without generating new GF rules. Its effect is to map `<ident>` in Dedukti code to `<gf-ident>` in the GF translation of the code.
+
 
 ## Generating Agda
 

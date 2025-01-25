@@ -59,7 +59,7 @@ jmt2core jmt = case jmt of
   _ -> error ("not yet: " ++ printTree jmt)
 
 cat :: QIdent -> String
-cat ident@(QIdent c) = maybe "Label" id (lookupConstant c)
+cat ident@(QIdent c) = maybe "Label" fst (lookupConstant c)
 
 definitionLabel :: GLabel
 definitionLabel = LexLabel "definitionLabel"
@@ -70,10 +70,10 @@ axiomLabel = LexLabel "axiomLabel"
 funListExp :: QIdent -> [GExp] -> GExp
 funListExp ident exps = case ident of
   QIdent s -> case lookupConstant s of
-    Just "Fun" ->
-      GFunListExp (LexFun (dk s)) (GListExp exps)
-    Just "Oper" ->
-      GOperListExp (LexOper (dk s)) (GListExp exps)
+    Just ("Fun", c) ->
+      GFunListExp (LexFun c) (GListExp exps)
+    Just ("Oper", c) ->
+      GOperListExp (LexOper c) (GListExp exps)
     _ -> case exps of
       [] -> GIdentExp (GStrIdent (GString s))
       _:_ -> GAppExp (GIdentExp (GStrIdent (GString s))) (GListExp exps)
@@ -81,12 +81,12 @@ funListExp ident exps = case ident of
 funListProp :: QIdent -> [GExp] -> GProp
 funListProp ident exps = case ident of
   QIdent s -> case lookupConstant s of
-    Just "Adj" | length exps == 1 ->
-      GAdjProp (LexAdj (dk s)) (exps !! 0)
-    Just "Rel" | length exps == 2 ->
-      GRelProp (LexRel (dk s)) (exps !! 0) (exps !! 1)
-    Just "Compar" | length exps == 2 ->
-      GComparProp (LexCompar (dk s)) (exps !! 0) (exps !! 1)
+    Just ("Adj", c) | length exps == 1 ->
+      GAdjProp (LexAdj c) (exps !! 0)
+    Just ("Rel", c) | length exps == 2 ->
+      GRelProp (LexRel c) (exps !! 0) (exps !! 1)
+    Just ("Compar", c) | length exps == 2 ->
+      GComparProp (LexCompar c) (exps !! 0) (exps !! 1)
     _ -> case exps of
       [] -> GIdentProp (GStrIdent (GString s))
       _:_ -> GAppProp (GStrIdent (GString s)) (GListExp exps)
@@ -126,8 +126,8 @@ rule2rule rule = case rule of
 exp2kind :: Exp -> GKind
 exp2kind exp = case exp of
   EIdent ident@(QIdent s) -> case lookupConstant s of  ---- TODO: more high level
-    Just "Noun" -> GNounKind (LexNoun (dk s))
-    Just "Set" -> GSetKind (LexSet (dk s))
+    Just ("Noun", c) -> GNounKind (LexNoun c)
+    Just ("Set", c) -> GSetKind (LexSet c)
     _ -> GIdentKind (ident2core ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
@@ -169,9 +169,9 @@ exp2prop exp = case exp of
 	  GComparProp rel x y -> GNotComparProp rel x y
           p -> GNotProp p
       EIdent ident@(QIdent pred) -> case (lookupConstant pred, args) of
-        (Just "Adj", [a]) -> GAdjProp (LexAdj (dk pred)) (exp2exp a)     
-        (Just "Rel", [a, b]) -> GRelProp (LexRel (dk pred)) (exp2exp a) (exp2exp b)
-        (Just "Compar", [a, b]) -> GComparProp (LexCompar (dk pred)) (exp2exp a) (exp2exp b)
+        (Just ("Adj", c), [a]) -> GAdjProp (LexAdj c) (exp2exp a)     
+        (Just ("Rel", c), [a, b]) -> GRelProp (LexRel c) (exp2exp a) (exp2exp b)
+        (Just ("Compar", c), [a, b]) -> GComparProp (LexCompar c) (exp2exp a) (exp2exp b)
         _  ->
           GAppProp (ident2core ident) (GListExp (map exp2exp args))
   EFun _ _ -> case splitType exp of
@@ -183,14 +183,14 @@ exp2prop exp = case exp of
 exp2exp :: Exp -> GExp
 exp2exp exp = case exp of
   EIdent ident@(QIdent s) -> case lookupConstant s of  ---- TODO: more high level
-    Just "Name" -> GNameExp (LexName (dk s))
-    Just "Const" -> GConstExp (LexConst (dk s))
+    Just ("Name", c) -> GNameExp (LexName c)
+    Just ("Const", c) -> GConstExp (LexConst c)
     _ -> GIdentExp (ident2core ident)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent ident@(QIdent f) -> case (lookupConstant f, args) of
-        (Just "Fun", exps) -> GFunListExp (LexFun (dk f)) (GListExp (map exp2exp exps))     
-        (Just "Oper", exps) -> GOperListExp (LexOper (dk f)) (GListExp (map exp2exp exps))     
+        (Just ("Fun", c), exps) -> GFunListExp (LexFun c) (GListExp (map exp2exp exps))     
+        (Just ("Oper", c), exps) -> GOperListExp (LexOper c) (GListExp (map exp2exp exps))     
         _ -> GAppExp (exp2exp fun) (GListExp (map exp2exp args))
       _ -> GAppExp (exp2exp fun) (GListExp (map exp2exp args))
   EAbs _ _ -> case splitAbs exp of
@@ -221,21 +221,21 @@ ident2core ident = case ident of
 ident2exp :: QIdent -> GExp
 ident2exp ident = case ident of
   QIdent s -> case lookupConstant s of
-    Just "Name" -> GNameExp (LexName (dk s))
-    Just "Const" -> GConstExp (LexConst (dk s))
+    Just ("Name", c) -> GNameExp (LexName c)
+    Just ("Const", c) -> GConstExp (LexConst c)
     _ -> GIdentExp (GStrIdent (GString s))
 
 ident2label :: QIdent -> GLabel
 ident2label ident = case ident of
   QIdent s -> case lookupConstant s of
-    Just "Label" -> LexLabel (dk s)
+    Just ("Label", c) -> LexLabel c
     _ -> GStrLabel (GString s)
 
 ident2coreKindExp :: QIdent -> GKind
 ident2coreKindExp ident = case ident of
   QIdent s -> case lookupConstant s of
-    Just "Noun" -> GNounKind (LexNoun (dk s))
-    Just "Set" -> GSetKind (LexSet (dk s))
+    Just ("Noun", c) -> GNounKind (LexNoun c)
+    Just ("Set", c) -> GSetKind (LexSet c)
     _ -> GIdentKind (ident2core ident)
 
 bind2coreIdent :: Bind -> GIdent
