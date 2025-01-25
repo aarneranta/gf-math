@@ -84,9 +84,9 @@ funListProp ident exps = case ident of
     Just ("Adj", c) | length exps == 1 ->
       GAdjProp (LexAdj c) (exps !! 0)
     Just ("Rel", c) | length exps == 2 ->
-      GAdjProp (GRelAdj (LexRel c) (exps !! 0)) (exps !! 1)
+      GAdjProp (GRelAdj (LexRel c) (exps !! 1)) (exps !! 0)
     Just ("Compar", c) | length exps == 2 ->
-      GAdjProp (GComparAdj (LexCompar c) (exps !! 0)) (exps !! 1)
+      GAdjProp (GComparAdj (LexCompar c) (exps !! 1)) (exps !! 0)
     _ -> case exps of
       [] -> GIdentProp (GStrIdent (GString s))
       _:_ -> GAppProp (GStrIdent (GString s)) (GListExp exps)
@@ -168,8 +168,8 @@ exp2prop exp = case exp of
           p -> GNotProp p
       EIdent ident@(QIdent pred) -> case (lookupConstant pred, args) of
         (Just ("Adj", c), [a]) -> GAdjProp (LexAdj c) (exp2exp a)     
-        (Just ("Rel", c), [a, b]) -> GAdjProp (GRelAdj (LexRel c) (exp2exp a)) (exp2exp b)
-        (Just ("Compar", c), [a, b]) -> GAdjProp (GComparAdj (LexCompar c) (exp2exp a)) (exp2exp b)
+        (Just ("Rel", c), [a, b]) -> GAdjProp (GRelAdj (LexRel c) (exp2exp b)) (exp2exp a)
+        (Just ("Compar", c), [a, b]) -> GAdjProp (GComparAdj (LexCompar c) (exp2exp b)) (exp2exp a)
         _  ->
           GAppProp (ident2ident ident) (GListExp (map exp2exp args))
   EFun _ _ -> case splitType exp of
