@@ -71,12 +71,12 @@ funListExp :: QIdent -> [GExp] -> GExp
 funListExp ident exps = case ident of
   QIdent s -> case lookupConstant s of
     Just ("Fun", c) ->
-      GFunListExp (LexFun c) (GListExp exps)
+      GFunListExp (LexFun c) (gExps exps)
     Just ("Oper", c) ->
-      GOperListExp (LexOper c) (GListExp exps)
+      GOperListExp (LexOper c) (gExps exps)
     _ -> case exps of
       [] -> ident2exp ident
-      _:_ -> GAppExp (ident2exp ident) (GListExp exps)
+      _:_ -> GAppExp (ident2exp ident) (gExps exps)
 
 funListProp :: QIdent -> [GExp] -> GProp
 funListProp ident exps = case ident of
@@ -89,7 +89,7 @@ funListProp ident exps = case ident of
       GAdjProp (GComparAdj (LexCompar c) (exps !! 1)) (exps !! 0)
     _ -> case exps of
       [] -> GIdentProp (GStrIdent (GString s))
-      _:_ -> GAppProp (GStrIdent (GString s)) (GListExp exps)
+      _:_ -> GAppProp (GStrIdent (GString s)) (gExps exps)
 
 hypoIdents :: GHypo -> [GIdent]
 hypoIdents hypo = case hypo of
@@ -132,7 +132,7 @@ exp2kind exp = case exp of
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent ident ->
-        GAppKind (ident2ident ident) (GListExp (map exp2exp args))
+        GAppKind (ident2ident ident) (gExps (map exp2exp args))
   EFun _ _ -> 
     case splitType exp of
       (hypos, valexp) ->
@@ -171,7 +171,7 @@ exp2prop exp = case exp of
         (Just ("Rel", c), [a, b]) -> GAdjProp (GRelAdj (LexRel c) (exp2exp b)) (exp2exp a)
         (Just ("Compar", c), [a, b]) -> GAdjProp (GComparAdj (LexCompar c) (exp2exp b)) (exp2exp a)
         _  ->
-          GAppProp (ident2ident ident) (GListExp (map exp2exp args))
+          GAppProp (ident2ident ident) (gExps (map exp2exp args))
   EFun _ _ -> case splitType exp of
     (hypos, exp) ->
       GAllProp (GListArgKind (map hypo2coreArgKind hypos)) (exp2prop exp)
@@ -187,10 +187,10 @@ exp2exp exp = case exp of
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent ident@(QIdent f) -> case (lookupConstant f, args) of
-        (Just ("Fun", c), exps) -> GFunListExp (LexFun c) (GListExp (map exp2exp exps))     
-        (Just ("Oper", c), exps) -> GOperListExp (LexOper c) (GListExp (map exp2exp exps))     
-        _ -> GAppExp (exp2exp fun) (GListExp (map exp2exp args))
-      _ -> GAppExp (exp2exp fun) (GListExp (map exp2exp args))
+        (Just ("Fun", c), exps) -> GFunListExp (LexFun c) (gExps (map exp2exp exps))     
+        (Just ("Oper", c), exps) -> GOperListExp (LexOper c) (gExps (map exp2exp exps))     
+        _ -> GAppExp (exp2exp fun) (gExps (map exp2exp args))
+      _ -> GAppExp (exp2exp fun) (gExps (map exp2exp args))
   EAbs _ _ -> case splitAbs exp of
     (binds, body) -> GAbsExp (GListIdent (map bind2coreIdent binds)) (exp2exp body)
 
@@ -299,4 +299,7 @@ bind2var :: Bind -> Var
 bind2var bind = case bind of
   BVar v -> v
   BTyped v _ -> v
+
+gExps :: [GExp] -> GExps
+gExps exps = foldr GAddExps (GOneExps (last exps)) (init exps)
 

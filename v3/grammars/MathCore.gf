@@ -9,7 +9,7 @@ flags startcat = Jmt ;
 cat
   Jmt ;
   Exp ;
-  [Exp] {1} ;
+  Exps ;
   Prop ;
   [Prop] {2} ;
   Kind ;
@@ -43,7 +43,7 @@ fun
   VarsHypo : [Ident] -> Kind -> Hypo ;
   BareVarsHypo : [Ident] -> Hypo ;  -- needed in proofs: let x be arbitrary
 
-  AppExp : Exp -> [Exp] -> Exp ;
+  AppExp : Exp -> Exps -> Exp ;
   AbsExp : [Ident] -> Exp -> Exp ;
   TermExp : Term -> Exp ;
   TypedExp : Exp -> Kind -> Exp ;
@@ -57,11 +57,11 @@ fun
   AllProp : [ArgKind] -> Prop -> Prop ;
   ExistProp : [ArgKind] -> Prop -> Prop ; 
   IdentProp : Ident -> Prop ;
-  AppProp : Ident -> [Exp] -> Prop ;
+  AppProp : Ident -> Exps -> Prop ;
 
   TermKind : Term -> Kind ;
   SuchThatKind : Ident -> Kind -> Prop -> Kind ;
-  AppKind : Ident -> [Exp] -> Kind ;
+  AppKind : Ident -> Exps -> Kind ;
   FunKind : [ArgKind] -> Kind -> Kind ;
 
   KindArgKind : Kind -> ArgKind ;
@@ -76,6 +76,9 @@ fun
   AppProof : [Proof] -> Exp -> Proof ;
   AbsProof : [Hypo] -> Proof -> Proof ;
 
+  OneExps : Exp -> Exps ;
+  AddExps : Exp -> Exps -> Exps ;
+
 -- using Constants
 
   AdjProp : Adj -> Exp -> Prop ;
@@ -84,9 +87,9 @@ fun
   NounKind : Noun -> Kind ;
   SetKind : Set -> Kind ;
   NameExp : Name -> Exp ;
-  FunListExp : Fun -> [Exp] -> Exp ;
+  FunListExp : Fun -> Exps -> Exp ;
   LabelExp : Label -> Exp ;
   ConstExp : Const -> Exp ;
-  OperListExp : Oper -> [Exp] -> Exp ; -- binary operation applied collectively
+  OperListExp : Oper -> Exps -> Exp ; -- binary operation applied collectively
   ComparAdj : Compar -> Exp -> Adj ;
 }

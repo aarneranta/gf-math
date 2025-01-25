@@ -6,7 +6,7 @@ flags startcat=Jmt ;
 
 cat
   [Adj] {2} ;
----  [Exp] {2} ;
+  [Exp] {2} ;
 
 fun
   FormulaProp : Formula -> Prop ;
@@ -19,8 +19,8 @@ fun
   AndAdj : [Adj] -> Adj ;
   OrAdj : [Adj] -> Adj ;
 
----  AndExp : [Exp] -> Exp ;
----  OrExp : [Exp] -> Exp ;
+  AndExp : [Exp] -> Exp ;
+  OrExp : [Exp] -> Exp ;
 
   EveryKindExp : Kind -> Exp ;
   AllArgKindExp : ArgKind -> Exp ;

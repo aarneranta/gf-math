@@ -80,8 +80,8 @@ prop2dedukti prop = case prop of
           (foldr (\x z -> EAbs (BVar x) z) y vars))
         (prop2dedukti prop)
         (map argkind2dedukti argkinds)
-  GAppProp ident (GListExp exps) ->
-    foldl1 EApp ((EIdent (ident2ident ident)) : map exp2dedukti exps)
+  GAppProp ident exps ->
+    foldl1 EApp ((EIdent (ident2ident ident)) : map exp2dedukti (exps2list exps))
   GAdjProp (GRelAdj (LexRel rel) b) a ->
     foldl EApp (EIdent (QIdent (undk rel))) (map exp2dedukti [a, b])
   GAdjProp (GComparAdj (LexCompar rel) b) a ->
@@ -110,8 +110,8 @@ kind2dedukti kind = case kind of
       (kind2dedukti kind)
       (EAbs (BVar (VIdent (ident2ident ident)))
             (prop2dedukti prop))
-  GAppKind ident (GListExp exps) ->
-    foldl1 EApp (EIdent (ident2ident ident) : map exp2dedukti exps)
+  GAppKind ident exps ->
+    foldl1 EApp (EIdent (ident2ident ident) : map exp2dedukti (exps2list exps))
   ---- still assuming GF fun is Dedukti ident
   GNounKind (LexNoun noun) ->
     EIdent (QIdent (undk noun))
@@ -120,8 +120,8 @@ kind2dedukti kind = case kind of
 exp2dedukti :: GExp -> Exp
 exp2dedukti exp = case exp of
   GTermExp (GTIdent ident) -> EIdent (ident2ident ident)
-  GAppExp exp (GListExp exps) ->
-    foldl1 EApp (map exp2dedukti (exp : exps))
+  GAppExp exp exps ->
+    foldl1 EApp (map exp2dedukti (exp : (exps2list exps)))
   GAbsExp (GListIdent idents) exp ->
     foldr
       (\x y -> EAbs (BVar (VIdent (ident2ident x))) y)
@@ -184,5 +184,8 @@ prop2deduktiIdent prop = case prop of
 eUndefined :: Exp
 eUndefined = EIdent (QIdent "UNDEFINED")
 
-
+exps2list :: GExps -> [GExp]
+exps2list exps = case exps of
+  GOneExps exp -> [exp]
+  GAddExps exp exps -> exp : exps2list exps
 

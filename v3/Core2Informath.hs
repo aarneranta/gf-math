@@ -19,7 +19,7 @@ formalize t = case t of
     (Just tx, Just ty) ->
       GFormulaProp (GFEquation (GEBinary (GComparEqsign compar) tx ty))
     _ -> GAdjProp (GComparAdj compar (formalize x)) (formalize y)
-  GOperListExp oper xy@(GListExp [x, y]) -> case (getTerm x, getTerm y) of
+  GOperListExp oper xy@(GAddExps x (GOneExps y)) -> case (getTerm x, getTerm y) of
     (Just tx, Just ty) -> GTermExp (GAppOperTerm oper tx ty)
     _ -> GOperListExp oper (formalize xy)
   GConstExp const -> GTermExp (GConstTerm const)
@@ -28,22 +28,25 @@ formalize t = case t of
 getTerm :: GExp -> Maybe GTerm
 getTerm t = case t of
   GConstExp const -> return (GConstTerm const)
-  GOperListExp oper (GListExp [x, y]) -> do
+  GOperListExp oper (GAddExps x (GOneExps y)) -> do
     tx <- getTerm x
     ty <- getTerm y
     return (GAppOperTerm oper tx ty)
   GTermExp term -> return term
   _ -> Nothing
 
-
 aggregate :: Tree a -> Tree a
 aggregate t = case t of
   GAndProp (GListProp pp@(GAdjProp a x : props)) -> case getAdjs props x of
     Just adjs -> GAdjProp (GAndAdj (GListAdj (a:adjs))) x
-    _ -> GAndProp (GListProp (map aggregate pp))
+    _ -> case getAdjArgs props a of
+      Just exps -> GAdjProp a (GAndExp (GListExp (x:exps)))
+      _ -> GAndProp (GListProp (map aggregate pp))
   GOrProp (GListProp pp@(GAdjProp a x : props)) -> case getAdjs props x of
     Just adjs -> GAdjProp (GOrAdj (GListAdj (a:adjs))) x
-    _ -> GOrProp (GListProp (map aggregate pp))
+    _ -> case getAdjArgs props a of
+      Just exps -> GAdjProp a (GOrExp (GListExp (x:exps)))
+      _ -> GOrProp (GListProp (map aggregate pp))
   _ -> composOp aggregate t
 
 getAdjs :: [GProp] -> GExp -> Maybe [GAdj]
@@ -51,6 +54,14 @@ getAdjs props x = case props of
   GAdjProp adj y : pp | x == y -> do
     adjs <- getAdjs pp x
     return (adj : adjs)
+  prop : _ -> Nothing
+  _ -> return []
+
+getAdjArgs :: [GProp] -> GAdj -> Maybe [GExp]
+getAdjArgs props a = case props of
+  GAdjProp b y : pp | a == b -> do
+    exps <- getAdjArgs pp a
+    return (y : exps)
   prop : _ -> Nothing
   _ -> return []
 

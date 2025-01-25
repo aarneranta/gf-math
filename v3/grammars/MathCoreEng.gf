@@ -21,7 +21,7 @@ lincat
   Kind = {cn : CN ; adv : Adv} ;
   Prop = Proposition ;
   Jmt = Text ;
-  [Exp] = {np : NP ; isPl : Bool} ;
+  Exps = {np : NP ; isPl : Bool} ;
   [Prop] = [S] ;
   ArgKind = {cn : CN ; adv : Adv} ;
   [ArgKind] = NP ;
@@ -132,9 +132,9 @@ lin
   ConsIdent ident idents =
     {np = mkNP and_Conj (latexNP (mkSymb ident)) idents.np ; isPl = True} ;
 
-  BaseExp exp =
+  OneExps exp =
     {np = exp ; isPl = False} ;
-  ConsExp exp exps =
+  AddExps exp exps =
     {np = mkNP and_Conj exp exps.np ; isPl = True} ;
 
   BaseArgKind kind =
