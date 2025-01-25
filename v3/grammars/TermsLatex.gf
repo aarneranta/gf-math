@@ -7,8 +7,7 @@ lincat
   Eqsign = Str ;
   Term = TermPrecNum ;
   [Term] = {s : Str} ;
-  Var = Str ;
-  Constant = Str ;
+  Ident = Str ;
   Function = Str ;
 
 lin
@@ -29,22 +28,15 @@ lin
   TNeg x = prefix 2 "-" x ** {isNumber = x.isNumber} ;
   TApp f xs = constant (f ++ parenth xs.s) ** {isNumber = False} ;
 
-  TVar x =  constant x ** {isNumber = False} ;
-  TConstant c =  constant c ** {isNumber = False} ;
+  TIdent x =  constant x ** {isNumber = False} ;
   TNumber n = constant n.s ** {isNumber = True} ;
 
   BaseTerm x = {s = top x} ;
   ConsTerm x xs = {s = top x ++ "," ++ xs.s} ;
 
-  N_Constant = "N" ;
-  Z_Constant = "Z" ;
-  Q_Constant = "Q" ;
-  R_Constant = "R" ;
-  C_Constant = "C" ;
+  StrIdent s = s.s ;
 
-  stringVar s = s.s ;
-
-  FVar v = v ;
+  FIdent v = v ;
   FDerivative f = f ++ "'" ;
 
   

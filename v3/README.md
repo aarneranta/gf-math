@@ -121,11 +121,11 @@ In order for this to work, you need to compile the Dedukti and the Informath gra
   $ ln -s informath/Informath.hs
   $ make RunInformath
 ```
-An example of readily available test case is
+An example of a readily available test case is
 ```
   $ runghc RunInformath.hs nat.dk
 ```
-**Note**: with some versions of GHC libraries, `make Informath.pgf` results into a `Informath.hs` that gives an error about an undefined monad operation. This is fixed by adding the line `import Control.Monad` to the import list. 
+**Note**: with some versions of GHC libraries, `make Informath.pgf` results into a `Informath.hs` that gives an error about an undefined monad operation. This is fixed by adding the line `import Control.Monad` to the import list. The current Makefile does this with a sed command - which may cause an error with some other versions of GHC libraries.
 
 ## User-defined constants
 

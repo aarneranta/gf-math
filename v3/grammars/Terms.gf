@@ -8,8 +8,7 @@ cat
   Eqsign ;
   Term ;
   [Term] {1} ;
-  Var ;
-  Constant ;
+  Ident ;
   Function ;
 
 fun
@@ -25,16 +24,13 @@ fun
   TNeg : Term -> Term ;
   TApp : Function -> [Term] -> Term ;
 
-  TVar : Var -> Term ;
-  TConstant : Constant -> Term ;
+  TIdent : Ident -> Term ;
   TNumber : Float -> Term ;
 
-  FVar : Var -> Function ;
+  FIdent : Ident -> Function ;
   FDerivative : Function -> Function ;
 
-  N_Constant, Z_Constant, Q_Constant, R_Constant, C_Constant : Constant ;
-
-  stringVar : String -> Var ;
+  StrIdent : String -> Ident ;
   
   TFrac : Term -> Term -> Term ;
   TAbsolute : Term -> Term ;

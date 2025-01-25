@@ -1,4 +1,5 @@
 abstract MathCore =
+  Terms, --- [Ident, Term, TIdent, StrIdent],
   Notations,  -- basic notations, always available
   Constants   -- Dedukti-specific notations, user-defined with MkConstants.hs
   ** {
@@ -16,7 +17,6 @@ cat
   [ArgKind] {1} ;
   Hypo ;
   [Hypo] ;
-  Ident ;
   [Ident] {1} ;
   Proof ;
   [Proof] {0} ;
@@ -45,7 +45,7 @@ fun
 
   AppExp : Exp -> [Exp] -> Exp ;
   AbsExp : [Ident] -> Exp -> Exp ;
-  IdentExp : Ident -> Exp ;
+  TermExp : Term -> Exp ;
   TypedExp : Exp -> Kind -> Exp ;
 
   AndProp : [Prop] -> Prop ;
@@ -59,7 +59,7 @@ fun
   IdentProp : Ident -> Prop ;
   AppProp : Ident -> [Exp] -> Prop ;
 
-  IdentKind : Ident -> Kind ;
+  TermKind : Term -> Kind ;
   SuchThatKind : Ident -> Kind -> Prop -> Kind ;
   AppKind : Ident -> [Exp] -> Kind ;
   FunKind : [ArgKind] -> Kind -> Kind ;
@@ -67,7 +67,6 @@ fun
   KindArgKind : Kind -> ArgKind ;
   IdentsArgKind : Kind -> [Ident] -> ArgKind ;
 
-  StrIdent : String -> Ident ;
   StrLabel : String -> Label ; -- to deal with Dedukti labels not in grammar
   noLabel : Label ; -- to deal with unlabelled statements
   axiomLabel : Label ;
@@ -81,8 +80,7 @@ fun
 
   AdjProp : Adj -> Exp -> Prop ;
   NotAdjProp : Adj -> Exp -> Prop ;
-  RelProp : Rel -> Exp -> Exp -> Prop ;
-  NotRelProp : Rel -> Exp -> Exp -> Prop ;
+  RelAdj : Rel -> Exp -> Adj ;
   NounKind : Noun -> Kind ;
   SetKind : Set -> Kind ;
   NameExp : Name -> Exp ;
@@ -90,6 +88,5 @@ fun
   LabelExp : Label -> Exp ;
   ConstExp : Const -> Exp ;
   OperListExp : Oper -> [Exp] -> Exp ; -- binary operation applied collectively
-  ComparProp : Compar -> Exp -> Exp -> Prop ;
-  NotComparProp : Compar -> Exp -> Exp -> Prop ;
+  ComparAdj : Compar -> Exp -> Adj ;
 }

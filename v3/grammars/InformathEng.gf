@@ -1,10 +1,12 @@
-concrete InformathEng of Informath = MathCoreEng, TermsLatex **
+concrete InformathEng of Informath =
+  MathCoreEng **
 
 open
   SyntaxEng,
   (Syntax = SyntaxEng),
   SymbolicEng,
   ParadigmsEng,
+  (Grammar = GrammarEng),
   Formal,
   Prelude
 in {
@@ -14,7 +16,6 @@ lincat
 ---  [Exp] = [NP] ;
 
 lin
-  TermExp term = latexNP (mkSymb term.s) ;
   FormulaProp formula = simpleProp (latexS (mkSymb formula.s)) ;
 
   SetTerm set = constant set.c ** {isNumber = False} ;
@@ -60,8 +61,8 @@ lin
   PostQuantProp prop exp =
     simpleProp (postAdvS prop.s (Syntax.mkAdv for_Prep exp)) ; --- no complexProp in Informath
   IndefKindExp kind = mkNP a_Det (mkCN kind.cn kind.adv) ;
-  IndefIdentKindExp ident kind = mkNP a_Det (mkCN (mkCN kind.cn (latexNP ident)) kind.adv) ;
-  EveryIdentKindExp ident kind = mkNP every_Det (mkCN (mkCN kind.cn (latexNP ident)) kind.adv) ;
+  IndefIdentKindExp ident kind = mkNP a_Det (mkCN (mkCN kind.cn (latexNP (mkSymb ident))) kind.adv) ;
+  EveryIdentKindExp ident kind = mkNP every_Det (mkCN (mkCN kind.cn (latexNP (mkSymb ident))) kind.adv) ;
 
 
 oper

@@ -15,15 +15,14 @@ nlg t = [t, ft, aft, iaft, viaft]
 
 formalize :: Tree a -> Tree a
 formalize t = case t of
-  GComparProp compar x y -> case (getTerm x, getTerm y) of
+  GAdjProp (GComparAdj compar x) y -> case (getTerm x, getTerm y) of
     (Just tx, Just ty) ->
       GFormulaProp (GFEquation (GEBinary (GComparEqsign compar) tx ty))
-    _ -> GComparProp compar (formalize x) (formalize y)
+    _ -> GAdjProp (GComparAdj compar (formalize x)) (formalize y)
   GOperListExp oper xy@(GListExp [x, y]) -> case (getTerm x, getTerm y) of
     (Just tx, Just ty) -> GTermExp (GAppOperTerm oper tx ty)
     _ -> GOperListExp oper (formalize xy)
   GConstExp const -> GTermExp (GConstTerm const)
-  GIdentExp (GStrIdent x) -> GTermExp (GTVar (GstringVar x)) ---- TODO: simpler ident
   _ -> composOp formalize t
 
 getTerm :: GExp -> Maybe GTerm
@@ -33,7 +32,7 @@ getTerm t = case t of
     tx <- getTerm x
     ty <- getTerm y
     return (GAppOperTerm oper tx ty)
-  GIdentExp (GStrIdent x) -> return (GTVar (GstringVar x)) ---- TODO: simpler ident
+  GTermExp term -> return term
   _ -> Nothing
 
 
@@ -98,7 +97,7 @@ insitu t = case t of
 
 subst :: GArgKind -> GExp -> Bool
 subst argkind exp = case (argkind, exp) of
-  (GIdentsArgKind _ (GListIdent [GStrIdent x]), GIdentExp (GStrIdent y)) -> x == y
+  (GIdentsArgKind _ (GListIdent [x]), GTermExp (GTIdent y)) -> x == y
   _ -> False
 
 varless :: Tree a -> Tree a

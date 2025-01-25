@@ -48,7 +48,7 @@ main = do
       processDeduktiModule env s
     filename:_  -> do
       s <- readFile filename
-      mapM_ (processCoreJmt env) (filter (not . null) (lines s))
+      mapM_ (processInformathJmt env) (filter (not . null) (lines s))
     _ -> do
 ----      g <- getStdGen
       let rs = [] ---- generateRandomDepth g corepgf jmt (Just 4)
@@ -98,10 +98,10 @@ processDeduktiJmtTree env t = do
   let gft = gf ct
   putStrLn $ "#Core: " ++ showExpr [] gft
   putStrLn $ linearize gr english gft
-  convertCoreToForthel env ct
+  convertCoreToInformath env ct
 
-convertCoreToForthel :: Env -> GJmt -> IO ()
-convertCoreToForthel env ct = do
+convertCoreToInformath :: Env -> GJmt -> IO ()
+convertCoreToInformath env ct = do
   let fgr = cpgf env
   let fts = nlg ct
   let gffts = map gf fts
@@ -134,5 +134,30 @@ processCoreJmtTree env t = do
   putStrLn $ linearize gr english st
   let d = jmt2dedukti str
   putStrLn $ printTree d
-  convertCoreToForthel env str
+  convertCoreToInformath env str
+
+processInformathJmt :: Env -> String -> IO ()
+processInformathJmt env s = do
+  let gr = cpgf env
+  let ls = lextex s
+  putStrLn ls
+  let (mts, msg) = parseJmt gr english jmt ls
+  putStrLn msg
+  case mts of
+    Just ts@(_:_) -> do
+      flip mapM_ ts $ processInformathJmtTree env
+    _ -> putStrLn ("NO PARSE: " ++ ls)
+
+processInformathJmtTree :: Env -> Expr -> IO ()
+processInformathJmtTree env t = do
+  let gr = cpgf env
+  putStrLn $ "#Informath: " ++ showExpr [] t
+  let tr = fg t
+  let str = semantics tr
+  let st = gf str
+  putStrLn $ "#Core: " ++ showExpr [] st
+  putStrLn $ linearize gr english st
+  let d = jmt2dedukti str
+  putStrLn $ printTree d
+
 

@@ -1,13 +1,14 @@
 concrete MathCoreEng of MathCore =
+  TermsLatex, --- [Ident, Term, TIdent, StrIdent],
   NotationsEng,
   ConstantsEng
 
  ** open
     SyntaxEng,
-    (S=SyntaxEng),
-    (G=GrammarEng),
-    (M=MarkupEng),
-    (E=ExtendEng),
+    (Syntax=SyntaxEng),
+    (Grammar=GrammarEng),
+    (Markup=MarkupEng),
+    (Extend=ExtendEng),
     SymbolicEng,
     Prelude,
     ParadigmsEng,
@@ -26,7 +27,6 @@ lincat
   [ArgKind] = NP ;
   Hypo = Utt ;
   [Hypo] = {text : Text ; isEmpty : Bool} ;
-  Ident = Symb ;
   [Ident] = {np : NP ; isPl : Bool} ;
   Proof = Text ;
   [Proof] = Text ;
@@ -43,7 +43,7 @@ lin
         (prefixText proof_Str proof))) ;
   DefPropJmt label hypos prop df =
     labelText (label)
-      (thenText hypos (mkText (G.SSubjS (partProp prop) if_Subj (partProp df)))) ;
+      (thenText hypos (mkText (Grammar.SSubjS (partProp prop) if_Subj (partProp df)))) ;
   DefKindJmt label hypos kind df =
     labelText (label)
       (thenText hypos (mkText
@@ -64,56 +64,55 @@ lin
 
   RewriteJmt rules = prefixText by_cases_Str rules ;
   RewriteRule idents patt exp =
-    mkUtt (G.ExtAdvS (S.mkAdv for_Prep idents.np) (mkS (mkCl patt exp))) ;
+    mkUtt (Grammar.ExtAdvS (Syntax.mkAdv for_Prep idents.np) (mkS (mkCl patt exp))) ;
   NoVarRewriteRule patt exp =
     mkUtt (mkS (mkCl patt exp)) ;
 
   PropHypo prop = mkUtt (mkImp (mkVP assume_VS (topProp prop))) ; 
-  VarsHypo idents kind = G.ImpP3 idents.np (mkVP (useKind kind)) ; 
-  BareVarsHypo idents = G.ImpP3 idents.np (mkVP arbitrary_A) ;
+  VarsHypo idents kind = Grammar.ImpP3 idents.np (mkVP (useKind kind)) ; 
+  BareVarsHypo idents = Grammar.ImpP3 idents.np (mkVP arbitrary_A) ;
 
-  AppExp exp exps = mkNP exp (S.mkAdv applied_to_Prep exps.np) ;
+  AppExp exp exps = mkNP exp (Syntax.mkAdv applied_to_Prep exps.np) ;
   AbsExp idents exp =
     mkNP the_Det (mkCN function_N (mkRS (mkRCl which_RP map_V3 idents.np exp))) ; 
-  IdentExp f = latexNP f ;
+  TermExp term = latexNP (mkSymb term.s) ;
   TypedExp exp kind = mkNP the_Det (mkCN (mkCN kind.cn exp) kind.adv) ;
 
   AndProp props = complexProp (mkS and_Conj props) ;
   OrProp props = complexProp (mkS or_Conj props) ;
-  IfProp A B = complexProp (G.ExtAdvS (S.mkAdv if_Subj (partProp A)) (mkS then_Adv (partProp B))) ;
-  IffProp A B = complexProp (G.SSubjS (partProp A) iff_Subj (partProp B)) ;
+  IfProp A B = complexProp (Grammar.ExtAdvS (Syntax.mkAdv if_Subj (partProp A)) (mkS then_Adv (partProp B))) ;
+  IffProp A B = complexProp (Grammar.SSubjS (partProp A) iff_Subj (partProp B)) ;
   NotProp prop =
     simpleProp (mkS negPol (mkCl 
-          (mkVP (mkNP the_Quant (mkCN case_N (S.mkAdv that_Subj (partProp prop))))))) ;
+          (mkVP (mkNP the_Quant (mkCN case_N (Syntax.mkAdv that_Subj (partProp prop))))))) ;
   AllProp argkinds prop =
-    simpleProp (G.ExtAdvS (S.mkAdv for_Prep (mkNP all_Predet argkinds)) (partProp prop)) ;
+    simpleProp (Grammar.ExtAdvS (Syntax.mkAdv for_Prep (mkNP all_Predet argkinds)) (partProp prop)) ;
   ExistProp argkinds prop =
-    simpleProp (G.SSubjS (mkS (E.ExistsNP argkinds)) such_that_Subj (partProp prop)) ; ---- TODO: sg/pl correctly
-  IdentProp f = simpleProp (latexS f) ;
+    simpleProp (Grammar.SSubjS (mkS (Extend.ExistsNP argkinds)) such_that_Subj (partProp prop)) ; ---- TODO: sg/pl correctly
+  IdentProp f = simpleProp (latexS (mkSymb f)) ;
   FalseProp = simpleProp (mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N))) ;
-  AppProp f exps = simpleProp (mkS (mkCl (latexNP f) hold_V2 exps.np)) ;
+  AppProp f exps = simpleProp (mkS (mkCl (latexNP (mkSymb f)) hold_V2 exps.np)) ;
 
-  IdentKind formal = {
+  TermKind term = {
     cn = mkCN element_N ;
-    adv = S.mkAdv possess_Prep (latexNP formal)
+    adv = Syntax.mkAdv possess_Prep (latexNP (mkSymb term.s))
     } ;
   SuchThatKind ident kind prop = {
-    cn = mkCN kind.cn (latexNP ident) ;
-    adv = ccAdv kind.adv (S.mkAdv such_that_Subj (partProp prop))
+    cn = mkCN kind.cn (latexNP (mkSymb ident)) ;
+    adv = ccAdv kind.adv (Syntax.mkAdv such_that_Subj (partProp prop))
     } ;
-  AppKind formal exps = {
+  AppKind ident exps = {
     cn = mkCN element_N ;
-    adv = S.mkAdv possess_Prep (mkNP (latexNP formal) (S.mkAdv possess_Prep exps.np))
+    adv = Syntax.mkAdv possess_Prep (mkNP (latexNP (mkSymb ident)) (Syntax.mkAdv possess_Prep exps.np))
     } ;
   FunKind argkinds kind = {
     cn = mkCN function_N ;
-    adv = ccAdv (S.mkAdv from_Prep argkinds) (S.mkAdv to_Prep (mkNP aPl_Det (useKind kind)))
+    adv = ccAdv (Syntax.mkAdv from_Prep argkinds) (Syntax.mkAdv to_Prep (mkNP aPl_Det (useKind kind)))
     } ;
 
   KindArgKind kind = kind ;
   IdentsArgKind kind idents = {cn = mkCN kind.cn idents.np ; adv = kind.adv} ;
 
-  StrIdent s = mkSymb s.s ;
   StrLabel s = {np = symb (mkSymb s.s) ; isEmpty = False} ;
   noLabel = {np = symb (mkSymb "") ; isEmpty = True} ;
 
@@ -123,15 +122,15 @@ lin
 
   AppProof proofs exp =
     mkText proofs
-      (mkText (mkUtt (S.mkAdv by_Prep exp))) ;
+      (mkText (mkUtt (Syntax.mkAdv by_Prep exp))) ;
       
   AbsProof hypos proof =
     mkText hypos.text proof ;
 
   BaseIdent ident =
-    {np = latexNP ident ; isPl = False} ;
+    {np = latexNP (mkSymb ident) ; isPl = False} ;
   ConsIdent ident idents =
-    {np = mkNP and_Conj (latexNP ident) idents.np ; isPl = True} ;
+    {np = mkNP and_Conj (latexNP (mkSymb ident)) idents.np ; isPl = True} ;
 
   BaseExp exp =
     {np = exp ; isPl = False} ;
@@ -159,17 +158,15 @@ lin
 
   AdjProp adj exp = simpleProp (mkS (mkCl exp adj)) ;
   NotAdjProp adj exp = simpleProp (mkS negPol (mkCl exp adj)) ;
-  RelProp rel x y = simpleProp (mkS (mkCl x (mkVP (mkVP rel.ap) (S.mkAdv rel.prep y)))) ;
-  NotRelProp rel x y = simpleProp (mkS negPol (mkCl x (mkVP (mkVP rel.ap) (S.mkAdv rel.prep y)))) ;
+  RelAdj rel exp = Grammar.AdvAP rel.ap (Syntax.mkAdv rel.prep exp) ;
+  ComparAdj compar exp = Grammar.AdvAP compar.rel.ap (Syntax.mkAdv compar.rel.prep exp) ;
   NounKind noun = {cn = noun ; adv = lin Adv {s = []}} ;
   SetKind set = {cn = set.cn ; adv = lin Adv {s = []}} ;
   NameExp name = name ;
-  FunListExp f exps = mkNP the_Det (mkCN f.cn (S.mkAdv f.prep exps.np)) ;
+  FunListExp f exps = mkNP the_Det (mkCN f.cn (Syntax.mkAdv f.prep exps.np)) ;
   LabelExp label = label.np ;
   ConstExp const = const.np ;
-  OperListExp op exps = mkNP the_Det (mkCN op.f.cn (S.mkAdv op.f.prep exps.np)) ;
-  ComparProp co x y = simpleProp (mkS (mkCl x (mkVP (mkVP co.rel.ap) (S.mkAdv co.rel.prep y)))) ;
-  NotComparProp co x y = simpleProp (mkS negPol (mkCl x (mkVP (mkVP co.rel.ap) (S.mkAdv co.rel.prep y)))) ;
+  OperListExp op exps = mkNP the_Det (mkCN op.f.cn (Syntax.mkAdv op.f.prep exps.np)) ;
 
 oper
   prefixText : Str -> Text -> Text = \s, t -> lin Text {s = s ++ t.s} ;
@@ -204,7 +201,7 @@ oper
     in mkNP det (mkCN (mkCN kind.cn idents.np) kind.adv) ;
 
   definedCN : CN -> NP -> CN = \cn, np ->
-    mkCN cn (S.mkAdv defined_as_Prep np) ;
+    mkCN cn (Syntax.mkAdv defined_as_Prep np) ;
 
   useKind : {cn : CN ; adv : Adv} -> CN = \kind -> mkCN kind.cn kind.adv ;
 
@@ -213,7 +210,7 @@ oper
   latexS : Symb -> S = \x ->
     symb (mkSymb ("$" ++ x.s ++ "$")) ;
 
-  parenthS : S -> S = \s -> M.MarkupS (lin Mark {begin = "(" ; end = ")"}) s ;
+  parenthS : S -> S = \s -> Markup.MarkupS (lin Mark {begin = "(" ; end = ")"}) s ;
 
   by_Prep : Prep = by8means_Prep ;
 
@@ -222,7 +219,7 @@ oper
   item_Label : Str = "\\item" ;
 
 -- non-functor
-  negPol : Pol = E.UncontractedNeg ;
+  negPol : Pol = Extend.UncontractedNeg ;
 
   define_V2 : V2 = mkV2 (mkV "define") ;
   assume_VS : VS = mkVS (mkV "assume") ;

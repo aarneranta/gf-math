@@ -1,4 +1,6 @@
-abstract Informath = MathCore, Terms ** {
+abstract Informath =
+  MathCore
+  ** {
 
 flags startcat=Jmt ;
 
@@ -7,7 +9,6 @@ cat
 ---  [Exp] {2} ;
 
 fun
-  TermExp : Term -> Exp ;
   FormulaProp : Formula -> Prop ;
 
   SetTerm : Set -> Term ;
@@ -17,7 +18,7 @@ fun
 
   AndAdj : [Adj] -> Adj ;
   OrAdj : [Adj] -> Adj ;
-  
+
 ---  AndExp : [Exp] -> Exp ;
 ---  OrExp : [Exp] -> Exp ;
 

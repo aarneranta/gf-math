@@ -21,5 +21,6 @@ sem env t = case t of
     in GOrProp (GListProp [GAdjProp a sx, GAdjProp b sx])
   GLetFormulaHypo formula ->
     GPropHypo (GFormulaProp (sem env formula))
+      
   _ -> composOp (sem env) t
 
