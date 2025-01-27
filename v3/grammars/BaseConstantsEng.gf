@@ -21,29 +21,69 @@ lincat
   Oper = OperatorT ;
   Compar = ComparisonT ;
 
-lin type_Noun = mkNoun "type";
-lin natural_Set = mkSet "natural" "number" "N" ;
-lin integer_Set = mkSet "integer" "Z";
-lin rational_Set = mkSet "rational" "number" "Q";
-lin real_Set = mkSet "real" "number" "R";
-lin complex_Set = mkSet "complex" "number" "C";
-lin set_Noun = mkNoun "set" ;
-lin even_Adj = mkAdj "even" ;
-lin odd_Adj = mkAdj "odd" ;
-lin prime_Adj = mkAdj "prime" ;
-lin divisible_Rel = mkRel "divisible" "by" ;
-lin eq_Compar = mkCompar "equal" "to" "=" ;
-lin neq_Compar = mkCompar "not equal" "to" "\\neq" ;
-lin lt_Compar = mkCompar "less" "than" "<" ;
-lin leq_Compar = mkCompar "less than or equal" "to" "\\leq" ;
-lin gt_Compar = mkCompar "greater" "than" ">" ;
-lin geq_Compar = mkCompar "greater than or equal" "to" "\\geq" ;
-lin sim_Compar = mkCompar "similar" "to" "\\sim" ;
-lin sum_Oper = mkOper "sum" "+" <1 : Prec> ;
-lin subtraction_Oper = mkOper "subtraction" "-" <1 : Prec> ;
-lin product_Oper = mkOper "product" "\\times" <2 : Prec> ;
-lin division_Oper = mkOper "division" "\\div" <2 : Prec> ;
-lin gcd_Fun = mkFun "greatest" "common" "divisor" ;
+lin
+  type_Noun = mkNoun "type" ;
+  set_Noun = mkNoun "set" ;
+  proposition_Noun = mkNoun "proposition" ;
+
+  elements_Fun = mkFun "type of elements" ;
+  proofs_Fun = mkFun  "type of proofs" ;
+
+  absurdity_Name = mkName "absurdity" ;
+  conjunction_Fun = mkFun "conjunction" ;
+  disjunction_Fun = mkFun "disjunction" ;
+  implication_Fun = mkFun "implication" ;
+  universal_Fun = mkFun "universal" "quanfication" ;
+  existential_Fun = mkFun "existential" "quanfication" ;
+  negation_Fun = mkFun "negation" ;
+  equivalence_Fun = mkFun "equivalence" ;
+  
+  natural_Set = mkSet "natural" "number" "N" ;
+  integer_Set = mkSet "integer" "Z";
+  rational_Set = mkSet "rational" "number" "Q";
+  real_Set = mkSet "real" "number" "R";
+  complex_Set = mkSet "complex" "number" "C";
+
+  n0_Const = mkConst "zero" "0" ;
+  n1_Const = mkConst "one" "1" ;
+  n2_Const = mkConst "two" "2" ;
+  n3_Const = mkConst "three" "3" ;
+  n4_Const = mkConst "four" "4" ;
+  n5_Const = mkConst "five" "5" ;
+  n6_Const = mkConst "six" "6" ;
+  n7_Const = mkConst "seven" "7" ;
+  n8_Const = mkConst "eight" "8" ;
+  n9_Const = mkConst "nine" "9" ;
+
+  Eq_Compar = mkCompar "equal" "to" "=" ;
+  Lt_Compar = mkCompar "less" "than" "<" ;
+  Gt_Compar = mkCompar "greater" "than" ">" ;
+  Neq_Compar = mkCompar "not equal" "to" "\\neq" ;
+  Leq_Compar = mkCompar "less than or equal" "to" "\\leq" ;
+  Geq_Compar = mkCompar "greater than or equal" "to" "\\geq" ;
+
+  positive_Adj = mkAdj "positive" ;
+  negative_Adj = mkAdj "negative" ;
+
+  plus_Oper = mkOper "sum" "+" <1 : Prec> ;
+  minus_Oper = mkOper "difference" "-" <1 : Prec> ; 
+  times_Oper = mkOper "product" "\\times" <2 : Prec> ;
+  div_Oper = mkOper "division" "\\div" <2 : Prec> ; ---
+  pow_Oper = mkOper "exponentiation" "^" <2 : Prec> ; ---
+
+  factorial_Fun = mkFun "factorial" ;
+  gcd_Fun = mkFun "greatest" "common" "divisor" ;
+
+  even_Adj = mkAdj "even" ;
+  odd_Adj = mkAdj "odd" ;
+  divisible_Rel = mkRel "divisible" "by" ;
+  prime_Adj = mkAdj "prime" ;
+
+  function_Oper = mkOper "function" "\\rightarrow" ; ---
+  union_Oper = mkOper "union" "\\cup" ;
+  intersection_Oper = mkOper "intersection" "\\cap" ;
+  difference_Oper = mkOper "difference" "\\setminus" ;
+  powerset_Oper = mkOper "power set" "\\wp" ;
 
 oper
   RelationT : Type = {ap : AP ; prep : Prep} ;

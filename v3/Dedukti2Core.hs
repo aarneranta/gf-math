@@ -33,14 +33,20 @@ jmt2jmt jmt = case jmt of
             (GListHypo (map hypo2core hypos)) (ident2exp ident)
             (exp2kind kind)
       ((hypos, kind), c) | elem c ["Fun", "Oper"] ->
-        let chypos = map hypo2core hypos
+        let chypos = map hypo2core (addVarsToHypos hypos)
         in (maybe (GAxiomExpJmt axiomLabel)
 	          (\exp x y z -> GDefExpJmt definitionLabel x y z (exp2exp exp)) mexp)
              (GListHypo chypos)
              (funListExp ident (map (GTermExp . GTIdent) (concatMap hypoIdents chypos)))
              (exp2kind kind)
       ((hypos, kind), c) | elem c ["Rel", "Compar"] ->
-        let chypos = map hypo2core hypos
+        let chypos = map hypo2core  (addVarsToHypos hypos)
+        in (maybe (GAxiomPropJmt axiomLabel)
+	        (\exp x y -> GDefPropJmt definitionLabel x y (exp2prop exp)) mexp)
+             (GListHypo chypos)
+	     (funListProp ident (map (GTermExp . GTIdent) (concatMap hypoIdents chypos)))
+      ((hypos, kind), c) | elem c ["Adj"] ->
+        let chypos = map hypo2core  (addVarsToHypos hypos)
         in (maybe (GAxiomPropJmt axiomLabel)
 	        (\exp x y -> GDefPropJmt definitionLabel x y (exp2prop exp)) mexp)
              (GListHypo chypos)
@@ -255,6 +261,16 @@ splitType exp = case exp of
     ([], _) -> ([hypo], body)        
     (hypos, rest) -> (hypo:hypos, rest)
   _ -> ([], exp)
+
+addVarsToHypos :: [Hypo] -> [Hypo]
+addVarsToHypos = adds 0 where
+  adds :: Int -> [Hypo] -> [Hypo]
+  adds i hypos = case hypos of
+    HExp exp : hh -> HVarExp (vars !! i) exp : adds (i+1) hh
+    hypo : hh -> hypo : adds i hh
+    _ -> []
+  vars = [VIdent (QIdent s) |
+           s <- ["x", "y", "z", "u", "v", "w"] ++ ["X"  ++ show i | i <- [1..]]]   
 
 splitApp :: Exp -> (Exp, [Exp])
 splitApp exp = case exp of
