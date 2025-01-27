@@ -123,7 +123,7 @@ In order for this to work, you need to compile the Dedukti and the Informath gra
 ```
 An example of a readily available test case is
 ```
-  $ runghc RunInformath.hs nat.dk
+  $ ./RunInformath.hs test/exx.dk
 ```
 **Note**: with some versions of GHC libraries, `make Informath.pgf` results into a `Informath.hs` that gives an error about an undefined monad operation. This is fixed by adding the line `import Control.Monad` to the import list. The current Makefile does this with a sed command - which may cause an error with some other versions of GHC libraries.
 
@@ -161,8 +161,9 @@ The result from [nat.dk](./nat.dk) typechecks in Agda.
 
 ## ToDo
 
-- complete the MathCore-Dedukti conversions (close to complete, but can make better use of the Exp/Kind/Prop distinction)
-- complete the MathCore-Informath conversions
+- complete the MathCore-Dedukti conversion
+- complete the Informath-MathCore conversion 
+- extend the MathCore-Informath conversion
 - generate Lean code
 - add concrete syntaxes to new languages
 

@@ -6,7 +6,7 @@ module Core2Informath where
 import Informath
 
 nlg :: Tree a -> [Tree a]
-nlg t = [t, ft, aft, iaft, viaft]
+nlg t = [viaft] --- [t, ft, aft, iaft, viaft]
  where
    ft = formalize t
    aft = aggregate (flatten ft)

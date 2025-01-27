@@ -11,16 +11,24 @@ import qualified Data.Map as M
 type CTree a = Informath.Tree a
 type DTree a = Dedukti.AbsDedukti.Tree a
 
-identConj = QIdent "Conj"
-identDisj = QIdent "Disj"
-identImpl = QIdent "Impl"
-identNeg = QIdent "Neg"
-identEquiv = QIdent "Equiv"
-identSigma = QIdent "Sigma"
-identPi = QIdent "Pi"
+-- referring to mathbase.dk
+
+identConj = QIdent "and"
+identDisj = QIdent "or"
+identImpl = QIdent "if"
+identNeg = QIdent "not"
+identEquiv = QIdent "iff"
+identPi = QIdent "forall"
+identSigma = QIdent "exists"
+
+-- these are to be peeled away
+identProof = QIdent "Proof"
+identElem = QIdent "Elem"
+
+identSuchThat = QIdent "suchthat"
 
 -- logical constants in base.dk
-propFalse = EIdent (QIdent "False")
+propFalse = EIdent (QIdent "false")
 propAnd x y = EApp (EApp (EIdent identConj) x) y
 propOr x y = EApp (EApp (EIdent identDisj) x) y
 propImp x y = EApp (EApp (EIdent identImpl) x) y

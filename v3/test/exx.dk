@@ -1,0 +1,27 @@
+# {; to be appended to mathbase.dk before checking in dedukti ;}
+
+prop10 : Proof (Even zero).
+
+prop20 : (n : Elem Nat) -> Proof (Even n) -> Proof (Odd (succ n)).
+
+prop30 : (n : Elem Nat) -> Proof (Odd n) -> Proof (Even (succ n)).
+
+prop40 : Proof (forall Nat (n => or (Even n) (Odd n))).
+
+prop50 : Proof (forall Nat (n => not (and (Even n) (Odd n)))).
+
+prop60 : Proof (forall Nat (n => Eq (plus n zero) n)).
+
+prop70 : Proof (Odd one).
+
+prop80 : Proof (Even two).
+
+prop90 : (n : Elem Nat) -> Proof (if (and (Even n) (Prime n)) (Eq n two)).
+
+prop100 : (a : Elem Int) -> (b : Elem Int) -> (c : Elem Int) -> Eq (plus (plus a b) c) zero -> Proof (Lt (times (times a b) c) zero).
+
+prop110 : (a : Elem Int) -> (c : Elem Int) -> Proof (and (Odd a) (Odd c)) -> Proof (forall Int (b => Even (plus (times a b) (times b c)))).
+
+prop120 : (a : Elem Int) -> (b : Elem Int) -> Proof (iff (Even (times a b)) (or (Even a) (Even b))).
+
+prop130 :  (x : Elem Int) -> (y : Elem Int) -> Proof (if (Odd (times x y)) (and (Odd x) (Odd y))).

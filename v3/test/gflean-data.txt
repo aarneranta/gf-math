@@ -84,10 +84,9 @@ two integers $ x $ and $ y $ are said to be \textbf { of the same parity } if $ 
 
 the integers $ x $ and $ y $ are \textbf { of opposite parity } if one of $ x $ and $ y $ is even and the other is odd .
 
-let $ x , y \in \textbf { Z } $ .
-then $ x $ and $ y $ are of the same parity if and only if $ x + y $ is even .
+let $ x , y \in \textbf { Z } $ . then $ x $ and $ y $ are of the same parity if and only if $ x + y $ is even .
 
-let $ a $ and $ b $ be integers . then $ ab $ is even if and only if $ a $ is even or $ b $ is even .
+let $ a $ and $ b $ be integers . then $ a b $ is even if and only if $ a $ is even or $ b $ is even .
 
 let $ \mathcal { P } = \{ A , B , C \} $ be a partition of the set \textbf{Z} of integers , where $ $ a = \{ n : n = 2a \text { where $ a $ is an odd integer } \} $ $ $ $ b = \{ n : n = 2 b \text { where $ b $ is an even integer } \} $ $ $ $ c = \{ n : n \text { is an odd integer } \} . $ $ if $ x $ and $ y $ are integers belonging to distinct elements of $ \mathcal { P } $ , then $ x + y \in A \cup C $ .
 
@@ -101,7 +100,7 @@ let $ a , b \in \textbf { Z } $ . if $ a b $ is odd , then $ a ^ { 2 } + b ^ { 2
 
 let $ x , y \in \textbf { Z } $ . then $ x - y $ is even if and only if $ x $ and $ y $ are of the same parity .
 
-let $ a , b \in \textbf { Z } $ . if $ a + b $ and $ ab $ are of the same parity , then $ a $ and $ b $ are even .
+let $ a , b \in \textbf { Z } $ . if $ a + b $ and $ a b $ are of the same parity , then $ a $ and $ b $ are even .
 
 let $ x $ and $ y $ be integers . then $ ( x + y ) ^ { 2 } $ is even if and only if $ x $ and $ y $ are of the same parity .
 
@@ -127,7 +126,7 @@ if $ n $ is an odd integer , then $ 3 n - 5 $ is an even integer .
 
 let $ n $ be an integer . if $ 3 n - 5 $ is an odd integer , then $ n $ is an even integer .
 
-if $ x $ and $ y $ are integers if the same parity , then $ x - y $ is even .
+if $ x $ and $ y $ are integers of the same parity , then $ x - y $ is even .
 
 if $ m $ is an even integer and $ n $ is an odd integer , then $ 3 m + 5 n $ is odd .
 
@@ -137,7 +136,7 @@ let $ n \in \textbf { Z } $ . if $ 3 n - 8 $ is odd , then $ n $ is odd .
 
 let $ a , b \in \textbf { Z } $ . then $ a - b $ is even if and only if $ a $ and $ b $ are of the same parity .
 
-let $ x , y \in \textbf { Z } $ . if $ x $ or $ y $ is even , then $ xy ^ { 2 } $ is even .
+let $ x , y \in \textbf { Z } $ . if $ x $ or $ y $ is even , then $ x y ^ { 2 } $ is even .
 
 let $ x \in \textbf { Z } $ . if $ 7 x - 3 $ is even , then $ 3 x + 8 $ is odd .
 

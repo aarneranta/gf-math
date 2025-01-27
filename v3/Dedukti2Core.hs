@@ -10,8 +10,8 @@ import CommonConcepts
 
 import Data.Char
 
-jmt2core :: Jmt -> GJmt
-jmt2core jmt = case jmt of
+jmt2jmt :: Jmt -> GJmt
+jmt2jmt jmt = case jmt of
   JDef ident (MTExp typ) meexp ->
     let mexp = case meexp of
           MEExp exp -> Just exp
@@ -50,14 +50,15 @@ jmt2core jmt = case jmt of
           (GListHypo (map hypo2core hypos)) (ident2exp ident)
           (exp2kind kind)
   JStatic ident typ ->
-    jmt2core (JDef ident (MTExp typ) MENone)
+    jmt2jmt (JDef ident (MTExp typ) MENone)
   JInj ident mtyp mexp ->
-    jmt2core (JDef ident mtyp mexp)
+    jmt2jmt (JDef ident mtyp mexp)
   JThm ident mtyp mexp ->
-    jmt2core (JDef ident mtyp mexp) 
+    jmt2jmt (JDef ident mtyp mexp) 
   JRules rules -> GRewriteJmt (GListRule (map rule2rule rules))  
   _ -> error ("not yet: " ++ printTree jmt)
 
+-- deciding the kind of jment; default is theorem or axiom with Prop as type
 cat :: QIdent -> String
 cat ident@(QIdent c) = maybe "Label" fst (lookupConstant c)
 
@@ -129,6 +130,7 @@ exp2kind exp = case exp of
     Just ("Noun", c) -> GNounKind (LexNoun c)
     Just ("Set", c) -> GSetKind (LexSet c)
     _ -> ident2kind ident
+  EApp (EIdent f) x | f == identElem -> exp2kind x
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent ident ->
@@ -142,6 +144,7 @@ exp2prop :: Exp -> GProp
 exp2prop exp = case exp of
   _ | exp == propFalse -> GFalseProp
   EIdent ident -> GIdentProp (ident2ident ident)
+  EApp (EIdent f) x | f == identProof -> exp2prop x
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent conn | conn == identConj -> case splitIdent conn exp of

@@ -85,7 +85,7 @@ roundtripDeduktiJmt env cs = do
     Bad e -> putStrLn ("error: " ++ e)
     Ok t -> do
       putStrLn $ "#Dedukti: " ++ show t
-      let gft = gf $ jmt2core t
+      let gft = gf $ jmt2jmt t
       putStrLn $ "#Core: " ++ showExpr [] gft
       let lin = linearize gr english gft
       processCoreJmt env lin
@@ -94,7 +94,7 @@ processDeduktiJmtTree :: Env -> Jmt -> IO ()
 processDeduktiJmtTree env t = do
   let gr = cpgf env
   putStrLn $ "#Dedukti: " ++ show t
-  let ct = jmt2core t
+  let ct = jmt2jmt t
   let gft = gf ct
   putStrLn $ "#Core: " ++ showExpr [] gft
   putStrLn $ linearize gr english gft
