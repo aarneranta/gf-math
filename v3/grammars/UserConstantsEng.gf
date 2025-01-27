@@ -9,13 +9,7 @@ open
   Formal
 
 in {
-lin Dk_Zero = mkConst "zero" "0" ;
-lin Dk_Succ = mkFun "successor" ;
-lin Dk_eqZero = mkLabel "equality of zero" ;
-lin Dk_eqSucc = mkLabel "equality of successors" ;
-lin Dk_eqSumZero = mkLabel "addition of zero" ;
-lin Dk_eqSumSucc = mkLabel "addition of successors" ;
-lin Dk_gcdLt = mkLabel "Theorem 12" ;
-lin Dk_evenOdd = mkLabel "Theorem 13" ;
-lin Dk_primeOdd = mkLabel "Theorem 14" ;
+
+lin Dk_same_parity = mkRel "equal in parity" "with" ; ----
+
 }
