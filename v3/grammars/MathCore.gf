@@ -1,7 +1,6 @@
 abstract MathCore =
-  Terms, --- [Ident, Term, TIdent, StrIdent],
-  Notations,  -- basic notations, always available
-  Constants   -- Dedukti-specific notations, user-defined with MkConstants.hs
+  Terms,
+  UserConstants   -- notations, BaseConstants + user-defined with MkConstants.hs
   ** {
 
 flags startcat = Jmt ;

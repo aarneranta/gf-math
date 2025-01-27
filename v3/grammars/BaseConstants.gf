@@ -1,4 +1,16 @@
-abstract Notations = ConstantBase ** {
+abstract BaseConstants = {
+
+cat
+  Noun ; -- Kind
+  Set ;  -- Kind + symbol
+  Adj ;  -- Exp -> Prop
+  Rel ;  -- Exp -> Exp -> Prop
+  Name ; -- Exp
+  Fun ;  -- [Exp] -> Exp
+  Label ; -- Exp
+  Const ; -- Exp + symbol
+  Oper ;  -- Exp -> Exp -> Exp + symbol
+  Compar ; -- Exp -> Exp -> Prop + symbol
 
 fun type_Noun : Noun ;
 fun natural_Set : Set ;

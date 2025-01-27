@@ -1,7 +1,6 @@
 concrete MathCoreEng of MathCore =
   TermsLatex, --- [Ident, Term, TIdent, StrIdent],
-  NotationsEng,
-  ConstantsEng
+  UserConstantsEng
 
  ** open
     SyntaxEng,
