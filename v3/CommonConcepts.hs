@@ -55,6 +55,12 @@ constantMap = M.fromList [(c, (cat, fun)) | (c, cat, fun) <- constants]
 lookupConstant :: String -> Maybe (String, String)
 lookupConstant c = M.lookup c constantMap
 
+constantMapBack :: M.Map String String
+constantMapBack = M.fromList [(fun, c) | (c, _, fun) <- constants]
+
+lookupConstantBack :: String -> Maybe String
+lookupConstantBack c = M.lookup c constantMapBack
+
 -- Dedukti ident X becomes GF ident Dk_X
 dk :: String -> String
 dk s = "Dk_" ++ s

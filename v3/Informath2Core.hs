@@ -28,6 +28,8 @@ sem env t = case t of
 
   GLetFormulaHypo formula ->
     GPropHypo (GFormulaProp (sem env formula))
+
+  GTermExp (GConstTerm const) -> GConstExp const
       
   _ -> composOp (sem env) t
 
