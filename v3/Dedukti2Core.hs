@@ -136,7 +136,7 @@ exp2kind exp = case exp of
     Just ("Noun", c) -> GNounKind (LexNoun c)
     Just ("Set", c) -> GSetKind (LexSet c)
     _ -> ident2kind ident
-  EApp (EIdent f) x | f == identElem -> exp2kind x
+  EApp (EIdent f) x | f == identElem -> GElemKind (exp2kind x)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent ident ->
@@ -150,7 +150,7 @@ exp2prop :: Exp -> GProp
 exp2prop exp = case exp of
   _ | exp == propFalse -> GFalseProp
   EIdent ident -> GIdentProp (ident2ident ident)
-  EApp (EIdent f) x | f == identProof -> exp2prop x
+  EApp (EIdent f) x | f == identProof -> GProofProp (exp2prop x)
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
       EIdent conn | conn == identConj -> case splitIdent conn exp of
@@ -195,10 +195,15 @@ exp2exp exp = case exp of
     _ -> ident2exp ident
   EApp _ _ -> case splitApp exp of
     (fun, args) -> case fun of
-      EIdent ident@(QIdent f) -> case (lookupConstant f, args) of
-        (Just ("Fun", c), exps) -> GFunListExp (LexFun c) (gExps (map exp2exp exps))     
-        (Just ("Oper", c), exps) -> GOperListExp (LexOper c) (gExps (map exp2exp exps))     
-        _ -> GAppExp (exp2exp fun) (gExps (map exp2exp args))
+      EIdent (QIdent n) | elem n digitFuns -> case getNumber fun args of
+        Just s -> GTermExp (GTNumber (GInt (read s)))
+	_ -> GAppExp (exp2exp fun) (gExps (map exp2exp args))
+      EIdent ident@(QIdent f) -> case (f, args) of
+        (_, [arg]) | elem f coercions -> GCoercionExp (LexCoercion (mkCoercion f)) (exp2exp arg)
+        _ -> case (lookupConstant f, args) of
+          (Just ("Fun", c), exps) -> GFunListExp (LexFun c) (gExps (map exp2exp exps))     
+          (Just ("Oper", c), exps) -> GOperListExp (LexOper c) (gExps (map exp2exp exps))     
+          _ -> GAppExp (exp2exp fun) (gExps (map exp2exp args))
       _ -> GAppExp (exp2exp fun) (gExps (map exp2exp args))
   EAbs _ _ -> case splitAbs exp of
     (binds, body) -> GAbsExp (GListIdent (map bind2coreIdent binds)) (exp2exp body)
@@ -299,6 +304,22 @@ splitIdent conn exp = case splitApp exp of
     [] -> [a, b]
     cs -> cs ++ [b]
   _ -> []
+
+getNumber :: Exp -> [Exp] -> Maybe String
+getNumber fun args =
+  case (fun, args) of
+    (EIdent (QIdent n), [x]) | n == nd -> getDigit x
+    (EIdent (QIdent n), [x, y]) | n == nn -> do
+      d <- getDigit x
+      n <- uncurry getNumber (splitApp y) 
+      return (d ++ n)
+    _ -> Nothing
+ where
+   getDigit :: Exp -> Maybe String
+   getDigit x = case x of
+     EIdent (QIdent [d]) | elem d "0123456789" -> return [d]
+     _ -> Nothing
+
 
 wildIdent :: GIdent
 wildIdent = GStrIdent (GString "_") ---- to be eliminated?

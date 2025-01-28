@@ -31,6 +31,7 @@ lincat
   [Proof] = Text ;
   Rule = Utt ;
   [Rule] = Text ;
+  Coercion = {from, to : CN} ;  -- the <from> <Exp> as <to>
 
 lin
   AxiomJmt label hypos prop =
@@ -167,6 +168,28 @@ lin
   ConstExp const = const.np ;
   OperListExp op exps = mkNP the_Det (mkCN op.f.cn (Syntax.mkAdv op.f.prep exps.np)) ;
 
+-- coercions, to disappear in Core2Informath
+-- their purpose is to maintain lossless rendering of Dedukti
+
+  ProofProp prop = prop ** {
+    s = mkS (mkCl we_NP can_VV (mkVP prove_VS prop.s)) ;
+    } ;
+  ElemKind kind = {
+    cn = mkCN instance_N ;
+    adv = Syntax.mkAdv possess_Prep (mkNP aPl_Det (useKind kind))
+    } ;
+
+  CoercionExp coercion exp =
+    mkNP
+      (mkNP the_Det (mkCN coercion.from exp))
+      (Syntax.mkAdv as_Prep (mkNP a_Det coercion.to)) ;
+  
+  nat2realCoercion = {from = natural_number_CN ; to = real_number_CN} ;
+  int2realCoercion = {from = integer_CN ; to = real_number_CN} ;
+  rat2realCoercion = {from = rational_number_CN ; to = real_number_CN} ;
+  nat2intCoercion = {from = natural_number_CN ; to = integer_CN} ;
+  fstCoercion =  {from = mkCN element_N ; to = bare_element_CN} ;
+
 oper
   prefixText : Str -> Text -> Text = \s, t -> lin Text {s = s ++ t.s} ;
 
@@ -249,5 +272,15 @@ oper
   theorem_Str = "theorem" ;
   definition_Str = "definition" ;
 
+  instance_N = mkN "instance" ;
+  prove_VS = mkVS (mkV "prove") ;
+  number_N = mkN "number" ;
+  integer_CN = mkCN (mkN "integer") ;
+  
+  natural_number_CN = mkCN (mkA "natural") number_N ;
+  rational_number_CN = mkCN (mkA "rational") number_N ;
+  real_number_CN = mkCN (mkA "real") number_N ;
+  bare_element_CN = mkCN (mkA "bare") element_N ;
+  as_Prep : Prep = mkPrep "as" ;
 
 }

@@ -21,6 +21,7 @@ cat
   [Proof] {0} ;
   Rule ;
   [Rule] {1} ;
+  Coercion ;
 
 fun
   ThmJmt : Label -> [Hypo] -> Prop -> Proof -> Jmt ;
@@ -91,4 +92,17 @@ fun
   ConstExp : Const -> Exp ;
   OperListExp : Oper -> Exps -> Exp ; -- binary operation applied collectively
   ComparAdj : Compar -> Exp -> Adj ;
+
+-- coercions, to disappear in Core2Informath
+-- their purpose is to maintain lossless rendering of Dedukti
+
+  ProofProp : Prop -> Prop ;
+  ElemKind : Kind -> Kind ;
+
+  CoercionExp : Coercion -> Exp -> Exp ;
+  nat2realCoercion : Coercion ;
+  int2realCoercion : Coercion ;
+  rat2realCoercion : Coercion ;
+  nat2intCoercion : Coercion ;
+  fstCoercion : Coercion ;
 }

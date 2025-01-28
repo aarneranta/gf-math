@@ -8,10 +8,18 @@ import Informath
 nlg :: Tree a -> [Tree a]
 nlg t = [viaft] --- [t, ft, aft, iaft, viaft]
  where
-   ft = formalize t
+   ut = uncoerce t
+   ft = formalize ut
    aft = aggregate (flatten ft)
    iaft = insitu aft
    viaft = varless iaft
+
+uncoerce :: Tree a -> Tree a
+uncoerce t = case t of
+  GProofProp prop -> uncoerce prop
+  GElemKind kind -> uncoerce kind
+  GCoercionExp coercion_ exp -> uncoerce exp
+  _ -> composOp uncoerce t
 
 formalize :: Tree a -> Tree a
 formalize t = case t of
@@ -37,6 +45,9 @@ getTerm t = case t of
 
 aggregate :: Tree a -> Tree a
 aggregate t = case t of
+  GNotProp prop -> case aggregate prop of
+    GAdjProp adj x -> GNotAdjProp adj x
+    aprop -> GNotProp aprop
   GAndProp (GListProp pp@(GAdjProp a x : props)) -> case getAdjs props x of
     Just adjs -> GAdjProp (GAndAdj (GListAdj (a:adjs))) x
     _ -> case getAdjArgs props a of

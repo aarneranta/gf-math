@@ -25,7 +25,7 @@ fun
   TApp : Function -> [Term] -> Term ;
 
   TIdent : Ident -> Term ;
-  TNumber : Float -> Term ;
+  TNumber : Int -> Term ; --- was float
 
   FIdent : Ident -> Function ;
   FDerivative : Function -> Function ;

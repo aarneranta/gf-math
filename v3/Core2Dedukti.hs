@@ -120,6 +120,7 @@ kind2dedukti kind = case kind of
 
 exp2dedukti :: GExp -> Exp
 exp2dedukti exp = case exp of
+  GTermExp (GTNumber (GInt n)) -> int2exp n
   GTermExp (GTIdent ident) -> EIdent (ident2ident ident)
   GAppExp exp exps ->
     foldl1 EApp (map exp2dedukti (exp : (exps2list exps)))
@@ -197,3 +198,11 @@ exps2list exps = case exps of
   GOneExps exp -> [exp]
   GAddExps exp exps -> exp : exps2list exps
 
+int2exp :: Int -> Exp
+int2exp = cc . show
+  where
+    cc s = case s of
+      [d] -> EApp (EIdent (QIdent nd)) (EIdent (QIdent s))
+      d:ds -> EApp (EApp (EIdent (QIdent nn)) (EIdent (QIdent [d]))) (cc ds)
+
+      

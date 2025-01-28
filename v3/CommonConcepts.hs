@@ -7,6 +7,7 @@ import Constants (constants)
 import Dedukti.AbsDedukti
 import Informath
 import qualified Data.Map as M
+import Data.List (isSuffixOf)
 
 type CTree a = Informath.Tree a
 type DTree a = Dedukti.AbsDedukti.Tree a
@@ -60,6 +61,25 @@ constantMapBack = M.fromList [(fun, c) | (c, _, fun) <- constants]
 
 lookupConstantBack :: String -> Maybe String
 lookupConstantBack c = M.lookup c constantMapBack
+
+-- Dedukti representation of digits
+digitFuns :: [String]
+digitFuns = [nn, nd]
+nn = "nn"
+nd = "nd"
+
+
+-- coercions, eliminated in Core2Informath
+
+coercions :: [String]
+coercions = words "nat2real int2real rat2real nat2int fst"
+
+mkCoercion :: String -> String
+mkCoercion f = f ++ "Coercion"
+
+unCoercion :: String -> String
+unCoercion f =
+  if isSuffixOf "Coercion" f then take (length f - 8) f else f
 
 -- Dedukti ident X becomes GF ident Dk_X
 dk :: String -> String

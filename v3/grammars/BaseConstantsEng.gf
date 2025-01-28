@@ -44,6 +44,7 @@ lin
   real_Set = mkSet "real" "number" "R";
   complex_Set = mkSet "complex" "number" "C";
 
+{-
   n0_Const = mkConst "zero" "0" ;
   n1_Const = mkConst "one" "1" ;
   n2_Const = mkConst "two" "2" ;
@@ -54,6 +55,7 @@ lin
   n7_Const = mkConst "seven" "7" ;
   n8_Const = mkConst "eight" "8" ;
   n9_Const = mkConst "nine" "9" ;
+-}
 
   Eq_Compar = mkCompar "equal" "to" "=" ;
   Lt_Compar = mkCompar "less" "than" "<" ;

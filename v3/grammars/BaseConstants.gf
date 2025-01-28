@@ -35,6 +35,7 @@ fun
   real_Set : Set ;
   complex_Set : Set ;
 
+{-
   n0_Const : Const ;
   n1_Const : Const ;
   n2_Const : Const ;
@@ -45,6 +46,7 @@ fun
   n7_Const : Const ;
   n8_Const : Const ;
   n9_Const : Const ;
+-}
 
   Eq_Compar : Compar ;
   Lt_Compar : Compar ;

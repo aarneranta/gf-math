@@ -21,6 +21,7 @@ constants = [
   ("Rat", "Set", "rational_Set"), 
   ("Real", "Set", "real_Set"), 
   ("Complex", "Set", "complex_Set"),
+  {-
   ("0", "Const", "n0_Const"),
   ("1", "Const", "n1_Const"),
   ("2", "Const", "n2_Const"),
@@ -31,6 +32,7 @@ constants = [
   ("7", "Const", "n7_Const"),
   ("8", "Const", "n8_Const"),
   ("9", "Const", "n9_Const"),
+  -}
   ("Eq", "Compar", "Eq_Compar"), 
   ("Lt", "Compar", "Lt_Compar"), 
   ("Gt", "Compar", "Gt_Compar"), 
