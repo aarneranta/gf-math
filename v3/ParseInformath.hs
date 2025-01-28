@@ -51,12 +51,16 @@ doParse gr eng cat (success, failure) = do
       doParse gr eng cat (success, failure)
 
 -- quick hack to get the effect of a callback: check that variables consist of one letter
+-- and that numbers don't overshadow Dedukti digits
 
 checkVariables :: Expr -> Bool
 checkVariables expr = case unApp expr of
   Just (f, [x]) | showCId f == "StrIdent" -> case showExpr [] x of
     [_,c,_] | isAlpha c -> True
     _ -> False
+  Just (f, [x]) | showCId f == "TNumber" -> case showExpr [] x of
+    [d,'.','0'] -> False
+    _ -> True
   Just (_, args) -> all checkVariables args
   _ -> True
 

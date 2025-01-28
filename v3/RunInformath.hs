@@ -60,7 +60,7 @@ loop env rs i = do
   hFlush stdout
   ss <- getLine
   case ss of
-    '?':s -> processCoreJmt env s
+    '?':s -> processInformathJmt env s
     "gr"  -> processCoreJmtTree env (rs !! i)
     '=':s -> roundtripDeduktiJmt env s
     _     -> processDeduktiJmt env ss
@@ -155,7 +155,7 @@ processInformathJmtTree env t = do
   let tr = fg t
   let str = semantics tr
   let st = gf str
-  putStrLn $ "#Core: " ++ showExpr [] st
+  putStrLn $ "#Core     : " ++ showExpr [] st
   putStrLn $ linearize gr english st
   let d = jmt2dedukti str
   putStrLn $ printTree d
