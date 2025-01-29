@@ -58,17 +58,6 @@ aggregate t = case t of
     _ -> case getAdjArgs props a of
       Just exps -> GAdjProp a (GOrExp (GListExp (x:exps)))
       _ -> GOrProp (GListProp (map aggregate pp))
-
-  GListHypo hypos -> case hypos of
-    h@(GVarsHypo (GListIdent xs) kind) : hh -> case getHypos hh kind of
-      Just ([], resthypos) -> case aggregate (GListHypo resthypos) of
-        GListHypo aresthypos -> GListHypo (h : aresthypos)
-      Just (ys, resthypos) -> case aggregate (GListHypo resthypos) of
-        GListHypo aresthypos -> GListHypo (GVarsHypo (GListIdent (xs ++ ys)) kind : aresthypos)
-    h : hh -> case aggregate (GListHypo hh) of
-        GListHypo aresthypos -> GListHypo (h : aresthypos)
-    _ -> t
-	
   _ -> composOp aggregate t
 
 getAdjs :: [GProp] -> GExp -> Maybe [GAdj]
@@ -86,15 +75,6 @@ getAdjArgs props a = case props of
     return (y : exps)
   prop : _ -> Nothing
   _ -> return []
-
-getHypos :: [GHypo] -> GKind -> Maybe ([GIdent], [GHypo])
-getHypos hypos kind = case hypos of
-  GVarsHypo (GListIdent xs) k : hh | k == kind -> do
-    (ys, hs) <- getHypos hh kind
-    return (xs ++ ys, hs)
-  hypo : hh -> return ([], hh)
-  _ -> return ([], [])
-
 
 flatten :: Tree a -> Tree a
 flatten t = case t of

@@ -20,40 +20,40 @@ jmt2jmt jmt = case jmt of
       ((hypos, kind), "Label") -> 
         (maybe GAxiomJmt (\exp x y z -> GThmJmt x y z (exp2proof exp)) mexp)
           (ident2label ident)
-          (GListHypo (map hypo2core hypos))
+          (GListHypo (hypos2hypos hypos))
           (exp2prop kind)
       ((hypos, kind), c) | elem c ["Noun", "Set"] -> 
           (maybe (GAxiomKindJmt axiomLabel)
                (\exp x y -> GDefKindJmt definitionLabel x y (exp2kind exp)) mexp)
-            (GListHypo (map hypo2core hypos))
+            (GListHypo (hypos2hypos hypos))
             (ident2kind ident)
       ((hypos, kind), c) | elem c ["Name", "Const"] ->
           (maybe (GAxiomExpJmt axiomLabel)
 	         (\exp x y z -> GDefExpJmt definitionLabel x y z (exp2exp exp)) mexp)
-            (GListHypo (map hypo2core hypos)) (ident2exp ident)
+            (GListHypo (hypos2hypos hypos)) (ident2exp ident)
             (exp2kind kind)
       ((hypos, kind), c) | elem c ["Fun", "Oper"] ->
-        let chypos = map hypo2core (addVarsToHypos hypos)
+        let chypos = hypos2hypos (addVarsToHypos hypos)
         in (maybe (GAxiomExpJmt axiomLabel)
 	          (\exp x y z -> GDefExpJmt definitionLabel x y z (exp2exp exp)) mexp)
              (GListHypo chypos)
              (funListExp ident (map (GTermExp . GTIdent) (concatMap hypoIdents chypos)))
              (exp2kind kind)
       ((hypos, kind), c) | elem c ["Rel", "Compar"] ->
-        let chypos = map hypo2core  (addVarsToHypos hypos)
+        let chypos = hypos2hypos  (addVarsToHypos hypos)
         in (maybe (GAxiomPropJmt axiomLabel)
 	        (\exp x y -> GDefPropJmt definitionLabel x y (exp2prop exp)) mexp)
              (GListHypo chypos)
 	     (funListProp ident (map (GTermExp . GTIdent) (concatMap hypoIdents chypos)))
       ((hypos, kind), c) | elem c ["Adj"] ->
-        let chypos = map hypo2core  (addVarsToHypos hypos)
+        let chypos = hypos2hypos  (addVarsToHypos hypos)
         in (maybe (GAxiomPropJmt axiomLabel)
 	        (\exp x y -> GDefPropJmt definitionLabel x y (exp2prop exp)) mexp)
              (GListHypo chypos)
 	     (funListProp ident (map (GTermExp . GTIdent) (concatMap hypoIdents chypos)))
       ((hypos, kind), _) -> 
         GAxiomExpJmt axiomLabel
-          (GListHypo (map hypo2core hypos)) (ident2exp ident)
+          (GListHypo (hypos2hypos hypos)) (ident2exp ident)
           (exp2kind kind)
   JStatic ident typ ->
     jmt2jmt (JDef ident (MTExp typ) MENone)
@@ -104,14 +104,23 @@ hypoIdents hypo = case hypo of
   GBareVarsHypo (GListIdent idents) -> idents
   _ -> []
 
-hypo2core :: Hypo -> GHypo
-hypo2core hypo = case hypo of
-  HVarExp var kind -> 
-    GVarsHypo (GListIdent [var2ident var]) (exp2kind kind)
-  HParVarExp var kind -> 
-    GVarsHypo (GListIdent [var2ident var]) (exp2kind kind)
-  HExp prop -> 
-    GPropHypo (exp2prop prop)
+hypos2hypos :: [Hypo] -> [GHypo]
+hypos2hypos hypos = case hypos of
+  hypo@(HVarExp var kind) : hh -> case getVarsHypos kind hh of
+    ([], _) -> GVarsHypo (GListIdent [var2ident var]) (exp2kind kind) : hypos2hypos hh
+    (xs, hs) -> GVarsHypo (GListIdent (map var2ident (var:xs))) (exp2kind kind) : hypos2hypos hs
+  HParVarExp var kind : hh -> hypos2hypos (HVarExp var kind : hh) 
+  HExp prop : hh -> 
+    GPropHypo (exp2prop prop) : hypos2hypos hh
+  [] -> []
+ where
+   getVarsHypos :: Exp -> [Hypo] -> ([Var], [Hypo])
+   getVarsHypos kind hh = case hh of
+     HVarExp x k : hs | k == kind ->
+       let (xs, hhs) = getVarsHypos kind hs
+       in (x:xs, hhs)
+     HParVarExp x k : hs -> getVarsHypos kind (HVarExp x k : hs)
+     _ -> ([], hh)
 
 hypo2coreArgKind :: Hypo -> GArgKind
 hypo2coreArgKind hypo = case hypo of

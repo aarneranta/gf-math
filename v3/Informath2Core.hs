@@ -13,7 +13,7 @@ semantics = addCoercions . sem initSEnv
 
 addCoercions :: Tree a -> Tree a
 addCoercions t = case t of
-  GAxiomJmt label hypos prop -> GAxiomJmt label hypos (GProofProp prop)
+  GAxiomJmt label hypos prop -> GAxiomJmt label hypos (proofProp prop)
   {-
   AxiomPropJmt : Label -> ListHypo -> Prop -> Jmt ;
   DefPropJmt : Label -> ListHypo -> Prop -> Prop -> Jmt ;
@@ -30,6 +30,10 @@ addCoercions t = case t of
   -}
   GVarsHypo idents kind -> GVarsHypo idents (GElemKind kind)
   _ -> composOp addCoercions t
+ where
+   proofProp prop = case prop of
+     GProofProp _ -> prop
+     _ -> GProofProp prop
 
 
 sem :: SEnv -> Tree a -> Tree a
