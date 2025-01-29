@@ -95,16 +95,11 @@ fun
 
 -- coercions, to disappear in Core2Informath
 -- their purpose is to maintain lossless rendering of Dedukti
+-- only few are needed if Number types are identified following Ganesalingam
 
   ProofProp : Prop -> Prop ;
   ElemKind : Kind -> Kind ;
 
   CoercionExp : Coercion -> Exp -> Exp ;
-  {-
-  nat2realCoercion : Coercion ;
-  int2realCoercion : Coercion ;
-  rat2realCoercion : Coercion ;
-  nat2intCoercion : Coercion ;
-  fstCoercion : Coercion ;
-  -}
+
 }

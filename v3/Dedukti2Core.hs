@@ -208,7 +208,6 @@ exp2exp exp = case exp of
         Just s -> GTermExp (GTNumber (GInt (read s)))
 	_ -> GAppExp (exp2exp fun) (gExps (map exp2exp args))
       EIdent ident@(QIdent f) -> case (f, args) of
-        (_, [arg]) | elem f coercions -> GCoercionExp (LexCoercion (mkCoercion f)) (exp2exp arg)
         _ -> case (lookupConstant f, args) of
           (Just ("Fun", c), exps) -> GFunListExp (LexFun c) (gExps (map exp2exp exps))     
           (Just ("Oper", c), exps) -> GOperListExp (LexOper c) (gExps (map exp2exp exps))     

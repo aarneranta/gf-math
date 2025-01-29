@@ -68,19 +68,6 @@ digitFuns = [nn, nd]
 nn = "nn"
 nd = "nd"
 
-
--- coercions, eliminated in Core2Informath
-
-coercions :: [String]
-coercions = words "nat2real int2real rat2real nat2int fst"
-
-mkCoercion :: String -> String
-mkCoercion f = f ++ "Coercion"
-
-unCoercion :: String -> String
-unCoercion f =
-  if isSuffixOf "Coercion" f then take (length f - 8) f else f
-
 -- Dedukti ident X becomes GF ident Dk_X
 dk :: String -> String
 dk s = "Dk_" ++ s
