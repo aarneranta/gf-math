@@ -59,6 +59,7 @@ rule2dedukti rule = case rule of
 
 prop2dedukti :: GProp -> Exp
 prop2dedukti prop = case prop of
+  GProofProp p -> EApp (EIdent (QIdent "Proof")) (prop2dedukti p)
   GFalseProp -> propFalse
   GIdentProp ident -> EIdent (ident2ident ident)
   GAndProp (GListProp props) -> foldl1 propAnd (map prop2dedukti props)
@@ -104,6 +105,7 @@ argkind2dedukti argkind = case argkind of
 
 kind2dedukti :: GKind -> Exp
 kind2dedukti kind = case kind of
+  GElemKind k -> EApp (EIdent (QIdent "Elem")) (kind2dedukti k)
   GTermKind (GTIdent ident) -> EIdent (ident2ident ident)
   GSetKind (LexSet s) -> EIdent (QIdent (lookBack s))
   GSuchThatKind ident kind prop ->
@@ -134,6 +136,8 @@ exp2dedukti exp = case exp of
     EIdent (QIdent (lookBack name))
   GConstExp (LexConst name) ->
     EIdent (QIdent (lookBack name))
+  GOperListExp (LexOper oper) (GAddExps x (GOneExps y)) ->
+    EApp (EApp (EIdent (QIdent (lookBack oper))) (exp2dedukti x)) (exp2dedukti y)
   _ -> eUndefined ---- TODO
 
 exp2deduktiPatt :: GExp -> Patt

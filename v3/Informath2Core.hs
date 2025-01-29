@@ -46,6 +46,7 @@ sem env t = case t of
   GAdjProp a (GOrExp (GListExp exps)) ->
     let sa = sem env a
     in GOrProp (GListProp [GAdjProp sa exp | exp <- exps])
+  GNotAdjProp adj exp -> GNotProp (sem env (GAdjProp adj exp))
 
   GLetFormulaHypo formula ->
     GPropHypo (sem env (GFormulaProp (sem env formula)))
@@ -56,6 +57,12 @@ sem env t = case t of
     _ -> composOp (sem env) t
 
   GTermExp (GConstTerm const) -> GConstExp const
+  GTermExp (GAppOperTerm oper x y) ->
+    GOperListExp oper (GAddExps (sem env (GTermExp x)) (GOneExps (sem env (GTermExp y))))
+  GTermExp (GTTimes x y) -> sem env (GTermExp (GAppOperTerm (LexOper "times_Oper") x y))
+---  GTExp x y -> sem env (GAppOperTerm (LexOper "pow_Oper") x y)
+---  GTFrac x y -> sem env (GAppOperTerm (LexOper "div_Oper") x y)
+  GTParenth term -> sem env term
       
   _ -> composOp (sem env) t
 
