@@ -18,6 +18,8 @@ import System.Environment (getArgs)
 
 import Dedukti.ErrM
 
+baseconstants = "BaseConstants"
+
 type Result = Err String
 
 failure :: Show a => a -> Result
@@ -76,6 +78,7 @@ transPatt t = case t of
 
 transQIdent :: QIdent -> A.AIdent
 transQIdent t = case t of
+  QIdent "forall" -> A.AIdent "foral" -- reserved word
   QIdent "Type" -> A.AIdent "Set" ---
   QIdent str -> A.AIdent str --- so far the same Ident syntax
 
@@ -92,7 +95,9 @@ processDeduktiModule :: String -> IO ()
 processDeduktiModule s = do
   case PD.pModule (PD.myLexer s) of
     E.Bad e -> putStrLn ("error: " ++ e)
-    E.Ok (MJmts jmts) -> flip mapM_ jmts processDeduktiJmtTree
+    E.Ok (MJmts jmts) -> do
+      putStrLn ("open import " ++ baseconstants ++ "\n") 
+      flip mapM_ jmts processDeduktiJmtTree
 
 processDeduktiJmtTree :: Jmt -> IO ()
 processDeduktiJmtTree t = do 
