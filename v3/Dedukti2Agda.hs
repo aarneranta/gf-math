@@ -96,5 +96,7 @@ processDeduktiModule s = do
 
 processDeduktiJmtTree :: Jmt -> IO ()
 processDeduktiJmtTree t = do 
-  putStrLn $ takeWhile (/= ';') $ PrA.printTree $ transJmt t --- to remove bnfc artefact ;
+  putStrLn $
+    map (\c -> if c==';' then '\n' else c) $  --- to remove bnfc layout artefact ;
+      PrA.printTree $ transJmt t
   

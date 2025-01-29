@@ -15,6 +15,7 @@ import Informath2Core (semantics)
 import ParseInformath (parseJmt)
 import Lexing
 import MkConstants (mkConstants)
+import qualified Dedukti2Agda as DA
 
 import PGF
 
@@ -45,7 +46,9 @@ main = do
       mkConstants filename
     filename:_ | isSuffixOf ".dk" filename -> do
       s <- readFile filename
-      processDeduktiModule env s
+      if ifFlag "-to_agda" env
+        then DA.processDeduktiModule s
+        else processDeduktiModule env s
     filename:_  -> do
       s <- readFile filename
       mapM_ (processInformathJmt env) (filter (not . null) (lines s))
