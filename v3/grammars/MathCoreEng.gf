@@ -183,12 +183,13 @@ lin
     mkNP
       (mkNP the_Det (mkCN coercion.from exp))
       (Syntax.mkAdv as_Prep (mkNP a_Det coercion.to)) ;
-  
+ {- 
   nat2realCoercion = {from = natural_number_CN ; to = real_number_CN} ;
   int2realCoercion = {from = integer_CN ; to = real_number_CN} ;
   rat2realCoercion = {from = rational_number_CN ; to = real_number_CN} ;
   nat2intCoercion = {from = natural_number_CN ; to = integer_CN} ;
   fstCoercion =  {from = mkCN element_N ; to = bare_element_CN} ;
+-}
 
 oper
   prefixText : Str -> Text -> Text = \s, t -> lin Text {s = s ++ t.s} ;

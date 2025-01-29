@@ -17,12 +17,14 @@ def not : Prop -> Prop := A => if A false.
 def iff : Prop -> Prop -> Prop := A => B => and (if A B) (if B A).
 
 (; number domains, meant to be increasing subsets of Complex ;)
-Dig : Set.
-Nat : Set.
-Int : Set.
-Rat : Set.
-Real : Set.
-Complex : Set.
+(; but the simplest thing is to have just one set Number ;)
+Num : Set.
+def Dig : Set := Num.
+def Nat : Set := Num.
+def Int : Set := Num.
+def Rat : Set := Num.
+def Real : Set := Num.
+def Complex : Set := Num.
 
 (; digits ;)
 0 : Elem Dig.
@@ -42,11 +44,13 @@ Complex : Set.
 nd : Elem Dig -> Elem Nat.
 nn : Elem Dig -> Elem Nat -> Elem Nat.
 
-(; coercions to Real and Int, ignored in Dedukti2Core ;) 
+(; coercions to Real and Int, ignored in Dedukti2Core ;)
+(;
 nat2real : (n : Elem Nat) -> Elem Real.
 int2real : Elem Int -> Elem Real.
 rat2real : Elem Rat -> Elem Real.
 nat2int  : Elem Nat -> Elem Int.
+;)
 
 (; basic comparison relations ;)
 Eq : (x : Elem Real) -> (y : Elem Real) -> Prop.
@@ -73,9 +77,13 @@ factorial : Elem Nat -> Elem Nat.
 even : Elem Int -> Prop.
 def odd : Elem Int -> Prop := n => not (even n).
 
-def divisible : Elem Int -> Elem Int -> Prop := n => m => exists Int (k => Eq (int2real n) (times (int2real k) (int2real m))). 
+def divisible : Elem Int -> Elem Int -> Prop := n => m => exists Int (k => Eq n (times k m)).
+def prime : Elem Nat -> Prop := n => not (exists Nat (m => and (Lt 1 m) (and (Lt m n) (divisible n  m)))).
 
+(; with coercions
+def divisible : Elem Int -> Elem Int -> Prop := n => m => exists Int (k => Eq (int2real n) (times (int2real k) (int2real m))). 
 def prime : Elem Nat -> Prop := n => not (exists Nat (m => and (Lt (nat2real (nd 1)) (nat2real m)) (and (Lt (nat2real m) (nat2real n)) (divisible (nat2int n) (nat2int  m))))).
+;)
 
 (; set operations ;)
 function : Set -> Set -> Set.

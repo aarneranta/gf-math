@@ -37,25 +37,13 @@ lin
   existential_Fun = mkFun "existential" "quanfication" ;
   negation_Fun = mkFun "negation" ;
   equivalence_Fun = mkFun "equivalence" ;
-  
+
+  number_Noun = mkNoun "Number" ;
   natural_Set = mkSet "natural" "number" "N" ;
   integer_Set = mkSet "integer" "Z";
   rational_Set = mkSet "rational" "number" "Q";
   real_Set = mkSet "real" "number" "R";
   complex_Set = mkSet "complex" "number" "C";
-
-{-
-  n0_Const = mkConst "zero" "0" ;
-  n1_Const = mkConst "one" "1" ;
-  n2_Const = mkConst "two" "2" ;
-  n3_Const = mkConst "three" "3" ;
-  n4_Const = mkConst "four" "4" ;
-  n5_Const = mkConst "five" "5" ;
-  n6_Const = mkConst "six" "6" ;
-  n7_Const = mkConst "seven" "7" ;
-  n8_Const = mkConst "eight" "8" ;
-  n9_Const = mkConst "nine" "9" ;
--}
 
   Eq_Compar = mkCompar "equal" "to" "=" ;
   Lt_Compar = mkCompar "less" "than" "<" ;

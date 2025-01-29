@@ -100,9 +100,11 @@ fun
   ElemKind : Kind -> Kind ;
 
   CoercionExp : Coercion -> Exp -> Exp ;
+  {-
   nat2realCoercion : Coercion ;
   int2realCoercion : Coercion ;
   rat2realCoercion : Coercion ;
   nat2intCoercion : Coercion ;
   fstCoercion : Coercion ;
+  -}
 }

@@ -1,4 +1,4 @@
-# {; to be appended to mathbase.dk before checking in dedukti ;}
+(; to be appended to mathbase.dk before checking in dedukti ;)
 
 prop10 : Proof (even 0).
 
@@ -18,7 +18,7 @@ prop80 : Proof (even 2).
 
 prop90 : (n : Elem Nat) -> Proof (if (and (even n) (prime n)) (Eq n 2)).
 
-prop100 : (a : Elem Int) -> (b : Elem Int) -> (c : Elem Int) -> Eq (plus (plus a b) c) 0 -> Proof (Lt (times (times a b) c) 0).
+prop100 : (a : Elem Int) -> (b : Elem Int) -> (c : Elem Int) -> Proof (Eq (plus (plus a b) c) 0) -> Proof (Lt (times (times a b) c) 0).
 
 prop110 : (a : Elem Int) -> (c : Elem Int) -> Proof (and (odd a) (odd c)) -> Proof (forall Int (b => even (plus (times a b) (times b c)))).
 

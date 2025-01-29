@@ -28,25 +28,13 @@ fun
   existential_Fun : Fun ;
   negation_Fun : Fun ;
   equivalence_Fun : Fun ;
-  
+
+  number_Noun : Noun ;
   natural_Set : Set ;
   integer_Set : Set ;
   rational_Set : Set ;
   real_Set : Set ;
   complex_Set : Set ;
-
-{-
-  n0_Const : Const ;
-  n1_Const : Const ;
-  n2_Const : Const ;
-  n3_Const : Const ;
-  n4_Const : Const ;
-  n5_Const : Const ;
-  n6_Const : Const ;
-  n7_Const : Const ;
-  n8_Const : Const ;
-  n9_Const : Const ;
--}
 
   Eq_Compar : Compar ;
   Lt_Compar : Compar ;
