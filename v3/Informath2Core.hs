@@ -27,7 +27,12 @@ sem env t = case t of
     in GOrProp (GListProp [GAdjProp sa exp | exp <- exps])
 
   GLetFormulaHypo formula ->
-    GPropHypo (GFormulaProp (sem env formula))
+    GPropHypo (sem env (GFormulaProp (sem env formula)))
+
+  GFormulaProp (GFEquation equation) -> case equation of
+    GEBinary (GComparEqsign compar) term1 term2 ->
+      GAdjProp (GComparAdj compar (sem env (GTermExp term2))) (sem env (GTermExp term1))
+    _ -> composOp (sem env) t
 
   GTermExp (GConstTerm const) -> GConstExp const
       
