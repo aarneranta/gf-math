@@ -24,6 +24,21 @@ import Data.List (partition, isSuffixOf)
 import System.Environment (getArgs)
 import System.IO
 
+helpMsg = unlines [
+  "usage: RunInformath <flag>* <file>?",
+  "without arguments or flags, start interactive session",
+  "  ? <string>  translate from natural language to Dedukti",
+  "  <string>    translate from Dedukti to natural language",
+  "with file argument: depending on file suffix,",
+  "  .dk    read Dedukti file and convert to natural language of Agda",
+  "  .dkgf  create UserConstants files to map Dedukti identifiers",
+  "  .txt   (or any other) parse as natural language, convert to Dedukti",
+  "flags:",
+  "  -help     print this message",
+  "  -to-agda  convert to Agda (with <file>.dk as argument)",
+  "output is to stdout and can be redirected to a file to check with Dedukti or Agda."
+  ]
+
 informathPGFFile = "grammars/Informath.pgf"
 Just english = readLanguage "InformathEng"
 Just jmt = readType "Jmt"
@@ -42,11 +57,13 @@ main = do
   corepgf <- readPGF informathPGFFile
   let env = Env{flags = ff, cpgf = corepgf} ---, rands = [], itr = 0}
   case yy of
+    _ | ifFlag "-help" env -> do
+      putStrLn helpMsg
     filename:_ | isSuffixOf ".dkgf" filename -> do
       mkConstants filename
     filename:_ | isSuffixOf ".dk" filename -> do
       s <- readFile filename
-      if ifFlag "-to_agda" env
+      if ifFlag "-to-agda" env
         then DA.processDeduktiModule s
         else processDeduktiModule env s
     filename:_  -> do

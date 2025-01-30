@@ -12,6 +12,8 @@ import qualified Dedukti.ParDedukti as PD
 
 import qualified Dedukti.ErrM as E
 
+import Dedukti2Core (getNumber, splitApp)
+
 import System.Environment (getArgs)
 
 -- skeleton copied from bnfc-generated SkelDedukti
@@ -49,7 +51,12 @@ transRule t = case t of
 transExp :: Exp -> A.Exp
 transExp t = case t of
   EIdent qident -> A.EIdent (transQIdent qident)
-  EApp exp0 exp1 -> A.EApp (transExp exp0) (transExp exp1)
+  EApp exp0 exp1 -> case splitApp t of
+    (fun@(EIdent (QIdent c)), [arg]) | elem c ["Elem", "Proof"] -> transExp arg
+    (fun@(EIdent (QIdent n)), args) | elem n ["nn", "nd"] -> case getNumber fun args of
+        Just s -> A.EIdent (A.AIdent s) --- no A.EInt
+	_ -> A.EApp (transExp exp0) (transExp exp1)
+    _ -> A.EApp (transExp exp0) (transExp exp1)
   EAbs bind exp -> A.EAbs (transBind bind) (transExp exp)
   EFun hypo exp -> A.EFun (transHypo hypo) (transExp exp)
 
@@ -78,7 +85,7 @@ transPatt t = case t of
 
 transQIdent :: QIdent -> A.AIdent
 transQIdent t = case t of
-  QIdent "forall" -> A.AIdent "foral" -- reserved word
+  QIdent "forall" -> A.AIdent "all" -- reserved word
   QIdent "Type" -> A.AIdent "Set" ---
   QIdent str -> A.AIdent str --- so far the same Ident syntax
 

@@ -1,20 +1,24 @@
 module BaseConstants where
- --postulate Set : Set
 
-  postulate Prop : Set
+  Prop = Set
+
+  data false : Prop where
   
-
-  Elem : Set -> Set
-  Elem A = A
-
-  postulate Proof : Prop -> Set
-
-  postulate false : Prop
-  postulate and : (A : Prop) -> (B : Prop) -> Prop
-  postulate or : (A : Prop) -> (B : Prop) -> Prop
-  postulate if : Prop -> Prop -> Prop
-  postulate foral : (A : Set) -> (B : (Elem A -> Prop)) -> Prop
-  postulate exists : (A : Set) -> (B : (Elem A -> Prop)) -> Prop
+  data and (A B : Prop) : Prop where
+    andI : A -> B -> and A B
+    
+  data or (A B : Prop) : Prop where
+    orIL : A -> or A B
+    orIR : B -> or A B
+    
+  if : Prop -> Prop -> Prop
+  if A B = A -> B
+  
+  all : (A : Set) -> (B : (A -> Prop)) -> Prop
+  all A B = (x : A) -> B x
+  
+  data exists (A : Set) (B : (A -> Prop)) : Prop where
+    existI : (a : A) -> B a -> exists A B
 
   not : Prop -> Prop
   not = \ A -> if A false
@@ -46,38 +50,40 @@ module BaseConstants where
   Complex : Set
   Complex = Num
 
-  postulate nd : Elem Dig -> Elem Nat
-  postulate nn : Elem Dig -> Elem Nat -> Elem Nat
+  nd : Dig -> Nat
+  nd x = x
+  
+  postulate nn : Dig -> Nat -> Nat
 
-  postulate Eq : (x : Elem Real) -> (y : Elem Real) -> Prop
-  postulate Lt : Elem Real -> Elem Real -> Prop
+  postulate Eq : (x : Real) -> (y : Real) -> Prop
+  postulate Lt : Real -> Real -> Prop
 
-  postulate Gt : Elem Real -> Elem Real -> Prop
-  postulate Neq : Elem Real -> Elem Real -> Prop
+  postulate Gt : Real -> Real -> Prop
+  postulate Neq : Real -> Real -> Prop
 
-  postulate Leq : Elem Real -> Elem Real -> Prop
-  postulate Geq : Elem Real -> Elem Real -> Prop
+  postulate Leq : Real -> Real -> Prop
+  postulate Geq : Real -> Real -> Prop
 
-  postulate positive : (x : Elem Real) -> Prop
-  postulate negative : Elem Real -> Prop
+  postulate positive : (x : Real) -> Prop
+  postulate negative : Real -> Prop
 
-  postulate plus : (x : Elem Real) -> (y : Elem Real) -> Elem Real
-  postulate minus : Elem Real -> Elem Real -> Elem Real
-  postulate times : Elem Real -> Elem Real -> Elem Real
-  postulate div : Elem Real -> Elem Real -> Elem Real
-  postulate pow : Elem Real -> Elem Real -> Elem Real
-  postulate gcd : Elem Int -> Elem Int -> Elem Int
-  postulate factorial : Elem Nat -> Elem Nat
+  postulate plus : (x : Real) -> (y : Real) -> Real
+  postulate minus : Real -> Real -> Real
+  postulate times : Real -> Real -> Real
+  postulate div : Real -> Real -> Real
+  postulate pow : Real -> Real -> Real
+  postulate gcd : Int -> Int -> Int
+  postulate factorial : Nat -> Nat
 
-  postulate even : Elem Int -> Prop
+  postulate even : Int -> Prop
 
-  odd : Elem Int -> Prop
+  odd : Int -> Prop
   odd = \ n -> not (even n)
 
-  divisible : Elem Int -> Elem Int -> Prop
+  divisible : Int -> Int -> Prop
   divisible = \ n -> \ m -> exists Int (\ k -> Eq n (times k m))
 
-  prime : Elem Nat -> Prop
+  prime : Nat -> Prop
   prime = \ n -> not (exists Nat (\ m -> and (Lt 1 m) (and (Lt m n) (divisible n m))))
 
   postulate function : Set -> Set -> Set
@@ -85,6 +91,6 @@ module BaseConstants where
   postulate intersection : Set -> Set -> Set
   postulate difference : Set -> Set -> Set
   postulate powerset : Set -> Set
-  postulate suchthat : (A : Set) -> ((B : Elem A) -> Prop) -> Set
-  postulate fst : (A : Set) -> (B : Elem A -> Prop) -> Elem (suchthat A B) -> Elem A
+  postulate suchthat : (A : Set) -> ((B : A) -> Prop) -> Set
+  postulate fst : (A : Set) -> (B : A -> Prop) -> (suchthat A B) -> A
 
