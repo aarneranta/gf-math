@@ -1,6 +1,6 @@
 module BaseConstants where
 
-  Prop = Set
+--  Prop = Set --- depends on Agda version
 
   data false : Prop where
   
