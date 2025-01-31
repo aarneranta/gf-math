@@ -12,7 +12,7 @@ import qualified Dedukti.ParDedukti as PD
 
 import qualified Dedukti.ErrM as E
 
-import Dedukti2Core (getNumber, splitApp)
+import DeduktiOperations (getNumber, splitApp)
 
 import System.Environment (getArgs)
 

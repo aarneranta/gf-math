@@ -4,15 +4,16 @@
 module Dedukti2Lean where
 
 import Dedukti.AbsDedukti
-import qualified Lean.AbsLean as A
+import qualified Lean.AbsLean as L
 
-import qualified Lean.PrintLean as PrA
+import qualified Lean.PrintLean as PrL
 
 import qualified Dedukti.ParDedukti as PD
 
 import qualified Dedukti.ErrM as E
 
-import Dedukti2Core (getNumber, splitApp)
+import DeduktiOperations
+import CommonConcepts
 
 import System.Environment (getArgs)
 
@@ -29,24 +30,27 @@ failure x = Bad $ "Undefined case: " ++ show x
 
 transModule :: Module -> L.Module
 transModule t = case t of
-  MJmts jmts -> L.MJmts (concatMap transJmt jmts)
+  MJmts jmts -> L.MJmts (map transJmt jmts)
 
-transJmt :: Jmt -> [L.Jmt]
+transJmt :: Jmt -> L.Jmt
 transJmt t = case t of
   JStatic qident exp ->
-    [L.JAxiom (transQIdent qident) (transExp exp)]
+    let (hypos, typ) = splitType exp
+    in L.JAxiom (transQIdent qident) (transHypos hypos) (transExp typ)
   JDef qident (MTExp typ) (MEExp exp) ->
-    [L.JTyp (transQIdent qident) [] (transExp typ),
-     L.JDef (L.PVar (L.VIdent (transQIdent qident))) (transExp exp)]
+    let (hypos, vtyp) = splitType typ
+    in L.JDef (transQIdent qident) (transHypos hypos) (transExp vtyp) (transExp exp)
+  JThm qident (MTExp typ) (MEExp exp) ->
+    let (hypos, vtyp) = splitType typ
+    in L.JThm (transQIdent qident) (transHypos hypos) (transExp vtyp) (transExp exp)
   JDef qident (MTExp typ) MENone ->
-    [L.JPost (transQIdent qident) (transExp typ)]
+    transJmt (JStatic qident typ)
   JInj qident mtyp mexp -> transJmt (JDef qident mtyp mexp)  
-  JThm qident mtyp mexp -> transJmt (JDef qident mtyp mexp)  
-  JRules rules -> map transRule rules
+---  JRules rules -> map transRule rules
 
-transRule :: Rule -> L.Jmt
-transRule t = case t of
-  RRule qidents_ patt exp -> L.JDef (transPatt patt) (transExp exp)
+---transRule :: Rule -> L.Jmt
+---transRule t = case t of
+---  RRule qidents_ patt exp -> L.JDef (transPatt patt) (transExp exp)
 
 transExp :: Exp -> L.Exp
 transExp t = case t of
@@ -56,32 +60,76 @@ transExp t = case t of
     (fun@(EIdent (QIdent n)), args) | elem n ["nn", "nd"] -> case getNumber fun args of
         Just s -> L.EIdent (L.LIdent s) --- no L.EInt
 	_ -> L.EApp (transExp exp0) (transExp exp1)
+    (EIdent c, [a, b]) | c == identConj -> L.EAnd (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identDisj -> L.EOr (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identImpl -> L.EIf (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identEquiv -> L.EIff (transExp a) (transExp b)
+    (EIdent c, [a]) | c == identNeg -> L.ENot (transExp a)
+    (EIdent c, [a, b]) | c == identEq -> L.EEq (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identNeq -> L.ENeq (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identLt -> L.ELt (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identGt -> L.EGt (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identLeq -> L.ELeq (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identGeq -> L.EGeq (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identPlus -> L.EPlus (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identMinus -> L.EMinus (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identTimes -> L.ETimes (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identDiv -> L.EDiv (transExp a) (transExp b)
+    (EIdent c, [a, b]) | c == identPi -> case b of
+      EAbs bind body -> L.EAll [transBind bind] (transExp a) (transExp body)
+      _ -> L.EApp (transExp exp0) (transExp exp1)
     _ -> L.EApp (transExp exp0) (transExp exp1)
-  EAbs bind exp -> L.EAbs (transBind bind) (transExp exp)
-  EFun hypo exp -> L.EFun (transHypo hypo) (transExp exp)
+  EAbs bind exp -> L.EAbs [transBind bind] (transExp exp)
+  EFun hypo@(HVarExp _ _) exp -> L.EFunDep (transHypo hypo) (transExp exp)
+  EFun hypo@(HParVarExp _ _) exp -> L.EFunDep (transHypo hypo) (transExp exp)
+  EFun hypo@(HExp typ) exp -> L.EFun (transExp typ) (transExp exp)
 
-transBind :: Bind -> L.Bind
+transBind :: Bind -> L.LIdent
 transBind t = case t of
-  BVar var -> L.BVar [transVar var]
---  BTyped var exp -> failure t
+  BVar var -> transVar var
+  BTyped var exp -> transVar var
 
-transVar :: Var -> L.Var
+transVar :: Var -> L.LIdent
 transVar t = case t of
-  VIdent qident -> L.VIdent (transQIdent qident)
-  VWild  -> L.VWild
+  VIdent ident -> transQIdent ident
+  VWild -> L.LIdent "x_" --- ?
+
+transHypos :: [Hypo] -> [L.Hypo]
+transHypos hypos =
+  let vhypos = addVarsToHypos hypos
+  in map transHypo vhypos
 
 transHypo :: Hypo -> L.Hypo
 transHypo t = case t of
-  HExp exp -> L.HExp (transExp exp)
+--  HExp exp -> L.HExp (transExp exp) -- not reached due to addVarsToHypos
   HVarExp var exp -> L.HVarExp [transVar var] (transExp exp)
   HParVarExp var exp -> L.HVarExp [transVar var] (transExp exp)
 
+
+
 transQIdent :: QIdent -> L.LIdent
 transQIdent t = case t of
-  QIdent "forall" -> L.LIdent "all" -- reserved word
-  QIdent "Type" -> L.LIdent "Set" ---
-  QIdent str -> L.LIdent str --- so far the same Ident syntax
+  c | c == identPi -> L.LIdent "All" 
+  c | c == identSigma -> L.LIdent "Exist"
+  c | c == identNat -> L.LIdent "ℕ"
+  c | c == identInt -> L.LIdent "ℤ"
+  c | c == identReal -> L.LIdent "ℝ"
+  QIdent str -> L.LIdent str ---- not quite the same ident syntax ; reserved idents in Lean!
 
+
+processDeduktiModule :: String -> IO ()
+processDeduktiModule s = do
+  case PD.pModule (PD.myLexer s) of
+    E.Bad e -> putStrLn ("error: " ++ e)
+    E.Ok (MJmts jmts) -> do
+----      putStrLn ("open import " ++ baseconstants ++ "\n") 
+      flip mapM_ jmts processDeduktiJmtTree
+
+processDeduktiJmtTree :: Jmt -> IO ()
+processDeduktiJmtTree t = do 
+  putStrLn $
+    map (\c -> if c==';' then '\n' else c) $  --- to remove bnfc layout artefact ;
+      PrL.printTree $ transJmt t
 
 -- when used stand-alone
 main = do
@@ -91,17 +139,4 @@ main = do
       s <- readFile filename
       processDeduktiModule s
 
-processDeduktiModule :: String -> IO ()
-processDeduktiModule s = do
-  case PD.pModule (PD.myLexer s) of
-    E.Bad e -> putStrLn ("error: " ++ e)
-    E.Ok (MJmts jmts) -> do
-      putStrLn ("open import " ++ baseconstants ++ "\n") 
-      flip mapM_ jmts processDeduktiJmtTree
 
-processDeduktiJmtTree :: Jmt -> IO ()
-processDeduktiJmtTree t = do 
-  putStrLn $
-    map (\c -> if c==';' then '\n' else c) $  --- to remove bnfc layout artefact ;
-      PrL.printTree $ transJmt t
-  

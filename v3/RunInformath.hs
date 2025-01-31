@@ -16,6 +16,7 @@ import ParseInformath (parseJmt)
 import Lexing
 import MkConstants (mkConstants)
 import qualified Dedukti2Agda as DA
+import qualified Dedukti2Lean as DL
 
 import PGF
 
@@ -67,16 +68,22 @@ main = do
       s <- readFile filename
       if ifFlag "-to-agda" env
         then DA.processDeduktiModule s
-        else processDeduktiModule env s
+        else if ifFlag "-to-lean" env
+          then DL.processDeduktiModule s
+	  else processDeduktiModule env s
     filename:_  -> do
       s <- readFile filename
       if ifFlag "-to-agda" env
         then do
           s <- mapM (processInformathJmt env) (filter (not . null) (lines s))
           DA.processDeduktiModule (unlines s)
-        else do
-          ss <- mapM (processInformathJmt env) (filter (not . null) (lines s))
-          mapM_ putStrLn ss
+        else if ifFlag "-to-lean" env
+          then do
+            s <- mapM (processInformathJmt env) (filter (not . null) (lines s))
+            DL.processDeduktiModule (unlines s)
+	  else do
+            ss <- mapM (processInformathJmt env) (filter (not . null) (lines s))
+            mapM_ putStrLn ss
     _ -> do
 ----      g <- getStdGen
       let rs = [] ---- generateRandomDepth g corepgf jmt (Just 4)
