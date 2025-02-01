@@ -21,7 +21,7 @@ Lean:
 RunInformath: 
 	ghc -package gf RunInformath.hs
 
-demo: Informath.pgf Dedukti Agda Lean RunInformath
+demo:
 	./RunInformath test/exx.dk
 	./RunInformath test/exx.dk >exx.txt
 	./RunInformath exx.txt

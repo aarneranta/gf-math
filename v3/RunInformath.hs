@@ -37,6 +37,7 @@ helpMsg = unlines [
   "flags:",
   "  -help     print this message",
   "  -to-agda  convert to Agda (with <file>.dk as argument)",
+  "  -to-lean  convert to Lean (with <file>.dk as argument)",
   "  -v        verbose output, e.g. syntax trees and intermediate results",
   "output is to stdout and can be redirected to a file to check with Dedukti or Agda."
   ]
@@ -122,7 +123,7 @@ roundtripDeduktiJmt env cs = do
       ifv env $ putStrLn $ "## Dedukti: " ++ show t
       let gft = gf $ jmt2jmt t
       ifv env $ putStrLn $ "## MathCore: " ++ showExpr [] gft
-      let lin = linearize gr english gft
+      let lin = unlextex $ linearize gr english gft
       putStrLn lin
       processCoreJmt env lin
 
@@ -133,7 +134,7 @@ processDeduktiJmtTree env t = do
   let ct = jmt2jmt t
   let gft = gf ct
   ifv env $ putStrLn $ "## MathCore: " ++ showExpr [] gft
-  ifv env $ putStrLn $ "# MathCoreEng: " ++ linearize gr english gft
+  ifv env $ putStrLn $ "# MathCoreEng: " ++ unlextex (linearize gr english gft)
   convertCoreToInformath env ct
 
 convertCoreToInformath :: Env -> GJmt -> IO ()
@@ -143,7 +144,7 @@ convertCoreToInformath env ct = do
   let gffts = map gf fts
   flip mapM_ gffts $ \gfft -> do
     ifv env $ putStrLn $ "## Informath: " ++ showExpr [] gfft
-    putStrLn $ linearize fgr english gfft
+    putStrLn $ unlextex $ linearize fgr english gfft
 
 processCoreJmt :: Env -> String -> IO ()
 processCoreJmt env s = do
@@ -162,12 +163,12 @@ processCoreJmtTree :: Env -> Expr -> IO ()
 processCoreJmtTree env t = do
   let gr = cpgf env
   ifv env $ putStrLn $ "## Informath: " ++ showExpr [] t
-  ifv env $ putStrLn $ "# InformathEng: " ++ linearize gr english t
+  ifv env $ putStrLn $ "# InformathEng: " ++ unlextex (linearize gr english t)
   let tr = fg t
   let str = semantics tr
   let st = gf str
   ifv env $ putStrLn $ "## MathCore: " ++ showExpr [] st
-  ifv env $ putStrLn $ "# MathCoreEng: " ++ linearize gr english st
+  ifv env $ putStrLn $ "# MathCoreEng: " ++ unlextex (linearize gr english st)
   let d = jmt2dedukti str
   putStrLn $ printTree d
 ---  convertCoreToInformath env str
@@ -190,12 +191,12 @@ processInformathJmt env s = do
 processInformathJmtTree :: Env -> Expr -> IO String
 processInformathJmtTree env t = do
   let gr = cpgf env
-  ifv env $ putStrLn $ "#Informath: " ++ showExpr [] t
+  ifv env $ putStrLn $ "## Informath: " ++ showExpr [] t
   let tr = fg t
   let str = semantics tr
   let st = gf str
-  ifv env $ putStrLn $ "#Core     : " ++ showExpr [] st
-  ifv env $ putStrLn $ linearize gr english st
+  ifv env $ putStrLn $ "## Core     : " ++ showExpr [] st
+  ifv env $ putStrLn $ unlextex (linearize gr english st)
   let d = jmt2dedukti str
   let dt = printTree d
   ifv env $ putStrLn $ dt
