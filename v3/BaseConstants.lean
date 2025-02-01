@@ -33,7 +33,7 @@ def plus (x y : Int) : Int := x + y
 def minus (x y : Int) : Int := x - y
 def times (x y : Int) : Int := x * y
 def div (x y : Int) : Int := x / y
----def pow (x y : Int) : Int := x ^ y  --- failed to synthesize instance HPow Int Int ?m.392
+def pow (x y : Nat) : Nat := x ^ y  --- failed to synthesize instance HPow Int Int ?m.392
 axiom gcd (x y : Int) : Int
 axiom factorial (x : Int) : Int
 
