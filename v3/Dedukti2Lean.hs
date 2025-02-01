@@ -39,10 +39,10 @@ transJmt t = case t of
     in L.JAxiom (transQIdent qident) (transHypos hypos) (transExp typ)
   JDef qident (MTExp typ) (MEExp exp) ->
     let (hypos, vtyp) = splitType typ
-    in L.JDef (transQIdent qident) (transHypos hypos) (transExp vtyp) (transExp exp)
+    in L.JDef (transQIdent qident) (transHypos hypos) (transExp vtyp) (transExp (stripAbs hypos exp))
   JThm qident (MTExp typ) (MEExp exp) ->
     let (hypos, vtyp) = splitType typ
-    in L.JThm (transQIdent qident) (transHypos hypos) (transExp vtyp) (transExp exp)
+    in L.JThm (transQIdent qident) (transHypos hypos) (transExp vtyp) (transExp (stripAbs hypos exp))
   JDef qident (MTExp typ) MENone ->
     transJmt (JStatic qident typ)
   JInj qident mtyp mexp -> transJmt (JDef qident mtyp mexp)  
@@ -95,9 +95,22 @@ transVar t = case t of
   VWild -> L.LIdent "x_" --- ?
 
 transHypos :: [Hypo] -> [L.Hypo]
-transHypos hypos =
-  let vhypos = addVarsToHypos hypos
-  in map transHypo vhypos
+transHypos hypos = compress (map transHypo vhypos)
+  where
+    vhypos = addVarsToHypos hypos
+    
+    compress :: [L.Hypo] -> [L.Hypo]
+    compress hs = case hs of
+      h@(L.HVarExp vs exp) : hh -> case span ((== exp) . hypoType) hh of
+        (hh1@(_:_), hh2) -> L.HVarExp (vs ++ concatMap hypoVars hh1) exp : compress hh2
+	([], _) -> h : compress hh
+      [] -> []
+
+    hypoType :: L.Hypo -> L.Exp
+    hypoType (L.HVarExp _ exp) = exp
+    
+    hypoVars :: L.Hypo -> [L.LIdent]
+    hypoVars (L.HVarExp vars _ ) = vars
 
 transHypo :: Hypo -> L.Hypo
 transHypo t = case t of
@@ -105,17 +118,14 @@ transHypo t = case t of
   HVarExp var exp -> L.HVarExp [transVar var] (transExp exp)
   HParVarExp var exp -> L.HVarExp [transVar var] (transExp exp)
 
-
-
 transQIdent :: QIdent -> L.LIdent
 transQIdent t = case t of
   c | c == identPi -> L.LIdent "All" 
   c | c == identSigma -> L.LIdent "Exist"
-  c | c == identNat -> L.LIdent "ℕ"
-  c | c == identInt -> L.LIdent "ℤ"
-  c | c == identReal -> L.LIdent "ℝ"
+  c | c == identNat -> L.LIdent "Nat" -- "ℕ" ---- TODO find out how to make Lean recognize these
+  c | c == identInt -> L.LIdent "Int" -- "ℤ"
+  c | c == identReal -> L.LIdent "Real" -- "ℝ"
   QIdent str -> L.LIdent str ---- not quite the same ident syntax ; reserved idents in Lean!
-
 
 processDeduktiModule :: String -> IO ()
 processDeduktiModule s = do

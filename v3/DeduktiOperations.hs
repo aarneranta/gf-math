@@ -18,14 +18,22 @@ splitType exp = case exp of
   _ -> ([], exp)
 
 addVarsToHypos :: [Hypo] -> [Hypo]
-addVarsToHypos = adds 0 where
-  adds :: Int -> [Hypo] -> [Hypo]
-  adds i hypos = case hypos of
-    HExp exp : hh -> HVarExp (vars !! i) exp : adds (i+1) hh
-    hypo : hh -> hypo : adds i hh
+addVarsToHypos = adds vars where
+  adds :: [Var] -> [Hypo] -> [Hypo]
+  adds vs hypos = case hypos of
+    HExp exp : hh -> HVarExp (head vs) exp : adds (tail vs) hh
+    hypo@(HVarExp var _) : hh -> hypo : adds (filter (/= var) vs) hh
+    hypo@(HParVarExp var _) : hh -> hypo : adds (filter (/= var) vs) hh
     _ -> []
   vars = [VIdent (QIdent s) |
-           s <- ["x", "y", "z", "u", "v", "w"] ++ ["X"  ++ show i | i <- [1..]]]   
+           s <- ["x", "y", "z", "u", "v", "w"] ++ ["X"  ++ show i | i <- [1..11]]]
+	 --- finite list so that filter works
+
+-- strip abstraction when function type arguments are moved to hypos, as in Lean
+stripAbs :: [Hypo] -> Exp -> Exp
+stripAbs hypos exp = case (hypos, exp) of
+  (h:hs, EAbs _ body) -> stripAbs hs body
+  _ -> exp
 
 splitApp :: Exp -> (Exp, [Exp])
 splitApp exp = case exp of

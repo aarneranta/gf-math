@@ -1,7 +1,7 @@
 -- def false : Prop := False
 -- def And (A : Prop)(B : Prop) : Prop := And A B
 -- def Or (A : Prop)(B : Prop) : Prop := Or A B
-def If (A B : Prop) : Prop := A -> B
+-- def If (A B : Prop) : Prop := A -> B
 def All (A : Type)(B : A -> Prop) : Prop := forall x : A, (B x)
 def Exist (A : Type)(B : A -> Prop) : Prop := exists x : A, (B x)
 -- def Not (A : Prop) : Prop := Not A
