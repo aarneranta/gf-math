@@ -38,7 +38,7 @@ lexMixed good = concat . alternate False [] where
   lex env = if env then lexLatexCode else lexText good
 
 unlexMixed :: (String -> Bool) -> [String] -> String
-unlexMixed good = capitInit . concat . alternate False where
+unlexMixed good = capitInit . concat . alternate False . bindTok where
   alternate env s = case s of
     _:_ -> case break (flip elem ["$","\\[","\\]","\\(","\\)"]) s of
       (t,[])  -> unlex env t : []
@@ -49,6 +49,7 @@ unlexMixed good = capitInit . concat . alternate False where
     ([p]:_,True) | isPunct p -> c   -- closing $ glued to next punct 
     (_,  True) -> c ++ " "   -- closing $ otherwise separated by space from what follows
     _ -> " " ++ c   -- put space before opening $
+
 
 -- * Additional lexing uitilties
 
