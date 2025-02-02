@@ -1,9 +1,10 @@
-concrete BaseConstantsSwe of BaseConstants =
+concrete BaseConstantsFre of BaseConstants =
 
 open
-  SyntaxSwe,
-  ParadigmsSwe,
-  SymbolicSwe,
+  SyntaxFre,
+  ParadigmsFre,
+  (P=ParadigmsFre),
+  SymbolicFre,
   Formal,
   Prelude
 
@@ -22,58 +23,58 @@ lincat
   Compar = ComparisonT ;
 
 lin
-  type_Noun = mkNoun (mkN "typ" "typer") ;
-  set_Noun = mkNoun (mkN "mängd" "mängder") ;
-  proposition_Noun = mkNoun "påstående" ;
+  type_Noun = mkNoun type_N ;
+  set_Noun = mkNoun (mkN "ensemble" masculine) ;
+  proposition_Noun = mkNoun "proposition" ;
 
-  elements_Fun = mkFun "elementtyp" ;
-  proofs_Fun = mkFun  "bevistyp" ;
+  elements_Fun = mkFun type_N "des éléments" ;
+  proofs_Fun = mkFun  type_N "des preuves" ;
 
-  absurdity_Name = mkName (mkN "kontradiktion" "kontradiktioner") ;
-  conjunction_Fun = mkFun (mkN "konjunktion" "konjunktioner") ;
-  disjunction_Fun = mkFun (mkN "disjunktion" "disjunktioner") ;
-  implication_Fun = mkFun (mkN "implikation" "inmplikationer") ;
-  universal_Fun = mkFun "universal" "kvantifikation" ; ---- plural
-  existential_Fun = mkFun "existentiell" "kvantifikation" ;
-  negation_Fun = mkFun (mkN "negation" "negationer") ;
-  equivalence_Fun = mkFun (mkN "ekvivalens" "ekvivalenser") ;
+  absurdity_Name = mkName "contradiction" ;
+  conjunction_Fun = mkFun "conjonction" ;
+  disjunction_Fun = mkFun "disjonction" ;
+  implication_Fun = mkFun "implication" ;
+  universal_Fun = mkFun "universel" "quantification" ;
+  existential_Fun = mkFun "existentiel" "quantification" ;
+  negation_Fun = mkFun "négation" ;
+  equivalence_Fun = mkFun "équivalence" ;
 
-  number_Noun = mkNoun tal_N ;
-  natural_Set = mkSet "naturlig" (tal_N) "N" ;
-  integer_Set = mkSet (mkN "hel" tal_N) "Z";
-  rational_Set = mkSet "rationell" tal_N "Q";
-  real_Set = mkSet "reell" tal_N "R";
-  complex_Set = mkSet "komplex" tal_N "C";
+  number_Noun = mkNoun nombre_N ;
+  natural_Set = mkSet "naturel" nombre_N "N" ;
+  integer_Set = mkSet "entier" "Z";
+  rational_Set = mkSet "rationnel" nombre_N "Q";
+  real_Set = mkSet "réel" nombre_N "R";
+  complex_Set = mkSet "complexe" nombre_N "C";
 
-  Eq_Compar = mkCompar "lika" "med" "=" ;
-  Lt_Compar = mkCompar "mindre" "än" "<" ;
-  Gt_Compar = mkCompar "större" "än" ">" ;
-  Neq_Compar = mkCompar "inte lika" "med" "\\neq" ;
-  Leq_Compar = mkCompar "mindre än eller lika" "med" "\\leq" ;
-  Geq_Compar = mkCompar "större än eller lika" "med" "\\geq" ;
+  Eq_Compar = mkCompar (mkAP (mkA "égal")) dative "=" ;
+  Lt_Compar = mkCompar (mkAP (mkA "inférieur")) dative "<" ;
+  Gt_Compar = mkCompar (mkAP (mkA "supërieur")) dative ">" ;
+  Neq_Compar = mkCompar (mkAP (mkA "inégal")) dative "\\neq" ; ---- ?
+  Leq_Compar = mkCompar (mkAP or_Conj (mkAP (mkA "inférieur")) (mkAP (mkA "ágal"))) dative "\\leq" ;
+  Geq_Compar =  mkCompar (mkAP or_Conj (mkAP (mkA "supérieur")) (mkAP (mkA "ágal"))) dative "\\leq" ;
 
-  positive_Adj = mkAdj "positiv" ;
-  negative_Adj = mkAdj "negativ" ;
+  positive_Adj = mkAdj "positif" ;
+  negative_Adj = mkAdj "negatif" ;
 
-  plus_Oper = mkOper "summa" "+" <1 : Prec> ;
-  minus_Oper = mkOper "skillnad" "-" <1 : Prec> ; 
-  times_Oper = mkOper "produkt" "\\times" <2 : Prec> ;
+  plus_Oper = mkOper "somme" "+" <1 : Prec> ;
+  minus_Oper = mkOper "différence" "-" <1 : Prec> ; 
+  times_Oper = mkOper "produit" "\\times" <2 : Prec> ;
   div_Oper = mkOper "division" "\\div" <2 : Prec> ; ---
-  pow_Oper = mkOper "potens" "^" <2 : Prec> ; ---
+  pow_Oper = mkOper "puissance" "^" <2 : Prec> ; ---
 
-  factorial_Fun = mkFun "fakultet" ;
-  gcd_Fun = mkFun "störst" "gemensam" "delare" ;
+  factorial_Fun = mkFun "factorielle" ;
+  gcd_Fun = mkFun "plus grand" "commun" "diviseur" ; ---- should be in this order
 
-  even_Adj = mkAdj "jämn" ;
-  odd_Adj = mkAdj "udda" ;
-  divisible_Rel = mkRel "delbar" "med" ;
-  prime_Adj = mkAdj "prim" ;
+  even_Adj = mkAdj "pair" ;
+  odd_Adj = mkAdj "impair" ;
+  divisible_Rel = mkRel "divisible" "par" ;
+  prime_Adj = mkAdj "premier" ;
 
-  function_Oper = mkOper (mkN "funktion" "funktioner") "\\rightarrow" ; ---
+  function_Oper = mkOper "fonction" "\\rightarrow" ; ---
   union_Oper = mkOper "union" "\\cup" ;
-  intersection_Oper = mkOper (mkN "snitt" "snittet") "\\cap" ;
-  difference_Oper = mkOper "differens" "\\setminus" ;
-  powerset_Oper = mkOper "potensmängd" "\\wp" ;
+  intersection_Oper = mkOper "intersection" "\\cap" ;
+  difference_Oper = mkOper "différence" "\\setminus" ;
+  powerset_Oper = mkOper "puissance" "\\wp" ; ----
 
 oper
   RelationT : Type = {ap : AP ; prep : Prep} ;
@@ -109,6 +110,8 @@ oper
       = \s -> {cn = mkCN (mkN s) ; prep = possess_Prep} ;
     mkFun : N -> FunctionT
       = \n -> {cn = mkCN n ; prep = possess_Prep} ;
+    mkFun : N -> Str -> FunctionT
+      = \n, s -> {cn = mkCN (mkCN n) (P.mkAdv s) ; prep = possess_Prep} ;
     mkFun : (a, n : Str) -> FunctionT
       = \a, n -> {cn = mkCN (mkA a) (mkN n) ; prep = possess_Prep} ;
     mkFun2 : (a, b, n : Str) -> FunctionT
@@ -122,7 +125,9 @@ oper
     
   mkRel = overload {
     mkRel : Str -> Str -> {ap : AP ; prep : Prep}
-      = \s, p -> {ap = mkAP (mkA s) ; prep = mkPrep p}
+      = \s, p -> {ap = mkAP (mkA s) ; prep = mkPrep p} ;
+    mkRel : AP -> Prep -> {ap : AP ; prep : Prep}
+      = \ap, prep -> {ap = ap ; prep = prep}
     } ;
     
   mkName = overload {
@@ -154,12 +159,15 @@ oper
   mkCompar = overload {
     mkCompar : Str -> Str -> Str -> ComparisonT
       = \s, p, op -> {rel = mkRel s p ; op = op} ;
+    mkCompar : AP -> Prep -> Str -> ComparisonT
+      = \ap, prep, op -> {rel = mkRel ap prep ; op = op} ;
     } ;
 
   latexName : Str -> NP
       = \s -> symb (mkSymb ("$" ++ s ++ "$")) ;
 
-  tal_N : N = mkN "tal" "tal" ;
+  nombre_N : N = mkN "nombre" masculine ;
+  type_N = mkN "type" masculine ;
 
 
 }
