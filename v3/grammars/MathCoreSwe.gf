@@ -33,7 +33,6 @@ oper
   hold_V2 = mkV2 I.hålla_V for_Prep ;
   arbitrary_A = mkA "godtycklig" ;
 
-
   iff_Subj : Subj = mkSubj "om och endast om" ;
 
   basic_concept_Str = "grundbegrepp" ;

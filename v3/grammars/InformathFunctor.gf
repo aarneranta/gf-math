@@ -42,14 +42,14 @@ lin
 
   DefinedAdjJmt label hypos exp adj prop =
     labelText (label)
-      (thenText hypos (mkText (
+      (thenText hypos (
         mkS (mkCl exp (mkVP (mkVP (passiveVP define_V2)
-          <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s)))))) ; 
+          <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s))))) ; 
   WeDefineAdjJmt label hypos exp adj prop =
     labelText (label)
-      (thenText hypos (mkText (
+      (thenText hypos (
         mkS (mkCl we_NP (mkVP (mkVP (mkVP define_V2 exp)
-          <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s)))))) ; 
+          <lin Adv (mkSC (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s))))) ; 
 
   AdjKind adj kind = kind ** {cn = mkCN adj kind.cn} ;
   KindProp exp kind = simpleProp (mkS (mkCl exp kind.cn)) ;

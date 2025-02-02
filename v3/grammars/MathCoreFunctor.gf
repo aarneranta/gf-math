@@ -32,32 +32,33 @@ lincat
 
 lin
   AxiomJmt label hypos prop =
-    labelText (label)
-      (thenText hypos (mkText (topProp prop))) ;
+    labelText label
+      (thenText hypos (topProp prop)) ;
   ThmJmt label hypos prop proof =
-    labelText (label)
-      (thenText hypos (mkText (mkText (topProp prop))
-        (prefixText proof_Str proof))) ;
+    labelText label
+      (mkText
+        (thenText hypos (topProp prop))
+        (prefixText proof_Str proof)) ;
   DefPropJmt label hypos prop df =
-    labelText (label)
-      (thenText hypos (mkText (Grammar.SSubjS (partProp prop) if_Subj (partProp df)))) ;
+    labelText label
+      (thenText hypos (Grammar.SSubjS (partProp prop) if_Subj (partProp df))) ;
   DefKindJmt label hypos kind df =
-    labelText (label)
-      (thenText hypos (mkText
-        (mkS (mkCl (mkNP a_Det (useKind kind)) (mkNP a_Det (useKind df)))))) ;
+    labelText label
+      (thenText hypos 
+        (mkS (mkCl (mkNP a_Det (useKind kind)) (mkNP a_Det (useKind df))))) ;
   DefExpJmt label hypos exp kind df =
-    labelText (label)
-      (thenText hypos (mkText (mkS (mkCl exp (definedCN (useKind kind) df))))) ;
+    labelText label
+      (thenText hypos (mkS (mkCl exp (definedCN (useKind kind) df)))) ;
   AxiomPropJmt label hypos prop =
-    labelText (label)
-      (thenText hypos (mkText (mkS (mkCl we_NP can_VV (mkVP say_VS (topProp prop)))))) ;
+    labelText label
+      (thenText hypos (mkS (mkCl we_NP can_VV (mkVP say_VS (topProp prop))))) ;
   AxiomKindJmt label hypos kind =
-    labelText (label)
-      (thenText hypos (mkText
-        (mkS (mkCl (mkNP aPl_Det (useKind kind)) (mkNP a_Det basic_type_CN))))) ;
+    labelText label
+      (thenText hypos 
+        (mkS (mkCl (mkNP aPl_Det (useKind kind)) (mkNP a_Det basic_type_CN)))) ;
   AxiomExpJmt label hypos exp kind =
-    labelText (label)
-      (thenText hypos (mkText (mkS (mkCl exp (useKind kind))))) ;
+    labelText label
+      (thenText hypos (mkS (mkCl exp (useKind kind)))) ;
 
   RewriteJmt rules = prefixText by_cases_Str rules ;
   RewriteRule idents patt exp =
@@ -188,11 +189,11 @@ oper
     let period = if_then_Str label.isEmpty "" "." in
     lin Text {s = (mkUtt label.np).s ++ period ++ text.s} ;
 
-  thenText : {text : Text ; isEmpty : Bool} -> Text -> Text = \hypos, text ->
+  thenText : {text : Text ; isEmpty : Bool} -> S -> Text = \hypos, s ->
     case hypos.isEmpty of {
-      True => mkText hypos.text text ;
-      False => mkText hypos.text (lin Text {s = thenText_Adv.s ++ text.s})
-	     | mkText hypos.text text    ---- variants ??
+      True => mkText hypos.text (mkText (mkUtt s)) ;
+      False => mkText hypos.text (mkText (mkUtt (mkS thenText_Adv s)))
+	     | mkText hypos.text (mkText (mkUtt s))    ---- variants !!??
       } ;
 
   Proposition : Type = {s : S ; isComplex : Bool} ;

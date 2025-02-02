@@ -20,7 +20,7 @@ import qualified Dedukti2Lean as DL
 
 import PGF
 
-import Data.List (partition, isSuffixOf)
+import Data.List (partition, isSuffixOf, isPrefixOf)
 ----import System.Random
 import System.Environment (getArgs)
 import System.IO
@@ -35,31 +35,37 @@ helpMsg = unlines [
   "  .dkgf  create UserConstants files to map Dedukti identifiers",
   "  .txt   (or any other) parse as natural language, convert to Dedukti",
   "flags:",
-  "  -help     print this message",
-  "  -to-agda  convert to Agda (with <file>.dk as argument)",
-  "  -to-lean  convert to Lean (with <file>.dk as argument)",
-  "  -v        verbose output, e.g. syntax trees and intermediate results",
+  "  -help         print this message",
+  "  -to-agda      convert to Agda (with <file>.dk as argument)",
+  "  -to-lean      convert to Lean (with <file>.dk as argument)",
+  "  -lang=<lang>  natural language to be targeted; Eng (default), Swe, Fre,...",
+  "  -v            verbose output, e.g. syntax trees and intermediate results",
   "output is to stdout and can be redirected to a file to check with Dedukti or Agda."
   ]
 
-informathPGFFile = "grammars/Informath.pgf"
-Just english = readLanguage "InformathEng"
+informathPrefix = "Informath"
+informathPGFFile = "grammars/" ++ informathPrefix ++ ".pgf"
 Just jmt = readType "Jmt"
 
 data Env = Env {
  flags :: [String],
- cpgf :: PGF
+ cpgf :: PGF,
+ lang :: Language
  }
---- random generation disabled for the time being
 
 ifFlag x env = elem x (flags env)
 ifv env act = if (ifFlag "-v" env) then act else return ()
+
+flagValue flag dfault ff = case [f | f <- ff, isPrefixOf flag (tail f)] of
+  f:_ -> drop (length flag + 2) f   -- -<flag>=<value>
+  _ -> dfault
 
 main = do
   xx <- getArgs
   let (ff, yy) = partition ((== '-') . head) xx
   corepgf <- readPGF informathPGFFile
-  let env = Env{flags = ff, cpgf = corepgf} ---, rands = [], itr = 0}
+  let Just lan = readLanguage (informathPrefix ++ (flagValue "lang" "Eng" ff))
+  let env = Env{flags = ff, cpgf = corepgf, lang=lan}
   case yy of
     _ | ifFlag "-help" env -> do
       putStrLn helpMsg
@@ -86,21 +92,18 @@ main = do
             ss <- mapM (processInformathJmt env) (filter (not . null) (lines s))
             mapM_ putStrLn ss
     _ -> do
-----      g <- getStdGen
-      let rs = [] ---- generateRandomDepth g corepgf jmt (Just 4)
-      loop env rs 0 ---- storing rs in env causes an infinite loop
+      loop env
 
-loop :: Env -> [Expr] -> Int -> IO ()
-loop env rs i = do
+loop :: Env -> IO ()
+loop env = do
   putStr "> "
   hFlush stdout
   ss <- getLine
   case ss of
     '?':s -> processInformathJmt env s >>= putStrLn
-----    "gr"  -> processCoreJmtTree env (rs !! i) >> return ()
     '=':s -> roundtripDeduktiJmt env s >> return ()
     _     -> processDeduktiJmt env ss >> return ()
-  loop env rs (i + 1)
+  loop env
 
 processDeduktiModule :: Env -> String -> IO ()
 processDeduktiModule env s = do
@@ -123,7 +126,7 @@ roundtripDeduktiJmt env cs = do
       ifv env $ putStrLn $ "## Dedukti: " ++ show t
       let gft = gf $ jmt2jmt t
       ifv env $ putStrLn $ "## MathCore: " ++ showExpr [] gft
-      let lin = unlextex $ linearize gr english gft
+      let lin = unlextex $ linearize gr (lang env) gft
       putStrLn lin
       processCoreJmt env lin
 
@@ -134,7 +137,7 @@ processDeduktiJmtTree env t = do
   let ct = jmt2jmt t
   let gft = gf ct
   ifv env $ putStrLn $ "## MathCore: " ++ showExpr [] gft
-  ifv env $ putStrLn $ "# MathCoreEng: " ++ unlextex (linearize gr english gft)
+  ifv env $ putStrLn $ "# MathCoreEng: " ++ unlextex (linearize gr (lang env) gft)
   convertCoreToInformath env ct
 
 convertCoreToInformath :: Env -> GJmt -> IO ()
@@ -144,14 +147,14 @@ convertCoreToInformath env ct = do
   let gffts = map gf fts
   flip mapM_ gffts $ \gfft -> do
     ifv env $ putStrLn $ "## Informath: " ++ showExpr [] gfft
-    putStrLn $ unlextex $ linearize fgr english gfft
+    putStrLn $ unlextex $ linearize fgr (lang env) gfft
 
 processCoreJmt :: Env -> String -> IO ()
 processCoreJmt env s = do
   let gr = cpgf env
   let ls = lextex s
   ifv env $ putStrLn ls
-  let (mts, msg) = parseJmt gr english jmt ls
+  let (mts, msg) = parseJmt gr (lang env) jmt ls
   ifv env $ putStrLn msg
   case mts of
     Just ts@(_:_) -> do
@@ -163,12 +166,12 @@ processCoreJmtTree :: Env -> Expr -> IO ()
 processCoreJmtTree env t = do
   let gr = cpgf env
   ifv env $ putStrLn $ "## Informath: " ++ showExpr [] t
-  ifv env $ putStrLn $ "# InformathEng: " ++ unlextex (linearize gr english t)
+  ifv env $ putStrLn $ "# InformathEng: " ++ unlextex (linearize gr (lang env) t)
   let tr = fg t
   let str = semantics tr
   let st = gf str
   ifv env $ putStrLn $ "## MathCore: " ++ showExpr [] st
-  ifv env $ putStrLn $ "# MathCoreEng: " ++ unlextex (linearize gr english st)
+  ifv env $ putStrLn $ "# MathCoreEng: " ++ unlextex (linearize gr (lang env) st)
   let d = jmt2dedukti str
   putStrLn $ printTree d
 ---  convertCoreToInformath env str
@@ -178,7 +181,7 @@ processInformathJmt env s = do
   let gr = cpgf env
   let ls = lextex s
   ifv env $ putStrLn $ "# LEXED: " ++ ls
-  let (mts, msg) = parseJmt gr english jmt ls
+  let (mts, msg) = parseJmt gr (lang env) jmt ls
   ifv env $ putStrLn msg
   case mts of
     Just ts@(t:_) -> do
@@ -196,7 +199,7 @@ processInformathJmtTree env t = do
   let str = semantics tr
   let st = gf str
   ifv env $ putStrLn $ "## Core     : " ++ showExpr [] st
-  ifv env $ putStrLn $ unlextex (linearize gr english st)
+  ifv env $ putStrLn $ unlextex (linearize gr (lang env) st)
   let d = jmt2dedukti str
   let dt = printTree d
   ifv env $ putStrLn $ dt
