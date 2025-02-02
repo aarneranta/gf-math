@@ -24,6 +24,7 @@ oper
   case_N : N = mkN "case" ;
   contradiction_N : N = mkN "contradiction" ;
   then_Adv : Adv = ParadigmsEng.mkAdv "then" ;
+  thenText_Adv : Adv = ParadigmsEng.mkAdv "then" ;
   such_that_Subj : Subj = mkSubj "such that" ;
   applied_to_Prep : Prep = mkPrep "applied to" ;
   defined_as_Prep : Prep = mkPrep "defined as" ;
@@ -34,10 +35,6 @@ oper
   hold_V2 = mkV2 I.hold_V for_Prep ;
   arbitrary_A = mkA "arbitrary" ;
 
-  equal_A2 : A2 = mkA2 (mkA "equal") to_Prep ;
-  less_A2 : A2 = mkA2 (mkA "less") than_Prep ;
-  greater_A2 : A2 = mkA2 (mkA "greater") than_Prep ;
-  than_Prep : Prep = mkPrep "than" ;
   iff_Subj : Subj = mkSubj "if and only if" ;
 
   basic_concept_Str = "basic concept" ;
@@ -49,13 +46,7 @@ oper
 
   instance_N = mkN "instance" ;
   prove_VS = mkVS (mkV "prove") ;
-  number_N = mkN "number" ;
-  integer_CN = mkCN (mkN "integer") ;
-  
-  natural_number_CN = mkCN (mkA "natural") number_N ;
-  rational_number_CN = mkCN (mkA "rational") number_N ;
-  real_number_CN = mkCN (mkA "real") number_N ;
-  bare_element_CN = mkCN (mkA "bare") element_N ;
+
   as_Prep : Prep = mkPrep "as" ;
 
   let_Str = "let" ;

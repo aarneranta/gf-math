@@ -1,0 +1,15 @@
+concrete InformathSwe of Informath =
+  MathCoreSwe **
+  InformathFunctor - [postAdvS] with
+    (Syntax = SyntaxSwe),
+    (Symbolic = SymbolicSwe),
+    (Grammar = GrammarSwe)
+  ** open
+    Formal,
+    Prelude
+in {
+
+oper
+  postAdvS : S -> Adv -> S = \s, adv -> s ** {s = \\o => s.s ! o ++ adv.s} ;
+
+}

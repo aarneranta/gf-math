@@ -191,7 +191,7 @@ oper
   thenText : {text : Text ; isEmpty : Bool} -> Text -> Text = \hypos, text ->
     case hypos.isEmpty of {
       True => mkText hypos.text text ;
-      False => mkText hypos.text (lin Text {s = then_Adv.s ++ text.s})
+      False => mkText hypos.text (lin Text {s = thenText_Adv.s ++ text.s})
 	     | mkText hypos.text text    ---- variants ??
       } ;
 
