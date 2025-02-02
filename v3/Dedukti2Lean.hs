@@ -77,6 +77,8 @@ transExp t = case t of
     (EIdent c, [a, b]) | c == identDiv -> L.EDiv (transExp a) (transExp b)
     (EIdent c, [a, b]) | c == identPi -> case b of
       EAbs bind body -> L.EAll [transBind bind] (transExp a) (transExp body)
+    (EIdent c, [a, b]) | c == identSigma -> case b of
+      EAbs bind body -> L.EExist [transBind bind] (transExp a) (transExp body)
       _ -> L.EApp (transExp exp0) (transExp exp1)
     _ -> L.EApp (transExp exp0) (transExp exp1)
   EAbs bind exp -> L.EAbs [transBind bind] (transExp exp)

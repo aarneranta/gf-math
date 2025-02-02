@@ -16,6 +16,7 @@ import ParseInformath (parseJmt)
 import Lexing
 import MkConstants (mkConstants)
 import qualified Dedukti2Agda as DA
+import qualified Dedukti2Coq as DC
 import qualified Dedukti2Lean as DL
 
 import PGF
@@ -37,6 +38,7 @@ helpMsg = unlines [
   "flags:",
   "  -help         print this message",
   "  -to-agda      convert to Agda (with <file>.dk as argument)",
+  "  -to-coq       convert to Coq (with <file>.dk as argument)",
   "  -to-lean      convert to Lean (with <file>.dk as argument)",
   "  -lang=<lang>  natural language to be targeted; Eng (default), Swe, Fre,...",
   "  -v            verbose output, e.g. syntax trees and intermediate results",
@@ -70,27 +72,22 @@ main = do
     _ | ifFlag "-help" env -> do
       putStrLn helpMsg
     filename:_ | isSuffixOf ".dkgf" filename -> do
-      mkConstants filename
+      mkConstants (lang env) filename
     filename:_ | isSuffixOf ".dk" filename -> do
       s <- readFile filename
-      if ifFlag "-to-agda" env
-        then DA.processDeduktiModule s
-        else if ifFlag "-to-lean" env
-          then DL.processDeduktiModule s
-	  else processDeduktiModule env s
+      case s of
+        _ | ifFlag "-to-agda" env -> DA.processDeduktiModule s
+        _ | ifFlag "-to-coq" env -> DC.processDeduktiModule s
+        _ | ifFlag "-to-lean" env -> DL.processDeduktiModule s
+	_ -> processDeduktiModule env s
     filename:_  -> do
       s <- readFile filename
-      if ifFlag "-to-agda" env
-        then do
-          s <- mapM (processInformathJmt env) (filter (not . null) (lines s))
-          DA.processDeduktiModule (unlines s)
-        else if ifFlag "-to-lean" env
-          then do
-            s <- mapM (processInformathJmt env) (filter (not . null) (lines s))
-            DL.processDeduktiModule (unlines s)
-	  else do
-            ss <- mapM (processInformathJmt env) (filter (not . null) (lines s))
-            mapM_ putStrLn ss
+      ss <- mapM (processInformathJmt env) (filter (not . null) (lines s))
+      case s of
+        _ | ifFlag "-to-agda" env -> DA.processDeduktiModule (unlines ss)
+        _ | ifFlag "-to-coq" env -> DC.processDeduktiModule (unlines ss)
+        _ | ifFlag "-to-lean" env -> DL.processDeduktiModule (unlines ss)
+	_ -> mapM_ putStrLn ss
     _ -> do
       loop env
 

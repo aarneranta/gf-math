@@ -1,0 +1,49 @@
+-- very minimal Lean syntax for the generated Lean
+
+entrypoints Module, Jmt, Exp ;
+
+comment "(*" "*)" ;
+
+MJmts. Module ::= [Jmt] ;
+
+JReq.   Jmt ::= "Require" "Import" CIdent "." ;
+JDef.   Jmt ::= "Definition" CIdent [Hypo] ":" Exp ":=" Exp "." ;
+JAxiom. Jmt ::= "Axiom" CIdent ":" Exp "." ;
+JThm.   Jmt ::= "Theorem" CIdent [Hypo] ":" Exp "." "Proof" Exp "." ;
+JLemma. Jmt ::= "Lemma"  CIdent [Hypo] ":" Exp "." "Proof" Exp "." ;
+
+terminator Jmt "" ;
+
+EIdent.  Exp9 ::= CIdent ;
+EInt.    Exp9 ::= Integer ;
+EApp.    Exp7 ::= Exp7 Exp8 ;
+EPow.    Exp6 ::= Exp6 "^" Exp7 ;
+ETimes.  Exp6 ::= Exp6 "*" Exp7 ;
+EDiv.    Exp6 ::= Exp6 "/" Exp7 ;
+EPlus.   Exp5 ::= Exp5 "+" Exp6 ;
+EMinus.  Exp5 ::= Exp5 "-" Exp6 ;
+EEq.     Exp4 ::= Exp5 "=" Exp5 ;
+ELt.     Exp4 ::= Exp5 "<" Exp5 ;
+EGt.     Exp4 ::= Exp5 ">" Exp5 ;
+ENot.    Exp5 ::= "~" Exp6 ;
+EAnd.    Exp3 ::= Exp3 "/\\" Exp4 ;
+EOr.     Exp3 ::= Exp3 "\\/" Exp4 ;
+EAll.    Exp3 ::= "forall" [CIdent] ":" Exp6 "," Exp3 ;
+EExist.  Exp3 ::= "exists" [CIdent] ":" Exp6 "," Exp3 ;
+EIf.     Exp2 ::= Exp3 "->" Exp2 ; 
+EIff.    Exp2 ::= Exp3 "<->" Exp3 ; 
+EAbs.    Exp2 ::= "fun" [CIdent] "=>" Exp2 ; 
+EFunDep. Exp1 ::= Hypo "->" Exp1 ;
+
+coercions Exp 9 ;
+
+separator nonempty CIdent "" ;
+
+HVarExp. Hypo ::=  "(" [CIdent] ":" Exp ")" ;
+
+separator Hypo "" ;
+
+token CIdent (letter (letter | digit | '_' | '\'' | 'ℝ' | 'ℕ' | 'ℤ' | 'ℚ')*) ;
+
+-- Nat.gcd, Nat.factorial
+
