@@ -39,7 +39,7 @@ Informath: Let $a$ and $c$ be integers. Assume that both $a$ and $c$ are odd. Th
 
 Agda: postulate prop110 : (a : Int) -> (c : Int) -> and (odd a) (odd c) -> all Int (\ b -> even (plus (times a b) (times b c)))
 
-Coq: Axiom prop110 : (a : Int) -> (c : Int) -> odd a /\ odd c -> forall b : Int, even (a * b + b * c) .
+Coq: Axiom prop110 : forall a : Int, forall c : Int, (odd a /\ odd c -> forall b : Int, even (a * b + b * c)) .
 
 Lean: axiom prop110 (a c : Int) (x : odd a ∧ odd c) : ∀ b : Int, even (a * b + b * c)
 ```
