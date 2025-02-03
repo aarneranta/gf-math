@@ -82,7 +82,7 @@ Following Informath Version 2, we first investigated was to keep MathCore and "e
 
 ### The Informath language
 
-While being very much inspired by ForTheL, the Informath grammar differs from the original ForTheL in several ways:
+While being very much inspired by ForTheL and covering a similar fragment of English, the Informath grammar differs from the original ForTheL in several ways:
 
 - **Grammaticality**: Informath follows the agreement rules of English (and other languages) instead of allowing free variation of e.g. singular and plural forms; this makes it better usable as the target of informalization.
 - **Ambiguity**: ForTheL prevents syntactic ambiguities by means of devices such as brackets. Informath tries to capture all syntactic ambiguities that exist in natural language, and delegates it to the logical framework to resolve them by semantic clues. This is in line with the findings in [*The language of Mathematics*](https://link.springer.com/book/10.1007/978-3-642-37012-0) by Mohan Ganesalingam.
@@ -99,7 +99,7 @@ MathCore is a minimalistic grammar for mathematical English, with other language
 
 - **Completeness**: all Dedukti code can be translated to MathCore.
 - **Non-ambiguity**: all MathCore text has a unique parse tree and a unique translation to Dedukti.
-- **Losslessness**: Core is a lossless representation of Dedukti; that is, all Dedukti code translated to MathCore can be translated back to the same Dedukti code (module some differences yet to be specified).
+- **Losslessness**: Core is a lossless representation of Dedukti; that is, all Dedukti code translated to MathCore can be translated back to the same Dedukti code (modulo some differences yet to be specified).
 - **Traceability**: Dedukti code and MathCore text can be aligned part by part.
 - **Grammaticality**: MathCore text is grammatically correct natural language (with mathematical symbols and some mark-up to prevent ambiguity). 
 - **Naturalness**: MathCore supports natural expressions for mathematical concepts using nouns, adjectives, verbs, and other structures conventionally used in mathematical text.

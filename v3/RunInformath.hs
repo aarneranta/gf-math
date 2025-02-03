@@ -177,7 +177,7 @@ processInformathJmt :: Env -> String -> IO String
 processInformathJmt env s = do
   let gr = cpgf env
   let ls = lextex s
-  ifv env $ putStrLn $ "# LEXED: " ++ ls
+  ifv env $ putStrLn $ "## LEXED: " ++ ls
   let (mts, msg) = parseJmt gr (lang env) jmt ls
   ifv env $ putStrLn msg
   case mts of
@@ -185,7 +185,7 @@ processInformathJmt env s = do
       s:_ <- flip mapM ts $ processInformathJmtTree env
       return s
     _ -> do
-      ifv env $ putStrLn ("NO PARSE: " ++ ls)
+      ifv env $ putStrLn ("# NO PARSE: " ++ ls)
       return ""
 
 processInformathJmtTree :: Env -> Expr -> IO String

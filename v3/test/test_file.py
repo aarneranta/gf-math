@@ -45,14 +45,14 @@ def apply_index(termindex, s):
 
 
 def var_check(tree):
-    f, args = tree.unpack()
-    if f == 'stringVar':
-        x = args[0].unpack()
-        return len(x) == 1 and x.isalpha() and x not in "CRNZ"
-    if f in ['TNumber', 'StrIdent']:
-        return True
-    return all(var_check(arg) for arg in args)
-
+    fargs = tree.unpack()
+    if isinstance(fargs, tuple):
+        f, args = fargs
+        if f == 'StrIdent':
+            x = args[0].unpack()
+            return len(x) == 1 and x.isalpha() and x not in "CNQRZ"
+        return all(var_check(arg) for arg in args)
+    return True
 
 sent = 1
 fails = 0

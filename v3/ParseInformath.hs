@@ -56,7 +56,7 @@ doParse gr eng cat (success, failure) = do
 checkVariables :: Expr -> Bool
 checkVariables expr = case unApp expr of
   Just (f, [x]) | showCId f == "StrIdent" -> case showExpr [] x of
-    [_,c,_] | isAlpha c -> True
+    [_,c,_] | isAlpha c -> notElem c "CNQRZ"
     _ -> False
   Just (_, args) -> all checkVariables args
   _ -> True
