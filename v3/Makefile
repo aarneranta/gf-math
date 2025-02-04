@@ -1,4 +1,4 @@
-all: Informath.pgf Dedukti Agda Lean RunInformath
+all: Informath.pgf Dedukti Agda Coq Lean RunInformath
 
 .PHONY: all Informath.pgf Dedukti Agda Lean Coq RunInformath demo
 

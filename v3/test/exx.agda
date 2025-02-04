@@ -30,3 +30,9 @@ same_parity : Int -> Int -> Prop
 
 same_parity = \ x -> \ y -> or (and (even x) (even y)) (and (odd x) (odd y))
 
+postulate prop140 : (x : Int) -> (y : Int) -> iff (same_parity x y) (even (plus x y))
+
+postulate prop150 : (n : Nat) -> even (minus (pow n 3) n)
+
+postulate prop160 : (a : Int) -> (b : Int) -> if (same_parity (plus a b) (times a b)) (and (even a) (even b))
+

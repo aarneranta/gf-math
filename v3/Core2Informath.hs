@@ -39,7 +39,9 @@ getTerm t = case t of
   GOperListExp oper (GAddExps x (GOneExps y)) -> do
     tx <- getTerm x
     ty <- getTerm y
-    return (GAppOperTerm oper tx ty)
+    case oper of
+      LexOper "times_Oper" -> return (GTTimes tx ty)
+      _ -> return (GAppOperTerm oper tx ty)
   GTermExp term -> return term
   _ -> Nothing
 

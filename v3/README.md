@@ -32,19 +32,22 @@ The structure of the project is shown in the following picture:
 Here is an example statement involving all of the currently available languages. The Dedukti statement has been used as the source of all the other formats. Both MathCore and Informath could also be used as source, by parsing them and converting to Dedukti.
 ```
 Dedukti: prop110 : (a : Elem Int) -> (c : Elem Int) -> Proof (and (odd a) (odd c)) -> Proof (forall Int (b => even (plus (times a b) (times b c)))).
+```
+
 
 MathCoreEng: Prop110. Let $a$ and $c$ be instances of integers. Assume that we can prove that $a$ is odd and $c$ is odd. Then we can prove that for all integers $b$, the sum of the product of $a$ and $b$ and the product of $b$ and $c$ is even.
 
-InformathEng: Let $a$ and $c$ be integers. Assume that both $a$ and $c$ are odd. Then for all integers $b$, $a \times b + b \times c$ is even.
+InformathEng: Let $a$ and $c$ be integers. Assume that both $a$ and $c$ are odd. Then for all integers $b$, $a b + b c$ is even.
 
 MathCoreFre: Prop110. Soient $a$ et $c$ des instances d'entiers. Supposons que nous pouvons démontrer que $a$ est impair et $c$ est impair. Alors nous pouvons démontrer que pour tous les entiers $b$, la somme du produit de $a$ et de $b$ et du produit de $b$ et de $c$ est paire.
 
-InformathFre: Prop110. Soient $a$ et $c$ des entiers. Supposons qu'et $a$ et $c$ sont impairs. Alors pour tous les entiers $b$, $a \times b + b \times c$ est pair.
+InformathFre: Prop110. Soient $a$ et $c$ des entiers. Supposons qu'et $a$ et $c$ sont impairs. Alors pour tous les entiers $b$, $a b + b c$ est pair.
 
 MathCoreSwe: Prop110. Låt $a$ och $c$ vara instanser av heltal. Anta att vi kan bevisa att $a$ är udda och $c$ är udda. Då kan vi bevisa att för alla heltal $b$, är summan av produkten av $a$ och $b$ och produkten av $b$ och $c$ jämn.
 
-InformathSwe: Prop110. Låt $a$ och $c$ vara heltal. Anta att både $a$ och $c$ är udda. Då för alla heltal $b$, är $a \times b + b \times c$ jämnt.
+InformathSwe: Prop110. Låt $a$ och $c$ vara heltal. Anta att både $a$ och $c$ är udda. Då för alla heltal $b$, är $a b + b c$ jämnt.
 
+```
 Agda: postulate prop110 : (a : Int) -> (c : Int) -> and (odd a) (odd c) -> all Int (\ b -> even (plus (times a b) (times b c)))
 
 Coq: Axiom prop110 : forall a : Int, forall c : Int, (odd a /\ odd c -> forall b : Int, even (a * b + b * c)) .
