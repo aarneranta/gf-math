@@ -218,7 +218,12 @@ exp2exp exp = case exp of
       _ -> GAppExp (exp2exp fun) (gExps (map exp2exp args))
   EAbs _ _ -> case splitAbs exp of
     (binds, body) -> GAbsExp (GListIdent (map bind2coreIdent binds)) (exp2exp body)
+  EFun _ _ -> 
+    case splitType exp of
+      (hypos, valexp) ->
+        GKindExp (GFunKind (GListArgKind (map hypo2coreArgKind hypos)) (exp2kind valexp))
   _ -> error ("not yet exp2exp: " ++ printTree exp)
+
 
 exp2proof :: Exp -> GProof
 exp2proof exp = case exp of

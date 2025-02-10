@@ -30,6 +30,7 @@ oper
 
   define_V2 : V2 = mkV2 (mkV "définir") ;
   assume_VS : VS = mkVS (mkV "supposer") ;
+  type_CN : CN = mkCN (mkN "type" masculine) ;
   element_N : N = mkN "élément" ;
   case_N : N = mkN "cas" ;
   contradiction_N : N = mkN "contradiction" ;

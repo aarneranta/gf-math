@@ -21,6 +21,7 @@ oper
   define_V2 : V2 = mkV2 (mkV "define") ;
   assume_VS : VS = mkVS (mkV "assume") ;
   element_N : N = mkN "element" ;
+  type_CN : CN = mkCN (mkN "type") ;
   case_N : N = mkN "case" ;
   contradiction_N : N = mkN "contradiction" ;
   then_Adv : Adv = ParadigmsEng.mkAdv "then" ;

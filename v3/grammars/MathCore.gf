@@ -49,6 +49,7 @@ fun
   AppExp : Exp -> Exps -> Exp ;
   AbsExp : [Ident] -> Exp -> Exp ;
   TermExp : Term -> Exp ;
+  KindExp : Kind -> Exp ;
   TypedExp : Exp -> Kind -> Exp ;
 
   AndProp : [Prop] -> Prop ;
