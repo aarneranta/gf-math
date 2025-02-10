@@ -219,12 +219,19 @@ exp2exp exp = case exp of
 
 exp2proof :: Exp -> GProof
 exp2proof exp = case exp of
-  EIdent ident -> GAppProof (GListProof []) (ident2exp ident)
+  EIdent ident -> GAppProof (GLabelProofExp (ident2label ident)) (GListProof []) 
   EApp _ _ -> case splitApp exp of
     (fun, args) ->
-      GAppProof (GListProof (map exp2proof args)) (exp2exp fun)
+      GAppProof (exp2proofExp fun) (GListProof (map exp2proof args))
   EAbs _ _ -> case splitAbs exp of
     (binds, body) -> GAbsProof (GListHypo (map bind2coreHypo binds)) (exp2proof body)
+
+exp2proofExp :: Exp -> GProofExp
+exp2proofExp exp = case exp of
+  EIdent ident -> GLabelProofExp (ident2label ident)
+  EApp _ _ -> case splitApp exp of
+    (fun, args) ->
+      GAppProofExp (exp2proofExp fun) (gExps (map exp2exp args))
 
 patt2exp :: Patt -> GExp
 patt2exp patt = case patt of

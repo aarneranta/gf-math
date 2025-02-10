@@ -26,6 +26,7 @@ lincat
   [Ident] = {np : NP ; isPl : Bool} ;
   Proof = Text ;
   [Proof] = Text ;
+  ProofExp = NP ;
   Rule = Utt ;
   [Rule] = Text ;
   Coercion = {from, to : CN} ;  -- the <from> <Exp> as <to>
@@ -118,12 +119,15 @@ lin
   theoremLabel = mkLabel theorem_Str ;
   axiomLabel = mkLabel axiom_Str ;
 
-  AppProof proofs exp =
+  AppProof exp proofs =
     mkText proofs
       (mkText (mkUtt (Syntax.mkAdv by_Prep exp))) ;
       
   AbsProof hypos proof =
     mkText hypos.text proof ;
+
+  AppProofExp proofexp exps =
+    mkNP proofexp (Syntax.mkAdv applied_to_Prep exps.np) ;
 
   BaseIdent ident =
     {np = latexNP (mkSymb ident) ; isPl = False} ;
@@ -162,7 +166,7 @@ lin
   SetKind set = {cn = set.cn ; adv = lin Adv {s = []}} ;
   NameExp name = name ;
   FunListExp f exps = mkNP the_Det (mkCN f.cn (Syntax.mkAdv f.prep exps.np)) ;
-  LabelExp label = label.np ;
+  LabelProofExp label = label.np ;
   ConstExp const = const.np ;
   OperListExp op exps = mkNP the_Det (mkCN op.f.cn (Syntax.mkAdv op.f.prep exps.np)) ;
 

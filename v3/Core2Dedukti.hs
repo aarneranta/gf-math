@@ -157,8 +157,14 @@ exp2deduktiPatt exp = case exp of
 
 proof2dedukti :: GProof -> Exp
 proof2dedukti proof = case proof of
-  GAppProof (GListProof proofs) exp ->
-    foldl1 EApp (exp2dedukti exp : map proof2dedukti proofs)
+  GAppProof proofexp (GListProof proofs) ->
+    foldl1 EApp (proofexp2exp proofexp : map proof2dedukti proofs)
+----  GAbsProof hypos proof ->
+----  GLabelProofExp label -> 
+
+proofexp2exp :: GProofExp -> Exp
+proofexp2exp proofexp = case proofexp of
+  GLabelProofExp label -> EIdent (label2ident label)
 
 ident2ident :: GIdent -> QIdent
 ident2ident ident = case ident of

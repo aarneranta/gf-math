@@ -19,6 +19,7 @@ cat
   [Ident] {1} ;
   Proof ;
   [Proof] {0} ;
+  ProofExp ;
   Rule ;
   [Rule] {1} ;
   Coercion ;
@@ -73,8 +74,10 @@ fun
   theoremLabel : Label ;
   definitionLabel : Label ;
 
-  AppProof : [Proof] -> Exp -> Proof ;
+  AppProof : ProofExp -> [Proof] ->  Proof ;
   AbsProof : [Hypo] -> Proof -> Proof ;
+
+  AppProofExp : ProofExp -> Exps -> ProofExp ;
 
   OneExps : Exp -> Exps ;
   AddExps : Exp -> Exps -> Exps ;
@@ -88,7 +91,7 @@ fun
   SetKind : Set -> Kind ;
   NameExp : Name -> Exp ;
   FunListExp : Fun -> Exps -> Exp ;
-  LabelExp : Label -> Exp ;
+  LabelProofExp : Label -> ProofExp ;
   ConstExp : Const -> Exp ;
   OperListExp : Oper -> Exps -> Exp ; -- binary operation applied collectively
   ComparAdj : Compar -> Exp -> Adj ;
