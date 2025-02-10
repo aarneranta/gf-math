@@ -36,6 +36,8 @@ fun
   AxiomKindJmt : Label -> [Hypo] -> Kind -> Jmt ;
   AxiomExpJmt  : Label -> [Hypo] -> Exp -> Kind -> Jmt ;
 
+  DefUntypedExpJmt  : Label -> Exp -> Exp -> Jmt ;
+
   RewriteJmt : [Rule] -> Jmt ;
   RewriteRule : [Ident] -> Exp -> Exp -> Rule ; ---- generalize to [] and x:A
   NoVarRewriteRule : Exp -> Exp -> Rule ;

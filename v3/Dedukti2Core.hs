@@ -13,6 +13,8 @@ import Data.Char
 
 jmt2jmt :: Jmt -> GJmt
 jmt2jmt jmt = case jmt of
+  JDef ident MTNone (MEExp exp) ->
+    GDefUntypedExpJmt (LexLabel "definitionLabel") (ident2exp ident) (exp2exp exp)
   JDef ident (MTExp typ) meexp ->
     let mexp = case meexp of
           MEExp exp -> Just exp
@@ -216,6 +218,7 @@ exp2exp exp = case exp of
       _ -> GAppExp (exp2exp fun) (gExps (map exp2exp args))
   EAbs _ _ -> case splitAbs exp of
     (binds, body) -> GAbsExp (GListIdent (map bind2coreIdent binds)) (exp2exp body)
+  _ -> error ("not yet exp2exp: " ++ printTree exp)
 
 exp2proof :: Exp -> GProof
 exp2proof exp = case exp of

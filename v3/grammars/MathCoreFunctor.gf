@@ -61,6 +61,10 @@ lin
     labelText label
       (thenText hypos (mkS (mkCl exp (useKind kind)))) ;
 
+  DefUntypedExpJmt label exp df =
+    labelText label
+      (mkText (mkS (mkCl exp (definedAdv df)))) ;
+
   RewriteJmt rules = prefixText by_cases_Str rules ;
   RewriteRule idents patt exp =
     mkUtt (Grammar.ExtAdvS (Syntax.mkAdv for_Prep idents.np) (mkS (mkCl patt exp))) ;
@@ -220,6 +224,9 @@ oper
 
   definedCN : CN -> NP -> CN = \cn, np ->
     mkCN cn (Syntax.mkAdv defined_as_Prep np) ;
+    
+  definedAdv : NP -> Adv = \df ->
+    Syntax.mkAdv defined_as_Prep df ;
 
   useKind : {cn : CN ; adv : Adv} -> CN = \kind -> mkCN kind.cn kind.adv ;
 

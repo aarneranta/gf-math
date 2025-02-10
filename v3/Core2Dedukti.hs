@@ -49,6 +49,11 @@ jmt2dedukti jment = case jment of
       (exp2ident exp)
       (foldr EFun (kind2dedukti kind) (concatMap hypo2dedukti hypos))
   GRewriteJmt (GListRule rules) -> JRules (map rule2dedukti rules)
+  GDefUntypedExpJmt label_ exp df ->
+    JDef
+      (exp2ident exp)
+      MTNone
+      (MEExp (exp2dedukti df))
 
 rule2dedukti :: GRule -> Rule
 rule2dedukti rule = case rule of
