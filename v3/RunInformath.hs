@@ -140,7 +140,7 @@ processDeduktiJmtTree env t = do
 convertCoreToInformath :: Env -> GJmt -> IO ()
 convertCoreToInformath env ct = do
   let fgr = cpgf env
-  let fts = nlg ct
+  let fts = nlg (flags env) ct
   let gffts = map gf fts
   flip mapM_ gffts $ \gfft -> do
     ifv env $ putStrLn $ "## Informath: " ++ showExpr [] gfft

@@ -5,8 +5,14 @@ module Core2Informath where
 
 import Informath
 
-nlg :: Tree a -> [Tree a]
-nlg t = [viaft] --- [t, ft, aft, iaft, viaft]
+import Data.List (nub)
+
+type Opts = [String]
+
+nlg :: Opts -> Tree a -> [Tree a]
+nlg opts t = case opts of
+   _ | elem "-variations" opts -> nub $ concatMap variations [t, ft, aft, iaft, viaft]
+   _ -> [viaft]
  where
    ut = uncoerce t
    ft = formalize ut
@@ -109,6 +115,21 @@ getOrProps props = case props of
     qss <- getOrProps qs
     return (prop : qss)
   _ -> return []
+
+
+variations :: Tree a -> [Tree a]
+variations tree = case tree of
+  GAxiomJmt label (GListHypo hypos) prop -> 
+    let splits = [splitAt i hypos | i <- [0..length hypos]]
+    in [GAxiomJmt label (GListHypo hypos1) (hypoProp hypos2 prop) | (hypos1, hypos2) <- splits]
+  _ -> [tree]
+
+hypoProp :: [GHypo] -> GProp -> GProp
+hypoProp hypos prop = case hypos of
+  GPropHypo p : hs -> GIfProp p (hypoProp hs prop)
+  GVarsHypo xs k : hs -> GAllProp (GListArgKind [GIdentsArgKind k xs]) (hypoProp hs prop)
+  _ -> prop
+
 
 ---- a very simple special case of in situ so far
 insitu :: Tree a -> Tree a
