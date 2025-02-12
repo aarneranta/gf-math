@@ -11,7 +11,7 @@ type Opts = [String]
 
 nlg :: Opts -> Tree a -> [Tree a]
 nlg opts t = case opts of
-   _ | elem "-variations" opts -> nub $ concatMap variations [t, ft, aft, iaft, viaft]
+   _ | elem "-variations" opts -> nub $ concatMap variations [t, ut, ft, aft, iaft, viaft]
    _ -> [viaft]
  where
    ut = uncoerce t
@@ -122,7 +122,7 @@ variations tree = case tree of
   GAxiomJmt label (GListHypo hypos) prop -> 
     let splits = [splitAt i hypos | i <- [0..length hypos]]
     in [GAxiomJmt label (GListHypo hypos1) (hypoProp hypos2 prop) | (hypos1, hypos2) <- splits]
-  _ -> [tree]
+  _ -> composOpM variations tree
 
 hypoProp :: [GHypo] -> GProp -> GProp
 hypoProp hypos prop = case hypos of
