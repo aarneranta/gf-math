@@ -16,6 +16,12 @@ fun
   ComparEqsign : Compar -> Eqsign ;
   AppOperTerm : Oper -> Term -> Term -> Term ;
 
+-- to remove parentheses around complex propositions
+  SimpleAndProp : [Prop] -> Prop ;
+  SimpleOrProp : [Prop] -> Prop ;
+  SimpleIfProp : Prop -> Prop -> Prop ;
+  SimpleIffProp : Prop -> Prop -> Prop ;
+
   AndAdj : [Adj] -> Adj ;
   OrAdj : [Adj] -> Adj ;
 

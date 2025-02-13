@@ -21,6 +21,11 @@ lin
   ComparEqsign compar = compar.op ;
   AppOperTerm op x y = infixl op.p op.op x y ** {isNumber = False} ;
 
+  SimpleAndProp props = simpleProp (mkS and_Conj props) ;
+  SimpleOrProp props = simpleProp (mkS or_Conj props) ;
+  SimpleIfProp A B = simpleProp (Grammar.ExtAdvS (Syntax.mkAdv if_Subj (partProp A)) (mkS then_Adv (partProp B))) ;
+  SimpleIffProp A B = simpleProp (Grammar.SSubjS (partProp A) iff_Subj (partProp B)) ;
+
   AndAdj adjs = mkAP both7and_DConj adjs ;
   OrAdj adjs = mkAP or_Conj adjs ;
 

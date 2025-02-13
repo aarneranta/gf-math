@@ -10,15 +10,24 @@ import Data.List (nub)
 type Opts = [String]
 
 nlg :: Opts -> Tree a -> [Tree a]
-nlg opts t = case opts of
+nlg opts tree = case opts of
    _ | elem "-variations" opts -> nub $ concatMap variations [t, ut, ft, aft, iaft, viaft]
    _ -> [viaft]
  where
+   t = unparenth tree
    ut = uncoerce t
    ft = formalize ut
    aft = aggregate (flatten ft)
    iaft = insitu aft
    viaft = varless iaft
+
+unparenth :: Tree a -> Tree a
+unparenth t = case t of
+  GAndProp (GListProp props) -> GSimpleAndProp (GListProp (map unparenth props))
+  GOrProp (GListProp props) -> GSimpleOrProp (GListProp (map unparenth props))
+  GIfProp a b -> GSimpleIfProp (unparenth a) (unparenth b)
+  GIffProp a b -> GSimpleIffProp (unparenth a) (unparenth b)
+  _ -> composOp unparenth t
 
 uncoerce :: Tree a -> Tree a
 uncoerce t = case t of
@@ -56,16 +65,16 @@ aggregate t = case t of
   GNotProp prop -> case aggregate prop of
     GAdjProp adj x -> GNotAdjProp adj x
     aprop -> GNotProp aprop
-  GAndProp (GListProp pp@(GAdjProp a x : props)) -> case getAdjs props x of
+  GSimpleAndProp (GListProp pp@(GAdjProp a x : props)) -> case getAdjs props x of
     Just adjs -> GAdjProp (GAndAdj (GListAdj (a:adjs))) x
     _ -> case getAdjArgs props a of
       Just exps -> GAdjProp a (GAndExp (GListExp (x:exps)))
-      _ -> GAndProp (GListProp (map aggregate pp))
-  GOrProp (GListProp pp@(GAdjProp a x : props)) -> case getAdjs props x of
+      _ -> GSimpleAndProp (GListProp (map aggregate pp))
+  GSimpleOrProp (GListProp pp@(GAdjProp a x : props)) -> case getAdjs props x of
     Just adjs -> GAdjProp (GOrAdj (GListAdj (a:adjs))) x
     _ -> case getAdjArgs props a of
       Just exps -> GAdjProp a (GOrExp (GListExp (x:exps)))
-      _ -> GOrProp (GListProp (map aggregate pp))
+      _ -> GSimpleOrProp (GListProp (map aggregate pp))
   _ -> composOp aggregate t
 
 getAdjs :: [GProp] -> GExp -> Maybe [GAdj]
@@ -86,17 +95,17 @@ getAdjArgs props a = case props of
 
 flatten :: Tree a -> Tree a
 flatten t = case t of
-  GAndProp (GListProp props) -> case getAndProps props of
-    Just ps -> GAndProp (GListProp ps)
-    _ -> GAndProp (GListProp (map flatten props))
-  GOrProp (GListProp props) -> case getOrProps props of
-    Just ps -> GOrProp (GListProp ps)
-    _ -> GOrProp (GListProp (map flatten props))
+  GSimpleAndProp (GListProp props) -> case getAndProps props of
+    Just ps -> GSimpleAndProp (GListProp ps)
+    _ -> GSimpleAndProp (GListProp (map flatten props))
+  GSimpleOrProp (GListProp props) -> case getOrProps props of
+    Just ps -> GSimpleOrProp (GListProp ps)
+    _ -> GSimpleOrProp (GListProp (map flatten props))
   _ -> composOp flatten t
 
 getAndProps :: [GProp] -> Maybe [GProp]
 getAndProps props = case props of
-  GAndProp (GListProp ps):qs -> do
+  GSimpleAndProp (GListProp ps):qs -> do
     pss <- getAndProps ps
     qss <- getAndProps qs
     return (pss ++ qss)
@@ -107,7 +116,7 @@ getAndProps props = case props of
 
 getOrProps :: [GProp] -> Maybe [GProp]
 getOrProps props = case props of
-  GOrProp (GListProp ps):qs -> do
+  GSimpleOrProp (GListProp ps):qs -> do
     pss <- getOrProps ps
     qss <- getOrProps qs
     return (pss ++ qss)
@@ -126,7 +135,7 @@ variations tree = case tree of
 
 hypoProp :: [GHypo] -> GProp -> GProp
 hypoProp hypos prop = case hypos of
-  GPropHypo p : hs -> GIfProp p (hypoProp hs prop)
+  GPropHypo p : hs -> GSimpleIfProp p (hypoProp hs prop)
   GVarsHypo xs k : hs -> GAllProp (GListArgKind [GIdentsArgKind k xs]) (hypoProp hs prop)
   _ -> prop
 

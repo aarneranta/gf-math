@@ -9,7 +9,7 @@ data SEnv = SEnv {varlist :: [String]}
 initSEnv = SEnv {varlist = []}
 
 semantics :: Tree a -> Tree a
-semantics = addCoercions . sem initSEnv
+semantics = addCoercions . addParenth . sem initSEnv
 
 addCoercions :: Tree a -> Tree a
 addCoercions t = case t of
@@ -35,7 +35,14 @@ addCoercions t = case t of
      GProofProp _ -> prop
      _ -> GProofProp prop
 
-
+addParenth :: Tree a -> Tree a
+addParenth t = case t of
+  GSimpleAndProp (GListProp props) -> GAndProp (GListProp (map addParenth props))
+  GSimpleOrProp (GListProp props) -> GOrProp (GListProp (map addParenth props))
+  GSimpleIfProp a b -> GIfProp (addParenth a) (addParenth b)
+  GSimpleIffProp a b -> GIffProp (addParenth a) (addParenth b)
+  _ -> composOp addParenth t
+  
 sem :: SEnv -> Tree a -> Tree a
 sem env t = case t of
   GAdjProp (GAndAdj (GListAdj adjs)) x ->

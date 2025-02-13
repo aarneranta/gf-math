@@ -55,6 +55,8 @@ doParse gr eng cat (success, failure) = do
 
 checkVariables :: Expr -> Bool
 checkVariables expr = case unApp expr of
+  -- eliminate parenthesis versions only used in MathCore, to prevent spurious ambiguity
+  Just (f, _) | elem (showCId f) ["AndProp", "OrProp", "IfProp", "IffProp"] -> False
   Just (f, [x]) | showCId f == "StrIdent" -> case showExpr [] x of
     [_,c,_] | isAlpha c -> notElem c "CNQRZ"
     _ -> False
