@@ -45,6 +45,37 @@ addParenth t = case t of
   
 sem :: SEnv -> Tree a -> Tree a
 sem env t = case t of
+{-
+  GAxiomJmt label (GListHypo hypos) prop@(SimpleIfProp _ _) ->
+    let (hs, p) = ifs2hypos hypos prop
+    in GAxiomJmt label (GListHypo (map (sem env) (hypos ++ hs))) (sem env p)
+-}
+
+  GTextbfTerm term -> sem env term
+
+  GLetFormulaHypo formula -> case (sem env formula) of
+    GFElem (GListTerm terms) (GSetTerm set) ->
+      GVarsHypo (GListIdent [x | GTIdent x <- terms]) (GSetKind set) ---- TODO: check that all terms are idents
+
+    _ -> GPropHypo (sem env (GFormulaProp (sem env formula)))
+
+  GSimpleIfProp (GKindProp (GTermExp (GTIdent x)) kind) prop ->
+    sem env (GAllProp (GListArgKind [GIdentsArgKind kind (GListIdent [x])]) prop)
+
+  GAllProp argkinds prop -> case argkinds of
+    GListArgKind [GIdentsArgKind (GAdjKind adj kind) vars@(GListIdent [x])] ->
+      GAllProp
+        (GListArgKind [GIdentsArgKind kind vars])
+        (GSimpleIfProp (sem env (GAdjProp adj (GTermExp (GTIdent x)))) (sem env prop))
+    akinds -> GAllProp akinds (sem env prop)
+    
+  GKindProp exp (GAdjKind adj kind_) ->
+    sem env (GAdjProp adj exp) --- ignoring kind, if not in hypothesis position
+
+  GAdjKind adj kind ->
+    let (var, nenv) = newVar env
+    in GSuchThatKind var (sem nenv kind) (sem nenv (GAdjProp adj (GTermExp (GTIdent var))))
+
   GAdjProp (GAndAdj (GListAdj adjs)) x ->
     let sx = sem env x
     in GAndProp (GListProp [GAdjProp adj sx | adj <- adjs])
@@ -59,9 +90,6 @@ sem env t = case t of
     in GOrProp (GListProp [GAdjProp sa exp | exp <- exps])
   GNotAdjProp adj exp -> GNotProp (sem env (GAdjProp adj exp))
 
-  GLetFormulaHypo formula ->
-    GPropHypo (sem env (GFormulaProp (sem env formula)))
-
   GFormulaProp (GFEquation equation) -> case equation of
     GEBinary (GComparEqsign compar) term1 term2 ->
       GAdjProp (GComparAdj compar (sem env (GTermExp term2))) (sem env (GTermExp term1))
@@ -71,9 +99,24 @@ sem env t = case t of
   GTermExp (GAppOperTerm oper x y) ->
     GOperListExp oper (GAddExps (sem env (GTermExp x)) (GOneExps (sem env (GTermExp y))))
   GTermExp (GTTimes x y) -> sem env (GTermExp (GAppOperTerm (LexOper "times_Oper") x y))
----  GTExp x y -> sem env (GAppOperTerm (LexOper "pow_Oper") x y)
+  GTermExp (GTExp x y) -> sem env (GTermExp (GAppOperTerm (LexOper "pow_Oper") x y))
 ---  GTFrac x y -> sem env (GAppOperTerm (LexOper "div_Oper") x y)
   GTParenth term -> sem env term
       
   _ -> composOp (sem env) t
+
+{-
+ifs2hypos :: [GHypo] -> GProp -> ([GHypo], GProp)
+ifs2hypos hs prop = case prop of
+  GSimpleIfProp p q -> 
+-}
+
+
+hypoVars :: GHypo -> [GIdent]
+hypoVars hypo = case hypo of
+  GVarsHypo (GListIdent idents) _ -> idents
+  _ -> []
+
+newVar :: SEnv -> (GIdent, SEnv)
+newVar env = (GStrIdent (GString "h_"), env) ---- TODO fresh variables
 

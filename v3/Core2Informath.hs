@@ -130,7 +130,10 @@ variations :: Tree a -> [Tree a]
 variations tree = case tree of
   GAxiomJmt label (GListHypo hypos) prop -> 
     let splits = [splitAt i hypos | i <- [0..length hypos]]
-    in [GAxiomJmt label (GListHypo hypos1) (hypoProp hypos2 prop) | (hypos1, hypos2) <- splits]
+    in [GAxiomJmt label (GListHypo hypos11) (hypoProp hypos2 prop) |
+          (hypos1, hypos2) <- splits, hypos11 <- sequence (map variations hypos1)]
+  GVarsHypo (GListIdent xs) (GSetKind set) ->
+    [tree, GLetFormulaHypo (GFElem (GListTerm [GTIdent x | x <- xs]) (GSetTerm set))]
   _ -> composOpM variations tree
 
 hypoProp :: [GHypo] -> GProp -> GProp
