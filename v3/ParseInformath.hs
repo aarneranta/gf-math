@@ -5,7 +5,8 @@ import Data.Char(isAlpha)
 import qualified Data.Map
 
 main_pgf = "grammars/Informath.pgf"
-max_number = 9999 -- number of trees considered with checkVariables
+max_number = 19999 -- number of trees considered with checkVariables
+max_number_taken = 3 -- number of trees considered for semantics
 
 -- quick stand-alone test: runghc ParseInformath.hs <test/gflean-data.txt
 
@@ -18,7 +19,7 @@ parseJmt gr eng cat s =
          let trees = [t | t <- take max_number ps, checkVariables t]
          in
 	 if not (null trees)
-            then (Just trees, "# SUCCESS " ++ show (length trees))
+            then (Just (take max_number_taken trees), "# SUCCESS " ++ show (length trees))
             else (Just [], "# FAILURE VARCHECK")
     ParseFailed pos -> 
          (Nothing, "# FAILURE AT " ++ show pos)

@@ -62,6 +62,16 @@ sem env t = case t of
   GSimpleIfProp (GKindProp (GTermExp (GTIdent x)) kind) prop ->
     sem env (GAllProp (GListArgKind [GIdentsArgKind kind (GListIdent [x])]) prop)
 
+  GPostQuantProp prop exp -> case exp of
+    GEveryIdentKindExp ident kind ->
+      sem env (GAllProp (GListArgKind [GIdentsArgKind kind (GListIdent [ident])]) prop)
+    GIndefIdentKindExp ident kind ->
+      sem env (GExistProp (GListArgKind [GIdentsArgKind kind (GListIdent [ident])]) prop)
+    GSomeArgKindExp argkind ->
+      sem env (GExistProp (GListArgKind [argkind]) prop)
+    GAllArgKindExp argkind ->
+      sem env (GAllProp (GListArgKind [argkind]) prop)
+
   GAllProp argkinds prop -> case argkinds of
     GListArgKind [GIdentsArgKind (GAdjKind adj kind) vars@(GListIdent [x])] ->
       GAllProp
@@ -90,11 +100,13 @@ sem env t = case t of
     in GOrProp (GListProp [GAdjProp sa exp | exp <- exps])
   GNotAdjProp adj exp -> GNotProp (sem env (GAdjProp adj exp))
 
-  GFormulaProp (GFEquation equation) -> case equation of
-    GEBinary (GComparEqsign compar) term1 term2 ->
-      GAdjProp (GComparAdj compar (sem env (GTermExp term2))) (sem env (GTermExp term1))
-    _ -> composOp (sem env) t
+  GFormulaProp (GFEquation (GEBinary (GComparEqsign compar) term1 term2)) ->
+    GAdjProp (GComparAdj compar (sem env (GTermExp term2))) (sem env (GTermExp term1))
 
+  GFormulaProp (GFEquation equation@(GEChain _ _ _)) -> case chainedEquations equation of
+    triples -> GAndProp (GListProp
+      [sem env (GFormulaProp (GFEquation (GEBinary eqsign x y))) | (eqsign, x, y) <- triples])
+    
   GTermExp (GConstTerm const) -> GConstExp const
   GTermExp (GAppOperTerm oper x y) ->
     GOperListExp oper (GAddExps (sem env (GTermExp x)) (GOneExps (sem env (GTermExp y))))
@@ -104,6 +116,14 @@ sem env t = case t of
   GTParenth term -> sem env term
       
   _ -> composOp (sem env) t
+
+chainedEquations :: GEquation -> [(GEqsign, GTerm, GTerm)]
+chainedEquations equation = case equation of
+  GEChain eqsign term equ ->
+    let triples@((_, x, _):_) = chainedEquations equ
+    in (eqsign, term, x) : triples
+  GEBinary eqsign term1 term2 ->
+    [(eqsign, term1, term2)]
 
 {-
 ifs2hypos :: [GHypo] -> GProp -> ([GHypo], GProp)

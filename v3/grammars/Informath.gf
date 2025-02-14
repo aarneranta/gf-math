@@ -30,6 +30,7 @@ fun
 
   EveryKindExp : Kind -> Exp ;
   AllArgKindExp : ArgKind -> Exp ;
+  EveryIdentKindExp : Ident -> Kind -> Exp ;
 
 -- for Pathak's examples
 
@@ -46,6 +47,5 @@ fun
   PostQuantProp : Prop -> Exp -> Prop ;
   IndefKindExp : Kind -> Exp ;
   IndefIdentKindExp : Ident -> Kind -> Exp ;
-  EveryIdentKindExp : Ident -> Kind -> Exp ;
 
 }

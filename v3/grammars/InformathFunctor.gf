@@ -29,10 +29,11 @@ lin
   AndAdj adjs = mkAP both7and_DConj adjs ;
   OrAdj adjs = mkAP or_Conj adjs ;
 
-  AndExp exps = mkNP both7and_DConj exps ;
+  AndExp exps = mkNP both7and_DConj exps | mkNP and_Conj exps ;
   OrExp exps = mkNP or_Conj exps ;
 
-  EveryKindExp kind = mkNP every_Det (mkCN kind.cn kind.adv) ;
+  EveryKindExp kind =
+    mkNP every_Det (mkCN kind.cn kind.adv) | mkNP all_Predet (mkNP aPl_Det (mkCN kind.cn kind.adv)) ;
   AllArgKindExp kind = mkNP all_Predet (mkNP aPl_Det (mkCN kind.cn kind.adv)) ;
 
   BaseAdj a b = mkListAP a b ;
