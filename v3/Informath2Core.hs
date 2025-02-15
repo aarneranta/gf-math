@@ -9,7 +9,7 @@ data SEnv = SEnv {varlist :: [String]}
 initSEnv = SEnv {varlist = []}
 
 semantics :: Tree a -> Tree a
-semantics = addCoercions . addParenth . sem initSEnv
+semantics = addCoercions . addParenth . sem initSEnv . removeFonts
 
 addCoercions :: Tree a -> Tree a
 addCoercions t = case t of
@@ -35,6 +35,11 @@ addCoercions t = case t of
      GProofProp _ -> prop
      _ -> GProofProp prop
 
+removeFonts :: Tree a -> Tree a
+removeFonts t = case t of
+  GTextbfTerm term -> removeFonts term
+  _ -> composOp removeFonts t
+
 addParenth :: Tree a -> Tree a
 addParenth t = case t of
   GSimpleAndProp (GListProp props) -> GAndProp (GListProp (map addParenth props))
@@ -45,13 +50,6 @@ addParenth t = case t of
   
 sem :: SEnv -> Tree a -> Tree a
 sem env t = case t of
-{-
-  GAxiomJmt label (GListHypo hypos) prop@(SimpleIfProp _ _) ->
-    let (hs, p) = ifs2hypos hypos prop
-    in GAxiomJmt label (GListHypo (map (sem env) (hypos ++ hs))) (sem env p)
--}
-
-  GTextbfTerm term -> sem env term
 
   GLetFormulaHypo formula -> case (sem env formula) of
     GFElem (GListTerm terms) (GSetTerm set) ->
@@ -59,6 +57,11 @@ sem env t = case t of
 
     _ -> GPropHypo (sem env (GFormulaProp (sem env formula)))
 
+  GSimpleIfProp cond@(GFormulaProp (GFElem (GListTerm terms) (GSetTerm set))) prop ->
+    case getJustVarsFromTerms env terms of
+      Just xs -> sem env (GAllProp (GListArgKind [GIdentsArgKind (GSetKind set) (GListIdent xs)]) prop)
+      _ ->  GSimpleIfProp (sem env cond) (sem env prop)
+      
   GSimpleIfProp cond@(GKindProp exp kind) prop -> case getJustVars env exp of
     Just xs -> sem env (GAllProp (GListArgKind [GIdentsArgKind kind (GListIdent xs)]) prop)
     _ -> GSimpleIfProp (sem env cond) (sem env prop)
@@ -117,9 +120,12 @@ sem env t = case t of
   GTermExp (GConstTerm const) -> GConstExp const
   GTermExp (GAppOperTerm oper x y) ->
     GOperListExp oper (GAddExps (sem env (GTermExp x)) (GOneExps (sem env (GTermExp y))))
+  GTermExp (GAppOperOneTerm oper x) ->
+    GOperListExp oper (GOneExps (sem env (GTermExp x)))
   GTermExp (GTTimes x y) -> sem env (GTermExp (GAppOperTerm (LexOper "times_Oper") x y))
   GTermExp (GTExp x y) -> sem env (GTermExp (GAppOperTerm (LexOper "pow_Oper") x y))
----  GTFrac x y -> sem env (GAppOperTerm (LexOper "div_Oper") x y)
+  GTermExp (GTFrac x y) -> sem env (GTermExp (GAppOperTerm (LexOper "div_Oper") x y))
+  GTermExp (GTNeg x) ->  sem env (GTermExp (GAppOperOneTerm (LexOper "neg_Oper") x))
   GTParenth term -> sem env term
       
   _ -> composOp (sem env) t
@@ -154,6 +160,14 @@ getJustVars env exp = case exp of
   GAndExp (GListExp exps) -> do
     xss <- mapM (getJustVars env) exps
     return (concat xss)
+  _ -> Nothing
+
+getJustVarsFromTerms :: SEnv -> [GTerm] -> Maybe [GIdent]
+getJustVarsFromTerms env terms = case terms of
+  GTIdent x : ts ->  do
+    xs <- getJustVarsFromTerms env ts
+    return (x : xs)
+  [] -> return []
   _ -> Nothing
 
 mkAndProp :: [GProp] -> GProp

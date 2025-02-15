@@ -60,6 +60,7 @@ lin
   times_Oper = mkOper "produkt" "\\times" <2 : Prec> ;
   div_Oper = mkOper "division" "\\div" <2 : Prec> ; ---
   pow_Oper = mkOper "potens" "^" <2 : Prec> ; ---
+  neg_Oper = mkOper "negation" "\\negated" ; --- to be avoided in parsing
 
   factorial_Fun = mkFun "fakultet" ;
   gcd_Fun = mkFun "störst" "gemensam" "delare" ;

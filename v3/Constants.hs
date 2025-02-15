@@ -35,6 +35,7 @@ constants = [
   ("times", "Oper", "times_Oper"), 
   ("div", "Oper", "div_Oper"), 
   ("pow", "Oper", "pow_Oper"), 
+  ("neg", "Oper", "neg_Oper"), 
   ("factorial", "Fun", "factorial_Fun"), 
   ("gcd", "Fun", "gcd_Fun"), 
   ("even", "Adj", "even_Adj"), 

@@ -51,6 +51,11 @@ formalize t = case t of
 getTerm :: GExp -> Maybe GTerm
 getTerm t = case t of
   GConstExp const -> return (GConstTerm const)
+  GOperListExp oper (GOneExps x) -> do
+    tx <- getTerm x
+    case oper of
+      LexOper "neg_Oper" -> return (GTNeg tx)
+      _ -> return (GAppOperOneTerm oper tx)
   GOperListExp oper (GAddExps x (GOneExps y)) -> do
     tx <- getTerm x
     ty <- getTerm y

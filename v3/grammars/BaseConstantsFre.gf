@@ -61,6 +61,7 @@ lin
   times_Oper = mkOper "produit" "\\times" <2 : Prec> ;
   div_Oper = mkOper "division" "\\div" <2 : Prec> ; ---
   pow_Oper = mkOper "puissance" "^" <2 : Prec> ; ---
+  neg_Oper = mkOper "négation" "\\negated" ;
 
   factorial_Fun = mkFun "factorielle" ;
   gcd_Fun = mkFun "plus grand" "commun" "diviseur" ; ---- should be in this order

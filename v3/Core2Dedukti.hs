@@ -138,6 +138,8 @@ exp2dedukti exp = case exp of
     EIdent (QIdent (lookBack name))
   GConstExp (LexConst name) ->
     EIdent (QIdent (lookBack name))
+  GOperListExp (LexOper oper) (GOneExps x) ->
+    EApp (EIdent (QIdent (lookBack oper))) (exp2dedukti x)
   GOperListExp (LexOper oper) (GAddExps x (GOneExps y)) ->
     EApp (EApp (EIdent (QIdent (lookBack oper))) (exp2dedukti x)) (exp2dedukti y)
   GKindExp kind -> kind2dedukti kind

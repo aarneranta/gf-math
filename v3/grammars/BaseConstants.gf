@@ -51,6 +51,7 @@ fun
   times_Oper : Oper ;
   div_Oper : Oper ;
   pow_Oper : Oper ;
+  neg_Oper : Oper ;
 
   factorial_Fun : Fun ;
   gcd_Fun : Fun ;

@@ -15,6 +15,7 @@ fun
   ConstTerm : Const -> Term ;
   ComparEqsign : Compar -> Eqsign ;
   AppOperTerm : Oper -> Term -> Term -> Term ;
+  AppOperOneTerm : Oper -> Term -> Term ;
 
 -- to remove parentheses around complex propositions
   SimpleAndProp : [Prop] -> Prop ;

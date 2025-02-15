@@ -61,6 +61,7 @@ minus : Elem Real -> Elem Real -> Elem Real.
 times : Elem Real -> Elem Real -> Elem Real.
 div : Elem Real -> Elem Real -> Elem Real.
 pow : Elem Real -> Elem Real -> Elem Real.
+neg : Elem Real -> Elem Real.
 
 gcd : Elem Int -> Elem Int -> Elem Int.
 factorial : Elem Nat -> Elem Nat.

@@ -60,6 +60,8 @@ typeType = EIdent (QIdent "Type")
 
 --- needed for typing conclusions of proofs
 expTyped x t = EApp (EApp (EIdent (QIdent "typed")) x) t
+expNegated x = EApp (EIdent (QIdent "neg")) x
+
 
 
 -- constants in lexicon

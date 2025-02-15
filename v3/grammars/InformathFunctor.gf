@@ -20,6 +20,7 @@ lin
   ConstTerm const = constant const.c ** {isNumber = False} ;
   ComparEqsign compar = compar.op ;
   AppOperTerm op x y = infixl op.p op.op x y ** {isNumber = False} ;
+  AppOperOneTerm op x = prefix op.p op.op x ** {isNumber = False} ;
 
   SimpleAndProp props = simpleProp (mkS and_Conj props) ;
   SimpleOrProp props = simpleProp (mkS or_Conj props) ;
