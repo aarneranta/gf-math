@@ -74,18 +74,14 @@ prop2dedukti prop = case prop of
   GIffProp a b -> propEquiv (prop2dedukti a) (prop2dedukti b)
   GAllProp (GListArgKind argkinds) prop ->
     foldr
-      (\ (exp, vars) y ->
-        propPi exp
-          (foldr (\x z -> EAbs (BVar x) z) y vars))
+      (\ (exp, var) y -> propPi exp (EAbs (BVar var) y))
         (prop2dedukti prop)
-        (map argkind2dedukti argkinds)
+        (concatMap argkind2dedukti argkinds)
   GExistProp (GListArgKind argkinds) prop ->
     foldr
-      (\ (exp, vars) y ->
-        propSigma exp
-          (foldr (\x z -> EAbs (BVar x) z) y vars))
+      (\ (exp, var) y -> propSigma exp (EAbs (BVar var) y))
         (prop2dedukti prop)
-        (map argkind2dedukti argkinds)
+        (concatMap argkind2dedukti argkinds)
   GAppProp ident exps ->
     foldl1 EApp ((EIdent (ident2ident ident)) : map exp2dedukti (exps2list exps))
   GAdjProp (GRelAdj (LexRel rel) b) a ->
@@ -103,10 +99,11 @@ hypo2dedukti hypo = case hypo of
   GPropHypo prop ->
     [HExp (prop2dedukti prop)]
 
-argkind2dedukti :: GArgKind -> (Exp, [Var])
+argkind2dedukti :: GArgKind -> [(Exp, Var)]
 argkind2dedukti argkind = case argkind of
   GIdentsArgKind kind (GListIdent idents) ->
-    (kind2dedukti kind, map ident2var idents)
+    let dkind = kind2dedukti kind
+    in [(dkind, ident2var ident) | ident <- idents]
 
 kind2dedukti :: GKind -> Exp
 kind2dedukti kind = case kind of

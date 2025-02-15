@@ -13,7 +13,7 @@ semantics = addCoercions . addParenth . sem initSEnv
 
 addCoercions :: Tree a -> Tree a
 addCoercions t = case t of
-  GAxiomJmt label hypos prop -> GAxiomJmt label hypos (proofProp prop)
+  GAxiomJmt label hypos prop -> GAxiomJmt label (addCoercions hypos) (proofProp prop)
   {-
   AxiomPropJmt : Label -> ListHypo -> Prop -> Jmt ;
   DefPropJmt : Label -> ListHypo -> Prop -> Prop -> Jmt ;
@@ -59,8 +59,13 @@ sem env t = case t of
 
     _ -> GPropHypo (sem env (GFormulaProp (sem env formula)))
 
-  GSimpleIfProp (GKindProp (GTermExp (GTIdent x)) kind) prop ->
-    sem env (GAllProp (GListArgKind [GIdentsArgKind kind (GListIdent [x])]) prop)
+  GSimpleIfProp cond@(GKindProp exp kind) prop -> case getJustVars env exp of
+    Just xs -> sem env (GAllProp (GListArgKind [GIdentsArgKind kind (GListIdent xs)]) prop)
+    _ -> GSimpleIfProp (sem env cond) (sem env prop)
+    
+  GSimpleIfProp cond prop -> case getAndProps cond of
+    Just props -> sem env (foldr (\a b -> GSimpleIfProp a b) prop props)
+    _ -> GSimpleIfProp (sem env cond) (sem env prop)
 
   GPostQuantProp prop exp -> case exp of
     GEveryIdentKindExp ident kind ->
@@ -73,10 +78,12 @@ sem env t = case t of
       sem env (GAllProp (GListArgKind [argkind]) prop)
 
   GAllProp argkinds prop -> case argkinds of
-    GListArgKind [GIdentsArgKind (GAdjKind adj kind) vars@(GListIdent [x])] ->
+    GListArgKind [GIdentsArgKind (GAdjKind adj kind) vars@(GListIdent xs)] ->
       GAllProp
         (GListArgKind [GIdentsArgKind kind vars])
-        (GSimpleIfProp (sem env (GAdjProp adj (GTermExp (GTIdent x)))) (sem env prop))
+        (GSimpleIfProp
+	  (sem env (mkAndProp [GAdjProp adj (GTermExp (GTIdent x)) | x <- xs]))
+	  (sem env prop))
     akinds -> GAllProp akinds (sem env prop)
     
   GKindProp exp (GAdjKind adj kind_) ->
@@ -139,4 +146,25 @@ hypoVars hypo = case hypo of
 
 newVar :: SEnv -> (GIdent, SEnv)
 newVar env = (GStrIdent (GString "h_"), env) ---- TODO fresh variables
+
+-- identify exp lists that are just variable lists, possibly bindings
+getJustVars :: SEnv -> GExp -> Maybe [GIdent]
+getJustVars env exp = case exp of
+  GTermExp (GTIdent x) -> Just [x]
+  GAndExp (GListExp exps) -> do
+    xss <- mapM (getJustVars env) exps
+    return (concat xss)
+  _ -> Nothing
+
+mkAndProp :: [GProp] -> GProp
+mkAndProp props = case props of
+  [prop] -> prop
+  _ -> GSimpleAndProp (GListProp props)
+
+
+getAndProps :: GProp -> Maybe [GProp]
+getAndProps prop = case prop of
+  GSimpleAndProp (GListProp props) -> Just props
+  _ -> Nothing
+
 

@@ -82,7 +82,8 @@ main = do
 	_ -> processDeduktiModule env s
     filename:_  -> do
       s <- readFile filename
-      ss <- mapM (processInformathJmt env) (filter (not . null) (lines s))
+      ss0 <- mapM (processInformathJmt env) (filter (not . null) (lines s))
+      let ss = renameLabels ss0 -- quick hack to rename labels
       case s of
         _ | ifFlag "-to-agda" env -> DA.processDeduktiModule (unlines ss)
         _ | ifFlag "-to-coq" env -> DC.processDeduktiModule (unlines ss)
@@ -202,5 +203,10 @@ processInformathJmtTree env t = do
   ifv env $ putStrLn $ dt
   return dt
 
+renameLabels :: [String] -> [String]
+renameLabels ss = [rename i s | (i, s) <- zip [1..] ss] where
+  rename i s = case words s of
+    "noLabel":ws -> unwords (("noLabel" ++ "_" ++ show i):ws)
+    _ -> s
 
 
