@@ -56,9 +56,9 @@ lin
   negative_Adj = mkAdj "negativ" ;
 
   plus_Oper = mkOper "summa" "+" <1 : Prec> ;
-  minus_Oper = mkOper "skillnad" "-" <1 : Prec> ; 
+  minus_Oper = mkOper (mkN "skillnad" "skillnader") (mkPrep "mellan") "-" <1 : Prec> ; 
   times_Oper = mkOper "produkt" "\\times" <2 : Prec> ;
-  div_Oper = mkOper "division" "\\div" <2 : Prec> ; ---
+  div_Oper = mkOper "kvot" "\\div" <2 : Prec> ; ---
   pow_Oper = mkOper "potens" "^" <2 : Prec> ; ---
   neg_Oper = mkOper "negation" "\\negated" ; --- to be avoided in parsing
 
@@ -110,9 +110,11 @@ oper
       = \s -> {cn = mkCN (mkN s) ; prep = possess_Prep} ;
     mkFun : N -> FunctionT
       = \n -> {cn = mkCN n ; prep = possess_Prep} ;
+    mkFun : N -> Prep -> FunctionT
+      = \n, p -> {cn = mkCN n ; prep = p} ;
     mkFun : (a, n : Str) -> FunctionT
       = \a, n -> {cn = mkCN (mkA a) (mkN n) ; prep = possess_Prep} ;
-    mkFun2 : (a, b, n : Str) -> FunctionT
+    mkFun : (a, b, n : Str) -> FunctionT
       = \a, b, n -> {cn = mkCN (mkA a) (mkCN (mkA b) (mkN n)) ; prep = possess_Prep} ;
     } ;
     
@@ -146,6 +148,10 @@ oper
   mkOper = overload {
     mkOper : N -> Str -> OperatorT
       = \w, c -> {f = mkFun w ; op = c ; p = 0} ; -- lowest Prec
+    mkOper : N -> Prep -> Str -> OperatorT
+      = \w, prep, c -> {f = mkFun w prep ; op = c ; p = 0} ; -- lowest Prec
+    mkOper : N -> Prep -> Str -> Prec -> OperatorT
+      = \w, prep, c, p -> {f = mkFun w prep ; op = c ; p = p} ; -- lowest Prec
     mkOper : Str -> Str -> OperatorT
       = \w, c -> {f = mkFun w ; op = c ; p = 0} ; -- lowest Prec
     mkOper : Str -> Str -> Prec -> OperatorT

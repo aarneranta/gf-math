@@ -59,7 +59,7 @@ lin
   plus_Oper = mkOper "somme" "+" <1 : Prec> ;
   minus_Oper = mkOper "différence" "-" <1 : Prec> ; 
   times_Oper = mkOper "produit" "\\times" <2 : Prec> ;
-  div_Oper = mkOper "division" "\\div" <2 : Prec> ; ---
+  div_Oper = mkOper "quotient" "\\div" <2 : Prec> ; ---
   pow_Oper = mkOper "puissance" "^" <2 : Prec> ; ---
   neg_Oper = mkOper "négation" "\\negated" ;
 
@@ -74,7 +74,7 @@ lin
   function_Oper = mkOper "fonction" "\\rightarrow" ; ---
   union_Oper = mkOper "union" "\\cup" ;
   intersection_Oper = mkOper "intersection" "\\cap" ;
-  difference_Oper = mkOper "différence" "\\setminus" ;
+  difference_Oper = mkOper (mkN "différence") (mkPrep "entre") "\\setminus" ;
   powerset_Oper = mkOper "puissance" "\\wp" ; ----
 
 oper
@@ -111,11 +111,13 @@ oper
       = \s -> {cn = mkCN (mkN s) ; prep = possess_Prep} ;
     mkFun : N -> FunctionT
       = \n -> {cn = mkCN n ; prep = possess_Prep} ;
+    mkFun : N -> Prep -> FunctionT
+      = \n, p -> {cn = mkCN n ; prep = p} ;
     mkFun : N -> Str -> FunctionT
       = \n, s -> {cn = mkCN (mkCN n) (P.mkAdv s) ; prep = possess_Prep} ;
     mkFun : (a, n : Str) -> FunctionT
       = \a, n -> {cn = mkCN (mkA a) (mkN n) ; prep = possess_Prep} ;
-    mkFun2 : (a, b, n : Str) -> FunctionT
+    mkFun : (a, b, n : Str) -> FunctionT
       = \a, b, n -> {cn = mkCN (mkA a) (mkCN (mkA b) (mkN n)) ; prep = possess_Prep} ;
     } ;
     
@@ -151,6 +153,10 @@ oper
   mkOper = overload {
     mkOper : N -> Str -> OperatorT
       = \w, c -> {f = mkFun w ; op = c ; p = 0} ; -- lowest Prec
+    mkOper : N -> Prep -> Str -> OperatorT
+      = \w, prep, c -> {f = mkFun w prep ; op = c ; p = 0} ; -- lowest Prec
+    mkOper : N -> Prep -> Str -> Prec -> OperatorT
+      = \w, prep, c, p -> {f = mkFun w prep ; op = c ; p = p} ; -- lowest Prec
     mkOper : Str -> Str -> OperatorT
       = \w, c -> {f = mkFun w ; op = c ; p = 0} ; -- lowest Prec
     mkOper : Str -> Str -> Prec -> OperatorT
