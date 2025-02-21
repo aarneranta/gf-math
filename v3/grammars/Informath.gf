@@ -33,6 +33,10 @@ fun
   AllArgKindExp : ArgKind -> Exp ;
   EveryIdentKindExp : Ident -> Kind -> Exp ;
 
+-- for indexed parsing (terms in $...$ stored in a dictionary)
+
+  IndexedTerm : Int -> Term ;
+
 -- for Pathak's examples
 
   LetFormulaHypo : Formula -> Hypo ;
