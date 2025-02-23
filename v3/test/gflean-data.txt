@@ -88,7 +88,7 @@ let $ x , y \in \textbf { Z } $ . then $ x $ and $ y $ are of the same parity if
 
 let $ a $ and $ b $ be integers . then $ a b $ is even if and only if $ a $ is even or $ b $ is even .
 
-let $ \mathcal { P } = \{ A , B , C \} $ be a partition of the set \textbf{Z} of integers , where $ $ a = \{ n : n = 2a \text { where $ a $ is an odd integer } \} $ $ $ $ b = \{ n : n = 2 b \text { where $ b $ is an even integer } \} $ $ $ $ c = \{ n : n \text { is an odd integer } \} . $ $ if $ x $ and $ y $ are integers belonging to distinct elements of $ \mathcal { P } $ , then $ x + y \in A \cup C $ .
+let $ \mathcal { P } = \{ A , B , C \} $ be a partition of the set \textbf{Z} of integers , where $$ a = \{ n : n = 2a \text { where $ a $ is an odd integer } \} $$ , $$ b = \{ n : n = 2 b \text { where $ b $ is an even integer } \} $$ , $$ c = \{ n : n \text { is an odd integer } \} . $$ if $ x $ and $ y $ are integers belonging to distinct elements of $ \mathcal { P } $ , then $ x + y \in A \cup C $ .
 
 if $ n \in \textbf { Z } $ , then $ n ^ { 2 } - 3 n + 9 $ is odd .
 

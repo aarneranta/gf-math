@@ -52,7 +52,8 @@ Just jmt = readType "Jmt"
 data Env = Env {
  flags :: [String],
  cpgf :: PGF,
- lang :: Language
+ lang :: Language,
+ termindex :: [String] -- list of terms replaced by \INDEXEDTERM{ i }
  }
 
 ifFlag x env = elem x (flags env)
@@ -67,7 +68,7 @@ main = do
   let (ff, yy) = partition ((== '-') . head) xx
   corepgf <- readPGF informathPGFFile
   let Just lan = readLanguage (informathPrefix ++ (flagValue "lang" "Eng" ff))
-  let env = Env{flags = ff, cpgf = corepgf, lang=lan}
+  let env = Env{flags = ff, cpgf = corepgf, lang=lan, termindex = []}
   case yy of
     _ | ifFlag "-help" env -> do
       putStrLn helpMsg
@@ -179,19 +180,24 @@ processInformathJmt env s = do
   let gr = cpgf env
   let ls = lextex s
   ifv env $ putStrLn $ "## LEXED: " ++ ls
-  let (mts, msg) = parseJmt gr (lang env) jmt ls
+  let (ils, tindex) = indexTex ls
+  ifv env $ putStrLn $ "## INDEXED: " ++ ils ++ show tindex
+  let (mts, msg) = parseJmt gr (lang env) jmt ils
   ifv env $ putStrLn msg
   case mts of
     Just ts@(t:_) -> do
-      s:_ <- flip mapM ts $ processInformathJmtTree env
+      let env1 = env{termindex = tindex}
+      s:_ <- flip mapM ts $ processInformathJmtTree env1
       return s
     _ -> do
-      ifv env $ putStrLn ("# NO PARSE: " ++ ls)
+      ifv env $ putStrLn ("# NO PARSE: " ++ ils)
       return ""
 
 processInformathJmtTree :: Env -> Expr -> IO String
-processInformathJmtTree env t = do
+processInformathJmtTree env t0 = do
   let gr = cpgf env
+  ifv env $ putStrLn $ "## Informath: " ++ showExpr [] t0
+  let t = unindexJmt env t0
   ifv env $ putStrLn $ "## Informath: " ++ showExpr [] t
   let tr = fg t
   let str = semantics tr
@@ -210,3 +216,28 @@ renameLabels ss = [rename i s | (i, s) <- zip [1..] ss] where
     _ -> s
 
 
+unindexJmt :: Env -> Expr -> Expr
+unindexJmt env expr = maybe expr id (unind  expr) where
+  unind expr = case unApp expr of
+    Just (f, [x]) -> case unInt x of
+      Just i -> case showCId f of
+        "IndexedTermExp" -> parsed "Exp" (look i)
+        "IndexedFormulaProp" -> parsed "Prop" (look i)
+        "IndexedLetFormulaHypo" -> do
+	   formula <- parsed "Formula" (filter (/='$') (look i))
+	   return $ mkApp (mkCId "LetFormulaHypo") [formula]
+      _ -> do
+        ux <- unind x
+        return $ mkApp f [ux]
+    Just (f, xs) -> do
+       uxs <- mapM unind xs
+       return $ mkApp f uxs
+
+
+  look i = termindex env !! i
+  parsed c s = do
+    cat <- readType c
+    let (mts, msg) = parseJmt (cpgf env) (lang env) cat s
+    case mts of
+      Just (t:ts) -> return t ---- todo: ambiguity if ts
+      _ -> Nothing

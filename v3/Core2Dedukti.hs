@@ -89,7 +89,8 @@ prop2dedukti prop = case prop of
   GAdjProp (GComparAdj (LexCompar rel) b) a ->
     foldl EApp (EIdent (QIdent (lookBack rel))) (map exp2dedukti [a, b])
   GAdjProp (LexAdj adj) exp ->
-    EApp (EIdent (QIdent (lookBack adj))) (exp2dedukti exp) 
+    EApp (EIdent (QIdent (lookBack adj))) (exp2dedukti exp)
+  GIndexedFormulaProp (GInt i) -> EIdent (unresolvedIndexIdent i)
   _ -> eUndefined ---- TODO complete Informath2Core
 
 hypo2dedukti :: GHypo -> [Hypo]
@@ -98,6 +99,8 @@ hypo2dedukti hypo = case hypo of
     [HVarExp (VIdent (ident2ident ident)) (kind2dedukti kind) | ident <- idents]
   GPropHypo prop ->
     [HExp (prop2dedukti prop)]
+  GIndexedLetFormulaHypo (GInt i) ->
+    [HExp (EIdent (unresolvedIndexIdent i))]
 
 argkind2dedukti :: GArgKind -> [(Exp, Var)]
 argkind2dedukti argkind = case argkind of
@@ -143,6 +146,7 @@ exp2dedukti exp = case exp of
   GOperListExp (LexOper oper) (GAddExps x (GOneExps y)) ->
     EApp (EApp (EIdent (QIdent (lookBack oper))) (exp2dedukti x)) (exp2dedukti y)
   GKindExp kind -> kind2dedukti kind
+  GIndexedTermExp (GInt i) -> EIdent (unresolvedIndexIdent i)
   _ -> eUndefined ---- TODO
 
 exp2deduktiPatt :: GExp -> Patt
@@ -221,3 +225,5 @@ int2exp = cc . show
       d:ds -> EApp (EApp (EIdent (QIdent nn)) (EIdent (QIdent [d]))) (cc ds)
 
       
+unresolvedIndexIdent :: Int -> QIdent
+unresolvedIndexIdent i = QIdent ("UNRESOLVED_INDEX_" ++ show i)

@@ -43,11 +43,13 @@ lin
   BaseExp a b = mkListNP a b ;
   ConsExp a bs = mkListNP a bs ;
 
-  IndexedTerm i = tconstant ("\\INDEXEDTERM{" ++ i. s ++ "}") ;
+  IndexedTermExp i = symb (mkSymb ("\\INDEXEDTERM{" ++ i.s ++ "}")) ;
+  IndexedFormulaProp i = simpleProp (symb (mkSymb ("\\INDEXEDTERM{" ++ i.s ++ "}"))) ;
 
 -- Pathak's
 
   LetFormulaHypo formula = lin Utt {s = let_Str ++ "$" ++ top formula ++ "$"} ;
+  IndexedLetFormulaHypo i = lin Utt {s = let_Str ++ "\\INDEXEDTERM{" ++ i.s ++ "}"} ;
 
   DefinedAdjJmt label hypos exp adj prop =
     labelText (label)

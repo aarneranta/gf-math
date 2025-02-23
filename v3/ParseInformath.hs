@@ -26,6 +26,32 @@ parseJmt gr eng cat s =
     ParseIncomplete -> 
          (Nothing, "# FAILURE INCOMPLETE")
 
+
+-- quick hack to get the effect of a callback: check that variables consist of one letter
+-- and that numbers don't overshadow Dedukti digits
+
+checkVariables :: Expr -> Bool
+checkVariables expr = case unApp expr of
+  -- eliminate parenthesis versions only used in MathCore, to prevent spurious ambiguity
+  Just (f, _) | elem (showCId f) ["AndProp", "OrProp", "IfProp", "IffProp"] -> False
+  Just (f, [x]) | showCId f == "StrIdent" -> case showExpr [] x of
+    [_,c,_] | isAlpha c -> notElem c "CNQRZ"
+    _ -> False
+  Just (_, args) -> all checkVariables args
+  _ -> True
+
+
+{-
+variableCallback :: (AbsName,[(Cat,LiteralCallback)])
+variableCallBack = ("Informath", [("Var", pvar)])
+
+-- = PGF -> (ConcName,Concr) -> String -> String -> Int -> Maybe (Expr,Float,Int)
+
+pvar :: LiteralCallback
+pvar pgf (lang, concr) sentence lin_idx offset = undefined ---- TODO: recognize variables
+-}
+
+{-
 -- a quick way to test e.g. on a file with jments line by line
 
 main = do
@@ -50,27 +76,4 @@ doParse gr eng cat (success, failure) = do
           doParse gr eng cat (success, failure + 1)
     else
       doParse gr eng cat (success, failure)
-
--- quick hack to get the effect of a callback: check that variables consist of one letter
--- and that numbers don't overshadow Dedukti digits
-
-checkVariables :: Expr -> Bool
-checkVariables expr = case unApp expr of
-  -- eliminate parenthesis versions only used in MathCore, to prevent spurious ambiguity
-  Just (f, _) | elem (showCId f) ["AndProp", "OrProp", "IfProp", "IffProp"] -> False
-  Just (f, [x]) | showCId f == "StrIdent" -> case showExpr [] x of
-    [_,c,_] | isAlpha c -> notElem c "CNQRZ"
-    _ -> False
-  Just (_, args) -> all checkVariables args
-  _ -> True
-
-
-{-
-variableCallback :: (AbsName,[(Cat,LiteralCallback)])
-variableCallBack = ("Informath", [("Var", pvar)])
-
--- = PGF -> (ConcName,Concr) -> String -> String -> Int -> Maybe (Expr,Float,Int)
-
-pvar :: LiteralCallback
-pvar pgf (lang, concr) sentence lin_idx offset = undefined ---- TODO: recognize variables
 -}

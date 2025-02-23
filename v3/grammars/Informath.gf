@@ -35,7 +35,9 @@ fun
 
 -- for indexed parsing (terms in $...$ stored in a dictionary)
 
-  IndexedTerm : Int -> Term ;
+  IndexedTermExp : Int -> Exp ;
+  IndexedFormulaProp : Int -> Prop ;
+  IndexedLetFormulaHypo : Int -> Hypo ;
 
 -- for Pathak's examples
 

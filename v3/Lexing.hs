@@ -1,4 +1,4 @@
-module Lexing (lextex, unlextex) where
+module Lexing (lextex, unlextex, indexTex) where
 
 import Data.Char (isSpace,toUpper,toLower)
 import Data.List (intersperse)
@@ -22,6 +22,32 @@ lextex s = case s of
   _ -> s
 -}
 
+-- in a (tokenized) string, replace $ s $ with \INDEXEDTERM{ i } and tindex !! i = $ s $
+indexTex :: String -> (String, [String])
+indexTex = massage . ind [] [] . map unwords . chop . words where
+
+  massage (ss, tss) = (unwords (reverse ss), map unwords (reverse tss))
+
+  ind :: [[String]] -> [String] -> [String] -> ([String], [[String]])
+  ind ts ss cs = case cs of
+    d : ws : e : rest | isDollar d && isDollar e ->
+      let
+        trm = [d, ws, e]
+        ix = indexedTerm (length ts)
+      in ind (trm : ts) (ix : ss) rest
+    t : rest -> ind ts (t : ss) rest
+    _ -> (ss, ts)
+
+  indexedTerm i = "\\INDEXEDTERM{ " ++ show i ++ " }"
+
+  isDollar s = elem s ["$", "$$"]
+
+  chop :: [String] -> [[String]]
+  chop ts = case break (flip elem ["$", "$$"]) ts of
+    (s1@(_:_), d:s2) -> s1 : [d] : chop s2
+    ([], s2@(_:_)) -> chop s2
+    (_, []) -> [ts]
+
 
 -- here is the code copied from GF.Text.Lexing, should probably be pruned
 
@@ -31,6 +57,7 @@ lextex s = case s of
 lexMixed :: (String -> Bool) -> String -> [String]
 lexMixed good = concat . alternate False [] where
   alternate env t s = case s of
+    '$':'$':cs -> lex env (reverse t) : ["$$"] : alternate (not env) [] cs
     '$':cs -> lex env (reverse t) : ["$"] : alternate (not env) [] cs
     '\\':c:cs | elem c "()[]" -> lex env (reverse t) : [['\\',c]] : alternate (not env) [] cs
     c:cs -> alternate env (c:t) cs
