@@ -62,6 +62,7 @@ lin
   pow_Oper = mkOper "exponentiation" "^" <2 : Prec> ; ---
   neg_Oper = mkOper "negation" "\\negated" ;
 
+  absolute_value_Fun = mkFun "absolute" "value" ;
   factorial_Fun = mkFun "factorial" ;
   gcd_Fun = mkFun "greatest" "common" "divisor" ;
 

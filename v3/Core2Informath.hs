@@ -51,6 +51,12 @@ formalize t = case t of
 getTerm :: GExp -> Maybe GTerm
 getTerm t = case t of
   GConstExp const -> return (GConstTerm const)
+  GFunListExp fun (GOneExps x) -> do
+    tx <- getTerm x
+    case fun of
+      LexFun "absolute_value_Fun" -> return (GTAbsolute tx)
+      LexFun "factorial_Fun" -> return (GTFactorial tx)
+      _ -> Nothing
   GOperListExp oper (GOneExps x) -> do
     tx <- getTerm x
     case oper of

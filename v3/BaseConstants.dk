@@ -64,6 +64,8 @@ pow : Elem Real -> Elem Real -> Elem Real.
 neg : Elem Real -> Elem Real.
 
 gcd : Elem Int -> Elem Int -> Elem Int.
+
+abs : Elem Real -> Elem Real.
 factorial : Elem Nat -> Elem Nat.
 
 (; predicates of integers ;)
@@ -79,6 +81,9 @@ union : Set -> Set -> Set.
 intersection : Set -> Set -> Set.
 difference : Set -> Set -> Set.
 powerset : Set -> Set.
+
+positivePart : Set -> Set.
+negativePart : Set -> Set.
 
 (; hard-coded in MathCore ;)
 suchthat : (A : Set) -> (B : Elem A -> Prop) -> Set.

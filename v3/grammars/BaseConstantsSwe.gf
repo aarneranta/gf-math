@@ -62,6 +62,7 @@ lin
   pow_Oper = mkOper "potens" "^" <2 : Prec> ; ---
   neg_Oper = mkOper "negation" "\\negated" ; --- to be avoided in parsing
 
+  absolute_value_Fun = mkFun (mkN "absolutbelopp" neutrum) ;
   factorial_Fun = mkFun "fakultet" ;
   gcd_Fun = mkFun "störst" "gemensam" "delare" ;
 

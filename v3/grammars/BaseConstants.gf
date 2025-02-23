@@ -53,6 +53,7 @@ fun
   pow_Oper : Oper ;
   neg_Oper : Oper ;
 
+  absolute_value_Fun : Fun ;
   factorial_Fun : Fun ;
   gcd_Fun : Fun ;
 

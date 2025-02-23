@@ -46,6 +46,7 @@ lin
   TFrac a b = tconstant (macroApp "frac" (top a) (top b)) ;
   
   TAbsolute a = tconstant ("|" ++ (top a) ++ "|") ;
+  TFactorial t = postfix 3 "!" t ** {isNumber = t.isNumber} ;
   
   TComprehension a b f =
     tconstant ("\\{" ++ top a ++ "\\in" ++ top b ++

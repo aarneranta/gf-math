@@ -34,6 +34,7 @@ fun
   
   TFrac : Term -> Term -> Term ;
   TAbsolute : Term -> Term ;
+  TFactorial : Term -> Term ;
   TComprehension : Term -> Term -> Formula -> Term ;
   TPositive : Term -> Term ; -- R^+
   TNegative : Term -> Term ;

@@ -232,6 +232,7 @@ unindexJmt env expr = maybe expr id (unind  expr) where
     Just (f, xs) -> do
        uxs <- mapM unind xs
        return $ mkApp f uxs
+    _ -> Nothing
 
 
   look i = termindex env !! i
