@@ -120,7 +120,7 @@ let $ A , B $ and $ C $ be sets . if $ x \notin A \cup B $ and $ x \notin B \cup
 
 a collection of a nonempty subsets of a nonempty set $ S $ is called a \textbf{cover} of $ S $ if every element of $ S $ belongs to atleast one of the subsets .
 
-let $ a , b \in \textbf { Z } $ . if $ a $ is even or $ b $ is even , then $ ab $ is even .
+let $ a , b \in \textbf { Z } $ . if $ a $ is even or $ b $ is even , then $ a b $ is even .
 
 if $ n $ is an odd integer , then $ 3 n - 5 $ is an even integer .
 

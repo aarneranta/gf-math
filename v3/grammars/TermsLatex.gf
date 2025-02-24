@@ -23,8 +23,8 @@ lin
      <True, True> => infixl 2 "\\times" x y ** {isNumber = True} ;
      _ => tinfixl 2 "" x y
      } ;
-  TExp a b = tinfixl 3 "^" a (b ** {s = curlyStr b.s}) ;
-
+  TExp a b = -- tinfixl 3 "^" a (b ** {s = curlyStr b.s}) ;
+     mkPrec 3 (usePrec 4 a ++ "^" ++ top (b ** {s = curlyStr b.s})) ** {isNumber = False} ;
   TNeg x = prefix 2 "-" x ** {isNumber = x.isNumber} ;
   TApp f xs = constant (f ++ parenth xs.s) ** {isNumber = False} ;
 

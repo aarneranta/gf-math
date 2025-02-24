@@ -136,11 +136,14 @@ exp2dedukti exp = case exp of
       (\x y -> EAbs (BVar (VIdent (ident2ident x))) y)
       (exp2dedukti exp)
       idents
-  ---- still assuming GF fun is Dedukti ident
   GNameExp (LexName name) ->
     EIdent (QIdent (lookBack name))
   GConstExp (LexConst name) ->
     EIdent (QIdent (lookBack name))
+  GFunListExp (LexFun fun) (GOneExps x) ->
+    EApp (EIdent (QIdent (lookBack fun))) (exp2dedukti x)
+  GFunListExp (LexFun fun) (GAddExps x (GOneExps y)) ->
+    EApp (EApp (EIdent (QIdent (lookBack fun))) (exp2dedukti x)) (exp2dedukti y)
   GOperListExp (LexOper oper) (GOneExps x) ->
     EApp (EIdent (QIdent (lookBack oper))) (exp2dedukti x)
   GOperListExp (LexOper oper) (GAddExps x (GOneExps y)) ->
