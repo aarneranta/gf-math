@@ -8,6 +8,7 @@ concrete MathCoreEng of MathCore =
     (Extend=ExtendEng),
     (Symbolic=SymbolicEng)
   ** open
+    UtilitiesEng,
     Prelude,
     ParadigmsEng,
     (I=IrregEng)
