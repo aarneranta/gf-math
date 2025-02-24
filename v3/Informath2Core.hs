@@ -120,6 +120,8 @@ sem env t = case t of
   GTermExp (GConstTerm const) -> GConstExp const
   GTermExp (GAppOperTerm oper x y) ->
     GOperListExp oper (GAddExps (sem env (GTermExp x)) (GOneExps (sem env (GTermExp y))))
+  GTermExp (GAppOperOneTerm (LexOper "minus_Oper") x) ->  ---- should not be needed
+    GOperListExp (LexOper "neg_Oper") (GOneExps (sem env (GTermExp x)))
   GTermExp (GAppOperOneTerm oper x) ->
     GOperListExp oper (GOneExps (sem env (GTermExp x)))
   GTermExp (GTTimes x y) -> sem env (GTermExp (GAppOperTerm (LexOper "times_Oper") x y))
