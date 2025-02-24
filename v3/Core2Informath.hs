@@ -141,11 +141,27 @@ variations :: Tree a -> [Tree a]
 variations tree = case tree of
   GAxiomJmt label (GListHypo hypos) prop -> 
     let splits = [splitAt i hypos | i <- [0..length hypos]]
-    in [GAxiomJmt label (GListHypo hypos11) (hypoProp hypos2 prop) |
-          (hypos1, hypos2) <- splits, hypos11 <- sequence (map variations hypos1)]
+    in [GAxiomJmt label (GListHypo hypos11) (hypoProp hypos2 prop2) |
+          (hypos1, hypos2) <- splits,
+	  hypos11 <- sequence (map variations hypos1),
+	  prop2 <- variations prop]
   GVarsHypo (GListIdent xs) (GSetKind set) ->
     [tree, GLetFormulaHypo (GFElem (GListTerm [GTIdent x | x <- xs]) (GSetTerm set))]
+  GAllProp (GListArgKind [argkind]) prop ->
+    tree : [GPostQuantProp prop exp | exp <- allExpVariations argkind]
+  GExistProp (GListArgKind [argkind]) prop ->
+    tree : [GPostQuantProp prop exp | exp <- existExpVariations argkind]
   _ -> composOpM variations tree
+
+allExpVariations :: GArgKind -> [GExp]
+allExpVariations argkind = case argkind of
+  GIdentsArgKind kind (GListIdent [x]) -> [GEveryIdentKindExp x kind , GAllArgKindExp argkind]
+  _ -> [GAllArgKindExp argkind]
+
+existExpVariations :: GArgKind -> [GExp]
+existExpVariations argkind = case argkind of
+----  GIdentsArgKind kind (GListIdent [x]) -> [GEveryIdentKindExp x kind, GSomeArgKindExp argkind]
+  _ -> [GSomeArgKindExp argkind]
 
 hypoProp :: [GHypo] -> GProp -> GProp
 hypoProp hypos prop = case hypos of
