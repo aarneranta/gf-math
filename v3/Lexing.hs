@@ -13,15 +13,6 @@ unlextex :: String -> String
 unlextex = dropWhile isSpace . unlexMixed (const False) . words
 
 
---- a much simpler lexer was used before:
-
-{-
-lextex s = case s of
-  c:cs | elem c "$*.,()" -> ' ':c:' ': lextex cs
-  c:cs -> c : lextex cs
-  _ -> s
--}
-
 -- in a (tokenized) string, replace $ s $ with \INDEXEDTERM{ i } and tindex !! i = $ s $
 indexTex :: String -> (String, [String])
 indexTex = massage . ind [] [] . map unwords . chop . words where
@@ -30,6 +21,8 @@ indexTex = massage . ind [] [] . map unwords . chop . words where
 
   ind :: [[String]] -> [String] -> [String] -> ([String], [[String]])
   ind ts ss cs = case cs of
+    d : ws : e : rest | isDollar d && isDollar e && length ws == 1 ->
+      ind ts (e : ws : d : ss) rest
     d : ws : e : rest | isDollar d && isDollar e ->
       let
         trm = [d, ws, e]
@@ -45,7 +38,7 @@ indexTex = massage . ind [] [] . map unwords . chop . words where
   chop :: [String] -> [[String]]
   chop ts = case break (flip elem ["$", "$$"]) ts of
     (s1@(_:_), d:s2) -> s1 : [d] : chop s2
-    ([], s2@(_:_)) -> chop s2
+    ([],  d:s2) -> [d] : chop s2
     (_, []) -> [ts]
 
 

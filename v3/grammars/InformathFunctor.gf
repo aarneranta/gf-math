@@ -45,11 +45,11 @@ lin
 
   IndexedTermExp i = symb (mkSymb ("\\INDEXEDTERM{" ++ i.s ++ "}")) ;
   IndexedFormulaProp i = simpleProp (symb (mkSymb ("\\INDEXEDTERM{" ++ i.s ++ "}"))) ;
+  IndexedLetFormulaHypo i = lin Utt {s = let_Str ++ "\\INDEXEDTERM{" ++ i.s ++ "}"} ;
 
 -- Pathak's
 
   LetFormulaHypo formula = lin Utt {s = let_Str ++ "$" ++ top formula ++ "$"} ;
-  IndexedLetFormulaHypo i = lin Utt {s = let_Str ++ "\\INDEXEDTERM{" ++ i.s ++ "}"} ;
 
   DefinedAdjJmt label hypos exp adj prop =
     labelText (label)

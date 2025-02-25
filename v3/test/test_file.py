@@ -4,7 +4,7 @@ import sys
 
 usage = "stdin | python3 test_tile.py pgf source index?"
 
-MAX_PARSES = 99
+MAX_PARSES = 9999
 
 if sys.argv[2:]:
     PGF_FILE = sys.argv[1]
@@ -84,5 +84,5 @@ for s in sys.stdin:
         sent += 1
         print()
 
-print('success', successes, 'failure', fails)
+print('success', successes, 'failure', fails, 'sentences', sent)
 

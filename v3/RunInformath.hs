@@ -226,13 +226,14 @@ unindexJmt env expr = maybe expr id (unind  expr) where
         "IndexedLetFormulaHypo" -> do
 	   formula <- parsed "Formula" (filter (/='$') (look i))
 	   return $ mkApp (mkCId "LetFormulaHypo") [formula]
+        _ -> return expr
       _ -> do
         ux <- unind x
         return $ mkApp f [ux]
     Just (f, xs) -> do
        uxs <- mapM unind xs
        return $ mkApp f uxs
-    _ -> Nothing
+    _ -> return expr
 
 
   look i = termindex env !! i
