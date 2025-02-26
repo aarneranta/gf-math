@@ -21,7 +21,7 @@ import qualified Dedukti2Lean as DL
 
 import PGF
 
-import Data.List (partition, isSuffixOf, isPrefixOf)
+import Data.List (partition, isSuffixOf, isPrefixOf, intersperse)
 ----import System.Random
 import System.Environment (getArgs)
 import System.IO
@@ -41,8 +41,11 @@ helpMsg = unlines [
   "  -to-coq       convert to Coq (with <file>.dk as argument)",
   "  -to-lean      convert to Lean (with <file>.dk as argument)",
   "  -lang=<lang>  natural language to be targeted; Eng (default), Swe, Fre,...",
+  "  -parallel     a jsonl list with all languages and variations",
   "  -v            verbose output, e.g. syntax trees and intermediate results",
-  "output is to stdout and can be redirected to a file to check with Dedukti or Agda."
+  "  -variations   when producing natural language, show all variations",
+  "output is to stdout and can be redirected to a file to check with",
+  "Dedukti or Agda or Coq or Lean when producing one of these."
   ]
 
 informathPrefix = "Informath"
@@ -63,6 +66,8 @@ flagValue flag dfault ff = case [f | f <- ff, isPrefixOf flag (tail f)] of
   f:_ -> drop (length flag + 2) f   -- -<flag>=<value>
   _ -> dfault
 
+allLanguages env = languages (cpgf env)
+
 main = do
   xx <- getArgs
   let (ff, yy) = partition ((== '-') . head) xx
@@ -80,6 +85,7 @@ main = do
         _ | ifFlag "-to-agda" env -> DA.processDeduktiModule s
         _ | ifFlag "-to-coq" env -> DC.processDeduktiModule s
         _ | ifFlag "-to-lean" env -> DL.processDeduktiModule s
+	_ | ifFlag "-parallel" env -> parallelJSONL env{flags = "-variations":flags env} s
 	_ -> processDeduktiModule env s
     filename:_  -> do
       s <- readFile filename
@@ -208,6 +214,45 @@ processInformathJmtTree env t0 = do
   let dt = printTree d
   ifv env $ putStrLn $ dt
   return dt
+
+parallelJSONL :: Env -> String -> IO ()
+parallelJSONL env s = do
+  let gr = cpgf env
+  case pModule (myLexer s) of
+    Bad e -> putStrLn ("error: " ++ e)
+    Ok (MJmts jmts) -> flip mapM_ jmts $ \jmt -> do
+      let tree = jmt2jmt jmt
+      let gft = gf tree
+      let json = concat $ intersperse ", " $ [
+            mkJSONField "dedukti" (printTree jmt),
+            mkJSONField "agda" (DA.printAgdaJmts (DA.transJmt jmt)),
+            mkJSONField "coq" (DC.printCoqJmt (DC.transJmt jmt)),
+            mkJSONField "lean" (DL.printLeanJmt (DL.transJmt jmt))
+	    ] ++ [
+	      mkJSONListField (showCId lang)
+	        [unlextex (linearize gr lang (gf t)) | t <- nlg (flags env) tree]
+		  | lang <- allLanguages env
+	    ]
+      putStr "{"
+      putStr json
+      putStrLn "}"
+
+mkJSONField :: String -> String -> String
+mkJSONField key value = show key ++ ": " ++ stringJSON value
+
+mkJSONListField :: String -> [String] -> String
+mkJSONListField key values =
+  show key ++ ": " ++ "[" ++ concat (intersperse ", " (map stringJSON values)) ++ "]"
+
+
+stringJSON = quote . escape where
+  quote s = "\"" ++ s ++ "\""
+  escape s = case s of
+    c:cs | elem c "\"\\" -> '\\':c:escape cs
+    '\n':cs -> '\\':'n':escape cs
+    c:cs -> c:escape cs
+    _ -> s
+
 
 renameLabels :: [String] -> [String]
 renameLabels ss = [rename i s | (i, s) <- zip [1..] ss] where

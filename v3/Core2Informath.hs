@@ -5,13 +5,14 @@ module Core2Informath where
 
 import Informath
 
-import Data.List (nub)
+import Data.List (nub, sortOn)
 
 type Opts = [String]
 
 nlg :: Opts -> Tree a -> [Tree a]
 nlg opts tree = case opts of
-   _ | elem "-variations" opts -> nub $ concatMap variations [t, ut, ft, aft, iaft, viaft]
+   _ | elem "-variations" opts ->
+         nub $ concatMap variations [t, ut, ft, aft, iaft, viaft]
    _ -> [viaft]
  where
    t = unparenth tree

@@ -28,6 +28,9 @@ type Result = Err String
 failure :: Show a => a -> Result
 failure x = Bad $ "Undefined case: " ++ show x
 
+printCoqJmt :: C.Jmt -> String 
+printCoqJmt = PrC.printTree
+
 transModule :: Module -> C.Module
 transModule t = case t of
   MJmts jmts -> C.MJmts (map transJmt jmts)

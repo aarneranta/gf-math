@@ -27,6 +27,9 @@ type Result = Err String
 failure :: Show a => a -> Result
 failure x = Bad $ "Undefined case: " ++ show x
 
+printAgdaJmts :: [A.Jmt] -> String 
+printAgdaJmts = init . unlines . map (init . PrA.printTree) -- init to remove artefact ; and last \n
+
 transModule :: Module -> A.Module
 transModule t = case t of
   MJmts jmts -> A.MJmts (concatMap transJmt jmts)
