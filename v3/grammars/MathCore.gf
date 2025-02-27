@@ -81,6 +81,7 @@ fun
   AbsProof : [Hypo] -> Proof -> Proof ;
 
   AppProofExp : ProofExp -> Exps -> ProofExp ;
+  AbsProofExp : [Hypo] -> ProofExp -> ProofExp ;
 
   OneExps : Exp -> Exps ;
   AddExps : Exp -> Exps -> Exps ;

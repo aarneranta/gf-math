@@ -134,6 +134,9 @@ lin
   AppProofExp proofexp exps =
     mkNP proofexp (Syntax.mkAdv applied_to_Prep exps.np) ;
 
+  AbsProofExp hypos proofexp =
+    mkNP proofexp <lin Adv (prefixText assuming_Str hypos.text) : Adv> ; ---- quick hack for completeness
+
   BaseIdent ident =
     {np = latexNP (mkSymb ident) ; isPl = False} ;
   ConsIdent ident idents =

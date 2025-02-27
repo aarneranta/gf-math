@@ -312,5 +312,6 @@ This should be made less cumbersome in the future.
 - extend Informath 
 - extend the MathCore-Informath conversion
 - investigate the possibility of a declarative, user-defined extension of MathCore-Informath conversion
+- improve the grammars of different languages by functor exceptions 
 - add concrete syntaxes to yet other natural languages
 

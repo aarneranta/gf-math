@@ -53,4 +53,5 @@ oper
 
   let_Str = "let" ;
 
+  assuming_Str = "assuming:" ;
 }

@@ -240,6 +240,8 @@ exp2proofExp exp = case exp of
   EApp _ _ -> case splitApp exp of
     (fun, args) ->
       GAppProofExp (exp2proofExp fun) (gExps (map exp2exp args))
+  EAbs _ _ -> case splitAbs exp of
+    (binds, body) -> GAbsProofExp (GListHypo (map bind2coreHypo binds)) (exp2proofExp body)
 
 patt2exp :: Patt -> GExp
 patt2exp patt = case patt of

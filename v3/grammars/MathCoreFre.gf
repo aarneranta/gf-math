@@ -60,5 +60,6 @@ oper
   as_Prep : Prep = mkPrep "comme" ;
 
   let_Str = "soit" ; ----
+  assuming_Str = "en supposant :" ;
 
 }
