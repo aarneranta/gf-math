@@ -172,7 +172,7 @@ The following programming languages have been used so far in Informath:
 
 - **GF**: [Grammatical Framework](https://www.grammaticalframework.org/) used for implementing MathCore and Informath, maximally using its Resource Grammar Library (RGL). You need to install both gf-core and gf-rgl.
 - **Haskell**: used for writing conversions between formal and informal, via embedded GF grammars in the GADT format (Generalized Algebraic Datatypes) supporting almost compositional functions in NLG.
-- **BNFC**: [BNF Converter](https://bnfc.digitalgrammars.com/), used for implementing Dedukti. The implementation includes a parser, a printer, and an abstract syntax in Haskell, all generated from [this BNF grammar](./typetheory/Dedukti.bnf). Also used for the fragments of Agda and Lean addressed in the project.
+- **BNFC**: [BNF Converter](https://bnfc.github.io/), used for implementing Dedukti. The implementation includes a parser, a printer, and an abstract syntax in Haskell, all generated from [this BNF grammar](./typetheory/Dedukti.bnf). Also used for the fragments of Agda and Lean addressed in the project.
 
 If you want to check the formal code in any of the proof systems, you must also install them. Informath itself does not require them, but at least Dedukti is useful to have so that you can check the input and output Dedukti code.
 

@@ -12,22 +12,36 @@ comment "--" ;
 
 MJmts. Module ::= [Jmt] ;
 
+JModule.     Jmt ::= "module" Exp8 "where" ";" ;
+JOpenImport. Jmt ::= "open" "import" Exp8 ";" ;
+JInfixl.     Jmt ::= "infixl" Integer AIdent ";" ;
+JOpen.       Jmt ::= "open" Exp ";" ;
+
 JTyp.  Jmt ::= AIdent [Hypo] ":" Exp ";" ;
 JDef.  Jmt ::= Patt "=" Exp ";" ;
 --+ JData. Jmt ::= "data" AIdent [Hypo] ":" Exp "where" "{" [Typing] "}" ;
 JPost. Jmt ::= "postulate" AIdent ":" Exp ";" ;
+JAbs.  Jmt ::= "abstract" AIdent ":" Exp ";" ;
 
 terminator Jmt "" ;
 
 --+ TTyp. Typing ::= AIdent [Hypo] ":" Exp ";" ;
 --+ terminator Typing "" ;
 
-EIdent.  Exp9 ::= AIdent ;
-EApp.    Exp5 ::= Exp5 Exp6 ;
+EIdent.  Exp50 ::= AIdent ;
+EApp.    Exp48 ::= Exp48 Exp49 ;
+ECrossU. Exp9 ::= Exp9 "×" Exp10 ;
+EPlusU.  Exp8 ::= Exp8 "+" Exp9 ;
+ESimU.   Exp5 ::= Exp6 "~" Exp6 ;
+ECompU.  Exp4 ::= Exp4 "∘" Exp4 ;
+EEqU.    Exp4 ::= Exp5 "＝" Exp5 ;
+ESimEqU. Exp4 ::= Exp5 "≃" Exp5 ;
 EAbs.    Exp2 ::= "\\" Bind "->" Exp2 ;
 EFun.    Exp1 ::= Hypo "->" Exp1 ;
+EAbsU.   Exp2 ::= "λ" Bind "→" Exp2 ;
+EFunU.   Exp1 ::= Hypo [Hypo] "→" Exp1 ;
 
-coercions Exp 9 ;
+coercions Exp 50 ; --- 12 ;
 
 BVar.   Bind ::= [Var] ;
 BTyped. Bind ::= [Var] ":" Exp3 ;
@@ -38,8 +52,8 @@ VWild.   Var ::= "_" ;
 separator nonempty Var "" ;
 
 HExp.    Hypo ::= Exp3 ;
-HVarExp. Hypo ::=  "(" [Var] ":" Exp ")" ;
---+ HBracketVarExp. Hypo ::= "{" [Var] ":" Exp3 "}" ;
+HVarExp. Hypo ::=  "(" [Var] ":" Exp ")" ; 
+HBracketVarExp. Hypo ::= "{" [Var] ":" Exp3 "}" ;
 
 separator Hypo "" ;
 
@@ -49,5 +63,5 @@ PApp.   Patt1 ::= Patt1 Patt2 ;
 
 coercions Patt 3 ;
 
-token AIdent (letter | digit | '_' | '!' | '?' | '\'' | '-')+
+token AIdent (letter | digit | ["∙ˣ↔⊔∃∈□ℕ₁≠ησ∧γ∞αΠβℚ⁺ωℤΣ≤ε≡↪₂_/-+.'≃"])+ ;
 

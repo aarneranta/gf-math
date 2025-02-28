@@ -5,7 +5,7 @@ import sys
 # def equality = 61
 # prop equality ＝ 65309
 
-# usage: process_lagda (all | fons) clean_idents?
+# usage: process_lagda (all | funs | odd_chars) clean_idents?
 
 MODE = 'all' 
 if sys.argv[2:]:
@@ -47,22 +47,59 @@ def clean_idents(s):
             ss.append(c)
     return ''.join(ss)
 
+def very_clean_idents(s):
+    ss = []
+    for c in s:
+        o = ord(c)
+        if not (o < 256 and (c.isalpha() or c.isdigit() or c in "'_")):
+            ss.append('_U'+str(o)+'_')
+        else:
+            ss.append(c)
+    return ''.join(ss)
+
+
+def bnfc_infix(line):
+    "format: infix* int _op_"
+    keyw, prec, op = line.split()
+    fop = very_clean_idents(op)   # to work as bnfc ident
+    op = op[1:-1]    # from _op_ to op
+    fun = f'E{fop}'
+    cat = f'Exp{prec}'
+    nextcat = f'Exp{int(prec)+1}'
+    if keyw == 'infixl':
+        return f'{fun}. {cat} ::= {cat} "{op}" {nextcat} ;'
+    else:
+        return f'{fun}. {cat} ::= {nextcat} "{op}" {nextcat} ;' 
+
 
 if __name__ == '__main__':
     path = sys.argv[1]
     files = [join(path, file) for file in listdir(path) if file.endswith('lagda.md')]
+    odds = set()
     for file in files:
         code = extract_agda(file)
         if 'clean_idents' in FLAGS:
             code = [clean_idents(line) for line in code]
-        if MODE == 'funs':
+        elif MODE == 'funs':
             for line in code:
                 if c := new_constant(line):
                     print(c)
+        elif MODE == 'infixes':
+            for line in code:
+                if line.startswith('infix'):
+                    print(line)
+                    print(bnfc_infix(line))
+        elif MODE == 'odd_chars':
+            for line in code:
+                for k in line:
+                    if ord(k) > 255:
+                        odds.add(k)
         else:
             for line in code:
                 print(line.rstrip())
-
+    if MODE == 'odd_chars':
+        print(''.join(odds))
+ 
 
         
         
