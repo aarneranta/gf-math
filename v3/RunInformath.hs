@@ -9,6 +9,7 @@ import Dedukti.PrintDedukti
 import Dedukti.ParDedukti
 import Dedukti.AbsDedukti
 import Dedukti.ErrM
+import DeduktiOperations (identsInTypes, dropDefinitions)
 import Informath -- superset of Core
 import Core2Informath (nlg)
 import Informath2Core (semantics)
@@ -21,10 +22,11 @@ import qualified Dedukti2Lean as DL
 
 import PGF
 
-import Data.List (partition, isSuffixOf, isPrefixOf, intersperse)
+import Data.List (partition, isSuffixOf, isPrefixOf, intersperse, sortOn)
 ----import System.Random
 import System.Environment (getArgs)
 import System.IO
+import qualified Data.Map as M
 
 helpMsg = unlines [
   "usage: RunInformath <flag>* <file>?",
@@ -44,6 +46,8 @@ helpMsg = unlines [
   "  -parallel     a jsonl list with all languages and variations",
   "  -v            verbose output, e.g. syntax trees and intermediate results",
   "  -variations   when producing natural language, show all variations",
+  "  -idents       show frequency list of idents in a Dedukti file",
+  "  -dropdefs     drop definition parts of Dedukti code",
   "output is to stdout and can be redirected to a file to check with",
   "Dedukti or Agda or Coq or Lean when producing one of these."
   ]
@@ -86,6 +90,9 @@ main = do
         _ | ifFlag "-to-coq" env -> DC.processDeduktiModule s
         _ | ifFlag "-to-lean" env -> DL.processDeduktiModule s
 	_ | ifFlag "-parallel" env -> parallelJSONL env{flags = "-variations":flags env} s
+	_ | ifFlag "-idents" env -> do
+	  mo <- parseDeduktiModule env s
+	  printFrequencyTable (identsInTypes mo)
 	_ -> processDeduktiModule env s
     filename:_  -> do
       s <- readFile filename
@@ -110,11 +117,18 @@ loop env = do
     _     -> processDeduktiJmt env ss >> return ()
   loop env
 
+parseDeduktiModule :: Env -> String -> IO Module
+parseDeduktiModule env s = do
+  case pModule (myLexer s) of
+    Bad e -> error ("parse error: " ++ e)
+    Ok mo
+      | ifFlag "-dropdefs" env -> return (dropDefinitions mo)
+      | otherwise -> return mo
+
 processDeduktiModule :: Env -> String -> IO ()
 processDeduktiModule env s = do
-  case pModule (myLexer s) of
-    Bad e -> putStrLn ("error: " ++ e)
-    Ok (MJmts jmts) -> flip mapM_ jmts $ processDeduktiJmtTree env
+  MJmts jmts <- parseDeduktiModule env s 
+  flip mapM_ jmts $ processDeduktiJmtTree env
 
 processDeduktiJmt :: Env -> String -> IO ()
 processDeduktiJmt env cs = do
@@ -288,3 +302,10 @@ unindexJmt env expr = maybe expr id (unind  expr) where
     case mts of
       Just (t:ts) -> return t ---- todo: ambiguity if ts
       _ -> Nothing
+
+
+printFrequencyTable :: M.Map QIdent Int -> IO ()
+printFrequencyTable m = do
+  let list = sortOn (\ (_, i) -> -i) $ M.toList m
+  mapM_ putStrLn [printTree x ++ "\t" ++ show n | (x, n) <- list]
+

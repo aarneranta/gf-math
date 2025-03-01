@@ -8,7 +8,38 @@ import Dedukti.PrintDedukti
 import CommonConcepts
 
 import Data.Char
+import qualified Data.Map as M
 
+-- frequency map of identifiers in code, excluding bound variables
+
+identsInTypes :: Tree a -> M.Map QIdent Int
+identsInTypes t = M.fromListWith (+) [(x, 1) | x <- ids t] where
+  ids :: Tree a -> [QIdent]
+  ids tree = case tree of
+    EIdent qident -> [qident]
+    EAbs bind exp -> [x | x <- ids exp, VIdent x /= bind2var bind]
+    EFun (HVarExp var exp) body -> ids exp ++ [x | x <- ids body, VIdent x /= var]
+    EFun (HParVarExp var exp) body -> ids  (EFun (HVarExp var exp) body)
+    RRule pattbinds patt exp ->
+      [x | x <- ids patt ++ ids exp, notElem x (pattbindIdents pattbinds)] ---- types in pattbinds
+    JStatic qident typ -> qident : ids typ
+    JDef qident typ exp -> qident : ids typ ++ ids exp
+    JThm qident typ exp -> qident : ids typ ++ ids exp
+    JInj qident typ exp -> qident : ids typ ++ ids exp
+    
+    _ -> composOpMPlus ids tree
+
+
+-- consider only typings, for instance when generating natural language
+dropDefinitions :: Module -> Module
+dropDefinitions (MJmts jmts) = MJmts (concatMap drops jmts) where
+  drops :: Jmt -> [Jmt]
+  drops jmt = case jmt of
+    JDef qident (MTExp typ) _ -> [JStatic qident typ]
+    JThm qident (MTExp typ) _ -> [JStatic qident typ]
+    JInj qident (MTExp typ) _ -> [JStatic qident typ]
+    JStatic _ _ -> [jmt]
+    _ -> []
 
 splitType :: Exp -> ([Hypo], Exp)
 splitType exp = case exp of
@@ -83,3 +114,12 @@ bind2var :: Bind -> Var
 bind2var bind = case bind of
   BVar v -> v
   BTyped v _ -> v
+
+pattbindIdents :: [Pattbind] -> [QIdent]
+pattbindIdents = concatMap bident where
+  bident :: Pattbind -> [QIdent]
+  bident pattbind = case pattbind of
+    PBVar (VIdent x) -> [x]
+    PBTyped (VIdent x) _ -> [x]
+    _ -> []
+    

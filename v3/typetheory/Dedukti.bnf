@@ -13,10 +13,10 @@ JInj.     Jmt ::= "inj" QIdent MTyp MExp "." ;
 JThm.     Jmt ::= "thm" QIdent MTyp MExp "." ;
 JRules.   Jmt ::= [Rule] "." ;
 
-RRule.  Rule ::= "[" [QIdent] "]" Patt "-->" Exp ;
+RRule.  Rule ::= "[" [Pattbind] "]" Patt "-->" Exp ;
 separator nonempty Rule "" ;
 
-separator QIdent "," ;
+separator Pattbind "," ;
 
 MTNone. MTyp ::= ;
 MTExp.  MTyp ::= ":" Exp ;
@@ -33,6 +33,9 @@ coercions Exp 9 ;
 
 BVar.   Bind ::= Var ;
 BTyped. Bind ::= Var ":" Exp3 ;
+
+PBVar.   Pattbind ::= Var ;
+PBTyped. Pattbind ::= Var ":" Exp ;
 
 VIdent.  Var ::= QIdent ;
 VWild.   Var ::= "_" ;

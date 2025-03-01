@@ -138,9 +138,10 @@ rule2rule :: Rule -> GRule
 rule2rule rule = case rule of
   RRule [] patt exp ->
     GNoVarRewriteRule (patt2exp patt) (exp2exp exp)
-  RRule idents patt exp ->
+  RRule pattbinds patt exp ->
     GRewriteRule
-      (GListIdent (map ident2ident idents)) (patt2exp patt) (exp2exp exp)
+      (GListIdent (map ident2ident (pattbindIdents pattbinds)))
+      (patt2exp patt) (exp2exp exp)
 
 exp2kind :: Exp -> GKind
 exp2kind exp = case exp of

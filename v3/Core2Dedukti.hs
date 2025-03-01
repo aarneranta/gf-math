@@ -58,7 +58,7 @@ jmt2dedukti jment = case jment of
 rule2dedukti :: GRule -> Rule
 rule2dedukti rule = case rule of
   GRewriteRule (GListIdent idents) patt exp ->
-    RRule (map ident2ident idents) (exp2deduktiPatt patt) (exp2dedukti exp)
+    RRule (map (PBVar . VIdent . ident2ident) idents) (exp2deduktiPatt patt) (exp2dedukti exp)
   GNoVarRewriteRule patt exp ->
     rule2dedukti (GRewriteRule (GListIdent []) patt exp)
 
