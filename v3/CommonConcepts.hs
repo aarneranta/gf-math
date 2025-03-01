@@ -57,6 +57,7 @@ propSigma kind pred = EApp (EApp (EIdent identSigma) kind) pred
 -- built-in types
 typeProp = EIdent (QIdent "Prop")
 typeType = EIdent (QIdent "Type")
+typeSet = EIdent (QIdent "Set")
 
 --- needed for typing conclusions of proofs
 expTyped x t = EApp (EApp (EIdent (QIdent "typed")) x) t

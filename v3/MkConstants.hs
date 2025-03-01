@@ -44,7 +44,8 @@ mkConstants :: Language -> FilePath -> IO ()
 mkConstants lang file = do
   let langid = case showCId lang of
         cncname -> drop (length cncname - 3) cncname
-  annots <- readFile file >>= return . map words . filter (not . null) . lines
+  rawannots <- readFile file >>= return . map words . filter (not . null) . lines
+  let annots = [if head w == '(' then ww else ws | ws@(w:ww) <- rawannots] -- remove (freq)
   let dkannots = [annot | annot@(_:_:mk:_) <- annots, mk /= "->"]
   writeAndReport (constantsCnc langid) $ mkConstantsCncGF langid dkannots
   writeAndReport "grammars/Constants.gf" $ mkConstantsGF dkannots

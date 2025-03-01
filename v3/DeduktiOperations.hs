@@ -41,6 +41,42 @@ dropDefinitions (MJmts jmts) = MJmts (concatMap drops jmts) where
     JStatic _ _ -> [jmt]
     _ -> []
 
+-- collect types of idents
+identTypes :: Module -> M.Map QIdent Exp
+identTypes (MJmts jmts) = M.fromList (concatMap idtyp jmts) where
+  idtyp :: Jmt -> [(QIdent, Exp)]
+  idtyp jmt = case jmt of
+    JDef qident (MTExp typ) _ -> [(qident, typ)]
+    JThm qident (MTExp typ) _ -> [(qident, typ)]
+    JInj qident (MTExp typ) _ -> [(qident, typ)]
+    JStatic qident typ -> [(qident, typ)]
+    _ -> []
+
+-- deciding the kind of a new constant
+guessCat :: QIdent -> Exp -> String
+guessCat ident@(QIdent c) typ =
+  let
+    (hypos, val) = splitType typ
+    arity = length hypos
+  in case lookupConstant c of
+    Just (cat, _) -> cat
+    _ -> case splitApp val of
+      (f, _) | f == typeProp -> case arity of
+        0 -> "Name" --- not really
+        1 -> "Adj"
+        2 -> "Rel"
+        _ -> "Fun"
+      (f, _) | elem f [typeSet, typeType] -> case arity of
+        0 -> "Kind"
+        _ -> "Fun"
+      (EIdent f, _) | f == identElem -> case arity of
+        0 -> "Name"
+        _ -> "Fun"
+      (EIdent f, _) | f == identProof -> "Label"
+      _ -> "Unknown"
+
+
+
 splitType :: Exp -> ([Hypo], Exp)
 splitType exp = case exp of
   EFun hypo body -> case splitType body of

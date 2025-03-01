@@ -307,5 +307,5 @@ unindexJmt env expr = maybe expr id (unind  expr) where
 printFrequencyTable :: M.Map QIdent Int -> IO ()
 printFrequencyTable m = do
   let list = sortOn (\ (_, i) -> -i) $ M.toList m
-  mapM_ putStrLn [printTree x ++ "\t" ++ show n | (x, n) <- list]
+  mapM_ putStrLn ["(" ++ show n ++ ")\t" ++ printTree x | (x, n) <- list]
 

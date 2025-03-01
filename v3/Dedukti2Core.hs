@@ -19,8 +19,8 @@ jmt2jmt jmt = case jmt of
     let mexp = case meexp of
           MEExp exp -> Just exp
           _ -> Nothing
-    in case (splitType typ, cat ident) of
-      ((hypos, kind), "Label") -> 
+    in case (splitType typ, guessCat ident typ) of
+      ((hypos, kind), c) | elem c ["Label", "Unknown"] -> 
         (maybe GAxiomJmt (\exp x y z -> GThmJmt x y z (exp2proof exp)) mexp)
           (ident2label ident)
           (GListHypo (hypos2hypos hypos))
@@ -54,7 +54,7 @@ jmt2jmt jmt = case jmt of
 	        (\exp x y -> GDefPropJmt definitionLabel x y (exp2prop exp)) mexp)
              (GListHypo chypos)
 	     (funListProp ident (map (GTermExp . GTIdent) (concatMap hypoIdents chypos)))
-      ((hypos, kind), _) -> 
+      ((hypos, kind), _) -> -- def of "Unknown" ident is interpreted as a theorem
         GAxiomExpJmt axiomLabel
           (GListHypo (hypos2hypos hypos)) (ident2exp ident)
           (exp2kind kind)
@@ -66,10 +66,6 @@ jmt2jmt jmt = case jmt of
     jmt2jmt (JDef ident mtyp mexp) 
   JRules rules -> GRewriteJmt (GListRule (map rule2rule rules))  
   _ -> error ("not yet: " ++ printTree jmt)
-
--- deciding the kind of jment; default is theorem or axiom with Prop as type
-cat :: QIdent -> String
-cat ident@(QIdent c) = maybe "Label" fst (lookupConstant c)
 
 definitionLabel :: GLabel
 definitionLabel = LexLabel "definitionLabel"
@@ -252,6 +248,8 @@ patt2exp patt = case patt of
     (fun, args) -> case fun of
       PVar (VIdent ident) ->
         funListExp ident (map patt2exp args)
+  PBracket p -> patt2exp p --- ?
+  PBind bind p -> GAbsExp (GListIdent [bind2coreIdent bind]) (patt2exp p) --- splitAbs?
 
 ident2ident :: QIdent -> GIdent
 ident2ident ident = case ident of
