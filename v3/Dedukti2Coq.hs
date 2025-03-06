@@ -8,10 +8,6 @@ import qualified Coq.AbsCoq as C
 
 import qualified Coq.PrintCoq as PrC
 
-import qualified Dedukti.ParDedukti as PD
-
-import qualified Dedukti.ErrM as E
-
 import DeduktiOperations
 import CommonConcepts
 
@@ -133,12 +129,8 @@ transQIdent t = case t of
   c | c == identNat -> C.CIdent "nat" -- "ℕ" ---- TODO find out how to make Coq recognize these
   QIdent str -> C.CIdent str ---- not quite the same ident syntax ; reserved idents in Coq!
 
-processDeduktiModule :: String -> IO ()
-processDeduktiModule s = do
-  case PD.pModule (PD.myLexer s) of
-    E.Bad e -> putStrLn ("error: " ++ e)
-    E.Ok (MJmts jmts) -> do
---      putStrLn ("Require Import Arithm.\n") --- need to paste with BaseConstants.v
+processDeduktiModule :: Module -> IO ()
+processDeduktiModule mo@(MJmts jmts) = do
       flip mapM_ jmts processDeduktiJmtTree
 
 processDeduktiJmtTree :: Jmt -> IO ()
@@ -146,13 +138,5 @@ processDeduktiJmtTree t = do
   putStrLn $
     map (\c -> if c==';' then '\n' else c) $  --- to remove bnfc layout artefact ;
       PrC.printTree $ transJmt t
-
--- when used stand-alone
-main = do
-  xx <- getArgs
-  case xx of
-    filename:_ -> do
-      s <- readFile filename
-      processDeduktiModule s
 
 

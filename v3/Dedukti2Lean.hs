@@ -8,10 +8,6 @@ import qualified Lean.AbsLean as L
 
 import qualified Lean.PrintLean as PrL
 
-import qualified Dedukti.ParDedukti as PD
-
-import qualified Dedukti.ErrM as E
-
 import DeduktiOperations
 import CommonConcepts
 
@@ -132,26 +128,14 @@ transQIdent t = case t of
   c | c == identReal -> L.LIdent "Real" -- "ℝ"
   QIdent str -> L.LIdent str ---- not quite the same ident syntax ; reserved idents in Lean!
 
-processDeduktiModule :: String -> IO ()
-processDeduktiModule s = do
-  case PD.pModule (PD.myLexer s) of
-    E.Bad e -> putStrLn ("error: " ++ e)
-    E.Ok (MJmts jmts) -> do
-----      putStrLn ("open import " ++ baseconstants ++ "\n") 
-      flip mapM_ jmts processDeduktiJmtTree
+processDeduktiModule :: Module -> IO ()
+processDeduktiModule mo@(MJmts jmts) = do
+  putStrLn ("open import " ++ baseconstants ++ "\n") 
+  flip mapM_ jmts processDeduktiJmtTree
 
 processDeduktiJmtTree :: Jmt -> IO ()
 processDeduktiJmtTree t = do 
   putStrLn $
     map (\c -> if c==';' then '\n' else c) $  --- to remove bnfc layout artefact ;
       PrL.printTree $ transJmt t
-
--- when used stand-alone
-main = do
-  xx <- getArgs
-  case xx of
-    filename:_ -> do
-      s <- readFile filename
-      processDeduktiModule s
-
 

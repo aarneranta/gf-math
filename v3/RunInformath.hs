@@ -85,23 +85,23 @@ main = do
       mkConstants (lang env) filename
     filename:_ | isSuffixOf ".dk" filename -> do
       s <- readFile filename
+      mo <- parseDeduktiModule env s
       case s of
-        _ | ifFlag "-to-agda" env -> DA.processDeduktiModule s
-        _ | ifFlag "-to-coq" env -> DC.processDeduktiModule s
-        _ | ifFlag "-to-lean" env -> DL.processDeduktiModule s
-	_ | ifFlag "-parallel" env -> parallelJSONL env{flags = "-variations":flags env} s
-	_ | ifFlag "-idents" env -> do
-	  mo <- parseDeduktiModule env s
-	  printFrequencyTable (identsInTypes mo)
-	_ -> processDeduktiModule env s
+        _ | ifFlag "-to-agda" env -> DA.processDeduktiModule mo
+        _ | ifFlag "-to-coq" env -> DC.processDeduktiModule mo
+        _ | ifFlag "-to-lean" env -> DL.processDeduktiModule mo
+	_ | ifFlag "-parallel" env -> parallelJSONL env{flags = "-variations":flags env} mo
+	_ | ifFlag "-idents" env -> printFrequencyTable (identsInTypes mo)
+	_ -> processDeduktiModule env mo
     filename:_  -> do
       s <- readFile filename
       ss0 <- mapM (processInformathJmt env) (filter (not . null) (lines s))
       let ss = renameLabels ss0 -- quick hack to rename labels
+      mo <- parseDeduktiModule env (unlines ss)
       case s of
-        _ | ifFlag "-to-agda" env -> DA.processDeduktiModule (unlines ss)
-        _ | ifFlag "-to-coq" env -> DC.processDeduktiModule (unlines ss)
-        _ | ifFlag "-to-lean" env -> DL.processDeduktiModule (unlines ss)
+        _ | ifFlag "-to-agda" env -> DA.processDeduktiModule mo
+        _ | ifFlag "-to-coq" env -> DC.processDeduktiModule mo
+        _ | ifFlag "-to-lean" env -> DL.processDeduktiModule mo
 	_ -> mapM_ putStrLn ss
     _ -> do
       loop env
@@ -125,9 +125,8 @@ parseDeduktiModule env s = do
       | ifFlag "-dropdefs" env -> return (dropDefinitions mo)
       | otherwise -> return mo
 
-processDeduktiModule :: Env -> String -> IO ()
-processDeduktiModule env s = do
-  MJmts jmts <- parseDeduktiModule env s 
+processDeduktiModule :: Env -> Module -> IO ()
+processDeduktiModule env mo@(MJmts jmts) = do
   flip mapM_ jmts $ processDeduktiJmtTree env
 
 processDeduktiJmt :: Env -> String -> IO ()
@@ -229,12 +228,11 @@ processInformathJmtTree env t0 = do
   ifv env $ putStrLn $ dt
   return dt
 
-parallelJSONL :: Env -> String -> IO ()
-parallelJSONL env s = do
+parallelJSONL :: Env -> Module -> IO ()
+parallelJSONL env mo = do
   let gr = cpgf env
-  case pModule (myLexer s) of
-    Bad e -> putStrLn ("error: " ++ e)
-    Ok (MJmts jmts) -> flip mapM_ jmts $ \jmt -> do
+  case mo of
+    MJmts jmts -> flip mapM_ jmts $ \jmt -> do
       let tree = jmt2jmt jmt
       let gft = gf tree
       let json = concat $ intersperse ", " $ [

@@ -8,10 +8,6 @@ import qualified Agda.AbsAgda as A
 
 import qualified Agda.PrintAgda as PrA
 
-import qualified Dedukti.ParDedukti as PD
-
-import qualified Dedukti.ErrM as E
-
 import DeduktiOperations (getNumber, splitApp)
 
 import System.Environment (getArgs)
@@ -66,7 +62,7 @@ transExp t = case t of
 transBind :: Bind -> A.Bind
 transBind t = case t of
   BVar var -> A.BVar [transVar var]
---  BTyped var exp -> failure t
+  BTyped var exp -> A.BTyped [transVar var] (transExp exp)
 
 transVar :: Var -> A.Var
 transVar t = case t of
@@ -92,22 +88,10 @@ transQIdent t = case t of
   QIdent "Type" -> A.AIdent "Set" ---
   QIdent str -> A.AIdent str --- so far the same Ident syntax
 
-
--- when used stand-alone
-main = do
-  xx <- getArgs
-  case xx of
-    filename:_ -> do
-      s <- readFile filename
-      processDeduktiModule s
-
-processDeduktiModule :: String -> IO ()
-processDeduktiModule s = do
-  case PD.pModule (PD.myLexer s) of
-    E.Bad e -> putStrLn ("error: " ++ e)
-    E.Ok (MJmts jmts) -> do
-      putStrLn ("open import " ++ baseconstants ++ "\n") 
-      flip mapM_ jmts processDeduktiJmtTree
+processDeduktiModule :: Module -> IO ()
+processDeduktiModule mo@(MJmts jmts) = do
+  putStrLn ("open import " ++ baseconstants ++ "\n") 
+  flip mapM_ jmts processDeduktiJmtTree
 
 processDeduktiJmtTree :: Jmt -> IO ()
 processDeduktiJmtTree t = do 
