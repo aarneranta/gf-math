@@ -5,7 +5,7 @@ import sys
 # def equality = 61
 # prop equality ＝ 65309
 
-# usage: process_lagda (all | funs | odd_chars) clean_idents?
+# usage: process_lagda (<file.lagda.md>|<dir>) (all | funs | odd_chars) clean_idents?
 
 MODE = 'all' 
 if sys.argv[2:]:
@@ -74,7 +74,10 @@ def bnfc_infix(line):
 
 if __name__ == '__main__':
     path = sys.argv[1]
-    files = [join(path, file) for file in listdir(path) if file.endswith('lagda.md')]
+    if path.endswith('lagda.md'):
+        files = [path]
+    else:
+        files = [join(path, file) for file in listdir(path) if file.endswith('lagda.md')]
     odds = set()
     for file in files:
         code = extract_agda(file)
