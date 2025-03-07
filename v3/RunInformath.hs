@@ -9,7 +9,8 @@ import Dedukti.PrintDedukti
 import Dedukti.ParDedukti
 import Dedukti.AbsDedukti
 import Dedukti.ErrM
-import DeduktiOperations (identsInTypes, dropDefinitions)
+import DeduktiOperations (
+  identsInTypes, dropDefinitions, stripQualifiers, identTypes, ignoreCoercions)
 import Informath -- superset of Core
 import Core2Informath (nlg)
 import Informath2Core (semantics)
@@ -48,6 +49,8 @@ helpMsg = unlines [
   "  -variations   when producing natural language, show all variations",
   "  -idents       show frequency list of idents in a Dedukti file",
   "  -dropdefs     drop definition parts of Dedukti code",
+  "  -dropqualifs  strip qualifiers of idents",
+  "  -dropcoercions strip named coercions, only leaving their last arguments",
   "output is to stdout and can be redirected to a file to check with",
   "Dedukti or Agda or Coq or Lean when producing one of these."
   ]
@@ -90,8 +93,11 @@ main = do
         _ | ifFlag "-to-agda" env -> DA.processDeduktiModule mo
         _ | ifFlag "-to-coq" env -> DC.processDeduktiModule mo
         _ | ifFlag "-to-lean" env -> DL.processDeduktiModule mo
+	_ | ifFlag "-to-dedukti" env -> putStrLn $ printTree mo -- when modifying dedukti
 	_ | ifFlag "-parallel" env -> parallelJSONL env{flags = "-variations":flags env} mo
 	_ | ifFlag "-idents" env -> printFrequencyTable (identsInTypes mo)
+	_ | ifFlag "-idtypes" env ->
+	      mapM_ putStrLn [printTree (JStatic c t) | (c, t) <- M.toList (identTypes mo)]
 	_ -> processDeduktiModule env mo
     filename:_  -> do
       s <- readFile filename
@@ -121,9 +127,18 @@ parseDeduktiModule :: Env -> String -> IO Module
 parseDeduktiModule env s = do
   case pModule (myLexer s) of
     Bad e -> error ("parse error: " ++ e)
-    Ok mo
-      | ifFlag "-dropdefs" env -> return (dropDefinitions mo)
-      | otherwise -> return mo
+    Ok mo -> return $ foldr ($) mo (deduktiOpers env)
+
+
+deduktiOpers :: Env -> [Module -> Module]
+deduktiOpers env =
+  [ignoreCoercions matita_coercions | ifFlag "-dropcoercions" env] ++
+  [stripQualifiers | ifFlag "-dropqualifs" env] ++ 
+  [dropDefinitions | ifFlag "-dropdefs" env] 
+ where
+  matita_coercions = [QIdent s | s <- words "Term lift Univ"] ---- TODO make parametric
+
+-- example: ./RunInformath -idtypes -dropdefs -dropqualifs -dropcoercions test/matita-all.dk
 
 processDeduktiModule :: Env -> Module -> IO ()
 processDeduktiModule env mo@(MJmts jmts) = do

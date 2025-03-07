@@ -52,6 +52,16 @@ identTypes (MJmts jmts) = M.fromList (concatMap idtyp jmts) where
     JStatic qident typ -> [(qident, typ)]
     _ -> []
 
+
+-- for a coercion application, only leave its last argument
+ignoreCoercions :: [QIdent] -> Tree a -> Tree a
+ignoreCoercions cs t = case t of
+  EApp _ _ -> case splitApp t of
+    (EIdent f, xs@(_:_)) | elem f cs -> ignoreCoercions cs (last xs)
+    (f, xs) -> t ---- foldl EApp f (map (ignoreCoercions cs) t)
+  _ -> composOp (ignoreCoercions cs) t
+  
+
 -- deciding the kind of a new constant
 guessCat :: QIdent -> Exp -> String
 guessCat ident@(QIdent c) typ =
@@ -158,4 +168,14 @@ pattbindIdents = concatMap bident where
     PBVar (VIdent x) -> [x]
     PBTyped (VIdent x) _ -> [x]
     _ -> []
-    
+
+
+-- strip the qualifier part of an ident
+stripQualifiers :: Tree a -> Tree a
+stripQualifiers t = case t of
+  QIdent c -> QIdent (stripQ c)
+  _ -> composOp stripQualifiers t
+ where
+   stripQ c = case break (=='.') c of
+     (_, _:x) -> x
+     _ -> c
