@@ -43,6 +43,7 @@ helpMsg = unlines [
   "  -to-agda      convert to Agda (with <file>.dk as argument)",
   "  -to-coq       convert to Coq (with <file>.dk as argument)",
   "  -to-lean      convert to Lean (with <file>.dk as argument)",
+  "  -to-dedukti   to Dedukti code (typically after changes in <file.dk>)",
   "  -lang=<lang>  natural language to be targeted; Eng (default), Swe, Fre,...",
   "  -parallel     a jsonl list with all languages and variations",
   "  -v            verbose output, e.g. syntax trees and intermediate results",
@@ -88,12 +89,12 @@ main = do
       mkConstants (lang env) filename
     filename:_ | isSuffixOf ".dk" filename -> do
       s <- readFile filename
-      mo <- parseDeduktiModule env s
+      mo@(MJmts jmts) <- parseDeduktiModule env s
       case s of
         _ | ifFlag "-to-agda" env -> DA.processDeduktiModule mo
         _ | ifFlag "-to-coq" env -> DC.processDeduktiModule mo
         _ | ifFlag "-to-lean" env -> DL.processDeduktiModule mo
-	_ | ifFlag "-to-dedukti" env -> putStrLn $ printTree mo -- when modifying dedukti
+	_ | ifFlag "-to-dedukti" env -> mapM_ putStrLn [printTree j | j <- jmts] -- when modifying dedukti
 	_ | ifFlag "-parallel" env -> parallelJSONL env{flags = "-variations":flags env} mo
 	_ | ifFlag "-idents" env -> printFrequencyTable (identsInTypes mo)
 	_ | ifFlag "-idtypes" env ->

@@ -58,7 +58,7 @@ ignoreCoercions :: [QIdent] -> Tree a -> Tree a
 ignoreCoercions cs t = case t of
   EApp _ _ -> case splitApp t of
     (EIdent f, xs@(_:_)) | elem f cs -> ignoreCoercions cs (last xs)
-    (f, xs) -> t ---- foldl EApp f (map (ignoreCoercions cs) t)
+    (f, xs) -> foldl EApp (ignoreCoercions cs f) (map (ignoreCoercions cs) xs)
   _ -> composOp (ignoreCoercions cs) t
   
 
