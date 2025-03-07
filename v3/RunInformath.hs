@@ -10,7 +10,7 @@ import Dedukti.ParDedukti
 import Dedukti.AbsDedukti
 import Dedukti.ErrM
 import DeduktiOperations (
-  identsInTypes, dropDefinitions, stripQualifiers, identTypes, ignoreCoercions)
+  identsInTypes, dropDefinitions, stripQualifiers, identTypes, ignoreCoercions, alphaConvert)
 import Informath -- superset of Core
 import Core2Informath (nlg)
 import Informath2Core (semantics)
@@ -58,10 +58,12 @@ helpMsg = unlines [
 
 informathPrefix = "Informath"
 informathPGFFile = "grammars/" ++ informathPrefix ++ ".pgf"
+conversionsFile = "alphaConversions.tsv"
 Just jmt = readType "Jmt"
 
 data Env = Env {
  flags :: [String],
+ identConversions :: M.Map String String,
  cpgf :: PGF,
  lang :: Language,
  termindex :: [String] -- list of terms replaced by \INDEXEDTERM{ i }
@@ -80,8 +82,14 @@ main = do
   xx <- getArgs
   let (ff, yy) = partition ((== '-') . head) xx
   corepgf <- readPGF informathPGFFile
+  conversions <- readFile conversionsFile >>= return . filter ((==2) . length) . map words . lines
   let Just lan = readLanguage (informathPrefix ++ (flagValue "lang" "Eng" ff))
-  let env = Env{flags = ff, cpgf = corepgf, lang=lan, termindex = []}
+  let env = Env{
+        flags = ff,
+	identConversions = M.fromList [(a, b) | a:b:_ <- conversions],
+	cpgf = corepgf,
+	lang=lan,
+	termindex = []}
   case yy of
     _ | ifFlag "-help" env -> do
       putStrLn helpMsg
@@ -134,6 +142,7 @@ parseDeduktiModule env s = do
 deduktiOpers :: Env -> [Module -> Module]
 deduktiOpers env =
   [ignoreCoercions matita_coercions | ifFlag "-dropcoercions" env] ++
+  [alphaConvert (identConversions env) | ifFlag "-alphaconv" env] ++ 
   [stripQualifiers | ifFlag "-dropqualifs" env] ++ 
   [dropDefinitions | ifFlag "-dropdefs" env] 
  where

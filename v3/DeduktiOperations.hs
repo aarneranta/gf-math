@@ -60,7 +60,11 @@ ignoreCoercions cs t = case t of
     (EIdent f, xs@(_:_)) | elem f cs -> ignoreCoercions cs (last xs)
     (f, xs) -> foldl EApp (ignoreCoercions cs f) (map (ignoreCoercions cs) xs)
   _ -> composOp (ignoreCoercions cs) t
-  
+
+alphaConvert :: M.Map String String -> Tree a -> Tree a
+alphaConvert convs t = case t of
+  QIdent a -> maybe t QIdent $ M.lookup a convs
+  _ -> composOp (alphaConvert convs) t
 
 -- deciding the kind of a new constant
 guessCat :: QIdent -> Exp -> String
