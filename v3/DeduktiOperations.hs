@@ -89,6 +89,16 @@ guessCat ident@(QIdent c) typ =
       (EIdent f, _) | f == identProof -> "Label"
       _ -> "Unknown"
 
+-- to begin with, to decide how to render a hypo
+catExp :: Exp -> String
+catExp e = case e of
+  EApp _ _ -> case splitApp e of
+    (EIdent f@(QIdent c), _) -> case lookupConstant c of
+      Just (k, _) | elem k ["Adj", "Rel", "Compar"] -> "Prop"
+      _ | elem f [identConj, identDisj, identImpl,
+                  identEquiv, identPi, identSigma, identNeg] -> "Prop"
+      _ -> "Kind"
+  _ -> "Kind"
 
 
 splitType :: Exp -> ([Hypo], Exp)
@@ -183,3 +193,4 @@ stripQualifiers t = case t of
    stripQ c = case break (=='.') c of
      (_, _:x) -> x
      _ -> c
+

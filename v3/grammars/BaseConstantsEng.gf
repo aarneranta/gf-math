@@ -64,6 +64,7 @@ lin
   pow_Oper = mkOper L.pow_Oper "exponentiation" ;
   neg_Oper = mkOper L.neg_Oper "negation" ;
 
+  successor_Fun = mkFun "successor" ;
   absolute_value_Fun = mkFun "absolute" "value" ;
   factorial_Fun = mkFun "factorial" ;
   gcd_Fun = mkFun "greatest" "common" "divisor" ;

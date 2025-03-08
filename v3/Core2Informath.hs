@@ -47,9 +47,12 @@ formalize t = case t of
     (Just tx, Just ty) -> GTermExp (GAppOperTerm oper tx ty)
     _ -> GOperListExp oper (formalize xy)
   GConstExp const -> GTermExp (GConstTerm const)
+  GFunListExp f exps -> maybe t GTermExp (getTerm t) 
+  GOperListExp f exps -> maybe t GTermExp (getTerm t) 
+  GAppExp f exps -> maybe t GTermExp (getTerm t) 
   _ -> composOp formalize t
 
-getTerm :: GExp -> Maybe GTerm
+getTerm :: Tree a -> Maybe GTerm
 getTerm t = case t of
   GConstExp const -> return (GConstTerm const)
   GFunListExp fun (GOneExps x) -> do
@@ -69,6 +72,9 @@ getTerm t = case t of
     case oper of
       LexOper "times_Oper" -> return (GTTimes tx ty)
       _ -> return (GAppOperTerm oper tx ty)
+  GAppExp t@(GTermExp (GTIdent f)) exps -> case mapM getTerm (exps2list exps) of
+    Just xs -> return (GTApp (GFIdent f) (GListTerm xs))
+    _ -> Nothing
   GTermExp term -> return term
   _ -> Nothing
 
@@ -188,6 +194,11 @@ varless :: Tree a -> Tree a
 varless t = case t of
   GAllArgKindExp (GIdentsArgKind kind (GListIdent [_])) -> GEveryKindExp kind
   _ -> composOp varless t
+
+exps2list :: GExps -> [GExp]
+exps2list exps = case exps of
+  GOneExps e -> [e]
+  GAddExps e es -> e : exps2list es
 
 {-
 > x : Pi Nat (n => Disj (Even n) (Odd n)).

@@ -130,7 +130,6 @@ transQIdent t = case t of
 
 processDeduktiModule :: Module -> IO ()
 processDeduktiModule mo@(MJmts jmts) = do
-  putStrLn ("open import " ++ baseconstants ++ "\n") 
   flip mapM_ jmts processDeduktiJmtTree
 
 processDeduktiJmtTree :: Jmt -> IO ()

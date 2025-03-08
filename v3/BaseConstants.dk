@@ -63,6 +63,8 @@ div : Elem Real -> Elem Real -> Elem Real.
 pow : Elem Real -> Elem Real -> Elem Real.
 neg : Elem Real -> Elem Real.
 
+succ : Elem Nat -> Elem Nat.
+
 gcd : Elem Int -> Elem Int -> Elem Int.
 
 abs : Elem Real -> Elem Real.

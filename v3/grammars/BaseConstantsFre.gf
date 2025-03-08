@@ -63,6 +63,7 @@ lin
   pow_Oper = mkOper "puissance" "^" <2 : Prec> ; ---
   neg_Oper = mkOper "négation" "\\negated" ;
 
+  successor_Fun = mkFun "successeur" ;
   absolute_value_Fun = mkFun (mkCN (mkA "absolu") (mkN "valeur" feminine)) ;
   factorial_Fun = mkFun "factorielle" ;
   gcd_Fun = mkFun "plus grand" "commun" "diviseur" ; ---- should be in this order

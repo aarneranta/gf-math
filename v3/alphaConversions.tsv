@@ -1,1 +1,15 @@
 nat	Nat
+Type0	Set
+prop	Prop
+And	and
+Not	not
+eq	Eq
+le	Leq
+lt	Lt
+ge	Geq
+gt	Gt
+divides	divisible
+Or	or
+O	0
+S	succ
+fact	factorial
