@@ -107,14 +107,14 @@ hypos2hypos :: [Hypo] -> [GHypo]
 hypos2hypos hypos = case hypos of
   HVarExp x p : hs | catExp p == "Prop" -> GPropHypo (exp2prop p) : hypos2hypos hs
   hypo@(HVarExp var kind) : hh -> case getVarsHypos kind hh of
-    ([], _) -> GVarsHypo (GListIdent [var2ident var]) (exp2kind kind) : hypos2hypos hh
-    (xs, hs) -> GVarsHypo (GListIdent (map var2ident (var:xs))) (exp2kind kind) : hypos2hypos hs
+    ([], _) -> GVarsHypo (GListIdent [ident2ident var]) (exp2kind kind) : hypos2hypos hh
+    (xs, hs) -> GVarsHypo (GListIdent (map ident2ident (var:xs))) (exp2kind kind) : hypos2hypos hs
   HParVarExp var kind : hh -> hypos2hypos (HVarExp var kind : hh) 
   HExp prop : hh -> 
     GPropHypo (exp2prop prop) : hypos2hypos hh
   [] -> []
  where
-   getVarsHypos :: Exp -> [Hypo] -> ([Var], [Hypo])
+   getVarsHypos :: Exp -> [Hypo] -> ([QIdent], [Hypo])
    getVarsHypos kind hh = case hh of
      HVarExp x k : hs | k == kind ->
        let (xs, hhs) = getVarsHypos kind hs
@@ -124,10 +124,12 @@ hypos2hypos hypos = case hypos of
 
 hypo2coreArgKind :: Hypo -> GArgKind
 hypo2coreArgKind hypo = case hypo of
+  HVarExp var kind | isWildIdent var -> 
+    GKindArgKind (exp2kind kind)
   HVarExp var kind -> 
-    GIdentsArgKind (exp2kind kind) (GListIdent [var2ident var]) 
+    GIdentsArgKind (exp2kind kind) (GListIdent [ident2ident var]) 
   HParVarExp var kind -> 
-    GIdentsArgKind (exp2kind kind) (GListIdent [var2ident var])
+    hypo2coreArgKind (HVarExp var kind)
   HExp kind -> 
     GKindArgKind (exp2kind kind)
 
@@ -243,11 +245,10 @@ exp2proofExp exp = case exp of
 
 patt2exp :: Patt -> GExp
 patt2exp patt = case patt of
-  PVar (VIdent ident) -> ident2exp ident
-  PVar _ -> GTermExp (GTIdent wildIdent)
+  PVar ident -> ident2exp ident
   PApp _ _ -> case splitPatt patt of
     (fun, args) -> case fun of
-      PVar (VIdent ident) ->
+      PVar ident ->
         funListExp ident (map patt2exp args)
   PBracket p -> patt2exp p --- ?
   PBind bind p -> GAbsExp (GListIdent [bind2coreIdent bind]) (patt2exp p) --- splitAbs?
@@ -278,26 +279,18 @@ ident2kind ident = case ident of
 
 bind2coreIdent :: Bind -> GIdent
 bind2coreIdent bind = case bind of
-  BVar var -> var2ident var
-  BTyped var exp -> var2ident var ---- add typed binding to Core?
-
-var2ident :: Var -> GIdent
-var2ident var = case var of
-  VIdent s -> ident2ident s
-  VWild -> ident2ident (QIdent "_") ----
-
-wildIdent :: GIdent
-wildIdent = GStrIdent (GString "_") ---- to be eliminated?
+  BVar var -> ident2ident var
+  BTyped var exp -> ident2ident var ---- add typed binding to Core?
 
 -- needed in proofs by abstraction
 bind2coreHypo :: Bind -> GHypo
 bind2coreHypo bind = case bind of
-  BTyped VWild exp ->
+  BTyped x exp | isWildIdent x ->
     GPropHypo (exp2prop exp)  
   BTyped var exp ->
-    GVarsHypo (GListIdent [var2ident var]) (exp2kind exp)  
+    GVarsHypo (GListIdent [ident2ident var]) (exp2kind exp)  
   BVar var ->  
-    GBareVarsHypo (GListIdent [var2ident var])
+    GBareVarsHypo (GListIdent [ident2ident var])
 
 gExps :: [GExp] -> GExps
 gExps exps = foldr GAddExps (GOneExps (last exps)) (init exps)

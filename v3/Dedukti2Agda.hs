@@ -8,7 +8,7 @@ import qualified Agda.AbsAgda as A
 
 import qualified Agda.PrintAgda as PrA
 
-import DeduktiOperations (getNumber, splitApp)
+import DeduktiOperations (getNumber, splitApp, isWildIdent)
 
 import System.Environment (getArgs)
 
@@ -64,10 +64,10 @@ transBind t = case t of
   BVar var -> A.BVar [transVar var]
   BTyped var exp -> A.BTyped [transVar var] (transExp exp)
 
-transVar :: Var -> A.Var
+transVar :: QIdent -> A.Var
 transVar t = case t of
-  VIdent qident -> A.VIdent (transQIdent qident)
-  VWild  -> A.VWild
+  _ | isWildIdent t -> A.VWild
+  _ -> A.VIdent (transQIdent t)
 
 transHypo :: Hypo -> A.Hypo
 transHypo t = case t of

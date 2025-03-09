@@ -100,7 +100,7 @@ aggregate t = case t of
  where
    aggregateHypos hypos = case hypos of
      GPropHypo a : GPropHypo b : hs ->
-       GPropHypo (GAndProp (GListProp [aggregate a, aggregate b])) : aggregateHypos hs
+       GPropHypo (aggregate (GSimpleAndProp (GListProp [a, b]))) : aggregateHypos hs
      h : hs -> aggregate h : aggregateHypos hs
      _ -> hypos
 

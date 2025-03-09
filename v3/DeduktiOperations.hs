@@ -17,8 +17,8 @@ identsInTypes t = M.fromListWith (+) [(x, 1) | x <- ids t] where
   ids :: Tree a -> [QIdent]
   ids tree = case tree of
     EIdent qident -> [qident]
-    EAbs bind exp -> [x | x <- ids exp, VIdent x /= bind2var bind]
-    EFun (HVarExp var exp) body -> ids exp ++ [x | x <- ids body, VIdent x /= var]
+    EAbs bind exp -> [x | x <- ids exp, x /= bind2var bind]
+    EFun (HVarExp var exp) body -> ids exp ++ [x | x <- ids body, x /= var]
     EFun (HParVarExp var exp) body -> ids  (EFun (HVarExp var exp) body)
     RRule pattbinds patt exp ->
       [x | x <- ids patt ++ ids exp, notElem x (pattbindIdents pattbinds)] ---- types in pattbinds
@@ -138,13 +138,13 @@ splitType exp = case exp of
 
 addVarsToHypos :: [Hypo] -> [Hypo]
 addVarsToHypos = adds vars where
-  adds :: [Var] -> [Hypo] -> [Hypo]
+  adds :: [QIdent] -> [Hypo] -> [Hypo]
   adds vs hypos = case hypos of
     HExp exp : hh -> HVarExp (head vs) exp : adds (tail vs) hh
     hypo@(HVarExp var _) : hh -> hypo : adds (filter (/= var) vs) hh
     hypo@(HParVarExp var _) : hh -> hypo : adds (filter (/= var) vs) hh
     _ -> []
-  vars = [VIdent (QIdent s) |
+  vars = [QIdent s |
            s <- ["x", "y", "z", "u", "v", "w"] ++ ["X"  ++ show i | i <- [1..11]]]
 	 --- finite list so that filter works
 
@@ -182,6 +182,9 @@ splitIdent conn exp = case splitApp exp of
     cs -> cs ++ [b]
   _ -> []
 
+isWildIdent :: QIdent -> Bool
+isWildIdent (QIdent s) = all (=='_') s
+
 getNumber :: Exp -> [Exp] -> Maybe String
 getNumber fun args =
   case (fun, args) of
@@ -209,7 +212,7 @@ unresolvedIndexIdent i = QIdent ("UNRESOLVED_INDEX_" ++ show i)
 
 
 -- used in quantified propositions
-bind2var :: Bind -> Var
+bind2var :: Bind -> QIdent
 bind2var bind = case bind of
   BVar v -> v
   BTyped v _ -> v
@@ -218,10 +221,9 @@ pattbindIdents :: [Pattbind] -> [QIdent]
 pattbindIdents = concatMap bident where
   bident :: Pattbind -> [QIdent]
   bident pattbind = case pattbind of
-    PBVar (VIdent x) -> [x]
-    PBTyped (VIdent x) _ -> [x]
+    PBVar x -> [x]
+    PBTyped x _ -> [x]
     _ -> []
-
 
 -- strip the qualifier part of an ident
 stripQualifiers :: Tree a -> Tree a

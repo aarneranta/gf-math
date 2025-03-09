@@ -90,10 +90,10 @@ transBind t = case t of
   BVar var -> transVar var
   BTyped var exp -> transVar var
 
-transVar :: Var -> L.LIdent
+transVar :: QIdent -> L.LIdent
 transVar t = case t of
-  VIdent ident -> transQIdent ident
-  VWild -> L.LIdent "x_" --- ?
+  _ | isWildIdent t -> L.LIdent "x__" --- ?
+  _ -> transQIdent t
 
 transHypos :: [Hypo] -> [L.Hypo]
 transHypos hypos = compress (map transHypo vhypos)

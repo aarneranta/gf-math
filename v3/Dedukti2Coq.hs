@@ -34,13 +34,13 @@ transModule t = case t of
 transJmt :: Jmt -> C.Jmt
 transJmt t = case t of
   JStatic qident exp ->
-    C.JAxiom (transQIdent qident) (transExpProp exp)
+    C.JAxiom (transIdent qident) (transExpProp exp)
   JDef qident (MTExp typ) (MEExp exp) ->
     let (hypos, vtyp) = splitType typ
-    in C.JDef (transQIdent qident) (transHypos hypos) (transExp vtyp) (transExp (stripAbs hypos exp))
+    in C.JDef (transIdent qident) (transHypos hypos) (transExp vtyp) (transExp (stripAbs hypos exp))
   JThm qident (MTExp typ) (MEExp exp) ->
     let (hypos, vtyp) = splitType typ
-    in C.JThm (transQIdent qident) (transHypos hypos) (transExp vtyp) (transExp (stripAbs hypos exp))
+    in C.JThm (transIdent qident) (transHypos hypos) (transExp vtyp) (transExp (stripAbs hypos exp))
   JDef qident (MTExp typ) MENone ->
     transJmt (JStatic qident typ)
   JInj qident mtyp mexp -> transJmt (JDef qident mtyp mexp)  
@@ -52,7 +52,7 @@ transJmt t = case t of
 
 transExp :: Exp -> C.Exp
 transExp t = case t of
-  EIdent qident -> C.EIdent (transQIdent qident)
+  EIdent qident -> C.EIdent (transIdent qident)
   EApp exp0 exp1 -> case splitApp t of
     (fun@(EIdent (QIdent c)), [arg]) | elem c ["Elem", "Proof"] -> transExp arg
     (fun@(EIdent (QIdent n)), args) | elem n ["nn", "nd"] -> case getNumber fun args of
@@ -84,19 +84,14 @@ transExp t = case t of
 
 transExpProp :: Exp -> C.Exp
 transExpProp t = case t of
-  EFun (HVarExp var typ) exp -> C.EAll [transVar var] (transExp typ) (transExpProp exp)
+  EFun (HVarExp var typ) exp -> C.EAll [transIdent var] (transExp typ) (transExpProp exp)
   EFun (HParVarExp var typ) exp -> transExpProp (EFun (HVarExp var typ) exp) 
   _ -> transExp t
 
 transBind :: Bind -> C.CIdent
 transBind t = case t of
-  BVar var -> transVar var
-  BTyped var exp -> transVar var
-
-transVar :: Var -> C.CIdent
-transVar t = case t of
-  VIdent ident -> transQIdent ident
-  VWild -> C.CIdent "x_" --- ?
+  BVar var -> transIdent var
+  BTyped var exp -> transIdent var
 
 transHypos :: [Hypo] -> [C.Hypo]
 transHypos hypos = compress (map transHypo vhypos)
@@ -119,14 +114,15 @@ transHypos hypos = compress (map transHypo vhypos)
 transHypo :: Hypo -> C.Hypo
 transHypo t = case t of
 --  HExp exp -> C.HExp (transExp exp) -- not reached due to addVarsToHypos
-  HVarExp var exp -> C.HVarExp [transVar var] (transExp exp)
-  HParVarExp var exp -> C.HVarExp [transVar var] (transExp exp)
+  HVarExp var exp -> C.HVarExp [transIdent var] (transExp exp)
+  HParVarExp var exp -> C.HVarExp [transIdent var] (transExp exp)
 
-transQIdent :: QIdent -> C.CIdent
-transQIdent t = case t of
+transIdent :: QIdent -> C.CIdent
+transIdent t = case t of
   c | c == identPi -> C.CIdent "All" 
   c | c == identSigma -> C.CIdent "Exist"
   c | c == identNat -> C.CIdent "nat" -- "ℕ" ---- TODO find out how to make Coq recognize these
+  c | isWildIdent c -> C.CIdent "x__" ---- ?
   QIdent str -> C.CIdent str ---- not quite the same ident syntax ; reserved idents in Coq!
 
 processDeduktiModule :: Module -> IO ()

@@ -59,7 +59,7 @@ jmt2dedukti jment = case jment of
 rule2dedukti :: GRule -> Rule
 rule2dedukti rule = case rule of
   GRewriteRule (GListIdent idents) patt exp ->
-    RRule (map (PBVar . VIdent . ident2ident) idents) (exp2deduktiPatt patt) (exp2dedukti exp)
+    RRule (map (PBVar . ident2ident) idents) (exp2deduktiPatt patt) (exp2dedukti exp)
   GNoVarRewriteRule patt exp ->
     rule2dedukti (GRewriteRule (GListIdent []) patt exp)
 
@@ -97,17 +97,17 @@ prop2dedukti prop = case prop of
 hypo2dedukti :: GHypo -> [Hypo]
 hypo2dedukti hypo = case hypo of
   GVarsHypo (GListIdent idents) kind ->
-    [HVarExp (VIdent (ident2ident ident)) (kind2dedukti kind) | ident <- idents]
+    [HVarExp (ident2ident ident) (kind2dedukti kind) | ident <- idents]
   GPropHypo prop ->
     [HExp (prop2dedukti prop)]
   GIndexedLetFormulaHypo (GInt i) ->
     [HExp (EIdent (unresolvedIndexIdent i))]
 
-argkind2dedukti :: GArgKind -> [(Exp, Var)]
+argkind2dedukti :: GArgKind -> [(Exp, QIdent)]
 argkind2dedukti argkind = case argkind of
   GIdentsArgKind kind (GListIdent idents) ->
     let dkind = kind2dedukti kind
-    in [(dkind, ident2var ident) | ident <- idents]
+    in [(dkind, ident2ident ident) | ident <- idents]
 
 kind2dedukti :: GKind -> Exp
 kind2dedukti kind = case kind of
@@ -117,7 +117,7 @@ kind2dedukti kind = case kind of
   GSuchThatKind ident kind prop ->
     propSigma
       (kind2dedukti kind)
-      (EAbs (BVar (VIdent (ident2ident ident)))
+      (EAbs (BVar (ident2ident ident))
             (prop2dedukti prop))
   GAppKind ident exps ->
     foldl1 EApp (EIdent (ident2ident ident) : map exp2dedukti (exps2list exps))
@@ -134,7 +134,7 @@ exp2dedukti exp = case exp of
     foldl1 EApp (map exp2dedukti (exp : (exps2list exps)))
   GAbsExp (GListIdent idents) exp ->
     foldr
-      (\x y -> EAbs (BVar (VIdent (ident2ident x))) y)
+      (\x y -> EAbs (BVar (ident2ident x)) y)
       (exp2dedukti exp)
       idents
   GNameExp (LexName name) ->
@@ -155,13 +155,13 @@ exp2dedukti exp = case exp of
 
 exp2deduktiPatt :: GExp -> Patt
 exp2deduktiPatt exp = case exp of
-  GTermExp (GTIdent ident) -> PVar (ident2var ident)
+  GTermExp (GTIdent ident) -> PVar (ident2ident ident)
 {- ----
   GAppExp exp (GListExp exps) ->
     foldl1 EApp (map exp2dedukti (exp : exps))
   GAbsExp (GListIdent idents) exp ->
     foldr
-      (\x y -> EAbs (BVar (VIdent (ident2ident x))) y)
+      (\x y -> EAbs (BVar (ident2ident x)) y)
       (exp2dedukti exp)
       idents
   GNameExp (LexName name) ->
@@ -182,11 +182,6 @@ proofexp2exp proofexp = case proofexp of
 ident2ident :: GIdent -> QIdent
 ident2ident ident = case ident of
   GStrIdent (GString s) -> QIdent s
-
-ident2var :: GIdent -> Var
-ident2var ident = case ident of
-  GStrIdent (GString "_") -> VWild
-  GStrIdent (GString s) -> VIdent (QIdent s) 
 
 exp2ident :: GExp -> QIdent
 exp2ident exp = case exp of

@@ -33,20 +33,17 @@ EFun.    Exp1 ::= Hypo "->" Exp1 ;
 
 coercions Exp 9 ;
 
-BVar.   Bind ::= Var ;
-BTyped. Bind ::= Var ":" Exp3 ;
+BVar.   Bind ::= QIdent ;
+BTyped. Bind ::= QIdent ":" Exp3 ;
 
-PBVar.   Pattbind ::= Var ;
-PBTyped. Pattbind ::= Var ":" Exp ;
-
-VIdent.  Var ::= QIdent ;
-VWild.   Var ::= "_" ;
+PBVar.   Pattbind ::= QIdent ;
+PBTyped. Pattbind ::= QIdent ":" Exp ;
 
 HExp.    Hypo ::= Exp3 ;
-HVarExp. Hypo ::= Var ":" Exp3 ;
-HParVarExp. Hypo ::= "(" Var ":" Exp ")" ;
+HVarExp. Hypo ::= QIdent ":" Exp3 ;
+HParVarExp. Hypo ::= "(" QIdent ":" Exp ")" ;
 
-PVar.   Patt3 ::= Var ;
+PVar.   Patt3 ::= QIdent ;
 PBracket. Patt3 ::= "{" Patt "}" ;
 PApp.   Patt1 ::= Patt1 Patt2 ;
 PBind.  Patt  ::= Bind "=>" Patt1 ;
