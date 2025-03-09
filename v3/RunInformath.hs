@@ -10,7 +10,7 @@ import Dedukti.ParDedukti
 import Dedukti.AbsDedukti
 import Dedukti.ErrM
 import DeduktiOperations (
-  identsInTypes, dropDefinitions, stripQualifiers, identTypes, ignoreCoercions, alphaConvert)
+  identsInTypes, dropDefinitions, stripQualifiers, identTypes, ignoreCoercions, alphaConvert, ignoreFirstArguments)
 import Informath -- superset of Core
 import Core2Informath (nlg)
 import Informath2Core (semantics)
@@ -52,6 +52,7 @@ helpMsg = unlines [
   "  -dropdefs     drop definition parts of Dedukti code",
   "  -dropqualifs  strip qualifiers of idents",
   "  -dropcoercions strip named coercions, only leaving their last arguments",
+  "  -dropfirstargs drop first k arguments of given functions (usually type arguments)",
   "output is to stdout and can be redirected to a file to check with",
   "Dedukti or Agda or Coq or Lean when producing one of these."
   ]
@@ -141,12 +142,14 @@ parseDeduktiModule env s = do
 
 deduktiOpers :: Env -> [Module -> Module]
 deduktiOpers env =
+  [ignoreFirstArguments matita_typeargs | ifFlag "-dropfirstargs" env] ++
   [ignoreCoercions matita_coercions | ifFlag "-dropcoercions" env] ++
   [alphaConvert (identConversions env) | ifFlag "-alphaconv" env] ++ 
   [stripQualifiers | ifFlag "-dropqualifs" env] ++ 
   [dropDefinitions | ifFlag "-dropdefs" env] 
  where
   matita_coercions = [QIdent s | s <- words "Term lift Univ"] ---- TODO make parametric
+  matita_typeargs = [(QIdent "Eq", 1)]
 
 -- example: ./RunInformath -idtypes -dropdefs -dropqualifs -dropcoercions test/matita-all.dk
 

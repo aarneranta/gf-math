@@ -52,6 +52,9 @@ Neq : Elem Real -> Elem Real -> Prop.
 Leq : Elem Real -> Elem Real -> Prop.
 Geq : Elem Real -> Elem Real -> Prop.
 
+(; type-relative equality often used ;)
+Eqt : (A : Set) -> Elem A -> Elem A -> Prop.
+
 positive : (x : Elem Real) -> Prop.
 negative : Elem Real -> Prop.
 
@@ -62,6 +65,8 @@ times : Elem Real -> Elem Real -> Elem Real.
 div : Elem Real -> Elem Real -> Elem Real.
 pow : Elem Real -> Elem Real -> Elem Real.
 neg : Elem Real -> Elem Real.
+sqrt : Elem Real -> Elem Complex.
+log : Elem Real -> Elem Real -> Elem Real.
 
 succ : Elem Nat -> Elem Nat.
 

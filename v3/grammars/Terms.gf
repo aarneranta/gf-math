@@ -39,5 +39,8 @@ fun
   TPositive : Term -> Term ; -- R^+
   TNegative : Term -> Term ;
 
+  TLog : Term -> Term -> Term ;
+  TSqrt : Term -> Term ;
+  
   TextbfTerm : Term -> Term ;
 }

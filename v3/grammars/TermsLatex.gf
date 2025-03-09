@@ -52,6 +52,12 @@ lin
     tconstant ("\\{" ++ top a ++ "\\in" ++ top b ++
                 ":" ++ top f ++ "\\}") ;
 
+  TSqrt t = tconstant ("\\sqrt{" ++ top t ++ "}") ;
+
+  TLog base arg =
+    mkPrec 3 ("\\log_" ++ top base ++ usePrec 3 arg) ** {isNumber = arg.isNumber} ;
+    ---- isNumber only on right: 2 log_e 5 vs. log_e 5 x 2
+
   TextbfTerm e = e ** {s = macroApp "textbf" (top e)} ;
 
 oper

@@ -61,6 +61,17 @@ ignoreCoercions cs t = case t of
     (f, xs) -> foldl EApp (ignoreCoercions cs f) (map (ignoreCoercions cs) xs)
   _ -> composOp (ignoreCoercions cs) t
 
+-- typically, ignore explicit type arguments to form a polymorphic expression 
+ignoreFirstArguments ::[(QIdent, Int)] -> Tree a -> Tree a
+ignoreFirstArguments cns t = case t of
+  EApp _ _ -> case splitApp t of
+    (EIdent f, xs@(_:_)) -> case lookup f cns of
+      Just n -> foldl EApp (EIdent f) (map (ignoreFirstArguments cns) (drop n xs))
+      _ -> foldl EApp (EIdent f) (map (ignoreFirstArguments cns) xs)
+    (f, xs) -> foldl EApp (ignoreFirstArguments cns f) (map (ignoreFirstArguments cns) xs)
+  _ -> composOp (ignoreFirstArguments cns) t
+
+
 alphaConvert :: M.Map String String -> Tree a -> Tree a
 alphaConvert convs t = case t of
   QIdent a -> maybe t QIdent $ M.lookup a convs
