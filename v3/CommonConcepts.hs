@@ -37,6 +37,10 @@ identNeq =  QIdent "Neq"
 identLeq =  QIdent "Leq"
 identGeq =  QIdent "Geq"
 
+-- Peano-style Nat constructors in BaseConstants.dk
+identZero = QIdent "0"
+identSucc = QIdent "succ"
+
 -- these are to be peeled away
 identProof = QIdent "Proof"
 identElem = QIdent "Elem"

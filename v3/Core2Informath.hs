@@ -56,7 +56,7 @@ formalize t = case t of
 getTerm :: Tree a -> Maybe GTerm
 getTerm t = case t of
   GConstExp const -> return (GConstTerm const)
-  GFunListExp (LexFun "successor_Fun") (GOneExps x) -> tryComputeSuccessor t
+----  GFunListExp (LexFun "successor_Fun") (GOneExps x) -> tryComputeSuccessor t
   GFunListExp fun (GOneExps x) -> do
     tx <- getTerm x
     case fun of
@@ -95,7 +95,14 @@ aggregate t = case t of
     _ -> case getAdjArgs props a of
       Just exps -> GAdjProp a (GOrExp (GListExp (x:exps)))
       _ -> GSimpleOrProp (GListProp (map aggregate pp))
+  GListHypo hypos -> GListHypo (aggregateHypos hypos)
   _ -> composOp aggregate t
+ where
+   aggregateHypos hypos = case hypos of
+     GPropHypo a : GPropHypo b : hs ->
+       GPropHypo (GAndProp (GListProp [aggregate a, aggregate b])) : aggregateHypos hs
+     h : hs -> aggregate h : aggregateHypos hs
+     _ -> hypos
 
 getAdjs :: [GProp] -> GExp -> Maybe [GAdj]
 getAdjs props x = case props of
@@ -202,27 +209,3 @@ exps2list exps = case exps of
   GOneExps e -> [e]
   GAddExps e es -> e : exps2list es
 
--- to work on formalizations where Nat = 0 | Succ Nat
-tryComputeSuccessor :: GExp -> Maybe GTerm
-tryComputeSuccessor t = case countSuccessors t of
-  (n, Nothing) -> return (GTNumber (GInt n))
-  (n, Just exp) -> case getTerm exp of
-    Just (GTIdent (GStrIdent (GString [d]))) | isDigit d -> return (GTNumber (GInt (n + read [d]))) ---- should not happen but does
-    Just (GTNumber (GInt k)) -> return (GTNumber (GInt (n + k)))
-    Just x -> return (GAppOperTerm (LexOper "plus_Oper") x (GTNumber (GInt n)))
-    _ -> Nothing
- where
-   countSuccessors :: GExp -> (Int, Maybe GExp)
-   countSuccessors exp = case exp of
-     GFunListExp (LexFun "successor_Fun") (GOneExps x) -> case countSuccessors x of
-       (n, Just (GTermExp (GTNumber (GInt 0)))) -> (n + 1, Nothing) 
-       (n, Just y) -> (n + 1, Just y)
-     _ -> (0, Just exp)
-     
-{-
-> x : Pi Nat (n => Disj (Even n) (Odd n)).
-Axiom x . for all natural numbers $ n $ , ( $ n $ is even or $ n $ is odd ) .
-Axiom x . for all natural numbers $ n $ , $ n $ is even or odd .
-Axiom x . all natural numbers $ n $ are even or odd .
-Axiom x . every natural number is even or odd .
--}

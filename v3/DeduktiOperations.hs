@@ -77,6 +77,23 @@ alphaConvert convs t = case t of
   QIdent a -> maybe t QIdent $ M.lookup a convs
   _ -> composOp (alphaConvert convs) t
 
+peano2int :: Tree a -> Tree a
+peano2int t = case t of
+  EApp f x -> case splitApp t of
+    (g, xs) -> case countSucc t of
+      (0, _) -> foldl EApp g (map peano2int xs)
+      (n, EIdent z) | z == identZero -> int2exp n
+      (1, exp) -> EApp (EApp (EIdent identPlus) (peano2int exp)) (int2exp 1)
+      (n, exp) -> EApp (EApp (EIdent identPlus) (peano2int exp)) (int2exp n)
+  _ -> composOp peano2int t
+ where
+   countSucc :: Exp -> (Int, Exp)
+   countSucc exp = case exp of
+     EApp (EIdent f) x | f == identSucc -> case countSucc x of
+       (n, y) -> (n + 1, y)
+       _ -> (0, exp)
+     _ -> (0, exp)
+
 -- deciding the kind of a new constant
 guessCat :: QIdent -> Exp -> String
 guessCat ident@(QIdent c) typ =
@@ -179,6 +196,17 @@ getNumber fun args =
    getDigit x = case x of
      EIdent (QIdent [d]) | elem d "0123456789" -> return [d]
      _ -> Nothing
+
+int2exp :: Int -> Exp
+int2exp = cc . show
+  where
+    cc s = case s of
+      [d] -> EApp (EIdent (QIdent nd)) (EIdent (QIdent s))
+      d:ds -> EApp (EApp (EIdent (QIdent nn)) (EIdent (QIdent [d]))) (cc ds)
+      
+unresolvedIndexIdent :: Int -> QIdent
+unresolvedIndexIdent i = QIdent ("UNRESOLVED_INDEX_" ++ show i)
+
 
 -- used in quantified propositions
 bind2var :: Bind -> Var

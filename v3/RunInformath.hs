@@ -10,7 +10,8 @@ import Dedukti.ParDedukti
 import Dedukti.AbsDedukti
 import Dedukti.ErrM
 import DeduktiOperations (
-  identsInTypes, dropDefinitions, stripQualifiers, identTypes, ignoreCoercions, alphaConvert, ignoreFirstArguments)
+  identsInTypes, dropDefinitions, stripQualifiers, identTypes, ignoreCoercions,
+  alphaConvert, ignoreFirstArguments, peano2int)
 import Informath -- superset of Core
 import Core2Informath (nlg)
 import Informath2Core (semantics)
@@ -53,6 +54,7 @@ helpMsg = unlines [
   "  -dropqualifs  strip qualifiers of idents",
   "  -dropcoercions strip named coercions, only leaving their last arguments",
   "  -dropfirstargs drop first k arguments of given functions (usually type arguments)",
+  "  -peano2int    convert succ/0 natural numbers to sequences of digits",
   "output is to stdout and can be redirected to a file to check with",
   "Dedukti or Agda or Coq or Lean when producing one of these."
   ]
@@ -142,6 +144,7 @@ parseDeduktiModule env s = do
 
 deduktiOpers :: Env -> [Module -> Module]
 deduktiOpers env =
+  [peano2int | ifFlag "-peano2int" env] ++
   [ignoreFirstArguments matita_typeargs | ifFlag "-dropfirstargs" env] ++
   [ignoreCoercions matita_coercions | ifFlag "-dropcoercions" env] ++
   [alphaConvert (identConversions env) | ifFlag "-alphaconv" env] ++ 

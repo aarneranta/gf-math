@@ -6,6 +6,7 @@ module Core2Dedukti where
 import Dedukti.AbsDedukti
 import Informath -- superset of MathCore
 import CommonConcepts
+import DeduktiOperations
 
 import Data.Char
 
@@ -220,13 +221,3 @@ exps2list exps = case exps of
   GOneExps exp -> [exp]
   GAddExps exp exps -> exp : exps2list exps
 
-int2exp :: Int -> Exp
-int2exp = cc . show
-  where
-    cc s = case s of
-      [d] -> EApp (EIdent (QIdent nd)) (EIdent (QIdent s))
-      d:ds -> EApp (EApp (EIdent (QIdent nn)) (EIdent (QIdent [d]))) (cc ds)
-
-      
-unresolvedIndexIdent :: Int -> QIdent
-unresolvedIndexIdent i = QIdent ("UNRESOLVED_INDEX_" ++ show i)
