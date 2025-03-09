@@ -8,6 +8,7 @@ concrete MathCoreSwe of MathCore =
     (Extend=ExtendSwe),
     (Symbolic=SymbolicSwe)
   ** open
+    UtilitiesSwe,
     Prelude,
     ParadigmsSwe,
     (I=IrregSwe)

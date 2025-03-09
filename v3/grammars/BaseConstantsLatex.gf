@@ -34,13 +34,13 @@ oper
   powerset_Oper : OperT = mkOper "\\wp" ;
 
 oper
-  OperT : Type = {op : Str ; p : Prec} ;
+  OperT : Type = {begin, op, end : Str ; p : Prec} ;
   
   mkOper = overload {
     mkOper : Str -> OperT
-      = \c -> {op = c ; p = 0} ; -- lowest Prec
+      = \c -> {begin, end = "" ; op = c ; p = 0} ; -- lowest Prec
     mkOper : Str -> Prec -> OperT
-      = \c, p -> {op = c ; p = p}
+      = \c, p -> {begin, end = "" ; op = c ; p = p}
     } ;
 
 }

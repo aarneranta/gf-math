@@ -1,9 +1,10 @@
-resource UtilitiesEng =
+resource UtilitiesFre =
 
 open
-  SyntaxEng,
-  ParadigmsEng,
-  SymbolicEng,
+  SyntaxFre,
+  ParadigmsFre,
+  (P=ParadigmsFre),
+  SymbolicFre,
   (L=BaseConstantsLatex),
   Formal,
   Prelude
@@ -21,6 +22,8 @@ oper
   mkNoun = overload {
     mkNoun : Str -> CN
       = \s -> mkCN (mkN s) ;
+    mkNoun : N -> CN
+      = \n -> mkCN n ;
     mkNoun : Str -> Str -> CN
       = \a, n -> mkCN (mkA a) (mkN n) ;
     } ;
@@ -28,16 +31,28 @@ oper
   mkSet = overload {
     mkSet : Str -> Str -> SetT
       = \c, s -> {cn = mkCN (mkN s) ; c = c} ;
+    mkSet : Str -> N -> SetT
+      = \c, n -> {cn = mkCN n ; c = c} ;
     mkSet : Str -> Str -> Str -> SetT
       = \c, a, n -> {cn = mkCN (mkA a) (mkN n) ; c = c} ;
+    mkSet : Str -> Str -> N -> SetT
+      = \c, a, n -> {cn = mkCN (mkA a) n ; c = c} ;
     } ;
     
   mkFun = overload {
     mkFun : Str -> FunctionT
       = \s -> {cn = mkCN (mkN s) ; prep = possess_Prep} ;
+    mkFun : N -> FunctionT
+      = \n -> {cn = mkCN n ; prep = possess_Prep} ;
+    mkFun : CN -> FunctionT
+      = \n -> {cn = n ; prep = possess_Prep} ;
+    mkFun : N -> Prep -> FunctionT
+      = \n, p -> {cn = mkCN n ; prep = p} ;
+    mkFun : N -> Str -> FunctionT
+      = \n, s -> {cn = mkCN (mkCN n) (P.mkAdv s) ; prep = possess_Prep} ;
     mkFun : (a, n : Str) -> FunctionT
       = \a, n -> {cn = mkCN (mkA a) (mkN n) ; prep = possess_Prep} ;
-    mkFun2 : (a, b, n : Str) -> FunctionT
+    mkFun : (a, b, n : Str) -> FunctionT
       = \a, b, n -> {cn = mkCN (mkA a) (mkCN (mkA b) (mkN n)) ; prep = possess_Prep} ;
     } ;
     
@@ -48,12 +63,16 @@ oper
     
   mkRel = overload {
     mkRel : Str -> Str -> {ap : AP ; prep : Prep}
-      = \s, p -> {ap = mkAP (mkA s) ; prep = mkPrep p}
+      = \s, p -> {ap = mkAP (mkA s) ; prep = mkPrep p} ;
+    mkRel : AP -> Prep -> {ap : AP ; prep : Prep}
+      = \ap, prep -> {ap = ap ; prep = prep}
     } ;
     
   mkName = overload {
     mkName : Str -> NP
-      = \s -> mkNP (mkPN s)
+      = \s -> mkNP (mkPN s) ;
+    mkName : N -> NP
+      = \n -> mkNP n
     } ;
 
   mkLabel = overload {
@@ -69,17 +88,23 @@ oper
   mkOper = overload {
     mkOper : L.OperT -> Str -> OperatorT
       = \op, w -> op ** {f = mkFun w} ; -- lowest Prec
-    mkOper : Str -> Str -> OperatorT
-      = \w, c -> L.mkOper c ** {f = mkFun w} ; -- lowest Prec
-    mkOper : Str -> Str -> Prec -> OperatorT
-      = \w, c, p -> L.mkOper c p ** {f = mkFun w}
+    mkOper : L.OperT -> N -> OperatorT
+      = \op, w -> op ** {f = mkFun w ; p = 0} ; -- lowest Prec
+    mkOper : L.OperT -> N -> Prep -> OperatorT
+      = \op, w, prep -> op ** {f = mkFun w prep ; p = 0} ; -- lowest Prec
     } ;
 
   mkCompar = overload {
     mkCompar : Str -> Str -> Str -> ComparisonT
       = \op, s, p -> {rel = mkRel s p ; op = op} ;
+    mkCompar : Str -> AP -> Prep -> ComparisonT
+      = \op, ap, prep -> {rel = mkRel ap prep ; op = op} ;
     } ;
 
   latexName : Str -> NP
       = \s -> symb (mkSymb ("$" ++ s ++ "$")) ;
+
+  nombre_N : N = mkN "nombre" masculine ;
+  type_N = mkN "type" masculine ;
+
 }

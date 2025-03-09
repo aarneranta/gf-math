@@ -10,6 +10,7 @@ concrete MathCoreFre of MathCore =
     (Extend=ExtendFre),
     (Symbolic=SymbolicFre)
   ** open
+    UtilitiesFre,
     Prelude,
     ParadigmsFre,
     (I=IrregFre),
