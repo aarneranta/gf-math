@@ -13,6 +13,7 @@ in {
 
 lincat
   Noun = CN ;
+  Fam = CN ;
   Set = SetT ;
   Adj = AP ;
   Rel = RelationT ;
@@ -41,6 +42,8 @@ lin
   equivalence_Fun = mkFun (mkN "ekvivalens" "ekvivalenser") ;
 
   number_Noun = mkNoun tal_N ;
+  boolean_Noun = mkNoun "sanningsvärde" ;
+  list_Fam = mkNoun "lista" ;
   natural_Set = mkSet L.natural_Set "naturlig" tal_N ;
   integer_Set = mkSet L.integer_Set (mkN "hel" tal_N) ;
   rational_Set = mkSet L.rational_Set "rationell" tal_N ;
@@ -63,6 +66,9 @@ lin
   div_Oper = mkOper L.div_Oper "kvot" ;
   pow_Oper = mkOper L.pow_Oper "potens" ; ----
   neg_Oper = mkOper L.neg_Oper "negation" ;
+
+  logarithm_Oper = mkOper L.logarithm_Oper "logaritm" ;
+  square_root_Oper = mkOper L.square_root_Oper "kvadratrot" ;
 
   successor_Fun = mkFun (mkN "efterföljare" neutrum) ;
   absolute_value_Fun = mkFun (mkN "absolutbelopp" neutrum) ;

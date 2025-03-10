@@ -2,6 +2,7 @@ abstract BaseConstants = {
 
 cat
   Noun ; -- Kind
+  Fam ; -- Kind -> Kind
   Set ;  -- Kind + symbol
   Adj ;  -- Exp -> Prop
   Rel ;  -- Exp -> Exp -> Prop
@@ -30,6 +31,9 @@ fun
   equivalence_Fun : Fun ;
 
   number_Noun : Noun ;
+  boolean_Noun : Noun ;
+  list_Fam : Fam ;
+
   natural_Set : Set ;
   integer_Set : Set ;
   rational_Set : Set ;
@@ -52,6 +56,8 @@ fun
   div_Oper : Oper ;
   pow_Oper : Oper ;
   neg_Oper : Oper ;
+  logarithm_Oper : Oper ;
+  square_root_Oper : Oper ;
   
   successor_Fun : Fun ;
   absolute_value_Fun : Fun ;

@@ -26,6 +26,8 @@ oper
   div_Oper : OperT = mkOper "\\div" <2 : Prec> ; ---
   pow_Oper : OperT = mkOper "^" <2 : Prec> ; ---
   neg_Oper : OperT = mkOper "\\negated" ;
+  logarithm_Oper : OperT = mkOper "\\log_" "{" "}" <3 : Prec> ;
+  square_root_Oper : OperT = mkOper "\\sqrt{" "" "}" <4 : Prec> ;
 
   function_Oper : OperT = mkOper "\\rightarrow" ; ---
   union_Oper : OperT = mkOper "\\cup" ;
@@ -40,7 +42,9 @@ oper
     mkOper : Str -> OperT
       = \c -> {begin, end = "" ; op = c ; p = 0} ; -- lowest Prec
     mkOper : Str -> Prec -> OperT
-      = \c, p -> {begin, end = "" ; op = c ; p = p}
+      = \c, p -> {begin, end = "" ; op = c ; p = p} ;
+    mkOper : (beg, op, end : Str) -> Prec -> OperT
+      = \beg, op, end , p -> {begin = beg ;  end = end ; op = op ; p = p}
     } ;
 
 }

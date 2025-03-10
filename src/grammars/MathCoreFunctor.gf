@@ -113,6 +113,7 @@ lin
     cn = mkCN function_N ;
     adv = ccAdv (Syntax.mkAdv from_Prep argkinds) (Syntax.mkAdv to_Prep (mkNP aPl_Det (useKind kind)))
     } ;
+  FamKind fam kind = {cn = fam ; adv = Syntax.mkAdv possess_Prep (mkNP aPl_Det (useKind kind))} ;
 
   KindArgKind kind = kind ;
   IdentsArgKind kind idents = {cn = mkCN kind.cn idents.np ; adv = kind.adv} ;

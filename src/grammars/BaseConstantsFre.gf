@@ -14,6 +14,7 @@ in {
 
 lincat
   Noun = CN ;
+  Fam = CN ;
   Set = SetT ;
   Adj = AP ;
   Rel = RelationT ;
@@ -42,6 +43,9 @@ lin
   equivalence_Fun = mkFun "équivalence" ;
 
   number_Noun = mkNoun nombre_N ;
+  boolean_Noun = mkNoun (mkCN (mkA "booléen") (mkN "valeur" feminine)) ;
+  list_Fam = mkNoun "liste" ;
+
   natural_Set = mkSet L.natural_Set "naturel" nombre_N ;
   integer_Set = mkSet L.integer_Set "entier" ;
   rational_Set = mkSet L.rational_Set "rationnel" nombre_N ;
@@ -64,6 +68,9 @@ lin
   div_Oper = mkOper L.div_Oper "quotient" ;
   pow_Oper = mkOper L.pow_Oper "puissance" ;
   neg_Oper = mkOper L.neg_Oper "négation" ;
+
+  logarithm_Oper = mkOper L.logarithm_Oper (mkN "logarithme" masculine) ;
+  square_root_Oper = mkOper L.square_root_Oper (mkCN (mkA "carré") (mkN "racine")) ;
 
   successor_Fun = mkFun "successeur" ;
   absolute_value_Fun = mkFun (mkCN (mkA "absolu") (mkN "valeur" feminine)) ;

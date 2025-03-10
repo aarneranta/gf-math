@@ -24,6 +24,8 @@ oper
       = \s -> mkCN (mkN s) ;
     mkNoun : N -> CN
       = \n -> mkCN n ;
+    mkNoun : CN -> CN
+      = \n -> n ;
     mkNoun : Str -> Str -> CN
       = \a, n -> mkCN (mkA a) (mkN n) ;
     } ;
@@ -89,6 +91,8 @@ oper
     mkOper : L.OperT -> Str -> OperatorT
       = \op, w -> op ** {f = mkFun w} ; -- lowest Prec
     mkOper : L.OperT -> N -> OperatorT
+      = \op, w -> op ** {f = mkFun w ; p = 0} ; -- lowest Prec
+    mkOper : L.OperT -> CN -> OperatorT
       = \op, w -> op ** {f = mkFun w ; p = 0} ; -- lowest Prec
     mkOper : L.OperT -> N -> Prep -> OperatorT
       = \op, w, prep -> op ** {f = mkFun w prep ; p = 0} ; -- lowest Prec

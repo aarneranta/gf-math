@@ -150,6 +150,9 @@ exp2kind exp = case exp of
     _ -> ident2kind ident
   EApp (EIdent f) x | f == identElem -> GElemKind (exp2kind x)
   EApp _ _ -> case splitApp exp of
+    (EIdent ident@(QIdent s), [x]) -> case lookupConstant s of
+      Just ("Fam", c) -> GFamKind (LexFam c) (exp2kind x)
+      _ -> GAppKind (ident2ident ident) (gExps [exp2exp x])
     (fun, args) -> case fun of
       EIdent ident ->
         GAppKind (ident2ident ident) (gExps (map exp2exp args))

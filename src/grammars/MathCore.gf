@@ -67,6 +67,7 @@ fun
   SuchThatKind : Ident -> Kind -> Prop -> Kind ;
   AppKind : Ident -> Exps -> Kind ;
   FunKind : [ArgKind] -> Kind -> Kind ;
+  FamKind : Fam -> Kind -> Kind ;
 
   KindArgKind : Kind -> ArgKind ;
   IdentsArgKind : Kind -> [Ident] -> ArgKind ;

@@ -82,6 +82,9 @@ def odd : Elem Int -> Prop := n => not (even n).
 def divisible : Elem Int -> Elem Int -> Prop := n => m => exists Int (k => Eq n (times k m)).
 def prime : Elem Nat -> Prop := n => not (exists Nat (m => and (Lt 1 m) (and (Lt m n) (divisible n  m)))).
 
+def bool : Set.
+def list : Set -> Set.
+
 (; set operations ;)
 function : Set -> Set -> Set.
 union : Set -> Set -> Set.
