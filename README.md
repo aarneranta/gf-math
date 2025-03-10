@@ -41,16 +41,17 @@ The currently available values of `<formal>` and `<informal>` are the keys in `<
 
 ## The languages involved
 
-This directory contains
-- [MathCore](grammars/MathCore.gf), a minimal CNL for mathematics
-- MathCoreEng, Fre, Swe - concrete syntaxes of MathCore in [gramamrs](./grammars/).
-- [Informath](grammars/Informath.gf), an extension of MathCore with alternative expressions
-- a [grammar](typetheory/Dedukti.bnf) with generated parser and printer for the proof system [Dedukti](https://deducteam.github.io/)
+The [src](./src/) directory contains
+- Haskell and other sources
+- [MathCore](./src/grammars/MathCore.gf), a minimal CNL for mathematics
+- MathCoreEng, Fre, Swe - concrete syntaxes of MathCore in [gramamrs](./src/grammars/).
+- [Informath](./src/grammars/Informath.gf), an extension of MathCore with alternative expressions
+- a [grammar](./src/typetheory/Dedukti.bnf) with generated parser and printer for the proof system [Dedukti](https://deducteam.github.io/)
 - a translator from MathCore to Dedukti and vice-versa
-- partial grammars of [Agda](https://wiki.portal.chalmers.se/agda/pmwiki.php), [Coq](https://coq.inria.fr/), and [Lean](https://lean-lang.org/) in [typetheory](./typetheory/) with generated parsers and printers
+- partial grammars of [Agda](https://wiki.portal.chalmers.se/agda/pmwiki.php), [Coq](https://coq.inria.fr/), and [Lean](https://lean-lang.org/) in [typetheory](./src/typetheory/) with generated parsers and printers
 - translations between MathCore and Informath
-- [BaseConstants.dk](./BaseConstants.dk) of logical and numeric operations assumed in the translations, and correspoonding files for Agda, Coq, and Lean
-- some test material and scripts in [test/](./test/).
+- [BaseConstants.dk](./src/BaseConstants.dk) of logical and numeric operations assumed in the translations, and correspoonding files for Agda, Coq, and Lean
+- some test material and scripts in [test/](./src/test/).
 
 The structure of the project is shown in the following picture:
 
@@ -124,7 +125,7 @@ The MathCore language is meant to be the "core abstract syntax" in Informath. Te
 
 As shown in the picture above, informalization and autoformalization are in the first place defined between Dedukti and MathCore. On the type theory side, this is composed with translations between other frameworks and Dedukti. On the natural language side, mappings between MathCore and the full Informath are defined on the abstract syntax level of these languages. Input and output of actual natural languages is performed by generation and parsing with concrete syntaxes of each language.
 
-Following Informath Version 2, we first investigated was to keep MathCore and "extensions" as two separate languages, where the extensions are provided by the [ForTheL](http://nevidal.org/download/forthel.pdf)-based [grammar](../v2/forthel/) in this project. However, the long distance between the abstract syntaxes of MathCore and ForTheL soon made us change our mind and replace ForTheL by a proper extension (in the technical sense of GF) of MathCore, subsequently called Informath.
+Following Informath Version 2, we first investigated was to keep MathCore and "extensions" as two separate languages, where the extensions are provided by the [ForTheL](http://nevidal.org/download/forthel.pdf)-based [grammar](./old/v2/forthel/) in this project. However, the long distance between the abstract syntaxes of MathCore and ForTheL soon made us change our mind and replace ForTheL by a proper extension (in the technical sense of GF) of MathCore, subsequently called Informath.
 
 ### The Informath language
 
@@ -172,7 +173,7 @@ The following programming languages have been used so far in Informath:
 
 - **GF**: [Grammatical Framework](https://www.grammaticalframework.org/) used for implementing MathCore and Informath, maximally using its Resource Grammar Library (RGL). You need to install both gf-core and gf-rgl.
 - **Haskell**: used for writing conversions between formal and informal, via embedded GF grammars in the GADT format (Generalized Algebraic Datatypes) supporting almost compositional functions in NLG.
-- **BNFC**: [BNF Converter](https://bnfc.github.io/), used for implementing Dedukti. The implementation includes a parser, a printer, and an abstract syntax in Haskell, all generated from [this BNF grammar](./typetheory/Dedukti.bnf). Also used for the fragments of Agda and Lean addressed in the project.
+- **BNFC**: [BNF Converter](https://bnfc.github.io/), used for implementing Dedukti. The implementation includes a parser, a printer, and an abstract syntax in Haskell, all generated from [this BNF grammar](./src/typetheory/Dedukti.bnf). Also used for the fragments of Agda and Lean addressed in the project.
 
 If you want to check the formal code in any of the proof systems, you must also install them. Informath itself does not require them, but at least Dedukti is useful to have so that you can check the input and output Dedukti code.
 
@@ -192,7 +193,7 @@ An example of a readily available demo case is
 ```
 $ make demo
 ```
-Consult the [Makefile](./Makefile) to see what these commands exactly do.
+Consult the [Makefile](./src/Makefile) to see what these commands exactly do.
 
 **Note**: with some versions of GHC libraries, `make Informath.pgf` results into a `Informath.hs` that gives an error about an undefined monad operation. This is fixed by adding the line `import Control.Monad` to the import list. The current Makefile does this with a `sed` command - which may cause an error with some other versions of GHC libraries. If this happens, you can comment out the `sed` command from the Makefile.
 
@@ -231,7 +232,7 @@ An example of a readily available demo case is
 ```
 $ make demo
 ```
-Consult the [Makefile](./Makefile) to see what these commands exactly do.
+Consult the [Makefile](./src/Makefile) to see what these commands exactly do.
 
 **Note**: with some versions of GHC libraries, `make Informath.pgf` results into a `Informath.hs` that gives an error about an undefined monad operation. This is fixed by adding the line `import Control.Monad` to the import list. The current Makefile does this with a `sed` command - which may cause an error with some other versions of GHC libraries. If this happens, you can comment out the `sed` command from the Makefile.
 
@@ -243,7 +244,7 @@ $ ./RunInformath -lang=<Lang>? <file>.dkgf
 $ make Informath.pgf
 $ make RunInformath
 ```
-which for instance from [nat.dkgf](./nat.dkgf) generates three files:
+which for instance from [nat.dkgf](./src/nat.dkgf) generates three files:
 - [Constants.hs](./Constants.hs)
 - [Constants.gf](./Core/Constants.gf)
 - [Constants<lang>.gf](./Core/Constants<lang>.gf)
@@ -254,17 +255,17 @@ and compiles Informath.pgf with them. The format of .dkgf files is a list of lin
 <ident> <cat> = <gf-expr>  # Dk_<ident> = <gf-expr>
 <ident> <cat> -> <gf-ident> 
 ```
-The first two forms generate new entries in the two UserConstants*.gf files, defining functions named `Dk_<ident>` of type `<cat>`and with concrete syntax as shown above. The third form uses a globally defined function from the file [BaseConstants.gf](./BaseConstants.gf) and its concrete syntax, without generating new GF rules. Its effect is to map `<ident>` in Dedukti code to `<gf-ident>` in the GF translation of the code.
+The first two forms generate new entries in the two UserConstants*.gf files, defining functions named `Dk_<ident>` of type `<cat>`and with concrete syntax as shown above. The third form uses a globally defined function from the file [BaseConstants.gf](./src/BaseConstants.gf) and its concrete syntax, without generating new GF rules. Its effect is to map `<ident>` in Dedukti code to `<gf-ident>` in the GF translation of the code.
 
 ## Processing in type theory
 
 ### Type checking in Dedukti
 
-The type checking is based on the file [BaseConstants.dk](BaseConstants.dk), which is meant to be extended as the project grows. This file type checks in Dedukti with the command
+The type checking is based on the file [BaseConstants.dk](./src/BaseConstants.dk), which is meant to be extended as the project grows. This file type checks in Dedukti with the command
 ```
   $ dk check BaseConstants.dk
 ```
-The example file [test/exx.dk](test/exx.dk) assumes this file. As shown in `make demo`, it must at the moment be appended to the base file to type check:
+The example file [test/exx.dk](./src/test/exx.dk) assumes this file. As shown in `make demo`, it must at the moment be appended to the base file to type check:
 ```
 $ cat BaseConstants.dk test/exx.dk >bexx.dk
 $ dk check bexx.dk
@@ -283,7 +284,7 @@ As shown by `make demo`, this process can produce valid Agda code:
 $ ./RunInformath -to-agda test/exx.dk >exx.agda
 $ agda --prop exx.agda
 ```
-The base file [BaseConstants.agda](BaseConstants.agda) is imported automatically.
+The base file [BaseConstants.agda](./src/BaseConstants.agda) is imported automatically.
 
 ## Generating and type checking Coq
 
