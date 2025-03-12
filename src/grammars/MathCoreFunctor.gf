@@ -113,7 +113,6 @@ lin
     cn = mkCN function_N ;
     adv = ccAdv (Syntax.mkAdv from_Prep argkinds) (Syntax.mkAdv to_Prep (mkNP aPl_Det (useKind kind)))
     } ;
-  FamKind fam kind = {cn = fam ; adv = Syntax.mkAdv possess_Prep (mkNP aPl_Det (useKind kind))} ;
 
   KindArgKind kind = kind ;
   IdentsArgKind kind idents = {cn = mkCN kind.cn idents.np ; adv = kind.adv} ;
@@ -169,7 +168,7 @@ lin
 
   AdjProp adj exp = simpleProp (mkS (mkCl exp adj)) ;
   NotAdjProp adj exp = simpleProp (mkS negPol (mkCl exp adj)) ;
-  RelAdj rel exp = Grammar.AdvAP rel.ap (Syntax.mkAdv rel.prep exp) ;
+  ReladjAdj rel exp = Grammar.AdvAP rel.ap (Syntax.mkAdv rel.prep exp) ;
   ComparAdj compar exp = Grammar.AdvAP compar.rel.ap (Syntax.mkAdv compar.rel.prep exp) ;
   NounKind noun = {cn = noun ; adv = lin Adv {s = []}} ;
   SetKind set = {cn = set.cn ; adv = lin Adv {s = []}} ;
@@ -178,6 +177,13 @@ lin
   LabelProofExp label = label.np ;
   ConstExp const = const.np ;
   OperListExp op exps = mkNP the_Det (mkCN op.f.cn (Syntax.mkAdv op.f.prep exps.np)) ;
+  FamKind fam kind = {cn = fam ; adv = Syntax.mkAdv possess_Prep (mkNP aPl_Det (useKind kind))} ;
+  VerbProp verb exp = simpleProp (mkS (mkCl exp verb)) ; 
+  RelverbProp verb x y = simpleProp (mkS (mkCl x verb y)) ; 
+  RelnounProp rel x y = simpleProp (mkS (mkCl x (mkVP (mkCN rel y)))) ; 
+  NotVerbProp verb exp = simpleProp (mkS negPol (mkCl exp verb)) ; 
+  NotRelverbProp verb x y = simpleProp (mkS negPol (mkCl x verb y)) ; 
+  NotRelnounProp rel x y = simpleProp (mkS negPol (mkCl x (mkVP (mkCN rel y)))) ; 
 
 -- coercions, to disappear in Core2Informath
 -- their purpose is to maintain lossless rendering of Dedukti

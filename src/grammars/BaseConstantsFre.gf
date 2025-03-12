@@ -17,7 +17,10 @@ lincat
   Fam = CN ;
   Set = SetT ;
   Adj = AP ;
-  Rel = RelationT ;
+  Reladj = RelationT ;
+  Verb = VP ;
+  Relverb = V2 ;
+  Relnoun = N2 ;
   Name = NP ;
   Fun = FunctionT ;
   Label = LabelT ;
@@ -62,6 +65,11 @@ lin
   positive_Adj = mkAdj "positif" ;
   negative_Adj = mkAdj "negatif" ;
 
+  converge_Verb = mkVP (mkV "converger") ;
+  divide_Relverb = mkV2 "diviser" ;
+  member_Relnoun = mkN2 (mkN "membre" masculine) genitive ;
+  divisor_Relnoun = mkN2 (mkN "diviseur") genitive ;
+
   plus_Oper = mkOper L.plus_Oper "somme" ;
   minus_Oper = mkOper L.minus_Oper "différence" ;
   times_Oper = mkOper L.times_Oper "produit" ;
@@ -79,7 +87,7 @@ lin
 
   even_Adj = mkAdj "pair" ;
   odd_Adj = mkAdj "impair" ;
-  divisible_Rel = mkRel "divisible" "par" ;
+  divisible_Reladj = mkRel "divisible" "par" ;
   prime_Adj = mkAdj "premier" ;
 
   function_Oper = mkOper L.function_Oper "fonction" ;

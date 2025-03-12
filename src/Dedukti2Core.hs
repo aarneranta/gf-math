@@ -42,13 +42,13 @@ jmt2jmt jmt = case jmt of
              (GListHypo chypos)
              (funListExp ident (map (GTermExp . GTIdent) (concatMap hypoIdents chypos)))
              (exp2kind kind)
-      ((hypos, kind), c) | elem c ["Rel", "Compar"] ->
+      ((hypos, kind), c) | elem c ["Reladj", "Compar", "Relverb", "Relnoun"] ->
         let chypos = hypos2hypos  (addVarsToHypos hypos)
         in (maybe (GAxiomPropJmt axiomLabel)
 	        (\exp x y -> GDefPropJmt definitionLabel x y (exp2prop exp)) mexp)
              (GListHypo chypos)
 	     (funListProp ident (map (GTermExp . GTIdent) (concatMap hypoIdents chypos)))
-      ((hypos, kind), c) | elem c ["Adj"] ->
+      ((hypos, kind), c) | elem c ["Adj", "Verb"] ->
         let chypos = hypos2hypos  (addVarsToHypos hypos)
         in (maybe (GAxiomPropJmt axiomLabel)
 	        (\exp x y -> GDefPropJmt definitionLabel x y (exp2prop exp)) mexp)
@@ -89,8 +89,14 @@ funListProp ident exps = case ident of
   QIdent s -> case lookupConstant s of
     Just ("Adj", c) | length exps == 1 ->
       GAdjProp (LexAdj c) (exps !! 0)
-    Just ("Rel", c) | length exps == 2 ->
-      GAdjProp (GRelAdj (LexRel c) (exps !! 1)) (exps !! 0)
+    Just ("Verb", c) | length exps == 1 ->
+      GVerbProp (LexVerb c) (exps !! 0)
+    Just ("Reladj", c) | length exps == 2 ->
+      GAdjProp (GReladjAdj (LexReladj c) (exps !! 1)) (exps !! 0)
+    Just ("Relverb", c) | length exps == 2 ->
+      GRelverbProp (LexRelverb c) (exps !! 0) (exps !! 1)
+    Just ("Relnoun", c) | length exps == 2 ->
+      GRelnounProp (LexRelnoun c) (exps !! 0) (exps !! 1)
     Just ("Compar", c) | length exps == 2 ->
       GAdjProp (GComparAdj (LexCompar c) (exps !! 1)) (exps !! 0)
     _ -> case exps of
@@ -189,13 +195,11 @@ exp2prop exp = case exp of
       EIdent conn | conn == identNeg -> case args of
         [a] -> case exp2prop a of
           GAdjProp adj x -> GNotAdjProp adj x
+          GVerbProp verb x -> GNotVerbProp verb x
+          GRelverbProp verb x y -> GNotRelverbProp verb x y
+          GRelnounProp noun x y -> GNotRelnounProp noun x y
           p -> GNotProp p
-      EIdent ident@(QIdent pred) -> case (lookupConstant pred, args) of
-        (Just ("Adj", c), [a]) -> GAdjProp (LexAdj c) (exp2exp a)     
-        (Just ("Rel", c), [a, b]) -> GAdjProp (GRelAdj (LexRel c) (exp2exp b)) (exp2exp a)
-        (Just ("Compar", c), [a, b]) -> GAdjProp (GComparAdj (LexCompar c) (exp2exp b)) (exp2exp a)
-        _  ->
-          GAppProp (ident2ident ident) (gExps (map exp2exp args))
+      EIdent ident -> funListProp ident (map exp2exp args)
   EFun _ _ -> case splitType exp of
     (hypos, exp) ->
       GAllProp (GListArgKind (map hypo2coreArgKind hypos)) (exp2prop exp)

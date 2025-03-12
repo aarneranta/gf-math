@@ -152,7 +152,7 @@ deduktiOpers env =
   [dropDefinitions | ifFlag "-dropdefs" env] 
  where
   matita_coercions = [QIdent s | s <- words "Term lift Univ"] ---- TODO make parametric
-  matita_typeargs = [(QIdent "Eq", 1)]
+  matita_typeargs = [(QIdent "Eq", 1), (QIdent "member", 1)]
 
 -- example: ./RunInformath -idtypes -dropdefs -dropqualifs -dropcoercions test/matita-all.dk
 

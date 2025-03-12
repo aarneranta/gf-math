@@ -85,12 +85,18 @@ prop2dedukti prop = case prop of
         (concatMap argkind2dedukti argkinds)
   GAppProp ident exps ->
     foldl1 EApp ((EIdent (ident2ident ident)) : map exp2dedukti (exps2list exps))
-  GAdjProp (GRelAdj (LexRel rel) b) a ->
+  GAdjProp (GReladjAdj (LexReladj rel) b) a ->
     foldl EApp (EIdent (QIdent (lookBack rel))) (map exp2dedukti [a, b])
   GAdjProp (GComparAdj (LexCompar rel) b) a ->
     foldl EApp (EIdent (QIdent (lookBack rel))) (map exp2dedukti [a, b])
   GAdjProp (LexAdj adj) exp ->
     EApp (EIdent (QIdent (lookBack adj))) (exp2dedukti exp)
+  GVerbProp (LexVerb verb) exp ->
+    EApp (EIdent (QIdent (lookBack verb))) (exp2dedukti exp)
+  GRelverbProp (LexRelverb verb) x y ->
+    EApp (EApp (EIdent (QIdent (lookBack verb))) (exp2dedukti x)) (exp2dedukti y)
+  GRelnounProp (LexRelnoun noun) x y ->
+    EApp (EApp (EIdent (QIdent (lookBack noun))) (exp2dedukti x)) (exp2dedukti y)
   GIndexedFormulaProp (GInt i) -> EIdent (unresolvedIndexIdent i)
   _ -> eUndefined ---- TODO complete Informath2Core
 

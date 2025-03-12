@@ -1,17 +1,20 @@
 abstract BaseConstants = {
 
 cat
-  Noun ; -- Kind
-  Fam ; -- Kind -> Kind
-  Set ;  -- Kind + symbol
-  Adj ;  -- Exp -> Prop
-  Rel ;  -- Exp -> Exp -> Prop
-  Name ; -- Exp
-  Fun ;  -- [Exp] -> Exp
-  Label ; -- Exp
-  Const ; -- Exp + symbol
-  Oper ;  -- Exp -> Exp -> Exp + symbol
-  Compar ; -- Exp -> Exp -> Prop + symbol
+  Noun ; -- Kind -- set
+  Fam ; -- Kind -> Kind -- list of integers
+  Set ;  -- Kind + symbol -- integer, Z
+  Adj ;  -- Exp -> Prop -- even
+  Verb ; -- Exp -> Exp -- converge
+  Reladj ;  -- Exp -> Exp -> Prop -- divisible by
+  Relverb ; -- Exp -> Exp -> Exp -- divide
+  Relnoun ; -- Exp -> Exp -> Exp  -- member of
+  Name ; -- Exp -- absurdity
+  Fun ;  -- [Exp] -> Exp -- equivalence of
+  Label ; -- Exp -- theorem 1
+  Const ; -- Exp + symbol -- the empty set, Ø
+  Oper ;  -- Exp -> Exp -> Exp + symbol -- the sum, +
+  Compar ; -- Exp -> Exp -> Prop + symbol -- greater than, >
 
 fun
   type_Noun : Noun ;
@@ -50,6 +53,11 @@ fun
   positive_Adj : Adj ;
   negative_Adj : Adj ;
 
+  converge_Verb : Verb ;
+  divide_Relverb : Relverb ;
+  member_Relnoun : Relnoun ;
+  divisor_Relnoun : Relnoun ;
+
   plus_Oper : Oper ;
   minus_Oper : Oper ;
   times_Oper : Oper ;
@@ -66,7 +74,7 @@ fun
 
   even_Adj : Adj ;
   odd_Adj : Adj ;
-  divisible_Rel : Rel ;
+  divisible_Reladj : Reladj ;
   prime_Adj : Adj ;
 
   function_Oper : Oper ;

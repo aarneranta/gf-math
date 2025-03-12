@@ -67,7 +67,6 @@ fun
   SuchThatKind : Ident -> Kind -> Prop -> Kind ;
   AppKind : Ident -> Exps -> Kind ;
   FunKind : [ArgKind] -> Kind -> Kind ;
-  FamKind : Fam -> Kind -> Kind ;
 
   KindArgKind : Kind -> ArgKind ;
   IdentsArgKind : Kind -> [Ident] -> ArgKind ;
@@ -91,7 +90,7 @@ fun
 
   AdjProp : Adj -> Exp -> Prop ;
   NotAdjProp : Adj -> Exp -> Prop ;
-  RelAdj : Rel -> Exp -> Adj ;
+  ReladjAdj : Reladj -> Exp -> Adj ;
   NounKind : Noun -> Kind ;
   SetKind : Set -> Kind ;
   NameExp : Name -> Exp ;
@@ -100,7 +99,14 @@ fun
   ConstExp : Const -> Exp ;
   OperListExp : Oper -> Exps -> Exp ; -- binary operation applied collectively
   ComparAdj : Compar -> Exp -> Adj ;
-
+  FamKind : Fam -> Kind -> Kind ;
+  VerbProp : Verb -> Exp -> Prop ;
+  RelverbProp : Relverb -> Exp -> Exp -> Prop ;
+  RelnounProp : Relnoun -> Exp -> Exp -> Prop ;
+  NotVerbProp : Verb -> Exp -> Prop ;
+  NotRelverbProp : Relverb -> Exp -> Exp -> Prop ;
+  NotRelnounProp : Relnoun -> Exp -> Exp -> Prop ;
+  
 -- coercions, to disappear in Core2Informath
 -- their purpose is to maintain lossless rendering of Dedukti
 -- only few are needed if Number types are identified following Ganesalingam

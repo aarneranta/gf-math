@@ -80,10 +80,15 @@ even : Elem Int -> Prop.
 def odd : Elem Int -> Prop := n => not (even n).
 
 def divisible : Elem Int -> Elem Int -> Prop := n => m => exists Int (k => Eq n (times k m)).
+def divide : Elem Int -> Elem Int -> Prop := n => m => divisible m n.
+def divisor : Elem Int -> Elem Int -> Prop := divide.
+
 def prime : Elem Nat -> Prop := n => not (exists Nat (m => and (Lt 1 m) (and (Lt m n) (divisible n  m)))).
 
 def bool : Set.
-def list : Set -> Set.
+
+def List : Set -> Set.
+member : A : Set -> Elem A -> Elem (List A) -> Prop.
 
 (; set operations ;)
 function : Set -> Set -> Set.

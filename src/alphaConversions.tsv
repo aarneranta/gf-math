@@ -14,4 +14,6 @@ O	0
 S	succ
 fact	factorial
 exp	pow
+list	List
+mem	member
 

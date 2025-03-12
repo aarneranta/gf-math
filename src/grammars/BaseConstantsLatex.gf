@@ -24,7 +24,7 @@ oper
   minus_Oper : OperT = mkOper "-" <1 : Prec> ; 
   times_Oper : OperT = mkOper "\\times" <2 : Prec> ;
   div_Oper : OperT = mkOper "\\div" <2 : Prec> ; ---
-  pow_Oper : OperT = mkOper "^" <2 : Prec> ; ---
+  pow_Oper : OperT = mkOper "" "^{" "}" <2 : Prec> ; ---
   neg_Oper : OperT = mkOper "\\negated" ;
   logarithm_Oper : OperT = mkOper "\\log_" "{" "}" <3 : Prec> ;
   square_root_Oper : OperT = mkOper "\\sqrt{" "" "}" <4 : Prec> ;
