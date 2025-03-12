@@ -155,13 +155,15 @@ deduktiOpers env =
   [peano2int | ifFlag "-peano2int" env] ++
   [ignoreFirstArguments matita_typeargs | ifFlag "-dropfirstargs" env] ++
   [ignoreCoercions matita_coercions | ifFlag "-dropcoercions" env] ++
-  [applyConstantData (constantData env) | ifFlag "-constantdata" env] ++ 
+  [applyConstantData (constantData env) | not (noConstantData env)] ++ 
   [alphaConvert (identConversions env) | ifFlag "-alphaconv" env] ++ 
   [stripQualifiers | ifFlag "-dropqualifs" env] ++ 
   [dropDefinitions | ifFlag "-dropdefs" env] 
  where
   matita_coercions = [QIdent s | s <- words "Term lift Univ"] ---- TODO make parametric
   matita_typeargs = [(QIdent "Eq", 1), (QIdent "member", 1)]
+  noConstantData env =
+    or [ifFlag f env | f <- words "-to-agda -to-coq -to-dedukti -to-lean -rawconstantdata"]
 
 -- example: ./RunInformath -idtypes -dropdefs -dropqualifs -dropcoercions test/matita-all.dk
 
@@ -182,7 +184,7 @@ roundtripDeduktiJmt env cs = do
     Bad e -> putStrLn ("error: " ++ e)
     Ok t -> do
       ifv env $ putStrLn $ "## Dedukti: " ++ show t
-      let gft = gf $ jmt2jmt t
+      let gft = gf $ jmt2core t
       ifv env $ putStrLn $ "## MathCore: " ++ showExpr [] gft
       let lin = unlextex $ linearize gr (lang env) gft
       putStrLn lin
@@ -192,7 +194,7 @@ processDeduktiJmtTree :: Env -> Jmt -> IO ()
 processDeduktiJmtTree env t = do
   let gr = cpgf env
   ifv env $ putStrLn $ "#Dedukti: " ++ show t
-  let ct = jmt2jmt t
+  let ct = jmt2core t
   let gft = gf ct
   ifv env $ putStrLn $ "## MathCore: " ++ showExpr [] gft
   ifv env $ putStrLn $ "# MathCoreEng: " ++ unlextex (linearize gr (lang env) gft)
@@ -273,7 +275,7 @@ parallelJSONL env mo = do
   let gr = cpgf env
   case mo of
     MJmts jmts -> flip mapM_ jmts $ \jmt -> do
-      let tree = jmt2jmt jmt
+      let tree = jmt2core jmt
       let gft = gf tree
       let json = concat $ intersperse ", " $ [
             mkJSONField "dedukti" (printTree jmt),

@@ -75,8 +75,15 @@ expNegated x = EApp (EIdent (QIdent "neg")) x
 constantMap :: M.Map String (String, String)
 constantMap = M.fromList [(c, (cat, fun)) | (c, cat, fun) <- constants]
 
+-- lookup after annotation from dynamically loaded file
 lookupConstant :: String -> Maybe (String, String)
-lookupConstant c = M.lookup c constantMap
+---lookupConstant c = M.lookup c constantMap
+lookupConstant f = case words (map (\c -> if c=='|' then ' ' else c) f) of
+  [_, cat, fun] -> return (cat, fun)
+  _ -> Nothing
+
+stripConstant :: String -> String
+stripConstant = takeWhile (/='|')
 
 constantMapBack :: M.Map String String
 constantMapBack = M.fromList [(fun, c) | (c, _, fun) <- constants]
