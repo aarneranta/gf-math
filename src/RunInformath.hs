@@ -3,7 +3,7 @@
 
 module Main where
 
-import Core2Dedukti
+import Core2Dedukti (jmt2dedukti)
 import Dedukti2Core
 import Dedukti.PrintDedukti
 import Dedukti.ParDedukti
@@ -12,7 +12,7 @@ import Dedukti.ErrM
 import DeduktiOperations (
   identsInTypes, dropDefinitions, stripQualifiers, identTypes, ignoreCoercions,
   alphaConvert, ignoreFirstArguments, peano2int, applyConstantData)
-import ConstantData (ConstantData, string2constantData)
+import ConstantData (ConstantData, string2constantData, lookBackConstantData)
 import Informath -- superset of Core
 import Core2Informath (nlg)
 import Informath2Core (semantics)
@@ -70,6 +70,7 @@ data Env = Env {
  flags :: [String],
  identConversions :: M.Map String String, ---- TODO deprec
  constantData :: ConstantData,
+ lookBackData :: M.Map String String,  -- from GFFun to DkId ---- and to more info?
  cpgf :: PGF,
  lang :: Language,
  termindex :: [String] -- list of terms replaced by \INDEXEDTERM{ i }
@@ -90,11 +91,13 @@ main = do
   corepgf <- readPGF informathPGFFile
   conversions <- readFile conversionsFile >>= return . filter ((==2) . length) . map words . lines
   constantdata <- readFile constantDataFile >>= return . string2constantData Nothing ---- TODO filter project
+  let lookbackdata = lookBackConstantData constantdata 
   let Just lan = readLanguage (informathPrefix ++ (flagValue "lang" "Eng" ff))
   let env = Env{
         flags = ff,
 	identConversions = M.fromList [(a, b) | a:b:_ <- conversions],
 	constantData = constantdata,
+	lookBackData = lookbackdata,
 	cpgf = corepgf,
 	lang=lan,
 	termindex = []}
@@ -227,7 +230,7 @@ processCoreJmtTree env t = do
   let st = gf str
   ifv env $ putStrLn $ "## MathCore: " ++ showExpr [] st
   ifv env $ putStrLn $ "# MathCoreEng: " ++ unlextex (linearize gr (lang env) st)
-  let d = jmt2dedukti str
+  let d = jmt2dedukti (lookBackData env) str
   putStrLn $ printTree d
 ---  convertCoreToInformath env str
 
@@ -260,7 +263,7 @@ processInformathJmtTree env t0 = do
   let st = gf str
   ifv env $ putStrLn $ "## Core     : " ++ showExpr [] st
   ifv env $ putStrLn $ unlextex (linearize gr (lang env) st)
-  let d = jmt2dedukti str
+  let d = jmt2dedukti (lookBackData env) str
   let dt = printTree d
   ifv env $ putStrLn $ dt
   return dt

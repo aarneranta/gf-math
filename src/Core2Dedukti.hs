@@ -9,10 +9,19 @@ import CommonConcepts
 import DeduktiOperations
 
 import Data.Char
+import qualified Data.Map as M
 
 
-jmt2dedukti :: GJmt -> Jmt
-jmt2dedukti jment = case jment of
+jmt2dedukti :: M.Map String String -> GJmt -> Jmt
+jmt2dedukti lb = applyLookBack lb . jmt2jmt
+
+applyLookBack ::  M.Map String String -> Dedukti.AbsDedukti.Tree a -> Dedukti.AbsDedukti.Tree a
+applyLookBack mb t = case t of
+  QIdent s -> maybe t QIdent $ M.lookup s mb
+  _ -> Dedukti.AbsDedukti.composOp (applyLookBack mb) t  
+
+jmt2jmt :: GJmt -> Jmt
+jmt2jmt jment = case jment of
   GAxiomJmt label (GListHypo hypos) prop ->
     JStatic
       (label2ident label)
@@ -86,17 +95,17 @@ prop2dedukti prop = case prop of
   GAppProp ident exps ->
     foldl1 EApp ((EIdent (ident2ident ident)) : map exp2dedukti (exps2list exps))
   GAdjProp (GReladjAdj (LexReladj rel) b) a ->
-    foldl EApp (EIdent (QIdent (lookBack rel))) (map exp2dedukti [a, b])
+    foldl EApp (EIdent (QIdent (rel))) (map exp2dedukti [a, b])
   GAdjProp (GComparAdj (LexCompar rel) b) a ->
-    foldl EApp (EIdent (QIdent (lookBack rel))) (map exp2dedukti [a, b])
+    foldl EApp (EIdent (QIdent (rel))) (map exp2dedukti [a, b])
   GAdjProp (LexAdj adj) exp ->
-    EApp (EIdent (QIdent (lookBack adj))) (exp2dedukti exp)
+    EApp (EIdent (QIdent (adj))) (exp2dedukti exp)
   GVerbProp (LexVerb verb) exp ->
-    EApp (EIdent (QIdent (lookBack verb))) (exp2dedukti exp)
+    EApp (EIdent (QIdent (verb))) (exp2dedukti exp)
   GRelverbProp (LexRelverb verb) x y ->
-    EApp (EApp (EIdent (QIdent (lookBack verb))) (exp2dedukti x)) (exp2dedukti y)
+    EApp (EApp (EIdent (QIdent (verb))) (exp2dedukti x)) (exp2dedukti y)
   GRelnounProp (LexRelnoun noun) x y ->
-    EApp (EApp (EIdent (QIdent (lookBack noun))) (exp2dedukti x)) (exp2dedukti y)
+    EApp (EApp (EIdent (QIdent (noun))) (exp2dedukti x)) (exp2dedukti y)
   GIndexedFormulaProp (GInt i) -> EIdent (unresolvedIndexIdent i)
   _ -> eUndefined ---- TODO complete Informath2Core
 
@@ -119,7 +128,7 @@ kind2dedukti :: GKind -> Exp
 kind2dedukti kind = case kind of
   GElemKind k -> EApp (EIdent (QIdent "Elem")) (kind2dedukti k)
   GTermKind (GTIdent ident) -> EIdent (ident2ident ident)
-  GSetKind (LexSet s) -> EIdent (QIdent (lookBack s))
+  GSetKind (LexSet s) -> EIdent (QIdent (s))
   GSuchThatKind ident kind prop ->
     propSigma
       (kind2dedukti kind)
@@ -129,7 +138,7 @@ kind2dedukti kind = case kind of
     foldl1 EApp (EIdent (ident2ident ident) : map exp2dedukti (exps2list exps))
   ---- still assuming GF fun is Dedukti ident
   GNounKind (LexNoun noun) ->
-    EIdent (QIdent (lookBack noun))
+    EIdent (QIdent (noun))
   _ -> eUndefined ---- TODO
 
 exp2dedukti :: GExp -> Exp
@@ -144,17 +153,17 @@ exp2dedukti exp = case exp of
       (exp2dedukti exp)
       idents
   GNameExp (LexName name) ->
-    EIdent (QIdent (lookBack name))
+    EIdent (QIdent (name))
   GConstExp (LexConst name) ->
-    EIdent (QIdent (lookBack name))
+    EIdent (QIdent (name))
   GFunListExp (LexFun fun) (GOneExps x) ->
-    EApp (EIdent (QIdent (lookBack fun))) (exp2dedukti x)
+    EApp (EIdent (QIdent (fun))) (exp2dedukti x)
   GFunListExp (LexFun fun) (GAddExps x (GOneExps y)) ->
-    EApp (EApp (EIdent (QIdent (lookBack fun))) (exp2dedukti x)) (exp2dedukti y)
+    EApp (EApp (EIdent (QIdent (fun))) (exp2dedukti x)) (exp2dedukti y)
   GOperListExp (LexOper oper) (GOneExps x) ->
-    EApp (EIdent (QIdent (lookBack oper))) (exp2dedukti x)
+    EApp (EIdent (QIdent (oper))) (exp2dedukti x)
   GOperListExp (LexOper oper) (GAddExps x (GOneExps y)) ->
-    EApp (EApp (EIdent (QIdent (lookBack oper))) (exp2dedukti x)) (exp2dedukti y)
+    EApp (EApp (EIdent (QIdent (oper))) (exp2dedukti x)) (exp2dedukti y)
   GKindExp kind -> kind2dedukti kind
   GIndexedTermExp (GInt i) -> EIdent (unresolvedIndexIdent i)
   _ -> eUndefined ---- TODO
@@ -171,7 +180,7 @@ exp2deduktiPatt exp = case exp of
       (exp2dedukti exp)
       idents
   GNameExp (LexName name) ->
-    EIdent (QIdent (lookBack name))
+    EIdent (QIdent (name))
 -}
 
 proof2dedukti :: GProof -> Exp
@@ -196,7 +205,7 @@ exp2ident exp = case exp of
 
 label2ident :: GLabel -> QIdent
 label2ident label = case label of
-  LexLabel s -> QIdent (lookBack s)
+  LexLabel s -> QIdent (s)
   GStrLabel (GString s) -> QIdent s
 
 kind2ident :: GKind -> QIdent
@@ -208,11 +217,6 @@ prop2deduktiIdent :: GProp -> QIdent
 prop2deduktiIdent prop = case prop of
   GIdentProp (GStrIdent (GString s)) -> QIdent s
   _ -> QIdent (takeWhile isAlpha (show (gf prop))) ---- TODO
-
-lookBack :: String -> String
-lookBack s = case lookupConstantBack s of
-  Just c -> c
-  _ -> undk s
 
 eUndefined :: Exp
 eUndefined = EIdent (QIdent "UNDEFINED")
