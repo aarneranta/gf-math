@@ -1,0 +1,77 @@
+Set BASE Noun set_Noun
+Type BASE Noun type_Noun
+Prop BASE Noun proposition_Noun
+Elem BASE Fun elements_Fun
+Proof BASE Fun proofs_Fun
+false BASE Name absurdity_Name
+and BASE Fun conjunction_Fun
+or BASE Fun disjunction_Fun
+if BASE Fun implication_Fun
+forall BASE Fun universal_Fun
+exists BASE Fun existential_Fun
+not BASE Fun negation_Fun
+iff BASE Fun equivalence_Fun
+Num BASE Noun number_Noun
+bool BASE Noun boolean_Noun
+List BASE Fam list_Fam
+Nat BASE Set natural_Set
+Int BASE Set integer_Set
+Rat BASE Set rational_Set
+Real BASE Set real_Set
+Complex BASE Set complex_Set
+Eq BASE Compar Eq_Compar
+Lt BASE Compar Lt_Compar
+Gt BASE Compar Gt_Compar
+Neq BASE Compar Neq_Compar
+Leq BASE Compar Leq_Compar
+Geq BASE Compar Geq_Compar
+positive BASE Adj positive_Adj
+negative BASE Adj negative_Adj
+plus BASE Oper plus_Oper
+minus BASE Oper minus_Oper
+times BASE Oper times_Oper
+div BASE Oper div_Oper
+pow BASE Oper pow_Oper
+neg BASE Oper neg_Oper
+log BASE Oper logarithm_Oper
+sqrt BASE Oper square_root_Oper
+succ BASE Fun successor_Fun
+abs BASE Fun absolute_value_Fun
+factorial BASE Fun factorial_Fun
+gcd BASE Fun gcd_Fun
+even BASE Adj even_Adj
+odd BASE Adj odd_Adj
+prime BASE Adj prime_Adj
+divisible BASE Reladj divisible_Reladj
+divide BASE Relverb divide_Relverb
+divisor BASE Relnoun divisor_Relnoun
+converge BASE Verb converge_Verb
+function BASE Oper function_Oper
+union BASE Oper union_Oper
+intersection BASE Oper intersection_Oper
+difference BASE Oper difference_Oper
+powerset BASE Oper powerset_Oper
+same_parity BASE Reladj Dk_same_parity
+
+nat ALIAS matita Nat
+Type0 ALIAS matita Set
+prop ALIAS matita Prop
+And ALIAS matita and
+Not ALIAS matita not
+eq ALIAS matita Eq 1 2
+le ALIAS matita Leq
+lt ALIAS matita Lt
+ge ALIAS matita Geq
+gt ALIAS matita Gt
+Or ALIAS matita or
+O ALIAS matita 0
+S ALIAS matita succ
+fact ALIAS matita factorial
+exp ALIAS matita pow
+list ALIAS matita List
+mem ALIAS matita member 1 2
+Term ALIAS matita Elem 1
+lift COERCION matita
+Univ COERCION matita
+
+

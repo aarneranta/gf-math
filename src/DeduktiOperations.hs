@@ -6,6 +6,7 @@ module DeduktiOperations where
 import Dedukti.AbsDedukti
 import Dedukti.PrintDedukti
 import CommonConcepts
+import ConstantData
 
 import Data.Char
 import qualified Data.Map as M
@@ -52,6 +53,24 @@ identTypes (MJmts jmts) = M.fromList (concatMap idtyp jmts) where
     JStatic qident typ -> [(qident, typ)]
     _ -> []
 
+
+applyConstantData :: ConstantData -> Tree a -> Tree a
+applyConstantData cd t = case t of
+  EIdent c -> fst $ lookid c
+  EApp _ _ -> case splitApp t of
+    (EIdent c, xs) -> case lookid c of
+      (exp, com) -> foldl EApp exp (map (applyConstantData cd) (applyCombination com xs))
+    (f, xs) -> foldl EApp f (map (applyConstantData cd) xs)
+  _ -> composOp (applyConstantData cd) t
+ where
+   lookid :: QIdent -> (Exp, Combination)
+   lookid f@(QIdent c) = case M.lookup c cd of
+     Just (BASE cat fun) -> (gfAnnotate cat fun f, ComALL)
+     Just (ALIAS _ dkid com) -> (applyConstantData cd (EIdent (QIdent dkid)), com)
+     Just (NEW _ cat fun com) -> (gfAnnotate cat fun f, com)
+     _ -> (EIdent f, ComALL)
+   gfAnnotate :: GFCat -> GFFun -> QIdent -> Exp
+   gfAnnotate cat fun ident = EAnnotIdent ident (QIdent cat) (QIdent fun)
 
 -- for a coercion application, only leave its last argument
 ignoreCoercions :: [QIdent] -> Tree a -> Tree a

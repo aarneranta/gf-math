@@ -11,7 +11,8 @@ import Dedukti.AbsDedukti
 import Dedukti.ErrM
 import DeduktiOperations (
   identsInTypes, dropDefinitions, stripQualifiers, identTypes, ignoreCoercions,
-  alphaConvert, ignoreFirstArguments, peano2int)
+  alphaConvert, ignoreFirstArguments, peano2int, applyConstantData)
+import ConstantData (ConstantData, string2constantData)
 import Informath -- superset of Core
 import Core2Informath (nlg)
 import Informath2Core (semantics)
@@ -62,11 +63,13 @@ helpMsg = unlines [
 informathPrefix = "Informath"
 informathPGFFile = "grammars/" ++ informathPrefix ++ ".pgf"
 conversionsFile = "alphaConversions.tsv"
+constantDataFile = "constant_data.txt"
 Just jmt = readType "Jmt"
 
 data Env = Env {
  flags :: [String],
- identConversions :: M.Map String String,
+ identConversions :: M.Map String String, ---- TODO deprec
+ constantData :: ConstantData,
  cpgf :: PGF,
  lang :: Language,
  termindex :: [String] -- list of terms replaced by \INDEXEDTERM{ i }
@@ -86,10 +89,12 @@ main = do
   let (ff, yy) = partition ((== '-') . head) xx
   corepgf <- readPGF informathPGFFile
   conversions <- readFile conversionsFile >>= return . filter ((==2) . length) . map words . lines
+  constantdata <- readFile constantDataFile >>= return . string2constantData Nothing ---- TODO filter project
   let Just lan = readLanguage (informathPrefix ++ (flagValue "lang" "Eng" ff))
   let env = Env{
         flags = ff,
 	identConversions = M.fromList [(a, b) | a:b:_ <- conversions],
+	constantData = constantdata,
 	cpgf = corepgf,
 	lang=lan,
 	termindex = []}
@@ -147,6 +152,7 @@ deduktiOpers env =
   [peano2int | ifFlag "-peano2int" env] ++
   [ignoreFirstArguments matita_typeargs | ifFlag "-dropfirstargs" env] ++
   [ignoreCoercions matita_coercions | ifFlag "-dropcoercions" env] ++
+  [applyConstantData (constantData env) | ifFlag "-constantdata" env] ++ 
   [alphaConvert (identConversions env) | ifFlag "-alphaconv" env] ++ 
   [stripQualifiers | ifFlag "-dropqualifs" env] ++ 
   [dropDefinitions | ifFlag "-dropdefs" env] 
