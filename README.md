@@ -200,31 +200,14 @@ Consult the [Makefile](./src/Makefile) to see what these commands exactly do.
 ## Usage
 
 It is too early to document the usage of this software, because its user interface has not yet stabilized.
-The emerging interface is in the file `Informath.hs`. Its two modes are interactive shell and conversion of files.
+The emerging interface is in the file `RunInformath.hs`. Its two modes are interactive shell and conversion of files.
+Write
 ```
-$ ./RunInformath -v? -variations? -parallel? \
-  (-to-agda|to-coq|to-lean)? \
-  -lang=<lang>? \
-  (<file.dk> | <file.dkgf> | <textfile>)?
+$ ./RunInformath -help
 ```
-The shell has following functionalities:
-```
-> <dedukti_jmt>     # convert Dedukti to Informath
-> ?<informath_jmt>  # convert Informath to Dedukti
-> =<dedukti_jmt>    # roundtrup Dedukti to Informath to Dedukti
-```
-The file conversion mode depends on the file suffix:
-```
-<file.dk>: Dedukti file converted to natural language
-<file.dkgf>: add user-defined constants to the grammar
-<textfile>: parse text file and convert to Dedukti
-```
-In all these cases, the -lang flag selects the natural language to be parsed from or generated (with Eng as default). 
-The -v flag generates verbose output with intermediate syntax trees.
-The -variations flag generates equivalent natural language outputs. 
-The -parallel flag generates, from Dedukti input, a .json file with the original Dedukti judgements and all their conversions.
+to see the currently available functionalities.
 
-In order for this to work, you need to compile the formal (Dedukti, Agda, Coq, Lean) and the Informath grammars:
+In order for all this to work, you need to compile the formal (Dedukti, Agda, Coq, Lean) and the Informath grammars:
 ```
 $ make 
 ```
@@ -237,6 +220,8 @@ Consult the [Makefile](./src/Makefile) to see what these commands exactly do.
 **Note**: with some versions of GHC libraries, `make Informath.pgf` results into a `Informath.hs` that gives an error about an undefined monad operation. This is fixed by adding the line `import Control.Monad` to the import list. The current Makefile does this with a `sed` command - which may cause an error with some other versions of GHC libraries. If this happens, you can comment out the `sed` command from the Makefile.
 
 ## User-defined constants
+
+_Under construction, not guaranteed to work like this_
 
 The lexicon part (files Constants*) is expected to give verbalizations to defined constants in .dk files. This part can be dynamically generated with the commands
 ```

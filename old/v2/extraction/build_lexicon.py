@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.11
 
 # start a multilingual lexicon or add a language to an existing one
 
@@ -47,7 +47,7 @@ else:
 
 # json and tmp files are stored in out, GF files in the current dir
 
-WIKIDATA_FILE = '../../data/qid-lexicon.jsonl'
+WIKIDATA_FILE = '../../../data/qid-lexicon.jsonl'
 NO_WIKILABEL = 'NOWIKILABEL'
 EXTRACT_PGF_FILE = 'Extract' + LANG + 'Abs.pgf'
 EXTRACT_CNC_NAME = 'Extract' + LANG
