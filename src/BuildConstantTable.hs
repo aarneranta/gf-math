@@ -174,6 +174,19 @@ printBackTable = unlines . map prEntry . M.toList where
   prEntry :: (Fun, [(QIdent, Profile)]) -> String
   prEntry (f, qids) = showGFTree f ++ ": " ++ unwords [g ++ showProfile prof | (QIdent g, prof) <- qids]
 
+-- | Drop Dedukti comments (; ... ;), which can span lines and nest, keeping
+-- the lines themselves, so that a comment is not read as an entry.
+stripDkComments :: [String] -> [String]
+stripDkComments = lines . strip (0 :: Int) . unlines
+  where
+    strip d s = case s of
+      '(':';':r -> strip (d+1) r
+      ';':')':r | d > 0 -> strip (d-1) r
+      '\n':r -> '\n' : strip d r
+      c:r | d == 0 -> c : strip d r
+      _:r -> strip d r
+      [] -> []
+
 buildSymbolTable :: PGF -> Language -> [String] -> SymbolTable
 buildSymbolTable pgf lang ls = SymbolTable {
   constantTable = constantTable,
@@ -187,7 +200,7 @@ buildSymbolTable pgf lang ls = SymbolTable {
   builtinSet = builtinSet
   }
  where
-    entrylines = filter (not . null) (map words ls)
+    entrylines = filter (not . null) (map words (stripDkComments ls))
     constantlines = filter isConstantEntry entrylines
     conversionlines = filter isConversion entrylines
     droplines = filter isDrop entrylines
