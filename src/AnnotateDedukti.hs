@@ -39,9 +39,19 @@ annotateDkIdents env =
   annot :: forall a. [QIdent] -> DkTree a -> [DkTree a]
   annot bounds t = case t of
     EApp fun arg -> case splitApp t of
-      (EIdent c, args) | notElem c bounds ->
-            [appProfile p (foldl EApp (EIdent f) aargs) |
-                (f, p) <- annotId c, aargs <- sequence (map (annot bounds) args)]
+      (EIdent c, args) | notElem c bounds -> concat [
+          case p of
+            -- HOAS profiles take arguments apart, so they are annotated first
+            HoasProfile _ ->
+              [appProfile p (foldl EApp (EIdent f) aargs) |
+                 aargs <- sequence (map (annot bounds) args)]
+            -- otherwise only the arguments the profile keeps are annotated,
+            -- and under a symbolic head only with nonverbal alternatives
+            _ -> case splitApp (appProfile p (foldl EApp (EIdent f) args)) of
+              (hd, kept) ->
+                [foldl EApp hd aargs |
+                   aargs <- sequence (map (prune f . annot bounds) kept)]
+          | (f, p) <- annotId c]
       _ -> [EApp afun aarg | afun <- annot bounds fun, aarg <- annot bounds arg]
     -- a pattern in a rewrite rule shows the arguments an expression shows
     PApp _ _ -> case splitPatt t of
@@ -59,6 +69,18 @@ annotateDkIdents env =
     HLetExp v ty -> [HLetExp v ty2 | ty2 <- annot bounds ty]
     HLetTyped v ty exp -> [HLetTyped v ty2 exp2 | ty2 <- annot bounds ty, exp2 <- annot bounds exp]
     _ -> composOpM (annot bounds) t
+
+  -- the alternatives of an argument of f that checkSymbolics would accept
+  prune :: QIdent -> [Exp] -> [Exp]
+  prune (QIdent f) us
+    | force_symbolic || symbolic_latex = us
+    | otherwise = case lookupConstant f of
+        Just (cat, _) | S.member cat symbolicCats -> filter (not . hasVerbal) us
+        _ -> us
+
+  hasVerbal :: Exp -> Bool
+  hasVerbal u = not (null [k | QIdent k <- identsInTree u,
+                          Just (kat, _) <- [lookupConstant k], S.member kat verbalCats])
 
   tkSyns = maybe id take msyns
   tkSymbs = maybe id take msymbs
