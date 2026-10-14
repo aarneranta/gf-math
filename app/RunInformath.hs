@@ -125,6 +125,7 @@ helpMsg4 = [
   "",
   just "-synonyms=<int>" "the maximum number of verbal constant synonyms considered with -variations (default all) otherwise 1",
   just "-symbolics=<int>" "the maximum number of symbolic constant synonyms considered with -variations, (default all) otherwise 1",
+  just "-max-annotations=<int>" "the maximum number of symbolic/verbal mixes kept of each subformula, default 256 (all with -variations); 0 = all",
   just "-mathcore" "generate only the mathcore text",
   just "-variations" "show all variations",
   just "-nbest=<int>" "show <int> best NLG results, default show all",

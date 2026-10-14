@@ -11,7 +11,7 @@ import Environment
 
 import PGF hiding (Hypo)
 
-import Data.List (intersperse)
+import Data.List (intersperse, sortOn)
 import qualified Data.Map as M
 import qualified Data.Set as S
 
@@ -37,7 +37,10 @@ annotateDkIdents env =
 
   -- don't annotate bound variables: they override constants
   annot :: forall a. [QIdent] -> DkTree a -> [DkTree a]
-  annot bounds t = case t of
+  annot bounds t = spread (annot0 bounds t)
+
+  annot0 :: forall a. [QIdent] -> DkTree a -> [DkTree a]
+  annot0 bounds t = case t of
     EApp fun arg -> case splitApp t of
       (EIdent c, args) | notElem c bounds -> concat [
           case p of
@@ -79,8 +82,30 @@ annotateDkIdents env =
         _ -> us
 
   hasVerbal :: Exp -> Bool
-  hasVerbal u = not (null [k | QIdent k <- identsInTree u,
-                          Just (kat, _) <- [lookupConstant k], S.member kat verbalCats])
+  hasVerbal u = verbality u > 0
+
+  -- the number of verbal constants in an annotated tree
+  verbality :: DkTree a -> Int
+  verbality u = length [k | QIdent k <- identsInTree u,
+                            Just (kat, _) <- [lookupConstant k], S.member kat verbalCats]
+
+  -- the alternatives of a subtree multiply up the tree, so a subtree keeps
+  -- at most maxAnnots of them (0 = all): the most symbolic, the most verbal
+  -- and ones spread evenly between them; -variations keeps all by default
+  maxAnnots = case argValueMaybeInt "-max-annotations" (flags env) of
+    Just k -> k
+    _ | isFlag "-variations" env || isFlag "-more-variants" env -> 0
+    _ -> defaultMaxAnnotations
+
+  spread :: [DkTree a] -> [DkTree a]
+  spread us
+    | maxAnnots <= 0 || null (drop maxAnnots us) = us
+    | maxAnnots == 1 = take 1 (sortOn verbality us)
+    | otherwise =
+        let vs = sortOn fst [(verbality u, u) | u <- us]
+            n = length vs
+            picks = S.fromList [(i * (n-1)) `div` (maxAnnots-1) | i <- [0 .. maxAnnots-1]]
+        in [u | (j, (_, u)) <- zip [0..] vs, S.member j picks]
 
   tkSyns = maybe id take msyns
   tkSymbs = maybe id take msymbs
@@ -152,6 +177,10 @@ annotateDkIdents env =
         _  -> concatMap badSymbolics ts
       (f, ts) -> concatMap badSymbolics (f : ts)
     _ -> composOpM badSymbolics t
+
+-- the default of -max-annotations
+defaultMaxAnnotations :: Int
+defaultMaxAnnotations = 256
 
 annotIdent :: QIdent -> Int -> (FunProfile, Type) -> (QIdent, Profile)
 annotIdent (QIdent s) d ((f, p), t) =
