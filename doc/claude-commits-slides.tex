@@ -44,7 +44,7 @@
 \newcommand{\how}{\par\textcolor{gfblue}{\textbf{Prompt and interaction}}\par}
 \newcommand{\what}{\par\textcolor{gfblue}{\textbf{Outcome}}\par}
 
-\title{Thirty-six Commits}
+\title{Thirty-eight Commits}
 \subtitle{What Claude Code has contributed to Informath, July--October 2026}
 \author{Aarne Ranta}
 \date{October 2026}
@@ -56,7 +56,7 @@
 \begin{frame}{This talk}
   \begin{itemize}
     \item Informath: over 900 commits since 2024, almost all by hand.
-    \item \textbf{36} of them are co-authored by Claude (Claude Code, Anthropic's
+    \item \textbf{38} of them are co-authored by Claude (Claude Code, Anthropic's
           coding agent, working in a terminal in my checkout).
     \item For each task: \textbf{why} it was needed, the \textbf{prompt and
           interaction}, and the \textbf{outcome} --- including what is still wrong.
@@ -68,7 +68,8 @@
   \vspace{0.5em}
   \small
   These slides were themselves drafted by Claude from those sources
-  (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--17.
+  (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--17
+  (\commit{ab75fd7} and this version).
 \end{frame}
 
 \begin{frame}{Outline}
@@ -201,7 +202,7 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
   Part I: new languages. \quad Part II: formalizing Godement's \emph{Algebra}.
 \end{frame}
 
-\begin{frame}{Since 27 September: 12 more commits as 6 tasks}
+\begin{frame}{Since 27 September: 13 more commits as 6 tasks}
   \footnotesize
   \begin{tabular}{rllr}
     \toprule
@@ -212,13 +213,13 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
     \midrule
     14 & Regression tests, and what they found at once & 29 Sept & 4 \\
     15 & A second book: Rijke's homotopy type theory & 29--30 Sept & 2 \\
-    16 & Speed of generation & 14--15 Oct & 3 \\
+    16 & Speed of generation & 14--15 Oct & 4 \\
     17 & Comments in symbol tables & 14 Oct & 1 \\
     \bottomrule
   \end{tabular}
 
   \vspace{0.5em}
-  Plus one commit for these slides. \quad
+  Plus two commits for these slides. \quad
   Part III: tests, a second book, and speed.
 \end{frame}
 
@@ -980,8 +981,35 @@ lin 'two-sided_Adj' = mkAdj "two-sided" ;
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Task 16: Speed --- ranking without lexing}
+  \prompt{LaTeX tokenizing could be avoided, if you don't unlex when ranking.}
+  \begin{itemize}\small
+    \item Each candidate was linearized, unlexed --- and lexed again, just to count
+          its tokens. The words of the linearization are its tokens already.
+    \item Not quite the same count: GF gives \texttt{\textbackslash frac\{} or
+          \texttt{\}\^{}\{} as one token, the lexer gave several. Some variants
+          change places:
+  \end{itemize}
+  \begin{center}\footnotesize
+  \begin{tabular}{lrr}
+    \toprule
+    & \textbf{old} & \textbf{new} \\
+    \midrule
+    \dots{} the union of $A$ and the complement of $A$ \dots & 176 & 176 \\
+    \dots{} the union of $A$ and ${A}^{\complement}$ \dots & 178 & \ok{174} \\
+    \bottomrule
+  \end{tabular}
+  \quad (penalties: the lower wins)
+  \end{center}
+  \begin{itemize}\small
+    \item \emph{``It is actually good that the symbolic readings win now.''}
+    \item And: \emph{``the (un)lexer needs to be fixed at some point''} ---
+          it leaves stray spaces: \texttt{\$\{A \}\^{}\{\textbackslash complement\}\$}.
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{Task 16: Speed --- outcome}
-  \commit{7e7f427}, \commit{f243e24} (14 Oct), \commit{5416ea5} (15 Oct)
+  \commit{7e7f427}, \commit{f243e24} (14 Oct), \commit{5416ea5}, \commit{92f49eb} (15 Oct)
   \begin{center}\footnotesize
   \begin{tabular}{lll}
     \toprule
@@ -991,19 +1019,19 @@ lin 'two-sided_Adj' = mkAdj "two-sided" ;
     Cramer's formula, $2 \times 2$ & \bad{stopped after 60 s} & 2 s \\
     chapter 20, Godement readings & 50 s and a time-out & 6 s \\
     the whole book, three readings + index & \bad{time-outs}, one by one & 3 min \\
-    the whole book, informal readings & 67 s & 41 s \\
+    the whole book, informal readings & 67 s & 38 s \\
+    the whole book, Godement readings & 104 s & 70 s \\
     \bottomrule
   \end{tabular}
   \end{center}
   \begin{itemize}\small
-    \item Pruning early and counting incrementally: identical output, checked on
-          every chapter.
-    \item The cap (at most 256 mixes per subformula): of 109 declarations, 107 read
-          as close to Godement as before, 2 closer.
+    \item Pruning and counting: identical output on every chapter. The cap (256 mixes
+          per subformula): 107 of 109 declarations as close to Godement, 2 closer.
   \end{itemize}
   \textbf{Remaining problems}
   \begin{itemize}\small
-    \item The time now goes to linearization, ranking and Dedukti $\to$ MathCore.
+    \item The time now goes to linearization and Dedukti $\to$ MathCore;
+          the lexer and unlexer disagree on tokens.
   \end{itemize}
 \end{frame}
 
@@ -1079,6 +1107,7 @@ lin 'two-sided_Adj' = mkAdj "two-sided" ;
       \begin{itemize}\small
         \item Design: ``symbolic constants are between dollars''.
         \item The right question: \emph{did you try -synonyms and -symbolics?}
+        \item The idea: \emph{don't unlex when ranking}.
         \item A push taken from ``ready to push I guess''.
         \item A workaround (rewording a comment) that hid a bug for two weeks.
       \end{itemize}
@@ -1092,7 +1121,7 @@ lin 'two-sided_Adj' = mkAdj "two-sided" ;
           words; gender agreement of ``such that'' in Slavic languages.
     \item \textbf{Tests}: \ok{a regression suite exists (Task 14)}; next, CI.
     \item \textbf{Scale}: \ok{big statements get English (Task 16)}; next,
-          linearization and ranking, now the slowest parts.
+          linearization, now the slowest part; and a lexer and unlexer that agree.
     \item \textbf{Proofs}: repair truncated proofs, English theorem headings,
           proper bound-variable names.
     \item \textbf{Coverage}: run GodementSyntax on all 10\,413 sentences and measure
