@@ -44,10 +44,10 @@
 \newcommand{\how}{\par\textcolor{gfblue}{\textbf{Prompt and interaction}}\par}
 \newcommand{\what}{\par\textcolor{gfblue}{\textbf{Outcome}}\par}
 
-\title{Twenty-three Commits}
-\subtitle{What Claude Code has contributed to Informath, July--September 2026}
+\title{Thirty-six Commits}
+\subtitle{What Claude Code has contributed to Informath, July--October 2026}
 \author{Aarne Ranta}
-\date{September 2026}
+\date{October 2026}
 
 \begin{document}
 
@@ -55,19 +55,20 @@
 
 \begin{frame}{This talk}
   \begin{itemize}
-    \item Informath: 899 commits since 2024, almost all by hand.
-    \item \textbf{23} of them are co-authored by Claude (Claude Code, Anthropic's
+    \item Informath: over 900 commits since 2024, almost all by hand.
+    \item \textbf{36} of them are co-authored by Claude (Claude Code, Anthropic's
           coding agent, working in a terminal in my checkout).
     \item For each task: \textbf{why} it was needed, the \textbf{prompt and
           interaction}, and the \textbf{outcome} --- including what is still wrong.
     \item Sources: \texttt{git log}, the diffs, Claude Code session transcripts
-          (September), session logs that Claude wrote itself (July).
+          (September, October), session logs that Claude wrote itself
+          (July, and the Rijke project in September).
   \end{itemize}
 
   \vspace{0.5em}
   \small
-  These slides were themselves drafted by Claude from those sources ---
-  a 24th task, not committed yet.
+  These slides were themselves drafted by Claude from those sources
+  (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--17.
 \end{frame}
 
 \begin{frame}{Outline}
@@ -175,7 +176,7 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
   \end{itemize}
 \end{frame}
 
-\begin{frame}{The 23 commits as 11 tasks}
+\begin{frame}{The first 23 commits as 11 tasks}
   \footnotesize
   \begin{tabular}{rllr}
     \toprule
@@ -198,6 +199,27 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
 
   \vspace{0.5em}
   Part I: new languages. \quad Part II: formalizing Godement's \emph{Algebra}.
+\end{frame}
+
+\begin{frame}{Since 27 September: 12 more commits as 6 tasks}
+  \footnotesize
+  \begin{tabular}{rllr}
+    \toprule
+    & \textbf{Task} & \textbf{Date} & \textbf{Commits} \\
+    \midrule
+    12 & Godement-style readings & 27 Sept & 1 \\
+    13 & Godement §§ 25--36: words and Greek variables & 28 Sept & 1 \\
+    \midrule
+    14 & Regression tests, and what they found at once & 29 Sept & 4 \\
+    15 & A second book: Rijke's homotopy type theory & 29--30 Sept & 2 \\
+    16 & Speed of generation & 14--15 Oct & 3 \\
+    17 & Comments in symbol tables & 14 Oct & 1 \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.5em}
+  Plus one commit for these slides. \quad
+  Part III: tests, a second book, and speed.
 \end{frame}
 
 % =====================================================================
@@ -500,6 +522,7 @@ lin 'two-sided_Adj' = mkAdj "two-sided" ;
     \item Names depend on position: adding a LaTeX form renames later macros,
           so derived files must be rebuilt together.
     \item Informath has no regression test suite; checking is by comparing outputs.
+          \ok{--- It has one now: Task 14.}
   \end{itemize}
 \end{frame}
 
@@ -758,7 +781,251 @@ lin 'two-sided_Adj' = mkAdj "two-sided" ;
     \item ``the set of all subsets of $X$ with $n$ elements'' still does not parse.
     \item Negated definitions read as tautologies: ``$x \notin y$ if $x \notin y$''.
     \item The next morning: English readings of §§ 10--24 had never been possible;
-          21 declarations are too big to word in 30 seconds.
+          21 declarations are too big to word in 30 seconds. \ok{--- Task 16.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 12: Godement-style readings --- why and interaction}
+  \why
+  \begin{itemize}\small
+    \item Informath read every statement in one way:
+          ``Let $g$ be a mathematical object. Assume that $g$ is a group.''
+    \item Godement writes ``Let $G$ be a group'', ``a group $G$ is said to be
+          commutative if'', ``for all elements $s$ of $G$''.
+    \item To compare the formalization with the book, the readings should be
+          able to sound like the book.
+  \end{itemize}
+  \how
+  \begin{itemize}\small
+    \item No transcript survives: weekend work, one commit.
+    \item GodementSyntax (Task 10) \emph{parses} Godement's constructions into
+          MathCore; the new GodementNLG is its inverse and \emph{generates} them.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 12: Godement-style readings --- outcome}
+  \commit{31343d5} (27 Sept): \texttt{src/GodementNLG.hs}, flags \texttt{-godement} and \texttt{-trees}.
+  \begin{itemize}\small
+    \item Variants: typed variables, ``is said to be'', ``is called'',
+          ``for all elements $s$ of $G$'', ``necessary and sufficient''.
+    \item \texttt{godement-index} compares the 50 best readings (\texttt{-trees}) with
+          Godement's own sentence and shows the closest:
+  \end{itemize}
+  \begin{center}\scriptsize
+  \begin{tabular}{p{0.38\textwidth}p{0.44\textwidth}r}
+    \toprule
+    \textbf{Godement} & \textbf{Informath} & \textbf{sim.} \\
+    \midrule
+    The field of complex numbers is algebraically closed.
+      & The field of all complex numbers is algebraically closed. & 0.84 \\
+    The rank of the homomorphism $f$ is defined to be the dimension of
+    the subspace $\operatorname{Im}(f)$ of $M$.
+      & Let $f$, $l$, $m$ and $k$ be mathematical objects. Then the rank of $f$
+        is defined to be the dimension of the image of $f$. & 0.65 \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \textbf{Remaining problems}
+  \begin{itemize}\small
+    \item Mean similarity 0.25 over 1534 constants; many variables are still
+          ``mathematical objects''; generation was slow (Task 16).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 13: Godement §§ 25--36}
+  \why
+  \begin{itemize}\small
+    \item The last part of the formalization: polynomials, eigenvalues, hermitian forms;
+          written so that the Godement-style readings begin as the book does.
+  \end{itemize}
+  \how
+  \prompt{I have not continued from chapter 25 but done other things. Therefore, I
+    want you to continue from chapter 25 of Godement now. Please read what was added
+    to the grammar during the weekend and how it is used to make the informalizations
+    more like the original text.}
+  \begin{itemize}\small
+    \item Later: \emph{``did you try the -force-symbolic fallback?''} ---
+          for declarations that have no wording.
+  \end{itemize}
+  \what
+  \begin{itemize}\small
+    \item \commit{7a0a687} (28 Sept): \emph{algebraically closed, self-adjoint,
+          positive definite}; \emph{associated with, with coefficients in, of degree};
+          Greek variables print as $\sigma$, a trailing digit as a subscript.
+    \item \ok{``Let $K$ be a field. Let $\sigma$ be an involution of $K$. \dots''}
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
+\section{Part III: Tests, a second book, and speed}
+
+\begin{frame}{Task 14: Regression tests --- why and interaction}
+  \why
+  \begin{itemize}\small
+    \item Task 6: ``Informath has no regression test suite; checking is by
+          comparing outputs.''
+    \item The first version of these slides (27 Sept) proposed it first among the
+          next steps.
+  \end{itemize}
+  \how
+  \begin{itemize}\small
+    \item No transcript on this machine. Four commits within 15 minutes, on
+          the morning of 29 Sept:
+  \end{itemize}
+  \begin{center}\footnotesize
+  \begin{tabular}{lll}
+    \toprule
+    09:08 & \commit{fa66483} & the test suite \\
+    09:12 & \commit{e2b0e8e} & a bug the tests found \\
+    09:18 & \commit{91a4106} & all readings of formulas \\
+    09:23 & \commit{63f8b09} & \texttt{-typecheck}, to filter the extra readings \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Task 14: Regression tests --- outcome}
+  \begin{itemize}\small
+    \item \texttt{regression/run.py}: the Makefile demos as 49 cases in four tiers,
+          in about 15 seconds. Checks: runs in time, LaTeX compiles, no new
+          failure lines, no more undefined constants, not twice as slow;
+          the \texttt{check} tier runs \texttt{dk}, \texttt{agda}, \texttt{coqc}, \texttt{lean}.
+    \item Found at once: Dedukti parsed back from English said \bad{\texttt{n : Nat}}
+          for \texttt{n : Elem Nat} --- a coercion toggled instead of added, by
+          semantics applied twice. Well-typed round trips: 7 $\to$ 12 of 15;
+          Chartrand's examples: 0 $\to$ 12 of 19.
+    \item \texttt{\$a \textbackslash times b\$} had only ever been read as a
+          cartesian product: now all readings of a formula are kept, and
+          \texttt{-typecheck} keeps those that \texttt{dk check} accepts.
+    \item Since then every commit says ``48 PASS, 1 NEW, 2 XFAIL'' or why not.
+  \end{itemize}
+  \textbf{Remaining problems}
+  \begin{itemize}\small
+    \item No CI; two known failures (\texttt{fermat}, \texttt{bind}); German has
+          no expected output yet.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 15: A second book --- why and interaction}
+  \why
+  \begin{itemize}\small
+    \item Egbert Rijke, \emph{Introduction to Homotopy Type Theory}, in a third
+          repository, \texttt{hott-llm}. Type theory stresses Informath differently:
+          explicit type arguments, rewrite rules, constants with only a LaTeX form.
+  \end{itemize}
+  \how
+  \prompt{Read Rijke's book and formalize the first chapter. Use a similar set-up as
+    in the session with ../godement-index. That is: formalize in Dedukti, produce a
+    symbol table for Informath, extend the grammar if necessary, and report about
+    issues that need to be fixed in Informath. Generate an index file similar to
+    godement-index.html.}
+  \begin{itemize}\small
+    \item A correction: \emph{``Primary is not so important any more: it is just a part
+          of verbal. Symbolic constants are between dollars and verbal constants
+          between quotes.''} --- Claude's first fix was reverted and redone.
+    \item On request, Claude kept \texttt{LOG.md}, a log of the sessions.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 15: A second book --- outcome}
+  \commit{277eaac} (29 Sept), \commit{1ad457d} (30 Sept)
+  \begin{itemize}\small
+    \item \texttt{\$\#4 \textbackslash circ \#5\$} made a macro of five parameters, but
+          macros take at most four: \bad{$\mathrm{comp}(A, B, C, g, f)$}. Now a macro
+          takes the arguments its form uses, and the constant gets a matching profile.
+    \item The same bug in Godement, unnoticed: \bad{\texttt{\textbackslash mathrm\{matrixProduct\}}}
+          50 times.
+    \item Rewrite rules: \ok{$\mathrm{refl}_x \cdot q :\equiv q$} instead of
+          \bad{$\mathrm{concat}(A, x, x, z, \mathrm{refl}_{A,x}, q) :\equiv q$}.
+    \item By 30 Sept: §§ 1--22, 673 items, 414 formalized, \texttt{rijke-index.html}.
+  \end{itemize}
+  \textbf{Remaining problems} (from \texttt{NOTES.md})
+  \begin{itemize}\small
+    \item Curry--Howard theorems read as definitions; $\lambda$-arguments split as
+          binders; ``$g$ applied to $f$ applied to $x$''.
+    \item Colons in table comments (Task 17); speed (Task 16).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 16: Speed --- why}
+  \begin{itemize}
+    \item Task 11: 21 declarations too big to word in 30 seconds.
+    \item \texttt{build-informal.py} worked around it: 120 s per chapter, then
+          declaration by declaration, then \texttt{-force-symbolic}.
+    \item Chapter 20 alone ran for more than 10 minutes; Cramer's formula for
+          $2 \times 2$ systems never finished.
+  \end{itemize}
+  \prompt{can you find out why generation of natural language from Dedukti is so
+    slow? [\dots] My hypothesis is that the problem is the large number of variations
+    and their ranking. But maybe there is a low-hanging fruit in some basic routing
+    that can be find by profiling the Haskell code of RunInformath. Can you try this
+    out and come back with suggestions?}
+\end{frame}
+
+\begin{frame}{Task 16: Speed --- interaction}
+  \begin{itemize}\small
+    \item Timing each declaration: one of chapter 20's 20 declarations took almost all the time; even
+          \texttt{-mathcore}, which skips the variants, ran out of time.
+    \item A profiling build: \bad{78\%} of the time went to rejecting symbolic/verbal
+          mixes \emph{after} generating all $2^n$ of them, $n$ the number of constants;
+          ranking took 3\%. The hypothesis was half right: too many variants ---
+          but of annotations, before the ranking.
+    \item \emph{``Did you try the options -synonyms=<int> and -symbolics=<int>?''} ---
+          already 1: each constant still has a symbolic and a verbal form.
+    \item \emph{``yes, go ahead with the pruning and then the cap''}; the next day,
+          \emph{``continue with the two suggested tasks''}: one paid off after a detour,
+          the other gave nothing and was reverted.
+    \item A slip: \emph{``It is ready to push I guess''} --- and Claude pushed.
+          \emph{``I want to push manually in the future''}: saved as a memory.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 16: Speed --- outcome}
+  \commit{7e7f427}, \commit{f243e24} (14 Oct), \commit{5416ea5} (15 Oct)
+  \begin{center}\footnotesize
+  \begin{tabular}{lll}
+    \toprule
+    & \textbf{before} & \textbf{after} \\
+    \midrule
+    nested ring expression, depth 6 & 45 s & 0.1 s \\
+    Cramer's formula, $2 \times 2$ & \bad{stopped after 60 s} & 2 s \\
+    chapter 20, Godement readings & 50 s and a time-out & 6 s \\
+    the whole book, three readings + index & \bad{time-outs}, one by one & 3 min \\
+    the whole book, informal readings & 67 s & 41 s \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \begin{itemize}\small
+    \item Pruning early and counting incrementally: identical output, checked on
+          every chapter.
+    \item The cap (at most 256 mixes per subformula): of 109 declarations, 107 read
+          as close to Godement as before, 2 closer.
+  \end{itemize}
+  \textbf{Remaining problems}
+  \begin{itemize}\small
+    \item The time now goes to linearization, ranking and Dedukti $\to$ MathCore.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 17: Comments in symbol tables}
+  \why
+  \begin{itemize}\small
+    \item Rebuilding \texttt{godement-index} with the faster Informath gave an
+          \bad{empty} file of macros: every formula of the index broken.
+  \end{itemize}
+  \how
+  \begin{itemize}\small
+    \item A \texttt{.dkgf} line was an entry unless it started with \texttt{\#}, and
+          \texttt{partI.dkgf} begins with a comment with a colon. Since Task 15 every
+          entry is type-checked, so the comment crashed the macro command, and the
+          script wrote an empty file without complaint.
+    \item Met on 29 Sept in \texttt{hott-llm}, worked around by rewording the comment.
+    \item Of three options offered, chosen: \emph{``Fix Informath''}.
+  \end{itemize}
+  \what
+  \begin{itemize}\small
+    \item \commit{94266b2} (14 Oct): comments \texttt{(; \dots{} ;)} are skipped, also
+          across lines and nested; \texttt{build-informal.py} now stops on the error.
   \end{itemize}
 \end{frame}
 
@@ -794,14 +1061,38 @@ lin 'two-sided_Adj' = mkAdj "two-sided" ;
   The division of labour: I set direction and judge; Claude explores, builds, measures.
 \end{frame}
 
+\begin{frame}{What the later tasks added}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \ok{\textbf{Worked well}}
+      \begin{itemize}\small
+        \item Tests paid off at once: a type error found within minutes of the suite.
+        \item A second book found bugs the first one hid
+              (\texttt{matrixProduct}, 50 times).
+        \item Profiling before changing code; a hypothesis tested, not assumed.
+        \item ``Same output'' checked on the whole book, not on a sample.
+        \item Changes that did not pay off were reverted, not kept.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \bad{\textbf{Needed a human}}
+      \begin{itemize}\small
+        \item Design: ``symbolic constants are between dollars''.
+        \item The right question: \emph{did you try -synonyms and -symbolics?}
+        \item A push taken from ``ready to push I guess''.
+        \item A workaround (rewording a comment) that hid a bug for two weeks.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Speculation: what would be good to do next}
   \begin{itemize}\small
     \item \textbf{Review}: native checking of the Finnish, Czech, Polish and French
           words; gender agreement of ``such that'' in Slavic languages.
-    \item \textbf{Tests}: a regression suite and CI --- today regressions are found
-          by diffing outputs by hand.
-    \item \textbf{Scale}: faster or incremental search for wordings, so that
-          big statements (determinants of order 3) get English too.
+    \item \textbf{Tests}: \ok{a regression suite exists (Task 14)}; next, CI.
+    \item \textbf{Scale}: \ok{big statements get English (Task 16)}; next,
+          linearization and ranking, now the slowest parts.
     \item \textbf{Proofs}: repair truncated proofs, English theorem headings,
           proper bound-variable names.
     \item \textbf{Coverage}: run GodementSyntax on all 10\,413 sentences and measure
