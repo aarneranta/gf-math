@@ -12,6 +12,8 @@ import Environment
 import PGF hiding (Hypo)
 
 import Data.List (intersperse, sortOn)
+import Data.Monoid (Sum(..))
+import Control.Monad.Writer (WriterT(..), tell, censor, lift)
 import qualified Data.Map as M
 import qualified Data.Set as S
 
@@ -37,52 +39,87 @@ annotateDkIdents env =
 
   -- don't annotate bound variables: they override constants
   annot :: forall a. [QIdent] -> DkTree a -> [DkTree a]
-  annot bounds t = spread (annot0 bounds t)
+  annot bounds = map fst . runWriterT . annotV bounds
 
-  annot0 :: forall a. [QIdent] -> DkTree a -> [DkTree a]
-  annot0 bounds t = case t of
+  -- each alternative comes with its verbality, the number of verbal constants
+  -- in it, counted as it is built, as verbality would count them
+  annotV :: forall a. [QIdent] -> DkTree a -> Annots (DkTree a)
+  annotV bounds t = WriterT (spread (runWriterT (annotV0 bounds t)))
+
+  annotV0 :: forall a. [QIdent] -> DkTree a -> Annots (DkTree a)
+  annotV0 bounds t = case t of
     EApp fun arg -> case splitApp t of
-      (EIdent c, args) | notElem c bounds -> concat [
-          case p of
-            -- HOAS profiles take arguments apart, so they are annotated first
-            HoasProfile _ ->
-              [appProfile p (foldl EApp (EIdent f) aargs) |
-                 aargs <- sequence (map (annot bounds) args)]
-            -- otherwise only the arguments the profile keeps are annotated,
-            -- and under a symbolic head only with nonverbal alternatives
-            _ -> case splitApp (appProfile p (foldl EApp (EIdent f) args)) of
-              (hd, kept) ->
-                [foldl EApp hd aargs |
-                   aargs <- sequence (map (prune f . annot bounds) kept)]
-          | (f, p) <- annotId c]
-      _ -> [EApp afun aarg | afun <- annot bounds fun, aarg <- annot bounds arg]
+      (EIdent c, args) | notElem c bounds -> do
+        (f, p) <- lift (annotId c)
+        case p of
+          -- HOAS profiles take arguments apart, so they are annotated first,
+          -- and the result is counted afresh, as some arguments may be dropped
+          HoasProfile _ -> do
+            aargs <- censor (const 0) (mapM (annotV bounds) args)
+            let r = appProfile p (foldl EApp (EIdent f) aargs)
+            tell (Sum (verbality r))
+            return r
+          -- otherwise only the arguments the profile keeps are annotated,
+          -- and under a symbolic head only with nonverbal alternatives
+          _ -> case splitApp (appProfile p (foldl EApp (EIdent f) args)) of
+            (hd, kept) -> do
+              tell (verbalIdent f)
+              aargs <- mapM (prune f . annotV bounds) kept
+              return (foldl EApp hd aargs)
+      _ -> EApp <$> annotV bounds fun <*> annotV bounds arg
+    EIdent c -> do
+      c2 <- annotV bounds c
+      tell (verbalIdent c2)
+      return (EIdent c2)
     -- a pattern in a rewrite rule shows the arguments an expression shows
     PApp _ _ -> case splitPatt t of
-      (PVar c, args) | notElem c bounds ->
-            [appPattProfile p (foldl PApp (PVar f) aargs) |
-                (f, p) <- annotId c, aargs <- sequence (map (annot bounds) args)]
-      _ -> composOpM (annot bounds) t
-    QIdent _ | notElem t bounds -> map fst (annotId t)
-    EAbs b exp -> [EAbs b2 exp2 | b2 <- annot bounds b, exp2 <- annot (bind2ident b : bounds) exp]
-    EFun h exp -> [EFun h2 exp2 | h2 <- annot bounds h, exp2 <- annot (hypo2topvars h ++ bounds) exp]    
-    BVar _ -> [t]
-    BTyped v ty -> [BTyped v ty2 | ty2 <- annot bounds ty]
-    HVarExp v ty -> [HVarExp v ty2 | ty2 <- annot bounds ty]
-    HParVarExp v ty -> [HParVarExp v ty2 | ty2 <- annot bounds ty]
-    HLetExp v ty -> [HLetExp v ty2 | ty2 <- annot bounds ty]
-    HLetTyped v ty exp -> [HLetTyped v ty2 exp2 | ty2 <- annot bounds ty, exp2 <- annot bounds exp]
-    _ -> composOpM (annot bounds) t
+      (PVar c, args) | notElem c bounds -> do
+        (f, p) <- lift (annotId c)
+        aargs <- mapM (annotV bounds) args
+        return (appPattProfile p (foldl PApp (PVar f) aargs))
+      _ -> composOpM (annotV bounds) t
+    QIdent _ | notElem t bounds -> lift (map fst (annotId t))
+    EAbs b exp -> EAbs <$> censor (const 0) (annotV bounds b)
+                       <*> annotV (bind2ident b : bounds) exp
+    EFun h exp -> EFun <$> annotV bounds h <*> annotV (hypo2topvars h ++ bounds) exp
+    BVar _ -> return t
+    BTyped v ty -> BTyped v <$> annotV bounds ty
+    HVarExp v ty -> HVarExp v <$> annotV bounds ty
+    HParVarExp v ty -> HParVarExp v <$> annotV bounds ty
+    HLetExp v ty -> HLetExp v <$> annotV bounds ty
+    HLetTyped v ty exp -> HLetTyped v <$> annotV bounds ty <*> annotV bounds exp
+    -- the name of a judgement counts as verbality counts it
+    JStatic _ _ -> named
+    JDef _ _ _ -> named
+    JThm _ _ _ -> named
+    JInj _ _ _ -> named
+    _ -> composOpM (annotV bounds) t
+   where
+     named = do
+       r <- composOpM (annotV bounds) t
+       tell (verbalIdent (jmtName r))
+       return r
+     jmtName :: DkTree b -> QIdent
+     jmtName j = case j of
+       JStatic c _ -> c
+       JDef c _ _ -> c
+       JThm c _ _ -> c
+       JInj c _ _ -> c
+       _ -> QIdent ""
 
   -- the alternatives of an argument of f that checkSymbolics would accept
-  prune :: QIdent -> [Exp] -> [Exp]
+  prune :: QIdent -> Annots Exp -> Annots Exp
   prune (QIdent f) us
     | force_symbolic || symbolic_latex = us
     | otherwise = case lookupConstant f of
-        Just (cat, _) | S.member cat symbolicCats -> filter (not . hasVerbal) us
+        Just (cat, _) | S.member cat symbolicCats ->
+          WriterT (filter ((== 0) . snd) (runWriterT us))
         _ -> us
 
-  hasVerbal :: Exp -> Bool
-  hasVerbal u = verbality u > 0
+  verbalIdent :: QIdent -> Sum Int
+  verbalIdent (QIdent k) = case lookupConstant k of
+    Just (kat, _) | S.member kat verbalCats -> 1
+    _ -> 0
 
   -- the number of verbal constants in an annotated tree
   verbality :: DkTree a -> Int
@@ -97,15 +134,15 @@ annotateDkIdents env =
     _ | isFlag "-variations" env || isFlag "-more-variants" env -> 0
     _ -> defaultMaxAnnotations
 
-  spread :: [DkTree a] -> [DkTree a]
+  spread :: [(DkTree a, Sum Int)] -> [(DkTree a, Sum Int)]
   spread us
     | maxAnnots <= 0 || null (drop maxAnnots us) = us
-    | maxAnnots == 1 = take 1 (sortOn verbality us)
+    | maxAnnots == 1 = take 1 (sortOn snd us)
     | otherwise =
-        let vs = sortOn fst [(verbality u, u) | u <- us]
+        let vs = sortOn snd us
             n = length vs
             picks = S.fromList [(i * (n-1)) `div` (maxAnnots-1) | i <- [0 .. maxAnnots-1]]
-        in [u | (j, (_, u)) <- zip [0..] vs, S.member j picks]
+        in [u | (j, u) <- zip [0..] vs, S.member j picks]
 
   tkSyns = maybe id take msyns
   tkSymbs = maybe id take msymbs
@@ -177,6 +214,9 @@ annotateDkIdents env =
         _  -> concatMap badSymbolics ts
       (f, ts) -> concatMap badSymbolics (f : ts)
     _ -> composOpM badSymbolics t
+
+-- alternative annotations, each with its verbality
+type Annots a = WriterT (Sum Int) [] a
 
 -- the default of -max-annotations
 defaultMaxAnnotations :: Int

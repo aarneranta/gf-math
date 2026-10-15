@@ -97,11 +97,18 @@ lookupConstantFull f = case splitConstant f of
   Right (_ : cat : fun : args) -> return (cat, fun, args, last ("":args))
   _ -> Nothing
   
--- lookup just fun and cat
+-- lookup just fun and cat; as splitConstant would give them, but without
+-- splitting the rest of the name, and lazily, so that just the cat is cheap
 lookupConstant :: String -> Maybe (String, String)
-lookupConstant f = case splitConstant f of
-  Right (_ : cat : fun : _) -> return (cat, fun)
-  _ -> Nothing
+lookupConstant f
+  | isSuffixOf "|}" f = Nothing
+  | otherwise = case break (== '#') f of
+      (_, _:r1) -> case break (== '#') r1 of
+        (cat, _:r2@(_:_)) -> Just (strip cat, strip (takeWhile (/= '#') r2))
+        _ -> Nothing
+      _ -> Nothing
+ where
+   strip = unwords . words
 
 -- split at # ; they can occur spuriously inside {|...|} but not elsewhere
 splitConstant :: String -> Either String [String]
