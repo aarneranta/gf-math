@@ -1,4 +1,4 @@
-module Ranking (rankTreesAndStrings, Scores) where
+module Ranking (rankTreesAndStrings, rankTreesAndLins, Scores) where
 
 import PGF
 import Environment
@@ -23,7 +23,11 @@ noScores :: Scores
 noScores = Scores 0 0 0 0 0 0 0
 
 scoreString :: Env -> String -> Scores
-scoreString env s = Scores {
+scoreString env s = scoreTokens env (words (lextex s)) s
+
+-- the scores of a string, given its tokens
+scoreTokens :: Env -> [String] -> String -> Scores
+scoreTokens env toks s = Scores {
   tree_length = 0, -- computed separately
   tree_depth = 0,  -- 
   characters = length s,
@@ -39,7 +43,6 @@ scoreString env s = Scores {
  where
    (inds, _) = indexTex (lextex s)
    Just jmt = readType "Jmt"
-   toks = words (lextex s)
    subdollars ts = case ts of
      "$":"$":tt -> 1 + subdollars tt
      "$":",":"$":tt -> 1 + subdollars tt
@@ -56,13 +59,28 @@ scoreTreeAndString :: Env -> (Expr, String) -> (Scores, Int)
 scoreTreeAndString env (t, s) =
   let scores = (scoreString env s){
         tree_length = treeLength t, tree_depth = treeDepth t}
-  in (scores,
+  in (scores, totalScore env scores)
+       
+
+-- the total score of the scores
+totalScore :: Env -> Scores -> Int
+totalScore env scores =
       sum (map (\ (w, f) -> w * (f scores))
                (zip
             (scoreWeights env)
             [tree_length, tree_depth, characters, tokens,
-                 subsequent_dollars, initial_dollars, extra_parses])))
-       
+                 subsequent_dollars, initial_dollars, extra_parses]))
+
+-- as rankTreesAndStrings, but from linearizations whose words are the tokens,
+-- so that they need not be lexed again; unl gives the string returned
+rankTreesAndLins :: Env -> (String -> String) -> [(Expr, String)] -> [((Expr, String), (Scores, Int))]
+rankTreesAndLins env unl tls =
+  if isFlag "-no-ranking" env
+  then [((t, unl l), (noScores, 0)) | (t, l) <- tls]
+  else sortOn (snd . snd) [((t, s), (scores, totalScore env scores)) |
+    (t, l) <- tls,
+    let s = unl l,
+    let scores = (scoreTokens env (words l) s){tree_length = treeLength t, tree_depth = treeDepth t}]
 
 -- sorts trees from lowest to highest total score
 rankTreesAndStrings :: Env -> [(Expr, String)] -> [((Expr, String), (Scores, Int))] 

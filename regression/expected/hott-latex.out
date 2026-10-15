@@ -361,13 +361,13 @@ Equivalence. Let $A$ and $B$ be elements of $\universe$. Let $f$ be a map from $
 
 Equivalence. Let $A$ and $B$ be elements of the universe. Let $f$ be a map from $A$ to $B$. Then $\mathrm{prod}$ holds for the set of sections of $f$ and $\retr {f}$.
 
-Equivalence. Let $A$ be an element of the universe. Let $B$ be an element of $\universe$. Let $f$ be a map from $A$ to $B$. Then $\product {\sect {f}}{\retr {f}}$.
-
-Equivalence. Let $A$ be an element of $\universe$. Let $B$ be an element of the universe. Let $f$ be a map from $A$ to $B$. Then $\product {\sect {f}}{\retr {f}}$.
-
 Equivalence. Let $A$ and $B$ be elements of $\universe$. Let $f$ be a map from $A$ to $B$. Then $\mathrm{prod}$ holds for the set of sections of $f$ and $\retr {f}$.
 
 Equivalence. Let $A$ and $B$ be elements of the universe. Let $f$ be a map from $A$ to $B$. Then $\mathrm{prod}$ holds for $\sect {f}$ and the set of retractions of $f$.
+
+Equivalence. Let $A$ be an element of the universe. Let $B$ be an element of $\universe$. Let $f$ be a map from $A$ to $B$. Then $\product {\sect {f}}{\retr {f}}$.
+
+Equivalence. Let $A$ be an element of $\universe$. Let $B$ be an element of the universe. Let $f$ be a map from $A$ to $B$. Then $\product {\sect {f}}{\retr {f}}$.
 
 Equivalence. Let $A$ and $B$ be elements of $\universe$. Let $f$ be a map from $A$ to $B$. Then $\mathrm{prod}$ holds for $\sect {f}$ and the set of retractions of $f$.
 

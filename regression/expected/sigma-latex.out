@@ -102,11 +102,11 @@ Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ an
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
@@ -118,8 +118,6 @@ Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
@@ -130,9 +128,11 @@ Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
@@ -144,15 +144,15 @@ Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
@@ -164,17 +164,17 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
@@ -184,27 +184,27 @@ Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ an
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
@@ -212,43 +212,41 @@ Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ an
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
@@ -256,13 +254,15 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
@@ -278,23 +278,29 @@ Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ an
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
@@ -304,37 +310,25 @@ Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
@@ -344,25 +338,43 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
@@ -372,31 +384,19 @@ Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ 
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}> \\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
@@ -408,6 +408,12 @@ Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
@@ -416,15 +422,9 @@ Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
@@ -436,41 +436,33 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
@@ -484,11 +476,19 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
@@ -502,14 +502,6 @@ Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
@@ -518,23 +510,31 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
@@ -542,17 +542,15 @@ Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
@@ -568,29 +566,27 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
@@ -608,21 +604,25 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
@@ -642,13 +642,11 @@ Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
@@ -658,29 +656,29 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
-
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ and $n$ be natural numbers. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
@@ -690,17 +688,19 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ and $n$ be natural numbers. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
@@ -730,8 +730,6 @@ Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than $\\\Summa {(m + 1)}{n}{i}{(\frac{ 1}{i})}$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
@@ -742,13 +740,13 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then $\\\Summa {m}{n}{i}{(\frac{ 1}{i})}$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
@@ -758,17 +756,19 @@ Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
+
+Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
+
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
-Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
-
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0 < m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
-Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m < n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
@@ -796,8 +796,6 @@ Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assum
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0 < m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
 
-Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
-
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
@@ -805,6 +803,8 @@ Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assum
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of $\frac{ 1}{i}$ where $i$ ranges from $m + 1$ to $n$.
 
 Theorem. Let $m$ be a natural number. Let $n$ be an element of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of $\frac{ 1}{i}$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from $m + 1$ to $n$.
+
+Theorem. Let $m$ and $n$ be elements of $\Natural$. Assume that $0$ is less than $m$ and $m$ is less than the difference between $n$ and $1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 
 Theorem. Let $m$ be an element of $\Natural$. Let $n$ be a natural number. Assume that $0$ is less than $m$ and $m$ is less than $n - 1$. Then the sum of the quotient of $1$ and $i$ where $i$ ranges from $m$ to $n$ is greater than the sum of the quotient of $1$ and $i$ where $i$ ranges from the sum of $m$ and $1$ to $n$.
 

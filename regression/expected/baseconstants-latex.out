@@ -532,9 +532,9 @@ Definition. Let $x$ and $y$ be sets. Then $x \times y$ is a set.
 
 Definition. Let $x$ and $y$ be sets. Then the cartesian product of $x$ and $y$ is a set.
 
-Definition. Let $x$ be a set. Then the complement of $x$ is a set.
-
 Definition. Let $x$ be a set. Then ${x }^{\complement}$ is a set.
+
+Definition. Let $x$ be a set. Then the complement of $x$ is a set.
 
 Definition. Let $x$ be a set. Then $\wp x$ is a set.
 
@@ -570,21 +570,21 @@ Definition. Let $x$ and $y$ be sets. Then we can say that $x$ is equal to $y$.
 
 Definition. Let $x$ and $y$ be sets. Then we can say that $x$ and $y$ are equal.
 
-Definition. Let $x$ be an element of the universal set. Let $y$ be a set. Then we can say that $x \in y$.
-
 Definition. Let $x$ be an element of $\mathbb{ U}$. Let $y$ be a set. Then we can say that $x \in y$.
 
-Definition. Let $x$ be an element of the universal set. Let $y$ be a set. Then we can say that $x$ is an element of $y$.
+Definition. Let $x$ be an element of the universal set. Let $y$ be a set. Then we can say that $x \in y$.
 
 Definition. Let $x$ be an element of $\mathbb{ U}$. Let $y$ be a set. Then we can say that $x$ is an element of $y$.
 
-Definition. Let $x$ be an element of the universal set. Let $y$ be a set. Then we can say that $x \notin y$.
+Definition. Let $x$ be an element of the universal set. Let $y$ be a set. Then we can say that $x$ is an element of $y$.
 
 Definition. Let $x$ be an element of $\mathbb{ U}$. Let $y$ be a set. Then we can say that $x \notin y$.
 
-Definition. Let $x$ be an element of the universal set. Let $y$ be a set. Then we can say that $x$ is a non-element of $y$.
+Definition. Let $x$ be an element of the universal set. Let $y$ be a set. Then we can say that $x \notin y$.
 
 Definition. Let $x$ be an element of $\mathbb{ U}$. Let $y$ be a set. Then we can say that $x$ is a non-element of $y$.
+
+Definition. Let $x$ be an element of the universal set. Let $y$ be a set. Then we can say that $x$ is a non-element of $y$.
 
 Definition. Let $x$ be a set. Then the elements of $\mathrm{positivePart}$ applied to $x$ are a basic type.
 
@@ -1200,13 +1200,13 @@ Definition. Let $x$ be a real number. Then $x$ is rational, if there exist eleme
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q \neq 0$ and $x$ is equal to $\frac{ p}{q}$.
 
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q \neq 0$ and $x$ is equal to the quotient of $p$ and $q$.
-
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ is distinct from $0$ and $x = \frac{ p}{q}$.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ and $0$ are distinct and $x = \frac{ p}{q}$.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q \neq 0$ and $x$ and $\frac{ p}{q}$ are equal.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q \neq 0$ and $x$ is equal to the quotient of $p$ and $q$.
 
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ is distinct from $0$ and $x$ is equal to $\frac{ p}{q}$.
 
@@ -1236,27 +1236,27 @@ Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exi
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q \neq 0$ and $x$ and the quotient of $p$ and $q$ are equal.
 
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
-
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
-
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ is distinct from $0$ and $x$ and $\frac{ p}{q}$ are equal.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ and $0$ are distinct and $x$ and $\frac{ p}{q}$ are equal.
 
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ is distinct from $0$ and $x$ and the quotient of $p$ and $q$ are equal.
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
 
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ and $0$ are distinct and $x$ and the quotient of $p$ and $q$ are equal.
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q \neq 0$ and $x$ is equal to $\frac{ p}{q}$.
 
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q \neq 0$ and $x$ is equal to the quotient of $p$ and $q$.
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ is distinct from $0$ and $x$ and the quotient of $p$ and $q$ are equal.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exist integers $p$ and $q$, such that $q$ and $0$ are distinct and $x$ and the quotient of $p$ and $q$ are equal.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x = \frac{ p}{q}$.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x = \frac{ p}{q}$.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q \neq 0$ and $x$ and $\frac{ p}{q}$ are equal.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q \neq 0$ and $x$ is equal to the quotient of $p$ and $q$.
 
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ is equal to $\frac{ p}{q}$.
 
@@ -1284,10 +1284,6 @@ Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exi
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q \neq 0$ and $x$ and the quotient of $p$ and $q$ are equal.
 
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
-
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
-
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q \neq 0$ and $x = \frac{ p}{q}$.
 
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q \neq 0$ and $x = \frac{ p}{q}$.
@@ -1296,17 +1292,21 @@ Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exi
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ and $\frac{ p}{q}$ are equal.
 
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
+
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ and the quotient of $p$ and $q$ are equal.
 
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ and the quotient of $p$ and $q$ are equal.
 
-Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
-
-Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
-
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q \neq 0$ and $x = \frac{ p}{q}$.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q \neq 0$ and $x = \frac{ p}{q}$.
+
+Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
+
+Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exist elements $p$ and $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
 
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q \neq 0$ and $x$ is equal to $\frac{ p}{q}$.
 
@@ -1332,10 +1332,6 @@ Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exi
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q \neq 0$ and $x$ is equal to $\frac{ p}{q}$.
 
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q \neq 0$ and $x$ is equal to the quotient of $p$ and $q$.
-
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q \neq 0$ and $x$ is equal to the quotient of $p$ and $q$.
-
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ is distinct from $0$ and $x = \frac{ p}{q}$.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ and $0$ are distinct and $x = \frac{ p}{q}$.
@@ -1348,15 +1344,19 @@ Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exi
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q \neq 0$ and $x$ and $\frac{ p}{q}$ are equal.
 
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q \neq 0$ and $x$ is equal to the quotient of $p$ and $q$.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q \neq 0$ and $x$ is equal to the quotient of $p$ and $q$.
+
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ is distinct from $0$ and $x$ is equal to $\frac{ p}{q}$.
 
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ and $0$ are distinct and $x$ is equal to $\frac{ p}{q}$.
 
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q \neq 0$ and $x$ and the quotient of $p$ and $q$ are equal.
-
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ is equal to $\frac{ p}{q}$.
 
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ is equal to $\frac{ p}{q}$.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q \neq 0$ and $x$ and the quotient of $p$ and $q$ are equal.
 
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q \neq 0$ and $x$ and the quotient of $p$ and $q$ are equal.
 
@@ -1376,21 +1376,13 @@ Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exi
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ and $0$ are distinct and $x$ is equal to $\frac{ p}{q}$.
 
-Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q \neq 0$ and $x$ and the quotient of $p$ and $q$ are equal.
-
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ is equal to $\frac{ p}{q}$.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ is equal to $\frac{ p}{q}$.
 
+Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q \neq 0$ and $x$ and the quotient of $p$ and $q$ are equal.
+
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q \neq 0$ and $x$ and the quotient of $p$ and $q$ are equal.
-
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
-
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
-
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
-
-Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ is distinct from $0$ and $x$ and $\frac{ p}{q}$ are equal.
 
@@ -1399,6 +1391,14 @@ Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exi
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ and $\frac{ p}{q}$ are equal.
 
 Definition. Let $x$ be an element of $\Real$. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ and $\frac{ p}{q}$ are equal.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ is distinct from $0$ and $x$ is equal to the quotient of $p$ and $q$.
+
+Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an integer $p$, such that there exists an element $q$ of $\Integer$, such that $q$ and $0$ are distinct and $x$ is equal to the quotient of $p$ and $q$.
 
 Definition. Let $x$ be a real number. Then $x$ is rational, if there exists an element $p$ of $\Integer$, such that there exists an integer $q$, such that $q$ is distinct from $0$ and $x$ and the quotient of $p$ and $q$ are equal.
 
@@ -1556,9 +1556,9 @@ Definition. Let $x$ and $y$ be natural numbers. Then the Legendre symbol of $x$ 
 
 Definition. Let $x$ and $y$ be elements of $\Natural$. Then $\left(\frac{ x }{ y }\right)$ is an integer.
 
-Definition. Let $x$ and $y$ be elements of $\Natural$. Then the Legendre symbol of $x$ over $y$ is an integer.
-
 Definition. Let $x$ and $y$ be natural numbers. Then $\left(\frac{ x }{ y }\right)$ is an element of $\Integer$.
+
+Definition. Let $x$ and $y$ be elements of $\Natural$. Then the Legendre symbol of $x$ over $y$ is an integer.
 
 Definition. Let $x$ and $y$ be natural numbers. Then the Legendre symbol of $x$ over $y$ is an element of $\Integer$.
 
@@ -1608,9 +1608,9 @@ Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is an ele
 
 Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of $n !$ and $k ! \times (n - k)!$.
 
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as $\frac{ n !}{k ! \times (n - k)!}$.
-
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as $\frac{ n !}{k ! \times (n - k)!}$.
+
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as $\frac{ n !}{k ! \times (n - k)!}$.
 
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of $n !$ and $k ! \times (n - k)!$.
 
@@ -1624,17 +1624,17 @@ Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coeffic
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as $\frac{ n !}{k ! \times (n - k)!}$.
 
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and $k ! \times (n - k)!$.
-
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and $k ! \times (n - k)!$.
 
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and $k ! \times (n - k)!$.
 
-Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is a natural number defined as $\frac{ n !}{k ! \times (n - k)!}$.
 
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as $\frac{ n !}{k ! \times (n - k)!}$.
+
+Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
 
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
 
@@ -1652,15 +1652,13 @@ Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coeffic
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of $n !$ and $k ! \times (n - k)!$.
 
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
-
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as $\frac{ n !}{k ! \times (n - k)!}$.
 
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as $\frac{ n !}{k ! \times (n - k)!}$.
 
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of $n !$ and $k ! \times (n - k)!$.
 
@@ -1669,6 +1667,8 @@ Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Th
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
 
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
+
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
 
 Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
 
@@ -1684,33 +1684,29 @@ Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is a natu
 
 Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of $n !$ and $k ! \times (n - k)!$.
-
 Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and $(n - k)!$.
 
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of $n !$ and $k ! \times (n - k)!$.
 
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then the binomial coefficient of $n$ over $k$ is a natural number defined as $\frac{ n !}{k ! \times (n - k)!}$.
 
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as $\frac{ n !}{k ! \times (n - k)!}$.
 
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
-
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
-
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and $k ! \times (n - k)!$.
 
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and $k ! \times (n - k)!$.
 
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
+
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
 
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and $(n - k)!$.
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
 
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and $(n - k)!$.
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
 
@@ -1723,6 +1719,10 @@ Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of $n - k$.
 
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of $n - k$.
+
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and $(n - k)!$.
+
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and $(n - k)!$.
 
 Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of $n - k$.
 
@@ -1756,9 +1756,17 @@ Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coeffic
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
 
+Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
+
+Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
+
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and $(n - k)!$.
 
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and $(n - k)!$.
+
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of $n - k$.
+
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of $k !$ and $(n - k)!$.
 
@@ -1768,17 +1776,7 @@ Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
-Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
-
-Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and $k ! \times (n - k)!$.
-
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of $n - k$.
-
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of $n - k$.
-
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
-
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and $(n - k)!$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
 
@@ -1793,6 +1791,8 @@ Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
 Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
+
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and $(n - k)!$.
 
 Definition. Let $n$ and $k$ be natural numbers. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
@@ -1830,25 +1830,25 @@ Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
+
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
+
+Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
 
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and $(n - k)!$.
 
+Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
+
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and $(n - k)!$.
 
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and $(n - k)!$.
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of $n - k$.
-
-Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
-
-Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of $n - k$.
-
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
 
@@ -1906,29 +1906,29 @@ Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
-Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and $(n - k)!$.
-
-Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and $(n - k)!$.
-
-Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and $(n - k)!$.
-
-Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and $(n - k)!$.
-
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
-
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of the difference between $n$ and $k$.
-
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
 
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of the difference between $n$ and $k$.
+
+Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and $(n - k)!$.
+
+Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and $(n - k)!$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of $n - k$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
+Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and $(n - k)!$.
+
+Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and $(n - k)!$.
+
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of $n - k$.
 
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of $n - k$.
+
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
+
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of the difference between $n$ and $k$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of $n !$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
 
@@ -1978,21 +1978,21 @@ Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of
 
 Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of the factorial of $k$ and the factorial of the difference between $n$ and $k$.
 
-Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and $(n - k)!$.
-
-Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and $(n - k)!$.
-
-Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of the difference between $n$ and $k$.
-
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
 
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of $n !$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
 
 Definition. Let $n$ and $k$ be elements of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of the difference between $n$ and $k$.
 
+Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and $(n - k)!$.
+
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of $n - k$.
 
+Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and $(n - k)!$.
+
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $\binom{ n }{ k}$ is an element of $\Natural$ defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of $n - k$.
+
+Definition. Let $n$ and $k$ be natural numbers. Then the binomial coefficient of $n$ over $k$ is a natural number defined as the quotient of the factorial of $n$ and the product of the factorial of $k$ and the factorial of the difference between $n$ and $k$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $\binom{ n }{ k}$ is a natural number defined as the quotient of the factorial of $n$ and the product of $k !$ and the factorial of the difference between $n$ and $k$.
 
@@ -2090,19 +2090,19 @@ Definition. Let $n$ and $k$ be elements of $\Natural$. Then $C^{ n }_{ k}$ is an
 
 Definition. Let $n$ and $k$ be natural numbers. Then the set of combinations of $n$ of size $k$ is a natural number.
 
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then the set of combinations of $n$ of size $k$ is a natural number.
-
-Definition. Let $n$ and $k$ be natural numbers. Then the set of combinations of $n$ of size $k$ is an element of $\Natural$.
-
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $C^{ n }_{ k}$ is a natural number.
 
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $C^{ n }_{ k}$ is a natural number.
 
-Definition. Let $n$ and $k$ be elements of $\Natural$. Then the set of combinations of $n$ of size $k$ is an element of $\Natural$.
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then the set of combinations of $n$ of size $k$ is a natural number.
+
+Definition. Let $n$ and $k$ be natural numbers. Then the set of combinations of $n$ of size $k$ is an element of $\Natural$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then $C^{ n }_{ k}$ is an element of $\Natural$.
 
 Definition. Let $n$ be a natural number. Let $k$ be an element of $\Natural$. Then $C^{ n }_{ k}$ is an element of $\Natural$.
+
+Definition. Let $n$ and $k$ be elements of $\Natural$. Then the set of combinations of $n$ of size $k$ is an element of $\Natural$.
 
 Definition. Let $n$ be an element of $\Natural$. Let $k$ be a natural number. Then the set of combinations of $n$ of size $k$ is a natural number.
 
@@ -2184,33 +2184,33 @@ Definition. Let $x$ be an element of $\Real$. Then the cosine of $x$ is a real n
 
 Definition. Let $x$ be a real number. Then the cosine of $x$ is a real number defined as the sine of the difference between the quotient of $\pi$ and $2$ and $x$.
 
+Definition. Let $x$ be a real number. Then $\cos x$ is a real number defined as the sine of the difference between the quotient of the number \(\pi\) and $2$ and $x$.
+
 Definition. Let $x$ be an element of $\Real$. Then $\cos x$ is an element of $\Real$ defined as the sine of the difference between $\frac{ \pi}{2}$ and $x$.
 
 Definition. Let $x$ be a real number. Then $\cos x$ is an element of $\Real$ defined as the sine of the difference between the quotient of $\pi$ and $2$ and $x$.
 
-Definition. Let $x$ be a real number. Then $\cos x$ is a real number defined as the sine of the difference between the quotient of the number \(\pi\) and $2$ and $x$.
-
 Definition. Let $x$ be an element of $\Real$. Then $\cos x$ is a real number defined as the sine of the difference between the quotient of $\pi$ and $2$ and $x$.
+
+Definition. Let $x$ be a real number. Then the cosine of $x$ is a real number defined as the sine of the difference between the quotient of the number \(\pi\) and $2$ and $x$.
 
 Definition. Let $x$ be an element of $\Real$. Then the cosine of $x$ is an element of $\Real$ defined as the sine of the difference between $\frac{ \pi}{2}$ and $x$.
 
 Definition. Let $x$ be a real number. Then the cosine of $x$ is an element of $\Real$ defined as the sine of the difference between the quotient of $\pi$ and $2$ and $x$.
 
-Definition. Let $x$ be a real number. Then the cosine of $x$ is a real number defined as the sine of the difference between the quotient of the number \(\pi\) and $2$ and $x$.
-
 Definition. Let $x$ be an element of $\Real$. Then the cosine of $x$ is a real number defined as the sine of the difference between the quotient of $\pi$ and $2$ and $x$.
 
 Definition. Let $x$ be a real number. Then $\cos x$ is an element of $\Real$ defined as the sine of the difference between the quotient of the number \(\pi\) and $2$ and $x$.
 
-Definition. Let $x$ be an element of $\Real$. Then $\cos x$ is an element of $\Real$ defined as the sine of the difference between the quotient of $\pi$ and $2$ and $x$.
-
 Definition. Let $x$ be an element of $\Real$. Then $\cos x$ is a real number defined as the sine of the difference between the quotient of the number \(\pi\) and $2$ and $x$.
+
+Definition. Let $x$ be an element of $\Real$. Then $\cos x$ is an element of $\Real$ defined as the sine of the difference between the quotient of $\pi$ and $2$ and $x$.
 
 Definition. Let $x$ be a real number. Then the cosine of $x$ is an element of $\Real$ defined as the sine of the difference between the quotient of the number \(\pi\) and $2$ and $x$.
 
-Definition. Let $x$ be an element of $\Real$. Then the cosine of $x$ is an element of $\Real$ defined as the sine of the difference between the quotient of $\pi$ and $2$ and $x$.
-
 Definition. Let $x$ be an element of $\Real$. Then the cosine of $x$ is a real number defined as the sine of the difference between the quotient of the number \(\pi\) and $2$ and $x$.
+
+Definition. Let $x$ be an element of $\Real$. Then the cosine of $x$ is an element of $\Real$ defined as the sine of the difference between the quotient of $\pi$ and $2$ and $x$.
 
 Definition. Let $x$ be an element of $\Real$. Then $\cos x$ is an element of $\Real$ defined as the sine of the difference between the quotient of the number \(\pi\) and $2$ and $x$.
 
@@ -2230,9 +2230,9 @@ Definition. Let $x$ be a real number. Then $\tan x$ is a real number defined as 
 
 Definition. Let $x$ be a real number. Then the tangent of $x$ is an element of $\Real$ defined as $\frac{ \sin x}{\cos x}$.
 
-Definition. Let $x$ be a real number. Then $\tan x$ is a real number defined as the quotient of $\sin x$ and the cosine of $x$.
-
 Definition. Let $x$ be an element of $\Real$. Then the tangent of $x$ is a real number defined as $\frac{ \sin x}{\cos x}$.
+
+Definition. Let $x$ be a real number. Then $\tan x$ is a real number defined as the quotient of $\sin x$ and the cosine of $x$.
 
 Definition. Let $x$ be a real number. Then the tangent of $x$ is a real number defined as the quotient of $\sin x$ and $\cos x$.
 
@@ -2252,9 +2252,9 @@ Definition. Let $x$ be a real number. Then $\tan x$ is an element of $\Real$ def
 
 Definition. Let $x$ be an element of $\Real$. Then $\tan x$ is a real number defined as the quotient of the sine of $x$ and $\cos x$.
 
-Definition. Let $x$ be a real number. Then $\tan x$ is an element of $\Real$ defined as the quotient of $\sin x$ and the cosine of $x$.
-
 Definition. Let $x$ be an element of $\Real$. Then the tangent of $x$ is an element of $\Real$ defined as $\frac{ \sin x}{\cos x}$.
+
+Definition. Let $x$ be a real number. Then $\tan x$ is an element of $\Real$ defined as the quotient of $\sin x$ and the cosine of $x$.
 
 Definition. Let $x$ be an element of $\Real$. Then $\tan x$ is a real number defined as the quotient of $\sin x$ and the cosine of $x$.
 
@@ -2568,17 +2568,17 @@ Definition. Let $m$ and $n$ be elements of $\Real$. Let $f$ be a function from r
 
 Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from real numbers $x$ to elements of $\Real$. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is a real number.
 
+Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from real numbers $x$ to real numbers. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is an element of $\Real$.
+
+Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from elements $x$ of $\Real$ to real numbers. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is a real number.
+
 Definition. Let $m$ be an element of $\Real$. Let $n$ be a real number. Let $f$ be a function from real numbers $x$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is a real number.
 
 Definition. Let $m$ be a real number. Let $n$ be an element of $\Real$. Let $f$ be a function from real numbers $x$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is a real number.
 
-Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from real numbers $x$ to real numbers. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is an element of $\Real$.
-
 Definition. Let $m$ be an element of $\Real$. Let $n$ be a real number. Let $f$ be a function from real numbers $x$ to real numbers. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
 
 Definition. Let $m$ be a real number. Let $n$ be an element of $\Real$. Let $f$ be a function from real numbers $x$ to real numbers. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
-
-Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from elements $x$ of $\Real$ to real numbers. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is a real number.
 
 Definition. Let $m$ be an element of $\Real$. Let $n$ be a real number. Let $f$ be a function from elements $x$ of $\Real$ to real numbers. Then $\\\Integral {m}{n}{x}{f}$ is a real number.
 
@@ -2590,19 +2590,19 @@ Definition. Let $m$ and $n$ be elements of $\Real$. Let $f$ be a function from r
 
 Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from real numbers $x$ to elements of $\Real$. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is an element of $\Real$.
 
-Definition. Let $m$ be an element of $\Real$. Let $n$ be a real number. Let $f$ be a function from real numbers $x$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
-
-Definition. Let $m$ be a real number. Let $n$ be an element of $\Real$. Let $f$ be a function from real numbers $x$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
-
 Definition. Let $m$ and $n$ be elements of $\Real$. Let $f$ be a function from elements $x$ of $\Real$ to real numbers. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is a real number.
 
 Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from elements $x$ of $\Real$ to elements of $\Real$. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is a real number.
 
+Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from elements $x$ of $\Real$ to real numbers. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is an element of $\Real$.
+
+Definition. Let $m$ be an element of $\Real$. Let $n$ be a real number. Let $f$ be a function from real numbers $x$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
+
+Definition. Let $m$ be a real number. Let $n$ be an element of $\Real$. Let $f$ be a function from real numbers $x$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
+
 Definition. Let $m$ be an element of $\Real$. Let $n$ be a real number. Let $f$ be a function from elements $x$ of $\Real$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is a real number.
 
 Definition. Let $m$ be a real number. Let $n$ be an element of $\Real$. Let $f$ be a function from elements $x$ of $\Real$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is a real number.
-
-Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from elements $x$ of $\Real$ to real numbers. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is an element of $\Real$.
 
 Definition. Let $m$ be an element of $\Real$. Let $n$ be a real number. Let $f$ be a function from elements $x$ of $\Real$ to real numbers. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
 
@@ -2618,9 +2618,9 @@ Definition. Let $m$ and $n$ be real numbers. Let $f$ be a function from elements
 
 Definition. Let $m$ be an element of $\Real$. Let $n$ be a real number. Let $f$ be a function from elements $x$ of $\Real$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
 
-Definition. Let $m$ be a real number. Let $n$ be an element of $\Real$. Let $f$ be a function from elements $x$ of $\Real$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
-
 Definition. Let $m$ be an element of $\Real$. Let $n$ be a real number. Let $f$ be a function from real numbers $x$ to real numbers. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is a real number.
+
+Definition. Let $m$ be a real number. Let $n$ be an element of $\Real$. Let $f$ be a function from elements $x$ of $\Real$ to elements of $\Real$. Then $\\\Integral {m}{n}{x}{f}$ is an element of $\Real$.
 
 Definition. Let $m$ be a real number. Let $n$ be an element of $\Real$. Let $f$ be a function from real numbers $x$ to real numbers. Then $\mathrm{integral}$ applied to $m$, $n$, $x$ and $f$ is a real number.
 
@@ -2674,53 +2674,53 @@ Definition. Let $A$ be a set. Let $a$ be an element of the universal set. Then $
 
 Definition. Let $A$ be a set. Let $a$ be an element of $\mathbb{ U}$. Then $A$ contains $a$, if $a$ is an element of $A$.
 
-Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x \in B$.
-
 Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x \in A$ and $x \in B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x \in B$.
+Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x \in B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x \in A$ and $x \in B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x \in B$.
+Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x \in B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x \in A$ and $x \in B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x \in B$.
-
-Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x$ is an element of $B$.
+Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x \in B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x$ is an element of $A$ and $x \in B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x \in A$ and $x$ is an element of $B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x \in B$.
+Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x \in B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x$ is an element of $B$.
+Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x$ is an element of $B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x$ is an element of $A$ and $x \in B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x \in A$ and $x$ is an element of $B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x \in B$.
+Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x \in B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x$ is an element of $B$.
+Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x$ is an element of $B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x$ is an element of $A$ and $x \in B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x \in A$ and $x$ is an element of $B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x$ is an element of $B$.
+Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x \in B$.
+
+Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of the universal set, such that $x \in A$ and $x$ is an element of $B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x$ is an element of $A$ and $x$ is an element of $B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x$ is an element of $B$.
+Definition. Let $A$ and $B$ be sets. Then $A \notmeets B$, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x$ is an element of $B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x$ is an element of $A$ and $x$ is an element of $B$.
 
-Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x$ is an element of $B$.
+Definition. Let $A$ and $B$ be sets. Then $A$ and $B$ are disjoint, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x$ is an element of $B$.
 
 Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of $\mathbb{ U}$, such that $x$ is an element of $A$ and $x$ is an element of $B$.
+
+Definition. Let $A$ and $B$ be sets. Then $A$ is disjoint from $B$, if it is not the case that there exists an element $x$ of the universal set, such that $x$ is an element of $A$ and $x$ is an element of $B$.
 
 Definition. Let $A$ be a set. Then $A$ is empty, if $A = \emptyset$.
 

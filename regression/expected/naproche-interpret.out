@@ -50,25 +50,27 @@ PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists a
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
-PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
-
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
 
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
-PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
@@ -78,13 +80,13 @@ PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ 
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
-PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
-
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
@@ -94,7 +96,13 @@ PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists a
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
@@ -108,13 +116,13 @@ PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ 
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
-PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
-PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
-PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
-PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
 
@@ -128,18 +136,6 @@ PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists a
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
-
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
-
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
-
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
-
-PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
-
-PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
-
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
@@ -152,9 +148,9 @@ PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ 
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
 
-PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
@@ -167,6 +163,10 @@ PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists a
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
 PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
 
@@ -508,11 +508,11 @@ PropositionConsRight. If $y$ is an element of $X$, then $y$ is an element of $\m
 
 PropositionUnionsIntro. Assume that $A \in B \in \mathrm{complex\_Const}$. Then $A \in \mathrm{'\\unions'} (\mathrm{complex\_Const})$.
 
+PropositionUnionsIntro. Assume that $A \in B \in \mathrm{complex\_Const}$. Then $A$ is an element of $\mathrm{'\\unions'}$ applied to $\mathrm{complex\_Const}$.
+
 PropositionUnionsIntro. Assume that $A$ is an element of $B$ and $B \in \mathrm{complex\_Const}$. Then $A \in \mathrm{'\\unions'} (\mathrm{complex\_Const})$.
 
 PropositionUnionsIntro. Assume that $A \in B$ and $B$ is an element of $\mathrm{complex\_Const}$. Then $A \in \mathrm{'\\unions'} (\mathrm{complex\_Const})$.
-
-PropositionUnionsIntro. Assume that $A \in B \in \mathrm{complex\_Const}$. Then $A$ is an element of $\mathrm{'\\unions'}$ applied to $\mathrm{complex\_Const}$.
 
 PropositionUnionsIntro. Assume that $A$ is an element of $B$ and $B$ is an element of $\mathrm{complex\_Const}$. Then $A \in \mathrm{'\\unions'} (\mathrm{complex\_Const})$.
 
@@ -540,11 +540,11 @@ PropositionUnionsIntro. Assume that $A$ is an element of $B$ and $B$ is an eleme
 
 PropositionUnionsIntro. Assume that $A \in B \in C$. Then $A \in \mathrm{'\\unions'} (\mathrm{complex\_Const})$.
 
+PropositionUnionsIntro. Assume that $A \in B \in C$. Then $A$ is an element of $\mathrm{'\\unions'}$ applied to $\mathrm{complex\_Const}$.
+
 PropositionUnionsIntro. Assume that $A$ is an element of $B$ and $B \in C$. Then $A \in \mathrm{'\\unions'} (\mathrm{complex\_Const})$.
 
 PropositionUnionsIntro. Assume that $A \in B$ and $B$ is an element of $C$. Then $A \in \mathrm{'\\unions'} (\mathrm{complex\_Const})$.
-
-PropositionUnionsIntro. Assume that $A \in B \in C$. Then $A$ is an element of $\mathrm{'\\unions'}$ applied to $\mathrm{complex\_Const}$.
 
 PropositionUnionsIntro. Assume that $A$ is an element of $B$ and $B$ is an element of $C$. Then $A \in \mathrm{'\\unions'} (\mathrm{complex\_Const})$.
 
@@ -974,17 +974,17 @@ PropositionUnionSubsetsIsSubset. Assume that $A$ is a subset of $C$ and $B$ is a
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
 
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
+
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B$ is a subset of $\mathrm{complex\_Const}$.
 
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
-
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B$ is a subset of $\mathrm{complex\_Const}$.
-
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B$ is a subset of $\mathrm{complex\_Const}$.
+
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B$ is a subset of $\mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. The product of $A \times \mathrm{'\\union'}$ and $B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
 
@@ -1006,17 +1006,17 @@ PropositionSubseteqUnionIff. The product of the product of $A$ and $\mathrm{'\\u
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq C$.
 
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq C$.
+
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B \subseteq C$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B$ is a subset of $C$.
 
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq C$.
-
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B$ is a subset of $C$.
-
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B \subseteq C$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B$ is a subset of $C$.
+
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B$ is a subset of $C$.
 
 PropositionSubseteqUnionIff. The product of $A \times \mathrm{'\\union'}$ and $B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq C$.
 
@@ -1038,17 +1038,17 @@ PropositionSubseteqUnionIff. The product of the product of $A$ and $\mathrm{'\\u
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B \subseteq \mathrm{complex\_Const}$.
 
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B \subseteq \mathrm{complex\_Const}$.
+
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $C$ and $B \subseteq \mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B$ is a subset of $\mathrm{complex\_Const}$.
 
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B \subseteq \mathrm{complex\_Const}$.
-
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $C$ and $B$ is a subset of $\mathrm{complex\_Const}$.
-
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A$ is a subset of $C$ and $B \subseteq \mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B$ is a subset of $\mathrm{complex\_Const}$.
+
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $C$ and $B$ is a subset of $\mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. The product of $A \times \mathrm{'\\union'}$ and $B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B \subseteq \mathrm{complex\_Const}$.
 
@@ -1070,17 +1070,17 @@ PropositionSubseteqUnionIff. The product of the product of $A$ and $\mathrm{'\\u
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B \subseteq C$.
 
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B \subseteq C$.
+
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $C$ and $B \subseteq C$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B$ is a subset of $C$.
 
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B \subseteq C$.
-
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $C$ and $B$ is a subset of $C$.
-
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A$ is a subset of $C$ and $B \subseteq C$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B$ is a subset of $C$.
+
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq \mathrm{complex\_Const}$, if and only if $A$ is a subset of $C$ and $B$ is a subset of $C$.
 
 PropositionSubseteqUnionIff. The product of $A \times \mathrm{'\\union'}$ and $B$ is a subset of $\mathrm{complex\_Const}$, if and only if $A \subseteq C$ and $B \subseteq C$.
 
@@ -1102,17 +1102,17 @@ PropositionSubseteqUnionIff. The product of the product of $A$ and $\mathrm{'\\u
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
 
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
+
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B$ is a subset of $\mathrm{complex\_Const}$.
 
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
-
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B$ is a subset of $\mathrm{complex\_Const}$.
-
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B$ is a subset of $\mathrm{complex\_Const}$.
+
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B$ is a subset of $\mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. The product of $A \times \mathrm{'\\union'}$ and $B$ is a subset of $C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq \mathrm{complex\_Const}$.
 
@@ -1134,17 +1134,17 @@ PropositionSubseteqUnionIff. The product of the product of $A$ and $\mathrm{'\\u
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq C$.
 
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq C$.
+
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B \subseteq C$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B$ is a subset of $C$.
 
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq C$.
-
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B$ is a subset of $C$.
-
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B \subseteq C$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B$ is a subset of $C$.
+
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $\mathrm{complex\_Const}$ and $B$ is a subset of $C$.
 
 PropositionSubseteqUnionIff. The product of $A \times \mathrm{'\\union'}$ and $B$ is a subset of $C$, if and only if $A \subseteq \mathrm{complex\_Const}$ and $B \subseteq C$.
 
@@ -1166,17 +1166,17 @@ PropositionSubseteqUnionIff. The product of the product of $A$ and $\mathrm{'\\u
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A \subseteq C$ and $B \subseteq \mathrm{complex\_Const}$.
 
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq C$ and $B \subseteq \mathrm{complex\_Const}$.
+
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $C$ and $B \subseteq \mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A \subseteq C$ and $B$ is a subset of $\mathrm{complex\_Const}$.
 
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq C$ and $B \subseteq \mathrm{complex\_Const}$.
-
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $C$ and $B$ is a subset of $\mathrm{complex\_Const}$.
-
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A$ is a subset of $C$ and $B \subseteq \mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq C$ and $B$ is a subset of $\mathrm{complex\_Const}$.
+
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $C$ and $B$ is a subset of $\mathrm{complex\_Const}$.
 
 PropositionSubseteqUnionIff. The product of $A \times \mathrm{'\\union'}$ and $B$ is a subset of $C$, if and only if $A \subseteq C$ and $B \subseteq \mathrm{complex\_Const}$.
 
@@ -1198,17 +1198,17 @@ PropositionSubseteqUnionIff. The product of the product of $A$ and $\mathrm{'\\u
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A \subseteq C$ and $B \subseteq C$.
 
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq C$ and $B \subseteq C$.
+
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $C$ and $B \subseteq C$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A \subseteq C$ and $B$ is a subset of $C$.
 
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq C$ and $B \subseteq C$.
-
-PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $C$ and $B$ is a subset of $C$.
-
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A$ is a subset of $C$ and $B \subseteq C$.
 
 PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B$ is a subset of $C$, if and only if $A \subseteq C$ and $B$ is a subset of $C$.
+
+PropositionSubseteqUnionIff. $A \times \mathrm{'\\union'} \times B \subseteq C$, if and only if $A$ is a subset of $C$ and $B$ is a subset of $C$.
 
 PropositionSubseteqUnionIff. The product of $A \times \mathrm{'\\union'}$ and $B$ is a subset of $C$, if and only if $A \subseteq C$ and $B \subseteq C$.
 
@@ -1646,11 +1646,11 @@ PropositionUnionEmptysetIntro. Assume that $A$ is equal to $\emptyset$ and $B = 
 
 PropositionUnionEmptysetIntro. Assume that $A = \emptyset$ and $B$ is equal to $\emptyset$. Then $A \times \mathrm{'\\union'} \times B = \emptyset$.
 
+PropositionUnionEmptysetIntro. Assume that $A = \emptyset$ and $B = \emptyset$. Then $A \times \mathrm{'\\union'} \times B$ is equal to $\emptyset$.
+
 PropositionUnionEmptysetIntro. Assume that $A$ is equal to the empty set and $B = \emptyset$. Then $A \times \mathrm{'\\union'} \times B = \emptyset$.
 
 PropositionUnionEmptysetIntro. Assume that $A = \emptyset$ and $B$ is equal to the empty set. Then $A \times \mathrm{'\\union'} \times B = \emptyset$.
-
-PropositionUnionEmptysetIntro. Assume that $A = \emptyset$ and $B = \emptyset$. Then $A \times \mathrm{'\\union'} \times B$ is equal to $\emptyset$.
 
 PropositionUnionEmptysetIntro. Assume that $A = \emptyset$ and $B = \emptyset$. Then $A \times \mathrm{'\\union'} \times B$ is equal to the empty set.
 
@@ -1660,11 +1660,11 @@ PropositionUnionEmptysetIntro. Assume that $A$ is equal to the empty set and $B$
 
 PropositionUnionEmptysetIntro. Assume that $A$ is equal to $\emptyset$ and $B$ is equal to the empty set. Then $A \times \mathrm{'\\union'} \times B = \emptyset$.
 
-PropositionUnionEmptysetIntro. Assume that $A$ is equal to the empty set and $B$ is equal to the empty set. Then $A \times \mathrm{'\\union'} \times B = \emptyset$.
-
 PropositionUnionEmptysetIntro. Assume that $A$ is equal to $\emptyset$ and $B = \emptyset$. Then $A \times \mathrm{'\\union'} \times B$ is equal to $\emptyset$.
 
 PropositionUnionEmptysetIntro. Assume that $A = \emptyset$ and $B$ is equal to $\emptyset$. Then $A \times \mathrm{'\\union'} \times B$ is equal to $\emptyset$.
+
+PropositionUnionEmptysetIntro. Assume that $A$ is equal to the empty set and $B$ is equal to the empty set. Then $A \times \mathrm{'\\union'} \times B = \emptyset$.
 
 PropositionUnionEmptysetIntro. Assume that $A$ is equal to the empty set and $B = \emptyset$. Then $A \times \mathrm{'\\union'} \times B$ is equal to $\emptyset$.
 
@@ -1768,13 +1768,13 @@ PropositionUnionEmptysetIntro. Assume that $A$ is equal to the empty set and $B$
 
 PropositionUnionEmptysetElimLeft. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $A = \emptyset$.
 
-PropositionUnionEmptysetElimLeft. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $A$ is equal to $\emptyset$.
-
 PropositionUnionEmptysetElimLeft. Assume that $A \times \mathrm{'\\union'} \times B$ is equal to $\emptyset$. Then $A = \emptyset$.
 
-PropositionUnionEmptysetElimLeft. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $A$ is equal to the empty set.
-
 PropositionUnionEmptysetElimLeft. Assume that $A \times \mathrm{'\\union'} \times B$ is equal to the empty set. Then $A = \emptyset$.
+
+PropositionUnionEmptysetElimLeft. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $A$ is equal to $\emptyset$.
+
+PropositionUnionEmptysetElimLeft. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $A$ is equal to the empty set.
 
 PropositionUnionEmptysetElimLeft. Assume that $A \times \mathrm{'\\union'} \times B$ is equal to $\emptyset$. Then $A$ is equal to $\emptyset$.
 
@@ -1810,13 +1810,13 @@ PropositionUnionEmptysetElimLeft. Assume that the product of $A$, $\mathrm{'\\un
 
 PropositionUnionEmptysetElimRight. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $B = \emptyset$.
 
-PropositionUnionEmptysetElimRight. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $B$ is equal to $\emptyset$.
-
 PropositionUnionEmptysetElimRight. Assume that $A \times \mathrm{'\\union'} \times B$ is equal to $\emptyset$. Then $B = \emptyset$.
 
-PropositionUnionEmptysetElimRight. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $B$ is equal to the empty set.
-
 PropositionUnionEmptysetElimRight. Assume that $A \times \mathrm{'\\union'} \times B$ is equal to the empty set. Then $B = \emptyset$.
+
+PropositionUnionEmptysetElimRight. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $B$ is equal to $\emptyset$.
+
+PropositionUnionEmptysetElimRight. Assume that $A \times \mathrm{'\\union'} \times B = \emptyset$. Then $B$ is equal to the empty set.
 
 PropositionUnionEmptysetElimRight. Assume that $A \times \mathrm{'\\union'} \times B$ is equal to $\emptyset$. Then $B$ is equal to $\emptyset$.
 
@@ -1904,19 +1904,19 @@ PropositionUnionAbsorbLeft. $A \times \mathrm{'\\union'} \times (A \times \mathr
 
 PropositionUnionAbsorbLeft. The product of $A \times \mathrm{'\\union'}$ and $A \times \mathrm{'\\union'} \times B$ is equal to $A \times \mathrm{'\\union'} \times B$.
 
-PropositionUnionAbsorbLeft. $A \times \mathrm{'\\union'} \times (A \times \mathrm{'\\union'} \times B)$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
-
-PropositionUnionAbsorbLeft. $A \times \mathrm{'\\union'} \times (A \times \mathrm{'\\union'} \times B)$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
-
 PropositionUnionAbsorbLeft. The product of $A \times \mathrm{'\\union'}$, $A$, $\mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
-
-PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$ and $A \times \mathrm{'\\union'} \times B$ is equal to $A \times \mathrm{'\\union'} \times B$.
 
 PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$, $A$, $\mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
 
 PropositionUnionAbsorbLeft. The product of $A \times \mathrm{'\\union'}$, $A \times \mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
 
 PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$, $A \times \mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
+
+PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$ and $A \times \mathrm{'\\union'} \times B$ is equal to $A \times \mathrm{'\\union'} \times B$.
+
+PropositionUnionAbsorbLeft. $A \times \mathrm{'\\union'} \times (A \times \mathrm{'\\union'} \times B)$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
+
+PropositionUnionAbsorbLeft. $A \times \mathrm{'\\union'} \times (A \times \mathrm{'\\union'} \times B)$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
 
 PropositionUnionAbsorbLeft. The product of $A \times \mathrm{'\\union'}$ and $A \times \mathrm{'\\union'} \times B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
 
@@ -1925,10 +1925,6 @@ PropositionUnionAbsorbLeft. The product of $A \times \mathrm{'\\union'}$ and $A 
 PropositionUnionAbsorbLeft. The product of $A \times \mathrm{'\\union'}$, $A$, $\mathrm{'\\union'}$ and $B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
 
 PropositionUnionAbsorbLeft. The product of $A \times \mathrm{'\\union'}$, $A$, $\mathrm{'\\union'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
-
-PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$ and $A \times \mathrm{'\\union'} \times B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
-
-PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$ and $A \times \mathrm{'\\union'} \times B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
 
 PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$, $A$, $\mathrm{'\\union'}$ and $B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
 
@@ -1941,6 +1937,10 @@ PropositionUnionAbsorbLeft. The product of $A \times \mathrm{'\\union'}$, $A \ti
 PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$, $A \times \mathrm{'\\union'}$ and $B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
 
 PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$, $A \times \mathrm{'\\union'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
+
+PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$ and $A \times \mathrm{'\\union'} \times B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
+
+PropositionUnionAbsorbLeft. The product of $A$, $\mathrm{'\\union'}$ and $A \times \mathrm{'\\union'} \times B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
 
 PropositionUnionAbsorbLeft. $A \times \mathrm{apply\_Oper2} (\mathrm{'\\union'} , A \times \mathrm{'\\union'} \times B)= A \times \mathrm{'\\union'} \times B$.
 
@@ -1972,25 +1972,17 @@ PropositionUnionAbsorbRight. $A \times \mathrm{'\\union'} \times B \times \mathr
 
 PropositionUnionAbsorbRight. $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'} \times B$ is equal to $A \times \mathrm{'\\union'} \times B$.
 
-PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
-
-PropositionUnionAbsorbRight. $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'} \times B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
-
-PropositionUnionAbsorbRight. $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'} \times B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
-
-PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B$, $\mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
-
 PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'}$, $B$, $\mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
 
 PropositionUnionAbsorbRight. The product of $A$, $\mathrm{'\\union'}$, $B$, $\mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
 
-PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'}$ and $B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
+PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
 
-PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
+PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B$, $\mathrm{'\\union'}$ and $B$ is equal to $A \times \mathrm{'\\union'} \times B$.
 
-PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B$, $\mathrm{'\\union'}$ and $B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
+PropositionUnionAbsorbRight. $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'} \times B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
 
-PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B$, $\mathrm{'\\union'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
+PropositionUnionAbsorbRight. $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'} \times B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
 
 PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'}$, $B$, $\mathrm{'\\union'}$ and $B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
 
@@ -2000,15 +1992,23 @@ PropositionUnionAbsorbRight. The product of $A$, $\mathrm{'\\union'}$, $B$, $\ma
 
 PropositionUnionAbsorbRight. The product of $A$, $\mathrm{'\\union'}$, $B$, $\mathrm{'\\union'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
 
+PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'}$ and $B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
+
+PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B \times \mathrm{'\\union'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
+
+PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B$, $\mathrm{'\\union'}$ and $B$ is equal to the product of $A \times \mathrm{'\\union'}$ and $B$.
+
+PropositionUnionAbsorbRight. The product of $A \times \mathrm{'\\union'} \times B$, $\mathrm{'\\union'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\union'}$ and $B$.
+
 PropositionInterElimLeft. If $c \in A \times \mathrm{'\\inter'} \times B$, then $c \in A$.
 
 PropositionInterElimLeft. If $c$ is an element of $A \times \mathrm{'\\inter'} \times B$, then $c \in A$.
 
 PropositionInterElimLeft. If $c \in A \times \mathrm{'\\inter'} \times B$, then $c$ is an element of $A$.
 
-PropositionInterElimLeft. If $c$ is an element of $A \times \mathrm{'\\inter'} \times B$, then $c$ is an element of $A$.
-
 PropositionInterElimLeft. If $c$ is an element of the product of $A \times \mathrm{'\\inter'}$ and $B$, then $c \in A$.
+
+PropositionInterElimLeft. If $c$ is an element of $A \times \mathrm{'\\inter'} \times B$, then $c$ is an element of $A$.
 
 PropositionInterElimLeft. If $c$ is an element of the product of $A$, $\mathrm{'\\inter'}$ and $B$, then $c \in A$.
 
@@ -2022,9 +2022,9 @@ PropositionInterElimRight. If $c$ is an element of $A \times \mathrm{'\\inter'} 
 
 PropositionInterElimRight. If $c \in A \times \mathrm{'\\inter'} \times B$, then $c$ is an element of $B$.
 
-PropositionInterElimRight. If $c$ is an element of $A \times \mathrm{'\\inter'} \times B$, then $c$ is an element of $B$.
-
 PropositionInterElimRight. If $c$ is an element of the product of $A \times \mathrm{'\\inter'}$ and $B$, then $c \in B$.
+
+PropositionInterElimRight. If $c$ is an element of $A \times \mathrm{'\\inter'} \times B$, then $c$ is an element of $B$.
 
 PropositionInterElimRight. If $c$ is an element of the product of $A$, $\mathrm{'\\inter'}$ and $B$, then $c \in B$.
 
@@ -2472,19 +2472,19 @@ PropositionInterAbsorbLeft. $A \times \mathrm{'\\inter'} \times (A \times \mathr
 
 PropositionInterAbsorbLeft. The product of $A \times \mathrm{'\\inter'}$ and $A \times \mathrm{'\\inter'} \times B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
 
-PropositionInterAbsorbLeft. $A \times \mathrm{'\\inter'} \times (A \times \mathrm{'\\inter'} \times B)$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
-
-PropositionInterAbsorbLeft. $A \times \mathrm{'\\inter'} \times (A \times \mathrm{'\\inter'} \times B)$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
-
 PropositionInterAbsorbLeft. The product of $A \times \mathrm{'\\inter'}$, $A$, $\mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
-
-PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$ and $A \times \mathrm{'\\inter'} \times B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
 
 PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$, $A$, $\mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
 
 PropositionInterAbsorbLeft. The product of $A \times \mathrm{'\\inter'}$, $A \times \mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
 
 PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$, $A \times \mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
+
+PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$ and $A \times \mathrm{'\\inter'} \times B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
+
+PropositionInterAbsorbLeft. $A \times \mathrm{'\\inter'} \times (A \times \mathrm{'\\inter'} \times B)$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
+
+PropositionInterAbsorbLeft. $A \times \mathrm{'\\inter'} \times (A \times \mathrm{'\\inter'} \times B)$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
 
 PropositionInterAbsorbLeft. The product of $A \times \mathrm{'\\inter'}$ and $A \times \mathrm{'\\inter'} \times B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
 
@@ -2493,10 +2493,6 @@ PropositionInterAbsorbLeft. The product of $A \times \mathrm{'\\inter'}$ and $A 
 PropositionInterAbsorbLeft. The product of $A \times \mathrm{'\\inter'}$, $A$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
 
 PropositionInterAbsorbLeft. The product of $A \times \mathrm{'\\inter'}$, $A$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
-
-PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$ and $A \times \mathrm{'\\inter'} \times B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
-
-PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$ and $A \times \mathrm{'\\inter'} \times B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
 
 PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$, $A$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
 
@@ -2509,6 +2505,10 @@ PropositionInterAbsorbLeft. The product of $A \times \mathrm{'\\inter'}$, $A \ti
 PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$, $A \times \mathrm{'\\inter'}$ and $B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
 
 PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$, $A \times \mathrm{'\\inter'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
+
+PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$ and $A \times \mathrm{'\\inter'} \times B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
+
+PropositionInterAbsorbLeft. The product of $A$, $\mathrm{'\\inter'}$ and $A \times \mathrm{'\\inter'} \times B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
 
 PropositionInterAbsorbLeft. $A \times \mathrm{apply\_Oper2} (\mathrm{'\\inter'} , A \times \mathrm{'\\inter'} \times B)= A \times \mathrm{'\\inter'} \times B$.
 
@@ -2540,25 +2540,17 @@ PropositionInterAbsorbRight. $A \times \mathrm{'\\inter'} \times B \times \mathr
 
 PropositionInterAbsorbRight. $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'} \times B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
 
-PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
-
-PropositionInterAbsorbRight. $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'} \times B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
-
-PropositionInterAbsorbRight. $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'} \times B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
-
-PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B$, $\mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
-
 PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'}$, $B$, $\mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
 
 PropositionInterAbsorbRight. The product of $A$, $\mathrm{'\\inter'}$, $B$, $\mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
 
-PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'}$ and $B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
+PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
 
-PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
+PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B$, $\mathrm{'\\inter'}$ and $B$ is equal to $A \times \mathrm{'\\inter'} \times B$.
 
-PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
+PropositionInterAbsorbRight. $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'} \times B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
 
-PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
+PropositionInterAbsorbRight. $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'} \times B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
 
 PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'}$, $B$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
 
@@ -2567,6 +2559,14 @@ PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'}$, $B$, 
 PropositionInterAbsorbRight. The product of $A$, $\mathrm{'\\inter'}$, $B$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
 
 PropositionInterAbsorbRight. The product of $A$, $\mathrm{'\\inter'}$, $B$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
+
+PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'}$ and $B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
+
+PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B \times \mathrm{'\\inter'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
+
+PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A \times \mathrm{'\\inter'}$ and $B$.
+
+PropositionInterAbsorbRight. The product of $A \times \mathrm{'\\inter'} \times B$, $\mathrm{'\\inter'}$ and $B$ is equal to the product of $A$, $\mathrm{'\\inter'}$ and $B$.
 
 PropositionSetminusIntro. If $a \in A$ and $a \notin B$, then $a \in A \setminus B$.
 
@@ -2742,21 +2742,19 @@ PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. 
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B = \emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
@@ -2766,19 +2764,21 @@ PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. 
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
+
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
@@ -2826,21 +2826,19 @@ PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. 
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C \subseteq A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B = \emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
 
@@ -2850,19 +2848,21 @@ PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. 
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
 
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
+
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
@@ -2910,21 +2910,19 @@ PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. 
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B = \emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
@@ -2934,19 +2932,21 @@ PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. 
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
+
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
@@ -2994,21 +2994,19 @@ PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. 
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C \subseteq A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B = \emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
 
@@ -3018,19 +3016,21 @@ PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. 
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
 
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
+
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const} \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $\mathrm{complex\_Const}$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
@@ -3078,21 +3078,19 @@ PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the produc
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
-
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B = \emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
-PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
@@ -3102,19 +3100,21 @@ PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the produc
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
+PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
+
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
@@ -3162,21 +3162,19 @@ PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the produc
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C \subseteq A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
-
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B = \emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
-PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
 
@@ -3186,19 +3184,21 @@ PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the produc
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
 
+PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
+
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const} \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $\mathrm{complex\_Const} \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $\mathrm{complex\_Const}$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
@@ -3246,21 +3246,19 @@ PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the produc
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
-
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B = \emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
-PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
@@ -3270,19 +3268,21 @@ PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the produc
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
+PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
+
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const} \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $\mathrm{complex\_Const}$ is a subset of $A \setminus B$.
 
@@ -3330,21 +3330,19 @@ PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the produc
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C \subseteq A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
-
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B = \emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
-PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
 
@@ -3354,19 +3352,21 @@ PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the produc
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
 
+PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
+
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C \subseteq A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C \subseteq A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
-
-PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
-
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $C$ is a subset of $A \setminus B$.
+
+PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that $C \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $C$ is a subset of the difference of $A$ and $B$.
 
 PropositionSubseteqSetminus. Assume that $C$ is a subset of $A$. Assume that the product of $C$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $C$ is a subset of $A \setminus B$.
 
@@ -3468,17 +3468,15 @@ PropositionSubseteqImpliesSetminusSupseteq. Assume that $A$ is a subset of $B$. 
 
 PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B = \emptyset$. Then $A \setminus B = A$.
 
-PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B = \emptyset$. Then $A \setminus B$ is equal to $A$.
-
 PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $A \setminus B = A$.
 
 PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $A \setminus B = A$.
 
+PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B = \emptyset$. Then $A \setminus B$ is equal to $A$.
+
 PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then $A \setminus B$ is equal to $A$.
 
 PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then $A \setminus B$ is equal to $A$.
-
-PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B = \emptyset$. Then the difference of $A$ and $B$ is equal to $A$.
 
 PropositionSetminusAbsorbRight. Assume that the product of $A \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $A \setminus B = A$.
 
@@ -3486,17 +3484,19 @@ PropositionSetminusAbsorbRight. Assume that the product of $A \times \mathrm{'\\
 
 PropositionSetminusAbsorbRight. Assume that the product of $A$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $A \setminus B = A$.
 
+PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B = \emptyset$. Then the difference of $A$ and $B$ is equal to $A$.
+
 PropositionSetminusAbsorbRight. Assume that the product of $A$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $A \setminus B = A$.
 
-PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then the difference of $A$ and $B$ is equal to $A$.
-
-PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then the difference of $A$ and $B$ is equal to $A$.
-
 PropositionSetminusAbsorbRight. Assume that the product of $A \times \mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $A \setminus B$ is equal to $A$.
+
+PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B$ is equal to $\emptyset$. Then the difference of $A$ and $B$ is equal to $A$.
 
 PropositionSetminusAbsorbRight. Assume that the product of $A \times \mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $A \setminus B$ is equal to $A$.
 
 PropositionSetminusAbsorbRight. Assume that the product of $A$, $\mathrm{'\\inter'}$ and $B$ is equal to $\emptyset$. Then $A \setminus B$ is equal to $A$.
+
+PropositionSetminusAbsorbRight. Assume that $A \times \mathrm{'\\inter'} \times B$ is equal to the empty set. Then the difference of $A$ and $B$ is equal to $A$.
 
 PropositionSetminusAbsorbRight. Assume that the product of $A$, $\mathrm{'\\inter'}$ and $B$ is equal to the empty set. Then $A \setminus B$ is equal to $A$.
 
@@ -3692,9 +3692,9 @@ PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus
 
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus \mathrm{'\\cons'} (c , \mathrm{complex\_Const})$. Then $B$ is a subset of $A \setminus \mathrm{complex\_Const}$ and $c$ is a non-element of $B$.
 
-PropositionSubseteqSetminusConsElim. Assume that $B \subseteq A \setminus \mathrm{'\\cons'} (c , \mathrm{complex\_Const})$. Then $B$ is a subset of the difference of $A$ and $\mathrm{complex\_Const}$ and $c$ is a non-element of $B$.
-
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of the difference of $A$ and $\mathrm{'\\cons'}$ applied to $c$ and $\mathrm{complex\_Const}$. Then $B \subseteq A \setminus \mathrm{complex\_Const}$ and $c \notin B$.
+
+PropositionSubseteqSetminusConsElim. Assume that $B \subseteq A \setminus \mathrm{'\\cons'} (c , \mathrm{complex\_Const})$. Then $B$ is a subset of the difference of $A$ and $\mathrm{complex\_Const}$ and $c$ is a non-element of $B$.
 
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus \mathrm{'\\cons'} (c , \mathrm{complex\_Const})$. Then $B$ is a subset of the difference of $A$ and $\mathrm{complex\_Const}$ and $c$ is a non-element of $B$.
 
@@ -3728,9 +3728,9 @@ PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus
 
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus \mathrm{'\\cons'} (c , \mathrm{complex\_Const})$. Then $B$ is a subset of $A \setminus C$ and $c$ is a non-element of $B$.
 
-PropositionSubseteqSetminusConsElim. Assume that $B \subseteq A \setminus \mathrm{'\\cons'} (c , \mathrm{complex\_Const})$. Then $B$ is a subset of the difference of $A$ and $C$ and $c$ is a non-element of $B$.
-
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of the difference of $A$ and $\mathrm{'\\cons'}$ applied to $c$ and $\mathrm{complex\_Const}$. Then $B \subseteq A \setminus C$ and $c \notin B$.
+
+PropositionSubseteqSetminusConsElim. Assume that $B \subseteq A \setminus \mathrm{'\\cons'} (c , \mathrm{complex\_Const})$. Then $B$ is a subset of the difference of $A$ and $C$ and $c$ is a non-element of $B$.
 
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus \mathrm{'\\cons'} (c , \mathrm{complex\_Const})$. Then $B$ is a subset of the difference of $A$ and $C$ and $c$ is a non-element of $B$.
 
@@ -3764,9 +3764,9 @@ PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus
 
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus \mathrm{'\\cons'} (c , C)$. Then $B$ is a subset of $A \setminus \mathrm{complex\_Const}$ and $c$ is a non-element of $B$.
 
-PropositionSubseteqSetminusConsElim. Assume that $B \subseteq A \setminus \mathrm{'\\cons'} (c , C)$. Then $B$ is a subset of the difference of $A$ and $\mathrm{complex\_Const}$ and $c$ is a non-element of $B$.
-
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of the difference of $A$ and $\mathrm{'\\cons'}$ applied to $c$ and $C$. Then $B \subseteq A \setminus \mathrm{complex\_Const}$ and $c \notin B$.
+
+PropositionSubseteqSetminusConsElim. Assume that $B \subseteq A \setminus \mathrm{'\\cons'} (c , C)$. Then $B$ is a subset of the difference of $A$ and $\mathrm{complex\_Const}$ and $c$ is a non-element of $B$.
 
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus \mathrm{'\\cons'} (c , C)$. Then $B$ is a subset of the difference of $A$ and $\mathrm{complex\_Const}$ and $c$ is a non-element of $B$.
 
@@ -3800,9 +3800,9 @@ PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus
 
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus \mathrm{'\\cons'} (c , C)$. Then $B$ is a subset of $A \setminus C$ and $c$ is a non-element of $B$.
 
-PropositionSubseteqSetminusConsElim. Assume that $B \subseteq A \setminus \mathrm{'\\cons'} (c , C)$. Then $B$ is a subset of the difference of $A$ and $C$ and $c$ is a non-element of $B$.
-
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of the difference of $A$ and $\mathrm{'\\cons'}$ applied to $c$ and $C$. Then $B \subseteq A \setminus C$ and $c \notin B$.
+
+PropositionSubseteqSetminusConsElim. Assume that $B \subseteq A \setminus \mathrm{'\\cons'} (c , C)$. Then $B$ is a subset of the difference of $A$ and $C$ and $c$ is a non-element of $B$.
 
 PropositionSubseteqSetminusConsElim. Assume that $B$ is a subset of $A \setminus \mathrm{'\\cons'} (c , C)$. Then $B$ is a subset of the difference of $A$ and $C$ and $c$ is a non-element of $B$.
 

@@ -236,8 +236,8 @@ processJmt env djmt =
       nlgs = setnub $ map gf $ exts
       vars = if elem "-variations" (flags env) then id else (take 1) 
       best = maybe vars take (nbestNLG env)
-      nlglins lang = [(tree, unlex env (gftree2nat env lang tree)) | tree <- nlgs]
-      nlgranks = [(lang, best (rankGFTreesAndNat env (nlglins lang))) | lang <- langs env]
+      nlglins lang = [(tree, gftree2nat env lang tree) | tree <- nlgs]
+      nlgranks = [(lang, best (rankGFTreesAndNat env (unlex env) (nlglins lang))) | lang <- langs env]
     in GenResult {
       originalDedukti = djmt,
       annotatedDedukti = jmts,
@@ -262,8 +262,8 @@ processGFTree env gft =
       nlgs = setnub $ map gf $ exts
       vars = if elem "-variations" (flags env) then id else (take 1) 
       best = maybe vars take (nbestNLG env)
-      nlglins lang = [(tree, unlex env (gftree2nat env lang tree)) | tree <- nlgs]
-      nlgranks = [(lang, best (rankGFTreesAndNat env (nlglins lang))) | lang <- langs env]
+      nlglins lang = [(tree, gftree2nat env lang tree) | tree <- nlgs]
+      nlgranks = [(lang, best (rankGFTreesAndNat env (unlex env) (nlglins lang))) | lang <- langs env]
       backs = setnub (concatMap (gjmt2dedukti env) exts)
     in GenResult {
       originalDedukti = head (gjmt2dedukti env (fg gft)),
@@ -579,8 +579,10 @@ transEmbeddedDedukti env = transInEnv "dedukti" transDkEnv where
 core2ext :: Env -> GJmt -> [GJmt]
 core2ext env jmt = MCI.nlg env jmt
 
-rankGFTreesAndNat :: Env -> [(Expr, String)] -> [((Expr, String), (Scores, Int))]
-rankGFTreesAndNat = rankTreesAndStrings
+-- | Ranking linearizations, given as tokens separated by spaces, which are
+-- returned unlexed with the given function.
+rankGFTreesAndNat :: Env -> (String -> String) -> [(Expr, String)] -> [((Expr, String), (Scores, Int))]
+rankGFTreesAndNat = rankTreesAndLins
 
 ext2core :: Env -> GJmt -> [GJmt]
 ext2core env = IMC.semantics (semanticsTableEnv env)

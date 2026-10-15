@@ -7,7 +7,7 @@
  "baseconstants-latex": {
   "lines": 1387,
   "undefined": 0,
-  "seconds": 0.5,
+  "seconds": 0.4,
   "latex_pages": 93,
   "latex_errors": 0
  },
@@ -126,7 +126,7 @@
  "hott-latex": {
   "lines": 222,
   "undefined": 0,
-  "seconds": 0.6,
+  "seconds": 0.4,
   "latex_pages": 14,
   "latex_errors": 0
  },
@@ -170,7 +170,7 @@
  "naproche-interpret": {
   "lines": 2107,
   "undefined": 0,
-  "seconds": 8.4,
+  "seconds": 6.1,
   "latex_pages": 130,
   "latex_errors": 0
  },
@@ -220,21 +220,21 @@
  "sets-latex": {
   "lines": 1793,
   "undefined": 0,
-  "seconds": 1.1,
+  "seconds": 0.8,
   "latex_pages": 134,
   "latex_errors": 0
  },
  "sets-single": {
   "lines": 588,
   "undefined": 0,
-  "seconds": 0.3,
+  "seconds": 0.2,
   "latex_pages": 40,
   "latex_errors": 0
  },
  "sigma-latex": {
   "lines": 434,
   "undefined": 0,
-  "seconds": 0.3,
+  "seconds": 0.2,
   "latex_pages": 38,
   "latex_errors": 0
  },
@@ -265,7 +265,7 @@
  "top100-latex": {
   "lines": 2260,
   "undefined": 0,
-  "seconds": 1.3,
+  "seconds": 0.9,
   "latex_pages": 189,
   "latex_errors": 0
  },
