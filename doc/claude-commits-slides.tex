@@ -44,7 +44,7 @@
 \newcommand{\how}{\par\textcolor{gfblue}{\textbf{Prompt and interaction}}\par}
 \newcommand{\what}{\par\textcolor{gfblue}{\textbf{Outcome}}\par}
 
-\title{Forty-one Commits}
+\title{Forty-three Commits}
 \subtitle{What Claude Code has contributed to Informath, July--October 2026}
 \author{Aarne Ranta}
 \date{October 2026}
@@ -56,7 +56,7 @@
 \begin{frame}{This talk}
   \begin{itemize}
     \item Informath: over 900 commits since 2024, almost all by hand.
-    \item \textbf{41} of them are co-authored by Claude (Claude Code, Anthropic's
+    \item \textbf{43} of them are co-authored by Claude (Claude Code, Anthropic's
           coding agent, working in a terminal in my checkout).
     \item For each task: \textbf{why} it was needed, the \textbf{prompt and
           interaction}, and the \textbf{outcome} --- including what is still wrong.
@@ -68,8 +68,8 @@
   \vspace{0.5em}
   \small
   These slides were themselves drafted by Claude from those sources
-  (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--18
-  (\commit{ab75fd7}, \commit{9809d76} and this version).
+  (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--19
+  (\commit{ab75fd7}, \commit{9809d76}, \commit{ffb638d} and this version).
 \end{frame}
 
 \begin{frame}{Outline}
@@ -202,7 +202,7 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
   Part I: new languages. \quad Part II: formalizing Godement's \emph{Algebra}.
 \end{frame}
 
-\begin{frame}{Since 27 September: 15 more commits as 7 tasks}
+\begin{frame}{Since 27 September: 16 more commits as 8 tasks}
   \footnotesize
   \begin{tabular}{rllr}
     \toprule
@@ -216,12 +216,14 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
     16 & Speed of generation & 14--15 Oct & 4 \\
     17 & Comments in symbol tables & 14 Oct & 1 \\
     18 & Type checking of symbol tables & 16 Oct & 2 \\
+    \midrule
+    19 & A template for autoformalization experiments & 16 Oct & 1 \\
     \bottomrule
   \end{tabular}
 
   \vspace{0.5em}
-  Plus three commits for these slides. \quad
-  Part III: tests, a second book, speed, and checks.
+  Plus four commits for these slides. \quad
+  Part III: tests, a second book, speed, and checks. \quad Part IV: passing it on.
 \end{frame}
 
 % =====================================================================
@@ -1125,6 +1127,69 @@ lin 'two-sided_Adj' = mkAdj "two-sided" ;
 \end{frame}
 
 % =====================================================================
+\section{Part IV: Passing it on}
+
+\begin{frame}{Task 19: A template for experiments --- why}
+  \begin{itemize}
+    \item Two experiments, \texttt{godement-index} and \texttt{hott-llm}, each with
+          its own scripts and its own notes of ``things learned the hard way''.
+    \item The July notes in \texttt{../autoformalize} predate most of it:
+          they say to ignore \texttt{MISMATCHING TYPES}, which Task 18 made meaningful.
+    \item Someone else, or a fresh session, could not start a third experiment
+          without redoing the work.
+  \end{itemize}
+  \prompt{I would like you to create a CLAUDE.md file that enables people to do
+    autoformalization experiments similar to godement-index and hott-index. The process
+    should be: read a LaTeX file, formalize its mathematical content in Dedukti, maintain
+    correctness with dk check, build Informath symbol table with both verbal and symbolic
+    expressions as close to the LaTeX as possible, maintain its correctness by checking
+    with RunInformath, create a grammar extension if needed, and present the results [\dots]
+    You can consult the files in ../autoformalize for hints or create skills
+    corresponding to them, whatever is the best.}
+\end{frame}
+
+\begin{frame}{Task 19: A template for experiments --- interaction}
+  \begin{itemize}\small
+    \item Two questions first: where (\emph{``Template dir in informath''}) and
+          how much (\emph{``CLAUDE.md + skills + scripts''}).
+    \item The scripts generalized from \texttt{hott-llm}: items numbered as LaTeX
+          numbers them, from the document's own \texttt{\textbackslash newtheorem} lines.
+    \item Every shape the symbol-table skill claims was tried with
+          \texttt{-parse-example}: \bad{three} of Claude's own claims were wrong
+          (``zero'' is a noun, a typed binder does not parse).
+    \item A test of the \emph{instructions}: a fresh agent, given only the template,
+          formalized a new text on relations, with a proof Dedukti checks, and reported
+          five gaps --- all fixed, among them advice on relations as variables, as
+          \bad{``Let $R$ be a function from elements $R$ of $A$ \dots''} showed.
+    \item One more false claim of Claude's, caught by checking it against
+          \texttt{godement-index} before the commit.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Task 19: A template for experiments --- outcome}
+  \commit{5182766} (16 Oct): \texttt{informath/autoformalize/}
+\begin{lstlisting}
+CLAUDE.md          deliverables, the loop, conventions, lessons
+.claude/skills/    symbol-table, grammar-extension
+scripts/           init, check, check-table, extract-items,
+                   build-informal, build-proofs, build-index
+base/nd.dk         natural deduction for proofs
+example/           divisibility.tex, formalized
+\end{lstlisting}
+  \begin{itemize}\small
+    \item To start: copy it, add a LaTeX file, run \texttt{scripts/init.sh} and
+          \texttt{claude}: \emph{``Formalize section 1''}.
+  \end{itemize}
+  \textbf{Remaining problems}
+  \begin{itemize}\small
+    \item Informath issues the trial found: a function-typed hypothesis reads with a
+          variable clash, and as \bad{$\mathrm{symmetricF}(A, R, R)$}; proof texts can
+          drop a hypothesis; typed binders have no example form.
+    \item Not yet used on a real text by anyone else.
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
 \section{Observations and the future}
 
 \begin{frame}{What we observed}
@@ -1164,10 +1229,10 @@ lin 'two-sided_Adj' = mkAdj "two-sided" ;
         \item Tests paid off at once: a type error found within minutes of the suite.
         \item A second book found bugs the first one hid
               (\texttt{matrixProduct}, 50 times).
-        \item Profiling before changing code; a hypothesis tested, not assumed.
-        \item ``Same output'' checked on the whole book, not on a sample.
+        \item Measuring: profiling first, ``same output'' checked on the whole book.
         \item Changes that did not pay off were reverted, not kept.
         \item A repaired check found the next bug at once (``0r'').
+        \item A fresh agent as the test of written instructions.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
