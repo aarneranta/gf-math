@@ -1,0 +1,2 @@
+# § 1. Divisibility
+divides : "#1 divides #2" | $#1 \mid #2$

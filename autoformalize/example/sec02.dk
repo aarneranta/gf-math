@@ -1,0 +1,9 @@
+(; § 2. Even numbers ;)
+
+(; //DOC:def:even ;)
+(; named isEven, since Informath's base already has even ;)
+def isEven : (n : Elem Nat) -> Prop := n => divides 2 n.
+
+(; //DOC:lem:sum ;)
+even_sum : (m : Elem Nat) -> (n : Elem Nat) ->
+  Proof (isEven m) -> Proof (isEven n) -> Proof (isEven (plus m n)).

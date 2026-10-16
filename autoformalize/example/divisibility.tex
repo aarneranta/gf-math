@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\N}{\mathbb{N}}
+
+\title{Divisibility and even numbers}
+\author{An example for the autoformalization template}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Divisibility}
+
+We work with the natural numbers $\N$, with their addition and multiplication.
+
+\begin{definition}\label{def:divides}
+Let $a$ and $b$ be natural numbers. We say that $a$ \emph{divides} $b$,
+written $a \mid b$, if there is a natural number $c$ such that $b = ac$.
+\end{definition}
+
+\begin{theorem}\label{thm:refl}
+Every natural number divides itself.
+\end{theorem}
+
+\begin{proof}
+Let $a$ be a natural number. Since $a = a \cdot 1$, the number $c = 1$
+shows that $a \mid a$.
+\end{proof}
+
+\begin{theorem}\label{thm:trans}
+Let $a$, $b$ and $c$ be natural numbers. If $a \mid b$ and $b \mid c$,
+then $a \mid c$.
+\end{theorem}
+
+\begin{proof}
+If $b = ad$ and $c = be$, then $c = (ad)e = a(de)$.
+\end{proof}
+
+\section{Even numbers}
+
+\begin{definition}\label{def:even}
+A natural number $n$ is \emph{even} if $2 \mid n$.
+\end{definition}
+
+\begin{lemma}\label{lem:sum}
+If $m$ and $n$ are even natural numbers, then $m + n$ is even.
+\end{lemma}
+
+\begin{remark}
+The converse fails: $1 + 1$ is even, but $1$ is not.
+\end{remark}
+
+\end{document}

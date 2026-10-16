@@ -1,0 +1,8 @@
+{
+  "source": "mytext.tex",
+  "name": "mytext",
+  "title": "The title of the text",
+  "tag": "DOC",
+  "eta": false,
+  "macros": {}
+}

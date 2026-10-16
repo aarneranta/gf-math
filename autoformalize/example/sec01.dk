@@ -1,0 +1,17 @@
+(; § 1. Divisibility ;)
+
+(; //DOC:def:divides ;)
+def divides : (a : Elem Nat) -> (b : Elem Nat) -> Prop :=
+  a => b => exists Nat (c => Eq b (times a c)).
+
+(; the arithmetic that the proof of Theorem 1.2 uses: a = a 1 ;)
+(; //DOC:thm:refl ;)
+times_one : (a : Elem Nat) -> Proof (Eq a (times a 1)).
+
+(; //DOC:thm:refl ;)
+def divides_refl : (a : Elem Nat) -> Proof (divides a a) :=
+  a => existsI Nat (c => Eq a (times a c)) 1 (times_one a).
+
+(; //DOC:thm:trans ;)
+divides_trans : (a : Elem Nat) -> (b : Elem Nat) -> (c : Elem Nat) ->
+  Proof (divides a b) -> Proof (divides b c) -> Proof (divides a c).
