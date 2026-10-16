@@ -302,12 +302,12 @@ renumberLatexArgs used s = case s of
    position k = length (takeWhile (/= k) used) + 1
 
 -- | The profile of a constant shown by the macro of an inline LaTeX form:
--- the arguments that the form uses, unless they are all of #1, ..., #n, or
--- unless a #DROP line already says which arguments to show.
+-- the arguments that the form uses, none if it uses none, unless a #DROP
+-- line already says which arguments to show.
 macroProfile :: Maybe Int -> String -> String -> FunProfile
 macroProfile mdrop latex macro = case mdrop of
   Just k -> (readGFTree macro, DropProfile k)
-  Nothing -> (readGFTree macro, if null used then NoProfile else PermProfile used)
+  Nothing -> (readGFTree macro, PermProfile used)
  where
    used = latexArgs (init (tail latex))
 

@@ -381,7 +381,7 @@ unappProfile prof exp = case prof of
   DropProfile k -> case splitApp exp of
     (fun, args) -> foldl EApp fun (replicate k metaExp ++ args)
   PermProfile ints -> case splitApp exp of
-    (fun, args) -> foldl EApp fun [look i | i <- [1 .. maximum ints]]
+    (fun, args) -> foldl EApp fun [look i | i <- [1 .. maximum (0 : ints)]]
       where
         look i = case lookup i (zip ints [0..]) of
           Just j -> args !! j

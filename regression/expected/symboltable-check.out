@@ -2,13 +2,13 @@ Obj : object_Noun []
 Prop : proposition_Noun []
 Set : set_Noun []
 Type : type_Noun []
-contradiction : FalseProp  | '\\contradictionMACRoA'
+contradiction : FalseProp  | '\\contradictionMACRoA' []
 conv : VerbPrepVerb2 converge_Verb to_Prep
 cross : VerbVerb2 cross_Verb
 disj : AdjPrepAdj2 disjoint_Adj from_Prep  | AdjAdjC disjoint_Adj  | '\\disjMACRoB' [1,2]
 emp : empty_Adj
-empset : DefNounName (AdjNounNoun empty_Adj set_Noun) [] | '\\empsetMACRoC'
-eulerconstant : ProperNameNounName Euler_ProperName constant_Noun [] | '\\eulerconstantMACRoE'
+empset : DefNounName (AdjNounNoun empty_Adj set_Noun) [] | '\\empsetMACRoC' []
+eulerconstant : ProperNameNounName Euler_ProperName constant_Noun [] | '\\eulerconstantMACRoE' []
 gcd : NounPrepFun2 (AdjNounNoun greatest_Adj (AdjNounNoun common_commoner_Adj divisor_Noun)) of_Prep and_Prep
 hilbertspace : ProperNameNounNoun Hilbert_ProperName space_Noun []
 iso : AdjAdjE isomorphic_Adj

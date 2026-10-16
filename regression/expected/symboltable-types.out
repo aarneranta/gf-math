@@ -1,22 +1,21 @@
 Obj : object_Noun []
-Pi : '\\PiMACRoC' [1,2,3] | '\\PiMACRoC' [1,2,3]
+Pi : '\\PiMACRoD' [1,2,3] | '\\PiMACRoD' [1,2,3]
 Set : set_Noun []
 Type : type_Noun []
 continuum : DefNounName (AdjNounNoun empty_Adj set_Noun) []
 productOf : NounPrepFun2 product_Noun of_Prep and_Prep [3,4] | '\\productOfMACRoA' [3,4]
-setOf : NounPrepFun2 set_Noun of_Prep in_Prep [2,1] | '\\setOfMACRoB' [1,2]
-zeroOf : '\\zeroOfMACRoD'  | '\\zeroOfMACRoD'
+setOf : NounPrepFun2 set_Noun of_Prep in_Prep [2,1] | '\\setOfMACRoC' [1,2]
+zeroOf : '\\zeroOfMACRoB' [] | '\\zeroOfMACRoB' []
 
 # semantics table keys: []
 # NLG table keys: []
-\newcommand{\PiMACRoC}[3]{\prod_{(#2 : #1)} #3}
+\newcommand{\PiMACRoD}[3]{\prod_{(#2 : #1)} #3}
 \newcommand{\productOfMACRoA}[2]{#1 \times #2}
-\newcommand{\setOfMACRoB}[2]{\{#2\}_{#1}}
-\newcommand{\zeroOfMACRoD}{0}
+\newcommand{\setOfMACRoC}[2]{\{#2\}_{#1}}
+\newcommand{\zeroOfMACRoB}{0}
 
 ## MISSING IN TABLE: Elem
 ## MISSING IN TABLE: Prop
 ## MISSING IN TABLE: Proof
-## ARGUMENT OUT OF RANGE: Pi '\\PiMACRoC' shows #3, but the constant has 2 arguments
-## MISMATCHING TYPES: zeroOf ("Exp",1) <> '\\zeroOfMACRoD' (["Exp","Formula","Kind","Proof","ProofExp","Prop","Term","Unit"],0)
+## ARGUMENT OUT OF RANGE: Pi '\\PiMACRoD' shows #3, but the constant has 2 arguments
 ## MISMATCHING TYPES: continuum ("Prop",0) <> DefNounName (AdjNounNoun empty_Adj set_Noun) (["Exp","Kind","ProofExp","Proof"],0)
