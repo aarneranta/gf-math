@@ -146,6 +146,10 @@ dict(name='symboltable-check', tier='dev', make='symboltest',
      what='consistency of an example-based symbol table',
      cmd='{RUN} -base=test/symboltest.dk test/symboltest.dkgf'),
 
+dict(name='symboltable-types', tier='dev', make=None,
+     what='type checking of symbol tables: profiles, function arguments, errors',
+     cmd='{RUN} -base=test/symboltypes.dk test/symboltypes.dkgf'),
+
 dict(name='symboltest-latex', tier='dev', make='symboltest',
      what='statements worded by an example-based symbol table',
      cmd='{RUN} -add-symboltables=test/symboltest.dkgf -variations -to-latex-doc test/symboltest.dk',

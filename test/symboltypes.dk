@@ -1,0 +1,14 @@
+(; test file for the type checking of symbol tables: hidden arguments and
+   function arguments pass, the last three entries of symboltypes.dkgf do not ;)
+
+Set : Type.
+Elem : (A : Set) -> Type.
+Prop : Type.
+Proof : (A : Prop) -> Type.
+Obj : Set.
+
+productOf : (A : Set) -> (B : Set) -> (x : Elem A) -> (y : Elem B) -> Elem Obj.
+setOf : Elem Obj -> (Elem Obj -> Prop) -> Elem Obj.
+Pi : (A : Set) -> (B : Elem A -> Set) -> Set.
+zeroOf : (A : Set) -> Elem A.
+continuum : Prop.

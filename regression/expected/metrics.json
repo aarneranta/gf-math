@@ -243,6 +243,11 @@
   "undefined": 0,
   "seconds": 0.1
  },
+ "symboltable-types": {
+  "lines": 20,
+  "undefined": 0,
+  "seconds": 0.1
+ },
  "symboltest-latex": {
   "lines": 94,
   "undefined": 0,

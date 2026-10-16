@@ -1,0 +1,16 @@
+# test of the type checking of symbol tables, see symboltypes.dk
+
+Obj : "object"
+Set : "set"
+Type : "type"
+
+# hidden arguments: the forms show #3 and #4, or #2 and #1
+productOf : "the product of #3 and #4" | $#3 \times #4$
+# a function argument is one argument
+setOf : "the set of #2 in #1" | $\{#2\}_{#1}$
+
+# errors: an argument the constant does not have, a macro that drops an
+# argument, a proposition worded as a name
+Pi : $\prod_{(#2 : #1)} #3$
+zeroOf : $0$
+continuum : "the empty set"

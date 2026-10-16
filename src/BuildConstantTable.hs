@@ -19,7 +19,7 @@ import Utils (split, splitOutside)
 
 import qualified Data.Map as M
 import qualified Data.Set as S
-import Data.List (partition, sort, groupBy, intersperse, mapAccumL)
+import Data.List (partition, sort, groupBy, intersperse, mapAccumL, nub)
 import Data.Char (isDigit, isAlpha)
 
 type GFTree = PGF.Tree
@@ -367,7 +367,7 @@ mismatchingTypes :: MacroTable -> DkType -> Type -> Fun -> Maybe ((String, Int),
 mismatchingTypes mt dktyp gftyp fun = arityMismatch dktyp (unType gftyp) where
 
   arityMismatch (dkhypos, typ) (gfhypos, cid, _) =
-    let (dka, gfa) = (dkArity dkhypos typ, (gfCats cid, gfArity gfhypos cid)) in
+    let (dka, gfa) = (dkArity (binderCat cid) dkhypos typ, (gfCats cid, gfArity gfhypos cid)) in
     if not (compatible dka gfa)
     then Just (dka, gfa)
     else Nothing
@@ -391,7 +391,14 @@ mismatchingTypes mt dktyp gftyp fun = arityMismatch dktyp (unType gftyp) where
        Just (val, _) -> [val]
        _ -> ["UNKNOWN-GF"] ---
        
-  dkArity dkhypos typ = (valCat typ, foldl (+) 0 (map hypoArity dkhypos))
+  -- a function argument is one argument, except for a binder, which shows
+  -- its bound variables as arguments of their own (Ident)
+  binderCat cid = case M.lookup (showCId cid) gfCatMap of
+    Just (_, args) -> elem "Ident" args
+    _ -> False
+
+  dkArity binder dkhypos typ =
+    (valCat typ, sum (map (if binder then hypoArity else const 1) dkhypos))
   valCat typ = case fst (splitApp typ) of
     EIdent f | f == identProp -> "Prop"
     EIdent f | elem f [identSet, identType] -> "Kind"
@@ -403,23 +410,45 @@ mismatchingTypes mt dktyp gftyp fun = arityMismatch dktyp (unType gftyp) where
     
 symbolTableErrors :: Module -> PGF -> SymbolTable -> [String]
 symbolTableErrors dk _ st =
-  let dt = dropTable st
-      mt = macroTable st
+  let mt = macroTable st
       ct = constantTable st
       bset = builtinSet st 
       funs = deduktiFunctions dk
       missing = [fun | (fun, _) <- funs, M.notMember fun ct, S.notMember fun bset]
+      -- each form once (the first LaTeX form is also a symbolic one)
+      forms = [(dkfun, dktyp, form) | (dkfun, dktyp) <- funs, form <- nub (allGFFuns ct dkfun)]
+      -- a form shows #i that the constant does not have
+      outOfRange = [(dkfun, gffun, i, length (fst dktyp)) |
+            (dkfun, dktyp, ((gffun, prof), _)) <- forms,
+            i <- profileIndices prof, i > length (fst dktyp)]
+      -- each form is checked against the arguments its profile shows,
+      -- which include the #DROP of the constant
       mismatches = [((dkfun, gffun), (e, f)) |
-                      (dkfun, (hypos, valtype)) <- funs,
-            let drops = maybe 0 id (M.lookup dkfun dt),
-            let dktyp = (drop drops hypos, valtype),
-            ((gffun, _), gftyp) <- allGFFuns ct dkfun,
-            Just (e, f) <- [mismatchingTypes mt dktyp gftyp gffun]]
+            (dkfun, dktyp, ((gffun, prof), gftyp)) <- forms,
+            all (<= length (fst dktyp)) (profileIndices prof),
+            Just (e, f) <- [mismatchingTypes mt (shownHypos prof dktyp) gftyp gffun]]
   in 
     ["MISSING IN TABLE: " ++ printTree fun | fun <- missing] ++
+    [unwords ["ARGUMENT OUT OF RANGE:", printTree dkfun, showGFTree gffun,
+              "shows #" ++ show i ++ ", but the constant has", show n, "arguments"] |
+                      (dkfun, gffun, i, n) <- outOfRange] ++
     [unwords ["MISMATCHING TYPES:", printTree dkfun,
               show e, "<>", showGFTree gffun, show f] |
                       ((dkfun, gffun), (e, f)) <- mismatches]
+
+-- the argument positions a profile shows, as #i
+profileIndices :: Profile -> [Int]
+profileIndices prof = case prof of
+  PermProfile is -> is
+  _ -> []
+
+-- the hypotheses of a constant that a profile shows as arguments
+shownHypos :: Profile -> DkType -> DkType
+shownHypos prof (hypos, typ) = case prof of
+  NoProfile -> (hypos, typ)
+  DropProfile k -> (drop k hypos, typ)
+  PermProfile is -> ([hypos !! (i-1) | i <- is, i <= length hypos], typ)
+  HoasProfile _ -> (hypos, typ)
 
 deduktiFunctions :: Module -> [(QIdent, DkType)]
 deduktiFunctions (MJmts jmts) = concatMap getFun jmts where
