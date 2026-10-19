@@ -8,6 +8,7 @@ informal-macros.tex
 *-symbolic.tsv
 *-closest.tsv
 *-index.html
+pages/
 proofs/
 .base-*.dk
 .*-statements.dk

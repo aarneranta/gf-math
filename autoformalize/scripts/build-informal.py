@@ -199,7 +199,8 @@ def item_texts():
     data = json.load(open('items.json'))
     out = dict(data.get('texts', {}))     # the running text of each section
     for it in data['items']:
-        out[it['id']] = it['tex']
+        if it['id'] not in data.get('texts', {}):   # a section number (1.1) means the section
+            out[it['id']] = it['tex']
         if it['label']:
             out[it['label']] = it['tex']
     return out

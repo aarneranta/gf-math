@@ -3,8 +3,9 @@
 This directory is an experiment in formalizing a mathematical text written in
 LaTeX: its content is formalized in Dedukti, each formal constant is given an
 Informath symbol table entry that says it in words and in notation as close
-to the text as possible, and the result is presented as a web page and as
-proof documents. It follows the Godement project (`godement-index`) and the
+to the text as possible, and the result is presented as web pages: the
+items of the text with their formalization, its readings and the proofs in
+English. It follows the Godement project (`godement-index`) and the
 Rijke project (`hott-llm`), whose notes are worth reading for hard cases.
 
 ## What to produce
@@ -17,19 +18,30 @@ Rijke project (`hott-llm`), whose notes are worth reading for hard cases.
 | `base.dkgf` | entries for what `base.dk` adds, and overrides of Informath's base | `scripts/check-table.py` |
 | `<Name>Words.gf` in informath | words the grammar lacked, if any | the `grammar-extension` skill |
 | `secNN-informal.tsv`, `-symbolic.tsv`, `-closest.tsv` | Informath's readings | `scripts/build-informal.py` |
-| `proofs/secNN.pdf` | the proofs, as numbered lines of English | `scripts/build-proofs.sh` |
-| `<name>-index.html` | every item of the source with its formalization and readings | `scripts/build-index.py` |
+| `proofs/secNN.tex` | the proofs, as numbered lines of English, for the index | `scripts/build-proofs.sh` |
+| `<name>-index.html` | the table of contents: each unit linked to its page | `scripts/build-index.py` |
+| `pages/secNN.html` | every item of unit NN with its formalization, readings and proofs | `scripts/build-index.py` |
 | `NOTES.md` | the encoding decisions, the state, and the issues found in Informath | you |
 
 `<name>` is the `name` of `experiment.json`. Its other fields: `source`, the
 main LaTeX file (its `\input`s are followed); `title`; `tag`, the word used in
 the tags (default `DOC`); `eta`, true if conversion must be modulo eta; and
-`macros`, MathJax definitions of document macros the scripts cannot take over.
+`macros`, MathJax definitions of document macros the scripts cannot take over;
+`informath`, if given, the Informath checkout to use instead of the
+environment's: the scripts set `INFORMATH_ROOT` to it and run the
+`RunInformath` that `stack build` made in its `.stack-work`, so nothing needs
+installing; and `conllu`, a CoNLL-U parse of the source (default
+`<name>.conllu`, if there is one), whose sentences the index shows as
+dependency trees under the items they occur in. Without a parse, the index
+has no trees. A parse can be made with UDPipe, for instance with deptreepy:
+`cat sentences.txt | deptreepy.py txt2conllu > <name>.conllu`, formulas
+replaced by `LATEXMATH` so that the sentences match the items' text.
 
 ## Setup (once)
 
     export INFORMATH_ROOT=<the informath checkout>   # its grammar, base, and RunInformath
-    which RunInformath dk xelatex                    # all three must be on the PATH
+    which RunInformath dk                            # both must be on the PATH
+                       # (or "informath": <checkout> in experiment.json, built with stack build)
     scripts/init.sh            # base.dk: Informath's base constants + natural deduction
     scripts/init.sh own        # or: a foundation of the experiment's own
     python3 scripts/extract-items.py                 # items.json: the source's items
@@ -64,7 +76,10 @@ Work one unit at a time, in order, and finish each before the next:
    the entries, the names of the hypotheses, or the shape of the statement,
    and repeat from 2 or 3.
 5. **Present**: `scripts/build-proofs.sh`, then `python3 scripts/build-index.py`
-   (in this order, as the index links the proof documents).
+   (in this order, as the index shows the proofs): `<name>-index.html` with
+   a page per unit in `pages/`, where each proved declaration has its proof
+   as numbered lines of English, each with the rule and premisses that
+   justify it.
 6. **Record** in `NOTES.md`: what the unit formalizes and how, what is stated
    without proof, what reads badly and why, and Informath issues.
 
@@ -89,12 +104,15 @@ change, as the macro names depend on all the tables; the scripts do that.
   as `example/sec01.dk` does with `times_one`.
 * **Proofs** use the introduction and elimination rules of `base/nd.dk`
   (`andI`, `ifI`, `ifE`, `forallI`, `forallE`, `existsI`, `existsE`, ...).
-  Each application of a rule becomes a line of the proof text; a stated lemma
-  used in a proof appears as an assumption line.
+  Each application of a rule becomes a line of the proof text, and so does
+  each use of a stated lemma, justified by the lemma's name and the lines of
+  its premisses.
 * **Tags.** Put `(; //DOC:<label> ;)` (with the experiment's tag for `DOC`)
   on the line directly above each declaration: the item's `\label` if it has
   one, else its number as `items.json` gives it (`2.3`). A section number
-  (`2`, `2.1`) attaches a declaration to the running text of that section.
+  (`2`, `2.1`) attaches a declaration to the running text of that section;
+  an item numbered like a section (Definition 1.1 in section 1.1) is
+  therefore tagged by its label.
   An auxiliary declaration gets the tag of the item that needs it. Untagged
   declarations do not appear in the index.
 * **Layout.** A declaration starts at the beginning of a line with its name
@@ -148,9 +166,11 @@ than 0.4.
 
 * The readings name every hypothesis ("Let $a$ be a natural number. Assume
   that ..."), and definitions come out as "Then $a$ divides $b$, if ...".
-* A proof document heads each proof with its Dedukti type, not an English
-  statement, and its first lines may leave out hypotheses that the steps do
-  not use (a type `A` of the statement need not get its "Let $A$ be a set").
+* A proof's first lines may leave out hypotheses that the steps do not use
+  (a type `A` of the statement need not get its "Let $A$ be a set"). The
+  index pairs the proofs of `proofs/secNN.tex` with the proved declarations
+  of `secNN.dk` in order, and leaves out a unit's proofs, with a warning, if
+  their numbers differ.
 * A constant without a symbolic form reads as `\mathrm{c}(x)` in formulas.
 * A unit read back as a whole has 120 s, a declaration 30 s; what runs out
   of time is reported as TIMED OUT. One without any wording is retried with

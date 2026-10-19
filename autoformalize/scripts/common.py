@@ -109,6 +109,38 @@ def tags(path, c):
     return out
 
 
+def informath_binary(root):
+    """The RunInformath that `stack build` made in the checkout root, the newest
+    if there are several, or None."""
+    import glob
+    found = glob.glob(os.path.join(root, '.stack-work', 'dist', '*', '*', 'build',
+                                   'RunInformath', 'RunInformath'))
+    return max(found, key=os.path.getmtime) if found else None
+
+
+def use_informath():
+    """With "informath": <checkout> in experiment.json, that checkout is
+    INFORMATH_ROOT, and the RunInformath built in it (stack build, not
+    installed) comes first on the PATH; otherwise the environment's are used.
+    Returns the shell commands that do the same, for the shell scripts."""
+    root = config().get('informath')
+    if not root:
+        return ''
+    root = os.path.abspath(os.path.expanduser(root))
+    binary = informath_binary(root)
+    if not binary:
+        sys.exit('no RunInformath built in %s: run stack build there' % root)
+    os.environ['INFORMATH_ROOT'] = root
+    os.environ['PATH'] = os.path.dirname(binary) + os.pathsep + os.environ.get('PATH', '')
+    return 'export INFORMATH_ROOT="%s" PATH="%s:$PATH"' % (root, os.path.dirname(binary))
+
+
 def need_informath():
+    use_informath()
     if not os.environ.get('INFORMATH_ROOT'):
         sys.exit('INFORMATH_ROOT is not set: export INFORMATH_ROOT=<your informath checkout>')
+
+
+if __name__ == '__main__' and sys.argv[1:] == ['env']:
+    # for the shell scripts: eval "$(python3 scripts/common.py env)"
+    print(use_informath())

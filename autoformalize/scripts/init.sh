@@ -12,6 +12,7 @@
 # holds the symbol table entries of what base.dk adds, and overrides of
 # Informath's share/baseconstants.dkgf, which RunInformath always reads first.
 set -e
+eval "$(python3 "$(dirname "$0")/common.py" env)" || exit 1   # "informath" of experiment.json
 [ -n "$INFORMATH_ROOT" ] || { echo "export INFORMATH_ROOT=<your informath checkout> first"; exit 1; }
 [ -f experiment.json ] || { echo "no experiment.json here; see README.md"; exit 1; }
 HERE=$(cd "$(dirname "$0")/.." && pwd)
@@ -44,6 +45,6 @@ esac
 # Symbol table entries of the constants base.dk adds to Informath's base, and
 # overrides of share/baseconstants.dkgf (a later entry wins).
 EOF
-[ -f .gitignore ] || printf '.base-*.dk\n.*-statements.dk\n.retry-statements.dk\n.informal-table.dkgf\nproofs/.base.dk\nproofs/*.aux\nproofs/*.log\nproofs/*.out\n__pycache__/\n' > .gitignore
+[ -f .gitignore ] || printf '.base-*.dk\n.*-statements.dk\n.retry-statements.dk\n.informal-table.dkgf\nproofs/.base.dk\n__pycache__/\n' > .gitignore
 dk check base.dk
 echo "base.dk and base.dkgf ready"
