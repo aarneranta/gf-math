@@ -6,6 +6,7 @@ module AnnotateDedukti where
 import BuildConstantTable
 import Dedukti.AbsDedukti
 import DeduktiOperations
+import DeduktiTheoryAPI
 import CommonConcepts (lookupConstant, symbolicCats, verbalCats, mainCats)
 import Environment
 
@@ -234,19 +235,68 @@ harmonizeJmt jmt = case jmt of
   JDef ident (MTExp typ) meexp@(MEExp exp) ->
     let
        (hypos, kind) = splitType typ
-       ahypos = unifyVars meexp hypos
+       ahypos = map proofFunHypo (unifyVars meexp hypos)
        hvars = concatMap hypo2vars ahypos
        dexp = etaAppExp exp hvars
     in JDef ident (MTExp (foldr EFun kind ahypos)) (MEExp dexp)
   JDef ident (MTExp typ) MENone ->
     let
        (hypos, kind) = splitType typ
-       ahypos = unifyVars MENone hypos
+       ahypos = map proofFunHypo (unifyVars MENone hypos)
     in JDef ident (MTExp (foldr EFun kind ahypos)) MENone
   JStatic ident typ -> harmonizeJmt (JDef ident (MTExp typ) MENone)
   JThm ident mtyp mexp -> harmonizeJmt (JDef ident mtyp mexp)
   JInj ident mtyp mexp -> harmonizeJmt (JDef ident mtyp mexp)
   _ -> jmt
+
+-- A hypothesis that is a function into proofs, such as
+--   d : (A : Elem C) -> (B : Elem C) -> Proof P -> Proof Q -> Proof R
+-- (a derived rule taken as a premiss) is read as a proof of the proposition
+-- it amounts to,
+--   d : Proof (forall C (A => forall C (B => if (and P Q) R))),
+-- so that it comes out as "assume that for all A and B in C, if P and Q,
+-- then R" and not as a function to "elements of Proof applied to R".
+-- This is done before annotation, so that the logical constants introduced
+-- get their symbol table entries like the ones written in the source.
+proofFunHypo :: Hypo -> Hypo
+proofFunHypo h = case h of
+  HVarExp x ty | Just p <- proofFun2prop ty -> HVarExp x (proofOf p)
+  HParVarExp x ty | Just p <- proofFun2prop ty -> HParVarExp x (proofOf p)
+  HExp ty | Just p <- proofFun2prop ty -> HExp (proofOf p)
+  _ -> h
+ where
+  proofOf = EApp (EIdent identProof)
+
+-- the proposition proved by a function type into proofs; Nothing for other
+-- types, including a plain Proof P
+proofFun2prop :: Exp -> Maybe Exp
+proofFun2prop e = case e of
+  EFun _ _ -> body e
+  _ -> Nothing
+ where
+  body :: Exp -> Maybe Exp
+  body t = case t of
+    EApp (EIdent f) p | f == identProof -> Just p
+    EFun h b -> do
+      q <- body b
+      case h of
+        HVarExp x ty -> bound x ty q
+        HParVarExp x ty -> bound x ty q
+        HExp ty -> premiss ty q
+        _ -> Nothing
+    _ -> Nothing
+  bound :: QIdent -> Exp -> Exp -> Maybe Exp
+  bound x ty q = case ty of
+    EApp (EIdent f) a | f == identElem -> Just (propPi a (EAbs (BVar x) q))
+    _ -> premiss ty q
+  -- consecutive premisses P, Q of R make one, "if P and Q, then R", which
+  -- is equivalent to "if P, then if Q, then R" and closer to how texts say it
+  premiss :: Exp -> Exp -> Maybe Exp
+  premiss ty q = case ty of
+    EApp (EIdent f) p | f == identProof -> Just $ case q of
+      EApp (EApp (EIdent i) p2) r | i == identImpl -> propImp (propAnd p p2) r
+      _ -> propImp p q
+    _ -> Nothing
 
 
 etaAppExp :: Exp -> [QIdent] -> Exp
