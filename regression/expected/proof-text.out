@@ -164,7 +164,7 @@
 
 
 \begin{tabular}{rp{0.62\textwidth}l}
-1. & $0$ is even. &  \\
+1. & $0$ is even. & \texttt{even0} \\
 2. & The successor of $0$ is odd. & \texttt{oddSucc} 1  \\
 \end{tabular}
 
@@ -181,7 +181,7 @@
 
 
 \begin{tabular}{rp{0.62\textwidth}l}
-1. & $0$ is even. &  \\
+1. & $0$ is even. & \texttt{even0} \\
 2. & $0$ is even or odd. & \texttt{orIl} 1  \\
 3. & Let $x$ be an element of $\Natural$. &  \\
 4. & Assume that $x$ is even or odd. &  \\
@@ -209,7 +209,7 @@
 
 \begin{tabular}{rp{0.62\textwidth}l}
 1. & Let $n$ be an element of $\Natural$. &  \\
-2. & $n$ is even or odd. &  \\
+2. & $n$ is even or odd. & \texttt{thm1} \\
 3. & Assume that $n$ is even. &  \\
 4. & Assume that $n$ is odd. &  \\
 5. & The successor of $n$ is even. & \texttt{evenSucc} 4  \\

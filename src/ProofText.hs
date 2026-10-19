@@ -41,7 +41,10 @@ proofDemo env base (MJmts proofs) informalize =
     unlines $ intersperse "\n\n" [
       oneProof env dkmap informalize t e | (t, e) <- concatMap proved proofs]
  where
-   dkmap = identTypes base
+   -- the constants of the base and of the module itself: a lemma stated in
+   -- the module and used in a later proof is a rule with premisses, not a
+   -- hypothesis, and its type says which of its arguments are premisses
+   dkmap = M.union (identTypes base) (identTypes (MJmts proofs))
 
    -- a theorem is a proof, and so is a definition whose type is a Proof:
    -- Dedukti has no separate form for the theorems of a development
@@ -401,7 +404,8 @@ prlu lin ln = [
 -- hypotheses it closes
 justification :: Line a -> String
 justification ln
-  | null (premisses ln) = ""
+  | null (premisses ln) && elem (rule (step ln)) (context ln) = ""  -- a hypothesis or variable
+  | null (premisses ln) = texttt (printTree (rule (step ln)))       -- a lemma without premisses
   | otherwise = unwords [
       texttt (printTree (rule (step ln))),
       concat (intersperse ", " (map show (premisses ln))),
