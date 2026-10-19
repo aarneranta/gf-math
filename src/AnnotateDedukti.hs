@@ -317,6 +317,12 @@ subst gamma bs e = case e of
   EApp f a -> case subst gamma bs f of
     EAbs bind body -> subst [(bind2ident bind, subst gamma bs a)] bs body -- beta-reduce redex from substituted higher-order arg
     f' -> EApp f' (subst gamma bs a)
+  -- eta-contract x => B x when B is replaced by an abstraction y => b: the
+  -- result y => b keeps the variable of the abstraction, where beta-reducing
+  -- would rename it to x (forallI's x in "for all x" instead of the
+  -- statement's own variable)
+  EAbs b (EApp (EIdent g) (EIdent y))
+    | y == bind2ident b, g /= y, Just v@(EAbs _ _) <- lookup g gamma -> v
   EAbs (BTyped x ty) a -> EAbs (BTyped x (subst gamma bs ty)) (subst gamma (x : bs) a)
   EAbs b a -> EAbs b (subst gamma (bind2ident b : bs) a)
   EFun (HVarExp x ty) a -> EFun (HVarExp x (subst gamma bs ty)) (subst gamma (x : bs) a)

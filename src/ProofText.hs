@@ -84,8 +84,11 @@ line2unitline env dkmap line = line {
   step = (step line){formula = unit}
   }
  where
+   -- a line is an assumption only if it cites a hypothesis without
+   -- premisses; a hypothesis applied to premisses (a derived rule taken as
+   -- a premiss) yields a conclusion, as a constant does
    unit = case rule (step line) of
-     h | constant h -> GConclusionUnit (exp2prop fla)
+     h | constant h || not (null (premisses line)) -> GConclusionUnit (exp2prop fla)
      h -> GHyposUnit (GListHypo (hypos2hypos [HVarExp h fla]))
    fla = head (annotateDkIdents env (formula (step line)))
 
@@ -290,8 +293,8 @@ showOnly prof e = case e of
 
 term2lines :: Exp -> [Line Exp]
 term2lines =
-    compress 0 [] [] .
-    ps 1 []             
+    compress 0 [] [] [] .
+    ps 1 []
       where
  -- generate lines starting with this line number and context
  ps :: Int -> [QIdent] -> Exp -> [Line Exp]
@@ -341,24 +344,36 @@ term2lines =
  lastline = line . last
  nextline ln p = if null p then ln else lastline p + 1
 
- -- compress lines by dropping repeated hypotheses and renumbering lines accordingly
- compress :: Int -> [(Int, Int)] -> [((QIdent, Exp), Int)] -> [Line Exp] -> [Line Exp]
- compress gaps relines rehypos ls = case ls of
+ -- compress lines by dropping repeated hypotheses and repeated conclusions,
+ -- and renumbering lines accordingly.  A conclusion is repeated if the same
+ -- formula was concluded before in a context that is still open (its
+ -- hypotheses and variables are among the present ones), so that the
+ -- earlier line can be cited instead.
+ compress :: Int -> [(Int, Int)] -> [((QIdent, Exp), Int)] -> [(Exp, Int, [QIdent])]
+          -> [Line Exp] -> [Line Exp]
+ compress gaps relines rehypos reconcls ls = case ls of
    ln : rest | isHypoLine ln ->
      let key = (rule (step ln), formula (step ln)) -- a hypothesis is identified by its label and formula
      in case lookup key rehypos of
           Just k ->  -- old hypothesis: drop this line, re-point its number to the first occurrence
-            compress (gaps + 1) ((line ln, k) : relines) rehypos rest
+            compress (gaps + 1) ((line ln, k) : relines) rehypos reconcls rest
           _ ->       -- new hypothesis: keep it, renumbering to close earlier gaps
             let nln = line ln - gaps
             in ln{line = nln} :
-               compress gaps ((line ln, nln) : relines) ((key, nln) : rehypos) rest
+               compress gaps ((line ln, nln) : relines) ((key, nln) : rehypos) reconcls rest
+   ln : rest | k : _ <- [k | (f, k, ctx) <- reconcls, f == formula (step ln),
+                              all (`elem` context ln) ctx] ->
+     -- old conclusion: drop this line, re-point its number to the earlier one
+     compress (gaps + 1) ((line ln, k) : relines) rehypos reconcls rest
    ln : rest ->
      let nln = line ln - gaps
          ds  = discharged (step ln) -- hypotheses closed here may be reused (as new) below
          rehypos' = [r | r@((h, _), _) <- rehypos, notElem h ds]
+         -- and conclusions that depend on them can no longer be cited
+         reconcls' = [r | r@(_, _, ctx) <- (formula (step ln), nln, context ln) : reconcls,
+                          not (any (`elem` ds) ctx)]
      in renumberLine nln relines ln :
-        compress gaps ((line ln, nln) : relines) rehypos' rest
+        compress gaps ((line ln, nln) : relines) rehypos' reconcls' rest
    _ -> ls
 
  -- a hypothesis line just cites an open assumption: no premisses, rule is a context variable

@@ -170,6 +170,11 @@ dict(name='proof-text', tier='dev', make='prooftextdemo',
      cmd='{RUN} -proof-text -base=test/natdedrules.dk -add-symboltables=test/natdrop.dkgf '
          'test/natdedproofs.dk', latex=True),
 
+dict(name='proof-text-lemmas', tier='dev',
+     what='proof texts with lemmas of the module, derived rules as premisses, repeated steps',
+     cmd='{RUN} -proof-text -base=test/natdedrules.dk -add-symboltables=test/natdrop.dkgf '
+         'test/prooftext_lemmas.dk', latex=True),
+
 dict(name='mathcore-examples', tier='dev', make='mathcore_examples',
      what='MathCore text only',
      cmd='{RUN} -add-symboltables=test/natural_deduction.dkgf -mathcore test/mathcore_examples.dk'),

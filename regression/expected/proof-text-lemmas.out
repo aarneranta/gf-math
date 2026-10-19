@@ -1,0 +1,111 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[margin=2cm]{geometry}
+\setlength\parindent{0pt}
+\setlength\parskip{8pt}
+\begin{document}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Integral}[4]{\int_{ #1 }^{#2} #4 d #3}
+\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Rational}{\mathbb{Q}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Summa}[4]{\sum_{ #3 = #1 }^{#2}{#4}}
+\newcommand{\congruent}[3]{#1 \equiv #2 \, \mbox{mod} \, #3}
+\newcommand{\divides}[2]{#1 \mid #2}
+\newcommand{\divisible}[2]{#2 \mid #1}
+\newcommand{\infinity}{\infty}
+\newcommand{\isempty}[1]{#1 = \emptyset}
+\subsection*{\texttt{Proof (and P P) -> Proof Q}}
+
+
+
+\begin{tabular}{rp{0.62\textwidth}l}
+1. & Assume that $P$ and $P$. &  \\
+2. & $P$. & \texttt{andEl} 1  \\
+3. & $Q$. & \texttt{lem} 2  \\
+\end{tabular}
+
+
+
+
+\clearpage
+
+
+
+
+\subsection*{\texttt{Proof Q}}
+
+
+
+\begin{tabular}{rp{0.62\textwidth}l}
+1. & $P$ and $Q$. & \texttt{pq} \\
+2. & $Q$. & \texttt{andEr} 1  \\
+\end{tabular}
+
+
+
+
+\clearpage
+
+
+
+
+\subsection*{\texttt{(d : ((y : Elem D) -> Proof (S y) -> Proof (T y))) -> (a : Elem D) -> Proof (S a) -> Proof (T a)}}
+
+
+
+\begin{tabular}{rp{0.62\textwidth}l}
+1. & Let $a$ be an element of $D$. &  \\
+2. & Assume that $S$ holds for $a$. &  \\
+3. & $T$ holds for $a$. & \texttt{d} 1, 2  \\
+\end{tabular}
+
+
+
+
+\clearpage
+
+
+
+
+\subsection*{\texttt{(d : ((y : Elem D) -> Proof (S y))) -> Proof (forall D (y => S y))}}
+
+
+
+\begin{tabular}{rp{0.62\textwidth}l}
+1. & Let $y$ be an element of $D$. &  \\
+2. & $S$ holds for $y$. & \texttt{d} 1  \\
+3. & For all elements $y$ of $D$, $S$ holds for $y$. & \texttt{forallI} 1, 2 [y] \\
+\end{tabular}
+
+
+
+
+\clearpage
+
+
+
+
+\subsection*{\texttt{Proof (and P (and Q R)) -> Proof (and (and Q R) (and R Q))}}
+
+
+
+\begin{tabular}{rp{0.62\textwidth}l}
+1. & Assume that $P$, $Q$ and $R$. &  \\
+2. & $Q$ and $R$. & \texttt{andEr} 1  \\
+3. & $R$. & \texttt{andEr} 2  \\
+4. & $Q$. & \texttt{andEl} 2  \\
+5. & $R$ and $Q$. & \texttt{andI} 3, 4  \\
+6. & $Q$, $R$, $R$ and $Q$. & \texttt{andI} 2, 5  \\
+\end{tabular}
+
+
+
+
+\clearpage
+
+
+\end{document}

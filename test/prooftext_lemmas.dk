@@ -1,0 +1,33 @@
+(; Proof texts with lemmas, derived rules as premisses, and repeated steps.
+   Each proof checks one thing that once went wrong in RunInformath -proof-text:
+   the expected output is regression/expected/proof-text-lemmas.out. ;)
+
+P : Prop.
+Q : Prop.
+R : Prop.
+D : Set.
+S : (y : Elem D) -> Prop.
+T : (y : Elem D) -> Prop.
+
+(; a lemma of the module itself is a rule with premisses, and one without
+   premisses is cited by name ;)
+lem : Proof P -> Proof Q.
+pq : Proof (and P Q).
+
+def lemmaUse : Proof (and P P) -> Proof Q := h => lem (andEl P P h).
+
+def lemmaCited : Proof Q := andEr P Q pq.
+
+(; a hypothesis applied to premisses concludes, it does not assume ;)
+def derivedRule : (d : ((y : Elem D) -> Proof (S y) -> Proof (T y))) ->
+  (a : Elem D) -> Proof (S a) -> Proof (T a) := d => a => s => d a s.
+
+(; forallI keeps the statement's variable y, not the rule's x ;)
+def keepVariable : (d : ((y : Elem D) -> Proof (S y))) -> Proof (forall D (y => S y)) :=
+  d => forallI D (y => S y) (y => d y).
+
+(; the same conclusion, andEr of the hypothesis, is written once ;)
+def noRepeats : Proof (and P (and Q R)) -> Proof (and (and Q R) (and R Q)) :=
+  h => andI (and Q R) (and R Q)
+         (andEr P (and Q R) h)
+         (andI R Q (andEr Q R (andEr P (and Q R) h)) (andEl Q R (andEr P (and Q R) h))).
