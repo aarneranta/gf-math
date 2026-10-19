@@ -9,6 +9,7 @@ abstract UserExtensions =
   Mizar,
   MizarWords,
   GodementSyntax,
-  GodementExamples
+  GodementExamples,
+  MytextWords
   ;
 
