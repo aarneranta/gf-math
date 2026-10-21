@@ -44,7 +44,7 @@
 \newcommand{\how}{\par\textcolor{gfblue}{\textbf{Prompt and interaction}}\par}
 \newcommand{\what}{\par\textcolor{gfblue}{\textbf{Outcome}}\par}
 
-\title{Forty-three Commits}
+\title{Fifty Commits}
 \subtitle{What Claude Code has contributed to Informath, July--October 2026}
 \author{Aarne Ranta}
 \date{October 2026}
@@ -56,7 +56,7 @@
 \begin{frame}{This talk}
   \begin{itemize}
     \item Informath: over 900 commits since 2024, almost all by hand.
-    \item \textbf{43} of them are co-authored by Claude (Claude Code, Anthropic's
+    \item \textbf{50} of them are co-authored by Claude (Claude Code, Anthropic's
           coding agent, working in a terminal in my checkout).
     \item For each task: \textbf{why} it was needed, the \textbf{prompt and
           interaction}, and the \textbf{outcome} --- including what is still wrong.
@@ -68,8 +68,8 @@
   \vspace{0.5em}
   \small
   These slides were themselves drafted by Claude from those sources
-  (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--19
-  (\commit{ab75fd7}, \commit{9809d76}, \commit{ffb638d} and this version).
+  (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--21
+  (\commit{ab75fd7}, \commit{9809d76}, \commit{ffb638d}, \commit{8cbe9a3} and this version).
 \end{frame}
 
 \begin{frame}{Outline}
@@ -202,7 +202,7 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
   Part I: new languages. \quad Part II: formalizing Godement's \emph{Algebra}.
 \end{frame}
 
-\begin{frame}{Since 27 September: 16 more commits as 8 tasks}
+\begin{frame}{Since 27 September: 22 more commits as 10 tasks}
   \footnotesize
   \begin{tabular}{rllr}
     \toprule
@@ -218,11 +218,13 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
     18 & Type checking of symbol tables & 16 Oct & 2 \\
     \midrule
     19 & A template for autoformalization experiments & 16 Oct & 1 \\
+    20 & Open issues for the next machine & 16 Oct & 1 \\
+    21 & The template's first experiment & 19 Oct & 5 \\
     \bottomrule
   \end{tabular}
 
   \vspace{0.5em}
-  Plus four commits for these slides. \quad
+  Plus five commits for these slides. \quad
   Part III: tests, a second book, speed, and checks. \quad Part IV: passing it on.
 \end{frame}
 
@@ -1185,7 +1187,93 @@ example/           divisibility.tex, formalized
     \item Informath issues the trial found: a function-typed hypothesis reads with a
           variable clash, and as \bad{$\mathrm{symmetricF}(A, R, R)$}; proof texts can
           drop a hypothesis; typed binders have no example form.
-    \item Not yet used on a real text by anyone else.
+    \item Not yet used on a real text by anyone else. \ok{--- Task 21.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 20: Open issues for the next machine}
+  \why
+  \begin{itemize}\small
+    \item Claude's memory of open items lives on the machine of the session;
+          the work was to go on from another computer.
+  \end{itemize}
+  \how
+  \prompt{I'm happy with this week's work. Let us continue later. Can I do it from
+    another computer?}
+  \begin{itemize}\small
+    \item Claude said what travels (the repositories, CLAUDE.md of the template) and
+          what does not (its notes), and offered to write the open items into the
+          repository; \emph{``OK, update todo''}.
+  \end{itemize}
+  \what
+  \begin{itemize}\small
+    \item \commit{4653b9d} (16 Oct): \texttt{todo/open-issues.md} --- the lexer and
+          unlexer, what is left of the speed work, the errors in the symbol tables,
+          the issues of the template's trial, each with how to see it.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 21: The template's first experiment --- why and interaction}
+  \why
+  \begin{itemize}\small
+    \item The template (Task 19) had been tried only on texts written for the test.
+    \item A real text: Reyna and Sandoval's chapter on \emph{classes of subsets}
+          (rings, $\sigma$-rings and $\sigma$-algebras of subsets), the experiment
+          \texttt{mytext}.
+  \end{itemize}
+  \how
+  \begin{itemize}\small
+    \item No transcript on this machine: the work was done on the other computer, the
+          one the open issues of Task 20 were written for.
+    \item Five commits on 19 Oct, between 12:29 and 19:09. The experiment needed words,
+          and showing its proofs in its index exposed flaws of the proof texts, each
+          fixed in Informath with a minimal example in the commit message.
+    \item The same day, the indexes of \texttt{godement-index} and \texttt{hott-llm}
+          were split into one page per unit, with the proofs in English, and the
+          template took that up.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Task 21: The template's first experiment --- the proof texts}
+  \commit{d71a179}, \commit{1160444}, \commit{8be976d}
+  \begin{itemize}\small
+    \item A lemma of the module itself, used in a later proof, had no type and came out
+          as \bad{``Assume that Q''}; now it is a rule: ``Q'' by \texttt{lem}.
+    \item A premiss that is a function into proofs,
+          \texttt{d : (A : Elem C) -> (B : Elem C) -> Proof P -> Proof Q -> Proof R},
+          read \bad{``Let d be a function from elements A of C \dots{} to elements of
+          Proof applied to R''}; now \ok{``Assume that for all A and B in C, if P and Q,
+          then R''} --- Rijke's issue 5.
+    \item A hypothesis applied to premisses yields a conclusion, not an assumption.
+    \item \texttt{forallI} renamed the statement's variables
+          (\bad{``for all subsets $x$ and $B$''} for $A$ and $B$); now kept.
+    \item The same conclusion was drawn again for each use (\bad{\texttt{andEr} 2}
+          four times in a row); now once, and cited.
+  \end{itemize}
+  \begin{itemize}\footnotesize
+    \item New regression case \texttt{proof-text-lemmas}; the other cases unchanged.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 21: The template's first experiment --- outcome}
+  \commit{9ff7064}, \commit{c45f7b7} (19 Oct), and the three of the proof texts
+  \begin{itemize}\small
+    \item \texttt{MytextWords}: the first words module of an experiment made from the
+          template --- $\sigma$-algebra, $\sigma$-ring,
+          \emph{closed under countable unions} \dots, so that ``\#1 is a ring of
+          subsets of \#2'' parses.
+    \item The template's index is now a table of contents and one page per unit; a
+          proved declaration shows its proof in English, line by line, with its
+          rules and premisses; no PDFs, so no XeLaTeX.
+    \item With a CoNLL-U parse of the source, each item shows the dependency trees of
+          its sentences, as in \texttt{hott-llm}.
+    \item \texttt{"informath": <checkout>} in \texttt{experiment.json}: the scripts use
+          that checkout and its \texttt{stack build}, whatever the environment says.
+  \end{itemize}
+  \textbf{Remaining problems}
+  \begin{itemize}\small
+    \item \texttt{IfI} and \texttt{ForallI} now read as tautologies: ``Assume that if
+          A, then B. Then if A, then B.''
   \end{itemize}
 \end{frame}
 
@@ -1255,8 +1343,8 @@ example/           divisibility.tex, formalized
     \item \textbf{Tests}: \ok{a regression suite exists (Task 14)}; next, CI.
     \item \textbf{Scale}: \ok{big statements get English (Task 16)}; next,
           linearization, now the slowest part; and a lexer and unlexer that agree.
-    \item \textbf{Proofs}: repair truncated proofs, English theorem headings,
-          proper bound-variable names.
+    \item \textbf{Proofs}: \ok{lemmas, conclusions and the statement's variables right
+          (Task 21)}; next, English theorem headings, and rules that read as tautologies.
     \item \textbf{Coverage}: run GodementSyntax on all 10\,413 sentences and measure
           how much of the book parses; port it to French, German, Swedish.
     \item \textbf{Autoformalization}: parse Godement's own text into Dedukti and
