@@ -44,7 +44,7 @@
 \newcommand{\how}{\par\textcolor{gfblue}{\textbf{Prompt and interaction}}\par}
 \newcommand{\what}{\par\textcolor{gfblue}{\textbf{Outcome}}\par}
 
-\title{Fifty Commits}
+\title{Fifty-seven Commits}
 \subtitle{What Claude Code has contributed to Informath, July--October 2026}
 \author{Aarne Ranta}
 \date{October 2026}
@@ -56,7 +56,7 @@
 \begin{frame}{This talk}
   \begin{itemize}
     \item Informath: over 900 commits since 2024, almost all by hand.
-    \item \textbf{50} of them are co-authored by Claude (Claude Code, Anthropic's
+    \item \textbf{57} of them are co-authored by Claude (Claude Code, Anthropic's
           coding agent, working in a terminal in my checkout).
     \item For each task: \textbf{why} it was needed, the \textbf{prompt and
           interaction}, and the \textbf{outcome} --- including what is still wrong.
@@ -68,8 +68,9 @@
   \vspace{0.5em}
   \small
   These slides were themselves drafted by Claude from those sources
-  (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--21
-  (\commit{ab75fd7}, \commit{9809d76}, \commit{ffb638d}, \commit{8cbe9a3} and this version).
+  (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--23
+  (\commit{ab75fd7}, \commit{9809d76}, \commit{ffb638d}, \commit{8cbe9a3},
+  \commit{09a82f6} and this version).
 \end{frame}
 
 \begin{frame}{Outline}
@@ -228,6 +229,23 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
   Part III: tests, a second book, speed, and checks. \quad Part IV: passing it on.
 \end{frame}
 
+\begin{frame}{Since 21 October: 7 more commits as 2 tasks}
+  \footnotesize
+  \begin{tabular}{rllr}
+    \toprule
+    & \textbf{Task} & \textbf{Date} & \textbf{Commits} \\
+    \midrule
+    22 & Informath for the informalization of Mathlib & 22 Oct & 4 \\
+    23 & Agreement of ``such that'', and a time explosion & 22 Oct & 2 \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.5em}
+  Plus one commit for these slides. \quad Part V: Mathlib, and agreement.
+  \quad Task 22 is told in full in its own deck,
+  \texttt{mathlib-informath/doc/informalizing-mathlib-slides.pdf}.
+\end{frame}
+
 % =====================================================================
 \section{Part I: New languages}
 
@@ -325,7 +343,7 @@ cosetRel    : "#3 is congruent to #4 modulo #2"
   \textbf{Remaining problems}
   \begin{itemize}\small
     \item \bad{\emph{existuje matice M, takový, že}} --- should be \emph{taková}:
-          ``such that'' cannot agree in gender.
+          ``such that'' cannot agree in gender. \ok{--- In part: Task 23.}
     \item Multi-word nouns decline only the head; ``imperatives'' are present tense.
     \item UserExtensionsCze still disabled; $\sim$1500 terms unreviewed.
   \end{itemize}
@@ -1278,6 +1296,105 @@ example/           divisibility.tex, formalized
 \end{frame}
 
 % =====================================================================
+\section{Part V: Mathlib, and agreement}
+
+\begin{frame}{Task 22: Informath for the informalization of Mathlib}
+  \why
+  \begin{itemize}\small
+    \item A new project, \texttt{mathlib-informath} (21--22 Oct): a Lean exporter of
+          Mathlib's statements and term proofs to Informath's Dedukti, read in
+          English, French and as formulas; 705 statements, 240 proofs so far.
+    \item Most of its commits are in its own repository; four needed Informath.
+  \end{itemize}
+  \what
+  \begin{itemize}\small
+    \item \commit{4f31f55}: \texttt{-proof-text} crashed on a $\lambda$ typed by a proof
+          of an implication, a negation or a $\forall$; new regression case.
+    \item \commit{ceb9b85}, \commit{7773194}: \texttt{Mathlib.gf}, words from Mathlib's
+          docstrings: \emph{smallest, bounded above, partially ordered, set of
+          divisors} \dots
+    \item \commit{778e998}: French. \texttt{MathlibFre} and partial French modules;
+          proof texts were \emph{empty} in French (\texttt{ProofUnitsFre} lacked two
+          functions); \texttt{-languages=Eng,Fre} for \texttt{-json} and
+          \texttt{-proof-text}, so that the grammar, 2.8 s to load, is loaded once
+          (my request); \texttt{-no-back-to-dedukti}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 23: Agreement of ``such that'' --- why and interaction}
+  \why
+  \begin{itemize}\small
+    \item \texttt{such\_that\_Subj} is a conjunction, so ``such'' cannot agree:
+          Czech \bad{``existuje matice M, takový, že''}, should be \emph{taková}
+          (slide of Task 2).
+    \item I had added \texttt{such\_A} and \texttt{suchThatCN}, an AP agreeing with the
+          CN, and used it in \texttt{SuchThatHypo} (\commit{bf2e121}).
+  \end{itemize}
+  \how
+  \prompt{a similar change should be done in all grammars/*.gf. The modules
+    grammars/next/Utilities* should also be updated so that they compile and work
+    properly.}
+  \begin{itemize}\small
+    \item A test in seven languages showed two problems, and Claude asked:
+      \begin{itemize}\footnotesize
+        \item German and Finnish put the AP, with its clause, \emph{before} the noun:
+              \bad{``eine dass $n$ prim ist derart natürliche Zahl''} ---
+              \ok{\texttt{suchThatCN} per language}.
+        \item The existentials NLG prefers add ``such that'' to an NP already built,
+              a list of kinds --- \ok{agree with the last kind}.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Task 23: A time explosion}
+  \begin{itemize}\small
+    \item To agree with the last kind, \texttt{[ArgKind]} kept, besides its NPs, the
+          NPs of all but the last kind and the last kind's CN, determiners and flags.
+    \item The grammar, compiled in 1:49 before, did not finish:
+          \texttt{CategoriesEng} at 2.7 GB after 3.5 minutes, \texttt{MathExtensionsFre}
+          at 12 GB, swapping. A leaner record still took 9.4 minutes for French,
+          instead of 25 s.
+    \item Claude blamed a determiner chosen by a \texttt{case}, then the coordinations
+          built at each use: both were partly right, neither was the cause.
+    \item \textbf{My \texttt{gf -v}} showed it: \texttt{ConsArgKind} had
+          \bad{50,096,498,540,544} concrete functions, against 3,538,944 before;
+          and English had got worse.
+  \end{itemize}
+  \textbf{Why:} GF compiles a function into one PMCFG rule for each combination of
+  the parameters of its arguments. Every NP in a record brings its inherent
+  agreement, every Bool doubles; and \texttt{ConsArgKind} takes an
+  \texttt{[ArgKind]}, so the list multiplies its own combinations. A known issue of
+  GF, but I had not expected it to hit us here.
+
+  \vspace{0.3em}
+  \small\textbf{Lesson:} keep the parameters of a recursive list category few; count
+  rules with \texttt{-v} before and after; compile one language first.
+\end{frame}
+
+\begin{frame}{Task 23: Agreement of ``such that'' --- outcome}
+  \commit{65fa1bd}, \commit{789052b} (22 Oct)
+  \prompt{Let us leave out the changes in [ArgKind] for the moment}
+  \begin{itemize}\small
+    \item \texttt{suchThatCN} in each language, also in \texttt{next/}: an agreeing AP
+          (Eng, Fre, Swe, Cze, Pol), ``derart, dass'' after the noun (Ger),
+          ``sellainen'' before the noun and ``, että'' after it (Fin).
+    \item Used where ``such that'' follows a CN: \ok{``un nombre naturel $n$ tel que'',
+          ``přirozené číslo $n$ takové, že'', ``liczba naturalna $n$ taka, że''}.
+    \item German \texttt{such\_that\_Subj}: ``derart, dass'', not ``sodass'' (``so
+          that'').
+    \item Two kinds keep the conjunction: with \texttt{suchThatCN}, a variable added
+          later came after the clause --- \bad{``a reflection $g$ such that $g$ is left
+          $x_0$ such that \dots''}, which the regression tests showed.
+  \end{itemize}
+  \textbf{Remaining problems} (\texttt{todo/open-issues.md})
+  \begin{itemize}\small
+    \item The existentials that NLG prefers still say \bad{``takový, že''},
+          \bad{``tel que''} for any gender and number; ``il \bad{existent}''.
+    \item English ``, such that'' and ``such that'' now both occur: 72 readings became 144.
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
 \section{Observations and the future}
 
 \begin{frame}{What we observed}
@@ -1336,10 +1453,34 @@ example/           divisibility.tex, formalized
   \end{columns}
 \end{frame}
 
+\begin{frame}{What the latest tasks added}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \ok{\textbf{Worked well}}
+      \begin{itemize}\small
+        \item A test in all seven languages before going on: it found the word order
+              of German and Finnish.
+        \item Asking the design questions, with a recommendation.
+        \item A new project, with the Informath fixes it needed kept small and tested.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \bad{\textbf{Needed a human}}
+      \begin{itemize}\small
+        \item The diagnosis of the time explosion: \texttt{gf -v}, and knowing GF.
+        \item Knowing when to stop: leave the hard case for later, keep what works.
+        \item Load the grammar once: an index, not a call per statement.
+        \item ``Don't add German yet.''
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Speculation: what would be good to do next}
   \begin{itemize}\small
     \item \textbf{Review}: native checking of the Finnish, Czech, Polish and French
-          words; gender agreement of ``such that'' in Slavic languages.
+          words; agreement of ``such that'' \ok{after a CN (Task 23)}; next, after a
+          list of kinds, without a parameter explosion.
     \item \textbf{Tests}: \ok{a regression suite exists (Task 14)}; next, CI.
     \item \textbf{Scale}: \ok{big statements get English (Task 16)}; next,
           linearization, now the slowest part; and a lexer and unlexer that agree.
