@@ -10,6 +10,7 @@ open
   (I=IrregEng),
   (Extend=ExtendEng),
   (X=ExtraEng),
+  GrammarEng,
   Formal,
   Prelude
 
@@ -43,7 +44,8 @@ oper
   contradiction_N : N = mkN "contradiction" ;
   then_Adv : Adv = ParadigmsEng.mkAdv "then" ;
   thenText_Adv : Adv = ParadigmsEng.mkAdv "then" ;
-  such_that_Subj : Subj = mkSubj "such that" ;
+  such_that_Subj : Subj = mkSubj "such that" ; --- to be depr
+  such_A : A = mkA "such" ;
   applied_to_Prep : Prep = mkPrep "applied to" ;
   defined_as_Prep : Prep = mkPrep "defined as" ;
   function_N : N = mkN "function" ;

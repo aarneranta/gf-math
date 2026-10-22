@@ -30,7 +30,9 @@ lin
   VarsHypo idents kind = Grammar.ImpP3 idents.np (mkVP (useKind kind)) ; 
   BareVarsHypo idents = Grammar.ImpP3 idents.np (mkVP arbitrary_A) ;
   AdjKindHypo idents adj kind = Grammar.ImpP3 idents.np (mkVP (mkCN adj (useKind kind))) ; 
-  SuchThatHypo idents prop kind = Grammar.ImpP3 idents.np (mkVP (mkCN (useKind kind) (Syntax.mkAdv such_that_Subj (partProp prop)))) ; 
+
+  SuchThatHypo idents prop kind = Grammar.ImpP3 idents.np (mkVP (suchThatCN (useKind kind) (partProp prop))) ; 
+
 
   AbsExp idents exp =
     mkNP the_Det (mkCN function_N (mkRS (mkRCl which_RP map_V3 idents.np exp))) ;

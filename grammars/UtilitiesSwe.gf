@@ -10,6 +10,7 @@ open
   (I=IrregSwe),
   (Extend=ExtendSwe),
   (M=MakeStructuralSwe),
+  GrammarSwe,
   Formal,
   Prelude
 
@@ -45,6 +46,7 @@ oper
   then_Adv : Adv = ParadigmsSwe.mkAdv "så" ;
   thenText_Adv : Adv = ParadigmsSwe.mkAdv "då" ;
   such_that_Subj : Subj = mkSubj "så att" ;
+  such_A : A = mkA "sådan" ;
   applied_to_Prep : Prep = mkPrep "applicerat på" ;
   defined_as_Prep : Prep = mkPrep "definierat som" ;
   function_N : N = mkN "funktion" "funktioner" ;

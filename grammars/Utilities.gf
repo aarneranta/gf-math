@@ -6,6 +6,7 @@ open
   Markup,
   Extend,
   Formal,
+  Grammar,
   Prelude
 
 in {
@@ -312,7 +313,8 @@ oper
   contradiction_N : N ;
   then_Adv : Adv ;
   thenText_Adv : Adv ;
-  such_that_Subj : Subj ;
+  such_that_Subj : Subj ; --- bogus, to be deprecated
+  such_A : A ;
   applied_to_Prep : Prep ;
   defined_as_Prep : Prep ;
   function_N : N ;
@@ -377,5 +379,8 @@ oper
 
   allNP : CN -> NP = \cn ->
     mkNP all_Predet (mkNP aPl_Det cn) ;
+
+  suchThatCN : CN -> S -> CN = \cn, s ->
+    mkCN (AdvAP (mkAP such_A) (S.mkAdv that_Subj s)) cn ; 
 
 }

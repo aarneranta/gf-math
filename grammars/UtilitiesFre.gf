@@ -10,6 +10,7 @@ open
   (I=IrregFre),
   (E=ExtendFre),
   (Mk=MakeStructuralFre),
+  GrammarFre,
   Formal,
   Prelude
 
@@ -47,6 +48,7 @@ oper
   then_Adv : Adv = ParadigmsFre.mkAdv "alors" ;
   thenText_Adv : Adv = ParadigmsFre.mkAdv "alors" ;
   such_that_Subj : Subj = Mk.mkSubjSubj "tel que" ; -----
+  such_A : A = mkA "tel" ;
   applied_to_Prep : Prep = mkPrep "appliqué à" ; ----
   defined_as_Prep : Prep = mkPrep "défini comme" ; ----
   function_N : N = mkN "fonction" ;

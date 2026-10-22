@@ -10,6 +10,7 @@ open
   (I=IrregGer),
   (E=ExtendGer),
   (M=MakeStructuralGer),
+  GrammarGer,
   Formal,
   Prelude
 
@@ -48,6 +49,7 @@ oper
   then_Adv : Adv = ParadigmsGer.mkAdv "dann" ;
   thenText_Adv : Adv = ParadigmsGer.mkAdv "dann" ;
   such_that_Subj : Subj = mkSubj "sodass" ;
+  such_A : A = invarA "derart" ;
   applied_to_Prep : Prep = mkPrep "angewandt auf" accusative ;
   defined_as_Prep : Prep = mkPrep "definiert als" nominative ;
   function_N : N = mkN "Funktion" ;
