@@ -32,7 +32,7 @@ import Utils (commaSepInts, setnub, unindexString)
 import Utils (encodeJSON, mkJSONObject, mkJSONField, stringJSON, mkJSONListField)
 import Utils (toLatexDoc, transInEnv, frequencyTable)
 
-import ProofText(proofDemo)
+import ProofText(proofDemo, prLatexFile, verbatimInline)
 
 import Informath
 import PGF
@@ -42,6 +42,7 @@ import Data.Char (isDigit)
 import qualified Data.Map as M
 import qualified Data.Set as S
 import Text.JSON (JSValue)
+import qualified Text.JSON as J
 import System.Environment(getEnv)
 import System.Process (readProcessWithExitCode)
 import System.Exit (ExitCode(..))
@@ -698,6 +699,69 @@ tryParseSymbolTable env ls = map tryParse ils
       Ok _ | isFlag "-keep-ok-entries" env -> s
       Ok _ -> unwords ["#line", show i, "OK:", s]
       Bad m -> unwords ["#line", show i, "BAD:", s, "ERROR:", m]
+
+-- | Proof texts of tactic proofs, given as lists of proof units in JSON:
+-- [{"name": n, "steps": [{"unit": u, "by": tactic, ...}]}], where u is
+--   "hypos" with "hypos": [[x, type]]  -- let x be ..., assume that ...
+--   "conclusion" with "prop": P        -- P
+--   "enough" with "prop": P            -- it is enough to show that P
+--   "verify" with "prop": P            -- first verify that P (a nested proof follows)
+--   "cases", "induction", "obvious"
+-- and the types and propositions are Dedukti expressions. Each proof is
+-- printed as by -proof-text: a numbered table of lines in each language.
+showTacticProofs :: Env -> String -> String
+showTacticProofs env s = case J.decode s of
+  J.Error e -> error ("tactic proof file: " ++ e)
+  J.Ok (J.JSArray proofs) ->
+    prLatexFile (macroCommands (macroTable (symbolTable env))) $
+      unlines $ intersperse "\n\n" (map oneTacticProof proofs)
+  J.Ok _ -> error "tactic proof file: a list of proofs expected"
+ where
+   langsShown = if flagHasValue "-languages" (flags env) then langs env else [toLang env]
+
+   oneTacticProof p = unlines $ intersperse "\n\n" (
+     ["\\subsection*{" ++ verbatimInline (str (field "name" p)) ++ "}"] ++
+     [table lang [(i, stepUnit st, str (field "by" st)) | (i, st) <- zip [1 :: Int ..] (list (field "steps" p))]
+       | lang <- langsShown] ++
+     ["\\clearpage"])
+
+   table lang rows = unlines $
+     "\\begin{tabular}{rp{0.62\\textwidth}l}" :
+     [show i ++ ". & " ++ unit2nat lang u ++ " & " ++ verbatimInline by ++ " \\\\" | (i, u, by) <- rows] ++
+     ["\\end{tabular}"]
+
+   -- a step whose Dedukti does not parse is shown as obvious
+   stepUnit st = either (const GObviousConclusion) id (stepUnitE st)
+   stepUnitE st = case str (field "unit" st) of
+     "hypos" -> do
+       hs <- sequence [fmap (HVarExp (QIdent (str x))) (dk (str t))
+                      | J.JSArray [x, t] <- list (field "hypos" st)]
+       return (GHyposUnit (GListHypo (DMC.hypos2hypos [HVarExp x (ann t) | HVarExp x t <- hs])))
+     "conclusion" -> fmap (GConclusionUnit . DMC.exp2prop . ann) (dk (str (field "prop" st)))
+     "enough" -> fmap (GEnoughGoal . DMC.exp2prop . ann) (dk (str (field "prop" st)))
+     "verify" -> fmap (GFirstVerifyGoal . DMC.exp2prop . ann) (dk (str (field "prop" st)))
+     "cases" -> return GCasesGoal
+     "induction" -> return GInductionGoal
+     _ -> return GObviousConclusion
+
+   ann e = head (annotateDkIdents env e ++ [e])
+   dk :: String -> Either String Exp
+   dk t = case pExp (myLexer t) of
+     Ok e -> Right e
+     Bad m -> Left m
+
+   field k v = case v of
+     J.JSObject o -> maybe J.JSNull id (lookup k (J.fromJSObject o))
+     _ -> J.JSNull
+   str v = case v of
+     J.JSString j -> J.fromJSString j
+     _ -> ""
+   list v = case v of
+     J.JSArray vs -> vs
+     _ -> []
+
+   unit2nat lang u = unlex env (gftree2nat env lang (gf (best u)))
+   best u = head ([u' | GUnitJmt u' <- core2ext env (GUnitJmt u)] ++ [u])
 
 --- proof text demo, experimental
 showProofDemo :: Env -> Module -> Module -> String

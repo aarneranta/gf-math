@@ -30,6 +30,9 @@ main4 args = if elem "-help" args then mapM_ putStrLn helpMsg4 else do
     Just (file, "dk") | any (flip elem args) ["-idents", "-unknown-idents"] -> do
       mo <- readDeduktiModule [file]
       mapM_ putStrLn (showFreqs (identsInDedukti env mo)) 
+    Just (file, "json") | elem "-tactic-proof" args -> do
+      s <- readFile file
+      putStrLn (showTacticProofs env s)
     Just (file, "dk") | elem "-proof-text" args -> do
       mo <- readDeduktiModule [file]
       let base = baseConstantModule env
@@ -140,6 +143,7 @@ helpMsg4 = [
   just "-test-ambiguity" "test ambiguity when ranking NLG results (can be very slow)",
   just "-parallel-data" "print complete parallel data in jsonl",
   just "-proof-text" "print proof texts (experimental), needs -base=<rules>.dk",
+  just "-tactic-proof" "print proof texts of proofs given as lists of proof units in a .json file (from tactic proofs)",
   just "-proof-terms" "with -proof-text, also show the proof terms and their Dedukti lines",
   just "-to-lang=<lang>" "linearize to natural language <lang>, default Eng",
   just "-languages=<langs>" "with -json, rank and show only these languages (e.g. Eng,Fre), default all; with -proof-text, a proof text in each",
@@ -193,7 +197,7 @@ invalidArgs xx =
   [x | x <- xx, head x /= '-', notElem (fileSuffix x) validFileSuffixes]
  where
   validOptions = [takeWhile (/='=') o | o:_ <- map words helpMsg4]
-  validFileSuffixes = words "dk dkgf dktex gft tex txt md"
+  validFileSuffixes = words "dk dkgf dktex gft tex txt md json"
 
 loopInformath :: Env -> IO b
 loopInformath env = do
