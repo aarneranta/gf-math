@@ -27,9 +27,9 @@
   "seconds": 5.1
  },
  "dk-roundtrip": {
-  "lines": 37,
+  "lines": 41,
   "undefined": 0,
-  "seconds": 2.1
+  "seconds": 1.5
  },
  "dk-sets": {
   "lines": 0,
@@ -64,7 +64,7 @@
  "exx-fre": {
   "lines": 18,
   "undefined": 0,
-  "seconds": 3.1
+  "seconds": 3.2
  },
  "exx-lean": {
   "lines": 18,
@@ -77,9 +77,9 @@
   "seconds": 0.1
  },
  "exx-roundtrip": {
-  "lines": 51,
+  "lines": 55,
   "undefined": 0,
-  "seconds": 1.8
+  "seconds": 1.3
  },
  "exx-roundtrip-failures": {
   "lines": 1,
@@ -160,7 +160,7 @@
  "mini-matita": {
   "lines": 1269,
   "undefined": 0,
-  "seconds": 0.6
+  "seconds": 0.4
  },
  "naproche-failures": {
   "lines": 76,
@@ -234,15 +234,15 @@
  "sets-latex": {
   "lines": 1793,
   "undefined": 0,
-  "seconds": 0.8,
-  "latex_pages": 134,
+  "seconds": 0.7,
+  "latex_pages": 132,
   "latex_errors": 0
  },
  "sets-single": {
   "lines": 588,
   "undefined": 0,
   "seconds": 0.2,
-  "latex_pages": 40,
+  "latex_pages": 39,
   "latex_errors": 0
  },
  "sigma-latex": {
@@ -285,7 +285,7 @@
   "lines": 2260,
   "undefined": 0,
   "seconds": 0.9,
-  "latex_pages": 189,
+  "latex_pages": 184,
   "latex_errors": 0
  },
  "top100-symbolic-latex": {
@@ -298,7 +298,7 @@
  "topo-latex": {
   "lines": 70,
   "undefined": 0,
-  "seconds": 0.3,
+  "seconds": 0.2,
   "latex_pages": 3,
   "latex_errors": 0
  }

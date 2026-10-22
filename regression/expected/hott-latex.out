@@ -163,13 +163,13 @@ Definition. Let $A$ and $B$ be elements of the universe. Let $C$ be an element o
 
 Definition. Let $A$ and $B$ be elements of $\universe$. Let $C$ be an element of the universe. Let $u$ be a map from $B$ to $C$. Let $v$ be a map from $A$ to $B$. Then $\compfun {u}{v}$ is a map from $A$ to $C$.
 
+Definition. Let $A$ and $C$ be elements of the universe. Let $B$ be an element of $\universe$. Let $u$ be a map from $B$ to $C$. Let $v$ be a map from $A$ to $B$. Then $\compfun {u}{v}$ is a map from $A$ to $C$.
+
+Definition. Let $A$ and $C$ be elements of $\universe$. Let $B$ be an element of the universe. Let $u$ be a map from $B$ to $C$. Let $v$ be a map from $A$ to $B$. Then $\compfun {u}{v}$ is a map from $A$ to $C$.
+
 Definition. Let $A$ be an element of the universe. Let $B$ and $C$ be elements of $\universe$. Let $u$ be a map from $B$ to $C$. Let $v$ be a map from $A$ to $B$. Then $\compfun {u}{v}$ is a map from $A$ to $C$.
 
 Definition. Let $A$ be an element of $\universe$. Let $B$ and $C$ be elements of the universe. Let $u$ be a map from $B$ to $C$. Let $v$ be a map from $A$ to $B$. Then $\compfun {u}{v}$ is a map from $A$ to $C$.
-
-Definition. Let $A$ and $B$ be elements of the universe. Let $C$ be an element of $\universe$. Let $u$ be a map from $B$ to $C$. Let $v$ be a map from $A$ to $B$. Then the composition of $u$ and $v$ is a map from $A$ to $C$.
-
-Definition. Let $A$ and $B$ be elements of $\universe$. Let $C$ be an element of the universe. Let $u$ be a map from $B$ to $C$. Let $v$ be a map from $A$ to $B$. Then the composition of $u$ and $v$ is a map from $A$ to $C$.
 
 Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $z$ and $u$ be maps from $A$ to $B$. Then we can say that $z$ is homotopic to $u$.
 
@@ -231,85 +231,85 @@ Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from ele
 
 Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ be a map from $A$ to $B$. Then $\reflhtpy {f}$ is an element of the homotopy between $f$ and $f$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
 
-Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
+Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
 
-Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
+Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$. Let $v$ be an element of $\homotopy {f}{g}$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then the inverse homotopy of $v$ is an element of $\homotopy {g}{f}$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then the inverse homotopy of $v$ is an element of $\homotopy {g}{f}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of the homotopy between $g$ and $f$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$ and $g$ be maps from $A$ to $B$. Let $v$ be an element of $\homotopy {f}{g}$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then the inverse homotopy of $v$ is an element of $\homotopy {g}{f}$.
 
-Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$. Let $v$ be an element of $\homotopy {f}{g}$. Then $\invhtpy {v}$ is an element of $\homotopy {g}{f}$.
+Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then the inverse homotopy of $v$ is an element of $\homotopy {g}{f}$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of the homotopy between $g$ and $f$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of the homotopy between $g$ and $f$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then the inverse homotopy of $v$ is an element of $\homotopy {g}{f}$.
+Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then $\invhtpy {v}$ is an element of the homotopy between $g$ and $f$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Assume that $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Assume that $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
 
-Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Assume that $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
+Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
 
-Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Assume that $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
+Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Let $w$ be an element of $\homotopy {f}{g}$. Assume that $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of the homotopy between $f$ and $h$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Let $w$ be an element of $\homotopy {f}{g}$. Assume that $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then the concatenation of $w$ and $X_{1}$ is an element of $\homotopy {f}{h}$.
 
-Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Let $w$ be an element of $\homotopy {f}{g}$. Assume that $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of the homotopy between $f$ and $h$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Assume that $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of the homotopy between $f$ and $h$.
+Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of the homotopy between $f$ and $h$.
 
-Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Let $w$ be an element of $\homotopy {f}{g}$. Assume that $g$ is homotopic to $h$. Then $\conhtpy {w}{X_{1}}$ is an element of $\homotopy {f}{h}$.
+Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of $\universe$. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then the concatenation of $w$ and $X_{1}$ is an element of $\homotopy {f}{h}$.
 
-Definition. Let $A$ be an element of the universe. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Assume that $g$ is homotopic to $h$. Then the concatenation of $w$ and $X_{1}$ is an element of $\homotopy {f}{h}$.
+Definition. Let $A$ be an element of $\universe$. Let $B$ be a function from elements of $A$ to elements of the universe. Let $f$, $g$ and $h$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$ and $g$ is homotopic to $h$. Then the concatenation of $w$ and $X_{1}$ is an element of $\homotopy {f}{h}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and $\compfun {h}{g}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and $\compfun {h}{g}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ and $g$ are homotopic. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and $\compfun {h}{g}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ and $g$ are homotopic. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and $\compfun {h}{g}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and $\compfun {h}{g}$.
+Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and $\compfun {h}{g}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ and $g$ are homotopic. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and $\compfun {h}{g}$.
+Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ and $g$ are homotopic. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and $\compfun {h}{g}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is an element of $\homotopy {(\compfun {h}{f})}{(\compfun {h}{g})}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is an element of $\homotopy {(\compfun {h}{f})}{(\compfun {h}{g})}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ and $g$ are homotopic. Then the left whiskering of $g$ by $X_{1}$ is an element of $\homotopy {(\compfun {h}{f})}{(\compfun {h}{g})}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ and $g$ are homotopic. Then the left whiskering of $g$ by $X_{1}$ is an element of $\homotopy {(\compfun {h}{f})}{(\compfun {h}{g})}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is an element of $\homotopy {(\compfun {h}{f})}{(\compfun {h}{g})}$.
+Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is an element of $\homotopy {(\compfun {h}{f})}{(\compfun {h}{g})}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ and $g$ are homotopic. Then the left whiskering of $g$ by $X_{1}$ is an element of $\homotopy {(\compfun {h}{f})}{(\compfun {h}{g})}$.
+Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ and $g$ are homotopic. Then the left whiskering of $g$ by $X_{1}$ is an element of $\homotopy {(\compfun {h}{f})}{(\compfun {h}{g})}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between the composition of $h$ and $f$ and $\compfun {h}{g}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between the composition of $h$ and $f$ and $\compfun {h}{g}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$. Assume that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and the composition of $h$ and $g$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $h$ be a map from $B$ to $C$. Let $f$ and $g$ be maps from $A$ to $B$ such that $f$ is homotopic to $g$. Then the left whiskering of $g$ by $X_{1}$ is a homotopy between $\compfun {h}{f}$ and the composition of $h$ and $g$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$. Assume that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$. Assume that $g$ and $h$ are homotopic. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ and $h$ are homotopic. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $g$ and $h$ be maps from $B$ to $C$. Assume that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
+Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $g$ and $h$ be maps from $B$ to $C$. Assume that $g$ and $h$ are homotopic. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
+Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ and $h$ are homotopic. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$. Assume that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is an element of $\homotopy {(\compfun {g}{f})}{(\compfun {h}{f})}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is an element of $\homotopy {(\compfun {g}{f})}{(\compfun {h}{f})}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$. Assume that $g$ and $h$ are homotopic. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is an element of $\homotopy {(\compfun {g}{f})}{(\compfun {h}{f})}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ and $h$ are homotopic. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is an element of $\homotopy {(\compfun {g}{f})}{(\compfun {h}{f})}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $g$ and $h$ be maps from $B$ to $C$. Assume that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is an element of $\homotopy {(\compfun {g}{f})}{(\compfun {h}{f})}$.
+Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is an element of $\homotopy {(\compfun {g}{f})}{(\compfun {h}{f})}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $g$ and $h$ be maps from $B$ to $C$. Assume that $g$ and $h$ are homotopic. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is an element of $\homotopy {(\compfun {g}{f})}{(\compfun {h}{f})}$.
+Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ and $h$ are homotopic. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is an element of $\homotopy {(\compfun {g}{f})}{(\compfun {h}{f})}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$. Let $w$ be a homotopy between $g$ and $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between the composition of $g$ and $f$ and $\compfun {h}{f}$.
 
-Definition. Let $A$, $B$ and $C$ be elements of $\universe$. Let $g$ and $h$ be maps from $B$ to $C$. Let $w$ be a homotopy between $g$ and $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and $\compfun {h}{f}$.
+Definition. Let $A$, $B$ and $C$ be elements of the universe. Let $g$ and $h$ be maps from $B$ to $C$ such that $g$ is homotopic to $h$. Let $f$ be a map from $A$ to $B$. Then the right whiskering of $w$ by $f$ is a homotopy between $\compfun {g}{f}$ and the composition of $h$ and $f$.
 
 Definition. Let $A$ and $B$ be elements of the universe. Let $f$ be a map from $A$ to $B$. Then the sections of $f$ are a basic type.
 

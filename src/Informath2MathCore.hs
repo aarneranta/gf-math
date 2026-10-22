@@ -90,6 +90,8 @@ semHypo :: GHypo -> [GHypo]
 semHypo hypo = case hypo of
   GAdjKindHypo xs@(GListIdent xx) adj kind ->
     GVarsHypo xs kind : [GPropHypo (GAdjProp adj (GTermExp (GIdentTerm x))) | x <- xx]
+  GSuchThatHypo xs prop kind ->
+    [GVarsHypo xs kind, GPropHypo prop]
   _ -> [hypo]
 
 

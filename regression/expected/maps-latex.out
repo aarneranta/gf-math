@@ -52,9 +52,9 @@ Definition. Let $X$ and $Y$ be sets. Let $g$ be a map from $Y$ to $X$. Let $f$ b
 
 InverseProp. Let $X$ and $Y$ be sets. Let $f$ be a map from $X$ to $Y$. Then $f$ is bijective, if and only if there exists a map $g$ from $Y$ to $X$, such that $g$ is an inverse of $f$.
 
-Definition. Let $X$ and $Y$ be sets. Let $f$ be a map from $X$ to $Y$. Assume that $f$ is bijective. Then $\inv {f}{u}$ is a map from $Y$ to $X$.
+Definition. Let $X$ and $Y$ be sets. Let $f$ be a bijective map from $X$ to $Y$. Then $\inv {f}{u}$ is a map from $Y$ to $X$.
 
-InvInverse. Let $X$ and $Y$ be sets. Let $f$ be a map from $X$ to $Y$. Assume that $f$ is bijective. Then $\inv {f}{p}$ is an inverse of $f$.
+InvInverse. Let $X$ and $Y$ be sets. Let $f$ be a bijective map from $X$ to $Y$. Then $\inv {f}{p}$ is an inverse of $f$.
 
 By cases: \begin{itemize} \item for $X$ and $x$, $\app {\id {X}}{x}$ is $x$. \item for $X$, $Y$, $Z$, $f$, $g$ and $x$, $\app {(\comp {g}{f})}{x}$ is $\app {g}{(\app {f}{x})}$. \end{itemize}
 \end{document}

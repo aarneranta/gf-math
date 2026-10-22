@@ -1,5 +1,9 @@
 ill-typed: prop20 : n : Elem Nat -> Proof (even n) -> Proof (odd (vectorPlus n (nd 1))) .
+ill-typed: prop20 : n : Elem (suchthat Nat (_g0 => even _g0)) -> Proof (odd (vectorPlus n (nd 1))) .
+ill-typed: prop20 : n : Elem (suchthat Nat (_g0 => even _g0)) -> Proof (odd (plus n (nd 1))) .
 ill-typed: prop30 : n : Elem Nat -> Proof (odd n) -> Proof (even (vectorPlus n (nd 1))) .
+ill-typed: prop30 : n : Elem (suchthat Nat (_g0 => odd _g0)) -> Proof (even (vectorPlus n (nd 1))) .
+ill-typed: prop30 : n : Elem (suchthat Nat (_g0 => odd _g0)) -> Proof (even (plus n (nd 1))) .
 ill-typed: prop60 : Proof (forall Nat (n => equalset (vectorPlus n (nd 0)) n)) .
 ill-typed: prop60 : Proof (forall Nat (n => equalset (plus n (nd 0)) n)) .
 ill-typed: prop60 : Proof (forall Nat (n => Eq (vectorPlus n (nd 0)) n)) .

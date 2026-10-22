@@ -82,15 +82,102 @@ aggregate t = case t of
   GListHypo hypos -> GListHypo (aggregateHypos hypos)
   _ -> composOp aggregate t
 
+-- | Hypotheses aggregated: variables of the same kind are brought together,
+-- as far as the type dependencies allow, and the propositions about them are
+-- attached to them: "let $x$ and $y$ be even numbers" (AdjKindHypo) when each
+-- variable has the same adjective, "let $x$ and $y$ be numbers such that $x >
+-- y$" (SuchThatHypo) otherwise. Two remaining propositions are conjoined.
+aggregateHypos :: [GHypo] -> [GHypo]
+aggregateHypos = pairProps . attachProps . groupVars . foldl reorderVar [] . concatMap splitVars
  where
-   aggregateHypos hypos = case hypos of
-     GVarsHypo xs@(GListIdent [x]) kind :
-       GPropHypo (GAdjProp adj (GTermExp (GIdentTerm y))) : hs | x == y ->
-         GAdjKindHypo xs adj kind : aggregateHypos hs
-     GPropHypo a : GPropHypo b : hs ->
-       GPropHypo (aggregate (GAndProp (GListProp [a, b]))) : aggregateHypos hs
-     h : hs -> aggregate h : aggregateHypos hs
-     _ -> hypos
+   -- one variable at a time
+   splitVars :: GHypo -> [GHypo]
+   splitVars h = case h of
+     GVarsHypo (GListIdent xs) kind -> [GVarsHypo (GListIdent [x]) kind | x <- xs]
+     _ -> [h]
+
+   -- a variable goes right after the last variable of its kind, if its kind
+   -- depends on nothing declared after that; a proposition between them
+   -- cannot depend on it, as it comes before it
+   reorderVar :: [GHypo] -> GHypo -> [GHypo]
+   reorderVar hs h = case h of
+     GVarsHypo (GListIdent [_]) kind ->
+       case [i | (i, GVarsHypo (GListIdent [_]) k) <- zip [0 ..] hs, k == kind] of
+         [] -> hs ++ [h]
+         is -> let (before, after) = splitAt (last is + 1) hs
+               in if any (`elem` concatMap declaredIdents after) (identsIn kind)
+                  then hs ++ [h]
+                  else before ++ [h] ++ after
+     _ -> hs ++ [h]
+
+   groupVars :: [GHypo] -> [GHypo]
+   groupVars hs = case hs of
+     GVarsHypo (GListIdent [x]) kind : rest ->
+       let (ys, rest') = sameKind kind rest
+       in GVarsHypo (GListIdent (x : ys)) kind : groupVars rest'
+     h : rest -> h : groupVars rest
+     [] -> []
+   sameKind :: GKind -> [GHypo] -> ([GIdent], [GHypo])
+   sameKind kind hs = case hs of
+     GVarsHypo (GListIdent [y]) k : rest | k == kind ->
+       let (ys, rest') = sameKind kind rest in (y : ys, rest')
+     _ -> ([], hs)
+
+   -- the propositions right after variables that mention some of them
+   attachProps :: [GHypo] -> [GHypo]
+   attachProps hs = case hs of
+     GVarsHypo xs@(GListIdent vars) kind : rest ->
+       let (props, rest') = propsAbout vars rest
+       in attached xs kind props : attachProps rest'
+     h : rest -> h : attachProps rest
+     [] -> []
+   propsAbout :: [GIdent] -> [GHypo] -> ([GProp], [GHypo])
+   propsAbout vars hs = case hs of
+     h : rest | Just p <- propOfHypo h, any (`elem` vars) (identsIn p) ->
+       let (ps, rest') = propsAbout vars rest in (p : ps, rest')
+     _ -> ([], hs)
+   attached :: GListIdent -> GKind -> [GProp] -> GHypo
+   attached xs@(GListIdent vars) kind props = case props of
+     [] -> GVarsHypo xs kind
+     GAdjProp adj _ : _ | Just ys <- mapM (adjOf adj) props, sameElems ys vars ->
+       GAdjKindHypo xs adj kind
+     [p] -> GSuchThatHypo xs (aggregate p) kind
+     _ -> GSuchThatHypo xs (aggregate (GAndProp (GListProp props))) kind
+   adjOf :: GAdj -> GProp -> Maybe GIdent
+   adjOf adj p = case p of
+     GAdjProp a (GTermExp (GIdentTerm y)) | a == adj -> Just y
+     _ -> Nothing
+   sameElems :: [GIdent] -> [GIdent] -> Bool
+   sameElems ys vars = length ys == length vars && all (`elem` ys) vars
+
+   -- the labels of propositions are dropped in NLG (varless)
+   propOfHypo :: GHypo -> Maybe GProp
+   propOfHypo h = case h of
+     GPropHypo p -> Just p
+     GPropVarHypo _ p -> Just p
+     _ -> Nothing
+
+   pairProps :: [GHypo] -> [GHypo]
+   pairProps hs = case hs of
+     GPropHypo a : GPropHypo b : rest ->
+       GPropHypo (aggregate (GAndProp (GListProp [a, b]))) : pairProps rest
+     h : rest -> aggregate h : pairProps rest
+     [] -> []
+
+-- | The identifiers occurring in a tree: its variables, and bound ones too.
+identsIn :: Tree a -> [GIdent]
+identsIn t = case t of
+  GStrIdent _ -> [t]
+  _ -> composOpMonoid identsIn t
+
+-- | The identifiers that a hypothesis declares.
+declaredIdents :: GHypo -> [GIdent]
+declaredIdents h = case h of
+  GVarsHypo (GListIdent xs) _ -> xs
+  GVarHypo x _ -> [x]
+  GPropVarHypo x _ -> [x]
+  GLocalHypo local -> identsIn local
+  _ -> []
 
 
 getAdjs :: [GProp] -> GExp -> Maybe ([GAdj], [GProp])

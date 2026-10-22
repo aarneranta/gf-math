@@ -100,11 +100,11 @@ Definition. Let $x$ be a set. Then we can say that $x$ is a topological space.
 
 By cases: \begin{itemize} \item for $X$ and $T$, the proposition that $\toposet {X}{T}$ is a topological space is the proposition that $T$ is a topology. \end{itemize}
 
-Definition. Let $X$ and $T$ be sets. Assume that $\toposet {X}{T}$ is a topological space. Let $U$ be a set. Then $U$ is open, if $U \in T$.
+Definition. Let $X$, $T$ and $U$ be sets such that $\toposet {X}{T}$ is a topological space. Then $U$ is open, if $U \in T$.
 
-Definition. Let $X$ and $T$ be sets. Assume that $\toposet {X}{T}$ is a topological space. Let $F$ be a set. Then $F$ is close, if $X \setminus F$ is open.
+Definition. Let $X$, $T$ and $F$ be sets such that $\toposet {X}{T}$ is a topological space. Then $F$ is close, if $X \setminus F$ is open.
 
-Definition. Let $X$ and $T$ be sets. Assume that $\toposet {X}{T}$ is a topological space. Then $p$ is a Hausdorff space, if for all elements $x$ and $y$ of $X$, if it is not the case that $\mathrm{Equ}$ holds for $X$, $x$ and $y$, then there exist elements $\mathrm{U\_x}$ and $\mathrm{U\_y}$ of $\wp X$, such that $\mathrm{U\_x} \in T$, $\mathrm{U\_y} \in T$, $x \in \mathrm{U\_x}$, $y \in \mathrm{U\_y}$ and $\mathrm{U\_x} \cap \mathrm{U\_y} = \emptyset$.
+Definition. Let $X$ and $T$ be sets such that $\toposet {X}{T}$ is a topological space. Then $p$ is a Hausdorff space, if for all elements $x$ and $y$ of $X$, if it is not the case that $\mathrm{Equ}$ holds for $X$, $x$ and $y$, then there exist elements $\mathrm{U\_x}$ and $\mathrm{U\_y}$ of $\wp X$, such that $\mathrm{U\_x} \in T$, $\mathrm{U\_y} \in T$, $x \in \mathrm{U\_x}$, $y \in \mathrm{U\_y}$ and $\mathrm{U\_x} \cap \mathrm{U\_y} = \emptyset$.
 
-Definition. Let $X$ and $T$ be sets. Assume that $\toposet {X}{T}$ is a topological space. Let $N$ be an element of $\wp X$. Let $x$ be an element of $X$. Then $N$ is a neighborhood of $x$, if there exists an element $U$ of $\wp X$, such that $U \in T$ and $x \in U \subset N$.
+Definition. Let $X$ and $T$ be sets such that $\toposet {X}{T}$ is a topological space. Let $N$ be an element of $\wp X$. Let $x$ be an element of $X$. Then $N$ is a neighborhood of $x$, if there exists an element $U$ of $\wp X$, such that $U \in T$ and $x \in U \subset N$.
 \end{document}

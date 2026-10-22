@@ -664,815 +664,815 @@ ComplUniverse. The complement of the universal set and the empty set are equal.
 
 ComplUniverse. The complement of $\mathbb{ U}$ and the empty set are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B = \emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B = \mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B = \mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and $A \cap B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B = {A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that $A \cup B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that $A \cup B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to ${A }^{\complement}$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to $\mathbb{ U}$. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to $\mathbb{ U}$ and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to $\emptyset$. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ is equal to the universal set. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ is equal to the universal set and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ is equal to the empty set. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ is equal to the complement of $A$.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and ${A }^{\complement}$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and $\emptyset$ are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and $\mathbb{ U}$ are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and $\mathbb{ U}$ are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
-UniqComplement. Let $A$ and $B$ be sets. Assume that the union of $A$ and $B$ and the universal set are equal. Assume that the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
+UniqComplement. Let $A$ and $B$ be sets such that the union of $A$ and $B$ and the universal set are equal and the intersection of $A$ and $B$ and the empty set are equal. Then $B$ and the complement of $A$ are equal.
 
 ReflSubset. Let $A$ be a set. Then $A \subseteq A$.
 
@@ -1518,29 +1518,29 @@ TransitSubset. Let $A$, $B$ and $C$ be sets. Then if $A \subseteq B$ and $B$ is 
 
 TransitSubset. Let $A$, $B$ and $C$ be sets. Then if $A$ is a subset of $B$ and $B$ is a subset of $C$, then $A$ is a subset of $C$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A \subseteq S$. Then $\emptyset \subseteq A \subseteq S$.
+Prop7. Let $S$ and $A$ be sets such that $A \subseteq S$. Then $\emptyset \subseteq A \subseteq S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A$ is a subset of $S$. Then $\emptyset \subseteq A \subseteq S$.
+Prop7. Let $S$ and $A$ be sets such that $A$ is a subset of $S$. Then $\emptyset \subseteq A \subseteq S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A \subseteq S$. Then $\emptyset$ is a subset of $A$ and $A \subseteq S$.
+Prop7. Let $S$ and $A$ be sets such that $A \subseteq S$. Then $\emptyset$ is a subset of $A$ and $A \subseteq S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A \subseteq S$. Then $\emptyset \subseteq A$ and $A$ is a subset of $S$.
+Prop7. Let $S$ and $A$ be sets such that $A \subseteq S$. Then $\emptyset \subseteq A$ and $A$ is a subset of $S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A \subseteq S$. Then the empty set is a subset of $A$ and $A \subseteq S$.
+Prop7. Let $S$ and $A$ be sets such that $A \subseteq S$. Then the empty set is a subset of $A$ and $A \subseteq S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A$ is a subset of $S$. Then $\emptyset$ is a subset of $A$ and $A \subseteq S$.
+Prop7. Let $S$ and $A$ be sets such that $A$ is a subset of $S$. Then $\emptyset$ is a subset of $A$ and $A \subseteq S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A$ is a subset of $S$. Then $\emptyset \subseteq A$ and $A$ is a subset of $S$.
+Prop7. Let $S$ and $A$ be sets such that $A$ is a subset of $S$. Then $\emptyset \subseteq A$ and $A$ is a subset of $S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A$ is a subset of $S$. Then the empty set is a subset of $A$ and $A \subseteq S$.
+Prop7. Let $S$ and $A$ be sets such that $A \subseteq S$. Then $\emptyset$ is a subset of $A$ and $A$ is a subset of $S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A \subseteq S$. Then $\emptyset$ is a subset of $A$ and $A$ is a subset of $S$.
+Prop7. Let $S$ and $A$ be sets such that $A$ is a subset of $S$. Then the empty set is a subset of $A$ and $A \subseteq S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A \subseteq S$. Then the empty set is a subset of $A$ and $A$ is a subset of $S$.
+Prop7. Let $S$ and $A$ be sets such that $A \subseteq S$. Then the empty set is a subset of $A$ and $A$ is a subset of $S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A$ is a subset of $S$. Then $\emptyset$ is a subset of $A$ and $A$ is a subset of $S$.
+Prop7. Let $S$ and $A$ be sets such that $A$ is a subset of $S$. Then $\emptyset$ is a subset of $A$ and $A$ is a subset of $S$.
 
-Prop7. Let $S$ and $A$ be sets. Assume that $A$ is a subset of $S$. Then the empty set is a subset of $A$ and $A$ is a subset of $S$.
+Prop7. Let $S$ and $A$ be sets such that $A$ is a subset of $S$. Then the empty set is a subset of $A$ and $A$ is a subset of $S$.
 
 Prop8a. Let $A$ and $B$ be sets. Then $A \subseteq B$, if and only if $A \cap B = A$.
 
