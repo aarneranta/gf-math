@@ -10,5 +10,6 @@ concrete UserExtensionsEng of UserExtensions =
   MizarWordsEng,
   GodementSyntaxEng,
   GodementExamplesEng,
-  MytextWordsEng
+  MytextWordsEng,
+  MathlibEng
   ;
