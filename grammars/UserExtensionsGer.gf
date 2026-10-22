@@ -1,3 +1,9 @@
 concrete UserExtensionsGer of UserExtensions =
-  NaprocheGer ;
-
+  NaprocheGer,
+  NaprocheWordsGer,
+  HottWordsGer,
+  GodementWordsGer,
+  ProofUnitsGer,
+  GodementExamplesGer,
+  MathlibGer
+  ;

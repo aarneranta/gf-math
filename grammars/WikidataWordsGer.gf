@@ -375,4 +375,47 @@ lin variation_Noun = mkNoun ( UseN variation_N ) ;
 lin variety_Noun = mkNoun ( UseN varietaet_N ) ;
 lin weak_Adj = mkAdj ( PositA schwach_A ) ;
 lin weighted_Adj = mkAdj ( PositA kantengewichtet_A ) ;
+
+-- words of the Mathlib informalization (mathlib-informath), unreviewed
+lin bound_Noun = mkNoun (mkN "Schranke" "Schranken" feminine) ;
+lin cancellative_Adj = mkAdj (mkA "kürzbar") ;
+lin cardinality_Noun = mkNoun (mkN "Kardinalität" "Kardinalitäten" feminine) ;
+lin common_commoner_Adj = mkAdj (mkA "gemeinsam") ;
+lin comparison_Noun = mkNoun (mkN "Vergleich" "Vergleiche" masculine) ;
+lin decision_Noun = mkNoun (mkN "Entscheidungs" "Entscheidungs" neuter) ;
+lin decomposition_Noun = mkNoun (mkN "Zerlegungs" "Zerlegungs" neuter) ;
+lin equivalence_Noun = mkNoun (mkN "Äquivalenz" "Äquivalenzen" feminine) ;
+lin factorial_Noun = mkNoun (mkN "Fakultät" "Fakultäten" feminine) ;
+lin factorization_Noun = mkNoun (mkN "Faktorisierung" "Faktorisierungen" feminine) ;
+lin first_Adj = mkAdj (mkA "erst") ;
+lin floor_Noun = mkNoun (mkN "Boden" "Böden" masculine) ;
+lin forward_Adj = mkAdj (mkA "direkt") ;
+lin image_Noun = mkNoun (mkN "Bild" "Bilder" neuter) ;
+lin infimum_Noun = mkNoun (mkN "Infimum" "Infima" neuter) ;
+lin injective_Adj = mkAdj (mkA "injektiv") ;
+lin join_Noun = mkNoun (mkN "Sup" "Sup" neuter) ;
+lin least_Adj = mkAdj (mkA "kleinst") ;
+lin meet_Adj = mkAdj (mkA "infimal") ;
+lin minimal_Adj = mkAdj (mkA "minimal") ;
+lin monoid_Noun = mkNoun (mkN "Monoid" "Monoide" neuter) ;
+lin multiple_Noun = mkNoun (mkN "Vielfache" "Vielfachen" neuter) ;
+lin multiplicity_Noun = mkNoun (mkN "Vielfachheit" "Vielfachheiten" feminine) ;
+lin power_Noun = mkNoun (mkN "Potenz" "Potenzen" feminine) ;
+lin preordered_Adj = mkAdj (mkA "quasigeordnet") ;
+lin primal_Adj = mkAdj (mkA "primal") ;
+lin range_Noun = mkNoun (mkN "Bereich" "Bereiche" masculine) ;
+lin remainder_Noun = mkNoun (mkN "Rest" "Reste" masculine) ;
+lin root_Noun = mkNoun (mkN "Wurzel" "Wurzeln" feminine) ;
+lin second_Adj = mkAdj (mkA "zweit") ;
+lin semilattice_Noun = mkNoun (mkN "Halbverband" "Halbverbände" masculine) ;
+lin square_Adj = mkAdj (mkA "quadratisch") ;
+lin square_Noun = mkNoun (mkN "Quadrat" "Quadrate" neuter) ;
+lin strict_Adj = mkAdj (mkA "streng") ;
+lin support_Noun = mkNoun (mkN "Träger" "Träger" masculine) ;
+lin union_Noun = mkNoun (mkN "Vereinigung" "Vereinigungen" feminine) ;
+lin unit_Noun = mkNoun (mkN "Einheit" "Einheiten" feminine) ;
+lin upper_Adj = mkAdj (mkA "ober") ;
+lin valuation_Noun = mkNoun (mkN "Bewertung" "Bewertungen" feminine) ;
+lin zero_Noun = mkNoun (mkN "Null" "Nullen" feminine) ;
+
 }
