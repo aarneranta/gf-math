@@ -87,7 +87,7 @@ lin
   CoreAllProp kind ident prop =
     simpleProp (Grammar.ExtAdvS (Syntax.mkAdv for_Prep (allNP (identKindCN ident kind))) (partProp prop)) ;
   CoreExistProp kind ident prop =
-    simpleProp (Grammar.SSubjS (mkS (Extend.ExistsNP (mkNP a_Det ((identKindCN ident kind))))) such_that_Subj (partProp prop)) ; 
+    simpleProp (mkS (Extend.ExistsNP (mkNP a_Det (suchThatCN (identKindCN ident kind) (partProp prop))))) ; 
   IdentProp f = simpleProp (latexS (mkSymb f)) ;
   FalseProp = simpleProp (mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N))) ;
   AppProp f exps = simpleProp (mkS (mkCl (latexNP (mkSymb f)) hold_V2 exps.np)) ;
@@ -97,6 +97,7 @@ lin
     cn = mkCN element_N ;
     adv = Syntax.mkAdv possess_Prep (latexNP (mkSymb ident))
     } ;
+  -- not suchThatCN: a variable added to the kind must precede the clause
   SuchThatKind kind ident prop = {
     cn = mkCN kind.cn (latexNP (mkSymb ident)) ;
     adv = ccAdv kind.adv (Syntax.mkAdv such_that_Subj (partProp prop))

@@ -373,6 +373,7 @@ oper
   by_Prep : Prep = by8means_Prep ;
 
   ccAdv : Adv -> Adv -> Adv = \x, y -> lin Adv {s = x.s ++ y.s} ;
+  nilAdv : Adv = lin Adv {s = []} ;
 
   identKindCN : Str -> {cn : CN ; adv : Adv} -> CN = \ident, kind ->
     mkCN (mkCN kind.cn (latexNP (mkSymb ident))) kind.adv ;
@@ -380,7 +381,8 @@ oper
   allNP : CN -> NP = \cn ->
     mkNP all_Predet (mkNP aPl_Det cn) ;
 
-  suchThatCN : CN -> S -> CN = \cn, s ->
-    mkCN (AdvAP (mkAP such_A) (S.mkAdv that_Subj s)) cn ; 
+  -- "such that", agreeing with the CN where "such" inflects; defined in each
+  -- language, as the word order differs
+  suchThatCN : CN -> S -> CN ;
 
 }

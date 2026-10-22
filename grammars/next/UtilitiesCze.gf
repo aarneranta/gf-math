@@ -9,6 +9,7 @@ open
   SymbolicCze,
   MarkupCze,
   (Extend=ExtendCze),
+  GrammarCze,
   Formal,
   Prelude
 
@@ -86,6 +87,10 @@ oper
   then_Adv : Adv = ParadigmsCze.mkAdv "pak" ;
   thenText_Adv : Adv = ParadigmsCze.mkAdv "tedy" ;
   such_that_Subj : Subj = mkSubj "takový, že" ;
+  such_A : A = mkA "takový" ;
+  -- "such" as an AP with a "that" clause, agreeing with the CN
+  suchThatCN : CN -> S -> CN = \cn, s ->
+    mkCN (AdvAP (mkAP such_A) (S.mkAdv (mkSubj ", že") s)) cn ;
   applied_to_Prep : Prep = mkPrep "aplikovaný na" accusative ;
   defined_as_Prep : Prep = mkPrep "definovaný jako" nominative ;
   function_N : N = ruzeN "funkce" ;

@@ -90,9 +90,7 @@ lin
   ConsPropEnum a bs = {s = \\p => enumItemStr p a ++ ";" ++ bs.s ! enumNext p} ;
 
   ExistUniqueProp argkind prop =
-    let exS : S = mkS (Extend.ExistsNP (mkNP a_Det (mkCN unique_A (useKind argkind))))
-    in simpleProp (Grammar.SSubjS exS such_that_Subj (partProp prop)
-                 | postAdvS exS (Syntax.mkAdv such_that_Subj (partProp prop))) ;  -- with or without comma
+    simpleProp (mkS (Extend.ExistsNP (mkNP a_Det (mkCN unique_A (suchThatCN (useKind argkind) (partProp prop)))))) ;
 
   IfSoIsProp x pred y =
     simpleProp (Grammar.ExtAdvS
@@ -180,6 +178,7 @@ lin
     adv = kind.adv ;
     isPl = False
     } ;
+  -- not suchThatCN: a variable added to the kind must precede the clause
   DeclSuchThatKind kind decl prop = {
     cn = mkCN kind.cn (strNP (sStr (partProp decl))) ;
     adv = ccAdv kind.adv (Syntax.mkAdv such_that_Subj (partProp prop))
@@ -201,7 +200,7 @@ lin
 -- expressions
 
   TheUniqueExp argkind prop =
-    mkNP the_Det (mkCN unique_A (mkCN (useKind argkind) (Syntax.mkAdv such_that_Subj (partProp prop)))) ;
+    mkNP the_Det (mkCN unique_A (suchThatCN (useKind argkind) (partProp prop))) ;
   NumberOfExp kind =
     mkNP the_Det (mkCN numberG_N (Syntax.mkAdv possess_Prep (mkNP aPl_Det (useKind kind)))) ;
   SetOfAllExp kind =

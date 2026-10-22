@@ -108,9 +108,9 @@ $\Rightarrow$ We can prove that there is a left reflection of $x$.
 
 $\Rightarrow$ We can prove that $x$ has a left reflection.
 
-$\Rightarrow$ We can prove that there exists a reflection $_g0$  $_x_0$ such that $_g0$ is left, such that $x$ has $_x_0$.
+$\Rightarrow$ We can prove that there exists a reflection $_g0$  $_x_0$ such that $_g0$ is left such that $x$ has $_x_0$.
 
-$\Rightarrow$ We can prove that there exists a left reflection $_x_0$, such that $x$ has $_x_0$.
+$\Rightarrow$ We can prove that there exists a left reflection $_x_0$ such that $x$ has $_x_0$.
 
 For $x$ to be invertible it is necessary and sufficient that $x$ is a unit.
 
@@ -120,19 +120,19 @@ For an element $x$ of $G$ to be reflexible, it is necessary and sufficient that 
 
 $\Rightarrow$ We can prove that for all elements $x$ of $G$, ( $x$ is reflexible, if and only if there is a left reflection of $x$ ).
 
-$\Rightarrow$ We can prove that for all elements $x$ of $G$, ( $x$ is reflexible, if and only if there exists a reflection $_g0$  $_x_0$ such that $_g0$ is left, such that $x$ has $_x_0$ ).
+$\Rightarrow$ We can prove that for all elements $x$ of $G$, ( $x$ is reflexible, if and only if there exists a reflection $_g0$  $_x_0$ such that $_g0$ is left such that $x$ has $_x_0$ ).
 
-$\Rightarrow$ We can prove that for all elements $x$ of $G$, ( $x$ is reflexible, if and only if there exists a left reflection $_x_0$, such that $x$ has $_x_0$ ).
+$\Rightarrow$ We can prove that for all elements $x$ of $G$, ( $x$ is reflexible, if and only if there exists a left reflection $_x_0$ such that $x$ has $_x_0$ ).
 
 $\Rightarrow$ We can prove that for all elements $x$ of $G$, ( $x$ is reflexible, if and only if $x$ has a left reflection) .
 
-$\Rightarrow$ We can prove that there exists an element $x$  $_h0$ of $G$, such that $_h0$ is reflexible, if and only if there is a left reflection of $x$.
+$\Rightarrow$ We can prove that there exists an element $x$  $_h0$ of $G$ such that $_h0$ is reflexible, if and only if there is a left reflection of $x$.
 
-$\Rightarrow$ We can prove that there exists an element $x$  $_h0$ of $G$, such that $_h0$ is reflexible, if and only if there exists a reflection $_g0$  $_x_0$ such that $_g0$ is left, such that $x$ has $_x_0$.
+$\Rightarrow$ We can prove that there exists an element $x$  $_h0$ of $G$ such that $_h0$ is reflexible, if and only if there exists a reflection $_g0$  $_x_0$ such that $_g0$ is left such that $x$ has $_x_0$.
 
-$\Rightarrow$ We can prove that there exists an element $x$  $_h0$ of $G$, such that $_h0$ is reflexible, if and only if there exists a left reflection $_x_0$, such that $x$ has $_x_0$.
+$\Rightarrow$ We can prove that there exists an element $x$  $_h0$ of $G$ such that $_h0$ is reflexible, if and only if there exists a left reflection $_x_0$ such that $x$ has $_x_0$.
 
-$\Rightarrow$ We can prove that there exists an element $x$  $_h0$ of $G$, such that $_h0$ is reflexible, if and only if $x$ has a left reflection.
+$\Rightarrow$ We can prove that there exists an element $x$  $_h0$ of $G$ such that $_h0$ is reflexible, if and only if $x$ has a left reflection.
 
 For $G$ to be commutative it is sufficient that $G$ is finite.
 
@@ -140,11 +140,11 @@ $\Rightarrow$ We can prove that if $G$ is finite, then $G$ is commutative.
 
 There exists a unique element $x$ of $G$ such that $x$ is invertible.
 
-$\Rightarrow$ We can prove that there exists an element $x$ of $G$, such that ( $x$ is invertible and for all elements $_g0$ of $G$, (if $_g0$ is invertible, then $_g0$ is equal to $x$ )) .
+$\Rightarrow$ We can prove that there exists an element $x$ of $G$ such that ( $x$ is invertible and for all elements $_g0$ of $G$, (if $_g0$ is invertible, then $_g0$ is equal to $x$ )) .
 
-$\Rightarrow$ We can prove that there exists an element $x$  $_g0$ of $G$, such that ( $x$ is invertible and for all elements $x$  $_g0$ of $G$, (if $x$ is invertible, then $_g0$ is equal to $_g0$ )) .
+$\Rightarrow$ We can prove that there exists an element $x$  $_g0$ of $G$ such that ( $x$ is invertible and for all elements $x$  $_g0$ of $G$, (if $x$ is invertible, then $_g0$ is equal to $_g0$ )) .
 
-$\Rightarrow$ We can prove that there exists an element $x$ of $G$  $_g0$, such that ( $x$ is invertible and for all elements $x$ of $G$  $_g0$, (if $x$ is invertible, then $_g0$ is equal to $_g0$ )) .
+$\Rightarrow$ We can prove that there exists an element $x$ of $G$  $_g0$ such that ( $x$ is invertible and for all elements $x$ of $G$  $_g0$, (if $x$ is invertible, then $_g0$ is equal to $_g0$ )) .
 
 If $x$ is reflexible, then so is $y$.
 
@@ -208,19 +208,19 @@ $\Rightarrow$ The order of $f$ is an object defined as $f$.
 
 $x$ is equal to the unique element $y$ of $G$ such that $y$ is invertible.
 
-$\Rightarrow$ We can prove that there exists an element $y$ of $G$, such that (( $y$ is invertible and for all elements $_g0$ of $G$, (if $_g0$ is invertible, then $_g0$ is equal to $y$ )) and $x$ is equal to $y$ ).
+$\Rightarrow$ We can prove that there exists an element $y$ of $G$ such that (( $y$ is invertible and for all elements $_g0$ of $G$, (if $_g0$ is invertible, then $_g0$ is equal to $y$ )) and $x$ is equal to $y$ ).
 
-$\Rightarrow$ We can prove that there exists an element $y$  $_g0$ of $G$, such that (( $y$ is invertible and for all elements $y$  $_g0$ of $G$, (if $y$ is invertible, then $_g0$ is equal to $_g0$ )) and $x$ is equal to $_g0$ ).
+$\Rightarrow$ We can prove that there exists an element $y$  $_g0$ of $G$ such that (( $y$ is invertible and for all elements $y$  $_g0$ of $G$, (if $y$ is invertible, then $_g0$ is equal to $_g0$ )) and $x$ is equal to $_g0$ ).
 
-$\Rightarrow$ We can prove that there exists an element $y$ of $G$  $_g0$, such that (( $y$ is invertible and for all elements $y$ of $G$  $_g0$, (if $y$ is invertible, then $_g0$ is equal to $_g0$ )) and $x$ is equal to $_g0$ ).
+$\Rightarrow$ We can prove that there exists an element $y$ of $G$  $_g0$ such that (( $y$ is invertible and for all elements $y$ of $G$  $_g0$, (if $y$ is invertible, then $_g0$ is equal to $_g0$ )) and $x$ is equal to $_g0$ ).
 
 A subgroup of $G$, namely $H$, is finite.
 
 $\Rightarrow$ We can prove that $H$ is a subgroup of $G$ and $H$ is finite.
 
-$\Rightarrow$ We can prove that there exists a subgroup $_h0$ of $H$, such that $_h0$ is finite.
+$\Rightarrow$ We can prove that there exists a subgroup $_h0$ of $H$ such that $_h0$ is finite.
 
-$\Rightarrow$ We can prove that there exists a subgroup of $H$  $_h0$, such that $_h0$ is finite.
+$\Rightarrow$ We can prove that there exists a subgroup of $H$  $_h0$ such that $_h0$ is finite.
 
 Every element $x \in G$ such that $x$ is invertible is reflexible.
 

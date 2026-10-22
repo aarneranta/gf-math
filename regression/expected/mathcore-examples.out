@@ -1,7 +1,7 @@
 ThmJmt. We can prove that $1$ is odd. Proof. By the first axiom of parity, $0$ is even. By the third axiom of parity, the successor of $0$ is odd.
 AxiomJmt. Let $n$ be an instance of natural numbers. Then we can prove that if $n$ is even, then $n ^{ 2}$ is divisible by $4$.
 Definition. Let $n$ be an instance of natural numbers. Then $n$ is odd, if it is not the case that $n$ is even.
-Definition. A rational number is a real number $x$ such that there exists a natural number $p$, such that there exists a natural number $q$, such that $x = p \times q$.
+Definition. A rational number is a real number $x$ such that there exists a natural number $p$ such that there exists a natural number $q$ such that $x = p \times q$.
 Definition. Let $x$ be an instance of real numbers. Then $x ^{ 2}$ is an instance of real numbers defined as $x ^ {2}$.
 Definition. Let $n$ be an instance of integers. Then we can say that $n$ is sphenic.
 Definition. Let $A$ be a set. Then the lists of elements of $A$ are a basic type.
@@ -21,7 +21,7 @@ CoreIffProp. We can prove that $2$ is even, if and only if $3$ is odd.
 CoreNotProp. We can prove that it is not the case that $3$ is even and $2$ is odd.
 FalseProp. We can prove that we have a contradiction.
 CoreAllProp. We can prove that for all integers $x$, $x + 1 > x$.
-CoreExistProp. We can prove that there exists an integer $x$, such that $x + x < x$.
+CoreExistProp. We can prove that there exists an integer $x$ such that $x + x < x$.
 IdentProp. We can prove that $H$.
 AppProp. We can prove that $K$ holds for $1$, $2$ and $3$.
 IdentKind. Let $x$ be an element of $K$. Then we can prove that we have a contradiction.

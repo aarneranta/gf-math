@@ -188,6 +188,150 @@ PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ 
 
 PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$, such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
 
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'} \in A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'} \in B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c \in B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or $c \times \mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and $c \times \mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c \in A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A \neq B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
+PropositionNeqWitness. Assume that $A$ is distinct from $B$. Then there exists an element $c$ of $\mathrm{object\_Noun}$ such that $c$ is an element of $A$ and the product of $c$ and $\mathrm{'\\not'}$ is an element of $B$ or the product of $c$ and $\mathrm{'\\not'}$ is an element of $A$ and $c$ is an element of $B$.
+
 AbbreviationIsSubset. $A \subseteq B$, if and only if $A \subseteq B$.
 
 AbbreviationIsSubset. $A$ is a subset of $B$, if and only if $A \subseteq B$.

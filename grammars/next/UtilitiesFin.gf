@@ -9,6 +9,7 @@ open
   MarkupFin,
   (Extend=ExtendFin),
   (X=ExtraFin),
+  GrammarFin,
   Formal,
   Prelude
 
@@ -44,6 +45,10 @@ oper
   then_Adv : Adv = ParadigmsFin.mkAdv "niin" ;
   thenText_Adv : Adv = ParadigmsFin.mkAdv "silloin" ;
   such_that_Subj : Subj = mkSubj "siten että" ;
+  such_A : A = mkA "sellainen" ;
+  -- "sellainen" agreeing before the CN, the "että" clause after it
+  suchThatCN : CN -> S -> CN = \cn, s ->
+    mkCN (mkCN such_A cn) (S.mkAdv (mkSubj ", että") s) ;
   applied_to_Prep : Prep = mkPrep "sovellettuna" ;
   defined_as_Prep : Prep = mkPrep "määriteltynä" ;
   function_N : N = mkN "funktio" ;

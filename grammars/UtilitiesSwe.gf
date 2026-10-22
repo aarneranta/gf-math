@@ -47,6 +47,9 @@ oper
   thenText_Adv : Adv = ParadigmsSwe.mkAdv "då" ;
   such_that_Subj : Subj = mkSubj "så att" ;
   such_A : A = mkA "sådan" ;
+  -- "such" as an AP with a "that" clause, agreeing with the CN
+  suchThatCN : CN -> S -> CN = \cn, s ->
+    mkCN (AdvAP (mkAP such_A) (S.mkAdv that_Subj s)) cn ;
   applied_to_Prep : Prep = mkPrep "applicerat på" ;
   defined_as_Prep : Prep = mkPrep "definierat som" ;
   function_N : N = mkN "funktion" "funktioner" ;

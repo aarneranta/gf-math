@@ -48,8 +48,11 @@ oper
   contradiction_N : N = mkN "Widerspruch" ;
   then_Adv : Adv = ParadigmsGer.mkAdv "dann" ;
   thenText_Adv : Adv = ParadigmsGer.mkAdv "dann" ;
-  such_that_Subj : Subj = mkSubj "sodass" ;
+  such_that_Subj : Subj = mkSubj "derart , dass" ;
   such_A : A = invarA "derart" ;
+  -- "derart, dass" after the CN: derart does not inflect
+  suchThatCN : CN -> S -> CN = \cn, s ->
+    mkCN cn (S.mkAdv (mkSubj "derart , dass") s) ;
   applied_to_Prep : Prep = mkPrep "angewandt auf" accusative ;
   defined_as_Prep : Prep = mkPrep "definiert als" nominative ;
   function_N : N = mkN "Funktion" ;

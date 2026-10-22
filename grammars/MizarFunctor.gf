@@ -25,8 +25,8 @@ in {
     } ;
 
   BareSuchThatKind kind prop = {
-    cn = kind.cn ;
-    adv = ccAdv kind.adv (Syntax.mkAdv such_that_Subj (partProp prop))
+    cn = suchThatCN (useKind kind) (partProp prop) ;
+    adv = nilAdv
     } ;
     
   DefSuchThatJmt label hypos exp kind cond =

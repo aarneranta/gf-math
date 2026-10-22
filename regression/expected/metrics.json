@@ -119,7 +119,7 @@
  "godement-syntax": {
   "lines": 140,
   "undefined": 0,
-  "seconds": 1.2,
+  "seconds": 0.9,
   "latex_pages": 6,
   "latex_errors": 16
  },
@@ -168,10 +168,10 @@
   "seconds": 1.6
  },
  "naproche-interpret": {
-  "lines": 2107,
+  "lines": 2179,
   "undefined": 0,
   "seconds": 6.1,
-  "latex_pages": 130,
+  "latex_pages": 136,
   "latex_errors": 0
  },
  "naproche-translate": {

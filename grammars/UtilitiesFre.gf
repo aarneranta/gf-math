@@ -49,6 +49,9 @@ oper
   thenText_Adv : Adv = ParadigmsFre.mkAdv "alors" ;
   such_that_Subj : Subj = Mk.mkSubjSubj "tel que" ; -----
   such_A : A = mkA "tel" ;
+  -- "such" as an AP with a "that" clause, agreeing with the CN
+  suchThatCN : CN -> S -> CN = \cn, s ->
+    mkCN (AdvAP (mkAP such_A) (S.mkAdv that_Subj s)) cn ;
   applied_to_Prep : Prep = mkPrep "appliqué à" ; ----
   defined_as_Prep : Prep = mkPrep "défini comme" ; ----
   function_N : N = mkN "fonction" ;

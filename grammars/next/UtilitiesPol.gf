@@ -13,6 +13,7 @@ open
   SymbolicPol,
   MarkupPol,
   (Extend=ExtendPol),
+  GrammarPol,
   Formal,
   Prelude
 
@@ -455,6 +456,10 @@ oper
   thenText_Adv : Adv = P.mkAdv "zatem" ;
   otherwise_Adv : Adv = P.mkAdv "inaczej" ;
   such_that_Subj : Subj = mkSubj "taki, że" ;
+  such_A : A = mkA "taki" ;
+  -- "such" as an AP with a "that" clause, agreeing with the CN
+  suchThatCN : CN -> S -> CN = \cn, s ->
+    mkCN (AdvAP (mkAP such_A) (S.mkAdv that_Subj s)) cn ;
   applied_to_Prep : Prep = mkPrep "zastosowany do" R.Gen ;
   defined_as_Prep : Prep = mkPrep "zdefiniowany jako" R.Nom ;
   function_N : N = funkcja_N ;

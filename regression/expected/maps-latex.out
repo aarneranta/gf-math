@@ -30,7 +30,7 @@ Definition. Let $X$ and $Y$ be sets. Then $\F {X}{Y}$ is a set.
 
 Definition. Let $X$ and $Y$ be sets. Let $f$ be a map from $X$ to $Y$. Let $x$ be an element of $X$. Then $\app {f}{x}$ is an element of $Y$.
 
-IsMap. Let $X$ and $Y$ be sets. Let $f$ be a map from $X$ to $Y$. Then for all elements $x$ of $X$, there exists an element $y$ of $Y$, such that $\mathrm{Equ}$ holds for $Y$, $\app {f}{x}$ and $y$ and for all elements $y$ of $Y$, for all elements $\mathrm{y'}$ of $Y$, if $\mathrm{Equ}$ holds for $Y$, $\app {f}{x}$ and $y$ and $\mathrm{Equ}$ holds for $Y$, $\app {f}{x}$ and $\mathrm{y'}$, then $\mathrm{Equ}$ holds for $Y$, $y$ and $\mathrm{y'}$.
+IsMap. Let $X$ and $Y$ be sets. Let $f$ be a map from $X$ to $Y$. Then for all elements $x$ of $X$, there exists an element $y$ of $Y$ such that $\mathrm{Equ}$ holds for $Y$, $\app {f}{x}$ and $y$ and for all elements $y$ of $Y$, for all elements $\mathrm{y'}$ of $Y$, if $\mathrm{Equ}$ holds for $Y$, $\app {f}{x}$ and $y$ and $\mathrm{Equ}$ holds for $Y$, $\app {f}{x}$ and $\mathrm{y'}$, then $\mathrm{Equ}$ holds for $Y$, $y$ and $\mathrm{y'}$.
 
 Definition. Let $X$ be a set. Then $\id {X}$ is a map from $X$ to $X$.
 
