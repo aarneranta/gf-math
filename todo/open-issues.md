@@ -63,11 +63,78 @@ hott-llm and godement-index:
   $x$ is an element of #1" and the like. The binder forms that parse are
   "the <Noun> #1 of $x$" and "the <Noun> of #3 where $x$ ranges from #1 to #2".
 
+## Agreement of "such that" (22 October)
+
+`such_that_Subj` ("such that", "tel que", "takový, že") cannot agree with
+the noun. bf2e121 added `such_A` and `suchThatCN` (`Utilities`), now
+defined in each language (`Utilities*.gf`, also `next/`): an agreeing AP in
+Eng, Fre, Swe, Cze (with ", že") and Pol; "derart, dass" after the noun in
+Ger, which does not inflect; "sellainen" before the noun and ", että" after
+it in Fin (a shared AP version put the whole clause before the noun in Ger
+and Fin). It is used in `CoreExistProp`, `SuchThatHypo`, `ExistUniqueProp`,
+`TheUniqueExp` and `BareSuchThatKind`. Still open:
+
+* `ExistProp`, `ExistNoProp` (MathExtensions) and Mizar's
+  `FraenkelComprehensionTerm` still use `such_that_Subj`, after an NP that
+  is already built (`[ArgKind] = {sg, neg, pl : NP}`). These are the
+  readings that NLG prefers, so most existentials still come out wrong:
+  Fre "un nombre naturel $n$ tel que" is right only by chance ("une matrice
+  $M$ tel que", "des nombres naturels $m$ et $n$ tel que"); Cze "přirozené
+  číslo $n$, takový, že" (the problem of slide 15 of
+  `doc/claude-commits-slides.pdf`); Pol "liczba naturalna $n$, taki, że";
+  Swe "så att" and Fin "siten että" mean "so that", "in such a way that".
+  Ger is right, as its `such_that_Subj` is now "derart, dass".
+  A first attempt kept the last kind of the list in `[ArgKind]` (its CN, the
+  NPs of the others): `-v` showed `ConsArgKind` grow from 3538944 to
+  50096498540544 concrete functions, French took 10 minutes instead of 25 s,
+  and English got worse, so it was reverted. A lighter way: keep the
+  original NPs and only the CN of a single kind, agreeing only when the
+  list has one kind, the common case.
+* In English, `ExistProp` writes ", such that" and `CoreExistProp` "such
+  that": in `naproche-interpret`, the readings of `PropositionNeqWitness`
+  doubled from 72 to 144, differing only in that comma.
+* `SuchThatKind` (MathCore) and `DeclSuchThatKind` (GodementSyntax) keep
+  `such_that_Subj` in the adverb of the kind: with `suchThatCN` in the CN, a
+  variable added to the kind afterwards (`identKindCN`) came after the
+  clause, "a reflection $g$ such that $g$ is left $x_0$ such that ...". The
+  `Kind = {cn, adv}` split would need a place for the variable before the
+  clause.
+* Fre: "**Il existent** des nombres naturels $m$ et $n$": the impersonal
+  "il existe" must stay singular, but `ExistsNP` agrees with the NP.
+* `such_that_Subj` is also used in `forthel/` (not changed), and
+  `NaprocheEng` / `next/NaprocheFin` write "such that" as a string (in
+  Finnish too).
+
+## Found by mathlib-informath (21-22 October)
+
+* Fre: "pour tous **des** nombres naturels" (should be "les"), "il n'est pas
+  le cas que" (a calque; "il n'est pas vrai que"), "une relation
+  d'**équivalences**".
+* Eng: "does not have **a** upper bound".
+* A proposition inside a macro argument loses its notation:
+  `\mathrm{Lt}(n, x \times x)` inside if-then-else.
+* Multi-letter variables (`lt`, `self`, `motive`) are shown as `\mathrm{lt}`,
+  like constants; a constant used unapplied, as `Leq`, gives
+  `\mathrm{Leq}(x_2, x_3)`.
+* `$` inside a quoted verbal form splits a symbol table entry (`splitEntry`
+  in `BuildConstantTable.hs`), which rules out the binder shapes ("the set
+  #1 of $x$") in tables; the symbol-table skill of `autoformalize/`
+  recommends them.
+* Proof texts: a lemma or constructor used unapplied gives "... elements
+  $\mathrm{irrefl}$ of $\mathrm{Proof}$ applied to the proposition that
+  ..."; bound variables are renumbered ($x_4$, $x_5$).
+* `proof2dedukti` does not cover proofs, so `-json` crashes on them without
+  `-no-back-to-dedukti`.
+* Partial French modules: `NaprocheWordsFre`, `GodementWordsFre`,
+  `GodementExamplesFre` have only the words mathlib-informath uses.
+
 ## Regression tests
 
-`python3 regression/run.py`: 49 PASS, 1 NEW (exx-ger, which has no expected
-output yet), 2 XFAIL (fermat: conflicting profile information; bind:
-test/bind.dk does not parse).
+`python3 regression/run.py`: 46 PASS, 2 XFAIL (fermat: conflicting profile
+information; bind: test/bind.dk does not parse), and exx-swe FAIL, exx-ger
+SKIP, as `share/InformathFull.pgf` now has only English and French
+(mathlib-informath); build it with all languages (`make full_grammar`) to
+test those.
 
 ## Elsewhere
 
