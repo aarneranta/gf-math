@@ -1,5 +1,9 @@
 concrete UserExtensionsCze of UserExtensions =
   NaprocheCze,
-  HottWordsCze
+  NaprocheWordsCze,
+  HottWordsCze,
+  GodementWordsCze,
+  ProofUnitsCze,
+  GodementExamplesCze,
+  MathlibCze
   ;
-

@@ -7,6 +7,6 @@ concrete InformathCze of Informath =
   SymbolicConstantsLatex,
   WikidataWordsCze,
   ProperNamesCze,
-  MathExtensionsCze
-----  UserExtensionsCze
+  MathExtensionsCze,
+  UserExtensionsCze
   ;
