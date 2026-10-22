@@ -175,6 +175,10 @@ dict(name='proof-text-lemmas', tier='dev',
      cmd='{RUN} -proof-text -base=test/natdedrules.dk -add-symboltables=test/natdrop.dkgf '
          'test/prooftext_lemmas.dk', latex=True),
 
+dict(name='proof-text-lambdas', tier='dev',
+     what='proof texts of λs typed by a proof of an implication, a negation or a ∀',
+     cmd='{RUN} -proof-text -base=test/natdedrules.dk test/prooftext_lambdas.dk', latex=True),
+
 dict(name='mathcore-examples', tier='dev', make='mathcore_examples',
      what='MathCore text only',
      cmd='{RUN} -add-symboltables=test/natural_deduction.dkgf -mathcore test/mathcore_examples.dk'),

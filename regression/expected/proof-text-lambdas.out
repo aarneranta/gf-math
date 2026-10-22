@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[margin=2cm]{geometry}
+\setlength\parindent{0pt}
+\setlength\parskip{8pt}
+\begin{document}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Integral}[4]{\int_{ #1 }^{#2} #4 d #3}
+\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Rational}{\mathbb{Q}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Summa}[4]{\sum_{ #3 = #1 }^{#2}{#4}}
+\newcommand{\congruent}[3]{#1 \equiv #2 \, \mbox{mod} \, #3}
+\newcommand{\divides}[2]{#1 \mid #2}
+\newcommand{\divisible}[2]{#2 \mid #1}
+\newcommand{\infinity}{\infty}
+\newcommand{\isempty}[1]{#1 = \emptyset}
+\subsection*{\texttt{(hq : Proof Q) -> Proof Q}}
+
+
+
+\begin{tabular}{rp{0.62\textwidth}l}
+1. & Assume that $Q$. &  \\
+2. & $Q$. & \texttt{lemIf} 1 [x] \\
+\end{tabular}
+
+
+
+
+\clearpage
+
+
+
+
+\subsection*{\texttt{(hn : Proof (not P)) -> Proof Q}}
+
+
+
+\begin{tabular}{rp{0.62\textwidth}l}
+1. & Assume that it is not the case that $P$. &  \\
+2. & Assume that $P$. &  \\
+3. & We have a contradiction. & \texttt{ifE} 1, 2  \\
+4. & $Q$. & \texttt{lemNot} 3 [x] \\
+\end{tabular}
+
+
+
+
+\clearpage
+
+
+
+
+\subsection*{\texttt{(hp : Proof P) -> Proof Q}}
+
+
+
+\begin{tabular}{rp{0.62\textwidth}l}
+1. & Let $n$ be an element of $\Natural$. &  \\
+2. & Assume that $P$. &  \\
+3. & $Q$. & \texttt{lemAll} 1, 2 [n] \\
+\end{tabular}
+
+
+
+
+\clearpage
+
+
+\end{document}

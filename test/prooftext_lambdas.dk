@@ -1,0 +1,12 @@
+(; λs whose type is a proof of an implication, a negation or a universal
+   statement, as in proofs translated from Lean, where these are functions ;)
+
+P : Prop.
+Q : Prop.
+lemIf : (h : Proof (if P Q)) -> Proof Q.
+lemNot : (h : Proof (not P)) -> Proof Q.
+lemAll : (h : Proof (forall Nat (n => P))) -> Proof Q.
+
+def byIf : (hq : Proof Q) -> Proof Q := hq => lemIf (x => hq).
+def byNot : (hn : Proof (not P)) -> Proof Q := hn => lemNot (x => ifE P false hn x).
+def byAll : (hp : Proof P) -> Proof Q := hp => lemAll (n => hp).

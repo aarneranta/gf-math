@@ -207,6 +207,13 @@
   "latex_pages": 10,
   "latex_errors": 0
  },
+ "proof-text-lambdas": {
+  "lines": 42,
+  "undefined": 0,
+  "seconds": 0.1,
+  "latex_pages": 3,
+  "latex_errors": 0
+ },
  "proof-text-lemmas": {
   "lines": 58,
   "undefined": 0,

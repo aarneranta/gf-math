@@ -6,7 +6,7 @@ import Dedukti.AbsDedukti hiding (Tree)
 import Dedukti.PrintDedukti hiding (prt)
 
 import DeduktiOperations
-import DeduktiTheoryAPI (identProof, identElem)
+import DeduktiTheoryAPI (identProof, identElem, identImpl, identNot, identPi, identFalse)
 import BuildConstantTable
 import Environment
 import AnnotateDedukti (annotateDkIdents, subst)
@@ -193,6 +193,28 @@ objectBinders binds = [(v, t) | BTyped v t <- binds, headedBy identElem t]
 -- type annotation
 -----------------------------------------
 
+-- | The type of the bound variable x and of the body of an abstraction of type
+-- typ: a function type, or a proof of an implication, a negation or a
+-- universal statement, which are functions in proofs translated from Lean
+-- (Proof (if A B) is Proof A -> Proof B, Proof (not A) is Proof A -> Proof
+-- false, and Proof (forall A P) is (x : Elem A) -> Proof (P x)).
+abstractionTypes :: [QIdent] -> QIdent -> Exp -> Maybe (Exp, Exp)
+abstractionTypes bound x typ = case typ of
+  EFun h val -> do
+    ty <- hypo2type h
+    return (ty, subst (zip (hypo2vars h) [EIdent x]) bound val)
+  EApp (EIdent p) prop | p == identProof -> case splitApp prop of
+    (EIdent c, [a, b]) | c == identImpl -> return (proof a, proof b)
+    (EIdent c, [a]) | c == identNot -> return (proof a, proof (EIdent identFalse))
+    (EIdent c, [k, EAbs b pbody]) | c == identPi ->
+      return (EApp (EIdent identElem) k, proof (subst [(bind2ident b, EIdent x)] bound pbody))
+    (EIdent c, [k, pred]) | c == identPi ->
+      return (EApp (EIdent identElem) k, proof (EApp pred (EIdent x)))
+    _ -> Nothing
+  _ -> Nothing
+ where
+   proof = EApp (EIdent identProof)
+
 typeAnnotate :: M.Map QIdent Exp -> [(QIdent, Exp)] -> Exp -> Exp -> Exp
 typeAnnotate mo cont typ exp = case exp of
   EApp _ _ -> case splitApp exp of
@@ -206,16 +228,13 @@ typeAnnotate mo cont typ exp = case exp of
   EIdent fun -> ETyped exp (look fun)
   EAbs bind body -> 
     let
+      bindvar = bind2var bind
+      (argtyp, bodytyp) = case abstractionTypes (map fst cont) bindvar typ of
+        Just ts -> ts
+        _ -> error ("incorrect type of abstraction " ++ printTree exp)
       vartyp = case bind of
         BTyped _ ty -> ty
-        BVar _ -> case typ of
-          EFun h _ -> case hypo2type h of
-            Just ty -> ty
-            _ -> error ("no type of bound var in " ++ printTree exp)
-      bindvar = bind2var bind
-      bodytyp = case typ of
-        EFun h val -> subst (zip (hypo2vars h) [EIdent bindvar]) (map fst cont) val
-        _ -> error ("incorrect type of abstraction " ++ printTree exp)
+        BVar _ -> argtyp
     in EAbs (BTyped bindvar vartyp)
             (typeAnnotate mo ((bindvar, vartyp): cont) bodytyp body)
 
