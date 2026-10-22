@@ -88,7 +88,10 @@ readEnv args = do
     reachableFunctions = reachableGFFunctions (backConstantTable symt),
     baseConstantModule = mo,
     formalisms = words "agda dedukti lean rocq",
-    langs = filter (/= latexLanguage) (languages gr), ---- | relevantLanguages gr args,
+    -- the languages ranked and shown: those of -languages, or all but LaTeX
+    langs = if flagHasValue "-languages" args
+            then relevantLanguages gr args
+            else filter (/= latexLanguage) (languages gr),
     toLang = mkLanguage gr (argValue "-to-lang" english args),
     toFormalism = argValue "-to-formalism" "NONE" args,
     fromLang = fro,
@@ -152,13 +155,15 @@ fullGrammarFile = "share/InformathFull.pgf"
 baseConstantFile = "share/baseconstants.dk"  
 constantTableFile = "share/baseconstants.dkgf"
 
--- * select English-only (default) or full grammar (if -to-lang or -for-lang is other than Eng)
+-- * select English-only (default) or full grammar (if -to-lang or -for-lang is other than Eng,
+--   or -languages has another language than Eng)
 -- * can be overridden with the -grammar=<file>.pgf flag
 grammarFile :: [Flag] -> FilePath
 grammarFile args = case (argValue "-from-lang" english args,
                          argValue "-to-lang" english args,
-                         argValue "-symboltable-lang" english args) of
-  ("Eng", "Eng", "Eng") -> engGrammarFile
+                         argValue "-symboltable-lang" english args,
+                         argValues "-languages" english args) of
+  ("Eng", "Eng", "Eng", ls) | all (== "Eng") ls -> engGrammarFile
   _ -> fullGrammarFile
 
 -- * Main types involved
@@ -407,7 +412,8 @@ showJsonGenResult env result = encodeJSON $ mkJSONObject $ [
     mkJSONListField "coreGF" (map (stringJSON . showExpr []) (coreGF result))] ++
     if isFlag "-vs" env then [] else [
     mkJSONField "nlgResults" (mkJSONObject [
-      mkJSONListField (showCId lang) (map (printRank) ranks) | (lang, ranks) <- nlgResults result]),
+      mkJSONListField (showCId lang) (map (printRank) ranks) | (lang, ranks) <- nlgResults result])] ++
+    if isFlag "-no-back-to-dedukti" env then [] else [
     mkJSONListField "backToDedukti" [stringJSON (printDeduktiEnv env jmt) | jmt <- backToDedukti result]
     ]
 
@@ -695,10 +701,13 @@ tryParseSymbolTable env ls = map tryParse ils
 
 --- proof text demo, experimental
 showProofDemo :: Env -> Module -> Module -> String
-showProofDemo env base mo = proofDemo env base mo unit2nat
+showProofDemo env base mo = proofDemo env base mo (map unit2nat proofLangs)
  where
-   unit2nat :: GUnit -> String
-   unit2nat u = unlex env (gftree2nat env (toLang env) (gf (best u)))
+   -- one proof text for each language of -languages, or for -to-lang
+   proofLangs = if flagHasValue "-languages" (flags env) then langs env else [toLang env]
+
+   unit2nat :: Language -> GUnit -> String
+   unit2nat lang u = unlex env (gftree2nat env lang (gf (best u)))
 
    best u = head [u | GUnitJmt u <- core2ext env (GUnitJmt u)]
 

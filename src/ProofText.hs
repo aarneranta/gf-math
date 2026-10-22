@@ -35,11 +35,13 @@ import qualified Data.Map as M
 --   Lines -> Term  -- TODO
 --
 
-proofDemo :: Env -> Module -> Module -> (GUnit -> String) -> String
-proofDemo env base (MJmts proofs) informalize = 
+-- | The proof texts of the proofs of a module, each with one table of lines
+-- for each linearization given (one for each language).
+proofDemo :: Env -> Module -> Module -> [GUnit -> String] -> String
+proofDemo env base (MJmts proofs) informalizes = 
   prLatexFile (macroCommands (macroTable (symbolTable env))) $
     unlines $ intersperse "\n\n" [
-      oneProof env dkmap informalize t e | (t, e) <- concatMap proved proofs]
+      oneProof env dkmap informalizes t e | (t, e) <- concatMap proved proofs]
  where
    -- the constants of the base and of the module itself: a lemma stated in
    -- the module and used in a later proof is a rule with premisses, not a
@@ -59,11 +61,10 @@ proofDemo env base (MJmts proofs) informalize =
        (EIdent f, _:_) -> f == identProof
        _ -> False
 
-oneProof :: Env -> M.Map QIdent Exp -> (GUnit -> String) -> Exp -> Exp -> String  
-oneProof env dkmap lin typ exp = unlines $ intersperse "\n\n" (
-    [ "\\subsection*{" ++ verbatimInline (printTree typ) ++ "}"
-    , prls (prlu lin) (compressVarsHypos (map (line2unitline env dkmap) linesterm))
-    ] ++
+oneProof :: Env -> M.Map QIdent Exp -> [GUnit -> String] -> Exp -> Exp -> String  
+oneProof env dkmap lins typ exp = unlines $ intersperse "\n\n" (
+    [ "\\subsection*{" ++ verbatimInline (printTree typ) ++ "}" ] ++
+    [ prls (prlu lin) unitlines | lin <- lins ] ++
     (if isFlag "-proof-terms" env
        then [ "The proof term"
             , verbatim (printTree exp)
@@ -76,6 +77,7 @@ oneProof env dkmap lin typ exp = unlines $ intersperse "\n\n" (
     term = showOnly (proofProfile (showTable (symbolTable env)) dkmap)
                     (typeAnnotate dkmap [] typ exp)
     linesterm = term2lines term
+    unitlines = compressVarsHypos (map (line2unitline env dkmap) linesterm)
     
 
 

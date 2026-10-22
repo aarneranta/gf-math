@@ -10,8 +10,13 @@ open
 
 in {
 
+lin
+  HyposUnit hypos = hypos.text ;
+  ConclusionUnit prop = mkText (topProp prop) ;
+
 lincat
   [Unit] = Text ;
+  Hence = Adv ;
 
 lin
 ----  UnitsProof units = units ;
@@ -53,6 +58,8 @@ lin
 
   noHence = P.mkAdv "" ;
   henceHence = P.mkAdv "donc" ;
+  thusHence = P.mkAdv "ainsi" ;
+  thenHence = P.mkAdv "alors" ;
   altogetherHence = P.mkAdv "en somme" ;
   afortioriHence = P.mkAdv "a fortiori" ;
   inParticularHence = P.mkAdv "en particulier" ;
