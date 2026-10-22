@@ -20,6 +20,7 @@ fun
   VarsHypo : [Ident] -> Kind -> Hypo ;
   BareVarsHypo : [Ident] -> Hypo ;  -- needed in proofs: let x be arbitrary
   AdjKindHypo : [Ident] -> Adj -> Kind -> Hypo ;
+  SuchThatHypo : [Ident] -> Prop -> Kind -> Hypo ;
   
   AbsExp : [Ident] -> Exp -> Exp ;
 
