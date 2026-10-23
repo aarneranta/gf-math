@@ -128,7 +128,34 @@ and Fin). It is used in `CoreExistProp`, `SuchThatHypo`, `ExistUniqueProp`,
 * Partial French modules: `NaprocheWordsFre`, `GodementWordsFre`,
   `GodementExamplesFre` have only the words mathlib-informath uses.
 
+## The symbol table of all Mathlib definitions (23 October)
+
+mathlib-informath's `definition-table.py` makes `definitions.dkgf` (26922 of
+38624 definitions, 70%) and the generated block of `Mathlib.gf` and
+`MathlibEng.gf` (872 words). To improve:
+
+* Composite names: `quotientIdealMapEquivTensorQuot`, `XEquivY`, `XIsoY`
+  ("the equivalence between X and Y" would be better than the words in a row).
+* Bundled maps without explicit arguments (equivalences, homomorphisms,
+  functors applied by coercion) get bare readings: "the dual", "the complex",
+  "the lift".
+* Predicates headed by verbs (`PreservesX`, `ReflectsX`, `CreatesX`,
+  `HasX`) have no readings: "#1 preserves X" needs verbs in the lexicon.
+* About 2500 unknown words, mostly abbreviations of jargon (eq, le, desc, lp,
+  gi, cond, ...): spell out more, or leave the constants symbolic.
+* "Is Brauer equivalent to" does not parse ("equivalent" is a noun only), and
+  "left monotone" (`MulLeftMono`) has no good English.
+* Generated words to review by hand: wrong categories ("biggest" as a noun),
+  proper names, words of names that DictEng has otherwise.
+* The other languages: the generated words are English only.
+
 ## Regression tests
+
+23 October: godement-syntax ("The order of $G$ is defined to be the
+determinant of $G$" does not parse), naproche-interpret (a union read as a
+product, `complex_Const` unlinearized), exx-roundtrip and dk-roundtrip (order
+only) changed after the -optimize-pgf builds, with or without the generated
+Mathlib words.
 
 `python3 regression/run.py`: 46 PASS, 2 XFAIL (fermat: conflicting profile
 information; bind: test/bind.dk does not parse), and exx-swe FAIL, exx-ger
