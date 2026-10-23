@@ -17,6 +17,8 @@ lincat
   BoundVariable = Str ;
 
 lin
+  ExampleJmt ex = lin Text ex ;
+
   AdjExample adj x = mkExample (AdjProp adj x) ;
   Adj2Example adj x y = mkExample (Adj2Prop adj x y) ;
   AdjCExample adj x y = mkExample (AdjCProp adj x y) ;

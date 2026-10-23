@@ -9,6 +9,9 @@ cat
   BoundVariable ;
 
 fun
+  -- to access from startcat
+  ExampleJmt : Example -> Jmt ;
+
   AdjExample : Adj -> Argument -> Example ;
   Adj2Example : Adj2 -> Argument -> Argument -> Example ;
   AdjCExample : AdjC -> Argument -> Argument -> Example ;
