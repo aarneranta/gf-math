@@ -44,7 +44,7 @@
 \newcommand{\how}{\par\textcolor{gfblue}{\textbf{Prompt and interaction}}\par}
 \newcommand{\what}{\par\textcolor{gfblue}{\textbf{Outcome}}\par}
 
-\title{Sixty-nine Commits}
+\title{Seventy-one Commits}
 \subtitle{What Claude Code has contributed to Informath, July--October 2026}
 \author{Aarne Ranta}
 \date{October 2026}
@@ -56,7 +56,7 @@
 \begin{frame}{This talk}
   \begin{itemize}
     \item Informath: over 900 commits since 2024, almost all by hand.
-    \item \textbf{69} of them are co-authored by Claude (Claude Code, Anthropic's
+    \item \textbf{71} of them are co-authored by Claude (Claude Code, Anthropic's
           coding agent, working in a terminal in my checkout).
     \item For each task: \textbf{why} it was needed, the \textbf{prompt and
           interaction}, and the \textbf{outcome} --- including what is still wrong.
@@ -70,7 +70,7 @@
   These slides were themselves drafted by Claude from those sources
   (\commit{35d81f9}, 27 September), and extended in October with Tasks 12--28
   (\commit{ab75fd7}, \commit{9809d76}, \commit{ffb638d}, \commit{8cbe9a3},
-  \commit{09a82f6}, \commit{4bfa9a2} and this version).
+  \commit{09a82f6}, \commit{4bfa9a2}, \commit{016e07b} and this version).
 \end{frame}
 
 \begin{frame}{Outline}
@@ -1295,7 +1295,7 @@ example/           divisibility.tex, formalized
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Since 22 October: 11 more commits as 5 tasks}
+\begin{frame}{Since 22 October: 12 more commits as 5 tasks}
   \footnotesize
   \begin{tabular}{rllr}
     \toprule
@@ -1305,7 +1305,7 @@ example/           divisibility.tex, formalized
     25 & Aggregated hypotheses & 22 Oct & 1 \\
     26 & Tactic proofs as proof units & 22--23 Oct & 2 \\
     27 & Swedish, and optimized grammars & 23 Oct & 1 \\
-    28 & Words for all of Mathlib's definitions & 23 Oct & 4 \\
+    28 & Words for all of Mathlib's definitions & 23 Oct & 5 \\
     \bottomrule
   \end{tabular}
 
@@ -1482,7 +1482,7 @@ example/           divisibility.tex, formalized
 \end{frame}
 
 \begin{frame}{Task 28: Words for all of Mathlib's definitions}
-  \commit{d6ee843}, \commit{c96ef79}, \commit{36198ef}, \commit{eb077de} (23 Oct)
+  \commit{d6ee843}, \commit{c96ef79}, \commit{36198ef}, \commit{eb077de}, \commit{48496cf} (23 Oct)
   \prompt{Build a symbol table for all of Mathlib's definitions. Use information from
   docstrings and also try to parse camel script to multiword expressions. Add words to
   Informath lexicon if needed.}
@@ -1495,8 +1495,9 @@ example/           divisibility.tex, formalized
           Instead a table, \texttt{translations.tsv}, written by Claude, \textbf{to be
           reviewed}: 473 French, 465 German, 441 Swedish, 441 Czech words.
   \end{itemize}
-  70\% of Mathlib's definitions get an English wording; where a language lacks a word,
-  the older, symbolic reading is kept.
+  Verbs for predicates (``$C$ has limits'', ``$F$ preserves finite limits''). Two thirds of
+  Mathlib's definitions get an English wording, and all 38,690 are read in English (99\% with a
+  reading); where a language lacks a word, the older, symbolic reading is kept.
 \end{frame}
 
 % =====================================================================
