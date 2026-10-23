@@ -14,7 +14,7 @@ lin
   HyposUnit hypos = hypos.text ;
   ConclusionUnit prop = mkText (topProp prop) ;
 
----  UnitJmt unit = unit ; --- not to be parsed?
+  UnitJmt unit = lin Text {s = ">" ++ unit.s} ; --- not to be used, just to be reached
 
 
 
