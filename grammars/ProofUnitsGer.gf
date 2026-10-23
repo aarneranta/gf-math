@@ -16,6 +16,18 @@ lin
 
   UnitJmt unit = lin Text {s = ">" ++ unit.s} ; --- not to be used, just to be reached
 
+  -- the units of tactic proofs (-tactic-proof)
+  ObviousConclusion = strText "das ist offensichtlich ." ;
+  -- dass with the verb last: "es genügt zu zeigen, dass p prim ist"
+  FirstVerifyGoal prop =
+    strText ("zuerst prüfen wir ," ++ (SyntaxGer.mkAdv that_Subj (partProp prop)).s ++ ".") ;
+  EnoughGoal prop =
+    strText ("es genügt zu zeigen ," ++ (SyntaxGer.mkAdv that_Subj (partProp prop)).s ++ ".") ;
+  InductionGoal =
+    strText "wir argumentieren durch Induktion :" ;
+  CasesGoal =
+    strText "wir unterscheiden Fälle :" ;
+
 lincat
   [Unit] = Text ;
   Hence = Adv ;

@@ -14,6 +14,19 @@ lin
   HyposUnit hypos = hypos.text ;
   ConclusionUnit prop = mkText (topProp prop) ;
 
+  UnitJmt unit = lin Text {s = ">" ++ unit.s} ; --- not to be used, just to be reached
+
+  -- the units of tactic proofs (-tactic-proof)
+  ObviousConclusion = strText "je to zřejmé ." ;
+  FirstVerifyGoal prop =
+    prefixText "nejprve ověřme, že" (mkText (topProp prop)) ;
+  EnoughGoal prop =
+    prefixText "stačí ukázat, že" (propText prop) ;
+  InductionGoal =
+    strText "postupujeme indukcí :" ;
+  CasesGoal =
+    strText "rozlišíme případy :" ;
+
 lincat
   [Unit] = Text ;
   Hence = Adv ;
