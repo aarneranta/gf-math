@@ -8,6 +8,10 @@
 
 #### LATEST NEWS
 
+23 October 2026: informalization of Lean Mathlib: [Examples](https://aarneranta.github.io/mathlib-informath/mathlib-informath.html), [Code](https://github.com/aarneranta/mathlib-informath)
+
+23 October 2026: repeatable autoformalization experiments with Claude code: see [instructions](./autoformalize)
+
 9 September 2026: an updated version of the Informath paper in arXiv: [Symbolic Informalization: Fluent, Productive, Multilingual](https://arxiv.org/abs/2606.16893). 
 
 24 July 2026: New binary release, entitled [Informath-0.4](https://github.com/GrammaticalFramework/informath/releases/tag/informath-0.4).
