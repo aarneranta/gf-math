@@ -158,4 +158,44 @@ lin triangle_Noun = mkNoun ( UseN triangel_N ) ;
 lin trigonometric_Adj = mkAdj ( PositA trigonometrisk_A ) ;
 lin universe_Noun = mkNoun (mkN "universum" "universum") ;
 lin variety_Noun = mkNoun ( UseN varietet_N ) ;
+
+-- the words that the Mathlib informalization uses
+lin semilattice_Noun = mkNoun (mkN "halvgitter" "halvgittret" "halvgitter" "halvgittren" neutrum) ;
+lin lattice_Noun = mkNoun (mkN "gitter" "gittret" "gitter" "gittren" neutrum) ;
+lin factorization_Noun = mkNoun (mkN "faktorisering" "faktoriseringar") ;
+lin unit_Noun = mkNoun (mkN "enhet" "enheter") ;
+lin preordered_Adj = mkAdj (mkA "kvasiordnad" "kvasiordnat" "kvasiordnade" "mer kvasiordnad" "mest kvasiordnad") ;
+lin join_Noun = mkNoun (mkN "supremum" "supremumet" "suprema" "supremumen" neutrum) ;
+lin meet_Adj = mkAdj (mkA "infimal") ;
+lin monoid_Noun = mkNoun (mkN "monoid" "monoider") ;
+lin irreducible_Adj = mkAdj (mkA "irreducibel" "irreducibelt" "irreducibla" "mer irreducibel" "mest irreducibel") ;
+lin equivalence_Noun = mkNoun (mkN "ekvivalens" "ekvivalenser") ;
+lin zero_Noun = mkNoun (mkN "nolla" "nollor") ;
+lin ordered_Adj = mkAdj (mkA "ordnad" "ordnat" "ordnade" "mer ordnad" "mest ordnad") ;
+lin power_Noun = mkNoun (mkN "potens" "potenser") ;
+lin distributive_Adj = mkAdj (mkA "distributiv") ;
+lin antisymmetric_Adj = mkAdj (mkA "antisymmetrisk") ;
+lin asymmetric_Adj = mkAdj (mkA "asymmetrisk") ;
+lin multiplicity_Noun = mkNoun (mkN "multiplicitet" "multipliciteter") ;
+lin strict_Adj = mkAdj (mkA "strikt" "strikt") ;
+lin comparison_Noun = mkNoun (mkN "jämförelse" "jämförelser") ;
+lin total_Adj = mkAdj (mkA "total") ;
+lin upper_Adj = mkAdj (mkA "övre" "övre" "övre" "övre" "översta") ;
+lin minimal_Adj = mkAdj (mkA "minimal") ;
+lin maximal_Adj = mkAdj (mkA "maximal") ;
+lin injective_Adj = mkAdj (mkA "injektiv") ;
+lin partial_Adj = mkAdj (mkA "partiell") ;
+lin weak_Adj = mkAdj (mkA "svag") ;
+lin primal_Adj = mkAdj (mkA "primal") ;
+lin support_Noun = mkNoun (mkN "stöd" "stödet" "stöd" "stöden" neutrum) ;
+lin decomposition_Noun = mkNoun (mkN "uppdelning" "uppdelningar") ;
+lin cancellative_Adj = mkAdj (mkA "förkortningsbar") ;
+lin square_Noun = mkNoun (mkN "kvadrat" "kvadrater") ;
+lin decision_Noun = mkNoun (lin N (mkN "beslut" "beslutet" "beslut" "besluten" neutrum ** {co = "besluts"})) ; -- beslutsprocedur
+lin infimum_Noun = mkNoun (mkN "infimum" "infimumet" "infima" "infimumen" neutrum) ;
+lin minimum_Noun = mkNoun (mkN "minimum" "minimet" "minima" "minima" neutrum) ;
+lin maximum_Noun = mkNoun (mkN "maximum" "maximet" "maxima" "maxima" neutrum) ;
+lin additive_Adj = mkAdj (mkA "additiv") ;
+lin cardinality_Noun = mkNoun (mkN "kardinalitet" "kardinaliteter") ;
+
 }
