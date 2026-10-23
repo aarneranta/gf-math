@@ -78,7 +78,7 @@ lin
   NounPrepFun2 noun prep1 prep2 = {cn = noun ; prep1 = prep1 ; prep2 = prep2 ; isCollective = False} ;
   NounPrepFunC noun prep = {cn = noun ; prep = prep} ;
 
-  AdverbAdjAdj adv adj = mkAP (lin AdA adv) adj ;
+  AdverbAdjAdj adv adj = mkAP (lin AdA {s = adv.s}) adj ;
   AdjPrepNounAdj adj prep noun = Grammar.AdvAP adj (mkAdv prep (mkNP noun)) ;
   AdjPrepAdj2 adj prep = {ap = adj ; prep = prep} ;
   AdjAdjC adj = adj ;

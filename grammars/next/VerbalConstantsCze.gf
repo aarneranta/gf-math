@@ -36,7 +36,7 @@ lin Geq_Adj2 = mkAdj2 (mladyA "větší nebo rovný") (mkPrep "než" nominative)
 
 
 
-lin converge_Verb = mkVerb (mkV "konvergovat") ;
+lin converge_Verb = UtilitiesCze.mkVerb (mkV "konvergovat") ;
 lin divide_Verb2 = mkVerb2 (mkV "dělit") (mkPrep "" accusative) ;
 
 lin member_Noun2 = mkNoun2 element_N ;

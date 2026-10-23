@@ -19,7 +19,7 @@ lincat
   [Exp] = Syntax.ListNP ;
   [Prop] = ListS ;
   ArgKind = {cn : CN ; adv : Syntax.Adv ; isPl : Bool} ;  -- isPl = idents.isPl
-  [ArgKind] = {sg, neg, pl : NP} ;  -- there exists an A / there exists no A / for all As
+  [ArgKind] = {sg, neg, pl : ArgKindNP} ;  -- there exists an A / there exists no A / for all As
   Hypo = Utt ;
   [Hypo] = {text : Text ; isEmpty : Bool} ;
   Local = {name, value : NP} ;
@@ -90,25 +90,25 @@ lin
 
   BaseArgKind kind = {
     sg = case kind.isPl of {
-      True => mkNP aPl_Det (useKind kind) ;
-      False => mkNP aSg_Det (useKind kind)
+      True => toArgKindNP (mkNP aPl_Det (useKind kind)) ;
+      False => toArgKindNP (mkNP aSg_Det (useKind kind))
       } ;
     neg = case kind.isPl of {
-      True => mkNP (mkDet no_Quant pluralNum) (useKind kind) ;
-      False => mkNP no_Quant (useKind kind)
+      True => toArgKindNP (mkNP (mkDet no_Quant pluralNum) (useKind kind)) ;
+      False => toArgKindNP (mkNP no_Quant (useKind kind))
       } ;
-    pl = mkNP aPl_Det (useKind kind)
+    pl = toArgKindNP (mkNP aPl_Det (useKind kind))
     } ;
   ConsArgKind kind kinds = {
     sg = case kind.isPl of {
-      True => mkNP and_Conj (mkNP aPl_Det (useKind kind)) kinds.sg ;
-      False => mkNP and_Conj (mkNP aSg_Det (useKind kind)) kinds.sg
+      True => toArgKindNP (mkNP and_Conj (mkNP aPl_Det (useKind kind)) (fromArgKindNP kinds.sg)) ;
+      False => toArgKindNP (mkNP and_Conj (mkNP aSg_Det (useKind kind)) (fromArgKindNP kinds.sg))
       } ;
     neg = case kind.isPl of {
-      True => mkNP and_Conj (mkNP (mkDet no_Quant pluralNum) (useKind kind)) kinds.neg ;
-      False => mkNP and_Conj (mkNP no_Quant (useKind kind)) kinds.neg
+      True => toArgKindNP (mkNP and_Conj (mkNP (mkDet no_Quant pluralNum) (useKind kind)) (fromArgKindNP kinds.neg)) ;
+      False => toArgKindNP (mkNP and_Conj (mkNP no_Quant (useKind kind)) (fromArgKindNP kinds.neg))
       } ;
-    pl = mkNP and_Conj (mkNP aPl_Det (useKind kind)) kinds.pl 
+    pl = toArgKindNP (mkNP and_Conj (mkNP aPl_Det (useKind kind)) (fromArgKindNP kinds.pl)) 
     } ;
     
   BaseHypo = {text = emptyText ; isEmpty = True} ;

@@ -34,44 +34,8 @@ oper
 -- Three productive present-tense classes are covered:
 --   -ovat (kupovat), -at (dělat), -it/-et/-ět (prosit)
 
-  aVerbForms : Str -> Str -> R.VerbForms = \stem, inf -> {
-    inf = inf ;
-    pressg1 = stem + "ám" ;
-    pressg2 = stem + "áš" ;
-    pressg3, negpressg3 = stem + "á" ;
-    prespl1 = stem + "áme" ;
-    prespl2 = stem + "áte" ;
-    prespl3 = stem + "ají" ;
-    pastpartsg = stem + "al" ;
-    pastpartpl = stem + "ali" ;
-    } ;
 
-  iVerbForms : Str -> Str -> Str -> R.VerbForms = \stem, inf, past -> {
-    inf = inf ;
-    pressg1 = stem + "ím" ;
-    pressg2 = stem + "íš" ;
-    pressg3, negpressg3 = stem + "í" ;
-    prespl1 = stem + "íme" ;
-    prespl2 = stem + "íte" ;
-    prespl3 = stem + "í" ;
-    pastpartsg = past ;
-    pastpartpl = past + "i" ;
-    } ;
-
-  guessVerbForms : Str -> R.VerbForms = \v ->
-    case v of {
-      _ + "ovat"  => R.iii_kupovatVerbForms v ;
-      st + "ět"   => iVerbForms st v (st + "ěl") ;
-      st + "et"   => iVerbForms st v (st + "el") ;
-      st + "it"   => iVerbForms st v (st + "il") ;
-      st + "at"   => aVerbForms st v ;
-      _           => aVerbForms v v
-      } ;
-
-  mkV : Str -> V = \s -> lin V (guessVerbForms s) ;
-  mkVS : Str -> VS = \s -> lin VS (guessVerbForms s) ;
-  strV2 : Str -> V2 = \s -> lin V2 (mkV2 (guessVerbForms s)) ;
-  mkPN : Str -> PN = \s -> lin PN {s = \\_ => s ; g = mascInanimate} ;
+  strV2 : Str -> V2 = \s -> mkV2 (mkV s) ;
 
   strN : Str -> N = mkN ;
   strA : Str -> A = mkA ;
@@ -80,7 +44,7 @@ oper
   strPrep : Str -> Prep = \s -> mkPrep s nominative ;
 
   define_V2 : V2 = strV2 "definovat" ;
-  assume_VS : VS = mkVS "předpokládat" ;
+  assume_VS : VS = mkVS (mkV "předpokládat") ;
   type_CN : CN = mkCN (hradN "typ") ;
   case_N : N = hradN "případ" ;
   contradiction_N : N = hradN "spor" ;
@@ -91,16 +55,27 @@ oper
   -- "such" as an AP with a "that" clause, agreeing with the CN
   suchThatCN : CN -> S -> CN = \cn, s ->
     mkCN (AdvAP (mkAP such_A) (S.mkAdv (mkSubj ", že") s)) cn ;
+  -- the subject pronoun dropped, and "předpokládejme, že" (1st person plural)
+  weNP : NP = mkNP (Extend.ProDrop we_Pron) ;
+  assumeUtt : VP -> Utt = \vp -> GrammarCze.ImpPl1 vp ;
+  -- the NP of a kind without its clitic and pronoun parameters, which a kind's
+  -- NP does not need: with them, [ArgKind] had 256^3 parameter combinations
+  ArgKindNP : Type = {s, prep, before, prepBefore : R.Case => Str ; after : Str ; a : R.Agr} ;
+  toArgKindNP : NP -> ArgKindNP = \np ->
+    {s = np.s ; prep = np.prep ; before = np.before ; prepBefore = np.prepBefore ;
+     after = np.after ; a = np.a} ;
+  fromArgKindNP : ArgKindNP -> NP = \x ->
+    lin NP (x ** {clit = \\_ => [] ; hasClit = False ; isDrop = False ; isPron = False}) ;
   applied_to_Prep : Prep = mkPrep "aplikovaný na" accusative ;
   defined_as_Prep : Prep = mkPrep "definovaný jako" nominative ;
   function_N : N = ruzeN "funkce" ;
   predicate_N : N = hradN "predikát" ;
   basic_type_CN : CN = mkCN (mkA "základní") (hradN "typ") ;
-  map_V3 = lin V3 (mkV3 (guessVerbForms "zobrazovat")
-    {s = [] ; c = accusative ; hasPrep = False}
-    {s = "na" ; c = accusative ; hasPrep = True}) ;
-  say_VS = mkVS "říkat" ;
-  hold_V2 = lin V2 (mkV2 (guessVerbForms "platit") {s = "pro" ; c = accusative ; hasPrep = True}) ;
+  map_V3 = mkV3 (mkV "zobrazovat")
+    (lin Prep {s = [] ; c = accusative ; hasPrep = False})
+    (lin Prep {s = "na" ; c = accusative ; hasPrep = True}) ;
+  say_VS = mkVS (mkV "říkat") ;
+  hold_V2 = mkV2 (mkV "platit") (lin Prep {s = "pro" ; c = accusative ; hasPrep = True}) ;
   arbitrary_A = mkA "libovolný" ;
   set_N = mnozina_N ;
   proposition_N = hradN "výrok" ;
@@ -116,7 +91,7 @@ oper
   definition_Str = "definice" ;
 
   instance_N = ruzeN "instance" ;
-  prove_VS = mkVS "dokazovat" ;
+  prove_VS = mkVS (mkV "dokazovat") ;
 
   as_Prep : Prep = mkPrep "jako" nominative ;
   at_Prep : Prep = mkPrep "v" locative ;
@@ -125,15 +100,14 @@ oper
   let_Str : Bool => Str = \\_ => "nechť" ;
   assuming_Str = "za následujících předpokladů:" ;
 
-  mkSubj : Str -> Subj = \s -> lin Subj {s = s} ; ---- should be in RGL
 
   imply_V2 : V2 = strV2 "implikovat" ;
   only_if_Subj : Subj = mkSubj "jen když" ;
 
   number_Noun = mkCN cislo_N ;
-  range_V3 = lin V3 (mkV3 (guessVerbForms "probíhat")
-    {s = "od" ; c = genitive ; hasPrep = True}
-    {s = "do" ; c = genitive ; hasPrep = True}) ;
+  range_V3 = mkV3 (mkV "probíhat")
+    (lin Prep {s = "od" ; c = genitive ; hasPrep = True})
+    (lin Prep {s = "do" ; c = genitive ; hasPrep = True}) ;
   sum_N = mkN "součet" "součtu" mascInanimate ;
   where_Subj = mkSubj "kde" ;
 

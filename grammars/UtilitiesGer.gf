@@ -53,6 +53,11 @@ oper
   -- "derart, dass" after the CN: derart does not inflect
   suchThatCN : CN -> S -> CN = \cn, s ->
     mkCN cn (S.mkAdv (mkSubj "derart , dass") s) ;
+  weNP : NP = we_NP ;
+  assumeUtt : VP -> Utt = \vp -> mkUtt (mkImp vp) ;
+  ArgKindNP : Type = NP ;
+  toArgKindNP : NP -> ArgKindNP = \np -> np ;
+  fromArgKindNP : ArgKindNP -> NP = \np -> np ;
   applied_to_Prep : Prep = mkPrep "angewandt auf" accusative ;
   defined_as_Prep : Prep = mkPrep "definiert als" nominative ;
   function_N : N = mkN "Funktion" ;

@@ -13,26 +13,26 @@ concrete CategoriesFre of Categories =
 lin
   BaseArgKind kind = {
     sg = case kind.isPl of {
-      True => mkNP aPl_Det (useKind kind) ;
-      False => mkNP aSg_Det (useKind kind)
+      True => toArgKindNP (mkNP aPl_Det (useKind kind)) ;
+      False => toArgKindNP (mkNP aSg_Det (useKind kind))
       } ;
     neg = case kind.isPl of {
-      True => mkNP no_Quant (useKind kind) ;
-      False => mkNP no_Quant (useKind kind)
+      True => toArgKindNP (mkNP no_Quant (useKind kind)) ;
+      False => toArgKindNP (mkNP no_Quant (useKind kind))
       } ;
-    pl = mkNP thePl_Det (useKind kind)
+    pl = toArgKindNP (mkNP thePl_Det (useKind kind))
     } ;
     
   ConsArgKind kind kinds = {
     sg = case kind.isPl of {
-      True => mkNP and_Conj (mkNP aPl_Det (useKind kind)) kinds.sg ;
-      False => mkNP and_Conj (mkNP aSg_Det (useKind kind)) kinds.sg
+      True => toArgKindNP (mkNP and_Conj (mkNP aPl_Det (useKind kind)) (fromArgKindNP kinds.sg)) ;
+      False => toArgKindNP (mkNP and_Conj (mkNP aSg_Det (useKind kind)) (fromArgKindNP kinds.sg))
       } ;
     neg = case kind.isPl of {
-      True => mkNP and_Conj (mkNP no_Quant (useKind kind)) kinds.sg ;
-      False => mkNP and_Conj (mkNP no_Quant (useKind kind)) kinds.sg
+      True => toArgKindNP (mkNP and_Conj (mkNP no_Quant (useKind kind)) (fromArgKindNP kinds.sg)) ;
+      False => toArgKindNP (mkNP and_Conj (mkNP no_Quant (useKind kind)) (fromArgKindNP kinds.sg))
       } ;
-    pl = mkNP and_Conj (mkNP thePl_Det (useKind kind)) kinds.pl 
+    pl = toArgKindNP (mkNP and_Conj (mkNP thePl_Det (useKind kind)) (fromArgKindNP kinds.pl)) 
     } ;
 
 

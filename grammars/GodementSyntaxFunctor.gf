@@ -99,7 +99,7 @@ lin
 
   WheneverProp a b = simpleProp (postAdvS (partProp a) (Syntax.mkAdv whenever_Subj (partProp b))) ;
   GivenProp argkinds prop =
-    simpleProp (Grammar.ExtAdvS (Syntax.mkAdv given_Prep argkinds.sg) (partProp prop)) ;
+    simpleProp (Grammar.ExtAdvS (Syntax.mkAdv given_Prep (fromArgKindNP argkinds.sg)) (partProp prop)) ;
   RespProp a b =
     simpleProp (postAdvS (partProp a) (strAdv ("(" ++ resp_Str ++ sStr (partProp b) ++ ")"))) ;
 
@@ -120,11 +120,11 @@ lin
   NamingKindJmt label hypos kind dv df =
     defJmt label hypos (mkS (mkCl (mkNP aPl_Det (useKind kind)) (defNPVP dv (mkNP aPl_Det (useKind df))))) ;
   WeDefineExpJmt label hypos x y =
-    defJmt label hypos (mkS (mkCl we_NP (mkVP (mkVP defineG_V2 x) (lin Adv (mkUtt (mkVP y)))))) ;
+    defJmt label hypos (mkS (mkCl weNP (mkVP (mkVP defineG_V2 x) (lin Adv (mkUtt (mkVP y)))))) ;
   WeSayJmt label hypos p q =
-    defJmt label hypos (mkS (mkCl we_NP (mkVP say_VS (postAdvS (partProp p) (Syntax.mkAdv if_Subj (partProp q)))))) ;
+    defJmt label hypos (mkS (mkCl weNP (mkVP say_VS (postAdvS (partProp p) (Syntax.mkAdv if_Subj (partProp q)))))) ;
   DenoteJmt label hypos t x =
-    defJmt label hypos (mkS (mkCl we_NP
+    defJmt label hypos (mkS (mkCl weNP
       (mkVP (Grammar.AdvVPSlash (mkVPSlash denote_V2) (Syntax.mkAdv by8agent_Prep t)) x))) ;
   IsDenotedJmt label hypos x t =
     defJmt label hypos (mkS (mkCl x (mkVP (passiveVP denote_V2) (Syntax.mkAdv by8agent_Prep t)))) ;

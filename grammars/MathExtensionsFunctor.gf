@@ -46,9 +46,9 @@ lin
   IfProp A B = simpleProp (Grammar.ExtAdvS (Syntax.mkAdv if_Subj (partProp A)) (mkS then_Adv (partProp B))) ;
   IffProp A B = simpleProp (Grammar.SSubjS (partProp A) iff_Subj (partProp B)) ;
   AllProp argkinds prop =
-    simpleProp (Grammar.ExtAdvS (Syntax.mkAdv for_Prep (mkNP all_Predet argkinds.pl)) (partProp prop)) ;
+    simpleProp (Grammar.ExtAdvS (Syntax.mkAdv for_Prep (mkNP all_Predet (fromArgKindNP argkinds.pl))) (partProp prop)) ;
   ExistProp argkinds prop =
-    simpleProp (Grammar.SSubjS (mkS (Extend.ExistsNP argkinds.sg)) such_that_Subj (partProp prop)) ; 
+    simpleProp (Grammar.SSubjS (mkS (Extend.ExistsNP (fromArgKindNP argkinds.sg))) such_that_Subj (partProp prop)) ; 
 
   NotAdjProp adj exp = simpleProp (mkS negPol (mkCl exp adj)) ;
   NotAdj2Prop adj x y = simpleProp (mkS negPol (mkCl x (Grammar.AdvAP adj.ap (Syntax.mkAdv adj.prep y)))) ;
@@ -82,7 +82,7 @@ lin
   OnlyIfProp A B = simpleProp (Grammar.SSubjS (partProp A) only_if_Subj (partProp B)) ;
   InverseIfProp B A = simpleProp (Grammar.SSubjS (partProp A) if_Subj (partProp B)) ;
 
-  ExistNoProp argkinds prop = simpleProp (Grammar.SSubjS (mkS (Extend.ExistsNP argkinds.neg)) such_that_Subj (partProp prop)) ; 
+  ExistNoProp argkinds prop = simpleProp (Grammar.SSubjS (mkS (Extend.ExistsNP (fromArgKindNP argkinds.neg))) such_that_Subj (partProp prop)) ; 
 
   Adj2Adj rel y = Grammar.AdvAP rel.ap (Syntax.mkAdv rel.prep y) ;
   Adj3Adj pred y z =
@@ -112,7 +112,7 @@ lin
   WeDefineAdjJmt label hypos exp adj prop =
     labelText (label)
       (thenText hypos (
-        mkS (mkCl we_NP (mkVP (mkVP (mkVP define_V2 exp)
+        mkS (mkCl weNP (mkVP (mkVP (mkVP define_V2 exp)
           <lin Adv (mkUtt (mkVP adj)) : Adv>) (Syntax.mkAdv if_Subj prop.s))))) ; 
 
   PluralKindExp kind = mkNP thePl_Det (useKind kind) ;

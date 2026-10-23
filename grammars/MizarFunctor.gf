@@ -21,7 +21,7 @@ in {
 
   PredicateKind argkinds = {
     cn = mkCN predicate_N ;
-    adv = Syntax.mkAdv over_Prep argkinds.pl
+    adv = Syntax.mkAdv over_Prep (fromArgKindNP argkinds.pl)
     } ;
 
   BareSuchThatKind kind prop = {
@@ -77,11 +77,11 @@ in {
   AppPredicateFormula P xs = tconstant (P ++ "(" ++ xs.s ++ ")");
   FraenkelComprehensionTerm t argkinds compr =
     tconstant ("\\{" ++ top t ++ "\\text{" ++
-    (mkUtt (Syntax.mkAdv for_Prep (Syntax.mkNP argkinds.pl (Syntax.mkAdv such_that_Subj (partProp compr))))).s
+    (mkUtt (Syntax.mkAdv for_Prep (Syntax.mkNP (fromArgKindNP argkinds.pl) (Syntax.mkAdv such_that_Subj (partProp compr))))).s
      ++ "}" ++ "\\}") ;
   FraenkelSimpleComprehensionTerm t argkinds =
     tconstant ("\\{" ++ top t ++ "\\text{" ++
-    (mkUtt (Syntax.mkAdv for_Prep argkinds.pl)).s
+    (mkUtt (Syntax.mkAdv for_Prep (fromArgKindNP argkinds.pl))).s
      ++ "}" ++ "\\}") ;
   TextualTerm t = tconstant ("\\text{" ++ (mkUtt t).s ++ "}");
   

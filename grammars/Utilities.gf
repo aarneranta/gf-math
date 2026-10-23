@@ -270,7 +270,7 @@ oper
 
   mkLabel = overload {
     mkLabel : Str -> LabelT
-      = \s -> {np = mkNP (mkPN s) ; isEmpty = False} ;
+      = \s -> {np = mkNP (strPN s) ; isEmpty = False} ;
     mkLabel : NP -> LabelT
       = \np -> {np = np ; isEmpty = False}
     } ;
@@ -384,5 +384,17 @@ oper
   -- "such that", agreeing with the CN where "such" inflects; defined in each
   -- language, as the word order differs
   suchThatCN : CN -> S -> CN ;
+
+  -- the NPs that a list of kinds keeps ([ArgKind]): an NP, or in a language
+  -- whose NPs have many inherent parameters, a lighter record, as three of
+  -- them in one lincat multiply their parameters (Czech: 256^3)
+  -- "we" as the subject of a clause (with pro-drop where the language drops it),
+  -- and an assumption "assume that ..." as an imperative utterance
+  weNP : NP ;
+  assumeUtt : VP -> Utt ;
+
+  ArgKindNP : Type ;
+  toArgKindNP : NP -> ArgKindNP ;
+  fromArgKindNP : ArgKindNP -> NP ;
 
 }

@@ -49,6 +49,11 @@ oper
   -- "such" as an AP with a "that" clause, agreeing with the CN
   suchThatCN : CN -> S -> CN = \cn, s ->
     mkCN (AdvAP (mkAP such_A) (S.mkAdv that_Subj s)) cn ;
+  weNP : NP = we_NP ;
+  assumeUtt : VP -> Utt = \vp -> mkUtt (mkImp vp) ;
+  ArgKindNP : Type = NP ;
+  toArgKindNP : NP -> ArgKindNP = \np -> np ;
+  fromArgKindNP : ArgKindNP -> NP = \np -> np ;
   applied_to_Prep : Prep = mkPrep "applied to" ;
   defined_as_Prep : Prep = mkPrep "defined as" ;
   function_N : N = mkN "function" ;

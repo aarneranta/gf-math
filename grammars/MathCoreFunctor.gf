@@ -34,7 +34,7 @@ lin
       (thenText hypos (mkS (mkCl exp (definedCN (useKind kind) df)))) ;
   AxiomPropJmt label hypos prop =
     labelText label
-      (thenText hypos (mkS (mkCl we_NP can_VV (mkVP say_VS (topProp prop))))) ;
+      (thenText hypos (mkS (mkCl weNP can_VV (mkVP say_VS (topProp prop))))) ;
   AxiomKindJmt label hypos kind =
     labelText label
       (thenText hypos 
@@ -56,8 +56,8 @@ lin
   NoVarRewriteRule patt exp =
     mkUtt (mkS (mkCl patt exp)) ;
 
-  PropHypo prop = mkUtt (mkImp (mkVP assume_VS (topProp prop))) ; 
-  PropVarHypo ident prop = lin Utt {s = (mkUtt (mkImp (mkVP assume_VS (topProp prop)))).s ++ "(" ++ ident ++ ")"} ; 
+  PropHypo prop = assumeUtt (mkVP assume_VS (topProp prop)) ; 
+  PropVarHypo ident prop = lin Utt {s = (assumeUtt (mkVP assume_VS (topProp prop))).s ++ "(" ++ ident ++ ")"} ; 
   VarHypo ident kind = Grammar.ImpP3 (latexNP (mkSymb ident)) (mkVP (useKind kind)) ; 
   BareVarHypo ident = Grammar.ImpP3 (latexNP (mkSymb ident)) (mkVP arbitrary_A) ;
   LocalHypo local = Grammar.ImpP3 local.name (mkVP local.value) ; 
@@ -89,7 +89,7 @@ lin
   CoreExistProp kind ident prop =
     simpleProp (mkS (Extend.ExistsNP (mkNP a_Det (suchThatCN (identKindCN ident kind) (partProp prop))))) ; 
   IdentProp f = simpleProp (latexS (mkSymb f)) ;
-  FalseProp = simpleProp (mkS (mkCl we_NP have_V2 (mkNP a_Det contradiction_N))) ;
+  FalseProp = simpleProp (mkS (mkCl weNP have_V2 (mkNP a_Det contradiction_N))) ;
   AppProp f exps = simpleProp (mkS (mkCl (latexNP (mkSymb f)) hold_V2 exps.np)) ;
   ExistKindProp kind = simpleProp (mkS (mkCl (mkNP a_Det (useKind kind)))) ;
 
@@ -108,7 +108,7 @@ lin
     } ;
   FunKind argkinds kind = {
     cn = mkCN function_N ;
-    adv = ccAdv (Syntax.mkAdv from_Prep argkinds.pl) (Syntax.mkAdv to_Prep (mkNP aPl_Det (useKind kind)))
+    adv = ccAdv (Syntax.mkAdv from_Prep (fromArgKindNP argkinds.pl)) (Syntax.mkAdv to_Prep (mkNP aPl_Det (useKind kind)))
     } ;
 
   KindArgKind kind = kind ** {isPl = False} ;
@@ -207,7 +207,7 @@ lin
 -- their purpose is to maintain lossless rendering of Dedukti
 
   ProofProp prop = prop ** {
-    s = mkS (mkCl we_NP can_VV (mkVP prove_VS prop.s)) ;
+    s = mkS (mkCl weNP can_VV (mkVP prove_VS prop.s)) ;
     } ;
   ElemKind kind = {
     cn = mkCN instance_N ;

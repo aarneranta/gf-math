@@ -49,6 +49,11 @@ oper
   -- "sellainen" agreeing before the CN, the "että" clause after it
   suchThatCN : CN -> S -> CN = \cn, s ->
     mkCN (mkCN such_A cn) (S.mkAdv (mkSubj ", että") s) ;
+  weNP : NP = we_NP ;
+  assumeUtt : VP -> Utt = \vp -> mkUtt (mkImp vp) ;
+  ArgKindNP : Type = NP ;
+  toArgKindNP : NP -> ArgKindNP = \np -> np ;
+  fromArgKindNP : ArgKindNP -> NP = \np -> np ;
   applied_to_Prep : Prep = mkPrep "sovellettuna" ;
   defined_as_Prep : Prep = mkPrep "määriteltynä" ;
   function_N : N = mkN "funktio" ;
